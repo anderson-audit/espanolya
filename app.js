@@ -81,12 +81,15 @@ const I18N = {
     admin_save: "Guardar configuración", admin_saved: "¡Configuración guardada!",
     admin_students_title: "Alumnos y progreso ({n})", admin_no_students: "Todavía no hay alumnos con pruebas realizadas.",
     back_panel: "← Volver al panel",
-    account_title: "👤 Mi Cuenta", account_tab_security: "Seguridad", account_tab_appearance: "Apariencia",
+    account_title: "👤 Mi Cuenta", account_tab_security: "Seguridad", account_tab_appearance: "Apariencia", account_tab_profile: "Perfil",
+    profile_name_label: "Nombre completo", profile_name_ph: "Tu nombre", profile_save: "Guardar nombre", profile_saved: "¡Nombre actualizado!",
     account_current_pass: "Contraseña actual", account_new_pass: "Nueva contraseña", account_confirm_pass: "Confirmar nueva contraseña",
     account_change_pass_btn: "Cambiar contraseña", account_pass_mismatch: "Las contraseñas nuevas no coinciden.",
     account_pass_changed: "¡Contraseña actualizada con éxito!", account_theme_label: "Color del tema", account_font_label: "Fuente",
     account_lang_label: "Idioma de la interfaz", account_save_appearance: "Guardar apariencia", account_appearance_saved: "¡Apariencia guardada!",
     nav_schedule: "📅 Cronograma", panel_title: "🎓 Panel del Alumno",
+    sidebar_dashboard: "Panel", sidebar_settings: "Configuración", sidebar_toggle: "Mostrar/ocultar menú",
+    sidebar_section_learn: "Aprender", sidebar_section_admin: "Administración",
     panel_overall_title: "Progreso general del curso", panel_overall_sub: "{done} de {total} etapas completadas",
     panel_schedule_ontrack: "🟢 Dentro del plazo", panel_schedule_ahead: "🔵 Adelantado", panel_schedule_behind: "🟠 Atrasado",
     panel_schedule_ontrack_d: "Vas exactamente como lo planeado. ¡Sigue así!",
@@ -127,12 +130,15 @@ const I18N = {
     admin_save: "Salvar configuração", admin_saved: "Configuração salva!",
     admin_students_title: "Alunos e progresso ({n})", admin_no_students: "Ainda não há alunos com provas realizadas.",
     back_panel: "← Voltar ao painel",
-    account_title: "👤 Minha Conta", account_tab_security: "Segurança", account_tab_appearance: "Aparência",
+    account_title: "👤 Minha Conta", account_tab_security: "Segurança", account_tab_appearance: "Aparência", account_tab_profile: "Perfil",
+    profile_name_label: "Nome completo", profile_name_ph: "Seu nome", profile_save: "Salvar nome", profile_saved: "Nome atualizado!",
     account_current_pass: "Senha atual", account_new_pass: "Nova senha", account_confirm_pass: "Confirmar nova senha",
     account_change_pass_btn: "Alterar senha", account_pass_mismatch: "As novas senhas não coincidem.",
     account_pass_changed: "Senha atualizada com sucesso!", account_theme_label: "Cor do tema", account_font_label: "Fonte",
     account_lang_label: "Idioma da interface", account_save_appearance: "Salvar aparência", account_appearance_saved: "Aparência salva!",
     nav_schedule: "📅 Cronograma", panel_title: "🎓 Painel do Aluno",
+    sidebar_dashboard: "Painel", sidebar_settings: "Configurações", sidebar_toggle: "Mostrar/ocultar menu",
+    sidebar_section_learn: "Aprender", sidebar_section_admin: "Administração",
     panel_overall_title: "Progresso geral do curso", panel_overall_sub: "{done} de {total} etapas concluídas",
     panel_schedule_ontrack: "🟢 Dentro do prazo", panel_schedule_ahead: "🔵 Adiantado", panel_schedule_behind: "🟠 Atrasado",
     panel_schedule_ontrack_d: "Você está exatamente como planejado. Continue assim!",
@@ -173,12 +179,15 @@ const I18N = {
     admin_save: "Save settings", admin_saved: "Settings saved!",
     admin_students_title: "Students and progress ({n})", admin_no_students: "No students have taken exams yet.",
     back_panel: "← Back to panel",
-    account_title: "👤 My Account", account_tab_security: "Security", account_tab_appearance: "Appearance",
+    account_title: "👤 My Account", account_tab_security: "Security", account_tab_appearance: "Appearance", account_tab_profile: "Profile",
+    profile_name_label: "Full name", profile_name_ph: "Your name", profile_save: "Save name", profile_saved: "Name updated!",
     account_current_pass: "Current password", account_new_pass: "New password", account_confirm_pass: "Confirm new password",
     account_change_pass_btn: "Change password", account_pass_mismatch: "New passwords don't match.",
     account_pass_changed: "Password updated successfully!", account_theme_label: "Theme color", account_font_label: "Font",
     account_lang_label: "Interface language", account_save_appearance: "Save appearance", account_appearance_saved: "Appearance saved!",
     nav_schedule: "📅 Schedule", panel_title: "🎓 Student Panel",
+    sidebar_dashboard: "Dashboard", sidebar_settings: "Settings", sidebar_toggle: "Show/hide menu",
+    sidebar_section_learn: "Learn", sidebar_section_admin: "Admin",
     panel_overall_title: "Overall course progress", panel_overall_sub: "{done} of {total} stages completed",
     panel_schedule_ontrack: "🟢 On track", panel_schedule_ahead: "🔵 Ahead of schedule", panel_schedule_behind: "🟠 Behind schedule",
     panel_schedule_ontrack_d: "You're exactly on plan. Keep it up!",
@@ -242,6 +251,7 @@ const state = {
   adminStudents: [],
   errorMsg: "",
   accountMsg: "",
+  sidebarCollapsed: localStorage.getItem("ey_sidebar_collapsed") === "1",
 };
 
 applyTheme(state.prefs.theme);
@@ -712,37 +722,97 @@ function getSpeechRecognition() {
 }
 
 /* ---------------------------------------------------------------------- */
-/* 9. TOPBAR + LAYOUT HELPERS                                              */
+/* 9. MENU LATERAL (SIDEBAR) + TOPBAR ESTREITA + LAYOUT HELPERS            */
 /* ---------------------------------------------------------------------- */
-function topbarHtml() {
-  const xp = (state.progress && state.progress.xp) || 0;
+const SIDEBAR_NAV_ITEMS = [
+  { screen: "dashboard", icon: "🏠", labelKey: "sidebar_dashboard" },
+  { screen: "schedule", icon: "📅", labelKey: "nav_schedule" },
+  { screen: "account", icon: "⚙️", labelKey: "sidebar_settings" },
+];
+
+function sidebarHtml(activeScreen) {
+  const isAdmin = state.user && state.user.role === "admin";
+  const items = SIDEBAR_NAV_ITEMS.map(it => `
+    <button class="sidebar-item ${activeScreen === it.screen ? "active" : ""}" data-nav="${it.screen}" title="${t(it.labelKey)}">
+      <span class="ico">${it.icon}</span><span class="label">${t(it.labelKey)}</span>
+    </button>`).join("");
+  const adminItem = isAdmin ? `
+    <span class="sidebar-section-label">${t("sidebar_section_admin")}</span>
+    <button class="sidebar-item ${activeScreen === "admin" ? "active" : ""}" data-nav="admin" title="${t("topbar_admin")}">
+      <span class="ico">🛠️</span><span class="label">${t("topbar_admin")}</span>
+    </button>` : "";
   const initials = (state.user && state.user.name || "?").trim().charAt(0).toUpperCase();
   return `
-    <div class="topbar">
-      <div class="brand"><div class="flag"><div></div><div></div><div></div></div> ¡Español Ya!</div>
-      <div class="right">
-        <div class="xp-pill">⭐ ${xp} XP</div>
-        <button class="btn btn-secondary btn-sm" id="btn-schedule">${t("nav_schedule")}</button>
-        ${state.user && state.user.role === "admin" ? `<button class="btn btn-gold btn-sm" id="btn-admin">⚙️ ${t("topbar_admin")}</button>` : ""}
-        <button class="btn btn-secondary btn-sm" id="btn-logout">${t("topbar_logout")}</button>
-        <button class="avatar-btn" id="btn-account" title="${t("account_title")}">${initials}</button>
+    <aside class="sidebar">
+      <div class="sidebar-head">
+        <div class="sidebar-brand"><div class="flag"><div></div><div></div><div></div></div><span>¡Español Ya!</span></div>
+        <button class="sidebar-toggle" id="sidebar-toggle" title="${t("sidebar_toggle")}">☰</button>
+      </div>
+      <nav class="sidebar-nav">
+        <span class="sidebar-section-label">${t("sidebar_section_learn")}</span>
+        ${items}
+        ${adminItem}
+      </nav>
+      <div class="sidebar-foot">
+        <div class="sidebar-user">
+          <button class="avatar-btn" id="btn-account-avatar" title="${t("account_title")}">${initials}</button>
+          <div class="who"><strong>${escapeHtml((state.user && state.user.name) || "")}</strong><span>⭐ ${(state.progress && state.progress.xp) || 0} XP</span></div>
+        </div>
+        <button class="sidebar-item" id="btn-logout" title="${t("topbar_logout")}">
+          <span class="ico">🚪</span><span class="label">${t("topbar_logout")}</span>
+        </button>
+      </div>
+    </aside>`;
+}
+
+function topbarSlimHtml() {
+  const xp = (state.progress && state.progress.xp) || 0;
+  return `
+    <div class="topbar-slim">
+      <div class="xp-pill">⭐ ${xp} XP</div>
+    </div>`;
+}
+
+// Envuelve el contenido de cada pantalla con la sidebar + topbar estrecha.
+// activeScreen se usa para resaltar el ítem correspondiente en el menú lateral.
+function wrapShell(contentHtml, activeScreen) {
+  const collapsed = state.sidebarCollapsed ? "sidebar-collapsed" : "";
+  return `
+    <div class="app-shell ${collapsed}">
+      ${sidebarHtml(activeScreen)}
+      <div class="app-main">
+        ${topbarSlimHtml()}
+        <div class="main-content">${contentHtml}</div>
       </div>
     </div>`;
 }
 
-function attachTopbarEvents() {
+function attachShellEvents() {
+  const toggle = document.getElementById("sidebar-toggle");
+  if (toggle) toggle.onclick = () => {
+    state.sidebarCollapsed = !state.sidebarCollapsed;
+    localStorage.setItem("ey_sidebar_collapsed", state.sidebarCollapsed ? "1" : "0");
+    render();
+  };
   const logoutBtn = document.getElementById("btn-logout");
   if (logoutBtn) logoutBtn.onclick = logout;
-  const adminBtn = document.getElementById("btn-admin");
-  if (adminBtn) adminBtn.onclick = () => {
-    state.screen = "admin";
-    render(); // mostra o painel de inmediato (con la lista aún vacía)
-    loadAdminStudents().then(render); // y lo vuelve a pintar cuando llegan os datos
-  };
-  const accountBtn = document.getElementById("btn-account");
-  if (accountBtn) accountBtn.onclick = () => { state.accountMsg = ""; state.accountTab = "security"; state.screen = "account"; render(); };
-  const scheduleBtn = document.getElementById("btn-schedule");
-  if (scheduleBtn) scheduleBtn.onclick = () => { state.scheduleMsg = ""; state.screen = "schedule"; render(); };
+  const accountBtn = document.getElementById("btn-account-avatar");
+  if (accountBtn) accountBtn.onclick = () => { state.accountMsg = ""; state.accountTab = state.accountTab || "security"; state.screen = "account"; render(); };
+  document.querySelectorAll(".sidebar-item[data-nav]").forEach(btn => {
+    btn.onclick = () => {
+      const target = btn.dataset.nav;
+      if (target === "admin") {
+        state.screen = "admin";
+        render(); // mostra o painel de inmediato (con la lista aún vacía)
+        loadAdminStudents().then(render); // y lo vuelve a pintar cuando llegan os datos
+        return;
+      }
+      if (target === "account") { state.accountMsg = ""; state.accountTab = state.accountTab || "security"; }
+      if (target === "schedule") { state.scheduleMsg = ""; }
+      state.screen = target;
+      render();
+    };
+  });
 }
 
 /* ---------------------------------------------------------------------- */
@@ -806,9 +876,7 @@ function panelSummaryHtml() {
 }
 
 function renderDashboard() {
-  root.innerHTML = `
-    ${topbarHtml()}
-    <div class="main-content">
+  root.innerHTML = wrapShell(`
       <div class="section-title">${t("dash_greeting", { name: escapeHtml(state.user.name || "") })}</div>
       ${panelSummaryHtml()}
       <div class="level-grid">
@@ -819,8 +887,8 @@ function renderDashboard() {
         ${BONUS_LEVELS.map(id => levelCardHtml(id, true)).join("")}
       </div>
       <div class="bottom-space"></div>
-    </div>`;
-  attachTopbarEvents();
+    `, "dashboard");
+  attachShellEvents();
   document.querySelectorAll(".level-card").forEach(card => {
     card.onclick = (ev) => {
       if (ev.target.closest(".cert-btn")) return;
@@ -849,9 +917,7 @@ function renderDashboard() {
 function renderLessonList() {
   const lvl = getLevel(state.currentLevelId);
   const p = levelProgress(state.currentLevelId);
-  root.innerHTML = `
-    ${topbarHtml()}
-    <div class="main-content">
+  root.innerHTML = wrapShell(`
       <button class="back-link" id="back-dash">← Volver a los módulos</button>
       <div class="lesson-header">
         <h2>${lvl.icon} ${lvl.name}</h2>
@@ -873,8 +939,8 @@ function renderLessonList() {
         <div class="chev">›</div>
       </div>` : ""}
       <div class="bottom-space"></div>
-    </div>`;
-  attachTopbarEvents();
+    `, "lessonList");
+  attachShellEvents();
   document.getElementById("back-dash").onclick = () => { state.screen = "dashboard"; render(); };
   document.querySelectorAll(".lesson-row[data-lesson]").forEach(row => {
     row.onclick = () => {
@@ -894,8 +960,6 @@ function renderLessonView() {
   const lesson = getLesson(state.currentLevelId, state.currentLessonId);
   const lvl = getLevel(state.currentLevelId);
   let html = `
-    ${topbarHtml()}
-    <div class="main-content">
       <button class="back-link" id="back-list">← Volver a ${lvl.name}</button>
       <div class="lesson-header">
         <h2>${escapeHtml(lesson.title)}</h2>
@@ -944,10 +1008,9 @@ function renderLessonView() {
       <div style="text-align:center;margin: 24px 0 40px">
         <button class="btn btn-primary" id="start-exercises" style="padding:16px 34px">Empezar ejercicios (${lesson.exercises.length}) →</button>
       </div>
-      <div class="bottom-space"></div>
-    </div>`;
-  root.innerHTML = html;
-  attachTopbarEvents();
+      <div class="bottom-space"></div>`;
+  root.innerHTML = wrapShell(html, "lesson");
+  attachShellEvents();
   document.getElementById("back-list").onclick = () => { state.screen = "lessonList"; render(); };
 
   document.querySelectorAll(".dialogue-line").forEach(line => {
@@ -1036,9 +1099,7 @@ function renderExercise() {
       <div class="ex-actions"><button class="btn btn-primary" id="ex-next">Siguiente →</button></div>`;
   }
 
-  root.innerHTML = `
-    ${topbarHtml()}
-    <div class="main-content">
+  root.innerHTML = wrapShell(`
       <button class="back-link" id="back-exit">✕ Salir</button>
       <div class="card exercise-card">
         <div class="ex-progress">${state.isExam ? "Prueba" : "Ejercicio"} ${idx + 1} / ${total}</div>
@@ -1047,8 +1108,8 @@ function renderExercise() {
         ${body}
       </div>
       <div class="bottom-space"></div>
-    </div>`;
-  attachTopbarEvents();
+    `, state.isExam ? "exam" : "exercises");
+  attachShellEvents();
   document.getElementById("back-exit").onclick = () => {
     if (confirm("¿Seguro que quieres salir? Vas a perder el progreso de este ejercicio/prueba.")) {
       state.screen = state.isExam ? "lessonList" : "lessonList";
@@ -1245,9 +1306,7 @@ async function saveExamResult(levelId, score, passed) {
 function renderResult() {
   const r = state.lastResult;
   const lvl = getLevel(r.levelId);
-  root.innerHTML = `
-    ${topbarHtml()}
-    <div class="main-content">
+  root.innerHTML = wrapShell(`
       <div class="card result-wrap">
         <div class="result-emoji">${r.isExam ? (r.passed ? "🎉" : "😕") : "✅"}</div>
         <h2>${r.isExam ? (r.passed ? "¡Aprobado!" : "Todavía no...") : "¡Ejercicios completados!"}</h2>
@@ -1261,8 +1320,8 @@ function renderResult() {
         </div>
       </div>
       <div class="bottom-space"></div>
-    </div>`;
-  attachTopbarEvents();
+    `, "result");
+  attachShellEvents();
   document.getElementById("res-back").onclick = () => { state.screen = "lessonList"; render(); };
   const retry = document.getElementById("res-retry");
   if (retry) retry.onclick = () => startExam(r.levelId);
@@ -1283,9 +1342,7 @@ async function loadAdminStudents() {
 
 function renderAdmin() {
   const ps = state.config.passScores;
-  root.innerHTML = `
-    ${topbarHtml()}
-    <div class="main-content">
+  root.innerHTML = wrapShell(`
       <button class="back-link" id="back-dash">← Volver al panel</button>
       <div class="section-title">⚙️ Panel de Administrador</div>
       <div class="card">
@@ -1308,8 +1365,8 @@ function renderAdmin() {
           </div>`).join("")}
       </div>
       <div class="bottom-space"></div>
-    </div>`;
-  attachTopbarEvents();
+    `, "admin");
+  attachShellEvents();
   document.getElementById("back-dash").onclick = () => { state.screen = "dashboard"; render(); };
   document.getElementById("save-config").onclick = async () => {
     const newScores = {};
@@ -1328,29 +1385,34 @@ function renderAdmin() {
 /* 16. TELA: MI CUENTA (Seguridad + Apariencia)                            */
 /* ---------------------------------------------------------------------- */
 function renderAccount() {
-  const tab = state.accountTab || "security";
-  root.innerHTML = `
-    ${topbarHtml()}
-    <div class="main-content">
+  const tab = state.accountTab || "profile";
+  const tabContent = tab === "profile" ? renderAccountProfileTab()
+    : tab === "security" ? renderAccountSecurityTab()
+    : renderAccountAppearanceTab();
+  root.innerHTML = wrapShell(`
       <button class="back-link" id="back-dash">${t("back_panel")}</button>
       <div class="section-title">${t("account_title")}</div>
       <div class="account-tabs">
+        <button class="account-tab-btn ${tab === "profile" ? "active" : ""}" data-tab="profile">👤 ${t("account_tab_profile")}</button>
         <button class="account-tab-btn ${tab === "security" ? "active" : ""}" data-tab="security">🔒 ${t("account_tab_security")}</button>
         <button class="account-tab-btn ${tab === "appearance" ? "active" : ""}" data-tab="appearance">🎨 ${t("account_tab_appearance")}</button>
       </div>
       ${state.accountMsg ? `<div class="${state.accountMsg.ok ? "success-msg" : "error-msg"}">${escapeHtml(state.accountMsg.text)}</div>` : ""}
       <div class="card">
-        ${tab === "security" ? renderAccountSecurityTab() : renderAccountAppearanceTab()}
+        ${tabContent}
       </div>
       <div class="bottom-space"></div>
-    </div>`;
-  attachTopbarEvents();
+    `, "account");
+  attachShellEvents();
   document.getElementById("back-dash").onclick = () => { state.screen = "dashboard"; render(); };
   document.querySelectorAll(".account-tab-btn").forEach(btn => {
     btn.onclick = () => { state.accountTab = btn.dataset.tab; state.accountMsg = ""; render(); };
   });
 
-  if (tab === "security") {
+  if (tab === "profile") {
+    const form = document.getElementById("profile-form");
+    if (form) form.addEventListener("submit", onSaveProfileSubmit);
+  } else if (tab === "security") {
     const form = document.getElementById("pass-form");
     if (form) form.addEventListener("submit", onChangePasswordSubmit);
   } else {
@@ -1366,6 +1428,30 @@ function renderAccount() {
     const saveBtn = document.getElementById("save-appearance");
     if (saveBtn) saveBtn.onclick = onSaveAppearance;
   }
+}
+
+function renderAccountProfileTab() {
+  const name = (state.user && state.user.name) || "";
+  return `
+    <h3>${t("account_tab_profile")}</h3>
+    <form id="profile-form">
+      <div class="field"><label>${t("profile_name_label")}</label><input type="text" id="profile-name" required placeholder="${t("profile_name_ph")}" value="${escapeHtml(name)}"></div>
+      <button type="submit" class="btn btn-primary">${t("profile_save")}</button>
+    </form>`;
+}
+
+async function onSaveProfileSubmit(e) {
+  e.preventDefault();
+  const newName = document.getElementById("profile-name").value.trim();
+  if (!newName) return;
+  try {
+    await db.collection("users").doc(state.user.uid).set({ name: newName }, { merge: true });
+    state.user.name = newName;
+    state.accountMsg = { ok: true, text: t("profile_saved") };
+  } catch (err) {
+    state.accountMsg = { ok: false, text: "Error: " + err.message };
+  }
+  render();
 }
 
 function renderAccountSecurityTab() {
@@ -1446,9 +1532,7 @@ function renderSchedule() {
   const sc = computeScheduleStatus();
   const lang = state.prefs.lang || "es";
   const plan = buildStudyPlan(draftMonths);
-  root.innerHTML = `
-    ${topbarHtml()}
-    <div class="main-content">
+  root.innerHTML = wrapShell(`
       <button class="back-link" id="back-dash">${t("back_dashboard")}</button>
       <div class="section-title">${t("schedule_title")}</div>
       <div class="card">
@@ -1484,8 +1568,8 @@ function renderSchedule() {
         </div>
       </div>
       <div class="bottom-space"></div>
-    </div>`;
-  attachTopbarEvents();
+    `, "schedule");
+  attachShellEvents();
   document.getElementById("back-dash").onclick = () => { state.screen = "dashboard"; render(); };
   document.querySelectorAll(".duration-chip").forEach(chip => {
     chip.onclick = () => { state.scheduleDraftMonths = parseInt(chip.dataset.months, 10); render(); };
