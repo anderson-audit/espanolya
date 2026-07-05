@@ -797,7 +797,7 @@ function attachShellEvents() {
   const logoutBtn = document.getElementById("btn-logout");
   if (logoutBtn) logoutBtn.onclick = logout;
   const accountBtn = document.getElementById("btn-account-avatar");
-  if (accountBtn) accountBtn.onclick = () => { state.accountMsg = ""; state.accountTab = state.accountTab || "security"; state.screen = "account"; render(); };
+  if (accountBtn) accountBtn.onclick = () => { state.accountMsg = ""; state.accountTab = state.accountTab || "profile"; state.screen = "account"; render(); };
   document.querySelectorAll(".sidebar-item[data-nav]").forEach(btn => {
     btn.onclick = () => {
       const target = btn.dataset.nav;
@@ -807,7 +807,7 @@ function attachShellEvents() {
         loadAdminStudents().then(render); // y lo vuelve a pintar cuando llegan os datos
         return;
       }
-      if (target === "account") { state.accountMsg = ""; state.accountTab = state.accountTab || "security"; }
+      if (target === "account") { state.accountMsg = ""; state.accountTab = state.accountTab || "profile"; }
       if (target === "schedule") { state.scheduleMsg = ""; }
       state.screen = target;
       render();
