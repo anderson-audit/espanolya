@@ -151,21 +151,41 @@ input, select, textarea { font-family: inherit; }
 .success-msg { background: #e8f5e9; color: var(--success); padding: 10px 14px; border-radius: 8px; font-size: .85rem; margin-bottom: 14px; }
 
 /* ---------- Dashboard ---------- */
-.section-title { font-size: 1.3rem; font-weight: 700; margin: 28px 0 14px; }
-.level-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 18px; }
+.section-title { font-size: 1.3rem; font-weight: 700; margin: 28px 0 14px; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,.25); }
+.level-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
 .level-card {
   background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow);
-  padding: 22px; position: relative; overflow: hidden; transition: transform .15s;
+  position: relative; overflow: hidden; transition: transform .15s, box-shadow .15s;
 }
-.level-card:not(.locked):hover { transform: translateY(-3px); }
-.level-card.locked { opacity: .55; filter: grayscale(.4); }
-.level-card .icon { font-size: 2.2rem; }
-.level-card h3 { margin: 10px 0 4px; font-size: 1.15rem; }
-.level-card p { font-size: .85rem; color: var(--gray-2); margin: 0 0 14px; min-height: 40px; }
-.progress-bar-track { height: 8px; border-radius: 6px; background: #eee; overflow: hidden; margin-bottom: 10px; }
-.progress-bar-fill { height: 100%; border-radius: 6px; background: linear-gradient(90deg, var(--rojo), var(--amarillo)); }
-.level-card .lock-badge { position:absolute; top: 16px; right: 16px; font-size: 1.3rem; }
-.level-card .stat-line { font-size: .78rem; color: var(--gray-2); display:flex; justify-content:space-between; }
+.level-card:not(.locked):hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
+.level-card.locked .level-card-photo { filter: grayscale(.65) brightness(.8); }
+.level-card.locked .level-card-body { opacity: .65; }
+
+.level-card-photo {
+  height: 132px; background-size: cover; background-position: center; background-color: var(--gray-bg);
+  position: relative; display: flex; flex-direction: column; justify-content: flex-end; padding: 14px 16px;
+}
+.level-card-scrim {
+  position: absolute; inset: 0;
+  background: linear-gradient(180deg, rgba(0,0,0,.05) 0%, rgba(0,0,0,.35) 55%, rgba(0,0,0,.78) 100%);
+}
+.level-card-icon {
+  position: relative; z-index: 1; width: 38px; height: 38px; border-radius: 50%;
+  background: rgba(255,255,255,.92); display: flex; align-items: center; justify-content: center;
+  font-size: 1.15rem; margin-bottom: 8px; box-shadow: 0 2px 8px rgba(0,0,0,.25);
+}
+.level-card-photo h3 { position: relative; z-index: 1; margin: 0; font-size: 1.15rem; color: #fff; text-shadow: 0 1px 4px rgba(0,0,0,.5); }
+.level-card .lock-badge { position: absolute; top: 14px; right: 14px; font-size: 1.2rem; z-index: 2; filter: drop-shadow(0 1px 3px rgba(0,0,0,.5)); }
+
+.level-card-body { padding: 16px 18px 20px; }
+.level-card-body p { font-size: .85rem; color: var(--gray-2); margin: 0 0 14px; min-height: 40px; }
+.progress-bar-track { height: 10px; border-radius: 6px; background: #eee; overflow: hidden; margin-bottom: 10px; }
+.progress-bar-fill {
+  height: 100%; border-radius: 6px; background: linear-gradient(90deg, var(--rojo), var(--amarillo));
+  display: flex; align-items: center; justify-content: flex-end; min-width: 22px;
+}
+.progress-bar-fill span { font-size: .62rem; font-weight: 800; color: #fff; padding-right: 6px; text-shadow: 0 1px 2px rgba(0,0,0,.3); }
+.level-card-body .stat-line { font-size: .78rem; color: var(--gray-2); display:flex; justify-content:space-between; }
 
 /* ---------- Lesson list ---------- */
 .lesson-row {
@@ -191,8 +211,8 @@ input, select, textarea { font-family: inherit; }
 
 /* ---------- Lesson viewer ---------- */
 .lesson-header { margin-bottom: 18px; }
-.lesson-header h2 { margin: 0 0 4px; }
-.lesson-header .sub { color: var(--gray-2); }
+.lesson-header h2 { margin: 0 0 4px; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,.25); }
+.lesson-header .sub { color: rgba(255,255,255,.75); }
 
 .lesson-hero { margin-bottom: 20px; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); position: relative; }
 .lesson-hero img { width: 100%; max-height: 320px; object-fit: cover; display: block; background: var(--gray-bg); }
@@ -380,7 +400,10 @@ table.grammar-table th { background: var(--gray-bg); }
 /* ==========================================================================
    MENU LATERAL (SIDEBAR) — layout estilo SaaS, com opção de esconder
    ========================================================================== */
-.app-shell { display: flex; min-height: 100vh; align-items: stretch; }
+.app-shell {
+  display: flex; min-height: 100vh; align-items: stretch;
+  background: linear-gradient(160deg, #1c2b3a 0%, #24384a 55%, #2c4356 100%);
+}
 
 .sidebar {
   width: 246px; flex-shrink: 0; background: var(--card-bg); border-right: 1px solid #ece9e3;

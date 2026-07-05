@@ -818,6 +818,17 @@ function attachShellEvents() {
 /* ---------------------------------------------------------------------- */
 /* 10. TELA: DASHBOARD (níveis)                                            */
 /* ---------------------------------------------------------------------- */
+// Reaprovecha las imágenes ya curadas de la primera lección de cada nivel como
+// foto de fondo del card (mismo criterio visual del panel, sin duplicar investigación).
+const LEVEL_HERO_FIRST_LESSON = {
+  fundamentos: "fund-0", basico: "b1", intermedio: "i1", avanzado: "a1", secretos: "s1", profesional: "p1",
+};
+function levelHeroImageUrl(levelId) {
+  const lessonId = LEVEL_HERO_FIRST_LESSON[levelId];
+  const img = lessonId && LESSON_IMAGES[lessonId];
+  return img ? wikimediaImg(img.file) : "";
+}
+
 function levelCardHtml(levelId, isBonus) {
   const lvl = getLevel(levelId);
   if (!lvl) return "";
@@ -825,18 +836,24 @@ function levelCardHtml(levelId, isBonus) {
   const pct = levelCompletionPct(levelId);
   const p = levelProgress(levelId);
   const showCert = !isBonus && MAIN_SEQUENCE.includes(levelId) && p.examPassed;
+  const bgUrl = levelHeroImageUrl(levelId);
   return `
     <div class="level-card ${unlocked ? "" : "locked"}" data-level="${levelId}">
-      ${!unlocked ? `<div class="lock-badge">🔒</div>` : ""}
-      <div class="icon">${lvl.icon}</div>
-      <h3>${lvl.name}</h3>
-      <p>${lvl.description}</p>
-      <div class="progress-bar-track"><div class="progress-bar-fill" style="width:${pct}%"></div></div>
-      <div class="stat-line">
-        <span>${pct}% completo</span>
-        <span>${p.examPassed ? t("exam_passed", { score: p.examScore }) : (lvl.exam ? t("exam_pending") : (isBonus ? "★" : ""))}</span>
+      <div class="level-card-photo" ${bgUrl ? `style="background-image:url('${bgUrl}')"` : ""}>
+        <div class="level-card-scrim"></div>
+        ${!unlocked ? `<div class="lock-badge">🔒</div>` : ""}
+        <div class="level-card-icon">${lvl.icon}</div>
+        <h3>${lvl.name}</h3>
       </div>
-      ${showCert ? `<button class="btn btn-gold btn-sm cert-btn" data-cert-level="${levelId}">${t("cert_btn")}</button>` : ""}
+      <div class="level-card-body">
+        <p>${lvl.description}</p>
+        <div class="progress-bar-track"><div class="progress-bar-fill" style="width:${pct}%">${pct > 0 ? `<span>${pct}%</span>` : ""}</div></div>
+        <div class="stat-line">
+          <span>${pct}% completo</span>
+          <span>${p.examPassed ? t("exam_passed", { score: p.examScore }) : (lvl.exam ? t("exam_pending") : (isBonus ? "★" : ""))}</span>
+        </div>
+        ${showCert ? `<button class="btn btn-gold btn-sm cert-btn" data-cert-level="${levelId}">${t("cert_btn")}</button>` : ""}
+      </div>
     </div>`;
 }
 
