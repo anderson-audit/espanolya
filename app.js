@@ -1325,7 +1325,7 @@ function renderResult() {
   const lvl = getLevel(r.levelId);
   root.innerHTML = wrapShell(`
       <div class="card result-wrap">
-        <div class="result-emoji">${r.isExam ? (r.passed ? "🎉" : "😕") : "✅"}</div>
+        <div class="result-emoji-ring ${r.isExam && !r.passed ? "fail" : "pass"}"><span class="result-emoji">${r.isExam ? (r.passed ? "🎉" : "😕") : "✅"}</span></div>
         <h2>${r.isExam ? (r.passed ? "¡Aprobado!" : "Todavía no...") : "¡Ejercicios completados!"}</h2>
         <div class="result-score ${r.passed ? "pass" : "fail"}">${r.score}%</div>
         ${r.isExam ? `<p>Nota mínima exigida: ${passScoreFor(r.levelId)}%</p>` : ""}
