@@ -71,6 +71,7 @@ const I18N = {
     exam_pending: "Prueba pendiente", exam_passed: "✅ Prueba aprobada ({score}%)",
     exam_min_pass: "Nota mínima para aprobar: {score}%", exam_approved_with: " · ✅ Aprobado con {score}%",
     level_locked_alert: "Primero tienes que aprobar la prueba del nivel anterior para desbloquear este módulo.",
+    level_preview_note: "puedes ver el temario, pero las lecciones se abren al desbloquear el nivel.",
     exit: "✕ Salir", exit_confirm: "¿Seguro que quieres salir? Vas a perder el progreso de este ejercicio/prueba.",
     ex_next: "Siguiente →", ex_check: "Comprobar", ex_skip: "No puedo grabar ahora",
     result_pass_title: "¡Aprobado!", result_fail_title: "Todavía no...", result_lesson_title: "¡Ejercicios completados!",
@@ -106,8 +107,13 @@ const I18N = {
     schedule_projected_unknown: "🔮 Completa tu primera lección para calcular tu previsión de finalización.",
     schedule_plan_title: "Plan de estudio sugerido mes a mes", schedule_plan_month: "Mes {n}",
     schedule_months_unit: "meses", back_dashboard: "← Volver al panel",
+    schedule_edit_btn: "✏️ Personalizar contenido por mes", schedule_edit_title: "✏️ Personalizar Cronograma",
+    schedule_edit_intro: "Elige en qué mes quieres hacer cada lección/prueba. Por defecto usan una distribución automática — cambia solo lo que quieras ajustar.",
+    schedule_edit_col_content: "Contenido", schedule_edit_col_month: "Mes asignado",
+    schedule_edit_save: "Guardar asignación", schedule_edit_reset: "Restaurar automático", schedule_edit_saved: "¡Cronograma personalizado guardado!",
 
     sidebar_levels: "Mis Niveles", sidebar_notas: "Mis Notas", sidebar_notebook: "Cuaderno",
+    sidebar_analytics: "Mi Actividad", sidebar_schedule: "Cronograma", sidebar_tutorial: "Tutorial",
     sidebar_section_progress: "Mi Progreso",
     admin_nav_overview: "Resumen", admin_nav_students: "Alumnos", admin_nav_analytics: "Analíticas",
     admin_nav_certs: "Certificados", admin_nav_config: "Configuración",
@@ -129,6 +135,7 @@ const I18N = {
     analytics_total_attempts: "Ejercicios respondidos", analytics_accuracy: "Precisión general",
     analytics_time_spent: "Tiempo estimado de estudio", analytics_by_type_title: "Aciertos por tipo de ejercicio",
     analytics_errors_title: "Últimos errores", analytics_no_data: "Todavía no hay suficientes datos. ¡Completa algunos ejercicios!",
+    analytics_open_title: "✍️ Mis respuestas escritas", analytics_open_empty: "Todavía no respondiste ninguna pregunta dissertativa.",
     analytics_students_count: "Alumnos activos", analytics_avg_score: "Nota promedio general",
     cert_config_title: "🎓 Layouts de Certificados", cert_config_intro: "Cada nivel principal tiene un diseño de certificado propio, generado automáticamente en PDF al aprobar la prueba. Aquí puedes ver una vista previa de cada diseño.",
     cert_preview_btn: "Ver ejemplo en PDF",
@@ -146,6 +153,7 @@ const I18N = {
     exam_pending: "Prova pendente", exam_passed: "✅ Prova aprovada ({score}%)",
     exam_min_pass: "Nota mínima para aprovar: {score}%", exam_approved_with: " · ✅ Aprovado com {score}%",
     level_locked_alert: "Primeiro você precisa passar na prova do nível anterior para desbloquear este módulo.",
+    level_preview_note: "você pode ver o conteúdo, mas as lições abrem ao desbloquear o nível.",
     exit: "✕ Sair", exit_confirm: "Tem certeza que quer sair? Você vai perder o progresso deste exercício/prova.",
     ex_next: "Próximo →", ex_check: "Verificar", ex_skip: "Não posso gravar agora",
     result_pass_title: "Aprovado!", result_fail_title: "Ainda não...", result_lesson_title: "Exercícios concluídos!",
@@ -181,8 +189,13 @@ const I18N = {
     schedule_projected_unknown: "🔮 Conclua sua primeira lição para calcularmos sua previsão de conclusão.",
     schedule_plan_title: "Plano de estudo sugerido mês a mês", schedule_plan_month: "Mês {n}",
     schedule_months_unit: "meses", back_dashboard: "← Voltar ao painel",
+    schedule_edit_btn: "✏️ Personalizar conteúdo por mês", schedule_edit_title: "✏️ Personalizar Cronograma",
+    schedule_edit_intro: "Escolha em qual mês você quer fazer cada lição/prova. Por padrão usam uma distribuição automática — mude só o que quiser ajustar.",
+    schedule_edit_col_content: "Conteúdo", schedule_edit_col_month: "Mês atribuído",
+    schedule_edit_save: "Salvar atribuição", schedule_edit_reset: "Restaurar automático", schedule_edit_saved: "Cronograma personalizado salvo!",
 
     sidebar_levels: "Meus Níveis", sidebar_notas: "Minhas Notas", sidebar_notebook: "Caderno",
+    sidebar_analytics: "Minha Atividade", sidebar_schedule: "Cronograma", sidebar_tutorial: "Tutorial",
     sidebar_section_progress: "Meu Progresso",
     admin_nav_overview: "Resumo", admin_nav_students: "Alunos", admin_nav_analytics: "Analíticas",
     admin_nav_certs: "Certificados", admin_nav_config: "Configurações",
@@ -204,6 +217,7 @@ const I18N = {
     analytics_total_attempts: "Exercícios respondidos", analytics_accuracy: "Precisão geral",
     analytics_time_spent: "Tempo estimado de estudo", analytics_by_type_title: "Acertos por tipo de exercício",
     analytics_errors_title: "Últimos erros", analytics_no_data: "Ainda não há dados suficientes. Complete alguns exercícios!",
+    analytics_open_title: "✍️ Minhas respostas escritas", analytics_open_empty: "Você ainda não respondeu nenhuma pergunta dissertativa.",
     analytics_students_count: "Alunos ativos", analytics_avg_score: "Nota média geral",
     cert_config_title: "🎓 Layouts de Certificados", cert_config_intro: "Cada nível principal tem um design de certificado próprio, gerado automaticamente em PDF ao passar na prova. Aqui você pode ver uma prévia de cada design.",
     cert_preview_btn: "Ver exemplo em PDF",
@@ -221,6 +235,7 @@ const I18N = {
     exam_pending: "Exam pending", exam_passed: "✅ Exam passed ({score}%)",
     exam_min_pass: "Minimum passing score: {score}%", exam_approved_with: " · ✅ Passed with {score}%",
     level_locked_alert: "You first need to pass the previous level's exam to unlock this module.",
+    level_preview_note: "you can preview the content, but lessons open once the level is unlocked.",
     exit: "✕ Exit", exit_confirm: "Are you sure you want to exit? You'll lose progress on this exercise/exam.",
     ex_next: "Next →", ex_check: "Check", ex_skip: "I can't record now",
     result_pass_title: "Passed!", result_fail_title: "Not yet...", result_lesson_title: "Exercises completed!",
@@ -256,8 +271,13 @@ const I18N = {
     schedule_projected_unknown: "🔮 Complete your first lesson so we can calculate your completion forecast.",
     schedule_plan_title: "Suggested month-by-month study plan", schedule_plan_month: "Month {n}",
     schedule_months_unit: "months", back_dashboard: "← Back to panel",
+    schedule_edit_btn: "✏️ Customize content by month", schedule_edit_title: "✏️ Customize Schedule",
+    schedule_edit_intro: "Choose which month you want to do each lesson/exam in. They use an automatic distribution by default — change only what you want to adjust.",
+    schedule_edit_col_content: "Content", schedule_edit_col_month: "Assigned month",
+    schedule_edit_save: "Save assignment", schedule_edit_reset: "Reset to automatic", schedule_edit_saved: "Custom schedule saved!",
 
     sidebar_levels: "My Levels", sidebar_notas: "My Grades", sidebar_notebook: "Notebook",
+    sidebar_analytics: "My Activity", sidebar_schedule: "Schedule", sidebar_tutorial: "Tutorial",
     sidebar_section_progress: "My Progress",
     admin_nav_overview: "Overview", admin_nav_students: "Students", admin_nav_analytics: "Analytics",
     admin_nav_certs: "Certificates", admin_nav_config: "Settings",
@@ -279,6 +299,7 @@ const I18N = {
     analytics_total_attempts: "Exercises answered", analytics_accuracy: "Overall accuracy",
     analytics_time_spent: "Estimated study time", analytics_by_type_title: "Correct answers by exercise type",
     analytics_errors_title: "Recent mistakes", analytics_no_data: "Not enough data yet. Complete some exercises!",
+    analytics_open_title: "✍️ My written answers", analytics_open_empty: "You haven't answered any essay-type question yet.",
     analytics_students_count: "Active students", analytics_avg_score: "Overall average score",
     cert_config_title: "🎓 Certificate Layouts", cert_config_intro: "Each main level has its own certificate design, generated automatically as a PDF when the exam is passed. Preview each design here.",
     cert_preview_btn: "View sample PDF",
@@ -465,10 +486,16 @@ function buildFlattenedUnits() {
   MAIN_SEQUENCE.forEach(levelId => {
     const lvl = getLevel(levelId);
     if (!lvl) return;
-    lvl.lessons.forEach(lesson => units.push({ levelId, kind: "lesson", label: lesson.title }));
-    if (lvl.exam) units.push({ levelId, kind: "exam", label: lvl.exam.title });
+    lvl.lessons.forEach(lesson => units.push({ id: `${levelId}__${lesson.id}`, levelId, kind: "lesson", label: lesson.title }));
+    if (lvl.exam) units.push({ id: `${levelId}__exam`, levelId, kind: "exam", label: lvl.exam.title });
   });
   return units;
+}
+
+// Devuelve el mapa de asignaciones personalizadas (unitId -> mes), guardado por el alumno
+// en la tela "Personalizar cronograma". Vacío = usar la distribución automática.
+function getScheduleAssignments() {
+  return (state.progress && state.progress.scheduleAssignments) || {};
 }
 
 function totalUnitsCount() { return buildFlattenedUnits().length; }
@@ -530,16 +557,27 @@ function formatDate(d, lang) {
   } catch (e) { return d.toDateString(); }
 }
 
+// Calcula, para cada unidad, el mes "automático" (distribución proporcional) — se usa como
+// valor por defecto en el editor y para las unidades que el alumno no reasignó a mano.
+function autoMonthForUnits(units, durationMonths) {
+  const total = units.length;
+  const map = {};
+  units.forEach((u, i) => {
+    map[u.id] = Math.min(durationMonths, Math.max(1, Math.ceil(((i + 1) / total) * durationMonths)));
+  });
+  return map;
+}
+
 // Distribuye las unidades de estudio a lo largo de N meses y arma un resumen textual por mes.
+// Si el alumno personalizó el cronograma (getScheduleAssignments), respeta esas asignaciones;
+// las unidades sin asignación propia caen en su mes automático.
 function buildStudyPlan(durationMonths) {
   const units = buildFlattenedUnits();
-  const total = units.length;
+  const assignments = getScheduleAssignments();
+  const autoMap = autoMonthForUnits(units, durationMonths);
   const months = [];
-  let prevIdx = 0;
   for (let m = 1; m <= durationMonths; m++) {
-    const idxEnd = Math.round((total * m) / durationMonths);
-    const slice = units.slice(prevIdx, idxEnd);
-    prevIdx = idxEnd;
+    const slice = units.filter(u => (assignments[u.id] || autoMap[u.id]) === m);
     if (!slice.length) { months.push({ n: m, label: "—" }); continue; }
     // Agrupa el slice por nivel, mostrando el rango de lecciones/pruebas de cada nivel presente en el mes.
     const byLevel = {};
@@ -583,6 +621,8 @@ function render() {
     case "adminConfig": return renderAdminConfig();
     case "account": return renderAccount();
     case "schedule": return renderSchedule();
+    case "scheduleEdit": return renderScheduleEdit();
+    case "tutorial": return renderTutorial();
     default: return renderLoading();
   }
 }
@@ -875,12 +915,13 @@ const SIDEBAR_LEARN_ITEMS = [
 // separado a propósito de la navegación de contenido de arriba.
 const SIDEBAR_PROGRESS_ITEMS = [
   { screen: "notas", icon: "📊", labelKey: "sidebar_notas" },
-  { screen: "analytics", icon: "📈", labelKey: "analytics_title" },
-  { screen: "schedule", icon: "📅", labelKey: "nav_schedule" },
+  { screen: "analytics", icon: "📈", labelKey: "sidebar_analytics" },
+  { screen: "schedule", icon: "📅", labelKey: "sidebar_schedule" },
   { screen: "notebook", icon: "📓", labelKey: "sidebar_notebook" },
 ];
 const SIDEBAR_ACCOUNT_ITEMS = [
   { screen: "account", icon: "⚙️", labelKey: "sidebar_settings" },
+  { screen: "tutorial", icon: "❓", labelKey: "sidebar_tutorial" },
 ];
 // Sección "Administración": solo visible para role === "admin". Varias pantallas propias
 // (no pestañas escondidas) para que el menú refleje todo lo que el admin puede hacer.
@@ -931,10 +972,22 @@ function sidebarHtml(activeScreen) {
     </aside>`;
 }
 
+function nowDateTimeLabel() {
+  try {
+    const lang = (state.prefs && state.prefs.lang) || "es";
+    const locale = lang === "pt" ? "pt-BR" : lang === "en" ? "en-US" : "es-ES";
+    const now = new Date();
+    const datePart = now.toLocaleDateString(locale, { weekday: "short", day: "2-digit", month: "short" });
+    const timePart = now.toLocaleTimeString(locale, { hour: "2-digit", minute: "2-digit" });
+    return `${datePart} · ${timePart}`;
+  } catch (e) { return ""; }
+}
+
 function topbarSlimHtml() {
   const xp = (state.progress && state.progress.xp) || 0;
   return `
     <div class="topbar-slim">
+      <div class="topbar-clock" id="topbar-clock">🕒 ${nowDateTimeLabel()}</div>
       <div class="xp-pill">⭐ ${xp} XP</div>
     </div>`;
 }
@@ -953,7 +1006,13 @@ function wrapShell(contentHtml, activeScreen) {
     </div>`;
 }
 
+let _clockInterval = null;
 function attachShellEvents() {
+  if (_clockInterval) clearInterval(_clockInterval);
+  _clockInterval = setInterval(() => {
+    const el = document.getElementById("topbar-clock");
+    if (el) el.textContent = "🕒 " + nowDateTimeLabel();
+  }, 30000);
   const toggle = document.getElementById("sidebar-toggle");
   if (toggle) toggle.onclick = () => {
     state.sidebarCollapsed = !state.sidebarCollapsed;
@@ -1155,8 +1214,10 @@ function renderDashboard() {
   if (linkNotebook) linkNotebook.onclick = () => { state.screen = "notebook"; state.notebookEditingId = null; render(); loadNotebookNotes().then(render); };
 }
 
+// Ya no bloqueamos con un alert: dejamos que el alumno vea el temario (títulos de las
+// lecciones) de un nivel bloqueado, para saber qué le espera. Solo no puede abrir/hacer
+// las lecciones en sí mientras esté bloqueado — eso lo controla renderLessonList.
 function goToLevel(levelId) {
-  if (!isLevelUnlocked(levelId)) { alert(t("level_locked_alert")); return; }
   state.currentLevelId = levelId;
   state.screen = "lessonList";
   render();
@@ -1199,40 +1260,47 @@ function renderLevels() {
 function renderLessonList() {
   const lvl = getLevel(state.currentLevelId);
   const p = levelProgress(state.currentLevelId);
+  const unlocked = isLevelUnlocked(state.currentLevelId);
+  const idx = MAIN_SEQUENCE.indexOf(state.currentLevelId);
+  const prevLvl = idx > 0 ? getLevel(MAIN_SEQUENCE[idx - 1]) : null;
   root.innerHTML = wrapShell(`
       <button class="back-link" id="back-dash">← Volver a los módulos</button>
       <div class="lesson-header">
         <h2>${lvl.icon} ${lvl.name}</h2>
         <div class="sub">${lvl.description}</div>
       </div>
+      ${!unlocked ? `<div class="locked-banner">🔒 ${t("level_locked_alert")}${prevLvl ? ` (${prevLvl.name})` : ""} — ${t("level_preview_note")}</div>` : ""}
       ${lvl.lessons.map((lesson, i) => {
         const done = p.lessonsCompleted && p.lessonsCompleted[lesson.id] && p.lessonsCompleted[lesson.id].done;
         return `
-        <div class="lesson-row ${done ? "done" : ""}" data-lesson="${lesson.id}">
-          <div class="num">${done ? "✓" : (lesson.order || i + 1)}</div>
+        <div class="lesson-row ${done ? "done" : ""} ${!unlocked ? "locked preview-only" : ""}" data-lesson="${unlocked ? lesson.id : ""}">
+          <div class="num">${done ? "✓" : !unlocked ? "🔒" : (lesson.order || i + 1)}</div>
           <div class="info"><h4>${escapeHtml(lesson.title)}</h4><span>${escapeHtml(lesson.subtitle || "")}</span></div>
-          <div class="chev">›</div>
+          <div class="chev">${unlocked ? "›" : ""}</div>
         </div>`;
       }).join("")}
       ${lvl.exam ? `
-      <div class="lesson-row exam-row" id="go-exam">
-        <div class="num">📝</div>
+      <div class="lesson-row exam-row ${!unlocked ? "locked" : ""}" id="go-exam" data-locked="${!unlocked}">
+        <div class="num">${unlocked ? "📝" : "🔒"}</div>
         <div class="info"><h4>${lvl.exam.title}</h4><span>Nota mínima para aprobar: ${passScoreFor(lvl.id)}%${p.examPassed ? " · ✅ Aprobado con " + p.examScore + "%" : ""}</span></div>
-        <div class="chev">›</div>
+        <div class="chev">${unlocked ? "›" : ""}</div>
       </div>` : ""}
       <div class="bottom-space"></div>
     `, "lessonList");
   attachShellEvents();
   document.getElementById("back-dash").onclick = () => { state.screen = "levels"; render(); };
-  document.querySelectorAll(".lesson-row[data-lesson]").forEach(row => {
-    row.onclick = () => {
-      state.currentLessonId = row.dataset.lesson;
-      state.screen = "lesson";
-      render();
-    };
-  });
-  const examBtn = document.getElementById("go-exam");
-  if (examBtn) examBtn.onclick = () => startExam(state.currentLevelId);
+  if (unlocked) {
+    document.querySelectorAll(".lesson-row[data-lesson]").forEach(row => {
+      if (!row.dataset.lesson) return;
+      row.onclick = () => {
+        state.currentLessonId = row.dataset.lesson;
+        state.screen = "lesson";
+        render();
+      };
+    });
+    const examBtn = document.getElementById("go-exam");
+    if (examBtn) examBtn.onclick = () => startExam(state.currentLevelId);
+  }
 }
 
 /* ---------------------------------------------------------------------- */
@@ -1438,6 +1506,18 @@ function showFeedback(correct, correctText) {
 function wireExerciseInteractions(ex) {
   const nextBtn = document.getElementById("ex-next");
   if (nextBtn) nextBtn.onclick = goToNextExercise;
+
+  // Preguntas abiertas/dissertativas: no se auto-corrigen, pero SÍ deben quedar registradas
+  // (el alumno tiene que poder consultar después lo que escribió — antes no se guardaba nada).
+  if (ex.type === "open") {
+    if (nextBtn) nextBtn.onclick = () => {
+      const ta = document.getElementById("ex-answer");
+      const val = ta ? ta.value.trim() : "";
+      markAnswered(true);
+      logAttempt(ex, true, val || "(sin respuesta)");
+      goToNextExercise();
+    };
+  }
 
   if (ex.type === "mc") {
     document.querySelectorAll(".ex-option").forEach(btn => {
@@ -1681,6 +1761,7 @@ function renderAnalytics() {
   const byType = groupAttemptsBy(attempts, a => a.exType);
   const byLevel = groupAttemptsBy(attempts, a => (getLevel(a.levelId) || {}).name || a.levelId);
   const recentErrors = attempts.filter(a => !a.correct).slice(0, 12);
+  const openResponses = attempts.filter(a => a.exType === "open").slice(0, 20);
 
   root.innerHTML = wrapShell(`
       <div class="section-title">${t("analytics_title")}</div>
@@ -1698,6 +1779,15 @@ function renderAnalytics() {
         <h3>${t("analytics_errors_title")}</h3>
         ${recentErrors.length === 0 ? `<p style="color:var(--gray-2)">—</p>` : recentErrors.map(e => `
           <div class="error-row"><span class="badge admin" style="background:var(--danger)">${escapeHtml(e.exType || "")}</span> <strong>${escapeHtml(e.question || "")}</strong> ${e.answerText ? `→ <em>${escapeHtml(e.answerText)}</em>` : ""}</div>
+        `).join("")}
+      </div>
+      <div class="card">
+        <h3>${t("analytics_open_title")}</h3>
+        ${openResponses.length === 0 ? `<p style="color:var(--gray-2)">${t("analytics_open_empty")}</p>` : openResponses.map(e => `
+          <div class="open-response-row">
+            <div class="oq">✍️ ${escapeHtml(e.question || "")}</div>
+            <div class="oa">${escapeHtml(e.answerText || "")}</div>
+          </div>
         `).join("")}
       </div>`}
       <div class="bottom-space"></div>
@@ -2077,6 +2167,11 @@ function renderAdminAnalytics() {
   const byType = groupAttemptsBy(attempts, a => a.exType);
   const byLevel = groupAttemptsBy(attempts, a => a.levelId);
   const recentErrors = attempts.filter(a => !a.correct).slice(0, 12);
+  const openResponses = attempts.filter(a => a.exType === "open").slice(0, 20);
+  const studentNameFor = (uid) => {
+    const s = state.adminStudents.find(x => x.id === uid);
+    return s ? (s.name || s.email) : uid;
+  };
 
   root.innerHTML = wrapShell(`
       <button class="back-link" id="back-dash">← Volver al panel</button>
@@ -2096,6 +2191,15 @@ function renderAdminAnalytics() {
         <h3>${t("analytics_errors_title")}</h3>
         ${recentErrors.length === 0 ? `<p style="color:var(--gray-2)">—</p>` : recentErrors.map(e => `
           <div class="error-row"><span class="badge admin" style="background:var(--danger)">${escapeHtml(e.exType || "")}</span> <strong>${escapeHtml(e.question || "")}</strong> ${e.answerText ? `→ <em>${escapeHtml(e.answerText)}</em>` : ""}</div>
+        `).join("")}
+      </div>
+      <div class="card">
+        <h3>${t("analytics_open_title")}</h3>
+        ${openResponses.length === 0 ? `<p style="color:var(--gray-2)">${t("analytics_open_empty")}</p>` : openResponses.map(e => `
+          <div class="open-response-row">
+            <div class="oq">✍️ <strong>${escapeHtml(studentNameFor(e.uid))}</strong> — ${escapeHtml(e.question || "")}</div>
+            <div class="oa">${escapeHtml(e.answerText || "")}</div>
+          </div>
         `).join("")}
       </div>`}
       <div class="bottom-space"></div>
@@ -2307,7 +2411,10 @@ function renderSchedule() {
         <p style="margin-top:14px">${sc.projectedDate ? t("schedule_projected", { date: formatDate(sc.projectedDate, lang) }) : t("schedule_projected_unknown")}</p>
       </div>
       <div class="card">
-        <h3>${t("schedule_plan_title")}</h3>
+        <div class="section-title-row" style="margin:0 0 10px">
+          <h3 style="margin:0">${t("schedule_plan_title")}</h3>
+          <button class="btn btn-secondary btn-sm" id="go-schedule-edit">${t("schedule_edit_btn")}</button>
+        </div>
         <div class="study-plan-list">
           ${plan.map(m => `<div class="study-plan-row"><div class="month-badge">${t("schedule_plan_month", { n: m.n })}</div><div class="month-label">${escapeHtml(m.label)}</div></div>`).join("")}
         </div>
@@ -2316,6 +2423,7 @@ function renderSchedule() {
     `, "schedule");
   attachShellEvents();
   document.getElementById("back-dash").onclick = () => { state.screen = "dashboard"; render(); };
+  document.getElementById("go-schedule-edit").onclick = () => { state.screen = "scheduleEdit"; render(); };
   document.querySelectorAll(".duration-chip").forEach(chip => {
     chip.onclick = () => { state.scheduleDraftMonths = parseInt(chip.dataset.months, 10); render(); };
   });
@@ -2337,6 +2445,132 @@ function renderSchedule() {
       render();
     }
   };
+}
+
+/* ---------------------------------------------------------------------- */
+/* 17a. TELA: PERSONALIZAR CRONOGRAMA (asignar contenido a cada mes)       */
+/* ---------------------------------------------------------------------- */
+function renderScheduleEdit() {
+  const schedule = getSchedule();
+  const durationMonths = schedule.durationMonths || DEFAULT_SCHEDULE_MONTHS;
+  const units = buildFlattenedUnits();
+  const autoMap = autoMonthForUnits(units, durationMonths);
+  const assignments = { ...getScheduleAssignments() };
+  const monthOptions = Array.from({ length: durationMonths }, (_, i) => i + 1);
+
+  root.innerHTML = wrapShell(`
+      <button class="back-link" id="back-schedule">${t("back_dashboard")}</button>
+      <div class="section-title">${t("schedule_edit_title")}</div>
+      <div class="card">
+        <p style="color:var(--gray-1);margin-top:0">${t("schedule_edit_intro")}</p>
+        ${state.scheduleEditMsg ? `<div class="success-msg">${escapeHtml(state.scheduleEditMsg)}</div>` : ""}
+        <table class="notas-table schedule-edit-table">
+          <thead><tr><th>${t("schedule_edit_col_content")}</th><th style="width:160px">${t("schedule_edit_col_month")}</th></tr></thead>
+          <tbody>
+            ${units.map(u => {
+              const lvl = getLevel(u.levelId);
+              const current = assignments[u.id] || autoMap[u.id];
+              return `
+              <tr data-unit="${u.id}">
+                <td>${lvl.icon} <strong>${escapeHtml(lvl.name)}</strong> — ${u.kind === "exam" ? "📝 " : ""}${escapeHtml(u.label)}</td>
+                <td>
+                  <select class="unit-month-select" data-unit="${u.id}">
+                    ${monthOptions.map(m => `<option value="${m}" ${current === m ? "selected" : ""}>${t("schedule_plan_month", { n: m })}</option>`).join("")}
+                  </select>
+                </td>
+              </tr>`;
+            }).join("")}
+          </tbody>
+        </table>
+        <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:16px">
+          <button class="btn btn-secondary btn-sm" id="reset-schedule-assignments">${t("schedule_edit_reset")}</button>
+          <button class="btn btn-primary btn-sm" id="save-schedule-assignments">${t("schedule_edit_save")}</button>
+        </div>
+      </div>
+      <div class="bottom-space"></div>
+    `, "scheduleEdit");
+  attachShellEvents();
+  document.getElementById("back-schedule").onclick = () => { state.screen = "schedule"; render(); };
+
+  const pendingAssignments = { ...assignments };
+  document.querySelectorAll(".unit-month-select").forEach(sel => {
+    sel.onchange = () => { pendingAssignments[sel.dataset.unit] = parseInt(sel.value, 10); };
+  });
+
+  document.getElementById("reset-schedule-assignments").onclick = async () => {
+    try {
+      await db.collection("progress").doc(state.user.uid).set({ scheduleAssignments: {} }, { merge: true });
+      state.progress.scheduleAssignments = {};
+      state.scheduleEditMsg = t("schedule_edit_saved");
+      render();
+    } catch (e) { alert("Error: " + e.message); }
+  };
+
+  document.getElementById("save-schedule-assignments").onclick = async () => {
+    try {
+      await db.collection("progress").doc(state.user.uid).set({ scheduleAssignments: pendingAssignments }, { merge: true });
+      state.progress.scheduleAssignments = pendingAssignments;
+      state.scheduleEditMsg = t("schedule_edit_saved");
+      render();
+    } catch (e) { alert("Error: " + e.message); }
+  };
+}
+
+/* ---------------------------------------------------------------------- */
+/* 17b. TELA: TUTORIAL / CÓMO FUNCIONA                                     */
+/* ---------------------------------------------------------------------- */
+const TUTORIAL_SECTIONS = {
+  es: [
+    { icon: "🏠", title: "Panel del Alumno", body: "Tu pantalla de inicio siempre te muestra UN solo próximo paso: el nivel y la lección exacta donde te quedaste, con un botón para continuar. El progreso general y tu situación con el cronograma también aparecen aquí." },
+    { icon: "📚", title: "Mis Niveles", body: "Aquí ves el catálogo completo: Fundamentos, Básico, Intermedio, Avanzado y los módulos bono (Secretos del Español y Español Profesional). Un nivel bloqueado 🔒 muestra el temario (títulos de las lecciones) para que sepas qué viene, pero solo se abre después de aprobar la prueba del nivel anterior." },
+    { icon: "✍️", title: "Ejercicios y pruebas", body: "Cada lección tiene ejercicios variados: opción múltiple, completar espacios, traducción, escucha, orden de diálogo, habla (con reconocimiento de voz) y preguntas abiertas/dissertativas (donde escribes libremente y luego ves una respuesta modelo). Al final de cada nivel principal hay una prueba con la nota mínima configurada por el administrador." },
+    { icon: "🔊", title: "Audio y pronunciación", body: "Haz clic en el ícono 🔊 en cualquier texto, diálogo o palabra de vocabulario para escuchar la pronunciación en español de España, con la palabra hablada resaltada en tiempo real. En los ejercicios de tipo 'habla', usa el micrófono 🎤 — funciona mejor en Google Chrome." },
+    { icon: "📊", title: "Mis Notas", body: "Muestra tu Aprovechamiento general (promedio de todas tus notas de lecciones y pruebas) y tu Cumplimiento del cronograma (si vas dentro del plazo), además de una tabla con el detalle de cada nivel." },
+    { icon: "📈", title: "Mi Actividad", body: "Aquí ves cuántos ejercicios respondiste, tu precisión general, gráficos de aciertos por tipo de ejercicio y nivel, tus últimos errores y tus respuestas escritas (preguntas dissertativas)." },
+    { icon: "📅", title: "Cronograma", body: "Por defecto el curso está pensado para 12 meses, pero puedes ajustarlo a 3, 6, 8, 12 o cualquier cantidad de meses. El sistema calcula tu % esperado vs. tu % real y proyecta una fecha de finalización según tu ritmo actual." },
+    { icon: "📓", title: "Cuaderno", body: "Un espacio para tus propias anotaciones — crea, edita y elimina notas personales, guardadas en la nube. Solo tú puedes verlas." },
+    { icon: "🎓", title: "Certificados", body: "Al aprobar la prueba de un nivel principal, se desbloquea un botón para descargar tu certificado en PDF, con un diseño único por nivel. Al completar Básico + Intermedio + Avanzado, se libera el Diploma Final del curso." },
+  ],
+  pt: [
+    { icon: "🏠", title: "Painel do Aluno", body: "Sua tela inicial sempre mostra UM único próximo passo: o nível e a lição exata onde você parou, com um botão para continuar. O progresso geral e sua situação com o cronograma também aparecem aqui." },
+    { icon: "📚", title: "Meus Níveis", body: "Aqui você vê o catálogo completo: Fundamentos, Básico, Intermediário, Avançado e os módulos bônus (Segredos do Espanhol e Espanhol Profissional). Um nível bloqueado 🔒 mostra o conteúdo (títulos das lições) para você saber o que vem, mas só abre depois de passar na prova do nível anterior." },
+    { icon: "✍️", title: "Exercícios e provas", body: "Cada lição tem exercícios variados: múltipla escolha, completar espaços, tradução, escuta, ordem de diálogo, fala (com reconhecimento de voz) e perguntas abertas/dissertativas (onde você escreve livremente e depois vê uma resposta modelo). No final de cada nível principal há uma prova com a nota mínima configurada pelo administrador." },
+    { icon: "🔊", title: "Áudio e pronúncia", body: "Clique no ícone 🔊 em qualquer texto, diálogo ou palavra de vocabulário para ouvir a pronúncia em espanhol da Espanha, com a palavra falada destacada em tempo real. Nos exercícios do tipo 'fala', use o microfone 🎤 — funciona melhor no Google Chrome." },
+    { icon: "📊", title: "Minhas Notas", body: "Mostra seu Aproveitamento geral (média de todas as suas notas de lições e provas) e seu Cumprimento do cronograma (se você está dentro do prazo), além de uma tabela com o detalhe de cada nível." },
+    { icon: "📈", title: "Minha Atividade", body: "Aqui você vê quantos exercícios respondeu, sua precisão geral, gráficos de acertos por tipo de exercício e nível, seus últimos erros e suas respostas escritas (perguntas dissertativas)." },
+    { icon: "📅", title: "Cronograma", body: "Por padrão o curso é pensado para 12 meses, mas você pode ajustar para 3, 6, 8, 12 ou qualquer quantidade de meses. O sistema calcula seu % esperado vs. seu % real e projeta uma data de conclusão de acordo com seu ritmo atual." },
+    { icon: "📓", title: "Caderno", body: "Um espaço para suas próprias anotações — crie, edite e exclua notas pessoais, salvas na nuvem. Só você pode vê-las." },
+    { icon: "🎓", title: "Certificados", body: "Ao passar na prova de um nível principal, é liberado um botão para baixar seu certificado em PDF, com um design único por nível. Ao completar Básico + Intermediário + Avançado, é liberado o Diploma Final do curso." },
+  ],
+  en: [
+    { icon: "🏠", title: "Student Panel", body: "Your home screen always shows ONE single next step: the level and exact lesson where you left off, with a button to continue. Overall progress and your schedule status also appear here." },
+    { icon: "📚", title: "My Levels", body: "Here you'll find the full catalog: Fundamentos, Basic, Intermediate, Advanced and the bonus modules (Spanish Secrets and Professional Spanish). A locked level 🔒 shows its syllabus (lesson titles) so you know what's coming, but only opens after passing the previous level's exam." },
+    { icon: "✍️", title: "Exercises and exams", body: "Each lesson has varied exercises: multiple choice, fill-in-the-blank, translation, listening, dialogue ordering, speaking (with voice recognition), and open/essay questions (where you write freely and then see a model answer). Each main level ends with an exam with the minimum score set by the admin." },
+    { icon: "🔊", title: "Audio and pronunciation", body: "Click the 🔊 icon on any text, dialogue, or vocabulary word to hear Spain Spanish pronunciation, with the spoken word highlighted in real time. For 'speak' exercises, use the microphone 🎤 — works best in Google Chrome." },
+    { icon: "📊", title: "My Grades", body: "Shows your overall performance (average of all your lesson and exam scores) and your schedule compliance (whether you're on track), plus a table with detail per level." },
+    { icon: "📈", title: "My Activity", body: "Here you can see how many exercises you've answered, your overall accuracy, charts of correct answers by exercise type and level, your recent mistakes, and your written answers (essay questions)." },
+    { icon: "📅", title: "Schedule", body: "By default the course is designed for 12 months, but you can adjust it to 3, 6, 8, 12, or any number of months. The system calculates your expected % vs. your actual %, and projects a completion date based on your current pace." },
+    { icon: "📓", title: "Notebook", body: "A space for your own notes — create, edit and delete personal notes, saved in the cloud. Only you can see them." },
+    { icon: "🎓", title: "Certificates", body: "Passing a main level's exam unlocks a button to download your certificate as a PDF, with a unique design per level. Completing Basic + Intermediate + Advanced unlocks the course's Final Diploma." },
+  ],
+};
+
+function renderTutorial() {
+  const lang = state.prefs.lang || "es";
+  const sections = TUTORIAL_SECTIONS[lang] || TUTORIAL_SECTIONS.es;
+  root.innerHTML = wrapShell(`
+      <div class="section-title">❓ ${t("sidebar_tutorial")}</div>
+      <div class="tutorial-grid">
+        ${sections.map(s => `
+          <div class="card tutorial-card">
+            <div class="tutorial-icon">${s.icon}</div>
+            <h3>${escapeHtml(s.title)}</h3>
+            <p>${escapeHtml(s.body)}</p>
+          </div>`).join("")}
+      </div>
+      <div class="bottom-space"></div>
+    `, "tutorial");
+  attachShellEvents();
 }
 
 /* ---------------------------------------------------------------------- */

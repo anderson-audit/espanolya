@@ -16,5 +16,6 @@ const FIREBASE_CONFIG = {
 // E-mail(s) que devem virar administrador automaticamente no primeiro login
 // (edite esta lista com o(s) e-mail(s) do Anderson / equipe Quallisi).
 const ADMIN_EMAILS = [
-  "anderson.rsant@gmail.com"
+  "anderson.rsant@gmail.com",
+  "anderson@quallisi.com.br"
 ];

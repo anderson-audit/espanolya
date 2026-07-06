@@ -205,6 +205,24 @@ input, select, textarea { font-family: inherit; }
 .lesson-row .info span { font-size: .8rem; color: var(--gray-2); }
 .lesson-row .chev { color: var(--gray-2); }
 .exam-row { border: 2px dashed var(--amarillo-dark); }
+.lesson-row.preview-only { opacity: .68; }
+.lesson-row.locked.exam-row { border-color: #ccc; }
+.locked-banner {
+  background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.18); color: #fff;
+  border-radius: 12px; padding: 12px 16px; margin-bottom: 16px; font-size: .88rem;
+}
+
+/* ---------- Tutorial ---------- */
+.tutorial-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 16px; }
+.tutorial-card { text-align: left; }
+.tutorial-icon { font-size: 1.8rem; margin-bottom: 8px; }
+.tutorial-card h3 { margin: 0 0 8px; }
+.tutorial-card p { font-size: .87rem; color: var(--gray-1); line-height: 1.55; margin: 0; }
+
+/* ---------- Cronograma editável ---------- */
+.schedule-edit-table { font-size: .85rem; }
+.schedule-edit-table td { vertical-align: middle; }
+.unit-month-select { width: 100%; padding: 7px 10px; border-radius: 8px; border: 1.5px solid #e2e0db; font-size: .85rem; cursor: pointer; }
 
 /* ---------- Breadcrumb / back ---------- */
 .back-link {
@@ -459,6 +477,21 @@ table.grammar-table th { background: var(--gray-bg); }
 .analytics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin-bottom: 18px; }
 .error-row { padding: 10px 0; border-bottom: 1px solid #eee; font-size: .87rem; }
 .error-row:last-child { border-bottom: none; }
+.open-response-row { padding: 12px 0; border-bottom: 1px solid #eee; }
+.open-response-row:last-child { border-bottom: none; }
+.open-response-row .oq { font-size: .85rem; font-weight: 700; margin-bottom: 4px; }
+.open-response-row .oa { font-size: .87rem; color: var(--gray-1); background: var(--gray-bg); border-radius: 8px; padding: 8px 12px; white-space: pre-wrap; }
+.topbar-clock { font-size: .8rem; color: var(--gray-2); font-weight: 600; margin-right: auto; }
+
+/* ---------- Cursor: pointer em tudo que é clicável (feedback visual) ---------- */
+.sidebar-item, .admin-tab-btn, .account-tab-btn, .tab-btn, .theme-swatch, .font-option, .lang-option,
+.duration-chip, .lang-chip, .level-card:not(.locked), .lesson-row:not(.locked, .exam-row), .exam-row,
+.hs-link, .cert-preview-card, .notebook-card, .vocab-chip, .speak-icon-btn, .dialogue-line .bubble,
+.ex-option:not(:disabled), .order-item:not(.chosen), .back-link, .btn, .btn-icon, .sidebar-toggle,
+.avatar-btn, .mic-btn, label[for], input[type="checkbox"], input[type="radio"] {
+  cursor: pointer;
+}
+.level-card.locked, .lesson-row.locked, .ex-option:disabled, .order-item.chosen { cursor: not-allowed; }
 
 /* ---------- Mis Notas: tabla ---------- */
 .notas-table { width: 100%; border-collapse: collapse; font-size: .9rem; }
