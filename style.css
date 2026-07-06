@@ -488,6 +488,22 @@ table.grammar-table th { background: var(--gray-bg); }
 }
 @keyframes cert-modal-in { from { opacity: 0; transform: scale(.92); } to { opacity: 1; transform: scale(1); } }
 
+/* ---------- Temario Completo (todos los niveles/lecciones de un vistazo) ---------- */
+.syllabus-level-card { padding: 0; overflow: hidden; }
+.syllabus-level-head { display: flex; align-items: center; gap: 14px; padding: 18px 22px; background: var(--gray-bg); }
+.syllabus-level-icon { font-size: 1.8rem; flex-shrink: 0; }
+.syllabus-level-info { flex: 1; min-width: 0; }
+.syllabus-level-info h3 { margin: 0 0 3px; font-size: 1.02rem; }
+.syllabus-level-info p { margin: 0; font-size: .82rem; color: var(--gray-2); }
+.syllabus-level-pct { font-weight: 700; color: var(--rojo); font-size: .95rem; flex-shrink: 0; }
+.syllabus-lesson-list { list-style: none; margin: 0; padding: 6px 22px 14px; }
+.syllabus-lesson-row { display: flex; align-items: baseline; gap: 12px; padding: 8px 0; border-bottom: 1px solid #f0ede7; font-size: .87rem; }
+.syllabus-lesson-row:last-child { border-bottom: none; }
+.syllabus-lesson-num { flex-shrink: 0; width: 22px; text-align: center; color: var(--gray-2); font-weight: 700; font-size: .8rem; }
+.syllabus-lesson-text { color: var(--gray-1); }
+.syllabus-lesson-text strong { color: inherit; }
+.syllabus-exam-row .syllabus-lesson-text strong { color: var(--rojo); }
+
 /* ---------- Analíticas (aluno + admin) ---------- */
 .analytics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin-bottom: 18px; }
 .error-row { padding: 10px 0; border-bottom: 1px solid #eee; font-size: .87rem; }
@@ -503,7 +519,8 @@ table.grammar-table th { background: var(--gray-bg); }
 .duration-chip, .lang-chip, .level-card:not(.locked), .lesson-row:not(.locked, .exam-row), .exam-row,
 .hs-link, .cert-preview-card, .notebook-card, .vocab-chip, .speak-icon-btn, .dialogue-line .bubble,
 .ex-option:not(:disabled), .order-item:not(.chosen), .back-link, .btn, .btn-icon, .sidebar-toggle,
-.avatar-btn, .mic-btn, label[for], input[type="checkbox"], input[type="radio"] {
+.avatar-btn, .mic-btn, label[for], input[type="checkbox"], input[type="radio"],
+.syllabus-level-head[data-goto-level]:not([data-goto-level=""]), .syllabus-lesson-row.clickable {
   cursor: pointer;
 }
 .level-card.locked, .lesson-row.locked, .ex-option:disabled, .order-item.chosen { cursor: not-allowed; }

@@ -113,7 +113,8 @@ const I18N = {
     schedule_edit_col_content: "Contenido", schedule_edit_col_month: "Mes asignado",
     schedule_edit_save: "Guardar asignación", schedule_edit_reset: "Restaurar automático", schedule_edit_saved: "¡Cronograma personalizado guardado!",
 
-    sidebar_levels: "Mis Niveles", sidebar_notas: "Mis Notas", sidebar_notebook: "Cuaderno",
+    sidebar_levels: "Mis Niveles", sidebar_syllabus: "Temario Completo", sidebar_notas: "Mis Notas", sidebar_notebook: "Cuaderno",
+    syllabus_title: "Temario Completo del Curso", syllabus_intro: "Todos los niveles y todas las lecciones de un vistazo, con su tema principal — para consultar el material de estudio sin tener que entrar nivel por nivel.",
     sidebar_analytics: "Mi Actividad", sidebar_schedule: "Cronograma", sidebar_tutorial: "Tutorial",
     sidebar_section_progress: "Mi Progreso",
     admin_nav_overview: "Resumen", admin_nav_students: "Alumnos", admin_nav_analytics: "Analíticas",
@@ -203,7 +204,8 @@ const I18N = {
     schedule_edit_col_content: "Conteúdo", schedule_edit_col_month: "Mês atribuído",
     schedule_edit_save: "Salvar atribuição", schedule_edit_reset: "Restaurar automático", schedule_edit_saved: "Cronograma personalizado salvo!",
 
-    sidebar_levels: "Meus Níveis", sidebar_notas: "Minhas Notas", sidebar_notebook: "Caderno",
+    sidebar_levels: "Meus Níveis", sidebar_syllabus: "Programa Completo", sidebar_notas: "Minhas Notas", sidebar_notebook: "Caderno",
+    syllabus_title: "Programa Completo do Curso", syllabus_intro: "Todos os níveis e todas as lições em um só lugar, com o tema principal de cada uma — para consultar o material de estudo sem precisar entrar nível por nível.",
     sidebar_analytics: "Minha Atividade", sidebar_schedule: "Cronograma", sidebar_tutorial: "Tutorial",
     sidebar_section_progress: "Meu Progresso",
     admin_nav_overview: "Resumo", admin_nav_students: "Alunos", admin_nav_analytics: "Analíticas",
@@ -293,7 +295,8 @@ const I18N = {
     schedule_edit_col_content: "Content", schedule_edit_col_month: "Assigned month",
     schedule_edit_save: "Save assignment", schedule_edit_reset: "Reset to automatic", schedule_edit_saved: "Custom schedule saved!",
 
-    sidebar_levels: "My Levels", sidebar_notas: "My Grades", sidebar_notebook: "Notebook",
+    sidebar_levels: "My Levels", sidebar_syllabus: "Full Syllabus", sidebar_notas: "My Grades", sidebar_notebook: "Notebook",
+    syllabus_title: "Full Course Syllabus", syllabus_intro: "Every level and every lesson at a glance, with its main topic — so you can check the study material without opening each level one by one.",
     sidebar_analytics: "My Activity", sidebar_schedule: "Schedule", sidebar_tutorial: "Tutorial",
     sidebar_section_progress: "My Progress",
     admin_nav_overview: "Overview", admin_nav_students: "Students", admin_nav_analytics: "Analytics",
@@ -633,6 +636,7 @@ function render() {
     case "pendingApproval": return renderPendingApproval();
     case "dashboard": return renderDashboard();
     case "levels": return renderLevels();
+    case "syllabus": return renderSyllabus();
     case "lessonList": return renderLessonList();
     case "lesson": return renderLessonView();
     case "exercises": return renderExercise();
@@ -979,6 +983,7 @@ function getSpeechRecognition() {
 const SIDEBAR_LEARN_ITEMS = [
   { screen: "dashboard", icon: "🏠", labelKey: "sidebar_dashboard" },
   { screen: "levels", icon: "📚", labelKey: "sidebar_levels" },
+  { screen: "syllabus", icon: "🗂️", labelKey: "sidebar_syllabus" },
 ];
 // Sección "Mi Progreso": todo lo que es seguimiento/evaluación del propio alumno,
 // separado a propósito de la navegación de contenido de arriba.
@@ -1370,6 +1375,70 @@ function renderLevels() {
     `, "levels");
   attachShellEvents();
   wireLevelCardEvents();
+}
+
+/* ---------------------------------------------------------------------- */
+/* 10c. TELA: TEMARIO COMPLETO (todos los niveles y lecciones de un vistazo) */
+/* ---------------------------------------------------------------------- */
+// Vista de solo consulta: junta TODOS los niveles (principales + bônus) y TODAS
+// sus lecciones (título + subtítulo = el "tema") en una sola pantalla, para que
+// el alumno no tenga que entrar nivel por nivel para saber qué se estudia en cada uno.
+function syllabusLevelBlockHtml(levelId, isBonus) {
+  const lvl = getLevel(levelId);
+  if (!lvl) return "";
+  const unlocked = isLevelUnlocked(levelId);
+  const p = levelProgress(levelId);
+  const pct = levelCompletionPct(levelId);
+  return `
+    <div class="card syllabus-level-card">
+      <div class="syllabus-level-head" data-goto-level="${unlocked ? levelId : ""}">
+        <div class="syllabus-level-icon">${lvl.icon}</div>
+        <div class="syllabus-level-info">
+          <h3>${escapeHtml(lvl.name)} ${!unlocked ? "🔒" : ""}</h3>
+          <p>${escapeHtml(lvl.description)}</p>
+        </div>
+        <div class="syllabus-level-pct">${pct}%</div>
+      </div>
+      <ol class="syllabus-lesson-list">
+        ${lvl.lessons.map((lesson, i) => {
+          const done = p.lessonsCompleted && p.lessonsCompleted[lesson.id] && p.lessonsCompleted[lesson.id].done;
+          return `
+          <li class="syllabus-lesson-row ${unlocked ? "clickable" : ""}" ${unlocked ? `data-goto-lesson="${lesson.id}" data-goto-level="${levelId}"` : ""}>
+            <span class="syllabus-lesson-num">${done ? "✓" : (lesson.order || i + 1)}</span>
+            <span class="syllabus-lesson-text"><strong>${escapeHtml(lesson.title)}</strong>${lesson.subtitle ? ` — ${escapeHtml(lesson.subtitle)}` : ""}</span>
+          </li>`;
+        }).join("")}
+        ${lvl.exam ? `
+          <li class="syllabus-lesson-row syllabus-exam-row">
+            <span class="syllabus-lesson-num">${p.examPassed ? "✓" : "📝"}</span>
+            <span class="syllabus-lesson-text"><strong>${escapeHtml(lvl.exam.title)}</strong></span>
+          </li>` : ""}
+      </ol>
+    </div>`;
+}
+
+function renderSyllabus() {
+  root.innerHTML = wrapShell(`
+      <div class="section-title">🗂️ ${t("syllabus_title")}</div>
+      <p style="color:var(--gray-2);margin-top:-8px">${t("syllabus_intro")}</p>
+      <div class="section-title" style="font-size:1rem;margin-top:22px">📚 ${t("sidebar_levels")}</div>
+      ${MAIN_SEQUENCE.map(id => syllabusLevelBlockHtml(id, false)).join("")}
+      <div class="section-title" style="font-size:1rem;margin-top:22px">${t("dash_bonus")}</div>
+      ${BONUS_LEVELS.map(id => syllabusLevelBlockHtml(id, true)).join("")}
+      <div class="bottom-space"></div>
+    `, "syllabus");
+  attachShellEvents();
+  document.querySelectorAll("[data-goto-lesson]").forEach(row => {
+    row.onclick = () => {
+      state.currentLevelId = row.dataset.gotoLevel;
+      state.currentLessonId = row.dataset.gotoLesson;
+      state.screen = "lesson";
+      render();
+    };
+  });
+  document.querySelectorAll(".syllabus-level-head[data-goto-level]").forEach(head => {
+    head.onclick = () => { if (head.dataset.gotoLevel) goToLevel(head.dataset.gotoLevel); };
+  });
 }
 
 /* ---------------------------------------------------------------------- */
