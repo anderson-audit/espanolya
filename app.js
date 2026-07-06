@@ -106,6 +106,32 @@ const I18N = {
     schedule_projected_unknown: "🔮 Completa tu primera lección para calcular tu previsión de finalización.",
     schedule_plan_title: "Plan de estudio sugerido mes a mes", schedule_plan_month: "Mes {n}",
     schedule_months_unit: "meses", back_dashboard: "← Volver al panel",
+
+    sidebar_levels: "Mis Niveles", sidebar_notas: "Mis Notas", sidebar_notebook: "Cuaderno",
+    sidebar_section_progress: "Mi Progreso",
+    admin_nav_overview: "Resumen", admin_nav_students: "Alumnos", admin_nav_analytics: "Analíticas",
+    admin_nav_certs: "Certificados", admin_nav_config: "Configuración",
+    current_level_badge: "📍 Estás aquí", continue_btn: "Continuar estudiando →", next_up_label: "Sigues en:",
+    home_title: "🎓 Panel del Alumno", home_no_progress: "Todavía no empezaste ningún nivel. ¡Vamos a comenzar!",
+    home_start_btn: "Empezar ahora →", home_your_levels_link: "Ver todos mis niveles →",
+    notas_title: "📊 Mis Notas", notas_aproveitamento_label: "Aprovechamiento general",
+    notas_aproveitamento_sub: "Promedio de {n} evaluaciones", notas_no_data: "Todavía no tienes evaluaciones registradas.",
+    notas_schedule_label: "Cumplimiento del cronograma",
+    notas_level_col: "Nivel", notas_lessons_col: "Lecciones", notas_avg_col: "Promedio",
+    notas_exam_col: "Prueba", notas_status_col: "Estado",
+    notas_status_passed: "✅ Aprobado", notas_status_failed: "❌ No aprobado", notas_status_pending: "⏳ Prueba pendiente",
+    notas_status_progress: "▶️ En curso", notas_status_locked: "🔒 Bloqueado",
+    notebook_title: "📓 Mi Cuaderno", notebook_intro: "Tus apuntes personales, guardados en la nube — solo tú puedes verlos.",
+    notebook_new_btn: "+ Nueva nota", notebook_title_ph: "Título de la nota", notebook_body_ph: "Escribe aquí tus apuntes...",
+    notebook_save: "Guardar nota", notebook_delete: "Eliminar", notebook_empty: "Todavía no tienes notas. ¡Crea la primera!",
+    notebook_updated: "Actualizado el {date}", notebook_cancel: "Cancelar", notebook_saved_msg: "¡Nota guardada!",
+    analytics_title: "📈 Mi Actividad", analytics_admin_title: "📈 Analíticas Generales",
+    analytics_total_attempts: "Ejercicios respondidos", analytics_accuracy: "Precisión general",
+    analytics_time_spent: "Tiempo estimado de estudio", analytics_by_type_title: "Aciertos por tipo de ejercicio",
+    analytics_errors_title: "Últimos errores", analytics_no_data: "Todavía no hay suficientes datos. ¡Completa algunos ejercicios!",
+    analytics_students_count: "Alumnos activos", analytics_avg_score: "Nota promedio general",
+    cert_config_title: "🎓 Layouts de Certificados", cert_config_intro: "Cada nivel principal tiene un diseño de certificado propio, generado automáticamente en PDF al aprobar la prueba. Aquí puedes ver una vista previa de cada diseño.",
+    cert_preview_btn: "Ver ejemplo en PDF",
   },
   pt: {
     auth_login_sub: "Entre para continuar aprendendo", auth_register_sub: "Crie sua conta grátis", auth_forgot_sub: "Recuperar senha",
@@ -155,6 +181,32 @@ const I18N = {
     schedule_projected_unknown: "🔮 Conclua sua primeira lição para calcularmos sua previsão de conclusão.",
     schedule_plan_title: "Plano de estudo sugerido mês a mês", schedule_plan_month: "Mês {n}",
     schedule_months_unit: "meses", back_dashboard: "← Voltar ao painel",
+
+    sidebar_levels: "Meus Níveis", sidebar_notas: "Minhas Notas", sidebar_notebook: "Caderno",
+    sidebar_section_progress: "Meu Progresso",
+    admin_nav_overview: "Resumo", admin_nav_students: "Alunos", admin_nav_analytics: "Analíticas",
+    admin_nav_certs: "Certificados", admin_nav_config: "Configurações",
+    current_level_badge: "📍 Você está aqui", continue_btn: "Continuar estudando →", next_up_label: "Você está em:",
+    home_title: "🎓 Painel do Aluno", home_no_progress: "Você ainda não começou nenhum nível. Vamos começar!",
+    home_start_btn: "Começar agora →", home_your_levels_link: "Ver todos os meus níveis →",
+    notas_title: "📊 Minhas Notas", notas_aproveitamento_label: "Aproveitamento geral",
+    notas_aproveitamento_sub: "Média de {n} avaliações", notas_no_data: "Você ainda não tem avaliações registradas.",
+    notas_schedule_label: "Cumprimento do cronograma",
+    notas_level_col: "Nível", notas_lessons_col: "Lições", notas_avg_col: "Média",
+    notas_exam_col: "Prova", notas_status_col: "Status",
+    notas_status_passed: "✅ Aprovado", notas_status_failed: "❌ Não aprovado", notas_status_pending: "⏳ Prova pendente",
+    notas_status_progress: "▶️ Em andamento", notas_status_locked: "🔒 Bloqueado",
+    notebook_title: "📓 Meu Caderno", notebook_intro: "Suas anotações pessoais, salvas na nuvem — só você pode vê-las.",
+    notebook_new_btn: "+ Nova nota", notebook_title_ph: "Título da nota", notebook_body_ph: "Escreva suas anotações aqui...",
+    notebook_save: "Salvar nota", notebook_delete: "Excluir", notebook_empty: "Você ainda não tem notas. Crie a primeira!",
+    notebook_updated: "Atualizado em {date}", notebook_cancel: "Cancelar", notebook_saved_msg: "Nota salva!",
+    analytics_title: "📈 Minha Atividade", analytics_admin_title: "📈 Analíticas Gerais",
+    analytics_total_attempts: "Exercícios respondidos", analytics_accuracy: "Precisão geral",
+    analytics_time_spent: "Tempo estimado de estudo", analytics_by_type_title: "Acertos por tipo de exercício",
+    analytics_errors_title: "Últimos erros", analytics_no_data: "Ainda não há dados suficientes. Complete alguns exercícios!",
+    analytics_students_count: "Alunos ativos", analytics_avg_score: "Nota média geral",
+    cert_config_title: "🎓 Layouts de Certificados", cert_config_intro: "Cada nível principal tem um design de certificado próprio, gerado automaticamente em PDF ao passar na prova. Aqui você pode ver uma prévia de cada design.",
+    cert_preview_btn: "Ver exemplo em PDF",
   },
   en: {
     auth_login_sub: "Sign in to keep learning", auth_register_sub: "Create your free account", auth_forgot_sub: "Reset password",
@@ -204,6 +256,32 @@ const I18N = {
     schedule_projected_unknown: "🔮 Complete your first lesson so we can calculate your completion forecast.",
     schedule_plan_title: "Suggested month-by-month study plan", schedule_plan_month: "Month {n}",
     schedule_months_unit: "months", back_dashboard: "← Back to panel",
+
+    sidebar_levels: "My Levels", sidebar_notas: "My Grades", sidebar_notebook: "Notebook",
+    sidebar_section_progress: "My Progress",
+    admin_nav_overview: "Overview", admin_nav_students: "Students", admin_nav_analytics: "Analytics",
+    admin_nav_certs: "Certificates", admin_nav_config: "Settings",
+    current_level_badge: "📍 You are here", continue_btn: "Continue studying →", next_up_label: "You're on:",
+    home_title: "🎓 Student Panel", home_no_progress: "You haven't started any level yet. Let's get going!",
+    home_start_btn: "Start now →", home_your_levels_link: "See all my levels →",
+    notas_title: "📊 My Grades", notas_aproveitamento_label: "Overall performance",
+    notas_aproveitamento_sub: "Average of {n} evaluations", notas_no_data: "You don't have any recorded evaluations yet.",
+    notas_schedule_label: "Schedule compliance",
+    notas_level_col: "Level", notas_lessons_col: "Lessons", notas_avg_col: "Average",
+    notas_exam_col: "Exam", notas_status_col: "Status",
+    notas_status_passed: "✅ Passed", notas_status_failed: "❌ Not passed", notas_status_pending: "⏳ Exam pending",
+    notas_status_progress: "▶️ In progress", notas_status_locked: "🔒 Locked",
+    notebook_title: "📓 My Notebook", notebook_intro: "Your personal notes, saved in the cloud — only you can see them.",
+    notebook_new_btn: "+ New note", notebook_title_ph: "Note title", notebook_body_ph: "Write your notes here...",
+    notebook_save: "Save note", notebook_delete: "Delete", notebook_empty: "You don't have any notes yet. Create the first one!",
+    notebook_updated: "Updated on {date}", notebook_cancel: "Cancel", notebook_saved_msg: "Note saved!",
+    analytics_title: "📈 My Activity", analytics_admin_title: "📈 Overall Analytics",
+    analytics_total_attempts: "Exercises answered", analytics_accuracy: "Overall accuracy",
+    analytics_time_spent: "Estimated study time", analytics_by_type_title: "Correct answers by exercise type",
+    analytics_errors_title: "Recent mistakes", analytics_no_data: "Not enough data yet. Complete some exercises!",
+    analytics_students_count: "Active students", analytics_avg_score: "Overall average score",
+    cert_config_title: "🎓 Certificate Layouts", cert_config_intro: "Each main level has its own certificate design, generated automatically as a PDF when the exam is passed. Preview each design here.",
+    cert_preview_btn: "View sample PDF",
   },
 };
 
@@ -232,7 +310,8 @@ function t(key, vars) {
 /* 2. ESTADO GLOBAL                                                        */
 /* ---------------------------------------------------------------------- */
 const state = {
-  screen: "loading",       // loading | auth | dashboard | lessonList | lesson | exercises | exam | result | admin | account
+  screen: "loading",       // loading | auth | dashboard | levels | lessonList | lesson | exercises | exam | result
+                           // | notas | notebook | analytics | admin | adminStudents | adminAnalytics | adminCerts | adminConfig | account
   authMode: "login",       // login | register | forgot
   user: null,              // { uid, email, name, role }
   progress: null,          // documento de progresso do Firestore
@@ -249,9 +328,15 @@ const state = {
   speaking: false,
   listening: false,
   adminStudents: [],
+  adminAttempts: [],       // caché de intentos de ejercicios de todos los alumnos (analíticas admin)
+  myAttempts: [],          // caché de intentos de ejercicios del alumno actual (analíticas propias)
   errorMsg: "",
   accountMsg: "",
   sidebarCollapsed: localStorage.getItem("ey_sidebar_collapsed") === "1",
+  notebookNotes: [],
+  notebookLoaded: false,
+  notebookEditingId: null, // null = no hay editor abierto; "new" = nota nueva; id = editando nota existente
+  notebookMsg: "",
 };
 
 applyTheme(state.prefs.theme);
@@ -319,6 +404,55 @@ function levelCompletionPct(levelId) {
 
 function passScoreFor(levelId) {
   return (state.config.passScores && state.config.passScores[levelId]) || DEFAULT_PASS_SCORES[levelId] || 70;
+}
+
+// Nivel "actual" del alumno: el primer nivel principal desbloqueado que todavía no fue aprobado,
+// o el último nivel bonus si ya completó los 3 principales. Se usa para el destaque "Estás aquí".
+function currentActiveLevelId() {
+  for (const id of MAIN_SEQUENCE) {
+    if (!levelProgress(id).examPassed) return id;
+  }
+  return MAIN_SEQUENCE[MAIN_SEQUENCE.length - 1];
+}
+
+// Próxima lección sugerida dentro de un nivel: la primera no completada.
+function nextLessonInLevel(levelId) {
+  const lvl = getLevel(levelId);
+  if (!lvl) return null;
+  const p = levelProgress(levelId);
+  return lvl.lessons.find(l => !(p.lessonsCompleted && p.lessonsCompleted[l.id] && p.lessonsCompleted[l.id].done)) || null;
+}
+
+// "Aprovechamiento" general: promedio de todas las notas (lecciones + pruebas) ya registradas,
+// sea cual sea el nivel — complementa el % de cumplimiento del cronograma con una medida de calidad.
+function computeAproveitamento(levelsScope) {
+  const scope = levelsScope || COURSE_LEVELS.map(l => l.id);
+  const scores = [];
+  scope.forEach(id => {
+    const p = levelProgress(id);
+    if (p.lessonsCompleted) {
+      Object.values(p.lessonsCompleted).forEach(l => { if (l && typeof l.score === "number") scores.push(l.score); });
+    }
+    if (typeof p.examScore === "number") scores.push(p.examScore);
+  });
+  if (!scores.length) return null;
+  const avg = Math.round(scores.reduce((a, b) => a + b, 0) / scores.length);
+  return { avg, count: scores.length };
+}
+
+function levelGradeStatus(levelId) {
+  const lvl = getLevel(levelId);
+  const p = levelProgress(levelId);
+  const unlocked = isLevelUnlocked(levelId);
+  if (!unlocked) return "locked";
+  if (lvl.exam) {
+    if (p.examPassed) return "passed";
+    if (typeof p.examScore === "number") return "failed";
+  }
+  const pct = levelCompletionPct(levelId);
+  if (pct >= 100 && !lvl.exam) return "passed";
+  if (pct > 0) return "progress";
+  return lvl.exam ? "pending" : "pending";
 }
 
 /* ---------------------------------------------------------------------- */
@@ -433,12 +567,20 @@ function render() {
     case "loading": return renderLoading();
     case "auth": return renderAuth();
     case "dashboard": return renderDashboard();
+    case "levels": return renderLevels();
     case "lessonList": return renderLessonList();
     case "lesson": return renderLessonView();
     case "exercises": return renderExercise();
     case "exam": return renderExercise();
     case "result": return renderResult();
-    case "admin": return renderAdmin();
+    case "notas": return renderNotas();
+    case "notebook": return renderNotebook();
+    case "analytics": return renderAnalytics();
+    case "admin": return renderAdminOverview();
+    case "adminStudents": return renderAdminStudents();
+    case "adminAnalytics": return renderAdminAnalytics();
+    case "adminCerts": return renderAdminCerts();
+    case "adminConfig": return renderAdminConfig();
     case "account": return renderAccount();
     case "schedule": return renderSchedule();
     default: return renderLoading();
@@ -724,23 +866,44 @@ function getSpeechRecognition() {
 /* ---------------------------------------------------------------------- */
 /* 9. MENU LATERAL (SIDEBAR) + TOPBAR ESTREITA + LAYOUT HELPERS            */
 /* ---------------------------------------------------------------------- */
-const SIDEBAR_NAV_ITEMS = [
+// Sección "Aprender": navegación del curso en sí (nivel actual + catálogo completo).
+const SIDEBAR_LEARN_ITEMS = [
   { screen: "dashboard", icon: "🏠", labelKey: "sidebar_dashboard" },
+  { screen: "levels", icon: "📚", labelKey: "sidebar_levels" },
+];
+// Sección "Mi Progreso": todo lo que es seguimiento/evaluación del propio alumno,
+// separado a propósito de la navegación de contenido de arriba.
+const SIDEBAR_PROGRESS_ITEMS = [
+  { screen: "notas", icon: "📊", labelKey: "sidebar_notas" },
+  { screen: "analytics", icon: "📈", labelKey: "analytics_title" },
   { screen: "schedule", icon: "📅", labelKey: "nav_schedule" },
+  { screen: "notebook", icon: "📓", labelKey: "sidebar_notebook" },
+];
+const SIDEBAR_ACCOUNT_ITEMS = [
   { screen: "account", icon: "⚙️", labelKey: "sidebar_settings" },
 ];
+// Sección "Administración": solo visible para role === "admin". Varias pantallas propias
+// (no pestañas escondidas) para que el menú refleje todo lo que el admin puede hacer.
+const SIDEBAR_ADMIN_ITEMS = [
+  { screen: "admin", icon: "🛠️", labelKey: "admin_nav_overview" },
+  { screen: "adminStudents", icon: "👥", labelKey: "admin_nav_students" },
+  { screen: "adminAnalytics", icon: "📈", labelKey: "admin_nav_analytics" },
+  { screen: "adminCerts", icon: "🎓", labelKey: "admin_nav_certs" },
+  { screen: "adminConfig", icon: "⚙️", labelKey: "admin_nav_config" },
+];
 
-function sidebarHtml(activeScreen) {
-  const isAdmin = state.user && state.user.role === "admin";
-  const items = SIDEBAR_NAV_ITEMS.map(it => `
+function sidebarNavGroup(items, activeScreen) {
+  return items.map(it => `
     <button class="sidebar-item ${activeScreen === it.screen ? "active" : ""}" data-nav="${it.screen}" title="${t(it.labelKey)}">
       <span class="ico">${it.icon}</span><span class="label">${t(it.labelKey)}</span>
     </button>`).join("");
-  const adminItem = isAdmin ? `
+}
+
+function sidebarHtml(activeScreen) {
+  const isAdmin = state.user && state.user.role === "admin";
+  const adminBlock = isAdmin ? `
     <span class="sidebar-section-label">${t("sidebar_section_admin")}</span>
-    <button class="sidebar-item ${activeScreen === "admin" ? "active" : ""}" data-nav="admin" title="${t("topbar_admin")}">
-      <span class="ico">🛠️</span><span class="label">${t("topbar_admin")}</span>
-    </button>` : "";
+    ${sidebarNavGroup(SIDEBAR_ADMIN_ITEMS, activeScreen)}` : "";
   const initials = (state.user && state.user.name || "?").trim().charAt(0).toUpperCase();
   return `
     <aside class="sidebar">
@@ -750,8 +913,11 @@ function sidebarHtml(activeScreen) {
       </div>
       <nav class="sidebar-nav">
         <span class="sidebar-section-label">${t("sidebar_section_learn")}</span>
-        ${items}
-        ${adminItem}
+        ${sidebarNavGroup(SIDEBAR_LEARN_ITEMS, activeScreen)}
+        <span class="sidebar-section-label">${t("sidebar_section_progress")}</span>
+        ${sidebarNavGroup(SIDEBAR_PROGRESS_ITEMS, activeScreen)}
+        ${sidebarNavGroup(SIDEBAR_ACCOUNT_ITEMS, activeScreen)}
+        ${adminBlock}
       </nav>
       <div class="sidebar-foot">
         <div class="sidebar-user">
@@ -801,10 +967,29 @@ function attachShellEvents() {
   document.querySelectorAll(".sidebar-item[data-nav]").forEach(btn => {
     btn.onclick = () => {
       const target = btn.dataset.nav;
-      if (target === "admin") {
-        state.screen = "admin";
-        render(); // mostra o painel de inmediato (con la lista aún vacía)
-        loadAdminStudents().then(render); // y lo vuelve a pintar cuando llegan os datos
+      if (target === "admin" || target === "adminStudents") {
+        state.screen = target;
+        render(); // muestra la pantalla de inmediato (con la lista aún vacía)
+        loadAdminStudents().then(render); // y la vuelve a pintar cuando llegan los datos
+        return;
+      }
+      if (target === "adminAnalytics") {
+        state.screen = target;
+        render();
+        Promise.all([loadAdminStudents(), loadAdminAttempts()]).then(render);
+        return;
+      }
+      if (target === "analytics") {
+        state.screen = target;
+        render();
+        loadMyAttempts().then(render);
+        return;
+      }
+      if (target === "notebook") {
+        state.screen = target;
+        state.notebookEditingId = null;
+        render();
+        loadNotebookNotes().then(render);
         return;
       }
       if (target === "account") { state.accountMsg = ""; state.accountTab = state.accountTab || "profile"; }
@@ -837,8 +1022,10 @@ function levelCardHtml(levelId, isBonus) {
   const p = levelProgress(levelId);
   const showCert = !isBonus && MAIN_SEQUENCE.includes(levelId) && p.examPassed;
   const bgUrl = levelHeroImageUrl(levelId);
+  const isCurrent = !isBonus && levelId === currentActiveLevelId() && unlocked && !p.examPassed;
   return `
-    <div class="level-card ${unlocked ? "" : "locked"}" data-level="${levelId}">
+    <div class="level-card ${unlocked ? "" : "locked"} ${isCurrent ? "is-current" : ""}" data-level="${levelId}">
+      ${isCurrent ? `<div class="current-ribbon">${t("current_level_badge")}</div>` : ""}
       <div class="level-card-photo" ${bgUrl ? `style="background-image:url('${bgUrl}')"` : ""}>
         <div class="level-card-scrim"></div>
         ${!unlocked ? `<div class="lock-badge">🔒</div>` : ""}
@@ -892,10 +1079,107 @@ function panelSummaryHtml() {
     </div>` : ""}`;
 }
 
+// Card grande de "continuar estudiando": foco absoluto en UN solo próximo paso,
+// para que el alumno nunca tenga dudas de en qué nivel/lección está.
+function continueCardHtml() {
+  const levelId = currentActiveLevelId();
+  const lvl = getLevel(levelId);
+  const p = levelProgress(levelId);
+  const pct = levelCompletionPct(levelId);
+  const nextLesson = nextLessonInLevel(levelId);
+  const bgUrl = levelHeroImageUrl(levelId);
+  const examReady = lvl.exam && !nextLesson && !p.examPassed;
+  const subtitle = examReady
+    ? lvl.exam.title
+    : (nextLesson ? `${escapeHtml(nextLesson.title)}` : "");
+  return `
+    <div class="continue-card" ${bgUrl ? `style="background-image:url('${bgUrl}')"` : ""} id="continue-card">
+      <div class="continue-scrim"></div>
+      <div class="continue-body">
+        <span class="continue-eyebrow">${t("next_up_label")}</span>
+        <h2>${lvl.icon} ${lvl.name}</h2>
+        <div class="continue-sub">${subtitle}</div>
+        <div class="progress-bar-track continue-progress"><div class="progress-bar-fill" style="width:${pct}%"><span>${pct}%</span></div></div>
+        <button class="btn btn-gold" id="continue-cta">${examReady ? "📝 " + t("continue_btn") : t("continue_btn")}</button>
+      </div>
+    </div>`;
+}
+
 function renderDashboard() {
+  const aprov = computeAproveitamento();
   root.innerHTML = wrapShell(`
       <div class="section-title">${t("dash_greeting", { name: escapeHtml(state.user.name || "") })}</div>
+      ${continueCardHtml()}
+      <div class="home-stats-row">
+        <div class="home-stat-card">
+          <span class="hs-label">${t("notas_aproveitamento_label")}</span>
+          <strong class="hs-value">${aprov ? aprov.avg + "%" : "—"}</strong>
+          <a class="hs-link" id="home-link-notas">${t("sidebar_notas")} →</a>
+        </div>
+        <div class="home-stat-card">
+          <span class="hs-label">⭐ XP</span>
+          <strong class="hs-value">${(state.progress && state.progress.xp) || 0}</strong>
+          <a class="hs-link" id="home-link-analytics">${t("analytics_title")} →</a>
+        </div>
+        <div class="home-stat-card">
+          <span class="hs-label">${t("sidebar_notebook")}</span>
+          <strong class="hs-value">📓</strong>
+          <a class="hs-link" id="home-link-notebook">${t("sidebar_notebook")} →</a>
+        </div>
+      </div>
       ${panelSummaryHtml()}
+      <div class="section-title-row">
+        <div class="section-title" style="margin:0">${t("dash_bonus")}</div>
+        <a class="hs-link" id="home-link-levels">${t("home_your_levels_link")}</a>
+      </div>
+      <div class="level-grid">
+        ${BONUS_LEVELS.map(id => levelCardHtml(id, true)).join("")}
+      </div>
+      <div class="bottom-space"></div>
+    `, "dashboard");
+  attachShellEvents();
+  wireLevelCardEvents();
+  const scheduleLink = document.getElementById("panel-view-schedule");
+  if (scheduleLink) scheduleLink.onclick = () => { state.screen = "schedule"; render(); };
+  const finalCertBtn = document.getElementById("btn-final-cert");
+  if (finalCertBtn) finalCertBtn.onclick = () => generateFinalDiplomaPDF();
+  const continueCta = document.getElementById("continue-cta");
+  if (continueCta) continueCta.onclick = () => goToLevel(currentActiveLevelId());
+  const goLevels = () => { state.screen = "levels"; render(); };
+  ["home-link-levels"].forEach(id => { const el = document.getElementById(id); if (el) el.onclick = goLevels; });
+  const linkNotas = document.getElementById("home-link-notas");
+  if (linkNotas) linkNotas.onclick = () => { state.screen = "notas"; render(); };
+  const linkAnalytics = document.getElementById("home-link-analytics");
+  if (linkAnalytics) linkAnalytics.onclick = () => { state.screen = "analytics"; render(); loadMyAttempts().then(render); };
+  const linkNotebook = document.getElementById("home-link-notebook");
+  if (linkNotebook) linkNotebook.onclick = () => { state.screen = "notebook"; state.notebookEditingId = null; render(); loadNotebookNotes().then(render); };
+}
+
+function goToLevel(levelId) {
+  if (!isLevelUnlocked(levelId)) { alert(t("level_locked_alert")); return; }
+  state.currentLevelId = levelId;
+  state.screen = "lessonList";
+  render();
+}
+
+function wireLevelCardEvents() {
+  document.querySelectorAll(".level-card").forEach(card => {
+    card.onclick = (ev) => {
+      if (ev.target.closest(".cert-btn")) return;
+      goToLevel(card.dataset.level);
+    };
+  });
+  document.querySelectorAll(".cert-btn").forEach(btn => {
+    btn.onclick = (ev) => { ev.stopPropagation(); generateCertificatePDF(btn.dataset.certLevel); };
+  });
+}
+
+/* ---------------------------------------------------------------------- */
+/* 10b. TELA: MIS NIVELES (catálogo completo, separado del Panel del Aluno) */
+/* ---------------------------------------------------------------------- */
+function renderLevels() {
+  root.innerHTML = wrapShell(`
+      <div class="section-title">📚 ${t("sidebar_levels")}</div>
       <div class="level-grid">
         ${MAIN_SEQUENCE.map(id => levelCardHtml(id, false)).join("")}
       </div>
@@ -904,28 +1188,9 @@ function renderDashboard() {
         ${BONUS_LEVELS.map(id => levelCardHtml(id, true)).join("")}
       </div>
       <div class="bottom-space"></div>
-    `, "dashboard");
+    `, "levels");
   attachShellEvents();
-  document.querySelectorAll(".level-card").forEach(card => {
-    card.onclick = (ev) => {
-      if (ev.target.closest(".cert-btn")) return;
-      const levelId = card.dataset.level;
-      if (!isLevelUnlocked(levelId)) {
-        alert(t("level_locked_alert"));
-        return;
-      }
-      state.currentLevelId = levelId;
-      state.screen = "lessonList";
-      render();
-    };
-  });
-  document.querySelectorAll(".cert-btn").forEach(btn => {
-    btn.onclick = (ev) => { ev.stopPropagation(); generateCertificatePDF(btn.dataset.certLevel); };
-  });
-  const scheduleLink = document.getElementById("panel-view-schedule");
-  if (scheduleLink) scheduleLink.onclick = () => { state.screen = "schedule"; render(); };
-  const finalCertBtn = document.getElementById("btn-final-cert");
-  if (finalCertBtn) finalCertBtn.onclick = () => generateFinalDiplomaPDF();
+  wireLevelCardEvents();
 }
 
 /* ---------------------------------------------------------------------- */
@@ -958,7 +1223,7 @@ function renderLessonList() {
       <div class="bottom-space"></div>
     `, "lessonList");
   attachShellEvents();
-  document.getElementById("back-dash").onclick = () => { state.screen = "dashboard"; render(); };
+  document.getElementById("back-dash").onclick = () => { state.screen = "levels"; render(); };
   document.querySelectorAll(".lesson-row[data-lesson]").forEach(row => {
     row.onclick = () => {
       state.currentLessonId = row.dataset.lesson;
@@ -1143,6 +1408,25 @@ function markAnswered(correct) {
   if (nextBtn) nextBtn.disabled = false;
 }
 
+// Registra cada intento de ejercicio en Firestore (colección "attempts"), para alimentar
+// los dashboards de analíticas (propios y del admin): qué se acertó/erró, de qué tipo, en qué nivel/lección.
+function logAttempt(ex, correct, answerText) {
+  try {
+    if (!state.user) return;
+    db.collection("attempts").add({
+      uid: state.user.uid,
+      levelId: state.currentLevelId || null,
+      lessonId: state.isExam ? null : (state.currentLessonId || null),
+      isExam: !!state.isExam,
+      exType: ex.type,
+      correct: !!correct,
+      question: ((ex.q || ex.text || ex.prompt || "") + "").slice(0, 200),
+      answerText: ((answerText || "") + "").slice(0, 200),
+      at: firebase.firestore.FieldValue.serverTimestamp(),
+    }).catch(e => console.warn("No se pudo registrar el intento (analíticas).", e));
+  } catch (e) { console.warn(e); }
+}
+
 function showFeedback(correct, correctText) {
   const fb = document.getElementById("ex-feedback");
   if (!fb) return;
@@ -1168,6 +1452,7 @@ function wireExerciseInteractions(ex) {
         }
         showFeedback(correct, ex.options[ex.correct]);
         markAnswered(correct);
+        logAttempt(ex, correct, ex.options[i]);
       };
     });
   }
@@ -1180,6 +1465,7 @@ function wireExerciseInteractions(ex) {
       const correct = similarity(val, target) > 0.82 || alts.some(a => similarity(val, a) > 0.82);
       showFeedback(correct, target);
       markAnswered(correct);
+      logAttempt(ex, correct, val);
       document.getElementById("ex-answer").disabled = true;
       document.getElementById("ex-check").disabled = true;
     };
@@ -1192,6 +1478,7 @@ function wireExerciseInteractions(ex) {
       const correct = similarity(val, ex.answer) > 0.6; // resposta livre/descritiva, mais tolerante
       showFeedback(correct, ex.answer);
       markAnswered(correct);
+      logAttempt(ex, correct, val);
       document.getElementById("ex-answer").disabled = true;
       document.getElementById("ex-check").disabled = true;
     };
@@ -1211,6 +1498,7 @@ function wireExerciseInteractions(ex) {
       const correct = JSON.stringify(chosen) === JSON.stringify(ex.correctOrder);
       showFeedback(correct, "Orden correcto aplicado.");
       markAnswered(correct);
+      logAttempt(ex, correct, chosen.join(" → "));
       document.getElementById("ex-check").disabled = true;
     };
   }
@@ -1219,7 +1507,7 @@ function wireExerciseInteractions(ex) {
     const micBtn = document.getElementById("ex-mic");
     const transcriptEl = document.getElementById("ex-transcript");
     const rec = getSpeechRecognition();
-    document.getElementById("ex-skip").onclick = () => { markAnswered(true); showFeedback(true, ex.target); document.getElementById("ex-skip").disabled = true; };
+    document.getElementById("ex-skip").onclick = () => { markAnswered(true); showFeedback(true, ex.target); logAttempt(ex, true, "(omitido)"); document.getElementById("ex-skip").disabled = true; };
     if (!rec) {
       micBtn.disabled = true;
       transcriptEl.textContent = "Tu navegador no soporta reconocimiento de voz. Usa Google Chrome en computadora o Android, o haz clic en 'No puedo grabar ahora'.";
@@ -1235,6 +1523,7 @@ function wireExerciseInteractions(ex) {
         const correct = similarity(transcript, ex.target) > 0.55;
         showFeedback(correct, ex.target);
         markAnswered(correct);
+        logAttempt(ex, correct, transcript);
         micBtn.classList.remove("listening");
       };
       rec.onerror = () => { micBtn.classList.remove("listening"); transcriptEl.textContent = "No se pudo escuchar. Intenta de nuevo o usa 'No puedo grabar ahora'."; };
@@ -1318,6 +1607,224 @@ async function saveExamResult(levelId, score, passed) {
 }
 
 /* ---------------------------------------------------------------------- */
+/* 13b. TELA: MIS NOTAS (aprovechamiento + cumplimiento del cronograma)     */
+/* ---------------------------------------------------------------------- */
+function renderNotas() {
+  const aprov = computeAproveitamento();
+  const sc = computeScheduleStatus();
+  const statusLabelKey = sc.status === "ahead" ? "panel_schedule_ahead" : sc.status === "behind" ? "panel_schedule_behind" : "panel_schedule_ontrack";
+  const rows = COURSE_LEVELS.map(lvl => {
+    const p = levelProgress(lvl.id);
+    const status = levelGradeStatus(lvl.id);
+    const doneCount = p.lessonsCompleted ? Object.values(p.lessonsCompleted).filter(l => l && l.done).length : 0;
+    const lessonScores = p.lessonsCompleted ? Object.values(p.lessonsCompleted).filter(l => l && typeof l.score === "number").map(l => l.score) : [];
+    const avgLessons = lessonScores.length ? Math.round(lessonScores.reduce((a, b) => a + b, 0) / lessonScores.length) : null;
+    const statusKey = status === "passed" ? "notas_status_passed" : status === "failed" ? "notas_status_failed"
+      : status === "progress" ? "notas_status_progress" : status === "locked" ? "notas_status_locked" : "notas_status_pending";
+    return `
+      <tr class="${status === "locked" ? "row-locked" : ""}">
+        <td>${lvl.icon} ${lvl.name}</td>
+        <td>${doneCount} / ${lvl.lessons.length}</td>
+        <td>${avgLessons !== null ? avgLessons + "%" : "—"}</td>
+        <td>${typeof p.examScore === "number" ? p.examScore + "%" : "—"}</td>
+        <td><span class="badge-status status-${status}">${t(statusKey)}</span></td>
+      </tr>`;
+  }).join("");
+
+  root.innerHTML = wrapShell(`
+      <div class="section-title">${t("notas_title")}</div>
+      <div class="home-stats-row">
+        <div class="home-stat-card highlight">
+          <span class="hs-label">${t("notas_aproveitamento_label")}</span>
+          <strong class="hs-value">${aprov ? aprov.avg + "%" : "—"}</strong>
+          <span class="hs-sub">${aprov ? t("notas_aproveitamento_sub", { n: aprov.count }) : t("notas_no_data")}</span>
+        </div>
+        <div class="home-stat-card status-${sc.status}">
+          <span class="hs-label">${t("notas_schedule_label")}</span>
+          <strong class="hs-value">${sc.actualPct}%</strong>
+          <span class="hs-sub">${t(statusLabelKey)} · ${t("schedule_expected", { pct: sc.expectedPct })}</span>
+        </div>
+      </div>
+      <div class="card">
+        <table class="notas-table">
+          <thead><tr>
+            <th>${t("notas_level_col")}</th><th>${t("notas_lessons_col")}</th><th>${t("notas_avg_col")}</th><th>${t("notas_exam_col")}</th><th>${t("notas_status_col")}</th>
+          </tr></thead>
+          <tbody>${rows}</tbody>
+        </table>
+      </div>
+      <div class="bottom-space"></div>
+    `, "notas");
+  attachShellEvents();
+}
+
+/* ---------------------------------------------------------------------- */
+/* 13c. TELA: MI ACTIVIDAD (analíticas propias del alumno)                 */
+/* ---------------------------------------------------------------------- */
+async function loadMyAttempts() {
+  try {
+    if (!state.user) return;
+    const snap = await db.collection("attempts").where("uid", "==", state.user.uid).orderBy("at", "desc").limit(300).get();
+    state.myAttempts = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+  } catch (e) {
+    console.warn("No se pudieron cargar tus analíticas.", e);
+    state.myAttempts = [];
+  }
+}
+
+function renderAnalytics() {
+  const attempts = state.myAttempts || [];
+  const total = attempts.length;
+  const correctCount = attempts.filter(a => a.correct).length;
+  const accuracy = total ? Math.round((correctCount / total) * 100) : null;
+  const estMinutes = Math.round(total * 0.75); // ~45s por ejercicio, estimación simple
+  const byType = groupAttemptsBy(attempts, a => a.exType);
+  const byLevel = groupAttemptsBy(attempts, a => (getLevel(a.levelId) || {}).name || a.levelId);
+  const recentErrors = attempts.filter(a => !a.correct).slice(0, 12);
+
+  root.innerHTML = wrapShell(`
+      <div class="section-title">${t("analytics_title")}</div>
+      <div class="home-stats-row">
+        <div class="home-stat-card"><span class="hs-label">${t("analytics_total_attempts")}</span><strong class="hs-value">${total}</strong></div>
+        <div class="home-stat-card"><span class="hs-label">${t("analytics_accuracy")}</span><strong class="hs-value">${accuracy !== null ? accuracy + "%" : "—"}</strong></div>
+        <div class="home-stat-card"><span class="hs-label">${t("analytics_time_spent")}</span><strong class="hs-value">${estMinutes} min</strong></div>
+      </div>
+      ${total === 0 ? `<div class="card"><p style="color:var(--gray-2);margin:0">${t("analytics_no_data")}</p></div>` : `
+      <div class="analytics-grid">
+        <div class="card"><h3>${t("analytics_by_type_title")}</h3><canvas id="chart-my-type" height="200"></canvas></div>
+        <div class="card"><h3>${t("notas_level_col")}</h3><canvas id="chart-my-level" height="200"></canvas></div>
+      </div>
+      <div class="card">
+        <h3>${t("analytics_errors_title")}</h3>
+        ${recentErrors.length === 0 ? `<p style="color:var(--gray-2)">—</p>` : recentErrors.map(e => `
+          <div class="error-row"><span class="badge admin" style="background:var(--danger)">${escapeHtml(e.exType || "")}</span> <strong>${escapeHtml(e.question || "")}</strong> ${e.answerText ? `→ <em>${escapeHtml(e.answerText)}</em>` : ""}</div>
+        `).join("")}
+      </div>`}
+      <div class="bottom-space"></div>
+    `, "analytics");
+  attachShellEvents();
+  if (total) {
+    renderChart("chart-my-type", {
+      type: "bar",
+      data: { labels: Object.keys(byType), datasets: [
+        { label: "✅", data: Object.values(byType).map(v => v.correct), backgroundColor: "#2e7d32" },
+        { label: "❌", data: Object.values(byType).map(v => v.total - v.correct), backgroundColor: "#c62828" },
+      ] },
+      options: { responsive: true, scales: { x: { stacked: true }, y: { stacked: true, beginAtZero: true } } }
+    });
+    renderChart("chart-my-level", {
+      type: "doughnut",
+      data: { labels: Object.keys(byLevel), datasets: [{ data: Object.values(byLevel).map(v => v.total), backgroundColor: ["#AA151B", "#F1BF00", "#1D5C8C", "#6B1E3C", "#2e7d32", "#8B1E2E"] }] },
+      options: { responsive: true }
+    });
+  }
+}
+
+/* ---------------------------------------------------------------------- */
+/* 13d. TELA: MI CUADERNO (anotaciones personales)                         */
+/* ---------------------------------------------------------------------- */
+async function loadNotebookNotes() {
+  try {
+    if (!state.user) return;
+    const snap = await db.collection("notebook_notes").where("uid", "==", state.user.uid).get();
+    state.notebookNotes = snap.docs.map(d => ({ id: d.id, ...d.data() }))
+      .sort((a, b) => (b.updatedAtMs || 0) - (a.updatedAtMs || 0));
+  } catch (e) {
+    console.warn("No se pudo cargar el cuaderno.", e);
+    state.notebookNotes = [];
+  } finally {
+    state.notebookLoaded = true;
+  }
+}
+
+function renderNotebook() {
+  const editing = state.notebookEditingId;
+  const editingNote = editing && editing !== "new" ? state.notebookNotes.find(n => n.id === editing) : null;
+  const showEditor = editing === "new" || !!editingNote;
+
+  root.innerHTML = wrapShell(`
+      <div class="section-title">${t("notebook_title")}</div>
+      <p style="color:var(--gray-2);margin-top:-8px">${t("notebook_intro")}</p>
+      ${state.notebookMsg ? `<div class="success-msg">${escapeHtml(state.notebookMsg)}</div>` : ""}
+      ${showEditor ? `
+      <div class="card">
+        <form id="note-form">
+          <div class="field"><input type="text" id="note-title" placeholder="${t("notebook_title_ph")}" value="${escapeHtml((editingNote && editingNote.title) || "")}" required></div>
+          <div class="field"><textarea id="note-body" rows="6" placeholder="${t("notebook_body_ph")}" required>${escapeHtml((editingNote && editingNote.body) || "")}</textarea></div>
+          <div style="display:flex;gap:10px;justify-content:flex-end">
+            <button type="button" class="btn btn-secondary btn-sm" id="note-cancel">${t("notebook_cancel")}</button>
+            <button type="submit" class="btn btn-primary btn-sm">${t("notebook_save")}</button>
+          </div>
+        </form>
+      </div>` : `
+      <div style="margin-bottom:16px"><button class="btn btn-gold btn-sm" id="note-new">${t("notebook_new_btn")}</button></div>`}
+      ${!state.notebookLoaded ? "" : state.notebookNotes.length === 0 && !showEditor ? `
+      <div class="card"><p style="color:var(--gray-2);margin:0">${t("notebook_empty")}</p></div>` : `
+      <div class="notebook-grid">
+        ${state.notebookNotes.map(n => `
+          <div class="notebook-card" data-id="${n.id}">
+            <h4>${escapeHtml(n.title || "")}</h4>
+            <p>${escapeHtml((n.body || "").slice(0, 220))}${(n.body || "").length > 220 ? "…" : ""}</p>
+            <div class="notebook-card-foot">
+              <span>${n.updatedAtMs ? t("notebook_updated", { date: formatDate(new Date(n.updatedAtMs), state.prefs.lang) }) : ""}</span>
+              <div>
+                <button class="btn-icon note-edit" data-id="${n.id}" title="✏️">✏️</button>
+                <button class="btn-icon note-del" data-id="${n.id}" title="🗑️">🗑️</button>
+              </div>
+            </div>
+          </div>`).join("")}
+      </div>`}
+      <div class="bottom-space"></div>
+    `, "notebook");
+  attachShellEvents();
+
+  const newBtn = document.getElementById("note-new");
+  if (newBtn) newBtn.onclick = () => { state.notebookEditingId = "new"; state.notebookMsg = ""; render(); };
+  const cancelBtn = document.getElementById("note-cancel");
+  if (cancelBtn) cancelBtn.onclick = () => { state.notebookEditingId = null; render(); };
+  const form = document.getElementById("note-form");
+  if (form) form.onsubmit = onSaveNote;
+  document.querySelectorAll(".note-edit").forEach(b => b.onclick = () => { state.notebookEditingId = b.dataset.id; state.notebookMsg = ""; render(); });
+  document.querySelectorAll(".note-del").forEach(b => b.onclick = () => onDeleteNote(b.dataset.id));
+}
+
+async function onSaveNote(e) {
+  e.preventDefault();
+  const title = document.getElementById("note-title").value.trim();
+  const body = document.getElementById("note-body").value.trim();
+  if (!title || !body) return;
+  const editing = state.notebookEditingId;
+  try {
+    if (editing && editing !== "new") {
+      await db.collection("notebook_notes").doc(editing).update({ title, body, updatedAtMs: Date.now(), updatedAt: firebase.firestore.FieldValue.serverTimestamp() });
+      const n = state.notebookNotes.find(x => x.id === editing);
+      if (n) { n.title = title; n.body = body; n.updatedAtMs = Date.now(); }
+    } else {
+      const ref = await db.collection("notebook_notes").add({
+        uid: state.user.uid, title, body, updatedAtMs: Date.now(), createdAt: firebase.firestore.FieldValue.serverTimestamp(), updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+      });
+      state.notebookNotes.unshift({ id: ref.id, uid: state.user.uid, title, body, updatedAtMs: Date.now() });
+    }
+    state.notebookEditingId = null;
+    state.notebookMsg = t("notebook_saved_msg");
+  } catch (err) {
+    alert("Error: " + err.message);
+  }
+  render();
+}
+
+async function onDeleteNote(id) {
+  if (!confirm("¿Eliminar esta nota?")) return;
+  try {
+    await db.collection("notebook_notes").doc(id).delete();
+    state.notebookNotes = state.notebookNotes.filter(n => n.id !== id);
+    render();
+  } catch (err) {
+    alert("Error: " + err.message);
+  }
+}
+
+/* ---------------------------------------------------------------------- */
 /* 14. TELA: RESULTADO                                                     */
 /* ---------------------------------------------------------------------- */
 function renderResult() {
@@ -1345,7 +1852,7 @@ function renderResult() {
 }
 
 /* ---------------------------------------------------------------------- */
-/* 15. PAINEL DE ADMINISTRADOR                                             */
+/* 15. PAINEL DE ADMINISTRADOR (5 telas próprias, não abas escondidas)      */
 /* ---------------------------------------------------------------------- */
 async function loadAdminStudents() {
   try {
@@ -1357,24 +1864,77 @@ async function loadAdminStudents() {
   }
 }
 
-function renderAdmin() {
-  const ps = state.config.passScores;
+// Carga los intentos de ejercicios de TODOS los alumnos (colección "attempts"),
+// limitado a los últimos 500 para no sobrecargar el panel de analíticas del admin.
+async function loadAdminAttempts() {
+  try {
+    const snap = await db.collection("attempts").orderBy("at", "desc").limit(500).get();
+    state.adminAttempts = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+  } catch (e) {
+    console.warn("No se pudieron cargar las analíticas de admin.", e);
+    state.adminAttempts = [];
+  }
+}
+
+// Barra de sub-navegación entre las 5 pantallas de admin (además de estar en el sidebar,
+// para que quede clarísimo que son secciones hermanas de una misma área).
+function adminTabsHtml(active) {
+  return `<div class="admin-tabs">
+    ${SIDEBAR_ADMIN_ITEMS.map(it => `<button class="admin-tab-btn ${active === it.screen ? "active" : ""}" data-nav="${it.screen}">${it.icon} ${t(it.labelKey)}</button>`).join("")}
+  </div>`;
+}
+
+function adminBackDashHandler() {
+  const b = document.getElementById("back-dash");
+  if (b) b.onclick = () => { state.screen = "dashboard"; render(); };
+}
+
+function renderAdminOverview() {
+  const totalStudents = state.adminStudents.length;
+  const passRates = MAIN_SEQUENCE.map(id => {
+    const attempted = state.adminStudents.filter(s => s.levels && s.levels[id] && typeof s.levels[id].examScore === "number").length;
+    const passed = state.adminStudents.filter(s => s.levels && s.levels[id] && s.levels[id].examPassed).length;
+    return { id, attempted, passed };
+  });
+  const avgXp = totalStudents ? Math.round(state.adminStudents.reduce((a, s) => a + (s.xp || 0), 0) / totalStudents) : 0;
   root.innerHTML = wrapShell(`
       <button class="back-link" id="back-dash">← Volver al panel</button>
-      <div class="section-title">⚙️ Panel de Administrador</div>
-      <div class="card">
-        <h3>Nota mínima para aprobar cada nivel (%)</h3>
-        ${MAIN_SEQUENCE.map(id => `
-          <div class="config-row">
-            <span>${getLevel(id).icon} ${getLevel(id).name}</span>
-            <input type="number" min="0" max="100" id="score-${id}" value="${ps[id] ?? 70}">
-          </div>`).join("")}
-        <div style="text-align:right;margin-top:14px"><button class="btn btn-primary btn-sm" id="save-config">Guardar configuración</button></div>
-        <div id="config-feedback"></div>
+      <div class="section-title">${t("admin_title")}</div>
+      ${adminTabsHtml("admin")}
+      <div class="home-stats-row">
+        <div class="home-stat-card"><span class="hs-label">${t("analytics_students_count")}</span><strong class="hs-value">${totalStudents}</strong></div>
+        <div class="home-stat-card"><span class="hs-label">⭐ XP (promedio)</span><strong class="hs-value">${avgXp}</strong></div>
+        <div class="home-stat-card"><span class="hs-label">${t("admin_nav_certs")}</span><strong class="hs-value">🎓</strong></div>
       </div>
       <div class="card">
-        <h3>Alumnos y progreso (${state.adminStudents.length})</h3>
-        ${state.adminStudents.length === 0 ? `<p style="color:var(--gray-2)">Todavía no hay alumnos con pruebas realizadas.</p>` : state.adminStudents.map(s => `
+        <h3>${t("admin_scores_title")}</h3>
+        ${passRates.map(r => `
+          <div class="config-row">
+            <span>${getLevel(r.id).icon} ${getLevel(r.id).name}</span>
+            <span style="color:var(--gray-2);font-size:.85rem">${r.passed} / ${r.attempted || 0} ${t("notas_status_passed")}</span>
+          </div>`).join("")}
+      </div>
+      <div class="bottom-space"></div>
+    `, "admin");
+  attachShellEvents();
+  adminBackDashHandler();
+  document.querySelectorAll(".admin-tab-btn").forEach(b => b.onclick = () => {
+    const target = b.dataset.nav;
+    state.screen = target;
+    render();
+    if (target === "adminAnalytics") Promise.all([loadAdminStudents(), loadAdminAttempts()]).then(render);
+    else loadAdminStudents().then(render);
+  });
+}
+
+function renderAdminStudents() {
+  root.innerHTML = wrapShell(`
+      <button class="back-link" id="back-dash">← Volver al panel</button>
+      <div class="section-title">${t("admin_title")}</div>
+      ${adminTabsHtml("adminStudents")}
+      <div class="card">
+        <h3>${t("admin_students_title", { n: state.adminStudents.length })}</h3>
+        ${state.adminStudents.length === 0 ? `<p style="color:var(--gray-2)">${t("admin_no_students")}</p>` : state.adminStudents.map(s => `
           <div class="student-row">
             <div><strong>${escapeHtml(s.name || s.email)}</strong><br><span style="color:var(--gray-2)">${escapeHtml(s.email || "")}</span></div>
             <div>⭐ ${s.xp || 0} XP</div>
@@ -1382,20 +1942,188 @@ function renderAdmin() {
           </div>`).join("")}
       </div>
       <div class="bottom-space"></div>
-    `, "admin");
+    `, "adminStudents");
   attachShellEvents();
-  document.getElementById("back-dash").onclick = () => { state.screen = "dashboard"; render(); };
+  adminBackDashHandler();
+  document.querySelectorAll(".admin-tab-btn").forEach(b => b.onclick = () => {
+    const target = b.dataset.nav;
+    state.screen = target;
+    render();
+    if (target === "adminAnalytics") Promise.all([loadAdminStudents(), loadAdminAttempts()]).then(render);
+    else loadAdminStudents().then(render);
+  });
+}
+
+function renderAdminConfig() {
+  const ps = state.config.passScores;
+  const schedule = getSchedule();
+  root.innerHTML = wrapShell(`
+      <button class="back-link" id="back-dash">← Volver al panel</button>
+      <div class="section-title">${t("admin_title")}</div>
+      ${adminTabsHtml("adminConfig")}
+      <div class="card">
+        <h3>${t("admin_scores_title")}</h3>
+        ${MAIN_SEQUENCE.map(id => `
+          <div class="config-row">
+            <span>${getLevel(id).icon} ${getLevel(id).name}</span>
+            <input type="number" min="0" max="100" id="score-${id}" value="${ps[id] ?? 70}">
+          </div>`).join("")}
+        <div style="text-align:right;margin-top:14px"><button class="btn btn-primary btn-sm" id="save-config">${t("admin_save")}</button></div>
+        <div id="config-feedback"></div>
+      </div>
+      <div class="card">
+        <h3>📅 ${t("schedule_title")}</h3>
+        <p style="color:var(--gray-2);font-size:.85rem;margin-top:0">${t("schedule_intro")}</p>
+        <div class="config-row"><span>${t("schedule_duration_label")}</span><span>${schedule.durationMonths || DEFAULT_SCHEDULE_MONTHS} ${t("schedule_months_unit")}</span></div>
+      </div>
+      <div class="bottom-space"></div>
+    `, "adminConfig");
+  attachShellEvents();
+  adminBackDashHandler();
+  document.querySelectorAll(".admin-tab-btn").forEach(b => b.onclick = () => {
+    const target = b.dataset.nav;
+    state.screen = target;
+    render();
+    if (target === "adminAnalytics") Promise.all([loadAdminStudents(), loadAdminAttempts()]).then(render);
+    else loadAdminStudents().then(render);
+  });
   document.getElementById("save-config").onclick = async () => {
     const newScores = {};
     MAIN_SEQUENCE.forEach(id => { newScores[id] = parseInt(document.getElementById(`score-${id}`).value, 10) || 70; });
     try {
       await db.collection("config").doc("settings").set({ passScores: newScores }, { merge: true });
       state.config.passScores = newScores;
-      document.getElementById("config-feedback").innerHTML = `<div class="success-msg">¡Configuración guardada!</div>`;
+      document.getElementById("config-feedback").innerHTML = `<div class="success-msg">${t("admin_saved")}</div>`;
     } catch (e) {
       document.getElementById("config-feedback").innerHTML = `<div class="error-msg">Error: ${e.message}</div>`;
     }
   };
+}
+
+function renderAdminCerts() {
+  root.innerHTML = wrapShell(`
+      <button class="back-link" id="back-dash">← Volver al panel</button>
+      <div class="section-title">${t("admin_title")}</div>
+      ${adminTabsHtml("adminCerts")}
+      <div class="card">
+        <h3>${t("cert_config_title")}</h3>
+        <p style="color:var(--gray-2)">${t("cert_config_intro")}</p>
+        <div class="cert-gallery">
+          ${MAIN_SEQUENCE.map(id => {
+            const cfg = CERT_THEMES[id];
+            if (!cfg) return "";
+            const rgb = (a) => `rgb(${a[0]},${a[1]},${a[2]})`;
+            return `
+            <div class="cert-preview-card">
+              <div class="cert-preview-swatch" style="background:linear-gradient(135deg, ${rgb(cfg.primary)}, ${rgb(cfg.secondary)})">
+                <span>${cfg.seal === "circle" ? "⭘" : cfg.seal === "medallion" ? "🏅" : cfg.seal === "shield" ? "🛡️" : "🎗️"}</span>
+              </div>
+              <div class="cert-preview-body">
+                <h4>${getLevel(id).icon} ${cfg.name}</h4>
+                <span class="cert-preview-tag">${cfg.title}</span>
+                <p>${cfg.cefr}</p>
+                <button class="btn btn-secondary btn-sm cert-preview-btn" data-cert-level="${id}">${t("cert_preview_btn")}</button>
+              </div>
+            </div>`;
+          }).join("")}
+        </div>
+      </div>
+      <div class="bottom-space"></div>
+    `, "adminCerts");
+  attachShellEvents();
+  adminBackDashHandler();
+  document.querySelectorAll(".admin-tab-btn").forEach(b => b.onclick = () => {
+    const target = b.dataset.nav;
+    state.screen = target;
+    render();
+    if (target === "adminAnalytics") Promise.all([loadAdminStudents(), loadAdminAttempts()]).then(render);
+    else loadAdminStudents().then(render);
+  });
+  document.querySelectorAll(".cert-preview-btn").forEach(btn => {
+    btn.onclick = () => generateSampleCertificatePDF(btn.dataset.certLevel);
+  });
+}
+
+// Agrupa una lista de intentos por una clave arbitraria y devuelve { key: {correct,total} }.
+function groupAttemptsBy(attempts, keyFn) {
+  const groups = {};
+  attempts.forEach(a => {
+    const k = keyFn(a) || "—";
+    if (!groups[k]) groups[k] = { correct: 0, total: 0 };
+    groups[k].total++;
+    if (a.correct) groups[k].correct++;
+  });
+  return groups;
+}
+
+let _chartInstances = {};
+function renderChart(canvasId, config) {
+  const canvas = document.getElementById(canvasId);
+  if (!canvas || typeof Chart === "undefined") return;
+  if (_chartInstances[canvasId]) { _chartInstances[canvasId].destroy(); }
+  _chartInstances[canvasId] = new Chart(canvas.getContext("2d"), config);
+}
+
+function renderAdminAnalytics() {
+  const attempts = state.adminAttempts || [];
+  const totalStudents = state.adminStudents.length;
+  const avgScore = (() => {
+    const scores = [];
+    state.adminStudents.forEach(s => {
+      MAIN_SEQUENCE.forEach(id => { if (s.levels && s.levels[id] && typeof s.levels[id].examScore === "number") scores.push(s.levels[id].examScore); });
+    });
+    return scores.length ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : null;
+  })();
+  const byType = groupAttemptsBy(attempts, a => a.exType);
+  const byLevel = groupAttemptsBy(attempts, a => a.levelId);
+  const recentErrors = attempts.filter(a => !a.correct).slice(0, 12);
+
+  root.innerHTML = wrapShell(`
+      <button class="back-link" id="back-dash">← Volver al panel</button>
+      <div class="section-title">${t("analytics_admin_title")}</div>
+      ${adminTabsHtml("adminAnalytics")}
+      <div class="home-stats-row">
+        <div class="home-stat-card"><span class="hs-label">${t("analytics_students_count")}</span><strong class="hs-value">${totalStudents}</strong></div>
+        <div class="home-stat-card"><span class="hs-label">${t("analytics_avg_score")}</span><strong class="hs-value">${avgScore !== null ? avgScore + "%" : "—"}</strong></div>
+        <div class="home-stat-card"><span class="hs-label">${t("analytics_total_attempts")}</span><strong class="hs-value">${attempts.length}</strong></div>
+      </div>
+      ${attempts.length === 0 ? `<div class="card"><p style="color:var(--gray-2);margin:0">${t("analytics_no_data")}</p></div>` : `
+      <div class="analytics-grid">
+        <div class="card"><h3>${t("analytics_by_type_title")}</h3><canvas id="chart-admin-type" height="200"></canvas></div>
+        <div class="card"><h3>${t("notas_level_col")}</h3><canvas id="chart-admin-level" height="200"></canvas></div>
+      </div>
+      <div class="card">
+        <h3>${t("analytics_errors_title")}</h3>
+        ${recentErrors.length === 0 ? `<p style="color:var(--gray-2)">—</p>` : recentErrors.map(e => `
+          <div class="error-row"><span class="badge admin" style="background:var(--danger)">${escapeHtml(e.exType || "")}</span> <strong>${escapeHtml(e.question || "")}</strong> ${e.answerText ? `→ <em>${escapeHtml(e.answerText)}</em>` : ""}</div>
+        `).join("")}
+      </div>`}
+      <div class="bottom-space"></div>
+    `, "adminAnalytics");
+  attachShellEvents();
+  adminBackDashHandler();
+  document.querySelectorAll(".admin-tab-btn").forEach(b => b.onclick = () => {
+    const target = b.dataset.nav;
+    state.screen = target;
+    render();
+    if (target === "adminAnalytics") Promise.all([loadAdminStudents(), loadAdminAttempts()]).then(render);
+    else loadAdminStudents().then(render);
+  });
+  if (attempts.length) {
+    renderChart("chart-admin-type", {
+      type: "bar",
+      data: { labels: Object.keys(byType), datasets: [
+        { label: "✅", data: Object.values(byType).map(v => v.correct), backgroundColor: "#2e7d32" },
+        { label: "❌", data: Object.values(byType).map(v => v.total - v.correct), backgroundColor: "#c62828" },
+      ] },
+      options: { responsive: true, scales: { x: { stacked: true }, y: { stacked: true, beginAtZero: true } } }
+    });
+    renderChart("chart-admin-level", {
+      type: "doughnut",
+      data: { labels: Object.keys(byLevel).map(id => (getLevel(id) || {}).name || id), datasets: [{ data: Object.values(byLevel).map(v => v.total), backgroundColor: ["#AA151B", "#F1BF00", "#1D5C8C", "#6B1E3C", "#2e7d32", "#8B1E2E"] }] },
+      options: { responsive: true }
+    });
+  }
 }
 
 /* ---------------------------------------------------------------------- */
@@ -1761,11 +2489,12 @@ function drawCertificateBase(doc, W, H, cfg) {
   doc.text("¡ESPAÑOL YA! — CURSO INTERACTIVO DE ESPAÑOL", W / 2, fy + 21, { align: "center" });
 }
 
-function generateCertificatePDF(levelId) {
+function generateCertificatePDF(levelId, opts) {
+  const sample = opts && opts.sample;
   if (!window.jspdf) { alert("No se pudo cargar el generador de PDF. Verifica tu conexión a internet e intenta de nuevo."); return; }
   const cfg = CERT_THEMES[levelId];
   const lvl = getLevel(levelId);
-  const p = levelProgress(levelId);
+  const p = sample ? { examPassed: true, examScore: 95 } : levelProgress(levelId);
   if (!cfg || !lvl || !p.examPassed) return;
 
   const { jsPDF } = window.jspdf;
@@ -1787,7 +2516,7 @@ function generateCertificatePDF(levelId) {
   doc.setTextColor(70, 70, 70);
   doc.text("Se otorga el presente documento a:", W / 2, 75, { align: "center" });
 
-  const studentName = (state.user && (state.user.name || state.user.email)) || "Alumno/a";
+  const studentName = sample ? "Nombre de Ejemplo" : ((state.user && (state.user.name || state.user.email)) || "Alumno/a");
   doc.setFont("times", "bolditalic");
   doc.setFontSize(29);
   doc.setTextColor(30, 30, 30);
@@ -1845,7 +2574,13 @@ function generateCertificatePDF(levelId) {
   doc.text(`Este certificado puede verificarse por su ID único: ${certId}`, W / 2, 195.5, { align: "center" });
 
   const safeName = (studentName || "alumno").replace(/[^\w]+/g, "_");
-  doc.save(`Certificado_${lvl.name.replace(/\s+/g, "_")}_${safeName}.pdf`);
+  doc.save(`${sample ? "Ejemplo_" : ""}Certificado_${lvl.name.replace(/\s+/g, "_")}_${safeName}.pdf`);
+}
+
+// Vista previa del layout de certificado, usada en Admin → Certificados, sin exigir
+// que el nivel esté realmente aprobado (nombre y nota son de ejemplo).
+function generateSampleCertificatePDF(levelId) {
+  generateCertificatePDF(levelId, { sample: true });
 }
 
 function generateFinalDiplomaPDF() {

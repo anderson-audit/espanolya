@@ -391,6 +391,96 @@ table.grammar-table th { background: var(--gray-bg); }
 
 .cert-btn { width: 100%; margin-top: 12px; }
 
+/* ---------- Ribbon "Estás aquí" en el nivel actual ---------- */
+.level-card { position: relative; }
+.level-card.is-current { box-shadow: 0 0 0 3px var(--amarillo), var(--shadow-lg); }
+.current-ribbon {
+  position: absolute; top: 12px; left: -6px; z-index: 3; background: var(--amarillo); color: #3a2c00;
+  font-weight: 800; font-size: .68rem; letter-spacing: .02em; padding: 5px 12px 5px 16px; border-radius: 0 6px 6px 0;
+  box-shadow: 0 3px 8px rgba(0,0,0,.25);
+}
+.current-ribbon::after {
+  content: ""; position: absolute; left: 0; top: 100%; border-width: 5px 6px 0 0; border-style: solid;
+  border-color: #c99e00 transparent transparent transparent;
+}
+
+/* ---------- Card "Continuar estudiando" (foco único del Painel do Aluno) ---------- */
+.continue-card {
+  position: relative; border-radius: var(--radius); overflow: hidden; min-height: 220px;
+  background-size: cover; background-position: center; box-shadow: var(--shadow-lg); margin-bottom: 22px;
+  display: flex; align-items: flex-end;
+}
+.continue-card::before {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(30,20,15,.35), rgba(15,10,8,.35));
+}
+.continue-scrim {
+  position: absolute; inset: 0; background: linear-gradient(0deg, rgba(10,8,6,.92) 10%, rgba(10,8,6,.55) 55%, rgba(10,8,6,.15) 100%);
+}
+.continue-body { position: relative; z-index: 2; padding: 28px 30px; color: #fff; width: 100%; }
+.continue-eyebrow { font-size: .75rem; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; opacity: .8; }
+.continue-body h2 { margin: 4px 0 2px; font-size: 1.6rem; text-shadow: 0 2px 6px rgba(0,0,0,.4); }
+.continue-sub { font-size: .95rem; opacity: .92; margin-bottom: 14px; }
+.continue-progress { max-width: 320px; margin-bottom: 16px; background: rgba(255,255,255,.18); }
+.continue-progress .progress-bar-fill { background: linear-gradient(90deg, var(--amarillo), var(--amarillo-dark)); }
+
+/* ---------- Mini-stats do Painel do Aluno / Mis Notas ---------- */
+.home-stats-row { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 16px; margin-bottom: 22px; }
+.home-stat-card {
+  background: var(--card-bg); border-radius: 14px; box-shadow: var(--shadow); padding: 16px 18px;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.home-stat-card.highlight { background: linear-gradient(135deg, #fff, #fff8e6); border: 1px solid var(--amarillo); }
+.hs-label { font-size: .72rem; font-weight: 700; text-transform: uppercase; letter-spacing: .03em; color: var(--gray-2); }
+.hs-value { font-size: 1.7rem; font-weight: 800; color: var(--ink); }
+.hs-sub { font-size: .74rem; color: var(--gray-2); }
+.hs-link { font-size: .82rem; font-weight: 700; color: var(--rojo); margin-top: 4px; cursor: pointer; }
+.home-stat-card.status-ontrack { border-left: 4px solid var(--success); }
+.home-stat-card.status-ahead { border-left: 4px solid #1565c0; }
+.home-stat-card.status-behind { border-left: 4px solid #e65100; }
+.section-title-row { display: flex; align-items: baseline; justify-content: space-between; margin: 28px 0 14px; flex-wrap: wrap; gap: 8px; }
+.section-title-row .hs-link { color: #fff; text-decoration: underline; }
+
+/* ---------- Sub-navegação (Admin) ---------- */
+.admin-tabs { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+.admin-tab-btn { padding: 10px 16px; border-radius: 999px; border: 1.5px solid #e2e0db; background: #fff; font-size: .85rem; font-weight: 700; color: var(--gray-1); }
+.admin-tab-btn.active { background: var(--rojo); color: #fff; border-color: var(--rojo); }
+
+/* ---------- Galería de layouts de certificado (Admin) ---------- */
+.cert-gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 16px; }
+.cert-preview-card { border: 1.5px solid #ece9e3; border-radius: 14px; overflow: hidden; }
+.cert-preview-swatch { height: 90px; display: flex; align-items: center; justify-content: center; font-size: 2rem; color: #fff; }
+.cert-preview-body { padding: 14px 16px; }
+.cert-preview-body h4 { margin: 0 0 4px; font-size: .95rem; }
+.cert-preview-tag { display: inline-block; font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .03em; color: var(--gray-2); margin-bottom: 6px; }
+.cert-preview-body p { font-size: .78rem; color: var(--gray-2); margin: 0 0 10px; line-height: 1.4; }
+
+/* ---------- Analíticas (aluno + admin) ---------- */
+.analytics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin-bottom: 18px; }
+.error-row { padding: 10px 0; border-bottom: 1px solid #eee; font-size: .87rem; }
+.error-row:last-child { border-bottom: none; }
+
+/* ---------- Mis Notas: tabla ---------- */
+.notas-table { width: 100%; border-collapse: collapse; font-size: .9rem; }
+.notas-table th { text-align: left; padding: 10px 12px; border-bottom: 2px solid #ece9e3; color: var(--gray-2); font-size: .76rem; text-transform: uppercase; letter-spacing: .03em; }
+.notas-table td { padding: 12px; border-bottom: 1px solid #f0efec; }
+.notas-table tr.row-locked td { color: var(--gray-2); opacity: .6; }
+.badge-status { padding: 4px 12px; border-radius: 999px; font-size: .78rem; font-weight: 700; white-space: nowrap; }
+.badge-status.status-passed { background: #e8f5e9; color: var(--success); }
+.badge-status.status-failed { background: #fdecea; color: var(--danger); }
+.badge-status.status-progress { background: #fff3e0; color: #e65100; }
+.badge-status.status-pending { background: var(--gray-bg); color: var(--gray-1); }
+.badge-status.status-locked { background: var(--gray-bg); color: var(--gray-2); }
+
+/* ---------- Mi Cuaderno ---------- */
+.notebook-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 16px; }
+.notebook-card { background: var(--card-bg); border-radius: 14px; box-shadow: var(--shadow); padding: 16px 18px; display: flex; flex-direction: column; }
+.notebook-card h4 { margin: 0 0 8px; font-size: 1rem; }
+.notebook-card p { font-size: .85rem; color: var(--gray-1); line-height: 1.5; flex: 1; margin: 0 0 10px; white-space: pre-wrap; }
+.notebook-card-foot { display: flex; align-items: center; justify-content: space-between; font-size: .72rem; color: var(--gray-2); }
+.btn-icon { border: none; background: var(--gray-bg); width: 30px; height: 30px; border-radius: 8px; font-size: .8rem; margin-left: 4px; }
+#note-body { width: 100%; padding: 13px 16px; border-radius: 12px; border: 1.5px solid #e2e0db; font-size: .95rem; font-family: inherit; resize: vertical; }
+
 /* ---------- Cronograma ---------- */
 .duration-chips { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
 .duration-chip { padding: 10px 18px; border-radius: 999px; border: 1.5px solid #e2e0db; background: #fff; font-weight: 700; font-size: .88rem; color: var(--gray-1); }
