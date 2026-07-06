@@ -146,6 +146,8 @@ const I18N = {
     pending_logout_btn: "Salir",
     admin_approvals_title: "✅ Aprobaciones de Registro ({n})", admin_no_pending: "No hay registros pendientes de aprobación.",
     admin_approve_btn: "✅ Aprobar", admin_reject_btn: "🚫 Rechazar", admin_pending_since: "Registrado el {date}",
+    cert_preview_open_btn: "👁️ Vista previa del certificado",
+    cert_preview_locked_note: "Esta es solo una vista previa del diseño. Podrás generar el PDF real en cuanto apruebes la prueba de este nivel.",
   },
   pt: {
     auth_login_sub: "Entre para continuar aprendendo", auth_register_sub: "Crie sua conta grátis", auth_forgot_sub: "Recuperar senha",
@@ -234,6 +236,8 @@ const I18N = {
     pending_logout_btn: "Sair",
     admin_approvals_title: "✅ Aprovações de Cadastro ({n})", admin_no_pending: "Não há cadastros pendentes de aprovação.",
     admin_approve_btn: "✅ Aprovar", admin_reject_btn: "🚫 Rejeitar", admin_pending_since: "Cadastrado em {date}",
+    cert_preview_open_btn: "👁️ Prévia do certificado",
+    cert_preview_locked_note: "Esta é apenas uma prévia do design. Você poderá gerar o PDF real assim que passar na prova deste nível.",
   },
   en: {
     auth_login_sub: "Sign in to keep learning", auth_register_sub: "Create your free account", auth_forgot_sub: "Reset password",
@@ -322,6 +326,8 @@ const I18N = {
     pending_logout_btn: "Log out",
     admin_approvals_title: "✅ Registration Approvals ({n})", admin_no_pending: "No registrations pending approval.",
     admin_approve_btn: "✅ Approve", admin_reject_btn: "🚫 Reject", admin_pending_since: "Registered on {date}",
+    cert_preview_open_btn: "👁️ Certificate preview",
+    cert_preview_locked_note: "This is just a design preview. You'll be able to generate the real PDF as soon as you pass this level's exam.",
   },
 };
 
@@ -1153,6 +1159,9 @@ function levelCardHtml(levelId, isBonus) {
   // visual configurado en CERT_THEMES (los niveles principales lo tienen todos; entre
   // los bônus, solo "normas" tiene prueba + modelo propio, así que gana su certificado).
   const showCert = !!lvl.exam && !!CERT_THEMES[levelId] && p.examPassed;
+  // Antes de aprobar, el alumno solo puede CONSULTAR el diseño del certificado en
+  // pantalla (modal con vista previa) — el PDF real solo se genera al aprobar.
+  const showCertPreview = !!lvl.exam && !!CERT_THEMES[levelId] && !p.examPassed;
   const bgUrl = levelHeroImageUrl(levelId);
   const isCurrent = !isBonus && levelId === currentActiveLevelId() && unlocked && !p.examPassed;
   return `
@@ -1172,6 +1181,7 @@ function levelCardHtml(levelId, isBonus) {
           <span>${p.examPassed ? t("exam_passed", { score: p.examScore }) : (lvl.exam ? t("exam_pending") : (isBonus ? "★" : ""))}</span>
         </div>
         ${showCert ? `<button class="btn btn-gold btn-sm cert-btn" data-cert-level="${levelId}">${t("cert_btn")}</button>` : ""}
+        ${showCertPreview ? `<button class="btn btn-ghost btn-sm cert-preview-open-btn" data-cert-level="${levelId}">${t("cert_preview_open_btn")}</button>` : ""}
       </div>
     </div>`;
 }
@@ -1299,13 +1309,48 @@ function goToLevel(levelId) {
 function wireLevelCardEvents() {
   document.querySelectorAll(".level-card").forEach(card => {
     card.onclick = (ev) => {
-      if (ev.target.closest(".cert-btn")) return;
+      if (ev.target.closest(".cert-btn") || ev.target.closest(".cert-preview-open-btn")) return;
       goToLevel(card.dataset.level);
     };
   });
   document.querySelectorAll(".cert-btn").forEach(btn => {
     btn.onclick = (ev) => { ev.stopPropagation(); generateCertificatePDF(btn.dataset.certLevel); };
   });
+  document.querySelectorAll(".cert-preview-open-btn").forEach(btn => {
+    btn.onclick = (ev) => { ev.stopPropagation(); openCertPreviewModal(btn.dataset.certLevel); };
+  });
+}
+
+// Modal de "solo consulta en pantalla": muestra el diseño del certificado (colores,
+// sello, título) SIN generar ningún PDF. La generación real del PDF queda reservada
+// a generateCertificatePDF(), que solo se habilita cuando el alumno aprueba la prueba.
+function openCertPreviewModal(levelId) {
+  const cfg = CERT_THEMES[levelId];
+  const lvl = getLevel(levelId);
+  if (!cfg || !lvl) return;
+  const rgb = (a) => `rgb(${a[0]},${a[1]},${a[2]})`;
+  const sealIcon = cfg.seal === "circle" ? "⭘" : cfg.seal === "medallion" ? "🏅" : cfg.seal === "shield" ? "🛡️" : cfg.seal === "hexagon" ? "⬡" : "🎗️";
+  const overlay = document.createElement("div");
+  overlay.className = "cert-modal-overlay";
+  overlay.innerHTML = `
+    <div class="cert-modal">
+      <button class="cert-modal-close" id="cert-modal-close" aria-label="Cerrar">✕</button>
+      <div class="cert-preview-card">
+        <div class="cert-preview-swatch" style="background:linear-gradient(135deg, ${rgb(cfg.primary)}, ${rgb(cfg.secondary)})">
+          <span>${sealIcon}</span>
+        </div>
+        <div class="cert-preview-body">
+          <h4>${lvl.icon} ${escapeHtml(cfg.name)}</h4>
+          <span class="cert-preview-tag">${escapeHtml(cfg.title)}</span>
+          <p>${escapeHtml(cfg.cefr)}</p>
+          <p style="border-top:1px solid #eee;padding-top:10px">${t("cert_preview_locked_note")}</p>
+        </div>
+      </div>
+    </div>`;
+  document.body.appendChild(overlay);
+  const close = () => overlay.remove();
+  overlay.querySelector("#cert-modal-close").onclick = close;
+  overlay.onclick = (ev) => { if (ev.target === overlay) close(); };
 }
 
 /* ---------------------------------------------------------------------- */

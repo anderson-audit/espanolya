@@ -473,6 +473,21 @@ table.grammar-table th { background: var(--gray-bg); }
 .cert-preview-tag { display: inline-block; font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: .03em; color: var(--gray-2); margin-bottom: 6px; }
 .cert-preview-body p { font-size: .78rem; color: var(--gray-2); margin: 0 0 10px; line-height: 1.4; }
 
+/* ---------- Modal de vista previa de certificado (solo consulta en pantalla,       ---------- */
+/* ---------- no genera ningún PDF; el PDF real solo se genera al aprobar el nivel). ---------- */
+.cert-modal-overlay {
+  position: fixed; inset: 0; background: rgba(20,15,12,.55); backdrop-filter: blur(2px);
+  display: flex; align-items: center; justify-content: center; z-index: 999; padding: 20px;
+}
+.cert-modal { position: relative; width: 100%; max-width: 320px; animation: cert-modal-in .18s ease-out; }
+.cert-modal .cert-preview-card { background: #fff; box-shadow: 0 20px 50px rgba(0,0,0,.35); }
+.cert-modal-close {
+  position: absolute; top: -14px; right: -14px; width: 32px; height: 32px; border-radius: 50%;
+  border: none; background: #fff; color: var(--gray-1); font-weight: 700; cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0,0,0,.25); z-index: 1;
+}
+@keyframes cert-modal-in { from { opacity: 0; transform: scale(.92); } to { opacity: 1; transform: scale(1); } }
+
 /* ---------- Analíticas (aluno + admin) ---------- */
 .analytics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin-bottom: 18px; }
 .error-row { padding: 10px 0; border-bottom: 1px solid #eee; font-size: .87rem; }
