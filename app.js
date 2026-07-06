@@ -13,13 +13,14 @@ const COURSE_LEVELS = [
   LEVEL_INTERMEDIO,
   LEVEL_AVANZADO,
   LEVEL_SECRETOS,
-  LEVEL_PROFESIONAL
+  LEVEL_PROFESIONAL,
+  LEVEL_NORMAS
 ].filter(Boolean);
 
 // Ordem de progressão "principal" (o que precisa ser feito em sequência).
-// Secretos e Profesional são bônus: sempre desbloqueados, sem pré-requisito.
+// Secretos, Profesional e Normas são bônus: sempre desbloqueados, sem pré-requisito.
 const MAIN_SEQUENCE = ["fundamentos", "basico", "intermedio", "avanzado"];
-const BONUS_LEVELS = ["secretos", "profesional"];
+const BONUS_LEVELS = ["secretos", "profesional", "normas"];
 
 function getLevel(id) { return COURSE_LEVELS.find(l => l.id === id); }
 function getLesson(levelId, lessonId) {
@@ -139,6 +140,12 @@ const I18N = {
     analytics_students_count: "Alumnos activos", analytics_avg_score: "Nota promedio general",
     cert_config_title: "🎓 Layouts de Certificados", cert_config_intro: "Cada nivel principal tiene un diseño de certificado propio, generado automáticamente en PDF al aprobar la prueba. Aquí puedes ver una vista previa de cada diseño.",
     cert_preview_btn: "Ver ejemplo en PDF",
+    admin_nav_approvals: "Aprobaciones",
+    pending_title: "⏳ Cuenta pendiente de aprobación", pending_msg: "¡Gracias por registrarte! Un administrador necesita aprobar tu cuenta antes de que puedas acceder al curso. Te avisaremos apenas esté lista.",
+    pending_rejected_title: "🚫 Registro no aprobado", pending_rejected_msg: "Tu solicitud de registro no fue aprobada. Ponte en contacto con el administrador del curso si crees que esto es un error.",
+    pending_logout_btn: "Salir",
+    admin_approvals_title: "✅ Aprobaciones de Registro ({n})", admin_no_pending: "No hay registros pendientes de aprobación.",
+    admin_approve_btn: "✅ Aprobar", admin_reject_btn: "🚫 Rechazar", admin_pending_since: "Registrado el {date}",
   },
   pt: {
     auth_login_sub: "Entre para continuar aprendendo", auth_register_sub: "Crie sua conta grátis", auth_forgot_sub: "Recuperar senha",
@@ -221,6 +228,12 @@ const I18N = {
     analytics_students_count: "Alunos ativos", analytics_avg_score: "Nota média geral",
     cert_config_title: "🎓 Layouts de Certificados", cert_config_intro: "Cada nível principal tem um design de certificado próprio, gerado automaticamente em PDF ao passar na prova. Aqui você pode ver uma prévia de cada design.",
     cert_preview_btn: "Ver exemplo em PDF",
+    admin_nav_approvals: "Aprovações",
+    pending_title: "⏳ Conta pendente de aprovação", pending_msg: "Obrigado por se cadastrar! Um administrador precisa aprovar sua conta antes que você possa acessar o curso. Vamos avisar assim que estiver liberada.",
+    pending_rejected_title: "🚫 Cadastro não aprovado", pending_rejected_msg: "Sua solicitação de cadastro não foi aprovada. Entre em contato com o administrador do curso se achar que isso é um engano.",
+    pending_logout_btn: "Sair",
+    admin_approvals_title: "✅ Aprovações de Cadastro ({n})", admin_no_pending: "Não há cadastros pendentes de aprovação.",
+    admin_approve_btn: "✅ Aprovar", admin_reject_btn: "🚫 Rejeitar", admin_pending_since: "Cadastrado em {date}",
   },
   en: {
     auth_login_sub: "Sign in to keep learning", auth_register_sub: "Create your free account", auth_forgot_sub: "Reset password",
@@ -303,6 +316,12 @@ const I18N = {
     analytics_students_count: "Active students", analytics_avg_score: "Overall average score",
     cert_config_title: "🎓 Certificate Layouts", cert_config_intro: "Each main level has its own certificate design, generated automatically as a PDF when the exam is passed. Preview each design here.",
     cert_preview_btn: "View sample PDF",
+    admin_nav_approvals: "Approvals",
+    pending_title: "⏳ Account pending approval", pending_msg: "Thanks for signing up! An administrator needs to approve your account before you can access the course. We'll let you know as soon as it's ready.",
+    pending_rejected_title: "🚫 Registration not approved", pending_rejected_msg: "Your registration request was not approved. Please contact the course administrator if you believe this is a mistake.",
+    pending_logout_btn: "Log out",
+    admin_approvals_title: "✅ Registration Approvals ({n})", admin_no_pending: "No registrations pending approval.",
+    admin_approve_btn: "✅ Approve", admin_reject_btn: "🚫 Reject", admin_pending_since: "Registered on {date}",
   },
 };
 
@@ -349,6 +368,7 @@ const state = {
   speaking: false,
   listening: false,
   adminStudents: [],
+  adminPending: [],       // alumnos con registro pendiente de aprobación
   adminAttempts: [],       // caché de intentos de ejercicios de todos los alumnos (analíticas admin)
   myAttempts: [],          // caché de intentos de ejercicios del alumno actual (analíticas propias)
   errorMsg: "",
@@ -604,6 +624,7 @@ function render() {
   switch (state.screen) {
     case "loading": return renderLoading();
     case "auth": return renderAuth();
+    case "pendingApproval": return renderPendingApproval();
     case "dashboard": return renderDashboard();
     case "levels": return renderLevels();
     case "lessonList": return renderLessonList();
@@ -615,6 +636,7 @@ function render() {
     case "notebook": return renderNotebook();
     case "analytics": return renderAnalytics();
     case "admin": return renderAdminOverview();
+    case "adminApprovals": return renderAdminApprovals();
     case "adminStudents": return renderAdminStudents();
     case "adminAnalytics": return renderAdminAnalytics();
     case "adminCerts": return renderAdminCerts();
@@ -715,8 +737,12 @@ async function onAuthSubmit(e) {
       const pass = document.getElementById("f-pass").value;
       const cred = await auth.createUserWithEmailAndPassword(email, pass);
       const role = ADMIN_EMAILS.includes(email.toLowerCase()) ? "admin" : "aluno";
+      // Todo registro de alumno nace "pendiente": solo se vuelve efectivo cuando un
+      // administrador lo aprueba en el panel de Aprobaciones (evita que cualquiera
+      // se registre y tenga acceso inmediato al curso).
+      const status = role === "admin" ? "approved" : "pending";
       await db.collection("users").doc(cred.user.uid).set({
-        name, email, role, createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        name, email, role, status, createdAt: firebase.firestore.FieldValue.serverTimestamp(),
         prefs: { theme: "espana", font: "poppins", lang: state.prefs.lang || "es" }
       });
       await initProgressDoc(cred.user.uid);
@@ -746,6 +772,31 @@ function translateFirebaseError(err) {
   return map[err.code] || ("Error: " + err.message);
 }
 
+// Pantalla mostrada a un alumno cuyo registro todavía no fue aprobado (o fue
+// rechazado) por un administrador. No carga nada de progreso/curso.
+function renderPendingApproval() {
+  const rejected = state.user && state.user.status === "rejected";
+  root.innerHTML = `
+    <div class="auth-wrap">
+      <div class="auth-grid">
+        <div class="auth-hero">
+          <div class="auth-hero-flag"><div></div><div></div><div></div></div>
+          <div class="auth-hero-emblem">${rejected ? "🚫" : "⏳"}</div>
+          <h1>${t("auth_hero_title")}</h1>
+          <p>${t("auth_hero_sub")}</p>
+        </div>
+        <div class="auth-card">
+          <div class="flag-strip"><div></div><div></div><div></div></div>
+          <h1>¡Español Ya!</h1>
+          <div class="auth-sub">${rejected ? t("pending_rejected_title") : t("pending_title")}</div>
+          <p style="color:var(--gray-2);line-height:1.6;margin:14px 0 22px">${rejected ? t("pending_rejected_msg") : t("pending_msg")}</p>
+          <button class="btn btn-primary btn-block" id="pending-logout">${t("pending_logout_btn")}</button>
+        </div>
+      </div>
+    </div>`;
+  document.getElementById("pending-logout").onclick = () => auth.signOut();
+}
+
 async function initProgressDoc(uid) {
   const initial = { xp: 0, levels: {}, schedule: { durationMonths: DEFAULT_SCHEDULE_MONTHS, startDate: new Date().toISOString() } };
   MAIN_SEQUENCE.forEach((id, idx) => {
@@ -771,19 +822,31 @@ auth.onAuthStateChanged(async (fbUser) => {
     let userDoc = await db.collection("users").doc(fbUser.uid).get();
     if (!userDoc.exists) {
       const role = ADMIN_EMAILS.includes((fbUser.email || "").toLowerCase()) ? "admin" : "aluno";
+      const status = role === "admin" ? "approved" : "pending";
       await db.collection("users").doc(fbUser.uid).set({
-        name: fbUser.email.split("@")[0], email: fbUser.email, role,
+        name: fbUser.email.split("@")[0], email: fbUser.email, role, status,
         createdAt: firebase.firestore.FieldValue.serverTimestamp(),
         prefs: { theme: "espana", font: "poppins", lang: state.prefs.lang || "es" }
       });
       userDoc = await db.collection("users").doc(fbUser.uid).get();
     }
     const userData = userDoc.data();
-    state.user = { uid: fbUser.uid, email: fbUser.email, name: userData.name, role: userData.role };
+    // Cuentas creadas antes de que existiera este control no tienen campo "status":
+    // se consideran "approved" automáticamente (no afecta a nadie que ya usaba el curso).
+    const status = userData.status || "approved";
+    state.user = { uid: fbUser.uid, email: fbUser.email, name: userData.name, role: userData.role, status };
     state.prefs = { theme: "espana", font: "poppins", lang: state.prefs.lang || "es", ...(userData.prefs || {}) };
     applyTheme(state.prefs.theme);
     applyFont(state.prefs.font);
     localStorage.setItem("ey_ui_lang", state.prefs.lang);
+
+    if (state.user.role !== "admin" && state.user.status !== "approved") {
+      // Cuenta todavía no aprobada (o rechazada) por un administrador: no cargamos
+      // progreso/config, solo mostramos la pantalla de espera/rechazo.
+      state.screen = "pendingApproval";
+      render();
+      return;
+    }
 
     let progDoc = await db.collection("progress").doc(fbUser.uid).get();
     if (!progDoc.exists) {
@@ -927,6 +990,7 @@ const SIDEBAR_ACCOUNT_ITEMS = [
 // (no pestañas escondidas) para que el menú refleje todo lo que el admin puede hacer.
 const SIDEBAR_ADMIN_ITEMS = [
   { screen: "admin", icon: "🛠️", labelKey: "admin_nav_overview" },
+  { screen: "adminApprovals", icon: "✅", labelKey: "admin_nav_approvals" },
   { screen: "adminStudents", icon: "👥", labelKey: "admin_nav_students" },
   { screen: "adminAnalytics", icon: "📈", labelKey: "admin_nav_analytics" },
   { screen: "adminCerts", icon: "🎓", labelKey: "admin_nav_certs" },
@@ -1038,6 +1102,12 @@ function attachShellEvents() {
         Promise.all([loadAdminStudents(), loadAdminAttempts()]).then(render);
         return;
       }
+      if (target === "adminApprovals") {
+        state.screen = target;
+        render();
+        loadAdminPending().then(render);
+        return;
+      }
       if (target === "analytics") {
         state.screen = target;
         render();
@@ -1065,7 +1135,7 @@ function attachShellEvents() {
 // Reaprovecha las imágenes ya curadas de la primera lección de cada nivel como
 // foto de fondo del card (mismo criterio visual del panel, sin duplicar investigación).
 const LEVEL_HERO_FIRST_LESSON = {
-  fundamentos: "fund-0", basico: "b1", intermedio: "i1", avanzado: "a1", secretos: "s1", profesional: "p1",
+  fundamentos: "fund-0", basico: "b1", intermedio: "i1", avanzado: "a1", secretos: "s1", profesional: "p1", normas: "n1",
 };
 function levelHeroImageUrl(levelId) {
   const lessonId = LEVEL_HERO_FIRST_LESSON[levelId];
@@ -1079,7 +1149,10 @@ function levelCardHtml(levelId, isBonus) {
   const unlocked = isLevelUnlocked(levelId);
   const pct = levelCompletionPct(levelId);
   const p = levelProgress(levelId);
-  const showCert = !isBonus && MAIN_SEQUENCE.includes(levelId) && p.examPassed;
+  // Certificado disponible para cualquier nivel que tenga prueba propia Y un modelo
+  // visual configurado en CERT_THEMES (los niveles principales lo tienen todos; entre
+  // los bônus, solo "normas" tiene prueba + modelo propio, así que gana su certificado).
+  const showCert = !!lvl.exam && !!CERT_THEMES[levelId] && p.examPassed;
   const bgUrl = levelHeroImageUrl(levelId);
   const isCurrent = !isBonus && levelId === currentActiveLevelId() && unlocked && !p.examPassed;
   return `
@@ -1954,6 +2027,35 @@ async function loadAdminStudents() {
   }
 }
 
+// Carga los registros "aluno" que todavía están con status "pending" (esperando
+// aprobación de un administrador) para la pantalla de Aprobaciones.
+async function loadAdminPending() {
+  try {
+    const snap = await db.collection("users").where("status", "==", "pending").get();
+    state.adminPending = snap.docs.map(d => ({ uid: d.id, ...d.data() }));
+  } catch (e) {
+    console.warn("No se pudieron cargar los registros pendientes.", e);
+    state.adminPending = [];
+  }
+}
+
+async function approveUser(uid) {
+  try {
+    await db.collection("users").doc(uid).set({ status: "approved", approvedAt: firebase.firestore.FieldValue.serverTimestamp() }, { merge: true });
+    await loadAdminPending();
+    render();
+  } catch (e) { console.warn(e); alert("No se pudo aprobar el registro. Intenta de nuevo."); }
+}
+
+async function rejectUser(uid) {
+  if (!confirm("¿Seguro que quieres rechazar este registro? El usuario no podrá acceder al curso.")) return;
+  try {
+    await db.collection("users").doc(uid).set({ status: "rejected", rejectedAt: firebase.firestore.FieldValue.serverTimestamp() }, { merge: true });
+    await loadAdminPending();
+    render();
+  } catch (e) { console.warn(e); alert("No se pudo rechazar el registro. Intenta de nuevo."); }
+}
+
 // Carga los intentos de ejercicios de TODOS los alumnos (colección "attempts"),
 // limitado a los últimos 500 para no sobrecargar el panel de analíticas del admin.
 async function loadAdminAttempts() {
@@ -2013,8 +2115,42 @@ function renderAdminOverview() {
     state.screen = target;
     render();
     if (target === "adminAnalytics") Promise.all([loadAdminStudents(), loadAdminAttempts()]).then(render);
+    else if (target === "adminApprovals") loadAdminPending().then(render);
     else loadAdminStudents().then(render);
   });
+}
+
+function renderAdminApprovals() {
+  root.innerHTML = wrapShell(`
+      <button class="back-link" id="back-dash">← Volver al panel</button>
+      <div class="section-title">${t("admin_title")}</div>
+      ${adminTabsHtml("adminApprovals")}
+      <div class="card">
+        <h3>${t("admin_approvals_title", { n: state.adminPending.length })}</h3>
+        ${state.adminPending.length === 0 ? `<p style="color:var(--gray-2)">${t("admin_no_pending")}</p>` : state.adminPending.map(u => `
+          <div class="student-row">
+            <div><strong>${escapeHtml(u.name || u.email)}</strong><br><span style="color:var(--gray-2)">${escapeHtml(u.email || "")}</span></div>
+            <div style="color:var(--gray-2);font-size:.85rem">${u.createdAt && u.createdAt.toDate ? t("admin_pending_since", { date: formatDate(u.createdAt.toDate(), state.prefs.lang || "es") }) : ""}</div>
+            <div style="display:flex;gap:8px">
+              <button class="btn btn-primary btn-sm" data-approve="${u.uid}">${t("admin_approve_btn")}</button>
+              <button class="btn btn-secondary btn-sm" data-reject="${u.uid}">${t("admin_reject_btn")}</button>
+            </div>
+          </div>`).join("")}
+      </div>
+      <div class="bottom-space"></div>
+    `, "adminApprovals");
+  attachShellEvents();
+  adminBackDashHandler();
+  document.querySelectorAll(".admin-tab-btn").forEach(b => b.onclick = () => {
+    const target = b.dataset.nav;
+    state.screen = target;
+    render();
+    if (target === "adminAnalytics") Promise.all([loadAdminStudents(), loadAdminAttempts()]).then(render);
+    else if (target === "adminApprovals") loadAdminPending().then(render);
+    else loadAdminStudents().then(render);
+  });
+  document.querySelectorAll("[data-approve]").forEach(b => b.onclick = () => approveUser(b.dataset.approve));
+  document.querySelectorAll("[data-reject]").forEach(b => b.onclick = () => rejectUser(b.dataset.reject));
 }
 
 function renderAdminStudents() {
@@ -2040,6 +2176,7 @@ function renderAdminStudents() {
     state.screen = target;
     render();
     if (target === "adminAnalytics") Promise.all([loadAdminStudents(), loadAdminAttempts()]).then(render);
+    else if (target === "adminApprovals") loadAdminPending().then(render);
     else loadAdminStudents().then(render);
   });
 }
@@ -2075,6 +2212,7 @@ function renderAdminConfig() {
     state.screen = target;
     render();
     if (target === "adminAnalytics") Promise.all([loadAdminStudents(), loadAdminAttempts()]).then(render);
+    else if (target === "adminApprovals") loadAdminPending().then(render);
     else loadAdminStudents().then(render);
   });
   document.getElementById("save-config").onclick = async () => {
@@ -2127,6 +2265,7 @@ function renderAdminCerts() {
     state.screen = target;
     render();
     if (target === "adminAnalytics") Promise.all([loadAdminStudents(), loadAdminAttempts()]).then(render);
+    else if (target === "adminApprovals") loadAdminPending().then(render);
     else loadAdminStudents().then(render);
   });
   document.querySelectorAll(".cert-preview-btn").forEach(btn => {
@@ -2211,6 +2350,7 @@ function renderAdminAnalytics() {
     state.screen = target;
     render();
     if (target === "adminAnalytics") Promise.all([loadAdminStudents(), loadAdminAttempts()]).then(render);
+    else if (target === "adminApprovals") loadAdminPending().then(render);
     else loadAdminStudents().then(render);
   });
   if (attempts.length) {
@@ -2597,6 +2737,13 @@ const CERT_THEMES = {
     cefr: "Equivalente al nivel B2 del Marco Común Europeo de Referencia (MCER)",
     primary: [107, 30, 60], secondary: [212, 160, 23], corner: "fleur", seal: "ribbon",
   },
+  // Módulo bônus especial — modelo visual totalmente distinto de los demás (verde/marino
+  // institucional, ornamento tipo "engranaje" evocando normas técnicas/ISO, sello hexagonal).
+  normas: {
+    name: "Normas", title: "CERTIFICADO ESPECIAL DE GRAMÁTICA NORMATIVA", subtitle: "Módulo Bônus: Español de las Normas",
+    cefr: "Vocabulario técnico y gramática avanzada en contexto normativo/profesional",
+    primary: [15, 76, 58], secondary: [201, 162, 39], corner: "gear", seal: "hexagon",
+  },
 };
 
 function buildCertId(levelId) {
@@ -2656,6 +2803,20 @@ function drawCornerOrnament(doc, W, H, style, color) {
       doc.circle(x, y - fy * 3, 1.6, "S");
       doc.circle(x - fx * 7, y, 1.1, "S");
       doc.circle(x + fx * 7, y, 1.1, "S");
+    } else if (style === "gear") {
+      // Ornamento tipo "engranaje" — evoca normas técnicas / ISO.
+      doc.setLineWidth(0.55);
+      doc.circle(x, y, 5.5, "S");
+      for (let i = 0; i < 8; i++) {
+        const ang = (i * 45) * Math.PI / 180;
+        const r1 = 5.5, r2 = 8.3;
+        doc.line(
+          x + fx * r1 * Math.cos(ang), y + fy * r1 * Math.sin(ang),
+          x + fx * r2 * Math.cos(ang), y + fy * r2 * Math.sin(ang)
+        );
+      }
+      doc.setFillColor(color[0], color[1], color[2]);
+      doc.circle(x, y, 1.6, "F");
     }
   });
 }
@@ -2694,6 +2855,29 @@ function drawSeal(doc, cx, cy, style, primary, secondary) {
     doc.triangle(cx + 22, cy - 6, cx + 22, cy + 6, cx + 28, cy, "F");
     doc.setFont("helvetica", "bold"); doc.setFontSize(9); doc.setTextColor(255, 255, 255);
     doc.text("EXCELENCIA", cx, cy + 3, { align: "center" });
+  } else if (style === "hexagon") {
+    // Sello hexagonal — distinto de los círculos/escudo/cinta de los demás modelos.
+    const drawHex = (r, lw) => {
+      const pts = [];
+      for (let i = 0; i < 6; i++) {
+        const ang = (60 * i - 90) * Math.PI / 180;
+        pts.push([cx + r * Math.cos(ang), cy + r * Math.sin(ang)]);
+      }
+      doc.setLineWidth(lw);
+      for (let i = 0; i < 6; i++) {
+        const a = pts[i], b = pts[(i + 1) % 6];
+        doc.line(a[0], a[1], b[0], b[1]);
+      }
+    };
+    doc.setDrawColor(primary[0], primary[1], primary[2]);
+    drawHex(13, 0.9);
+    drawHex(9.5, 0.4);
+    doc.setFillColor(primary[0], primary[1], primary[2]);
+    doc.circle(cx, cy, 1, "F");
+    doc.setFont("helvetica", "bold"); doc.setFontSize(8.5); doc.setTextColor(primary[0], primary[1], primary[2]);
+    doc.text("ISO", cx, cy - 2, { align: "center" });
+    doc.setFontSize(6);
+    doc.text("VERIFICADO", cx, cy + 4, { align: "center" });
   }
 }
 
@@ -2978,6 +3162,12 @@ const LESSON_IMAGES = {
   "p2": { file: "Meeting_room,_table_and_paper_board.jpg", alt: "Sala de reuniones", caption: "Frases para abrir y cerrar una reunión de auditoría." },
   "p3": { file: "Conference_room_table_(Unsplash).jpg", alt: "Mesa de sala de conferencias", caption: "Cómo redactar el informe y el plan de auditoría." },
   "p4": { file: "Workspace_Looking_Out.jpg", alt: "Espacio de trabajo profesional", caption: "Comunicación formal: correos y llamadas de negocios." },
+  // Español de las Normas (módulo bônus especial — gramática a partir de las normas ISO)
+  "n1": { file: "Audit_Cycle.jpg", alt: "Ciclo de auditoría de calidad", caption: "El verbo que manda: deber + infinitivo (ISO 9001)." },
+  "n2": { file: "Reduce_Reuse_Recycle.jpg", alt: "Símbolo de reducir, reusar y reciclar", caption: "Concordancia en cadena y el se impersonal (ISO 14001)." },
+  "n3": { file: "Occupational_Safety_Equipment.jpg", alt: "Equipo de protección personal", caption: "El subjuntivo del riesgo (ISO 45001)." },
+  "n4": { file: "Cybersecurity.png", alt: "Ilustración de ciberseguridad", caption: "La voz pasiva de la seguridad (ISO/IEC 27001)." },
+  "n5": { file: "Team_work.jpg", alt: "Equipo trabajando en conjunto", caption: "Repaso integrador: la auditoría de las cuatro normas." },
 };
 
 function lessonHeroImageHtml(lessonId) {

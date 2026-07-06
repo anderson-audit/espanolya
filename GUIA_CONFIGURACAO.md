@@ -53,10 +53,27 @@ service cloud.firestore {
         get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == 'admin';
     }
 
+    function isPreApprovedAdminEmail() {
+      return request.resource.data.role == 'admin' &&
+        request.resource.data.email in ['anderson.rsant@gmail.com', 'anderson@quallisi.com.br'];
+    }
+
     match /users/{uid} {
       allow read: if isOwner(uid) || isAdmin();
-      allow create: if isOwner(uid);
-      allow update: if isOwner(uid) || isAdmin();
+      // El registro solo puede crearse como "aluno" + status "pending" (aprobación
+      // manual del admin) — o como "admin" si el e-mail está en la lista pre-aprobada.
+      allow create: if isOwner(uid) && (
+        isPreApprovedAdminEmail() ||
+        (request.resource.data.role == 'aluno' && request.resource.data.status == 'pending')
+      );
+      // El propio usuario puede actualizar su documento (nombre, preferencias, etc.)
+      // pero NUNCA puede cambiar su propio "role" o "status" — eso queda reservado
+      // al administrador, para que la aprobación de registro sea real.
+      allow update: if isAdmin() || (
+        isOwner(uid) &&
+        request.resource.data.role == resource.data.role &&
+        request.resource.data.status == resource.data.status
+      );
       allow delete: if false;
     }
 
@@ -113,6 +130,10 @@ const ADMIN_EMAILS = [
 Qualquer pessoa que se cadastrar no app usando um e-mail desta lista vira **administrador** automaticamente (pode configurar a nota mínima de cada nível e ver o progresso de todos os alunos). Todos os demais cadastros viram **alunos** normais. Um administrador também é um usuário do sistema como outro qualquer — ele pode estudar as aulas normalmente, além de ter acesso ao botão **"⚙️ Admin"** no topo da tela.
 
 Para promover alguém a administrador depois (ou tirar o acesso), vá em **Firestore Database → coleção `users` → documento da pessoa** e edite o campo `role` para `"admin"` ou `"aluno"`.
+
+### Aprovação de novos cadastros
+
+Todo cadastro de aluno nasce com `status: "pending"` — o aluno consegue criar a conta, mas o sistema mostra apenas uma tela de "aguardando aprobación" até que você (administrador) aprove. Para aprovar ou rejeitar, entre no app como admin e vá em **⚙️ Admin → ✅ Aprobaciones**: lá aparece a lista de todo mundo que se cadastrou e ainda não foi aprovado, com botões de Aprobar/Rechazar. Isso evita que qualquer pessoa se cadastre e tenha acesso imediato ao curso. As regras do Firestore (acima) já impedem que o próprio aluno mude seu `status` ou `role` sozinho — só um admin pode aprovar.
 
 ## Passo 6 — Colocar o app no ar (GitHub Pages, grátis, sem cartão)
 
