@@ -7,6 +7,16 @@
 /* ---------------------------------------------------------------------- */
 /* 0. MONTAGEM DO CURSO A PARTIR DOS ARQUIVOS content-*.js                 */
 /* ---------------------------------------------------------------------- */
+// "Canciones" es un nivel bônus especial: a diferencia de los demás (contenido fijo
+// escrito en los archivos content-*.js), su contenido (letras) lo agrega el propio
+// administrador desde el panel — por eso .lessons empieza vacío y se llena en tiempo
+// de ejecución con loadSongs() (colección "songs" de Firestore). Ver sección 19b.
+const LEVEL_CANCIONES = {
+  id: "canciones", icon: "🎵", name: "Canciones",
+  description: "Aprende español cantando: descubre la letra, escucha paso a paso y completa los espacios de tus canciones favoritas.",
+  lessons: [],
+};
+
 const COURSE_LEVELS = [
   LEVEL_FUNDAMENTOS,
   LEVEL_BASICO,
@@ -14,13 +24,14 @@ const COURSE_LEVELS = [
   LEVEL_AVANZADO,
   LEVEL_SECRETOS,
   LEVEL_PROFESIONAL,
-  LEVEL_NORMAS
+  LEVEL_NORMAS,
+  LEVEL_CANCIONES,
 ].filter(Boolean);
 
 // Ordem de progressão "principal" (o que precisa ser feito em sequência).
-// Secretos, Profesional e Normas são bônus: sempre desbloqueados, sem pré-requisito.
+// Secretos, Profesional, Normas y Canciones son bônus: sempre desbloqueados, sem pré-requisito.
 const MAIN_SEQUENCE = ["fundamentos", "basico", "intermedio", "avanzado"];
-const BONUS_LEVELS = ["secretos", "profesional", "normas"];
+const BONUS_LEVELS = ["secretos", "profesional", "normas", "canciones"];
 
 function getLevel(id) { return COURSE_LEVELS.find(l => l.id === id); }
 function getLesson(levelId, lessonId) {
@@ -36,6 +47,10 @@ const auth = firebase.auth();
 const db = firebase.firestore();
 
 const DEFAULT_PASS_SCORES = { fundamentos: 70, basico: 70, intermedio: 70, avanzado: 70 };
+// Modo de liberación del gabarito (respuesta correcta): "immediate" = se muestra apenas
+// el alumno responde cada pregunta (comportamiento histórico); "after" = se oculta durante
+// el ejercicio/prueba y solo se libera en la pantalla de Revisión, al terminar.
+const DEFAULT_GABARITO_MODE = "immediate";
 const DEFAULT_SCHEDULE_MONTHS = 12;
 const SCHEDULE_PRESETS = [3, 6, 8, 12];
 const MS_PER_MONTH = 1000 * 60 * 60 * 24 * 30.4368; // média de dias por mês (ano civil / 12)
@@ -81,6 +96,9 @@ const I18N = {
     btn_back_to: "Volver a {name}", btn_retry: "Intentar de nuevo",
     admin_title: "⚙️ Panel de Administrador", admin_scores_title: "Nota mínima para aprobar cada nivel (%)",
     admin_save: "Guardar configuración", admin_saved: "¡Configuración guardada!",
+    admin_gabarito_title: "Liberación del gabarito", admin_gabarito_label: "¿Cuándo se muestra la respuesta correcta?",
+    admin_gabarito_immediate: "Inmediato — al responder cada pregunta", admin_gabarito_after: "Solo al finalizar — el alumno revisa todo junto al terminar",
+    admin_gabarito_hint: "Elige si el alumno ve la respuesta correcta apenas responde cada pregunta, o si prefieres ocultarla durante el ejercicio/prueba. En los dos casos, el alumno siempre puede consultar después sus respuestas y el gabarito completo en la pantalla de Revisión.",
     admin_students_title: "Alumnos y progreso ({n})", admin_no_students: "Todavía no hay alumnos con pruebas realizadas.",
     back_panel: "← Volver al panel",
     account_title: "👤 Mi Cuenta", account_tab_security: "Seguridad", account_tab_appearance: "Apariencia", account_tab_profile: "Perfil",
@@ -172,6 +190,9 @@ const I18N = {
     btn_back_to: "Voltar a {name}", btn_retry: "Tentar novamente",
     admin_title: "⚙️ Painel do Administrador", admin_scores_title: "Nota mínima para aprovar cada nível (%)",
     admin_save: "Salvar configuração", admin_saved: "Configuração salva!",
+    admin_gabarito_title: "Liberação do gabarito", admin_gabarito_label: "Quando a resposta correta é exibida?",
+    admin_gabarito_immediate: "Imediato — ao responder cada pergunta", admin_gabarito_after: "Só ao final — o aluno revisa tudo junto ao terminar",
+    admin_gabarito_hint: "Escolha se o aluno vê a resposta correta assim que responde cada pergunta, ou se prefere ocultá-la durante o exercício/prova. Nos dois casos, o aluno sempre pode consultar depois suas respostas e o gabarito completo na tela de Revisão.",
     admin_students_title: "Alunos e progresso ({n})", admin_no_students: "Ainda não há alunos com provas realizadas.",
     back_panel: "← Voltar ao painel",
     account_title: "👤 Minha Conta", account_tab_security: "Segurança", account_tab_appearance: "Aparência", account_tab_profile: "Perfil",
@@ -263,6 +284,9 @@ const I18N = {
     btn_back_to: "Back to {name}", btn_retry: "Try again",
     admin_title: "⚙️ Admin Panel", admin_scores_title: "Minimum passing score per level (%)",
     admin_save: "Save settings", admin_saved: "Settings saved!",
+    admin_gabarito_title: "Answer key release", admin_gabarito_label: "When is the correct answer shown?",
+    admin_gabarito_immediate: "Immediately — as each question is answered", admin_gabarito_after: "Only at the end — the student reviews everything together when finished",
+    admin_gabarito_hint: "Choose whether the student sees the correct answer right after answering each question, or whether you'd rather hide it during the exercise/exam. Either way, the student can always check their answers and the full answer key afterward on the Review screen.",
     admin_students_title: "Students and progress ({n})", admin_no_students: "No students have taken exams yet.",
     back_panel: "← Back to panel",
     account_title: "👤 My Account", account_tab_security: "Security", account_tab_appearance: "Appearance", account_tab_profile: "Profile",
@@ -360,11 +384,13 @@ function t(key, vars) {
 /* ---------------------------------------------------------------------- */
 const state = {
   screen: "loading",       // loading | auth | dashboard | levels | lessonList | lesson | exercises | exam | result
-                           // | notas | notebook | analytics | admin | adminStudents | adminAnalytics | adminCerts | adminConfig | account
+                           // | notas | notebook | analytics | admin | adminStudents | adminAnalytics | adminCerts | adminConfig | account | review
   authMode: "login",       // login | register | forgot
   user: null,              // { uid, email, name, role }
   progress: null,          // documento de progresso do Firestore
-  config: { passScores: { ...DEFAULT_PASS_SCORES } },
+  config: { passScores: { ...DEFAULT_PASS_SCORES }, gabaritoMode: DEFAULT_GABARITO_MODE },
+  exerciseDetails: [],     // detalle pregunta-a-pregunta del ejercicio/prueba en curso (para la Revisión)
+  reviewData: null,        // { title, items } — datos que muestra la pantalla de Revisión
   prefs: { theme: "espana", font: "poppins", lang: localStorage.getItem("ey_ui_lang") || "es" },
   currentLevelId: null,
   currentLessonId: null,
@@ -642,6 +668,7 @@ function render() {
     case "exercises": return renderExercise();
     case "exam": return renderExercise();
     case "result": return renderResult();
+    case "review": return renderReview();
     case "notas": return renderNotas();
     case "notebook": return renderNotebook();
     case "analytics": return renderAnalytics();
@@ -887,12 +914,41 @@ auth.onAuthStateChanged(async (fbUser) => {
 async function loadConfig() {
   try {
     const doc = await db.collection("config").doc("settings").get();
-    if (doc.exists && doc.data().passScores) {
-      state.config.passScores = { ...DEFAULT_PASS_SCORES, ...doc.data().passScores };
+    const data = doc.exists ? doc.data() : {};
+    if (data.passScores) {
+      state.config.passScores = { ...DEFAULT_PASS_SCORES, ...data.passScores };
     } else {
       await db.collection("config").doc("settings").set({ passScores: DEFAULT_PASS_SCORES }, { merge: true });
     }
+    if (data.gabaritoMode === "immediate" || data.gabaritoMode === "after") {
+      state.config.gabaritoMode = data.gabaritoMode;
+    } else {
+      state.config.gabaritoMode = DEFAULT_GABARITO_MODE;
+      await db.collection("config").doc("settings").set({ gabaritoMode: DEFAULT_GABARITO_MODE }, { merge: true });
+    }
   } catch (e) { console.warn("No se pudo cargar config, usando valores por defecto.", e); }
+}
+
+// true  = el gabarito (respuesta correcta) se muestra apenas se responde cada pregunta.
+// false = se oculta durante el ejercicio/prueba; solo se ve todo junto en la pantalla de Revisión.
+function isGabaritoImmediate() {
+  return (state.config.gabaritoMode || DEFAULT_GABARITO_MODE) !== "after";
+}
+
+// Texto legible de la respuesta correcta / modelo para cada tipo de ejercicio — usado tanto
+// en el feedback inmediato como en la pantalla de Revisión.
+function correctAnswerText(ex) {
+  if (ex.type === "mc") return ex.options[ex.correct];
+  if (ex.type === "fill" || ex.type === "translate") return ex.answer;
+  if (ex.type === "listen") return ex.answer;
+  if (ex.type === "speak") return ex.target;
+  if (ex.type === "order") return (ex.correctOrder || []).map(i => ex.items[i]).join(" → ");
+  if (ex.type === "open") return ex.sample || "";
+  return "";
+}
+
+function questionTextOf(ex) {
+  return (ex.q || ex.text || ex.prompt || "") + "";
 }
 
 function loadVoices() {
@@ -1458,11 +1514,14 @@ function renderLessonList() {
       </div>
       ${!unlocked ? `<div class="locked-banner">🔒 ${t("level_locked_alert")}${prevLvl ? ` (${prevLvl.name})` : ""} — ${t("level_preview_note")}</div>` : ""}
       ${lvl.lessons.map((lesson, i) => {
-        const done = p.lessonsCompleted && p.lessonsCompleted[lesson.id] && p.lessonsCompleted[lesson.id].done;
+        const lp = p.lessonsCompleted && p.lessonsCompleted[lesson.id];
+        const done = lp && lp.done;
+        const hasReview = done && Array.isArray(lp.review) && lp.review.length > 0;
         return `
         <div class="lesson-row ${done ? "done" : ""} ${!unlocked ? "locked preview-only" : ""}" data-lesson="${unlocked ? lesson.id : ""}">
           <div class="num">${done ? "✓" : !unlocked ? "🔒" : (lesson.order || i + 1)}</div>
           <div class="info"><h4>${escapeHtml(lesson.title)}</h4><span>${escapeHtml(lesson.subtitle || "")}</span></div>
+          ${hasReview ? `<button class="btn-icon lesson-review-btn" data-lesson-review="${lesson.id}" title="Ver mis respuestas y el gabarito">🔍</button>` : ""}
           <div class="chev">${unlocked ? "›" : ""}</div>
         </div>`;
       }).join("")}
@@ -1470,6 +1529,7 @@ function renderLessonList() {
       <div class="lesson-row exam-row ${!unlocked ? "locked" : ""}" id="go-exam" data-locked="${!unlocked}">
         <div class="num">${unlocked ? "📝" : "🔒"}</div>
         <div class="info"><h4>${lvl.exam.title}</h4><span>Nota mínima para aprobar: ${passScoreFor(lvl.id)}%${p.examPassed ? " · ✅ Aprobado con " + p.examScore + "%" : ""}</span></div>
+        ${Array.isArray(p.examReview) && p.examReview.length ? `<button class="btn-icon lesson-review-btn" data-exam-review="1" title="Ver mis respuestas y el gabarito">🔍</button>` : ""}
         <div class="chev">${unlocked ? "›" : ""}</div>
       </div>` : ""}
       <div class="bottom-space"></div>
@@ -1488,6 +1548,18 @@ function renderLessonList() {
     const examBtn = document.getElementById("go-exam");
     if (examBtn) examBtn.onclick = () => startExam(state.currentLevelId);
   }
+  document.querySelectorAll(".lesson-review-btn").forEach(btn => {
+    btn.onclick = (ev) => {
+      ev.stopPropagation();
+      if (btn.dataset.lessonReview) {
+        const lesson = lvl.lessons.find(l => l.id === btn.dataset.lessonReview);
+        const lp = p.lessonsCompleted[btn.dataset.lessonReview];
+        openReview({ title: `✍️ ${lesson ? lesson.title : "Ejercicios"} — ${lvl.name}`, items: lp.review || [], backTo: "lessonList" });
+      } else if (btn.dataset.examReview) {
+        openReview({ title: `📝 ${lvl.exam ? lvl.exam.title : "Prueba"} — ${lvl.name}`, items: p.examReview || [], backTo: "lessonList" });
+      }
+    };
+  });
 }
 
 /* ---------------------------------------------------------------------- */
@@ -1568,6 +1640,7 @@ function startLessonExercises(lesson) {
   state.exerciseQueue = lesson.exercises;
   state.exerciseIndex = 0;
   state.exerciseAnswers = [];
+  state.exerciseDetails = [];
   state.isExam = false;
   state.screen = "exercises";
   render();
@@ -1579,6 +1652,7 @@ function startExam(levelId) {
   state.exerciseQueue = lvl.exam.questions;
   state.exerciseIndex = 0;
   state.exerciseAnswers = [];
+  state.exerciseDetails = [];
   state.isExam = true;
   state.screen = "exam";
   render();
@@ -1632,7 +1706,9 @@ function renderExercise() {
     body = `
       <div class="ex-question">✍️ ${escapeHtml(ex.q)}</div>
       <textarea class="ex-input" id="ex-answer" rows="3" placeholder="Escribe tu respuesta..."></textarea>
-      <div class="ex-feedback ok">Respuesta modelo: <em>${escapeHtml(ex.sample || "")}</em></div>
+      ${isGabaritoImmediate()
+        ? `<div class="ex-feedback ok">Respuesta modelo: <em>${escapeHtml(ex.sample || "")}</em></div>`
+        : `<div class="ex-feedback neutral">📝 Vas a poder comparar tu respuesta con la respuesta modelo en la Revisión, al terminar.</div>`}
       <div class="ex-actions"><button class="btn btn-primary" id="ex-next">Siguiente →</button></div>`;
   }
 
@@ -1666,6 +1742,16 @@ function markAnswered(correct) {
 // Registra cada intento de ejercicio en Firestore (colección "attempts"), para alimentar
 // los dashboards de analíticas (propios y del admin): qué se acertó/erró, de qué tipo, en qué nivel/lección.
 function logAttempt(ex, correct, answerText) {
+  // Guarda el detalle de esta pregunta (tu respuesta + el gabarito) para la pantalla de
+  // Revisión que se muestra al terminar el ejercicio/prueba — independiente de si el
+  // feedback se reveló en el momento o no (eso lo decide isGabaritoImmediate()).
+  state.exerciseDetails.push({
+    type: ex.type,
+    question: questionTextOf(ex),
+    userAnswer: ((answerText || "") + "").slice(0, 400),
+    correctAnswer: (correctAnswerText(ex) + "").slice(0, 400),
+    correct: !!correct,
+  });
   try {
     if (!state.user) return;
     db.collection("attempts").add({
@@ -1685,6 +1771,10 @@ function logAttempt(ex, correct, answerText) {
 function showFeedback(correct, correctText) {
   const fb = document.getElementById("ex-feedback");
   if (!fb) return;
+  if (!isGabaritoImmediate()) {
+    fb.innerHTML = `<div class="ex-feedback neutral">📝 Respuesta registrada. Vas a ver el gabarito en la Revisión, al terminar.</div>`;
+    return;
+  }
   fb.innerHTML = correct
     ? `<div class="ex-feedback ok">✅ ¡Correcto!</div>`
     : `<div class="ex-feedback bad">❌ La respuesta correcta es: <strong>${escapeHtml(correctText)}</strong></div>`;
@@ -1713,9 +1803,13 @@ function wireExerciseInteractions(ex) {
         document.querySelectorAll(".ex-option").forEach(b => b.disabled = true);
         const i = parseInt(btn.dataset.i, 10);
         const correct = i === ex.correct;
-        btn.classList.add(correct ? "correct" : "incorrect");
-        if (!correct) {
-          document.querySelectorAll(".ex-option")[ex.correct].classList.add("correct");
+        if (isGabaritoImmediate()) {
+          btn.classList.add(correct ? "correct" : "incorrect");
+          if (!correct) {
+            document.querySelectorAll(".ex-option")[ex.correct].classList.add("correct");
+          }
+        } else {
+          btn.classList.add("selected-neutral");
         }
         showFeedback(correct, ex.options[ex.correct]);
         markAnswered(correct);
@@ -1812,57 +1906,42 @@ async function finishExerciseSet() {
   const correctCount = state.exerciseAnswers.filter(Boolean).length;
   const total = state.exerciseQueue.length;
   const score = total ? Math.round((correctCount / total) * 100) : 100;
+  const review = state.exerciseDetails.slice();
 
   if (state.isExam) {
     const passScore = passScoreFor(state.currentLevelId);
     const passed = score >= passScore;
-    await saveExamResult(state.currentLevelId, score, passed);
-    state.lastResult = { score, passed, levelId: state.currentLevelId, isExam: true };
+    await saveExamResult(state.currentLevelId, score, passed, review);
+    state.lastResult = { score, passed, levelId: state.currentLevelId, isExam: true, review };
   } else {
-    await saveLessonResult(state.currentLevelId, state.currentLessonId, score);
-    state.lastResult = { score, passed: true, levelId: state.currentLevelId, isExam: false };
+    await saveLessonResult(state.currentLevelId, state.currentLessonId, score, review);
+    state.lastResult = { score, passed: true, levelId: state.currentLevelId, isExam: false, lessonId: state.currentLessonId, review };
   }
   state.screen = "result";
   render();
 }
 
-async function saveLessonResult(levelId, lessonId, score) {
+async function saveLessonResult(levelId, lessonId, score, review) {
   const ref = db.collection("progress").doc(state.user.uid);
   const field = `levels.${levelId}.lessonsCompleted.${lessonId}`;
   const xpGain = 10 + Math.round(score / 10);
   await ref.update({
-    [field]: { done: true, score, at: firebase.firestore.FieldValue.serverTimestamp() },
+    [field]: { done: true, score, review: review || [], at: firebase.firestore.FieldValue.serverTimestamp() },
     xp: firebase.firestore.FieldValue.increment(xpGain)
   });
   if (!state.progress.levels[levelId]) state.progress.levels[levelId] = { lessonsCompleted: {} };
   if (!state.progress.levels[levelId].lessonsCompleted) state.progress.levels[levelId].lessonsCompleted = {};
-  state.progress.levels[levelId].lessonsCompleted[lessonId] = { done: true, score };
+  state.progress.levels[levelId].lessonsCompleted[lessonId] = { done: true, score, review: review || [] };
   state.progress.xp = (state.progress.xp || 0) + xpGain;
+  await updateProgressSummary();
 }
 
-async function saveExamResult(levelId, score, passed) {
-  const ref = db.collection("progress").doc(state.user.uid);
-  const xpGain = passed ? 50 : 5;
-  const idx = MAIN_SEQUENCE.indexOf(levelId);
-  const nextId = idx >= 0 ? MAIN_SEQUENCE[idx + 1] : null;
-  const updates = {
-    [`levels.${levelId}.examScore`]: score,
-    [`levels.${levelId}.examPassed`]: passed,
-    xp: firebase.firestore.FieldValue.increment(xpGain)
-  };
-  if (passed && nextId) updates[`levels.${nextId}.unlocked`] = true;
-  await ref.update(updates);
-
-  if (!state.progress.levels[levelId]) state.progress.levels[levelId] = {};
-  state.progress.levels[levelId].examScore = score;
-  state.progress.levels[levelId].examPassed = passed;
-  state.progress.xp = (state.progress.xp || 0) + xpGain;
-  if (passed && nextId) {
-    if (!state.progress.levels[nextId]) state.progress.levels[nextId] = {};
-    state.progress.levels[nextId].unlocked = true;
-  }
-
-  // resumo público para o painel de admin (sem precisar de custom claims)
+// Resumen público usado por el panel de Admin ("Alumnos"/"Analíticas") para listar a
+// TODOS los usuarios con actividad — antes solo se creaba/actualizaba al completar una
+// prueba, por lo que alguien que solo hizo lecciones (incluido un admin estudiando su
+// propio curso) nunca aparecía en "Alumnos". Ahora se actualiza también al completar
+// cualquier lección, para cualquier rol (admin o aluno), reflejando actividad real.
+async function updateProgressSummary() {
   try {
     await db.collection("progress_summary").doc(state.user.uid).set({
       name: state.user.name, email: state.user.email,
@@ -1871,6 +1950,33 @@ async function saveExamResult(levelId, score, passed) {
       levels: Object.fromEntries(Object.entries(state.progress.levels).map(([k, v]) => [k, { examScore: v.examScore || null, examPassed: !!v.examPassed }]))
     }, { merge: true });
   } catch (e) { console.warn("No se pudo actualizar el resumen para el admin.", e); }
+}
+
+async function saveExamResult(levelId, score, passed, review) {
+  const ref = db.collection("progress").doc(state.user.uid);
+  const xpGain = passed ? 50 : 5;
+  const idx = MAIN_SEQUENCE.indexOf(levelId);
+  const nextId = idx >= 0 ? MAIN_SEQUENCE[idx + 1] : null;
+  const updates = {
+    [`levels.${levelId}.examScore`]: score,
+    [`levels.${levelId}.examPassed`]: passed,
+    [`levels.${levelId}.examReview`]: review || [],
+    xp: firebase.firestore.FieldValue.increment(xpGain)
+  };
+  if (passed && nextId) updates[`levels.${nextId}.unlocked`] = true;
+  await ref.update(updates);
+
+  if (!state.progress.levels[levelId]) state.progress.levels[levelId] = {};
+  state.progress.levels[levelId].examScore = score;
+  state.progress.levels[levelId].examPassed = passed;
+  state.progress.levels[levelId].examReview = review || [];
+  state.progress.xp = (state.progress.xp || 0) + xpGain;
+  if (passed && nextId) {
+    if (!state.progress.levels[nextId]) state.progress.levels[nextId] = {};
+    state.progress.levels[nextId].unlocked = true;
+  }
+
+  await updateProgressSummary();
 }
 
 /* ---------------------------------------------------------------------- */
@@ -1888,6 +1994,7 @@ function renderNotas() {
     const avgLessons = lessonScores.length ? Math.round(lessonScores.reduce((a, b) => a + b, 0) / lessonScores.length) : null;
     const statusKey = status === "passed" ? "notas_status_passed" : status === "failed" ? "notas_status_failed"
       : status === "progress" ? "notas_status_progress" : status === "locked" ? "notas_status_locked" : "notas_status_pending";
+    const hasExamReview = Array.isArray(p.examReview) && p.examReview.length > 0;
     return `
       <tr class="${status === "locked" ? "row-locked" : ""}">
         <td>${lvl.icon} ${lvl.name}</td>
@@ -1895,6 +2002,7 @@ function renderNotas() {
         <td>${avgLessons !== null ? avgLessons + "%" : "—"}</td>
         <td>${typeof p.examScore === "number" ? p.examScore + "%" : "—"}</td>
         <td><span class="badge-status status-${status}">${t(statusKey)}</span></td>
+        <td>${hasExamReview ? `<button class="btn-icon notas-review-btn" data-level="${lvl.id}" title="Ver mis respuestas y el gabarito">🔍</button>` : "—"}</td>
       </tr>`;
   }).join("");
 
@@ -1915,7 +2023,7 @@ function renderNotas() {
       <div class="card">
         <table class="notas-table">
           <thead><tr>
-            <th>${t("notas_level_col")}</th><th>${t("notas_lessons_col")}</th><th>${t("notas_avg_col")}</th><th>${t("notas_exam_col")}</th><th>${t("notas_status_col")}</th>
+            <th>${t("notas_level_col")}</th><th>${t("notas_lessons_col")}</th><th>${t("notas_avg_col")}</th><th>${t("notas_exam_col")}</th><th>${t("notas_status_col")}</th><th>Revisión</th>
           </tr></thead>
           <tbody>${rows}</tbody>
         </table>
@@ -1923,6 +2031,17 @@ function renderNotas() {
       <div class="bottom-space"></div>
     `, "notas");
   attachShellEvents();
+  document.querySelectorAll(".notas-review-btn").forEach(btn => {
+    btn.onclick = () => {
+      const lvl = getLevel(btn.dataset.level);
+      const p = levelProgress(lvl.id);
+      openReview({
+        title: `📝 ${lvl.exam ? lvl.exam.title : "Prueba"} — ${lvl.name}`,
+        items: p.examReview || [],
+        backTo: "notas",
+      });
+    };
+  });
 }
 
 /* ---------------------------------------------------------------------- */
@@ -2102,6 +2221,102 @@ async function onDeleteNote(id) {
 }
 
 /* ---------------------------------------------------------------------- */
+/* 13e. CANCIONES: parsing de letras + generación automática de ejercicios */
+/* ---------------------------------------------------------------------- */
+// El administrador pega la letra completa en un textarea, una línea por renglón, y marca
+// las palabras que quiere convertir en "hueco" envolviéndolas en doble llave: {{palabra}}.
+// Ejemplo de línea que el admin escribiría: "No sé cómo {{pagarte}} todo lo que has hecho".
+// Esta función NUNCA contiene ni genera letras por sí misma — solo interpreta lo que el
+// propio administrador ya escribió/pegó (letras protegidas por derechos de autor deben
+// venir siempre de él, nunca ser transcritas por el asistente).
+const SONG_BLANK_RE = /\{\{\s*([^{}]+?)\s*\}\}/g;
+
+function parseSongLyrics(raw) {
+  return (raw || "")
+    .split("\n")
+    .map(l => l.trim())
+    .filter(l => l.length > 0);
+}
+
+// Texto limpio de una línea (huecos resueltos a la palabra real) — usado para mostrar la
+// letra completa en la pantalla de "escuchar y leer" y para el ejercicio de ordenar versos.
+function songLineClean(line) {
+  return line.replace(SONG_BLANK_RE, (_, word) => word);
+}
+
+// Cuenta cuántos huecos {{...}} hay en una línea, sin generar los ejercicios todavía.
+function songLineBlankCount(line) {
+  return (line.match(SONG_BLANK_RE) || []).length;
+}
+
+// A partir de las líneas ya separadas (parseSongLyrics), arma la fila de ejercicios:
+// un "fill" por cada hueco marcado (reutiliza el motor de ejercicios ya existente, con
+// gabarito inmediato/al final según la configuración del admin) + un "order" final con
+// un tramo de la canción (hasta 8 líneas) para practicar el orden de los versos.
+function buildSongExercises(lines) {
+  const exercises = [];
+  lines.forEach(line => {
+    let match;
+    SONG_BLANK_RE.lastIndex = 0;
+    while ((match = SONG_BLANK_RE.exec(line)) !== null) {
+      const word = match[1];
+      const blankedLine = line.replace(SONG_BLANK_RE, (m, w) => (w === word && m === match[0]) ? "___" : w);
+      exercises.push({ type: "fill", q: `Completa la letra: "${blankedLine}"`, answer: word });
+    }
+  });
+  const orderSlice = lines.slice(0, Math.min(8, lines.length)).map(songLineClean);
+  if (orderSlice.length >= 3) {
+    const order = orderSlice.map((_, i) => i);
+    // Baraja simple (Fisher-Yates) — determinística no hace falta, es solo para variar el orden inicial.
+    for (let i = order.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [order[i], order[j]] = [order[j], order[i]];
+    }
+    exercises.push({ type: "order", items: order.map(i => orderSlice[i]), correctOrder: order.map((_, pos) => order.indexOf(pos)) });
+  }
+  return exercises;
+}
+
+// Extrae el ID de video de cualquier formato de URL de YouTube (watch?v=, youtu.be/, embed/)
+// o lo deja pasar tal cual si el admin ya pegó solo el ID.
+function extractYoutubeId(input) {
+  const s = (input || "").trim();
+  const patterns = [
+    /(?:youtube\.com\/watch\?v=|youtube\.com\/embed\/|youtu\.be\/)([A-Za-z0-9_-]{6,})/,
+  ];
+  for (const re of patterns) {
+    const m = s.match(re);
+    if (m) return m[1];
+  }
+  return /^[A-Za-z0-9_-]{6,}$/.test(s) ? s : "";
+}
+
+// Convierte un documento de Firestore ("songs") en un objeto "lección" compatible con
+// el motor de lecciones/ejercicios ya existente (getLesson, startLessonExercises, etc.).
+function songDocToLesson(doc) {
+  const lines = parseSongLyrics(doc.lyricsRaw);
+  return {
+    id: doc.id,
+    title: doc.title || "Canción",
+    subtitle: doc.artist || "",
+    youtubeId: doc.youtubeId || "",
+    lyricsLines: lines.map(songLineClean),
+    exercises: buildSongExercises(lines),
+  };
+}
+
+async function loadSongs() {
+  try {
+    const snap = await db.collection("songs").orderBy("createdAt", "desc").get();
+    state.songs = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    LEVEL_CANCIONES.lessons = state.songs.map(songDocToLesson);
+  } catch (e) {
+    console.warn("No se pudieron cargar las canciones.", e);
+    state.songs = state.songs || [];
+  }
+}
+
+/* ---------------------------------------------------------------------- */
 /* 14. TELA: RESULTADO                                                     */
 /* ---------------------------------------------------------------------- */
 function renderResult() {
@@ -2115,8 +2330,9 @@ function renderResult() {
         ${r.isExam ? `<p>Nota mínima exigida: ${passScoreFor(r.levelId)}%</p>` : ""}
         ${r.isExam && r.passed ? `<p>🔓 ¡Has desbloqueado el próximo nivel!</p>` : ""}
         ${r.isExam && !r.passed ? `<p>Repasa la lección y vuelve a intentar la prueba cuando estés listo(a).</p>` : ""}
-        <div style="display:flex;gap:12px;justify-content:center;margin-top:20px">
+        <div style="display:flex;gap:12px;justify-content:center;margin-top:20px;flex-wrap:wrap">
           <button class="btn btn-secondary" id="res-back">Volver a ${lvl.name}</button>
+          ${r.review && r.review.length ? `<button class="btn btn-gold" id="res-review">🔍 Ver mis respuestas y el gabarito</button>` : ""}
           ${r.isExam && !r.passed ? `<button class="btn btn-primary" id="res-retry">Intentar de nuevo</button>` : ""}
         </div>
       </div>
@@ -2126,6 +2342,54 @@ function renderResult() {
   document.getElementById("res-back").onclick = () => { state.screen = "lessonList"; render(); };
   const retry = document.getElementById("res-retry");
   if (retry) retry.onclick = () => startExam(r.levelId);
+  const reviewBtn = document.getElementById("res-review");
+  if (reviewBtn) reviewBtn.onclick = () => openReview({
+    title: r.isExam ? `📝 ${lvl.exam ? lvl.exam.title : "Prueba"} — ${lvl.name}` : `✍️ Ejercicios — ${lvl.name}`,
+    items: r.review,
+    backTo: "result",
+  });
+}
+
+/* ---------------------------------------------------------------------- */
+/* 14b. TELA: REVISIÓN (mis respuestas x gabarito, pregunta a pregunta)     */
+/* ---------------------------------------------------------------------- */
+function openReview(data) {
+  state.reviewData = data;
+  state.screen = "review";
+  render();
+}
+
+function renderReview() {
+  const data = state.reviewData || { title: "Revisión", items: [], backTo: "dashboard" };
+  const items = data.items || [];
+  const rightCount = items.filter(it => it.correct).length;
+
+  root.innerHTML = wrapShell(`
+      <button class="back-link" id="review-back">← Volver</button>
+      <div class="section-title">🔍 ${escapeHtml(data.title || "Revisión")}</div>
+      <p style="color:var(--gray-2);margin-top:-8px">Aquí ves, pregunta a pregunta, lo que respondiste y cuál era la respuesta correcta (el gabarito).</p>
+      ${items.length === 0 ? `<div class="card"><p style="color:var(--gray-2);margin:0">Todavía no hay respuestas registradas para mostrar aquí.</p></div>` : `
+      <div class="home-stats-row">
+        <div class="home-stat-card highlight">
+          <span class="hs-label">Correctas</span>
+          <strong class="hs-value">${rightCount} / ${items.length}</strong>
+        </div>
+      </div>
+      ${items.map((it, i) => `
+        <div class="card review-item ${it.type === "open" ? "review-open" : (it.correct ? "review-ok" : "review-bad")}">
+          <div class="review-item-head">
+            <span class="review-item-num">${i + 1}</span>
+            <span class="review-item-badge">${it.type === "open" ? "✍️ Revisión libre" : (it.correct ? "✅ Correcta" : "❌ Incorrecta")}</span>
+          </div>
+          <div class="review-q">${escapeHtml(it.question || "")}</div>
+          <div class="review-row"><span class="review-label">Tu respuesta:</span> <span class="review-val">${escapeHtml(it.userAnswer || "(sin respuesta)")}</span></div>
+          <div class="review-row"><span class="review-label">${it.type === "open" ? "Respuesta modelo:" : "Respuesta correcta (gabarito):"}</span> <span class="review-val strong">${escapeHtml(it.correctAnswer || "—")}</span></div>
+        </div>
+      `).join("")}`}
+      <div class="bottom-space"></div>
+    `, "review");
+  attachShellEvents();
+  document.getElementById("review-back").onclick = () => { state.screen = data.backTo || "dashboard"; render(); };
 }
 
 /* ---------------------------------------------------------------------- */
@@ -2313,6 +2577,17 @@ function renderAdminConfig() {
         <div id="config-feedback"></div>
       </div>
       <div class="card">
+        <h3>🔍 ${t("admin_gabarito_title")}</h3>
+        <p style="color:var(--gray-2);font-size:.85rem;margin-top:0">${t("admin_gabarito_hint")}</p>
+        <div class="config-row">
+          <span>${t("admin_gabarito_label")}</span>
+          <select id="gabarito-mode">
+            <option value="immediate" ${state.config.gabaritoMode !== "after" ? "selected" : ""}>${t("admin_gabarito_immediate")}</option>
+            <option value="after" ${state.config.gabaritoMode === "after" ? "selected" : ""}>${t("admin_gabarito_after")}</option>
+          </select>
+        </div>
+      </div>
+      <div class="card">
         <h3>📅 ${t("schedule_title")}</h3>
         <p style="color:var(--gray-2);font-size:.85rem;margin-top:0">${t("schedule_intro")}</p>
         <div class="config-row"><span>${t("schedule_duration_label")}</span><span>${schedule.durationMonths || DEFAULT_SCHEDULE_MONTHS} ${t("schedule_months_unit")}</span></div>
@@ -2332,9 +2607,11 @@ function renderAdminConfig() {
   document.getElementById("save-config").onclick = async () => {
     const newScores = {};
     MAIN_SEQUENCE.forEach(id => { newScores[id] = parseInt(document.getElementById(`score-${id}`).value, 10) || 70; });
+    const gabaritoMode = document.getElementById("gabarito-mode").value === "after" ? "after" : "immediate";
     try {
-      await db.collection("config").doc("settings").set({ passScores: newScores }, { merge: true });
+      await db.collection("config").doc("settings").set({ passScores: newScores, gabaritoMode }, { merge: true });
       state.config.passScores = newScores;
+      state.config.gabaritoMode = gabaritoMode;
       document.getElementById("config-feedback").innerHTML = `<div class="success-msg">${t("admin_saved")}</div>`;
     } catch (e) {
       document.getElementById("config-feedback").innerHTML = `<div class="error-msg">Error: ${e.message}</div>`;
