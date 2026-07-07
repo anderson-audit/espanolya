@@ -99,6 +99,17 @@ const I18N = {
     admin_gabarito_title: "Liberación del gabarito", admin_gabarito_label: "¿Cuándo se muestra la respuesta correcta?",
     admin_gabarito_immediate: "Inmediato — al responder cada pregunta", admin_gabarito_after: "Solo al finalizar — el alumno revisa todo junto al terminar",
     admin_gabarito_hint: "Elige si el alumno ve la respuesta correcta apenas responde cada pregunta, o si prefieres ocultarla durante el ejercicio/prueba. En los dos casos, el alumno siempre puede consultar después sus respuestas y el gabarito completo en la pantalla de Revisión.",
+    admin_nav_songs: "Canciones",
+    admin_songs_title: "Canciones", admin_songs_intro: "Agrega canciones para que el alumno descubra la letra, escuche paso a paso y complete los espacios. Pega la letra tal cual la tengas — el sistema arma los ejercicios automáticamente.",
+    admin_songs_new_btn: "Agregar canción", admin_songs_field_title: "Título de la canción", admin_songs_field_title_ph: "Ej.: ¿Cómo Pagarte",
+    admin_songs_field_artist: "Artista", admin_songs_field_artist_ph: "Ej.: Carlos Rivera", admin_songs_field_youtube: "Link del video oficial de YouTube",
+    admin_songs_field_lyrics: "Letra completa", admin_songs_field_lyrics_hint: "Una línea por renglón. Para marcar una palabra como hueco, envuélvela en doble llave: {{palabra}}. O pega la letra sin marcar nada y usa el botón de abajo para marcar automáticamente.",
+    admin_songs_field_lyrics_ph: "Pega aquí la letra completa, línea por línea...",
+    admin_songs_auto_blank_btn: "Marcar palabras automáticamente", admin_songs_cancel: "Cancelar", admin_songs_save: "Guardar canción",
+    admin_songs_list_title: "Canciones agregadas ({n})", admin_songs_empty: "Todavía no agregaste ninguna canción.",
+    admin_songs_lines_unit: "líneas", admin_songs_blanks_unit: "huecos", admin_songs_bad_youtube: "No se pudo identificar el video de YouTube — revisa el link.",
+    admin_songs_saved: "¡Canción guardada!", admin_songs_confirm_delete: "¿Eliminar esta canción? El alumno ya no podrá practicarla.",
+    admin_songs_live_count: "{lines} líneas · {blanks} huecos marcados",
     admin_students_title: "Alumnos y progreso ({n})", admin_no_students: "Todavía no hay alumnos con pruebas realizadas.",
     back_panel: "← Volver al panel",
     account_title: "👤 Mi Cuenta", account_tab_security: "Seguridad", account_tab_appearance: "Apariencia", account_tab_profile: "Perfil",
@@ -193,6 +204,17 @@ const I18N = {
     admin_gabarito_title: "Liberação do gabarito", admin_gabarito_label: "Quando a resposta correta é exibida?",
     admin_gabarito_immediate: "Imediato — ao responder cada pergunta", admin_gabarito_after: "Só ao final — o aluno revisa tudo junto ao terminar",
     admin_gabarito_hint: "Escolha se o aluno vê a resposta correta assim que responde cada pergunta, ou se prefere ocultá-la durante o exercício/prova. Nos dois casos, o aluno sempre pode consultar depois suas respostas e o gabarito completo na tela de Revisão.",
+    admin_nav_songs: "Canções",
+    admin_songs_title: "Canções", admin_songs_intro: "Adicione músicas para o aluno descobrir a letra, ouvir passo a passo e completar os espaços. Cole a letra como você já tem — o sistema monta os exercícios automaticamente.",
+    admin_songs_new_btn: "Adicionar canção", admin_songs_field_title: "Título da canção", admin_songs_field_title_ph: "Ex.: ¿Cómo Pagarte",
+    admin_songs_field_artist: "Artista", admin_songs_field_artist_ph: "Ex.: Carlos Rivera", admin_songs_field_youtube: "Link do vídeo oficial no YouTube",
+    admin_songs_field_lyrics: "Letra completa", admin_songs_field_lyrics_hint: "Uma linha por renglão. Para marcar uma palavra como lacuna, envolva em chave dupla: {{palavra}}. Ou cole a letra sem marcar nada e use o botão abaixo para marcar automaticamente.",
+    admin_songs_field_lyrics_ph: "Cole aqui a letra completa, linha por linha...",
+    admin_songs_auto_blank_btn: "Marcar palavras automaticamente", admin_songs_cancel: "Cancelar", admin_songs_save: "Salvar canção",
+    admin_songs_list_title: "Canções adicionadas ({n})", admin_songs_empty: "Você ainda não adicionou nenhuma canção.",
+    admin_songs_lines_unit: "linhas", admin_songs_blanks_unit: "lacunas", admin_songs_bad_youtube: "Não consegui identificar o vídeo do YouTube — confira o link.",
+    admin_songs_saved: "Canção salva!", admin_songs_confirm_delete: "Excluir esta canção? O aluno não vai poder mais praticá-la.",
+    admin_songs_live_count: "{lines} linhas · {blanks} lacunas marcadas",
     admin_students_title: "Alunos e progresso ({n})", admin_no_students: "Ainda não há alunos com provas realizadas.",
     back_panel: "← Voltar ao painel",
     account_title: "👤 Minha Conta", account_tab_security: "Segurança", account_tab_appearance: "Aparência", account_tab_profile: "Perfil",
@@ -287,6 +309,17 @@ const I18N = {
     admin_gabarito_title: "Answer key release", admin_gabarito_label: "When is the correct answer shown?",
     admin_gabarito_immediate: "Immediately — as each question is answered", admin_gabarito_after: "Only at the end — the student reviews everything together when finished",
     admin_gabarito_hint: "Choose whether the student sees the correct answer right after answering each question, or whether you'd rather hide it during the exercise/exam. Either way, the student can always check their answers and the full answer key afterward on the Review screen.",
+    admin_nav_songs: "Songs",
+    admin_songs_title: "Songs", admin_songs_intro: "Add songs so the student can discover the lyrics, listen step by step, and fill in the blanks. Paste the lyrics as you have them — the system builds the exercises automatically.",
+    admin_songs_new_btn: "Add song", admin_songs_field_title: "Song title", admin_songs_field_title_ph: "E.g.: ¿Cómo Pagarte",
+    admin_songs_field_artist: "Artist", admin_songs_field_artist_ph: "E.g.: Carlos Rivera", admin_songs_field_youtube: "Official YouTube video link",
+    admin_songs_field_lyrics: "Full lyrics", admin_songs_field_lyrics_hint: "One line per row. To mark a word as a blank, wrap it in double curly braces: {{word}}. Or paste the lyrics unmarked and use the button below to mark blanks automatically.",
+    admin_songs_field_lyrics_ph: "Paste the full lyrics here, line by line...",
+    admin_songs_auto_blank_btn: "Auto-mark blank words", admin_songs_cancel: "Cancel", admin_songs_save: "Save song",
+    admin_songs_list_title: "Songs added ({n})", admin_songs_empty: "You haven't added any songs yet.",
+    admin_songs_lines_unit: "lines", admin_songs_blanks_unit: "blanks", admin_songs_bad_youtube: "Couldn't identify the YouTube video — check the link.",
+    admin_songs_saved: "Song saved!", admin_songs_confirm_delete: "Delete this song? The student won't be able to practice it anymore.",
+    admin_songs_live_count: "{lines} lines · {blanks} blanks marked",
     admin_students_title: "Students and progress ({n})", admin_no_students: "No students have taken exams yet.",
     back_panel: "← Back to panel",
     account_title: "👤 My Account", account_tab_security: "Security", account_tab_appearance: "Appearance", account_tab_profile: "Profile",
@@ -413,6 +446,9 @@ const state = {
   notebookLoaded: false,
   notebookEditingId: null, // null = no hay editor abierto; "new" = nota nueva; id = editando nota existente
   notebookMsg: "",
+  songs: [],               // caché de canciones (colección "songs" de Firestore) — ver loadSongs()
+  songFormEditingId: null, // null = formulario cerrado; "new" = canción nueva; id = editando existente
+  songFormMsg: "",
 };
 
 applyTheme(state.prefs.theme);
@@ -677,6 +713,7 @@ function render() {
     case "adminStudents": return renderAdminStudents();
     case "adminAnalytics": return renderAdminAnalytics();
     case "adminCerts": return renderAdminCerts();
+    case "adminSongs": return renderAdminSongs();
     case "adminConfig": return renderAdminConfig();
     case "account": return renderAccount();
     case "schedule": return renderSchedule();
@@ -899,6 +936,7 @@ auth.onAuthStateChanged(async (fbUser) => {
     }
 
     await loadConfig();
+    await loadSongs();
     await loadVoices();
 
     state.screen = "dashboard";
@@ -940,7 +978,7 @@ function isGabaritoImmediate() {
 function correctAnswerText(ex) {
   if (ex.type === "mc") return ex.options[ex.correct];
   if (ex.type === "fill" || ex.type === "translate") return ex.answer;
-  if (ex.type === "listen") return ex.answer;
+  if (ex.type === "listen" || ex.type === "songListen") return ex.answer;
   if (ex.type === "speak") return ex.target;
   if (ex.type === "order") return (ex.correctOrder || []).map(i => ex.items[i]).join(" → ");
   if (ex.type === "open") return ex.sample || "";
@@ -1061,6 +1099,7 @@ const SIDEBAR_ADMIN_ITEMS = [
   { screen: "adminStudents", icon: "👥", labelKey: "admin_nav_students" },
   { screen: "adminAnalytics", icon: "📈", labelKey: "admin_nav_analytics" },
   { screen: "adminCerts", icon: "🎓", labelKey: "admin_nav_certs" },
+  { screen: "adminSongs", icon: "🎵", labelKey: "admin_nav_songs" },
   { screen: "adminConfig", icon: "⚙️", labelKey: "admin_nav_config" },
 ];
 
@@ -1576,6 +1615,25 @@ function renderLessonView() {
       </div>
       ${lessonHeroImageHtml(lesson.id)}`;
 
+  // Lección de tipo "canción": video de YouTube (embed oficial, sin hospedar audio propio)
+  // + la letra completa para leer y escuchar antes de ir a los ejercicios. La letra la
+  // pegó el propio administrador en el panel de Canciones — nunca la genera el asistente.
+  if (lesson.youtubeId) {
+    html += `
+      <div class="card">
+        <div class="song-video-wrap">
+          <iframe src="https://www.youtube.com/embed/${encodeURIComponent(lesson.youtubeId)}" title="${escapeHtml(lesson.title)}"
+            frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+      ${lesson.lyricsLines && lesson.lyricsLines.length ? `
+      <div class="card">
+        <h3>🎤 Letra</h3>
+        <p style="color:var(--gray-2);font-size:.85rem;margin-top:-6px">Escucha el video y sigue la letra. Después, en los ejercicios, vas a completar los espacios de memoria.</p>
+        <div class="song-lyrics">${lesson.lyricsLines.map(l => `<p>${escapeHtml(l)}</p>`).join("")}</div>
+      </div>` : ""}`;
+  }
+
   if (lesson.text) {
     html += `<div class="card"><h3>📖 Texto</h3><div class="dialogue-line" data-fulltext="${escapeHtml(lesson.text)}">
       <div class="bubble"><span class="text-content">${wrapWordsForHighlight(lesson.text)}</span>
@@ -1615,7 +1673,7 @@ function renderLessonView() {
 
   html += `
       <div style="text-align:center;margin: 24px 0 40px">
-        <button class="btn btn-primary" id="start-exercises" style="padding:16px 34px">Empezar ejercicios (${lesson.exercises.length}) →</button>
+        <button class="btn btn-primary" id="start-exercises" style="padding:16px 34px">${lesson.youtubeId ? "🎤 Descubrir la letra" : "Empezar ejercicios"} (${lesson.exercises.length}) →</button>
       </div>
       <div class="bottom-space"></div>`;
   root.innerHTML = wrapShell(html, "lesson");
@@ -1686,6 +1744,19 @@ function renderExercise() {
       <div class="ex-question">🎧 ${escapeHtml(ex.q)}</div>
       <div style="text-align:center;margin-bottom:18px"><button class="mic-btn" id="ex-play" style="background:var(--rojo)">🔊</button></div>
       <input type="text" class="ex-input" id="ex-answer" placeholder="Tu respuesta..." autocomplete="off">
+      <div class="ex-actions"><button class="btn btn-secondary btn-sm" id="ex-check">Comprobar</button><button class="btn btn-primary" id="ex-next" disabled>Siguiente →</button></div>
+      <div id="ex-feedback"></div>`;
+  } else if (ex.type === "songListen") {
+    // Dictado con la canción real: el alumno usa los controles nativos del video de
+    // YouTube (reproducir/rebobinar) para escuchar cuantas veces quiera y escribe lo que
+    // entiende. Se valida con la misma tolerancia que "listen" (transcripción libre).
+    body = `
+      <div class="ex-question">🎧 ${escapeHtml(ex.q || "Escucha la canción y escribe lo que oyes en este fragmento.")}</div>
+      <div class="song-video-wrap song-video-wrap-sm">
+        <iframe src="https://www.youtube.com/embed/${encodeURIComponent(ex.youtubeId)}" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <input type="text" class="ex-input" id="ex-answer" placeholder="Escribe lo que escuchas..." autocomplete="off">
       <div class="ex-actions"><button class="btn btn-secondary btn-sm" id="ex-check">Comprobar</button><button class="btn btn-primary" id="ex-next" disabled>Siguiente →</button></div>
       <div id="ex-feedback"></div>`;
   } else if (ex.type === "speak") {
@@ -1837,6 +1908,20 @@ function wireExerciseInteractions(ex) {
     document.getElementById("ex-check").onclick = () => {
       const val = document.getElementById("ex-answer").value;
       const correct = similarity(val, ex.answer) > 0.6; // resposta livre/descritiva, mais tolerante
+      showFeedback(correct, ex.answer);
+      markAnswered(correct);
+      logAttempt(ex, correct, val);
+      document.getElementById("ex-answer").disabled = true;
+      document.getElementById("ex-check").disabled = true;
+    };
+  }
+
+  if (ex.type === "songListen") {
+    // Sin botón de reproducir propio: el alumno usa los controles nativos del iframe de
+    // YouTube (puede rebobinar y escuchar el fragmento las veces que quiera).
+    document.getElementById("ex-check").onclick = () => {
+      const val = document.getElementById("ex-answer").value;
+      const correct = similarity(val, ex.answer) > 0.55; // dictado de canción real: más tolerante que TTS
       showFeedback(correct, ex.answer);
       markAnswered(correct);
       logAttempt(ex, correct, val);
@@ -2231,6 +2316,44 @@ async function onDeleteNote(id) {
 // venir siempre de él, nunca ser transcritas por el asistente).
 const SONG_BLANK_RE = /\{\{\s*([^{}]+?)\s*\}\}/g;
 
+// Palabras muy comunes del español que NO tiene sentido convertir en hueco (artículos,
+// preposiciones, conjunciones...) — usada solo por el marcador automático de abajo.
+const SONG_STOPWORDS = new Set([
+  "de","la","el","en","y","a","que","los","las","un","una","se","del","al","con","por",
+  "para","no","es","su","sus","lo","le","les","o","u","mi","tu","tus","mis","este","esta",
+  "esto","ese","esa","eso","muy","pero","si","sí","ya","me","te","nos","os","como","también",
+  "tan","así","cuando","donde","porque","sin","sobre","hay","fue","son","soy","eres","era",
+  "han","he","has","más","qué","yo","tú","él","ella","nosotros","ustedes","ellos","ellas",
+]);
+
+// Marcador automático de huecos: recorre las líneas que el admin pegó (sin tocar las que
+// YA tienen {{...}} manual) y envuelve en {{}} una palabra "de contenido" (4+ letras, no
+// stopword) por línea, hasta un máximo total. Corre enteramente en el navegador del propio
+// admin sobre el texto que él mismo pegó — el asistente nunca procesa ni ve esa letra.
+function autoMarkBlanks(raw, maxBlanks) {
+  const limit = maxBlanks || 15;
+  let count = 0;
+  const lines = (raw || "").split("\n");
+  const outLines = lines.map(line => {
+    if (count >= limit || !line.trim()) return line;
+    if (SONG_BLANK_RE.test(line)) { SONG_BLANK_RE.lastIndex = 0; return line; } // ya tiene hueco manual
+    const tokens = line.split(/(\s+)/); // conserva los espacios originales al recomponer
+    const candidates = [];
+    tokens.forEach((tok, i) => {
+      const clean = tok.replace(/[.,;:!?¡¿"'()]/g, "");
+      if (/^[A-Za-zÁÉÍÓÚÑÜáéíóúñü]{4,}$/.test(clean) && !SONG_STOPWORDS.has(clean.toLowerCase())) {
+        candidates.push(i);
+      }
+    });
+    if (!candidates.length) return line;
+    const pick = candidates[Math.floor(Math.random() * candidates.length)];
+    tokens[pick] = tokens[pick].replace(/^([^A-Za-zÁÉÍÓÚÑÜáéíóúñü]*)([A-Za-zÁÉÍÓÚÑÜáéíóúñü]{4,})([^A-Za-zÁÉÍÓÚÑÜáéíóúñü]*)$/, "$1{{$2}}$3");
+    count++;
+    return tokens.join("");
+  });
+  return outLines.join("\n");
+}
+
 function parseSongLyrics(raw) {
   return (raw || "")
     .split("\n")
@@ -2253,17 +2376,38 @@ function songLineBlankCount(line) {
 // un "fill" por cada hueco marcado (reutiliza el motor de ejercicios ya existente, con
 // gabarito inmediato/al final según la configuración del admin) + un "order" final con
 // un tramo de la canción (hasta 8 líneas) para practicar el orden de los versos.
-function buildSongExercises(lines) {
+function buildSongExercises(lines, youtubeId) {
   const exercises = [];
   lines.forEach(line => {
-    let match;
-    SONG_BLANK_RE.lastIndex = 0;
-    while ((match = SONG_BLANK_RE.exec(line)) !== null) {
-      const word = match[1];
-      const blankedLine = line.replace(SONG_BLANK_RE, (m, w) => (w === word && m === match[0]) ? "___" : w);
-      exercises.push({ type: "fill", q: `Completa la letra: "${blankedLine}"`, answer: word });
-    }
+    // [...matchAll] no comparte lastIndex con SONG_BLANK_RE (a diferencia de exec en loop),
+    // así que es seguro aunque una misma línea tenga 2+ huecos — evita un loop infinito.
+    const matches = [...line.matchAll(SONG_BLANK_RE)];
+    matches.forEach(m => {
+      const word = m[1];
+      const start = m.index;
+      const end = start + m[0].length;
+      // Blanquea SOLO este hueco (a "___"); los demás huecos de la misma línea, si los hay,
+      // se resuelven a su palabra real para que el resto de la frase quede legible.
+      const withThisBlank = line.slice(0, start) + "___" + line.slice(end);
+      const finalLine = withThisBlank.replace(SONG_BLANK_RE, (mm, w) => w);
+      exercises.push({ type: "fill", q: `Completa la letra: "${finalLine}"`, answer: word });
+    });
   });
+  // Dictado con la canción real: el alumno escucha el video (controles nativos de YouTube,
+  // puede rebobinar) y escribe lo que entiende. Hasta 3 líneas de tamaño razonable (3+
+  // palabras), repartidas a lo largo de la canción para variar el fragmento practicado.
+  if (youtubeId) {
+    const candidates = lines
+      .map(songLineClean)
+      .filter(l => l.split(/\s+/).filter(Boolean).length >= 3);
+    if (candidates.length) {
+      const step = Math.max(1, Math.floor(candidates.length / 3));
+      for (let k = 0, picked = 0; k < candidates.length && picked < 3; k += step, picked++) {
+        exercises.push({ type: "songListen", answer: candidates[k], youtubeId });
+      }
+    }
+  }
+
   const orderSlice = lines.slice(0, Math.min(8, lines.length)).map(songLineClean);
   if (orderSlice.length >= 3) {
     const order = orderSlice.map((_, i) => i);
@@ -2301,7 +2445,7 @@ function songDocToLesson(doc) {
     subtitle: doc.artist || "",
     youtubeId: doc.youtubeId || "",
     lyricsLines: lines.map(songLineClean),
-    exercises: buildSongExercises(lines),
+    exercises: buildSongExercises(lines, doc.youtubeId || ""),
   };
 }
 
@@ -2322,10 +2466,11 @@ async function loadSongs() {
 function renderResult() {
   const r = state.lastResult;
   const lvl = getLevel(r.levelId);
+  const isSong = r.levelId === "canciones";
   root.innerHTML = wrapShell(`
       <div class="card result-wrap">
-        <div class="result-emoji-ring ${r.isExam && !r.passed ? "fail" : "pass"}"><span class="result-emoji">${r.isExam ? (r.passed ? "🎉" : "😕") : "✅"}</span></div>
-        <h2>${r.isExam ? (r.passed ? "¡Aprobado!" : "Todavía no...") : "¡Ejercicios completados!"}</h2>
+        <div class="result-emoji-ring ${r.isExam && !r.passed ? "fail" : "pass"}"><span class="result-emoji">${isSong ? "🎤" : r.isExam ? (r.passed ? "🎉" : "😕") : "✅"}</span></div>
+        <h2>${isSong ? (r.score >= 90 ? "¡Cantas como un/a nativo/a! 🎶" : "¡Muy bien, sigue practicando!") : r.isExam ? (r.passed ? "¡Aprobado!" : "Todavía no...") : "¡Ejercicios completados!"}</h2>
         <div class="result-score ${r.passed ? "pass" : "fail"}">${r.score}%</div>
         ${r.isExam ? `<p>Nota mínima exigida: ${passScoreFor(r.levelId)}%</p>` : ""}
         ${r.isExam && r.passed ? `<p>🔓 ¡Has desbloqueado el próximo nivel!</p>` : ""}
@@ -2557,6 +2702,146 @@ function renderAdminStudents() {
     else if (target === "adminApprovals") loadAdminPending().then(render);
     else loadAdminStudents().then(render);
   });
+}
+
+/* ---------------------------------------------------------------------- */
+/* 15b. ADMIN: CANCIONES (crear/editar/eliminar) — el admin pega la letra   */
+/* ---------------------------------------------------------------------- */
+function renderAdminSongs() {
+  const editing = state.songFormEditingId;
+  const editingSong = editing && editing !== "new" ? state.songs.find(s => s.id === editing) : null;
+  const showForm = editing === "new" || !!editingSong;
+
+  root.innerHTML = wrapShell(`
+      <button class="back-link" id="back-dash">← Volver al panel</button>
+      <div class="section-title">${t("admin_title")}</div>
+      ${adminTabsHtml("adminSongs")}
+      <div class="card">
+        <h3>🎵 ${t("admin_songs_title")}</h3>
+        <p style="color:var(--gray-2);font-size:.85rem;margin-top:0">${t("admin_songs_intro")}</p>
+        ${state.songFormMsg ? `<div class="${state.songFormMsg.ok ? "success-msg" : "error-msg"}">${escapeHtml(state.songFormMsg.text)}</div>` : ""}
+        ${!showForm ? `<button class="btn btn-gold btn-sm" id="song-new-btn">+ ${t("admin_songs_new_btn")}</button>` : ""}
+        ${showForm ? `
+        <form id="song-form" style="margin-top:16px">
+          <div class="field"><label>${t("admin_songs_field_title")}</label>
+            <input type="text" id="song-title" required value="${escapeHtml((editingSong && editingSong.title) || "")}" placeholder="${t("admin_songs_field_title_ph")}"></div>
+          <div class="field"><label>${t("admin_songs_field_artist")}</label>
+            <input type="text" id="song-artist" required value="${escapeHtml((editingSong && editingSong.artist) || "")}" placeholder="${t("admin_songs_field_artist_ph")}"></div>
+          <div class="field"><label>${t("admin_songs_field_youtube")}</label>
+            <input type="text" id="song-youtube" required value="${escapeHtml((editingSong && editingSong.youtubeId) || "")}" placeholder="https://www.youtube.com/watch?v=..."></div>
+          <div class="field">
+            <label>${t("admin_songs_field_lyrics")}</label>
+            <p style="color:var(--gray-2);font-size:.8rem;margin:0 0 8px">${t("admin_songs_field_lyrics_hint")}</p>
+            <textarea id="song-lyrics" rows="12" required placeholder="${t("admin_songs_field_lyrics_ph")}" style="width:100%;padding:13px 16px;border-radius:12px;border:1.5px solid #e2e0db;font-size:.92rem;font-family:inherit">${escapeHtml((editingSong && editingSong.lyricsRaw) || "")}</textarea>
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-top:8px;flex-wrap:wrap;gap:8px">
+              <div id="song-lyrics-count" style="color:var(--gray-2);font-size:.78rem"></div>
+              <button type="button" class="btn btn-secondary btn-sm" id="song-auto-blank-btn">🎲 ${t("admin_songs_auto_blank_btn")}</button>
+            </div>
+          </div>
+          <div style="display:flex;gap:10px;justify-content:flex-end">
+            <button type="button" class="btn btn-secondary btn-sm" id="song-cancel">${t("admin_songs_cancel")}</button>
+            <button type="submit" class="btn btn-primary btn-sm">${t("admin_songs_save")}</button>
+          </div>
+        </form>` : ""}
+      </div>
+      ${!showForm ? `
+      <div class="card">
+        <h3>${t("admin_songs_list_title", { n: state.songs.length })}</h3>
+        ${state.songs.length === 0 ? `<p style="color:var(--gray-2)">${t("admin_songs_empty")}</p>` : state.songs.map(s => {
+          const lines = parseSongLyrics(s.lyricsRaw);
+          const blanks = lines.reduce((acc, l) => acc + songLineBlankCount(l), 0);
+          return `
+          <div class="student-row">
+            <div><strong>${escapeHtml(s.title)}</strong><br><span style="color:var(--gray-2)">${escapeHtml(s.artist || "")} · ${lines.length} ${t("admin_songs_lines_unit")} · ${blanks} ${t("admin_songs_blanks_unit")}</span></div>
+            <div style="display:flex;gap:8px">
+              <button class="btn btn-secondary btn-sm song-edit-btn" data-id="${s.id}">✏️</button>
+              <button class="btn btn-secondary btn-sm song-del-btn" data-id="${s.id}">🗑️</button>
+            </div>
+          </div>`;
+        }).join("")}
+      </div>` : ""}
+      <div class="bottom-space"></div>
+    `, "adminSongs");
+  attachShellEvents();
+  adminBackDashHandler();
+  document.querySelectorAll(".admin-tab-btn").forEach(b => b.onclick = () => {
+    const target = b.dataset.nav;
+    state.screen = target;
+    render();
+    if (target === "adminAnalytics") Promise.all([loadAdminStudents(), loadAdminAttempts()]).then(render);
+    else if (target === "adminApprovals") loadAdminPending().then(render);
+    else loadAdminStudents().then(render);
+  });
+
+  const newBtn = document.getElementById("song-new-btn");
+  if (newBtn) newBtn.onclick = () => { state.songFormEditingId = "new"; state.songFormMsg = ""; render(); };
+  const cancelBtn = document.getElementById("song-cancel");
+  if (cancelBtn) cancelBtn.onclick = () => { state.songFormEditingId = null; render(); };
+  const lyricsTa = document.getElementById("song-lyrics");
+  const countEl = document.getElementById("song-lyrics-count");
+  const updateCount = () => {
+    if (!lyricsTa || !countEl) return;
+    const lines = parseSongLyrics(lyricsTa.value);
+    const blanks = lines.reduce((acc, l) => acc + songLineBlankCount(l), 0);
+    countEl.textContent = t("admin_songs_live_count", { lines: lines.length, blanks });
+  };
+  if (lyricsTa) { lyricsTa.addEventListener("input", updateCount); updateCount(); }
+  const autoBtn = document.getElementById("song-auto-blank-btn");
+  if (autoBtn) autoBtn.onclick = () => {
+    if (!lyricsTa) return;
+    lyricsTa.value = autoMarkBlanks(lyricsTa.value, 15);
+    updateCount();
+  };
+
+  const form = document.getElementById("song-form");
+  if (form) form.onsubmit = onSaveSong;
+  document.querySelectorAll(".song-edit-btn").forEach(b => b.onclick = () => { state.songFormEditingId = b.dataset.id; state.songFormMsg = ""; render(); });
+  document.querySelectorAll(".song-del-btn").forEach(b => b.onclick = () => onDeleteSong(b.dataset.id));
+}
+
+async function onSaveSong(e) {
+  e.preventDefault();
+  const title = document.getElementById("song-title").value.trim();
+  const artist = document.getElementById("song-artist").value.trim();
+  const youtubeInput = document.getElementById("song-youtube").value.trim();
+  const lyricsRaw = document.getElementById("song-lyrics").value;
+  const youtubeId = extractYoutubeId(youtubeInput);
+  if (!title || !artist || !lyricsRaw.trim()) return;
+  if (!youtubeId) {
+    state.songFormMsg = { ok: false, text: t("admin_songs_bad_youtube") };
+    render();
+    return;
+  }
+  const editing = state.songFormEditingId;
+  try {
+    if (editing && editing !== "new") {
+      await db.collection("songs").doc(editing).update({
+        title, artist, youtubeId, lyricsRaw, updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+      });
+    } else {
+      await db.collection("songs").add({
+        title, artist, youtubeId, lyricsRaw,
+        createdAt: firebase.firestore.FieldValue.serverTimestamp(), createdBy: state.user.uid,
+      });
+    }
+    await loadSongs();
+    state.songFormEditingId = null;
+    state.songFormMsg = { ok: true, text: t("admin_songs_saved") };
+  } catch (err) {
+    state.songFormMsg = { ok: false, text: "Error: " + err.message };
+  }
+  render();
+}
+
+async function onDeleteSong(id) {
+  if (!confirm(t("admin_songs_confirm_delete"))) return;
+  try {
+    await db.collection("songs").doc(id).delete();
+    await loadSongs();
+    render();
+  } catch (err) {
+    alert("Error: " + err.message);
+  }
 }
 
 function renderAdminConfig() {
