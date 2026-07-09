@@ -111,6 +111,13 @@ const I18N = {
     admin_songs_field_lyrics: "Letra completa", admin_songs_field_lyrics_hint: "Una línea por renglón. Para marcar una palabra como hueco, envuélvela en doble llave: {{palabra}}. O pega la letra sin marcar nada y usa el botón de abajo para marcar automáticamente. Opcional (recomendado): agrega al inicio de la línea el minuto exacto en que se canta, así: [01:23] Letra de esa línea — el alumno va a poder escuchar el video ya abierto justo en ese fragmento, en vez de la canción entera.",
     admin_songs_field_lyrics_ph: "Pega aquí la letra completa, línea por línea...",
     admin_songs_auto_blank_btn: "Marcar palabras automáticamente", admin_songs_cancel: "Cancelar", admin_songs_save: "Guardar canción",
+    admin_songs_auto_time_btn: "Marcar tiempos automáticamente",
+    admin_songs_auto_time_hint: "Calcula un tiempo aproximado ([mm:ss]) para cada línea, repartiendo la duración real del video. No es exacto, pero alcanza para que el alumno escuche el fragmento correcto en vez de la canción entera. Si alguna línea queda desalineada, puedes corregir el número a mano.",
+    admin_songs_need_youtube_first: "Primero pega un link válido de YouTube arriba.",
+    admin_songs_calculating: "Calculando duración del video...",
+    admin_songs_time_error: "No se pudo calcular la duración del video. Intenta de nuevo o marca los tiempos a mano con [mm:ss].",
+    admin_songs_field_words: "Cantidad de palabras a practicar",
+    admin_songs_field_words_hint: "El sistema calcula solo el tamaño del trecho de video (duración real de la canción ÷ esta cantidad). Menos palabras = trechos más largos; más palabras = trechos más cortos.",
     admin_songs_list_title: "Canciones agregadas ({n})", admin_songs_empty: "Todavía no agregaste ninguna canción.",
     admin_songs_lines_unit: "líneas", admin_songs_blanks_unit: "huecos", admin_songs_bad_youtube: "No se pudo identificar el video de YouTube — revisa el link.",
     admin_songs_saved: "¡Canción guardada!", admin_songs_confirm_delete: "¿Eliminar esta canción? El alumno ya no podrá practicarla.",
@@ -221,6 +228,13 @@ const I18N = {
     admin_songs_field_lyrics: "Letra completa", admin_songs_field_lyrics_hint: "Uma linha por renglão. Para marcar uma palavra como lacuna, envolva em chave dupla: {{palavra}}. Ou cole a letra sem marcar nada e use o botão abaixo para marcar automaticamente. Opcional (recomendado): coloque no início da linha o minuto exato em que é cantada, assim: [01:23] Letra dessa linha — o aluno vai poder ouvir o vídeo já aberto direto nesse trecho, em vez da música inteira.",
     admin_songs_field_lyrics_ph: "Cole aqui a letra completa, linha por linha...",
     admin_songs_auto_blank_btn: "Marcar palavras automaticamente", admin_songs_cancel: "Cancelar", admin_songs_save: "Salvar canção",
+    admin_songs_auto_time_btn: "Marcar tempos automaticamente",
+    admin_songs_auto_time_hint: "Calcula um tempo aproximado ([mm:ss]) para cada linha, repartindo a duração real do vídeo. Não é exato, mas já é suficiente pro aluno ouvir o trecho certo em vez da música inteira. Se alguma linha ficar desalinhada, você pode corrigir o número manualmente.",
+    admin_songs_need_youtube_first: "Cole primeiro um link válido do YouTube ali em cima.",
+    admin_songs_calculating: "Calculando duração do vídeo...",
+    admin_songs_time_error: "Não foi possível calcular a duração do vídeo. Tente de novo ou marque os tempos manualmente com [mm:ss].",
+    admin_songs_field_words: "Quantidade de palavras a praticar",
+    admin_songs_field_words_hint: "O sistema calcula sozinho o tamanho do trecho de vídeo (duração real da música ÷ essa quantidade). Menos palavras = trechos mais longos; mais palavras = trechos mais curtos.",
     admin_songs_list_title: "Canções adicionadas ({n})", admin_songs_empty: "Você ainda não adicionou nenhuma canção.",
     admin_songs_lines_unit: "linhas", admin_songs_blanks_unit: "lacunas", admin_songs_bad_youtube: "Não consegui identificar o vídeo do YouTube — confira o link.",
     admin_songs_saved: "Canção salva!", admin_songs_confirm_delete: "Excluir esta canção? O aluno não vai poder mais praticá-la.",
@@ -331,6 +345,13 @@ const I18N = {
     admin_songs_field_lyrics: "Full lyrics", admin_songs_field_lyrics_hint: "One line per row. To mark a word as a blank, wrap it in double curly braces: {{word}}. Or paste the lyrics unmarked and use the button below to mark blanks automatically. Optional (recommended): add the exact minute it's sung at the start of the line, like this: [01:23] Line lyrics — the student will get the video already opened right at that fragment instead of the whole song.",
     admin_songs_field_lyrics_ph: "Paste the full lyrics here, line by line...",
     admin_songs_auto_blank_btn: "Auto-mark blank words", admin_songs_cancel: "Cancel", admin_songs_save: "Save song",
+    admin_songs_auto_time_btn: "Auto-mark timestamps",
+    admin_songs_auto_time_hint: "Calculates an approximate time ([mm:ss]) for each line, spreading the video's real duration across them. It's not exact, but it's enough for the student to hear the right fragment instead of the whole song. If a line ends up off, you can fix the number by hand.",
+    admin_songs_need_youtube_first: "Paste a valid YouTube link above first.",
+    admin_songs_calculating: "Calculating video duration...",
+    admin_songs_time_error: "Couldn't calculate the video's duration. Try again or mark the times by hand with [mm:ss].",
+    admin_songs_field_words: "Number of words to practice",
+    admin_songs_field_words_hint: "The system only uses this to size the video snippet (the song's real duration ÷ this number). Fewer words = longer snippets; more words = shorter snippets.",
     admin_songs_list_title: "Songs added ({n})", admin_songs_empty: "You haven't added any songs yet.",
     admin_songs_lines_unit: "lines", admin_songs_blanks_unit: "blanks", admin_songs_bad_youtube: "Couldn't identify the YouTube video — check the link.",
     admin_songs_saved: "Song saved!", admin_songs_confirm_delete: "Delete this song? The student won't be able to practice it anymore.",
@@ -2642,6 +2663,80 @@ function autoMarkBlanks(raw, maxBlanks) {
   return outLines.join("\n");
 }
 
+// Carga la YouTube IFrame API una sola vez (bajo demanda, solo cuando el admin usa la
+// herramienta de marcar tiempos automáticamente — no se carga en el resto del sistema).
+let _ytApiPromise = null;
+function loadYouTubeIframeAPI() {
+  if (window.YT && window.YT.Player) return Promise.resolve();
+  if (_ytApiPromise) return _ytApiPromise;
+  _ytApiPromise = new Promise((resolve) => {
+    const prevCb = window.onYouTubeIframeAPIReady;
+    window.onYouTubeIframeAPIReady = () => { if (prevCb) prevCb(); resolve(); };
+    const tag = document.createElement("script");
+    tag.src = "https://www.youtube.com/iframe_api";
+    document.head.appendChild(tag);
+  });
+  return _ytApiPromise;
+}
+
+// Crea un reproductor de YouTube invisible solo para leer la duración real del video
+// (ev.target.getDuration()), y lo destruye enseguida. Usado por "Marcar tiempos automáticamente".
+function getYouTubeDuration(youtubeId) {
+  return loadYouTubeIframeAPI().then(() => new Promise((resolve, reject) => {
+    let hostDiv = document.getElementById("yt-duration-probe");
+    if (!hostDiv) {
+      hostDiv = document.createElement("div");
+      hostDiv.id = "yt-duration-probe";
+      hostDiv.style.cssText = "position:fixed;left:-9999px;top:-9999px;width:1px;height:1px;overflow:hidden";
+      document.body.appendChild(hostDiv);
+    }
+    hostDiv.innerHTML = "";
+    const mount = document.createElement("div");
+    hostDiv.appendChild(mount);
+    let settled = false;
+    new YT.Player(mount, {
+      videoId: youtubeId,
+      events: {
+        onReady: (ev) => {
+          if (settled) return;
+          settled = true;
+          const d = ev.target.getDuration();
+          try { ev.target.destroy(); } catch (e) { /* noop */ }
+          if (d) resolve(d); else reject(new Error("duración inválida"));
+        },
+        onError: () => { if (!settled) { settled = true; reject(new Error("error de YouTube")); } },
+      },
+    });
+    setTimeout(() => { if (!settled) { settled = true; reject(new Error("timeout")); } }, 8000);
+  }));
+}
+
+// Genera timestamps [mm:ss] aproximados para cada línea con texto, repartiendo la duración
+// REAL del video (obtenida de YouTube) en partes iguales. No analiza el audio, así que es
+// una aproximación — reserva ~6% de intro y ~5% de outro antes de repartir el resto. Sirve
+// como punto de partida rápido: el admin puede ajustar a mano el número de cualquier línea
+// después (basta con editar el [mm:ss] en el textarea) si el video no cae justo ahí.
+function estimateSongTimestamps(rawLyrics, durationSec) {
+  const rawLines = (rawLyrics || "").split("\n");
+  const nonEmptyIdx = [];
+  rawLines.forEach((l, i) => { if (l.trim()) nonEmptyIdx.push(i); });
+  if (!nonEmptyIdx.length || !durationSec) return rawLyrics;
+  const intro = Math.min(8, durationSec * 0.06);
+  const outro = Math.min(6, durationSec * 0.05);
+  const available = Math.max(1, durationSec - intro - outro);
+  const step = available / nonEmptyIdx.length;
+  const fmt = (sec) => {
+    const m = Math.floor(sec / 60);
+    const s = Math.floor(sec % 60);
+    return `[${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}]`;
+  };
+  nonEmptyIdx.forEach((lineIdx, k) => {
+    const { text } = extractLineTimestamp(rawLines[lineIdx]); // quita marca previa, si había
+    rawLines[lineIdx] = `${fmt(intro + k * step)} ${text}`;
+  });
+  return rawLines.join("\n");
+}
+
 function parseSongLyrics(raw) {
   return (raw || "")
     .split("\n")
@@ -2678,36 +2773,56 @@ function songLineBlankCount(line) {
   return (extractLineTimestamp(line).text.match(SONG_BLANK_RE) || []).length;
 }
 
+// Calcula el tamaño del "trecho" (en segundos) para una canción: duración real ÷ cantidad
+// de palabras que el admin quiere practicar. Menos palabras = trechos más largos y generosos;
+// más palabras = trechos más cortos y exigentes, ya que hay que repartir el mismo video entre
+// más huecos. Con un piso de 6s (trechos más cortos que eso quedan casi imposibles de escuchar)
+// y sin datos (canción sin duración guardada o sin cantidad definida) cae en 30s por defecto.
+function computeSongFragmentSec(durationSec, targetWordCount) {
+  if (!durationSec || !targetWordCount || targetWordCount <= 0) return 30;
+  return Math.max(6, Math.round(durationSec / targetWordCount));
+}
+
 // A partir de las líneas ya separadas (parseSongLyrics), arma la fila de ejercicios:
 // un "fill" por cada hueco marcado (reutiliza el motor de ejercicios ya existente, con
 // gabarito inmediato/al final según la configuración del admin) + un "order" final con
 // un tramo de la canción (hasta 8 líneas) para practicar el orden de los versos.
-function buildSongExercises(lines, youtubeId) {
+// fragmentSec (calculado por computeSongFragmentSec, según lo que el admin configuró para
+// ESTA canción) define ventanas fijas de tiempo (0-30s, 30-60s...) — todas las líneas cuyo
+// timestamp cae en la misma ventana comparten el mismo fragmento de video. Dentro de cada
+// ventana, si la misma palabra aparece más de una vez como hueco, solo se genera UN ejercicio
+// para ella (la primera aparición): el alumno nunca tiene que adivinar la misma palabra dos
+// veces escuchando el mismo trecho.
+function buildSongExercises(lines, youtubeId, fragmentSec) {
+  const frag = fragmentSec && fragmentSec > 0 ? fragmentSec : 30;
   const exercises = [];
-  // Separa timestamp/texto de cada línea una sola vez. nextTimestamp(idx) busca la marca de
-  // tiempo de la próxima línea CON marca (no necesariamente la línea siguiente), para usarla
-  // como "fin" del fragmento — así el video se detiene justo antes de que empiece el próximo
-  // verso marcado, en vez de seguir tocando la canción entera.
   const parsed = lines.map(l => extractLineTimestamp(l));
-  const nextTimestamp = (fromIdx) => {
-    for (let i = fromIdx + 1; i < parsed.length; i++) {
-      if (parsed[i].seconds != null) return parsed[i].seconds;
-    }
-    return null;
+  const windowOf = (sec) => {
+    if (sec == null) return null;
+    const start = Math.floor(sec / frag) * frag;
+    return { start, end: start + frag };
   };
 
-  parsed.forEach((p, idx) => {
+  const seenWordsByWindow = new Map(); // "start-end" -> Set(palabra normalizada)
+  parsed.forEach((p) => {
     const line = p.text;
     // [...matchAll] no comparte lastIndex con SONG_BLANK_RE (a diferencia de exec en loop),
     // así que es seguro aunque una misma línea tenga 2+ huecos — evita un loop infinito.
     const matches = [...line.matchAll(SONG_BLANK_RE)];
     if (!matches.length) return;
-    const startSec = p.seconds;
-    const endSec = startSec != null ? (nextTimestamp(idx) != null ? nextTimestamp(idx) : startSec + 8) : null;
+    const win = windowOf(p.seconds);
     matches.forEach(m => {
       const word = m[1];
       const start = m.index;
       const end = start + m[0].length;
+      if (win) {
+        const key = `${win.start}-${win.end}`;
+        const normWord = normalize(word);
+        if (!seenWordsByWindow.has(key)) seenWordsByWindow.set(key, new Set());
+        const seen = seenWordsByWindow.get(key);
+        if (seen.has(normWord)) return; // palabra repetida dentro del mismo trecho: se omite
+        seen.add(normWord);
+      }
       // Blanquea SOLO este hueco (a "___"); los demás huecos de la misma línea, si los hay,
       // se resuelven a su palabra real para que el resto de la frase quede legible.
       const withThisBlank = line.slice(0, start) + "___" + line.slice(end);
@@ -2717,7 +2832,7 @@ function buildSongExercises(lines, youtubeId) {
       // también aquí, así puede escuchar cuantas veces quiera mientras completa el hueco.
       // startSec/endSec (si la línea tenía [mm:ss]) hacen que el video abra directo en el
       // fragmento correcto, en vez del alumno tener que buscar a ciegas en la canción entera.
-      exercises.push({ type: "fill", q: `Completa la letra: "${finalLine}"`, answer: word, youtubeId, isSong: true, startSec, endSec });
+      exercises.push({ type: "fill", q: `Completa la letra: "${finalLine}"`, answer: word, youtubeId, isSong: true, startSec: win ? win.start : null, endSec: win ? win.end : null });
     });
   });
   // Dictado con la canción real: el alumno escucha el video (controles nativos de YouTube,
@@ -2725,14 +2840,14 @@ function buildSongExercises(lines, youtubeId) {
   // palabras), repartidas a lo largo de la canción para variar el fragmento practicado.
   if (youtubeId) {
     const candidates = parsed
-      .map((p, idx) => ({ idx, text: p.text.replace(SONG_BLANK_RE, (_, w) => w), seconds: p.seconds }))
+      .map((p) => ({ text: p.text.replace(SONG_BLANK_RE, (_, w) => w), seconds: p.seconds }))
       .filter(c => c.text.split(/\s+/).filter(Boolean).length >= 3);
     if (candidates.length) {
       const step = Math.max(1, Math.floor(candidates.length / 3));
       for (let k = 0, picked = 0; k < candidates.length && picked < 3; k += step, picked++) {
         const c = candidates[k];
-        const endSec = c.seconds != null ? (nextTimestamp(c.idx) != null ? nextTimestamp(c.idx) : c.seconds + 8) : null;
-        exercises.push({ type: "songListen", answer: c.text, youtubeId, startSec: c.seconds, endSec });
+        const win = windowOf(c.seconds);
+        exercises.push({ type: "songListen", answer: c.text, youtubeId, startSec: win ? win.start : null, endSec: win ? win.end : null });
       }
     }
   }
@@ -2768,13 +2883,14 @@ function extractYoutubeId(input) {
 // el motor de lecciones/ejercicios ya existente (getLesson, startLessonExercises, etc.).
 function songDocToLesson(doc) {
   const lines = parseSongLyrics(doc.lyricsRaw);
+  const fragmentSec = computeSongFragmentSec(doc.durationSec, doc.targetWordCount);
   return {
     id: doc.id,
     title: doc.title || "Canción",
     subtitle: doc.artist || "",
     youtubeId: doc.youtubeId || "",
     lyricsLines: lines.map(songLineClean),
-    exercises: buildSongExercises(lines, doc.youtubeId || ""),
+    exercises: buildSongExercises(lines, doc.youtubeId || "", fragmentSec),
   };
 }
 
@@ -3077,14 +3193,23 @@ function renderAdminSongs() {
             <input type="text" id="song-artist" required value="${escapeHtml((editingSong && editingSong.artist) || "")}" placeholder="${t("admin_songs_field_artist_ph")}"></div>
           <div class="field"><label>${t("admin_songs_field_youtube")}</label>
             <input type="text" id="song-youtube" required value="${escapeHtml((editingSong && editingSong.youtubeId) || "")}" placeholder="https://www.youtube.com/watch?v=..."></div>
+          <div class="field" style="max-width:260px">
+            <label>${t("admin_songs_field_words")}</label>
+            <p style="color:var(--gray-2);font-size:.78rem;margin:0 0 6px">${t("admin_songs_field_words_hint")}</p>
+            <input type="number" min="1" max="200" id="song-target-words" value="${(editingSong && editingSong.targetWordCount) || 20}">
+          </div>
           <div class="field">
             <label>${t("admin_songs_field_lyrics")}</label>
             <p style="color:var(--gray-2);font-size:.8rem;margin:0 0 8px">${t("admin_songs_field_lyrics_hint")}</p>
             <textarea id="song-lyrics" rows="12" required placeholder="${t("admin_songs_field_lyrics_ph")}" style="width:100%;padding:13px 16px;border-radius:12px;border:1.5px solid #e2e0db;font-size:.92rem;font-family:inherit">${escapeHtml((editingSong && editingSong.lyricsRaw) || "")}</textarea>
             <div style="display:flex;align-items:center;justify-content:space-between;margin-top:8px;flex-wrap:wrap;gap:8px">
               <div id="song-lyrics-count" style="color:var(--gray-2);font-size:.78rem"></div>
-              <button type="button" class="btn btn-secondary btn-sm" id="song-auto-blank-btn">🎲 ${t("admin_songs_auto_blank_btn")}</button>
+              <div style="display:flex;gap:8px;flex-wrap:wrap">
+                <button type="button" class="btn btn-secondary btn-sm" id="song-auto-blank-btn">🎲 ${t("admin_songs_auto_blank_btn")}</button>
+                <button type="button" class="btn btn-secondary btn-sm" id="song-auto-time-btn">⏱️ ${t("admin_songs_auto_time_btn")}</button>
+              </div>
             </div>
+            <p style="color:var(--gray-2);font-size:.76rem;margin:4px 0 0">${t("admin_songs_auto_time_hint")}</p>
           </div>
           <div style="display:flex;gap:10px;justify-content:flex-end">
             <button type="button" class="btn btn-secondary btn-sm" id="song-cancel">${t("admin_songs_cancel")}</button>
@@ -3098,9 +3223,10 @@ function renderAdminSongs() {
         ${state.songs.length === 0 ? `<p style="color:var(--gray-2)">${t("admin_songs_empty")}</p>` : state.songs.map(s => {
           const lines = parseSongLyrics(s.lyricsRaw);
           const blanks = lines.reduce((acc, l) => acc + songLineBlankCount(l), 0);
+          const fragSec = computeSongFragmentSec(s.durationSec, s.targetWordCount);
           return `
           <div class="student-row">
-            <div><strong>${escapeHtml(s.title)}</strong><br><span style="color:var(--gray-2)">${escapeHtml(s.artist || "")} · ${lines.length} ${t("admin_songs_lines_unit")} · ${blanks} ${t("admin_songs_blanks_unit")}</span></div>
+            <div><strong>${escapeHtml(s.title)}</strong><br><span style="color:var(--gray-2)">${escapeHtml(s.artist || "")} · ${lines.length} ${t("admin_songs_lines_unit")} · ${blanks} ${t("admin_songs_blanks_unit")} · ⏱️ ${fragSec}s${s.durationSec ? "" : " (sin duración guardada aún, usa Guardar)"}</span></div>
             <div style="display:flex;gap:8px">
               <button class="btn btn-secondary btn-sm song-edit-btn" data-id="${s.id}">✏️</button>
               <button class="btn btn-secondary btn-sm song-del-btn" data-id="${s.id}">🗑️</button>
@@ -3141,6 +3267,26 @@ function renderAdminSongs() {
     lyricsTa.value = autoMarkBlanks(lyricsTa.value, 15);
     updateCount();
   };
+  const autoTimeBtn = document.getElementById("song-auto-time-btn");
+  if (autoTimeBtn) autoTimeBtn.onclick = async () => {
+    if (!lyricsTa) return;
+    const ytInput = document.getElementById("song-youtube");
+    const youtubeId = extractYoutubeId(ytInput ? ytInput.value.trim() : "");
+    if (!youtubeId) { alert(t("admin_songs_need_youtube_first")); return; }
+    const originalLabel = autoTimeBtn.innerHTML;
+    autoTimeBtn.disabled = true;
+    autoTimeBtn.textContent = "⏳ " + t("admin_songs_calculating");
+    try {
+      const duration = await getYouTubeDuration(youtubeId);
+      lyricsTa.value = estimateSongTimestamps(lyricsTa.value, duration);
+      updateCount();
+    } catch (e) {
+      console.warn(e);
+      alert(t("admin_songs_time_error"));
+    }
+    autoTimeBtn.disabled = false;
+    autoTimeBtn.innerHTML = originalLabel;
+  };
 
   const form = document.getElementById("song-form");
   if (form) form.onsubmit = onSaveSong;
@@ -3154,6 +3300,8 @@ async function onSaveSong(e) {
   const artist = document.getElementById("song-artist").value.trim();
   const youtubeInput = document.getElementById("song-youtube").value.trim();
   const lyricsRaw = document.getElementById("song-lyrics").value;
+  const targetWordsInput = document.getElementById("song-target-words");
+  const targetWordCount = Math.max(1, parseInt((targetWordsInput && targetWordsInput.value) || "20", 10) || 20);
   const youtubeId = extractYoutubeId(youtubeInput);
   if (!title || !artist || !lyricsRaw.trim()) return;
   if (!youtubeId) {
@@ -3162,16 +3310,22 @@ async function onSaveSong(e) {
     return;
   }
   const editing = state.songFormEditingId;
+  const submitBtn = document.querySelector("#song-form button[type=submit]");
+  if (submitBtn) { submitBtn.disabled = true; submitBtn.textContent = "⏳ " + t("admin_songs_calculating"); }
+  // Busca la duración real del video (misma técnica del botón "Marcar tiempos automáticamente")
+  // para poder calcular el tamaño del trecho (computeSongFragmentSec) sin depender de que el
+  // admin haya usado ese botón — así el cálculo por palabras funciona aunque los timestamps
+  // se hayan marcado a mano. Si falla (video privado, sin red, etc.), guarda igual sin duración
+  // — el sistema simplemente cae al trecho por defecto de 30s.
+  let durationSec = null;
+  try { durationSec = await getYouTubeDuration(youtubeId); } catch (e) { console.warn("No se pudo obtener la duración del video.", e); }
   try {
+    const payload = { title, artist, youtubeId, lyricsRaw, targetWordCount };
+    if (durationSec) payload.durationSec = Math.round(durationSec);
     if (editing && editing !== "new") {
-      await db.collection("songs").doc(editing).update({
-        title, artist, youtubeId, lyricsRaw, updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
-      });
+      await db.collection("songs").doc(editing).update({ ...payload, updatedAt: firebase.firestore.FieldValue.serverTimestamp() });
     } else {
-      await db.collection("songs").add({
-        title, artist, youtubeId, lyricsRaw,
-        createdAt: firebase.firestore.FieldValue.serverTimestamp(), createdBy: state.user.uid,
-      });
+      await db.collection("songs").add({ ...payload, createdAt: firebase.firestore.FieldValue.serverTimestamp(), createdBy: state.user.uid });
     }
     await loadSongs();
     state.songFormEditingId = null;
