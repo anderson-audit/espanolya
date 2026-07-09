@@ -49,7 +49,7 @@ const db = firebase.firestore();
 // Versión del sistema, visible en Mi Cuenta / Configuración y en el pie de la barra lateral.
 // Se debe actualizar manualmente cada vez que se sube una nueva versión al repositorio
 // (formato AAAA.MM.DD.N — N = número de subida ese día, empieza en 1).
-const APP_VERSION = "2026.07.09.3";
+const APP_VERSION = "2026.07.09.4";
 
 const DEFAULT_PASS_SCORES = { fundamentos: 70, basico: 70, intermedio: 70, avanzado: 70 };
 // Modo de liberación del gabarito (respuesta correcta): "immediate" = se muestra apenas
@@ -1821,7 +1821,15 @@ function songEmbedSrc(youtubeId, startSec, endSec, cacheBust) {
   // real del iframe vía la IFrame API — sin esto, "Repetir el fragmento" solo podía
   // reasignar el src entero, lo cual en varios navegadores no reinicia el player interno
   // de YouTube (queda "atascado" donde iba, o directo salta al inicio real de la canción).
-  const params = ["autoplay=1", "mute=0", "playsinline=1", "enablejsapi=1", `origin=${encodeURIComponent(location.origin)}`];
+  //
+  // mute=1 en la carga inicial (NO mute=0): confirmado probando en vivo que Chrome bloquea
+  // el autoplay CON sonido cuando no hay un gesto directo del usuario — en ese caso YouTube
+  // ni siquiera reproduce, se queda mostrando su propia pantalla "Ver en YouTube" con el
+  // video genérico, lo cual hacía parecer que el botón/fragmento "no funcionaba". Arrancar
+  // en silencio SIEMPRE se permite, así el video ya abre visualmente en el trecho correcto.
+  // El sonido se activa con unMute() dentro del clic de "Repetir el fragmento" (gesto real
+  // del usuario → Chrome sí permite audio ahí).
+  const params = ["autoplay=1", "mute=1", "playsinline=1", "enablejsapi=1", `origin=${encodeURIComponent(location.origin)}`];
   if (startSec != null) params.push(`start=${Math.max(0, Math.floor(startSec))}`);
   if (endSec != null) params.push(`end=${Math.max(0, Math.floor(endSec))}`);
   if (cacheBust) params.push(`_r=${cacheBust}`);
@@ -1873,12 +1881,17 @@ function initSongPlayer(frameId, startSec, endSec) {
 // suma un parámetro cacheBust distinto cada vez para forzar la recarga real (y el autoplay
 // hace que directamente vuelva a sonar desde el inicio del trecho, sin un segundo clic).
 function songFragmentHtml(frameId, youtubeId, startSec, endSec) {
+  // El video arranca SIEMPRE mudo (ver songEmbedSrc) porque es la única forma de que el
+  // autoplay funcione de manera confiable en todos los navegadores. Por eso este botón ya
+  // no es solo "repetir" — es también la forma de activar el sonido la primera vez, ya que
+  // el clic es un gesto real del usuario y el navegador sí permite audio ahí dentro.
+  const label = startSec != null ? "🔊 Escuchar el fragmento" : "🔊 Activar sonido";
   return `
     <div class="song-video-wrap">
       <iframe id="${frameId}" src="${songEmbedSrc(youtubeId, startSec, endSec)}" frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
-    ${startSec != null ? `<button class="btn btn-secondary btn-sm song-replay-btn" type="button" id="${frameId}-replay">🔁 Repetir el fragmento</button>` : ""}`;
+    <button class="btn btn-secondary btn-sm song-replay-btn" type="button" id="${frameId}-replay">${label}</button>`;
 }
 
 const EX_TYPE_BADGE = {
@@ -1913,7 +1926,7 @@ function renderExercise() {
     const label = ex.type === "translate" ? `Traduce${ex.from === "pt" ? " (Português → Español)" : " (Español → Português)"}: ${escapeHtml(ex.text)}` : escapeHtml(ex.q);
     const fillInner = `
       <div class="ex-question">${label} ${ttsBtnHtml}</div>
-      ${ex.youtubeId ? `<p class="ex-hint">🎧 ${ex.startSec != null ? "El video ya abrió en el fragmento de este hueco — escúchalo cuantas veces quieras." : "Puedes escuchar la canción cuantas veces quieras mientras completas el hueco."}</p>` : ""}
+      ${ex.youtubeId ? `<p class="ex-hint">🔇 ${ex.startSec != null ? "El video ya abrió en el fragmento de este hueco" : "Puedes escuchar la canción mientras completas el hueco"}, pero empieza SIN sonido (los navegadores bloquean el audio automático) — toca "${ex.startSec != null ? "Escuchar el fragmento" : "Activar sonido"}" cuantas veces quieras.</p>` : ""}
       <input type="text" class="ex-input" id="ex-answer" placeholder="Escribe tu respuesta aquí..." autocomplete="off">
       <div class="ex-actions"><button class="btn btn-secondary btn-sm" id="ex-check">Comprobar</button><button class="btn btn-primary" id="ex-next" disabled>Siguiente →</button></div>
       <div id="ex-feedback"></div>`;
@@ -1938,6 +1951,7 @@ function renderExercise() {
         <div class="song-ex-video">${songFragmentHtml("song-listen-frame", ex.youtubeId, ex.startSec, ex.endSec)}</div>
         <div class="song-ex-content">
           <div class="ex-question">🎧 ${escapeHtml(ex.q || "Escucha la canción y escribe lo que oyes en este fragmento.")}</div>
+          <p class="ex-hint">🔇 El video abre sin sonido — toca "${ex.startSec != null ? "Escuchar el fragmento" : "Activar sonido"}" para escuchar.</p>
           <input type="text" class="ex-input" id="ex-answer" placeholder="Escribe lo que escuchas..." autocomplete="off">
           <div class="ex-actions"><button class="btn btn-secondary btn-sm" id="ex-check">Comprobar</button><button class="btn btn-primary" id="ex-next" disabled>Siguiente →</button></div>
           <div id="ex-feedback"></div>
@@ -2001,11 +2015,13 @@ function renderExercise() {
   const ttsBtn = document.getElementById("ex-tts");
   if (ttsBtn && ttsSource) ttsBtn.onclick = () => speak(ttsSource.replace(/_{2,}/g, "..."), null, ttsBtn);
 
-  // Video + botón "Repetir el fragmento" (solo aparece cuando la línea tenía [mm:ss]).
-  // Arrancamos el reproductor vía IFrame API (initSongPlayer) para poder controlar la
-  // posición con seekTo() en vez de recargar el iframe entero — recargar el src (lo que se
-  // hacía antes) es lo que causaba que "Repetir" a veces saltara al inicio REAL de la
-  // canción en vez de volver al trecho del ejercicio.
+  // Video + botón "Escuchar el fragmento". Arrancamos el reproductor vía IFrame API
+  // (initSongPlayer) para poder controlar la posición con seekTo() en vez de recargar el
+  // iframe entero. El video siempre carga MUDO (ver songEmbedSrc) porque confirmé probando
+  // en vivo que Chrome bloquea el autoplay con sonido sin un gesto del usuario — el video ni
+  // siquiera arrancaba, quedaba en la pantalla "Ver en YouTube" de YouTube, lo que parecía
+  // que el botón "no hacía nada". Por eso este clic (que SÍ es un gesto real del usuario)
+  // llama unMute() antes de reproducir — ahí el navegador sí permite el audio.
   ["song-fill-frame", "song-listen-frame"].forEach((frameId) => {
     const frame = document.getElementById(frameId);
     if (!frame) return;
@@ -2014,6 +2030,7 @@ function renderExercise() {
     if (replayBtn) replayBtn.onclick = () => {
       const player = _exSongPlayers[frameId];
       if (player && typeof player.seekTo === "function") {
+        try { player.unMute(); } catch (e) { /* noop */ }
         player.seekTo(ex.startSec != null ? ex.startSec : 0, true);
         player.playVideo();
       } else {
