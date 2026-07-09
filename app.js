@@ -49,7 +49,7 @@ const db = firebase.firestore();
 // Versión del sistema, visible en Mi Cuenta / Configuración y en el pie de la barra lateral.
 // Se debe actualizar manualmente cada vez que se sube una nueva versión al repositorio
 // (formato AAAA.MM.DD.N — N = número de subida ese día, empieza en 1).
-const APP_VERSION = "2026.07.09.1";
+const APP_VERSION = "2026.07.09.2";
 
 const DEFAULT_PASS_SCORES = { fundamentos: 70, basico: 70, intermedio: 70, avanzado: 70 };
 // Modo de liberación del gabarito (respuesta correcta): "immediate" = se muestra apenas
@@ -1812,25 +1812,30 @@ function currentExercise() { return state.exerciseQueue[state.exerciseIndex]; }
 // Arma la URL del embed de YouTube, con start=/end= cuando la línea tenía marca de tiempo
 // [mm:ss] — así el video abre directo en el fragmento del ejercicio. cacheBust (opcional)
 // fuerza que el navegador recargue el iframe desde cero (usado por el botón "Repetir").
+// autoplay=1 es lo que hace que, al abrir el ejercicio o al tocar "Repetir el fragmento", el
+// video arranque solo desde "start" — sin esto el iframe solo queda "preparado" en esa
+// posición pero pausado, y visualmente no cambia nada (se ve la miniatura genérica de
+// siempre), lo que hacía parecer que el botón "no hacía nada". mute=0 para que suene.
 function songEmbedSrc(youtubeId, startSec, endSec, cacheBust) {
-  const params = [];
+  const params = ["autoplay=1", "mute=0", "playsinline=1"];
   if (startSec != null) params.push(`start=${Math.max(0, Math.floor(startSec))}`);
   if (endSec != null) params.push(`end=${Math.max(0, Math.floor(endSec))}`);
   if (cacheBust) params.push(`_r=${cacheBust}`);
-  return `https://www.youtube.com/embed/${encodeURIComponent(youtubeId)}${params.length ? "?" + params.join("&") : ""}`;
+  return `https://www.youtube.com/embed/${encodeURIComponent(youtubeId)}?${params.join("&")}`;
 }
 
 // Bloque de video reutilizado en los ejercicios "fill"(canción) y "songListen". Cuando hay
 // startSec (la línea tenía [mm:ss]), agrega un botón "Repetir el fragmento" — reasignar el
 // mismo start/end al iframe no siempre recarga en todos los navegadores, por eso el botón
-// suma un parámetro cacheBust distinto cada vez para forzar la recarga real.
+// suma un parámetro cacheBust distinto cada vez para forzar la recarga real (y el autoplay
+// hace que directamente vuelva a sonar desde el inicio del trecho, sin un segundo clic).
 function songFragmentHtml(frameId, youtubeId, startSec, endSec) {
   return `
-    <div class="song-video-wrap song-video-wrap-sm">
+    <div class="song-video-wrap">
       <iframe id="${frameId}" src="${songEmbedSrc(youtubeId, startSec, endSec)}" frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
-    ${startSec != null ? `<div style="text-align:center;margin:-10px 0 14px"><button class="btn btn-secondary btn-sm" type="button" id="${frameId}-replay">🔁 Repetir el fragmento</button></div>` : ""}`;
+    ${startSec != null ? `<button class="btn btn-secondary btn-sm song-replay-btn" type="button" id="${frameId}-replay">🔁 Repetir el fragmento</button>` : ""}`;
 }
 
 const EX_TYPE_BADGE = {
@@ -1862,14 +1867,17 @@ function renderExercise() {
       <div class="ex-actions"><button class="btn btn-primary" id="ex-next" disabled>Siguiente →</button></div>`;
   } else if (ex.type === "fill" || ex.type === "translate") {
     const label = ex.type === "translate" ? `Traduce${ex.from === "pt" ? " (Português → Español)" : " (Español → Português)"}: ${escapeHtml(ex.text)}` : escapeHtml(ex.q);
-    body = `
+    const fillInner = `
       <div class="ex-question">${label} ${ttsBtnHtml}</div>
-      ${ex.youtubeId ? `
-      ${songFragmentHtml("song-fill-frame", ex.youtubeId, ex.startSec, ex.endSec)}
-      <p class="ex-hint">🎧 ${ex.startSec != null ? "El video ya abrió en el fragmento de este hueco — escúchalo cuantas veces quieras." : "Puedes escuchar la canción cuantas veces quieras mientras completas el hueco."}</p>` : ""}
+      ${ex.youtubeId ? `<p class="ex-hint">🎧 ${ex.startSec != null ? "El video ya abrió en el fragmento de este hueco — escúchalo cuantas veces quieras." : "Puedes escuchar la canción cuantas veces quieras mientras completas el hueco."}</p>` : ""}
       <input type="text" class="ex-input" id="ex-answer" placeholder="Escribe tu respuesta aquí..." autocomplete="off">
       <div class="ex-actions"><button class="btn btn-secondary btn-sm" id="ex-check">Comprobar</button><button class="btn btn-primary" id="ex-next" disabled>Siguiente →</button></div>
       <div id="ex-feedback"></div>`;
+    body = ex.youtubeId ? `
+      <div class="song-ex-split">
+        <div class="song-ex-video">${songFragmentHtml("song-fill-frame", ex.youtubeId, ex.startSec, ex.endSec)}</div>
+        <div class="song-ex-content">${fillInner}</div>
+      </div>` : fillInner;
   } else if (ex.type === "listen") {
     body = `
       <div class="ex-question">🎧 ${escapeHtml(ex.q)}</div>
@@ -1882,11 +1890,15 @@ function renderExercise() {
     // YouTube (reproducir/rebobinar) para escuchar cuantas veces quiera y escribe lo que
     // entiende. Se valida con la misma tolerancia que "listen" (transcripción libre).
     body = `
-      <div class="ex-question">🎧 ${escapeHtml(ex.q || "Escucha la canción y escribe lo que oyes en este fragmento.")}</div>
-      ${songFragmentHtml("song-listen-frame", ex.youtubeId, ex.startSec, ex.endSec)}
-      <input type="text" class="ex-input" id="ex-answer" placeholder="Escribe lo que escuchas..." autocomplete="off">
-      <div class="ex-actions"><button class="btn btn-secondary btn-sm" id="ex-check">Comprobar</button><button class="btn btn-primary" id="ex-next" disabled>Siguiente →</button></div>
-      <div id="ex-feedback"></div>`;
+      <div class="song-ex-split">
+        <div class="song-ex-video">${songFragmentHtml("song-listen-frame", ex.youtubeId, ex.startSec, ex.endSec)}</div>
+        <div class="song-ex-content">
+          <div class="ex-question">🎧 ${escapeHtml(ex.q || "Escucha la canción y escribe lo que oyes en este fragmento.")}</div>
+          <input type="text" class="ex-input" id="ex-answer" placeholder="Escribe lo que escuchas..." autocomplete="off">
+          <div class="ex-actions"><button class="btn btn-secondary btn-sm" id="ex-check">Comprobar</button><button class="btn btn-primary" id="ex-next" disabled>Siguiente →</button></div>
+          <div id="ex-feedback"></div>
+        </div>
+      </div>`;
   } else if (ex.type === "speak") {
     body = `
       <div class="ex-question">🎙️ ${escapeHtml(ex.prompt)}</div>
