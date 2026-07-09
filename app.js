@@ -46,6 +46,11 @@ firebase.initializeApp(FIREBASE_CONFIG);
 const auth = firebase.auth();
 const db = firebase.firestore();
 
+// Versión del sistema, visible en Mi Cuenta / Configuración y en el pie de la barra lateral.
+// Se debe actualizar manualmente cada vez que se sube una nueva versión al repositorio
+// (formato AAAA.MM.DD.N — N = número de subida ese día, empieza en 1).
+const APP_VERSION = "2026.07.09.1";
+
 const DEFAULT_PASS_SCORES = { fundamentos: 70, basico: 70, intermedio: 70, avanzado: 70 };
 // Modo de liberación del gabarito (respuesta correcta): "immediate" = se muestra apenas
 // el alumno responde cada pregunta (comportamiento histórico); "after" = se oculta durante
@@ -112,7 +117,7 @@ const I18N = {
     admin_songs_live_count: "{lines} líneas · {blanks} huecos marcados",
     admin_students_title: "Alumnos y progreso ({n})", admin_no_students: "Todavía no hay alumnos con pruebas realizadas.",
     back_panel: "← Volver al panel",
-    account_title: "👤 Mi Cuenta", account_tab_security: "Seguridad", account_tab_appearance: "Apariencia", account_tab_profile: "Perfil",
+    account_title: "👤 Mi Cuenta", account_tab_security: "Seguridad", account_tab_appearance: "Apariencia", account_tab_profile: "Perfil", account_tab_access: "Mis Accesos",
     profile_name_label: "Nombre completo", profile_name_ph: "Tu nombre", profile_save: "Guardar nombre", profile_saved: "¡Nombre actualizado!",
     account_current_pass: "Contraseña actual", account_new_pass: "Nueva contraseña", account_confirm_pass: "Confirmar nueva contraseña",
     account_change_pass_btn: "Cambiar contraseña", account_pass_mismatch: "Las contraseñas nuevas no coinciden.",
@@ -147,7 +152,12 @@ const I18N = {
     sidebar_analytics: "Mi Actividad", sidebar_schedule: "Cronograma", sidebar_tutorial: "Tutorial",
     sidebar_section_progress: "Mi Progreso",
     admin_nav_overview: "Resumen", admin_nav_students: "Alumnos", admin_nav_analytics: "Analíticas",
-    admin_nav_certs: "Certificados", admin_nav_config: "Configuración",
+    admin_nav_certs: "Certificados", admin_nav_config: "Configuración", admin_nav_access: "Accesos",
+    access_log_title: "Historial de Acceso", access_log_admin_hint: "Registro de todos los inicios de sesión de todos los usuarios (los últimos 300).",
+    access_log_own_hint: "Registro de tus propios inicios de sesión en el sistema.",
+    access_log_empty: "Todavía no hay accesos registrados.",
+    access_log_col_user: "Usuario", access_log_col_date: "Fecha y hora", access_log_col_device: "Dispositivo", access_log_col_version: "Versión",
+    system_version_title: "Versión del sistema", system_version_label: "Versión",
     current_level_badge: "📍 Estás aquí", continue_btn: "Continuar estudiando →", next_up_label: "Sigues en:",
     home_title: "🎓 Panel del Alumno", home_no_progress: "Todavía no empezaste ningún nivel. ¡Vamos a comenzar!",
     home_start_btn: "Empezar ahora →", home_your_levels_link: "Ver todos mis niveles →",
@@ -217,7 +227,7 @@ const I18N = {
     admin_songs_live_count: "{lines} linhas · {blanks} lacunas marcadas",
     admin_students_title: "Alunos e progresso ({n})", admin_no_students: "Ainda não há alunos com provas realizadas.",
     back_panel: "← Voltar ao painel",
-    account_title: "👤 Minha Conta", account_tab_security: "Segurança", account_tab_appearance: "Aparência", account_tab_profile: "Perfil",
+    account_title: "👤 Minha Conta", account_tab_security: "Segurança", account_tab_appearance: "Aparência", account_tab_profile: "Perfil", account_tab_access: "Meus Acessos",
     profile_name_label: "Nome completo", profile_name_ph: "Seu nome", profile_save: "Salvar nome", profile_saved: "Nome atualizado!",
     account_current_pass: "Senha atual", account_new_pass: "Nova senha", account_confirm_pass: "Confirmar nova senha",
     account_change_pass_btn: "Alterar senha", account_pass_mismatch: "As novas senhas não coincidem.",
@@ -252,7 +262,12 @@ const I18N = {
     sidebar_analytics: "Minha Atividade", sidebar_schedule: "Cronograma", sidebar_tutorial: "Tutorial",
     sidebar_section_progress: "Meu Progresso",
     admin_nav_overview: "Resumo", admin_nav_students: "Alunos", admin_nav_analytics: "Analíticas",
-    admin_nav_certs: "Certificados", admin_nav_config: "Configurações",
+    admin_nav_certs: "Certificados", admin_nav_config: "Configurações", admin_nav_access: "Acessos",
+    access_log_title: "Histórico de Acesso", access_log_admin_hint: "Registro de todos os logins de todos os usuários (os últimos 300).",
+    access_log_own_hint: "Registro dos seus próprios logins no sistema.",
+    access_log_empty: "Ainda não há acessos registrados.",
+    access_log_col_user: "Usuário", access_log_col_date: "Data e hora", access_log_col_device: "Dispositivo", access_log_col_version: "Versão",
+    system_version_title: "Versão do sistema", system_version_label: "Versão",
     current_level_badge: "📍 Você está aqui", continue_btn: "Continuar estudando →", next_up_label: "Você está em:",
     home_title: "🎓 Painel do Aluno", home_no_progress: "Você ainda não começou nenhum nível. Vamos começar!",
     home_start_btn: "Começar agora →", home_your_levels_link: "Ver todos os meus níveis →",
@@ -322,7 +337,7 @@ const I18N = {
     admin_songs_live_count: "{lines} lines · {blanks} blanks marked",
     admin_students_title: "Students and progress ({n})", admin_no_students: "No students have taken exams yet.",
     back_panel: "← Back to panel",
-    account_title: "👤 My Account", account_tab_security: "Security", account_tab_appearance: "Appearance", account_tab_profile: "Profile",
+    account_title: "👤 My Account", account_tab_security: "Security", account_tab_appearance: "Appearance", account_tab_profile: "Profile", account_tab_access: "My Access Log",
     profile_name_label: "Full name", profile_name_ph: "Your name", profile_save: "Save name", profile_saved: "Name updated!",
     account_current_pass: "Current password", account_new_pass: "New password", account_confirm_pass: "Confirm new password",
     account_change_pass_btn: "Change password", account_pass_mismatch: "New passwords don't match.",
@@ -357,7 +372,12 @@ const I18N = {
     sidebar_analytics: "My Activity", sidebar_schedule: "Schedule", sidebar_tutorial: "Tutorial",
     sidebar_section_progress: "My Progress",
     admin_nav_overview: "Overview", admin_nav_students: "Students", admin_nav_analytics: "Analytics",
-    admin_nav_certs: "Certificates", admin_nav_config: "Settings",
+    admin_nav_certs: "Certificates", admin_nav_config: "Settings", admin_nav_access: "Access Log",
+    access_log_title: "Access History", access_log_admin_hint: "Log of every login from every user (the last 300).",
+    access_log_own_hint: "Log of your own logins to the system.",
+    access_log_empty: "No access logged yet.",
+    access_log_col_user: "User", access_log_col_date: "Date & time", access_log_col_device: "Device", access_log_col_version: "Version",
+    system_version_title: "System version", system_version_label: "Version",
     current_level_badge: "📍 You are here", continue_btn: "Continue studying →", next_up_label: "You're on:",
     home_title: "🎓 Student Panel", home_no_progress: "You haven't started any level yet. Let's get going!",
     home_start_btn: "Start now →", home_your_levels_link: "See all my levels →",
@@ -431,6 +451,7 @@ const state = {
   exerciseIndex: 0,
   exerciseAnswers: [],     // respostas dadas (para calcular nota)
   isExam: false,
+  isRetry: false,          // true durante una sesión de "repasar lo que fallé" (no afecta nota/XP oficial)
   lastResult: null,        // {score, passed, levelId}
   ttsVoices: [],
   speaking: false,
@@ -449,6 +470,9 @@ const state = {
   songs: [],               // caché de canciones (colección "songs" de Firestore) — ver loadSongs()
   songFormEditingId: null, // null = formulario cerrado; "new" = canción nueva; id = editando existente
   songFormMsg: "",
+  accountTab: "profile",   // profile | security | appearance | access
+  myAccessLog: [],         // historial de accesos del propio alumno (colección "access_log")
+  adminAccessLog: [],      // historial de accesos de TODOS los alumnos (solo admin)
 };
 
 applyTheme(state.prefs.theme);
@@ -714,6 +738,7 @@ function render() {
     case "adminAnalytics": return renderAdminAnalytics();
     case "adminCerts": return renderAdminCerts();
     case "adminSongs": return renderAdminSongs();
+    case "adminAccessLog": return renderAdminAccessLog();
     case "adminConfig": return renderAdminConfig();
     case "account": return renderAccount();
     case "schedule": return renderSchedule();
@@ -938,6 +963,7 @@ auth.onAuthStateChanged(async (fbUser) => {
     await loadConfig();
     await loadSongs();
     await loadVoices();
+    logAccess(); // fire-and-forget: registra este acceso en el historial (Configuración/Mi Cuenta)
 
     state.screen = "dashboard";
     render();
@@ -1100,6 +1126,7 @@ const SIDEBAR_ADMIN_ITEMS = [
   { screen: "adminAnalytics", icon: "📈", labelKey: "admin_nav_analytics" },
   { screen: "adminCerts", icon: "🎓", labelKey: "admin_nav_certs" },
   { screen: "adminSongs", icon: "🎵", labelKey: "admin_nav_songs" },
+  { screen: "adminAccessLog", icon: "🕓", labelKey: "admin_nav_access" },
   { screen: "adminConfig", icon: "⚙️", labelKey: "admin_nav_config" },
 ];
 
@@ -1138,6 +1165,7 @@ function sidebarHtml(activeScreen) {
         <button class="sidebar-item" id="btn-logout" title="${t("topbar_logout")}">
           <span class="ico">🚪</span><span class="label">${t("topbar_logout")}</span>
         </button>
+        <div class="sidebar-version">v${APP_VERSION}</div>
       </div>
     </aside>`;
 }
@@ -1212,6 +1240,12 @@ function attachShellEvents() {
         state.screen = target;
         render();
         loadAdminPending().then(render);
+        return;
+      }
+      if (target === "adminAccessLog") {
+        state.screen = target;
+        render();
+        loadAdminAccessLog().then(render);
         return;
       }
       if (target === "analytics") {
@@ -1556,10 +1590,12 @@ function renderLessonList() {
         const lp = p.lessonsCompleted && p.lessonsCompleted[lesson.id];
         const done = lp && lp.done;
         const hasReview = done && Array.isArray(lp.review) && lp.review.length > 0;
+        const hasEvolution = done && lp.attempts > 1 && lp.firstAttempt;
         return `
         <div class="lesson-row ${done ? "done" : ""} ${!unlocked ? "locked preview-only" : ""}" data-lesson="${unlocked ? lesson.id : ""}">
           <div class="num">${done ? "✓" : !unlocked ? "🔒" : (lesson.order || i + 1)}</div>
-          <div class="info"><h4>${escapeHtml(lesson.title)}</h4><span>${escapeHtml(lesson.subtitle || "")}</span></div>
+          <div class="info"><h4>${escapeHtml(lesson.title)}</h4><span>${escapeHtml(lesson.subtitle || "")}${hasEvolution ? ` · 📈 ${lp.firstAttempt.score}% → ${lp.score}%` : ""}</span></div>
+          ${hasEvolution ? `<button class="btn-icon lesson-review-btn" data-lesson-first="${lesson.id}" title="Ver mi primer intento">🕐</button>` : ""}
           ${hasReview ? `<button class="btn-icon lesson-review-btn" data-lesson-review="${lesson.id}" title="Ver mis respuestas y el gabarito">🔍</button>` : ""}
           <div class="chev">${unlocked ? "›" : ""}</div>
         </div>`;
@@ -1567,7 +1603,8 @@ function renderLessonList() {
       ${lvl.exam ? `
       <div class="lesson-row exam-row ${!unlocked ? "locked" : ""}" id="go-exam" data-locked="${!unlocked}">
         <div class="num">${unlocked ? "📝" : "🔒"}</div>
-        <div class="info"><h4>${lvl.exam.title}</h4><span>Nota mínima para aprobar: ${passScoreFor(lvl.id)}%${p.examPassed ? " · ✅ Aprobado con " + p.examScore + "%" : ""}</span></div>
+        <div class="info"><h4>${lvl.exam.title}</h4><span>Nota mínima para aprobar: ${passScoreFor(lvl.id)}%${p.examPassed ? " · ✅ Aprobado con " + p.examScore + "%" : ""}${p.examAttempts > 1 && p.examFirstAttempt ? ` · 📈 ${p.examFirstAttempt.score}% → ${p.examScore}%` : ""}${matchingInProgress(null, true, lvl.id) ? " · 📍 Prueba en curso" : ""}</span></div>
+        ${p.examAttempts > 1 && p.examFirstAttempt ? `<button class="btn-icon lesson-review-btn" data-exam-first="1" title="Ver mi primer intento">🕐</button>` : ""}
         ${Array.isArray(p.examReview) && p.examReview.length ? `<button class="btn-icon lesson-review-btn" data-exam-review="1" title="Ver mis respuestas y el gabarito">🔍</button>` : ""}
         <div class="chev">${unlocked ? "›" : ""}</div>
       </div>` : ""}
@@ -1585,7 +1622,14 @@ function renderLessonList() {
       };
     });
     const examBtn = document.getElementById("go-exam");
-    if (examBtn) examBtn.onclick = () => startExam(state.currentLevelId);
+    if (examBtn) examBtn.onclick = () => {
+      const examIp = matchingInProgress(null, true, state.currentLevelId);
+      if (examIp && confirm(`Tienes una prueba en curso (pregunta ${examIp.answers.length + 1}/${examIp.total}). Aceptar para continuar donde la dejaste, o Cancelar para empezar de nuevo.`)) {
+        startExam(state.currentLevelId, true);
+      } else {
+        startExam(state.currentLevelId, false);
+      }
+    };
   }
   document.querySelectorAll(".lesson-review-btn").forEach(btn => {
     btn.onclick = (ev) => {
@@ -1594,8 +1638,14 @@ function renderLessonList() {
         const lesson = lvl.lessons.find(l => l.id === btn.dataset.lessonReview);
         const lp = p.lessonsCompleted[btn.dataset.lessonReview];
         openReview({ title: `✍️ ${lesson ? lesson.title : "Ejercicios"} — ${lvl.name}`, items: lp.review || [], backTo: "lessonList" });
+      } else if (btn.dataset.lessonFirst) {
+        const lesson = lvl.lessons.find(l => l.id === btn.dataset.lessonFirst);
+        const lp = p.lessonsCompleted[btn.dataset.lessonFirst];
+        openReview({ title: `🕐 Primer intento — ${lesson ? lesson.title : "Ejercicios"} — ${lvl.name}`, items: (lp.firstAttempt && lp.firstAttempt.review) || [], backTo: "lessonList" });
       } else if (btn.dataset.examReview) {
         openReview({ title: `📝 ${lvl.exam ? lvl.exam.title : "Prueba"} — ${lvl.name}`, items: p.examReview || [], backTo: "lessonList" });
+      } else if (btn.dataset.examFirst) {
+        openReview({ title: `🕐 Primer intento — ${lvl.exam ? lvl.exam.title : "Prueba"} — ${lvl.name}`, items: (p.examFirstAttempt && p.examFirstAttempt.review) || [], backTo: "lessonList" });
       }
     };
   });
@@ -1671,14 +1721,28 @@ function renderLessonView() {
     html += `<div class="card"><h3>💡 Notas</h3><ul class="notes-list">${lesson.notes.map(n => `<li>${escapeHtml(n)}</li>`).join("")}</ul></div>`;
   }
 
+  const ip = matchingInProgress(lesson.id, false);
   html += `
+      ${ip ? `
+      <div class="card continue-progress">
+        <div><strong>📍 Tienes un ejercicio en curso</strong> — vas por la pregunta ${ip.answers.length + 1} de ${ip.total}.</div>
+        <div class="progress-bar-track"><div class="progress-bar-fill" style="width:${Math.round((ip.answers.length / ip.total) * 100)}%"></div></div>
+        <div style="display:flex;gap:10px;margin-top:10px;flex-wrap:wrap">
+          <button class="btn btn-primary btn-sm" id="continue-exercises">Continuar donde lo dejé →</button>
+          <button class="btn btn-secondary btn-sm" id="restart-exercises">Empezar de nuevo</button>
+        </div>
+      </div>` : ""}
       <div style="text-align:center;margin: 24px 0 40px">
-        <button class="btn btn-primary" id="start-exercises" style="padding:16px 34px">${lesson.youtubeId ? "🎤 Descubrir la letra" : "Empezar ejercicios"} (${lesson.exercises.length}) →</button>
+        <button class="btn btn-primary" id="start-exercises" style="padding:16px 34px">${ip ? "Empezar de nuevo" : (lesson.youtubeId ? "🎤 Descubrir la letra" : "Empezar ejercicios")} (${lesson.exercises.length}) →</button>
       </div>
       <div class="bottom-space"></div>`;
   root.innerHTML = wrapShell(html, "lesson");
   attachShellEvents();
   document.getElementById("back-list").onclick = () => { state.screen = "lessonList"; render(); };
+  const contBtn = document.getElementById("continue-exercises");
+  if (contBtn) contBtn.onclick = () => startLessonExercises(lesson, true);
+  const restartBtn = document.getElementById("restart-exercises");
+  if (restartBtn) restartBtn.onclick = () => startLessonExercises(lesson, false);
 
   document.querySelectorAll(".dialogue-line").forEach(line => {
     const text = line.dataset.fulltext || (lesson.dialogue && lesson.dialogue[line.dataset.idx] ? lesson.dialogue[line.dataset.idx].es : "");
@@ -1694,39 +1758,58 @@ function renderLessonView() {
 /* ---------------------------------------------------------------------- */
 /* 13. MOTOR DE EXERCÍCIOS                                                 */
 /* ---------------------------------------------------------------------- */
-function startLessonExercises(lesson) {
+function startLessonExercises(lesson, resume) {
+  const saved = resume ? matchingInProgress(lesson.id, false) : null;
   state.exerciseQueue = lesson.exercises;
-  state.exerciseIndex = 0;
-  state.exerciseAnswers = [];
-  state.exerciseDetails = [];
+  // El resume se retoma en la PRÓXIMA pregunta sin responder (answers.length), no en el
+  // "index" guardado — ese quedó apuntando a la pregunta que ya se había contestado.
+  state.exerciseIndex = saved ? Math.min(saved.answers.length, lesson.exercises.length - 1) : 0;
+  state.exerciseAnswers = saved ? saved.answers.slice() : [];
+  state.exerciseDetails = saved ? saved.details.slice() : [];
   state.isExam = false;
+  state.isRetry = false;
   state.screen = "exercises";
   render();
 }
 
-function startExam(levelId) {
+function startExam(levelId, resume) {
   const lvl = getLevel(levelId);
   if (!lvl.exam) return;
+  const saved = resume ? matchingInProgress(null, true, levelId) : null;
   state.exerciseQueue = lvl.exam.questions;
-  state.exerciseIndex = 0;
-  state.exerciseAnswers = [];
-  state.exerciseDetails = [];
+  state.exerciseIndex = saved ? Math.min(saved.answers.length, lvl.exam.questions.length - 1) : 0;
+  state.exerciseAnswers = saved ? saved.answers.slice() : [];
+  state.exerciseDetails = saved ? saved.details.slice() : [];
   state.isExam = true;
+  state.isRetry = false;
   state.screen = "exam";
   render();
 }
 
 function currentExercise() { return state.exerciseQueue[state.exerciseIndex]; }
 
+const EX_TYPE_BADGE = {
+  mc: "🔠 Opción múltiple", fill: "✏️ Completar", translate: "🔁 Traducción", listen: "🎧 Escucha",
+  songListen: "🎧 Dictado musical", speak: "🎙️ Pronunciación", order: "🔀 Ordenar", open: "✍️ Respuesta libre",
+};
+
 function renderExercise() {
   const ex = currentExercise();
   const total = state.exerciseQueue.length;
   const idx = state.exerciseIndex;
   let body = "";
+  // Botón 🔊 opcional junto al enunciado: lee en voz alta (Web Speech API) el texto en
+  // español de la pregunta, cuando lo hay. En "translate" pt→es no hay texto en español
+  // todavía (el alumno lo tiene que escribir), así que ahí no se ofrece.
+  const ttsSource = ex.type === "mc" ? ex.q
+    : ex.type === "fill" ? ex.q
+    : (ex.type === "translate" && ex.from !== "pt") ? ex.text
+    : ex.type === "order" ? (ex.correctOrder || []).map(i => ex.items[i]).join(". ") : "";
+  const ttsBtnHtml = ttsSource ? `<button class="tts-btn" id="ex-tts" type="button" title="Escuchar">🔊</button>` : "";
 
   if (ex.type === "mc") {
     body = `
-      <div class="ex-question">${escapeHtml(ex.q)}</div>
+      <div class="ex-question">${escapeHtml(ex.q)} ${ttsBtnHtml}</div>
       <div class="ex-options">
         ${ex.options.map((opt, i) => `<button class="ex-option" data-i="${i}">${escapeHtml(opt)}</button>`).join("")}
       </div>
@@ -1735,7 +1818,13 @@ function renderExercise() {
   } else if (ex.type === "fill" || ex.type === "translate") {
     const label = ex.type === "translate" ? `Traduce${ex.from === "pt" ? " (Português → Español)" : " (Español → Português)"}: ${escapeHtml(ex.text)}` : escapeHtml(ex.q);
     body = `
-      <div class="ex-question">${label}</div>
+      <div class="ex-question">${label} ${ttsBtnHtml}</div>
+      ${ex.youtubeId ? `
+      <div class="song-video-wrap song-video-wrap-sm">
+        <iframe src="https://www.youtube.com/embed/${encodeURIComponent(ex.youtubeId)}" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <p class="ex-hint">🎧 Puedes escuchar la canción cuantas veces quieras mientras completas el hueco.</p>` : ""}
       <input type="text" class="ex-input" id="ex-answer" placeholder="Escribe tu respuesta aquí..." autocomplete="off">
       <div class="ex-actions"><button class="btn btn-secondary btn-sm" id="ex-check">Comprobar</button><button class="btn btn-primary" id="ex-next" disabled>Siguiente →</button></div>
       <div id="ex-feedback"></div>`;
@@ -1769,7 +1858,7 @@ function renderExercise() {
       <div class="ex-actions"><button class="btn btn-secondary btn-sm" id="ex-skip">No puedo grabar ahora</button><button class="btn btn-primary" id="ex-next" disabled>Siguiente →</button></div>`;
   } else if (ex.type === "order") {
     body = `
-      <div class="ex-question">Ordena el diálogo (haz clic en orden):</div>
+      <div class="ex-question">Ordena el diálogo (haz clic en orden): ${ttsBtnHtml}</div>
       <div id="order-list">${ex.items.map((it, i) => `<div class="order-item" data-i="${i}">${escapeHtml(it)}</div>`).join("")}</div>
       <div id="ex-feedback"></div>
       <div class="ex-actions"><button class="btn btn-secondary btn-sm" id="ex-check">Comprobar</button><button class="btn btn-primary" id="ex-next" disabled>Siguiente →</button></div>`;
@@ -1783,31 +1872,101 @@ function renderExercise() {
       <div class="ex-actions"><button class="btn btn-primary" id="ex-next">Siguiente →</button></div>`;
   }
 
+  const correctSoFar = state.exerciseAnswers.filter(Boolean).length;
+  const answeredSoFar = state.exerciseAnswers.length;
+  let streak = 0;
+  for (let i = state.exerciseAnswers.length - 1; i >= 0; i--) { if (state.exerciseAnswers[i]) streak++; else break; }
+  const heroImg = exerciseImageHtml(state.isExam ? null : state.currentLessonId, idx);
+
   root.innerHTML = wrapShell(`
       <button class="back-link" id="back-exit">✕ Salir</button>
       <div class="card exercise-card">
-        <div class="ex-progress">${state.isExam ? "Prueba" : "Ejercicio"} ${idx + 1} / ${total}</div>
+        <div class="ex-topline">
+          <div class="ex-progress">${state.isRetry ? "🔁 Repaso" : state.isExam ? "Prueba" : "Ejercicio"} ${idx + 1} / ${total} <span class="ex-type-badge">${EX_TYPE_BADGE[ex.type] || ""}</span></div>
+          <div class="ex-scoreboard" id="ex-scoreboard">✅ ${correctSoFar}/${answeredSoFar} ${streak >= 2 ? `· 🔥 racha ${streak}` : ""}</div>
+        </div>
         <div class="progress-bar-track"><div class="progress-bar-fill" style="width:${Math.round(((idx) / total) * 100)}%"></div></div>
-        <br>
+        ${heroImg}
         ${body}
       </div>
       <div class="bottom-space"></div>
     `, state.isExam ? "exam" : "exercises");
   attachShellEvents();
   document.getElementById("back-exit").onclick = () => {
-    if (confirm("¿Seguro que quieres salir? Vas a perder el progreso de este ejercicio/prueba.")) {
-      state.screen = state.isExam ? "lessonList" : "lessonList";
+    if (state.isRetry || (idx === 0 && state.exerciseAnswers.length === 0)) {
+      state.screen = "lessonList";
+      render();
+      return;
+    }
+    if (confirm("Tu progreso se guarda automáticamente. Vas a poder continuar donde lo dejaste. ¿Salir ahora?")) {
+      state.screen = "lessonList";
       render();
     }
   };
+  const ttsBtn = document.getElementById("ex-tts");
+  if (ttsBtn && ttsSource) ttsBtn.onclick = () => speak(ttsSource.replace(/_{2,}/g, "..."), null, ttsBtn);
 
   wireExerciseInteractions(ex);
+}
+
+function updateScoreboard() {
+  const el = document.getElementById("ex-scoreboard");
+  if (!el) return;
+  const correctSoFar = state.exerciseAnswers.filter(Boolean).length;
+  const answeredSoFar = state.exerciseAnswers.length;
+  let streak = 0;
+  for (let i = state.exerciseAnswers.length - 1; i >= 0; i--) { if (state.exerciseAnswers[i]) streak++; else break; }
+  el.innerHTML = `✅ ${correctSoFar}/${answeredSoFar} ${streak >= 2 ? `· 🔥 racha ${streak}` : ""}`;
 }
 
 function markAnswered(correct) {
   state.exerciseAnswers.push(correct);
   const nextBtn = document.getElementById("ex-next");
   if (nextBtn) nextBtn.disabled = false;
+  updateScoreboard();
+  persistExerciseProgress();
+}
+
+// Guarda el punto exacto donde el alumno está dentro de un ejercicio/prueba en curso, para
+// poder ofrecer "Continuar donde lo dejaste" si sale y vuelve más tarde. Se llama después de
+// cada respuesta — es "fire and forget" (no bloquea la interacción ni espera confirmación).
+// Las sesiones de repaso (isRetry) no se guardan: son práctica libre, no un avance oficial.
+function persistExerciseProgress() {
+  if (!state.user || state.isRetry || !state.progress) return;
+  const snapshot = {
+    levelId: state.currentLevelId,
+    lessonId: state.isExam ? null : (state.currentLessonId || null),
+    isExam: !!state.isExam,
+    index: state.exerciseIndex,
+    answers: state.exerciseAnswers.slice(),
+    details: state.exerciseDetails.slice(),
+    total: state.exerciseQueue.length,
+    updatedAt: Date.now(),
+  };
+  state.progress.inProgress = snapshot;
+  db.collection("progress").doc(state.user.uid).update({ inProgress: snapshot })
+    .catch(e => console.warn("No se pudo guardar el progreso del ejercicio.", e));
+}
+
+async function clearInProgress() {
+  if (!state.progress) return;
+  state.progress.inProgress = null;
+  if (!state.user) return;
+  try {
+    await db.collection("progress").doc(state.user.uid).update({ inProgress: firebase.firestore.FieldValue.delete() });
+  } catch (e) { console.warn(e); }
+}
+
+// Devuelve el snapshot guardado si corresponde exactamente a esta lección/prueba y tiene
+// al menos una respuesta ya dada (si index=0 y sin respuestas, no hay nada que retomar).
+function matchingInProgress(lessonId, isExam, levelId) {
+  const ip = state.progress && state.progress.inProgress;
+  if (!ip || ip.isExam !== !!isExam) return null;
+  if (isExam) { if (ip.levelId !== levelId) return null; }
+  else { if (ip.lessonId !== lessonId || ip.levelId !== state.currentLevelId) return null; }
+  if (!ip.answers || ip.answers.length === 0) return null;
+  if (ip.answers.length >= (ip.total || 0)) return null; // ya había respondido todo — no hay nada que retomar
+  return ip;
 }
 
 // Registra cada intento de ejercicio en Firestore (colección "attempts"), para alimentar
@@ -1992,15 +2151,32 @@ async function finishExerciseSet() {
   const total = state.exerciseQueue.length;
   const score = total ? Math.round((correctCount / total) * 100) : 100;
   const review = state.exerciseDetails.slice();
+  // Preguntas erradas de esta ronda, guardadas como objetos completos (no solo texto) para
+  // poder relanzarlas tal cual en un "Repasar lo que fallé" desde la pantalla de resultado.
+  const wrongItems = state.exerciseQueue.filter((_, i) => state.exerciseAnswers[i] === false);
+
+  await clearInProgress();
+
+  if (state.isRetry) {
+    // Sesión de repaso de errores: es práctica libre, no vuelve a guardar nota ni XP.
+    state.lastResult = {
+      score, passed: true, levelId: state.currentLevelId, isExam: state.isExam,
+      lessonId: state.currentLessonId, review, wrongItems, isRetry: true,
+    };
+    state.isRetry = false;
+    state.screen = "result";
+    render();
+    return;
+  }
 
   if (state.isExam) {
     const passScore = passScoreFor(state.currentLevelId);
     const passed = score >= passScore;
     await saveExamResult(state.currentLevelId, score, passed, review);
-    state.lastResult = { score, passed, levelId: state.currentLevelId, isExam: true, review };
+    state.lastResult = { score, passed, levelId: state.currentLevelId, isExam: true, review, wrongItems };
   } else {
     await saveLessonResult(state.currentLevelId, state.currentLessonId, score, review);
-    state.lastResult = { score, passed: true, levelId: state.currentLevelId, isExam: false, lessonId: state.currentLessonId, review };
+    state.lastResult = { score, passed: true, levelId: state.currentLevelId, isExam: false, lessonId: state.currentLessonId, review, wrongItems };
   }
   state.screen = "result";
   render();
@@ -2010,13 +2186,20 @@ async function saveLessonResult(levelId, lessonId, score, review) {
   const ref = db.collection("progress").doc(state.user.uid);
   const field = `levels.${levelId}.lessonsCompleted.${lessonId}`;
   const xpGain = 10 + Math.round(score / 10);
+  const prevEntry = state.progress.levels[levelId] && state.progress.levels[levelId].lessonsCompleted && state.progress.levels[levelId].lessonsCompleted[lessonId];
+  // Preserva el PRIMER intento (nota + gabarito) aunque el alumno rehaga la lección entera
+  // más adelante y su resultado oficial cambie — así puede comparar "cómo empecé" vs "cómo
+  // estoy ahora" y ver su evolución real, no solo el último resultado.
+  const firstAttempt = (prevEntry && prevEntry.firstAttempt) ? prevEntry.firstAttempt : { score, review: review || [] };
+  const attempts = (prevEntry && prevEntry.attempts ? prevEntry.attempts : 0) + 1;
+  const entry = { done: true, score, review: review || [], at: firebase.firestore.FieldValue.serverTimestamp(), firstAttempt, attempts };
   await ref.update({
-    [field]: { done: true, score, review: review || [], at: firebase.firestore.FieldValue.serverTimestamp() },
+    [field]: entry,
     xp: firebase.firestore.FieldValue.increment(xpGain)
   });
   if (!state.progress.levels[levelId]) state.progress.levels[levelId] = { lessonsCompleted: {} };
   if (!state.progress.levels[levelId].lessonsCompleted) state.progress.levels[levelId].lessonsCompleted = {};
-  state.progress.levels[levelId].lessonsCompleted[lessonId] = { done: true, score, review: review || [] };
+  state.progress.levels[levelId].lessonsCompleted[lessonId] = { ...entry, at: new Date() };
   state.progress.xp = (state.progress.xp || 0) + xpGain;
   await updateProgressSummary();
 }
@@ -2042,10 +2225,19 @@ async function saveExamResult(levelId, score, passed, review) {
   const xpGain = passed ? 50 : 5;
   const idx = MAIN_SEQUENCE.indexOf(levelId);
   const nextId = idx >= 0 ? MAIN_SEQUENCE[idx + 1] : null;
+  const prevLevel = state.progress.levels[levelId];
+  // Igual que en las lecciones: guarda el primer intento de la prueba (nota + gabarito) una
+  // sola vez, sin sobreescribirlo en los siguientes intentos, para poder mostrar la evolución.
+  const examFirstAttempt = (prevLevel && prevLevel.examFirstAttempt)
+    ? prevLevel.examFirstAttempt
+    : (prevLevel && prevLevel.examScore != null ? { score: prevLevel.examScore, passed: !!prevLevel.examPassed, review: prevLevel.examReview || [] } : { score, passed, review: review || [] });
+  const examAttempts = (prevLevel && prevLevel.examAttempts ? prevLevel.examAttempts : 0) + 1;
   const updates = {
     [`levels.${levelId}.examScore`]: score,
     [`levels.${levelId}.examPassed`]: passed,
     [`levels.${levelId}.examReview`]: review || [],
+    [`levels.${levelId}.examFirstAttempt`]: examFirstAttempt,
+    [`levels.${levelId}.examAttempts`]: examAttempts,
     xp: firebase.firestore.FieldValue.increment(xpGain)
   };
   if (passed && nextId) updates[`levels.${nextId}.unlocked`] = true;
@@ -2055,6 +2247,8 @@ async function saveExamResult(levelId, score, passed, review) {
   state.progress.levels[levelId].examScore = score;
   state.progress.levels[levelId].examPassed = passed;
   state.progress.levels[levelId].examReview = review || [];
+  state.progress.levels[levelId].examFirstAttempt = examFirstAttempt;
+  state.progress.levels[levelId].examAttempts = examAttempts;
   state.progress.xp = (state.progress.xp || 0) + xpGain;
   if (passed && nextId) {
     if (!state.progress.levels[nextId]) state.progress.levels[nextId] = {};
@@ -2127,6 +2321,72 @@ function renderNotas() {
       });
     };
   });
+}
+
+/* ---------------------------------------------------------------------- */
+/* 13b2. HISTORIAL DE ACCESO (login) — visible en Mi Cuenta y, para el admin, de todos */
+/* ---------------------------------------------------------------------- */
+// Registra este acceso (inicio de sesión / apertura del sistema) en la colección
+// "access_log". Se llama una vez por cada resolución de auth.onAuthStateChanged, es decir,
+// cada vez que el sistema carga con una sesión activa. Fire-and-forget: nunca bloquea la carga.
+function logAccess() {
+  if (!state.user) return;
+  try {
+    db.collection("access_log").add({
+      uid: state.user.uid,
+      name: state.user.name || "",
+      email: state.user.email || "",
+      role: state.user.role || "aluno",
+      appVersion: APP_VERSION,
+      userAgent: (typeof navigator !== "undefined" && navigator.userAgent) || "",
+      at: firebase.firestore.FieldValue.serverTimestamp(),
+    }).catch(e => console.warn("No se pudo registrar el acceso.", e));
+  } catch (e) { console.warn(e); }
+}
+
+async function loadMyAccessLog() {
+  try {
+    if (!state.user) return;
+    const snap = await db.collection("access_log").where("uid", "==", state.user.uid).orderBy("at", "desc").limit(100).get();
+    state.myAccessLog = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+  } catch (e) {
+    console.warn("No se pudo cargar tu historial de acceso.", e);
+    state.myAccessLog = [];
+  }
+}
+
+async function loadAdminAccessLog() {
+  try {
+    const snap = await db.collection("access_log").orderBy("at", "desc").limit(300).get();
+    state.adminAccessLog = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+  } catch (e) {
+    console.warn("No se pudo cargar el historial de accesos.", e);
+    state.adminAccessLog = [];
+  }
+}
+
+function formatAccessAt(at) {
+  try {
+    if (!at) return "—";
+    const d = at.toDate ? at.toDate() : new Date(at);
+    const lang = (state.prefs && state.prefs.lang) || "es";
+    const locale = lang === "pt" ? "pt-BR" : lang === "en" ? "en-US" : "es-ES";
+    return d.toLocaleDateString(locale, { day: "2-digit", month: "short", year: "numeric" }) + " · " + d.toLocaleTimeString(locale, { hour: "2-digit", minute: "2-digit" });
+  } catch (e) { return "—"; }
+}
+
+// Extrae un nombre de navegador/dispositivo legible a partir del userAgent, solo para
+// mostrar algo amigable en la tabla (no es una detección exhaustiva, es suficiente para
+// que el alumno/admin reconozca "desde qué vine").
+function friendlyDeviceFromUA(ua) {
+  if (!ua) return "—";
+  const isMobile = /Mobile|Android|iPhone/i.test(ua);
+  let browser = "Navegador";
+  if (/Edg\//.test(ua)) browser = "Edge";
+  else if (/Chrome\//.test(ua)) browser = "Chrome";
+  else if (/Firefox\//.test(ua)) browser = "Firefox";
+  else if (/Safari\//.test(ua)) browser = "Safari";
+  return `${browser} · ${isMobile ? "📱 Móvil" : "💻 Computadora"}`;
 }
 
 /* ---------------------------------------------------------------------- */
@@ -2390,7 +2650,10 @@ function buildSongExercises(lines, youtubeId) {
       // se resuelven a su palabra real para que el resto de la frase quede legible.
       const withThisBlank = line.slice(0, start) + "___" + line.slice(end);
       const finalLine = withThisBlank.replace(SONG_BLANK_RE, (mm, w) => w);
-      exercises.push({ type: "fill", q: `Completa la letra: "${finalLine}"`, answer: word });
+      // Antes este ejercicio no llevaba el video — el alumno tenía que adivinar la letra
+      // de memoria, sin poder escuchar. Ahora lleva youtubeId para mostrar el reproductor
+      // también aquí, así puede escuchar cuantas veces quiera mientras completa el hueco.
+      exercises.push({ type: "fill", q: `Completa la letra: "${finalLine}"`, answer: word, youtubeId, isSong: true });
     });
   });
   // Dictado con la canción real: el alumno escucha el video (controles nativos de YouTube,
@@ -2467,18 +2730,21 @@ function renderResult() {
   const r = state.lastResult;
   const lvl = getLevel(r.levelId);
   const isSong = r.levelId === "canciones";
+  const hasWrong = r.wrongItems && r.wrongItems.length > 0;
   root.innerHTML = wrapShell(`
       <div class="card result-wrap">
         <div class="result-emoji-ring ${r.isExam && !r.passed ? "fail" : "pass"}"><span class="result-emoji">${isSong ? "🎤" : r.isExam ? (r.passed ? "🎉" : "😕") : "✅"}</span></div>
-        <h2>${isSong ? (r.score >= 90 ? "¡Cantas como un/a nativo/a! 🎶" : "¡Muy bien, sigue practicando!") : r.isExam ? (r.passed ? "¡Aprobado!" : "Todavía no...") : "¡Ejercicios completados!"}</h2>
+        <h2>${r.isRetry ? "¡Repaso completado!" : isSong ? (r.score >= 90 ? "¡Cantas como un/a nativo/a! 🎶" : "¡Muy bien, sigue practicando!") : r.isExam ? (r.passed ? "¡Aprobado!" : "Todavía no...") : "¡Ejercicios completados!"}</h2>
         <div class="result-score ${r.passed ? "pass" : "fail"}">${r.score}%</div>
-        ${r.isExam ? `<p>Nota mínima exigida: ${passScoreFor(r.levelId)}%</p>` : ""}
-        ${r.isExam && r.passed ? `<p>🔓 ¡Has desbloqueado el próximo nivel!</p>` : ""}
-        ${r.isExam && !r.passed ? `<p>Repasa la lección y vuelve a intentar la prueba cuando estés listo(a).</p>` : ""}
+        ${r.isRetry ? `<p style="color:var(--gray-2);font-size:.85rem">🔁 Esta fue una sesión de repaso de errores — no afecta tu nota oficial ni el XP.</p>` : ""}
+        ${!r.isRetry && r.isExam ? `<p>Nota mínima exigida: ${passScoreFor(r.levelId)}%</p>` : ""}
+        ${!r.isRetry && r.isExam && r.passed ? `<p>🔓 ¡Has desbloqueado el próximo nivel!</p>` : ""}
+        ${!r.isRetry && r.isExam && !r.passed ? `<p>Repasa la lección y vuelve a intentar la prueba cuando estés listo(a).</p>` : ""}
         <div style="display:flex;gap:12px;justify-content:center;margin-top:20px;flex-wrap:wrap">
           <button class="btn btn-secondary" id="res-back">Volver a ${lvl.name}</button>
           ${r.review && r.review.length ? `<button class="btn btn-gold" id="res-review">🔍 Ver mis respuestas y el gabarito</button>` : ""}
-          ${r.isExam && !r.passed ? `<button class="btn btn-primary" id="res-retry">Intentar de nuevo</button>` : ""}
+          ${hasWrong ? `<button class="btn btn-primary" id="res-retry-wrong">🔁 Repasar lo que fallé (${r.wrongItems.length})</button>` : ""}
+          ${!r.isRetry && r.isExam && !r.passed ? `<button class="btn btn-primary" id="res-retry">Intentar de nuevo</button>` : ""}
         </div>
       </div>
       <div class="bottom-space"></div>
@@ -2487,6 +2753,19 @@ function renderResult() {
   document.getElementById("res-back").onclick = () => { state.screen = "lessonList"; render(); };
   const retry = document.getElementById("res-retry");
   if (retry) retry.onclick = () => startExam(r.levelId);
+  const retryWrong = document.getElementById("res-retry-wrong");
+  if (retryWrong) retryWrong.onclick = () => {
+    state.exerciseQueue = r.wrongItems;
+    state.exerciseIndex = 0;
+    state.exerciseAnswers = [];
+    state.exerciseDetails = [];
+    state.isExam = r.isExam;
+    state.currentLevelId = r.levelId;
+    state.currentLessonId = r.lessonId || null;
+    state.isRetry = true;
+    state.screen = r.isExam ? "exam" : "exercises";
+    render();
+  };
   const reviewBtn = document.getElementById("res-review");
   if (reviewBtn) reviewBtn.onclick = () => openReview({
     title: r.isExam ? `📝 ${lvl.exam ? lvl.exam.title : "Prueba"} — ${lvl.name}` : `✍️ Ejercicios — ${lvl.name}`,
@@ -2639,6 +2918,7 @@ function renderAdminOverview() {
     render();
     if (target === "adminAnalytics") Promise.all([loadAdminStudents(), loadAdminAttempts()]).then(render);
     else if (target === "adminApprovals") loadAdminPending().then(render);
+    else if (target === "adminAccessLog") loadAdminAccessLog().then(render);
     else loadAdminStudents().then(render);
   });
 }
@@ -2670,6 +2950,7 @@ function renderAdminApprovals() {
     render();
     if (target === "adminAnalytics") Promise.all([loadAdminStudents(), loadAdminAttempts()]).then(render);
     else if (target === "adminApprovals") loadAdminPending().then(render);
+    else if (target === "adminAccessLog") loadAdminAccessLog().then(render);
     else loadAdminStudents().then(render);
   });
   document.querySelectorAll("[data-approve]").forEach(b => b.onclick = () => approveUser(b.dataset.approve));
@@ -2700,6 +2981,7 @@ function renderAdminStudents() {
     render();
     if (target === "adminAnalytics") Promise.all([loadAdminStudents(), loadAdminAttempts()]).then(render);
     else if (target === "adminApprovals") loadAdminPending().then(render);
+    else if (target === "adminAccessLog") loadAdminAccessLog().then(render);
     else loadAdminStudents().then(render);
   });
 }
@@ -2770,6 +3052,7 @@ function renderAdminSongs() {
     render();
     if (target === "adminAnalytics") Promise.all([loadAdminStudents(), loadAdminAttempts()]).then(render);
     else if (target === "adminApprovals") loadAdminPending().then(render);
+    else if (target === "adminAccessLog") loadAdminAccessLog().then(render);
     else loadAdminStudents().then(render);
   });
 
@@ -2844,6 +3127,46 @@ async function onDeleteSong(id) {
   }
 }
 
+/* ---------------------------------------------------------------------- */
+/* 15b. TELA: HISTORIAL DE ACCESO (admin — todos los usuarios)             */
+/* ---------------------------------------------------------------------- */
+function renderAdminAccessLog() {
+  const log = state.adminAccessLog || [];
+  root.innerHTML = wrapShell(`
+      <button class="back-link" id="back-dash">← Volver al panel</button>
+      <div class="section-title">🕓 ${t("access_log_title")}</div>
+      ${adminTabsHtml("adminAccessLog")}
+      <div class="card">
+        <p style="color:var(--gray-2);font-size:.85rem;margin-top:0">${t("access_log_admin_hint")}</p>
+        ${log.length === 0 ? `<p style="color:var(--gray-2)">${t("access_log_empty")}</p>` : `
+        <table class="notas-table">
+          <thead><tr><th>${t("access_log_col_user")}</th><th>${t("access_log_col_date")}</th><th>${t("access_log_col_device")}</th><th>${t("access_log_col_version")}</th></tr></thead>
+          <tbody>
+            ${log.map(a => `
+              <tr>
+                <td><strong>${escapeHtml(a.name || a.email || a.uid || "—")}</strong>${a.role === "admin" ? " · 🛠️" : ""}<br><span style="color:var(--gray-2);font-size:.8rem">${escapeHtml(a.email || "")}</span></td>
+                <td>${formatAccessAt(a.at)}</td>
+                <td>${friendlyDeviceFromUA(a.userAgent)}</td>
+                <td>${escapeHtml(a.appVersion || "—")}</td>
+              </tr>`).join("")}
+          </tbody>
+        </table>`}
+      </div>
+      <div class="bottom-space"></div>
+    `, "adminAccessLog");
+  attachShellEvents();
+  adminBackDashHandler();
+  document.querySelectorAll(".admin-tab-btn").forEach(b => b.onclick = () => {
+    const target = b.dataset.nav;
+    state.screen = target;
+    render();
+    if (target === "adminAnalytics") Promise.all([loadAdminStudents(), loadAdminAttempts()]).then(render);
+    else if (target === "adminApprovals") loadAdminPending().then(render);
+    else if (target === "adminAccessLog") loadAdminAccessLog().then(render);
+    else loadAdminStudents().then(render);
+  });
+}
+
 function renderAdminConfig() {
   const ps = state.config.passScores;
   const schedule = getSchedule();
@@ -2877,6 +3200,10 @@ function renderAdminConfig() {
         <p style="color:var(--gray-2);font-size:.85rem;margin-top:0">${t("schedule_intro")}</p>
         <div class="config-row"><span>${t("schedule_duration_label")}</span><span>${schedule.durationMonths || DEFAULT_SCHEDULE_MONTHS} ${t("schedule_months_unit")}</span></div>
       </div>
+      <div class="card">
+        <h3>ℹ️ ${t("system_version_title")}</h3>
+        <div class="config-row"><span>${t("system_version_label")}</span><span><strong>v${APP_VERSION}</strong></span></div>
+      </div>
       <div class="bottom-space"></div>
     `, "adminConfig");
   attachShellEvents();
@@ -2887,6 +3214,7 @@ function renderAdminConfig() {
     render();
     if (target === "adminAnalytics") Promise.all([loadAdminStudents(), loadAdminAttempts()]).then(render);
     else if (target === "adminApprovals") loadAdminPending().then(render);
+    else if (target === "adminAccessLog") loadAdminAccessLog().then(render);
     else loadAdminStudents().then(render);
   });
   document.getElementById("save-config").onclick = async () => {
@@ -2942,6 +3270,7 @@ function renderAdminCerts() {
     render();
     if (target === "adminAnalytics") Promise.all([loadAdminStudents(), loadAdminAttempts()]).then(render);
     else if (target === "adminApprovals") loadAdminPending().then(render);
+    else if (target === "adminAccessLog") loadAdminAccessLog().then(render);
     else loadAdminStudents().then(render);
   });
   document.querySelectorAll(".cert-preview-btn").forEach(btn => {
@@ -3027,6 +3356,7 @@ function renderAdminAnalytics() {
     render();
     if (target === "adminAnalytics") Promise.all([loadAdminStudents(), loadAdminAttempts()]).then(render);
     else if (target === "adminApprovals") loadAdminPending().then(render);
+    else if (target === "adminAccessLog") loadAdminAccessLog().then(render);
     else loadAdminStudents().then(render);
   });
   if (attempts.length) {
@@ -3053,6 +3383,7 @@ function renderAccount() {
   const tab = state.accountTab || "profile";
   const tabContent = tab === "profile" ? renderAccountProfileTab()
     : tab === "security" ? renderAccountSecurityTab()
+    : tab === "access" ? renderAccountAccessTab()
     : renderAccountAppearanceTab();
   root.innerHTML = wrapShell(`
       <button class="back-link" id="back-dash">${t("back_panel")}</button>
@@ -3061,17 +3392,24 @@ function renderAccount() {
         <button class="account-tab-btn ${tab === "profile" ? "active" : ""}" data-tab="profile">👤 ${t("account_tab_profile")}</button>
         <button class="account-tab-btn ${tab === "security" ? "active" : ""}" data-tab="security">🔒 ${t("account_tab_security")}</button>
         <button class="account-tab-btn ${tab === "appearance" ? "active" : ""}" data-tab="appearance">🎨 ${t("account_tab_appearance")}</button>
+        <button class="account-tab-btn ${tab === "access" ? "active" : ""}" data-tab="access">🕓 ${t("account_tab_access")}</button>
       </div>
       ${state.accountMsg ? `<div class="${state.accountMsg.ok ? "success-msg" : "error-msg"}">${escapeHtml(state.accountMsg.text)}</div>` : ""}
       <div class="card">
         ${tabContent}
       </div>
+      <div style="text-align:center;color:var(--gray-2);font-size:.78rem;margin-top:-6px">${t("system_version_label")}: v${APP_VERSION}</div>
       <div class="bottom-space"></div>
     `, "account");
   attachShellEvents();
   document.getElementById("back-dash").onclick = () => { state.screen = "dashboard"; render(); };
   document.querySelectorAll(".account-tab-btn").forEach(btn => {
-    btn.onclick = () => { state.accountTab = btn.dataset.tab; state.accountMsg = ""; render(); };
+    btn.onclick = () => {
+      state.accountTab = btn.dataset.tab;
+      state.accountMsg = "";
+      render();
+      if (btn.dataset.tab === "access") loadMyAccessLog().then(render);
+    };
   });
 
   if (tab === "profile") {
@@ -3080,7 +3418,7 @@ function renderAccount() {
   } else if (tab === "security") {
     const form = document.getElementById("pass-form");
     if (form) form.addEventListener("submit", onChangePasswordSubmit);
-  } else {
+  } else if (tab === "appearance") {
     document.querySelectorAll(".theme-swatch").forEach(sw => {
       sw.onclick = () => { state.prefs.theme = sw.dataset.theme; applyTheme(state.prefs.theme); render(); };
     });
@@ -3128,6 +3466,20 @@ function renderAccountSecurityTab() {
       <div class="field"><label>${t("account_confirm_pass")}</label><input type="password" id="new-pass2" required minlength="6"></div>
       <button type="submit" class="btn btn-primary">${t("account_change_pass_btn")}</button>
     </form>`;
+}
+
+function renderAccountAccessTab() {
+  const log = state.myAccessLog || [];
+  return `
+    <h3>🕓 ${t("account_tab_access")}</h3>
+    <p style="color:var(--gray-2);font-size:.85rem;margin-top:0">${t("access_log_own_hint")}</p>
+    ${log.length === 0 ? `<p style="color:var(--gray-2)">${t("access_log_empty")}</p>` : `
+    <table class="notas-table">
+      <thead><tr><th>${t("access_log_col_date")}</th><th>${t("access_log_col_device")}</th></tr></thead>
+      <tbody>
+        ${log.map(a => `<tr><td>${formatAccessAt(a.at)}</td><td>${friendlyDeviceFromUA(a.userAgent)}</td></tr>`).join("")}
+      </tbody>
+    </table>`}`;
 }
 
 function renderAccountAppearanceTab() {
@@ -3854,5 +4206,43 @@ function lessonHeroImageHtml(lessonId) {
       <img src="${wikimediaImg(img.file)}" alt="${escapeHtml(img.alt)}" loading="lazy"
            onerror="this.closest('.lesson-hero').style.display='none'">
       <div class="lesson-hero-caption">${escapeHtml(img.caption)}</div>
+    </div>`;
+}
+
+// Pool de imágenes extra por lección (además de la imagen única en LESSON_IMAGES), para que
+// los ejercicios roten entre varias fotos temáticas en vez de repetir siempre la misma.
+// Se completa gradualmente lección por lección — cada entrada necesita un archivo verificado
+// en Wikimedia Commons. Mientras una lección no tenga entrada aquí, el pool cae de forma
+// segura a la única imagen ya curada (nunca se muestra un enlace roto).
+const LESSON_IMAGES_EXTRA = {
+  // Ejemplo de formato al ampliar: "b1": [{ file: "...", alt: "...", caption: "..." }],
+  // Primer lote verificado (Básico) — cada archivo fue confirmado como existente en
+  // Wikimedia Commons antes de agregarlo aquí.
+  "b1": [{ file: "Handshake.jpg", alt: "Apretón de manos", caption: "El primer contacto: un saludo cordial." }],
+  "b3": [{ file: "Kennedy_family_portrait_photograph_(KFC-008-019-p0001).jpg", alt: "Retrato de familia", caption: "Presentar a los miembros de la familia." }],
+  "b6": [{ file: "Tapas_para_2.jpg", alt: "Tapas españolas variadas", caption: "Pedir tapas para compartir en el restaurante." }],
+  "b7": [{ file: "Work_Meeting.jpg", alt: "Reunión de trabajo", caption: "El vocabulario de las reuniones de oficina." }],
+  "b9": [{ file: "Ice_Cream_Dessert_(Unsplash).jpg", alt: "Postre de helado", caption: "¿Qué postre prefieres?" }],
+  "b12": [{ file: "El_Campello,_Costa_Blanca,_Spain.jpg", alt: "Costa Blanca, España", caption: "Otro rincón de la costa española para soñar con las vacaciones." }],
+};
+
+function getLessonImagePool(lessonId) {
+  if (!lessonId) return [];
+  const main = LESSON_IMAGES[lessonId];
+  const extra = LESSON_IMAGES_EXTRA[lessonId] || [];
+  return main ? [main, ...extra] : extra;
+}
+
+// Imagen temática mostrada dentro de la tarjeta de ejercicio (más pequeña que el "hero" de
+// apertura de lección). Rota entre el pool de la lección según el índice del ejercicio, sin
+// repetir la misma imagen dos veces seguidas cuando hay más de una disponible.
+function exerciseImageHtml(lessonId, exerciseIdx) {
+  const pool = getLessonImagePool(lessonId);
+  if (!pool.length) return "";
+  const img = pool[exerciseIdx % pool.length];
+  return `
+    <div class="lesson-hero ex-hero">
+      <img src="${wikimediaImg(img.file)}" alt="${escapeHtml(img.alt)}" loading="lazy"
+           onerror="this.closest('.ex-hero').style.display='none'">
     </div>`;
 }
