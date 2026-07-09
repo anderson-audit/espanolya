@@ -108,7 +108,7 @@ const I18N = {
     admin_songs_title: "Canciones", admin_songs_intro: "Agrega canciones para que el alumno descubra la letra, escuche paso a paso y complete los espacios. Pega la letra tal cual la tengas — el sistema arma los ejercicios automáticamente.",
     admin_songs_new_btn: "Agregar canción", admin_songs_field_title: "Título de la canción", admin_songs_field_title_ph: "Ej.: ¿Cómo Pagarte",
     admin_songs_field_artist: "Artista", admin_songs_field_artist_ph: "Ej.: Carlos Rivera", admin_songs_field_youtube: "Link del video oficial de YouTube",
-    admin_songs_field_lyrics: "Letra completa", admin_songs_field_lyrics_hint: "Una línea por renglón. Para marcar una palabra como hueco, envuélvela en doble llave: {{palabra}}. O pega la letra sin marcar nada y usa el botón de abajo para marcar automáticamente.",
+    admin_songs_field_lyrics: "Letra completa", admin_songs_field_lyrics_hint: "Una línea por renglón. Para marcar una palabra como hueco, envuélvela en doble llave: {{palabra}}. O pega la letra sin marcar nada y usa el botón de abajo para marcar automáticamente. Opcional (recomendado): agrega al inicio de la línea el minuto exacto en que se canta, así: [01:23] Letra de esa línea — el alumno va a poder escuchar el video ya abierto justo en ese fragmento, en vez de la canción entera.",
     admin_songs_field_lyrics_ph: "Pega aquí la letra completa, línea por línea...",
     admin_songs_auto_blank_btn: "Marcar palabras automáticamente", admin_songs_cancel: "Cancelar", admin_songs_save: "Guardar canción",
     admin_songs_list_title: "Canciones agregadas ({n})", admin_songs_empty: "Todavía no agregaste ninguna canción.",
@@ -218,7 +218,7 @@ const I18N = {
     admin_songs_title: "Canções", admin_songs_intro: "Adicione músicas para o aluno descobrir a letra, ouvir passo a passo e completar os espaços. Cole a letra como você já tem — o sistema monta os exercícios automaticamente.",
     admin_songs_new_btn: "Adicionar canção", admin_songs_field_title: "Título da canção", admin_songs_field_title_ph: "Ex.: ¿Cómo Pagarte",
     admin_songs_field_artist: "Artista", admin_songs_field_artist_ph: "Ex.: Carlos Rivera", admin_songs_field_youtube: "Link do vídeo oficial no YouTube",
-    admin_songs_field_lyrics: "Letra completa", admin_songs_field_lyrics_hint: "Uma linha por renglão. Para marcar uma palavra como lacuna, envolva em chave dupla: {{palavra}}. Ou cole a letra sem marcar nada e use o botão abaixo para marcar automaticamente.",
+    admin_songs_field_lyrics: "Letra completa", admin_songs_field_lyrics_hint: "Uma linha por renglão. Para marcar uma palavra como lacuna, envolva em chave dupla: {{palavra}}. Ou cole a letra sem marcar nada e use o botão abaixo para marcar automaticamente. Opcional (recomendado): coloque no início da linha o minuto exato em que é cantada, assim: [01:23] Letra dessa linha — o aluno vai poder ouvir o vídeo já aberto direto nesse trecho, em vez da música inteira.",
     admin_songs_field_lyrics_ph: "Cole aqui a letra completa, linha por linha...",
     admin_songs_auto_blank_btn: "Marcar palavras automaticamente", admin_songs_cancel: "Cancelar", admin_songs_save: "Salvar canção",
     admin_songs_list_title: "Canções adicionadas ({n})", admin_songs_empty: "Você ainda não adicionou nenhuma canção.",
@@ -328,7 +328,7 @@ const I18N = {
     admin_songs_title: "Songs", admin_songs_intro: "Add songs so the student can discover the lyrics, listen step by step, and fill in the blanks. Paste the lyrics as you have them — the system builds the exercises automatically.",
     admin_songs_new_btn: "Add song", admin_songs_field_title: "Song title", admin_songs_field_title_ph: "E.g.: ¿Cómo Pagarte",
     admin_songs_field_artist: "Artist", admin_songs_field_artist_ph: "E.g.: Carlos Rivera", admin_songs_field_youtube: "Official YouTube video link",
-    admin_songs_field_lyrics: "Full lyrics", admin_songs_field_lyrics_hint: "One line per row. To mark a word as a blank, wrap it in double curly braces: {{word}}. Or paste the lyrics unmarked and use the button below to mark blanks automatically.",
+    admin_songs_field_lyrics: "Full lyrics", admin_songs_field_lyrics_hint: "One line per row. To mark a word as a blank, wrap it in double curly braces: {{word}}. Or paste the lyrics unmarked and use the button below to mark blanks automatically. Optional (recommended): add the exact minute it's sung at the start of the line, like this: [01:23] Line lyrics — the student will get the video already opened right at that fragment instead of the whole song.",
     admin_songs_field_lyrics_ph: "Paste the full lyrics here, line by line...",
     admin_songs_auto_blank_btn: "Auto-mark blank words", admin_songs_cancel: "Cancel", admin_songs_save: "Save song",
     admin_songs_list_title: "Songs added ({n})", admin_songs_empty: "You haven't added any songs yet.",
@@ -1788,6 +1788,30 @@ function startExam(levelId, resume) {
 
 function currentExercise() { return state.exerciseQueue[state.exerciseIndex]; }
 
+// Arma la URL del embed de YouTube, con start=/end= cuando la línea tenía marca de tiempo
+// [mm:ss] — así el video abre directo en el fragmento del ejercicio. cacheBust (opcional)
+// fuerza que el navegador recargue el iframe desde cero (usado por el botón "Repetir").
+function songEmbedSrc(youtubeId, startSec, endSec, cacheBust) {
+  const params = [];
+  if (startSec != null) params.push(`start=${Math.max(0, Math.floor(startSec))}`);
+  if (endSec != null) params.push(`end=${Math.max(0, Math.floor(endSec))}`);
+  if (cacheBust) params.push(`_r=${cacheBust}`);
+  return `https://www.youtube.com/embed/${encodeURIComponent(youtubeId)}${params.length ? "?" + params.join("&") : ""}`;
+}
+
+// Bloque de video reutilizado en los ejercicios "fill"(canción) y "songListen". Cuando hay
+// startSec (la línea tenía [mm:ss]), agrega un botón "Repetir el fragmento" — reasignar el
+// mismo start/end al iframe no siempre recarga en todos los navegadores, por eso el botón
+// suma un parámetro cacheBust distinto cada vez para forzar la recarga real.
+function songFragmentHtml(frameId, youtubeId, startSec, endSec) {
+  return `
+    <div class="song-video-wrap song-video-wrap-sm">
+      <iframe id="${frameId}" src="${songEmbedSrc(youtubeId, startSec, endSec)}" frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </div>
+    ${startSec != null ? `<div style="text-align:center;margin:-10px 0 14px"><button class="btn btn-secondary btn-sm" type="button" id="${frameId}-replay">🔁 Repetir el fragmento</button></div>` : ""}`;
+}
+
 const EX_TYPE_BADGE = {
   mc: "🔠 Opción múltiple", fill: "✏️ Completar", translate: "🔁 Traducción", listen: "🎧 Escucha",
   songListen: "🎧 Dictado musical", speak: "🎙️ Pronunciación", order: "🔀 Ordenar", open: "✍️ Respuesta libre",
@@ -1820,11 +1844,8 @@ function renderExercise() {
     body = `
       <div class="ex-question">${label} ${ttsBtnHtml}</div>
       ${ex.youtubeId ? `
-      <div class="song-video-wrap song-video-wrap-sm">
-        <iframe src="https://www.youtube.com/embed/${encodeURIComponent(ex.youtubeId)}" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      <p class="ex-hint">🎧 Puedes escuchar la canción cuantas veces quieras mientras completas el hueco.</p>` : ""}
+      ${songFragmentHtml("song-fill-frame", ex.youtubeId, ex.startSec, ex.endSec)}
+      <p class="ex-hint">🎧 ${ex.startSec != null ? "El video ya abrió en el fragmento de este hueco — escúchalo cuantas veces quieras." : "Puedes escuchar la canción cuantas veces quieras mientras completas el hueco."}</p>` : ""}
       <input type="text" class="ex-input" id="ex-answer" placeholder="Escribe tu respuesta aquí..." autocomplete="off">
       <div class="ex-actions"><button class="btn btn-secondary btn-sm" id="ex-check">Comprobar</button><button class="btn btn-primary" id="ex-next" disabled>Siguiente →</button></div>
       <div id="ex-feedback"></div>`;
@@ -1841,10 +1862,7 @@ function renderExercise() {
     // entiende. Se valida con la misma tolerancia que "listen" (transcripción libre).
     body = `
       <div class="ex-question">🎧 ${escapeHtml(ex.q || "Escucha la canción y escribe lo que oyes en este fragmento.")}</div>
-      <div class="song-video-wrap song-video-wrap-sm">
-        <iframe src="https://www.youtube.com/embed/${encodeURIComponent(ex.youtubeId)}" frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
+      ${songFragmentHtml("song-listen-frame", ex.youtubeId, ex.startSec, ex.endSec)}
       <input type="text" class="ex-input" id="ex-answer" placeholder="Escribe lo que escuchas..." autocomplete="off">
       <div class="ex-actions"><button class="btn btn-secondary btn-sm" id="ex-check">Comprobar</button><button class="btn btn-primary" id="ex-next" disabled>Siguiente →</button></div>
       <div id="ex-feedback"></div>`;
@@ -1905,6 +1923,16 @@ function renderExercise() {
   };
   const ttsBtn = document.getElementById("ex-tts");
   if (ttsBtn && ttsSource) ttsBtn.onclick = () => speak(ttsSource.replace(/_{2,}/g, "..."), null, ttsBtn);
+
+  // Botón "Repetir el fragmento" (solo aparece cuando la línea tenía [mm:ss]): recarga el
+  // iframe con un cacheBust distinto para forzar que vuelva al inicio del fragmento.
+  ["song-fill-frame", "song-listen-frame"].forEach(frameId => {
+    const replayBtn = document.getElementById(`${frameId}-replay`);
+    if (replayBtn) replayBtn.onclick = () => {
+      const frame = document.getElementById(frameId);
+      if (frame) frame.src = songEmbedSrc(ex.youtubeId, ex.startSec, ex.endSec, Date.now());
+    };
+  });
 
   wireExerciseInteractions(ex);
 }
@@ -2621,15 +2649,33 @@ function parseSongLyrics(raw) {
     .filter(l => l.length > 0);
 }
 
-// Texto limpio de una línea (huecos resueltos a la palabra real) — usado para mostrar la
-// letra completa en la pantalla de "escuchar y leer" y para el ejercicio de ordenar versos.
+// Marca de tiempo opcional al inicio de una línea, formato [mm:ss] o [mm:ss.xx] (estilo LRC,
+// el mismo que usan letras sincronizadas de Spotify/Musixmatch) — Anderson pidió que el video
+// abra directo en el fragmento del ejercicio en vez de obligar al alumno a decorar toda la
+// canción para saber dónde buscar. Es opcional: una línea sin marca de tiempo sigue funcionando
+// exactamente como antes (video completo, sin salto).
+const SONG_TIME_RE = /^\[(\d{1,2}):(\d{2}(?:\.\d+)?)\]\s*/;
+
+// Separa el timestamp del texto real de la línea. Devuelve {seconds, text} — seconds es
+// null si la línea no tiene marca de tiempo.
+function extractLineTimestamp(line) {
+  const m = (line || "").match(SONG_TIME_RE);
+  if (!m) return { seconds: null, text: line || "" };
+  const mins = parseInt(m[1], 10);
+  const secs = parseFloat(m[2]);
+  return { seconds: Math.max(0, Math.round(mins * 60 + secs)), text: line.slice(m[0].length) };
+}
+
+// Texto limpio de una línea (sin marca de tiempo, huecos resueltos a la palabra real) — usado
+// para mostrar la letra completa en la pantalla de "escuchar y leer" y para el ejercicio de
+// ordenar versos.
 function songLineClean(line) {
-  return line.replace(SONG_BLANK_RE, (_, word) => word);
+  return extractLineTimestamp(line).text.replace(SONG_BLANK_RE, (_, word) => word);
 }
 
 // Cuenta cuántos huecos {{...}} hay en una línea, sin generar los ejercicios todavía.
 function songLineBlankCount(line) {
-  return (line.match(SONG_BLANK_RE) || []).length;
+  return (extractLineTimestamp(line).text.match(SONG_BLANK_RE) || []).length;
 }
 
 // A partir de las líneas ya separadas (parseSongLyrics), arma la fila de ejercicios:
@@ -2638,10 +2684,26 @@ function songLineBlankCount(line) {
 // un tramo de la canción (hasta 8 líneas) para practicar el orden de los versos.
 function buildSongExercises(lines, youtubeId) {
   const exercises = [];
-  lines.forEach(line => {
+  // Separa timestamp/texto de cada línea una sola vez. nextTimestamp(idx) busca la marca de
+  // tiempo de la próxima línea CON marca (no necesariamente la línea siguiente), para usarla
+  // como "fin" del fragmento — así el video se detiene justo antes de que empiece el próximo
+  // verso marcado, en vez de seguir tocando la canción entera.
+  const parsed = lines.map(l => extractLineTimestamp(l));
+  const nextTimestamp = (fromIdx) => {
+    for (let i = fromIdx + 1; i < parsed.length; i++) {
+      if (parsed[i].seconds != null) return parsed[i].seconds;
+    }
+    return null;
+  };
+
+  parsed.forEach((p, idx) => {
+    const line = p.text;
     // [...matchAll] no comparte lastIndex con SONG_BLANK_RE (a diferencia de exec en loop),
     // así que es seguro aunque una misma línea tenga 2+ huecos — evita un loop infinito.
     const matches = [...line.matchAll(SONG_BLANK_RE)];
+    if (!matches.length) return;
+    const startSec = p.seconds;
+    const endSec = startSec != null ? (nextTimestamp(idx) != null ? nextTimestamp(idx) : startSec + 8) : null;
     matches.forEach(m => {
       const word = m[1];
       const start = m.index;
@@ -2653,20 +2715,24 @@ function buildSongExercises(lines, youtubeId) {
       // Antes este ejercicio no llevaba el video — el alumno tenía que adivinar la letra
       // de memoria, sin poder escuchar. Ahora lleva youtubeId para mostrar el reproductor
       // también aquí, así puede escuchar cuantas veces quiera mientras completa el hueco.
-      exercises.push({ type: "fill", q: `Completa la letra: "${finalLine}"`, answer: word, youtubeId, isSong: true });
+      // startSec/endSec (si la línea tenía [mm:ss]) hacen que el video abra directo en el
+      // fragmento correcto, en vez del alumno tener que buscar a ciegas en la canción entera.
+      exercises.push({ type: "fill", q: `Completa la letra: "${finalLine}"`, answer: word, youtubeId, isSong: true, startSec, endSec });
     });
   });
   // Dictado con la canción real: el alumno escucha el video (controles nativos de YouTube,
   // puede rebobinar) y escribe lo que entiende. Hasta 3 líneas de tamaño razonable (3+
   // palabras), repartidas a lo largo de la canción para variar el fragmento practicado.
   if (youtubeId) {
-    const candidates = lines
-      .map(songLineClean)
-      .filter(l => l.split(/\s+/).filter(Boolean).length >= 3);
+    const candidates = parsed
+      .map((p, idx) => ({ idx, text: p.text.replace(SONG_BLANK_RE, (_, w) => w), seconds: p.seconds }))
+      .filter(c => c.text.split(/\s+/).filter(Boolean).length >= 3);
     if (candidates.length) {
       const step = Math.max(1, Math.floor(candidates.length / 3));
       for (let k = 0, picked = 0; k < candidates.length && picked < 3; k += step, picked++) {
-        exercises.push({ type: "songListen", answer: candidates[k], youtubeId });
+        const c = candidates[k];
+        const endSec = c.seconds != null ? (nextTimestamp(c.idx) != null ? nextTimestamp(c.idx) : c.seconds + 8) : null;
+        exercises.push({ type: "songListen", answer: c.text, youtubeId, startSec: c.seconds, endSec });
       }
     }
   }
