@@ -49,7 +49,7 @@ const db = firebase.firestore();
 // Versión del sistema, visible en Mi Cuenta / Configuración y en el pie de la barra lateral.
 // Se debe actualizar manualmente cada vez que se sube una nueva versión al repositorio
 // (formato AAAA.MM.DD.N — N = número de subida ese día, empieza en 1).
-const APP_VERSION = "2026.07.09.2";
+const APP_VERSION = "2026.07.09.3";
 
 const DEFAULT_PASS_SCORES = { fundamentos: 70, basico: 70, intermedio: 70, avanzado: 70 };
 // Modo de liberación del gabarito (respuesta correcta): "immediate" = se muestra apenas
@@ -1817,11 +1817,54 @@ function currentExercise() { return state.exerciseQueue[state.exerciseIndex]; }
 // posición pero pausado, y visualmente no cambia nada (se ve la miniatura genérica de
 // siempre), lo que hacía parecer que el botón "no hacía nada". mute=0 para que suene.
 function songEmbedSrc(youtubeId, startSec, endSec, cacheBust) {
-  const params = ["autoplay=1", "mute=0", "playsinline=1"];
+  // enablejsapi=1 + origin es lo que permite que initSongPlayer() (más abajo) tome control
+  // real del iframe vía la IFrame API — sin esto, "Repetir el fragmento" solo podía
+  // reasignar el src entero, lo cual en varios navegadores no reinicia el player interno
+  // de YouTube (queda "atascado" donde iba, o directo salta al inicio real de la canción).
+  const params = ["autoplay=1", "mute=0", "playsinline=1", "enablejsapi=1", `origin=${encodeURIComponent(location.origin)}`];
   if (startSec != null) params.push(`start=${Math.max(0, Math.floor(startSec))}`);
   if (endSec != null) params.push(`end=${Math.max(0, Math.floor(endSec))}`);
   if (cacheBust) params.push(`_r=${cacheBust}`);
   return `https://www.youtube.com/embed/${encodeURIComponent(youtubeId)}?${params.join("&")}`;
+}
+
+// Reproductores YouTube activos de los ejercicios de canción (uno por frameId), controlados
+// por la IFrame API en vez de solo cambiar iframe.src. Guardamos la instancia para que el
+// botón "Repetir el fragmento" pueda llamar seekTo()/playVideo() directo — mucho más
+// confiable que recargar el iframe entero (que en algunos navegadores no reinicia la
+// posición real, o el usuario ve el video saltar al inicio de la canción en vez del trecho).
+let _exSongPlayers = {};
+function destroySongPlayers() {
+  Object.keys(_exSongPlayers).forEach((k) => {
+    try { _exSongPlayers[k].destroy(); } catch (e) { /* noop */ }
+  });
+  _exSongPlayers = {};
+}
+function initSongPlayer(frameId, startSec, endSec) {
+  loadYouTubeIframeAPI().then(() => {
+    const el = document.getElementById(frameId);
+    if (!el) return; // el alumno ya pasó a otro ejercicio antes de que la API terminara de cargar
+    const player = new YT.Player(frameId, {
+      events: {
+        onReady: (ev) => {
+          if (startSec != null) ev.target.seekTo(startSec, true);
+          ev.target.playVideo();
+        },
+        onStateChange: (ev) => {
+          // Corta la reproducción al llegar a endSec, sin depender de que el parámetro
+          // "end" de la URL se vuelva a aplicar después de un seekTo() manual.
+          if (endSec == null || ev.data !== YT.PlayerState.PLAYING) return;
+          const check = setInterval(() => {
+            if (_exSongPlayers[frameId] !== player) { clearInterval(check); return; }
+            let t = 0;
+            try { t = ev.target.getCurrentTime(); } catch (e) { clearInterval(check); return; }
+            if (t >= endSec - 0.15) { try { ev.target.pauseVideo(); } catch (e) {} clearInterval(check); }
+          }, 250);
+        },
+      },
+    });
+    _exSongPlayers[frameId] = player;
+  });
 }
 
 // Bloque de video reutilizado en los ejercicios "fill"(canción) y "songListen". Cuando hay
@@ -1844,6 +1887,7 @@ const EX_TYPE_BADGE = {
 };
 
 function renderExercise() {
+  destroySongPlayers(); // el iframe de la canción anterior ya no existe en el DOM tras el re-render
   const ex = currentExercise();
   const total = state.exerciseQueue.length;
   const idx = state.exerciseIndex;
@@ -1957,13 +2001,26 @@ function renderExercise() {
   const ttsBtn = document.getElementById("ex-tts");
   if (ttsBtn && ttsSource) ttsBtn.onclick = () => speak(ttsSource.replace(/_{2,}/g, "..."), null, ttsBtn);
 
-  // Botón "Repetir el fragmento" (solo aparece cuando la línea tenía [mm:ss]): recarga el
-  // iframe con un cacheBust distinto para forzar que vuelva al inicio del fragmento.
-  ["song-fill-frame", "song-listen-frame"].forEach(frameId => {
+  // Video + botón "Repetir el fragmento" (solo aparece cuando la línea tenía [mm:ss]).
+  // Arrancamos el reproductor vía IFrame API (initSongPlayer) para poder controlar la
+  // posición con seekTo() en vez de recargar el iframe entero — recargar el src (lo que se
+  // hacía antes) es lo que causaba que "Repetir" a veces saltara al inicio REAL de la
+  // canción en vez de volver al trecho del ejercicio.
+  ["song-fill-frame", "song-listen-frame"].forEach((frameId) => {
+    const frame = document.getElementById(frameId);
+    if (!frame) return;
+    initSongPlayer(frameId, ex.startSec, ex.endSec);
     const replayBtn = document.getElementById(`${frameId}-replay`);
     if (replayBtn) replayBtn.onclick = () => {
-      const frame = document.getElementById(frameId);
-      if (frame) frame.src = songEmbedSrc(ex.youtubeId, ex.startSec, ex.endSec, Date.now());
+      const player = _exSongPlayers[frameId];
+      if (player && typeof player.seekTo === "function") {
+        player.seekTo(ex.startSec != null ? ex.startSec : 0, true);
+        player.playVideo();
+      } else {
+        // Respaldo si la API todavía no terminó de cargar/enlazar el reproductor.
+        const fr = document.getElementById(frameId);
+        if (fr) fr.src = songEmbedSrc(ex.youtubeId, ex.startSec, ex.endSec, Date.now());
+      }
     };
   });
 
