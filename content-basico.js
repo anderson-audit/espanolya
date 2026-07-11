@@ -74,6 +74,7 @@ const LEVEL_BASICO = {
     {
       id: "b2", order: 2, title: "Biografía", subtitle: "Países, nacionalidades, verbos regulares -AR/-ER/-IR",
       text: "Mi nombre es María, soy brasileña, de Rio de Janeiro, o sea, tengo el portugués como lengua materna. Hablo también español e inglés. Tengo 25 años pero ya cumplo 26 mañana. Tengo un novio, Roberto, y vivo con él. No tenemos hijos pero quizás después de casarnos pensemos en esta posibilidad. Nos graduamos de la universidad en Publicidad en 2009 y trabajamos actualmente juntos en una agencia de publicidad. Lo que más me gusta hacer es salir para comer en restaurantes con mis amigos y con mi novio. También me encanta escuchar reggaetón y ver películas de terror.",
+      textPt: "Meu nome é María, sou brasileira, do Rio de Janeiro, ou seja, tenho o português como língua materna. Falo também espanhol e inglês. Tenho 25 anos mas já faço 26 amanhã. Tenho um namorado, Roberto, e moro com ele. Não temos filhos, mas talvez depois de nos casarmos pensemos nessa possibilidade. Nos formamos na universidade em Publicidade em 2009 e trabalhamos atualmente juntos em uma agência de publicidade. O que mais gosto de fazer é sair para comer em restaurantes com meus amigos e com meu namorado. Também adoro escutar reggaetón e ver filmes de terror.",
       vocabulary: [
         {category:"Países, nacionalidades e idiomas", items:[
           {es:"Brasil – Brasileño(a) – Portugués", pt:"Brasil – brasileiro(a) – Português"},{es:"Argentina – Argentino(a) – Español", pt:"Argentina – argentino(a) – Espanhol"},
@@ -151,6 +152,7 @@ const LEVEL_BASICO = {
     {
       id: "b3", order: 3, title: "Familia", subtitle: "Posesivos, artículos, verbo GUSTAR",
       text: "¡Hola! Me llamo Sofía y hoy quiero hablar un poco de mi familia. Nuestra familia tiene 7 miembros: mi padre Juan, mi madre María, mi hermana Julia, mi hermano Luís y nuestras dos mascotas: nuestra tortuga Brigitte y nuestro perro Toby. Nacimos todos en Montevideo, Uruguay. Mi padre tiene 45 años y es médico, mi madre tiene 38 y es profesora de español, Julia tiene 10 años, Luís 7 u 8 y yo tengo 15. Nos gusta hacer muchas cosas juntos los fines de semana, como cocinar, jugar, ver películas e ir al zoológico.",
+      textPt: "Olá! Me chamo Sofía e hoje quero falar um pouco da minha família. Nossa família tem 7 membros: meu pai Juan, minha mãe María, minha irmã Julia, meu irmão Luís e nossos dois bichos de estimação: nossa tartaruga Brigitte e nosso cachorro Toby. Todos nós nascemos em Montevidéu, Uruguai. Meu pai tem 45 anos e é médico, minha mãe tem 38 e é professora de espanhol, Julia tem 10 anos, Luís 7 ou 8 e eu tenho 15. Gostamos de fazer muitas coisas juntos nos fins de semana, como cozinhar, brincar, ver filmes e ir ao zoológico.",
       vocabulary: [
         {category:"Miembros de la familia", items:[
           {es:"Ahijado(a)", pt:"Afilhado(a)"},{es:"Abuelo(a)", pt:"Avô/Avó"},{es:"Bisabuelo(a)", pt:"Bisavô/Bisavó"},{es:"Bisnieto(a)", pt:"Bisneto(a)"},
@@ -206,6 +208,7 @@ const LEVEL_BASICO = {
     {
       id: "b4", order: 4, title: "Rutina diaria", subtitle: "Reflexivos, horário, verbos irregulares",
       text: "Por la mañana me despierto generalmente a las 7:30, me levanto a las 7:45 y me preparo el desayuno. A las 8:05 me visto, me cepillo los dientes y suelo salir para trabajar a las 08:20. Trabajo hasta las 12:00 y tengo una pausa de 1 hora para comer. Después del trabajo voy al supermercado y llego a mi casa a las 06:50. Ceno, me ducho, lavo la ropa sucia, saco la basura, veo alguna película y después me voy a dormir a las 10:00.",
+      textPt: "De manhã eu geralmente acordo às 7:30, levanto às 7:45 e preparo o café da manhã. Às 8:05 me visto, escovo os dentes e costumo sair para trabalhar às 08:20. Trabalho até as 12:00 e tenho uma pausa de 1 hora para comer. Depois do trabalho vou ao supermercado e chego em casa às 06:50. Janto, tomo banho, lavo a roupa suja, tiro o lixo, vejo algum filme e depois vou dormir às 10:00.",
       vocabulary: [
         {category:"Actividades diarias", items:[
           {es:"Despertarse", pt:"Acordar"},{es:"Levantarse", pt:"Levantar-se"},{es:"Cepillarse los dientes", pt:"Escovar os dentes"},
@@ -365,6 +368,7 @@ const LEVEL_BASICO = {
     {
       id: "b7", order: 7, title: "Oficina", subtitle: "Materiais, demonstrativos, palavras com/sem til",
       text: "Hoy empiezo a trabajar en la oficina a las 8:30 de la mañana. Tengo mucho que hacer allá. Muchos documentos para firmar, reuniones para ir, llamadas a clientes para hacer y aún tengo que ir a una papelería para comprar los materiales escolares de mi hija. Ella necesita cuadernos, tijeras, lápices, bolígrafos, reglas. Lo peor es que nuestro ordenador no está funcionando y tengo que llevarlo para arreglar.",
+      textPt: "Hoje começo a trabalhar no escritório às 8:30 da manhã. Tenho muito o que fazer lá. Muitos documentos para assinar, reuniões para ir, ligações para clientes para fazer e ainda tenho que ir a uma papelaria comprar o material escolar da minha filha. Ela precisa de cadernos, tesoura, lápis, canetas, réguas. O pior é que nosso computador não está funcionando e tenho que levá-lo para consertar.",
       vocabulary: [
         {category:"Materiales escolares y de oficina", items:[
           {es:"Bolígrafo/Pluma/Lapicero", pt:"Caneta"},{es:"Lápiz", pt:"Lápis"},{es:"Goma (de borrar)", pt:"Borracha"},{es:"Sacapuntas", pt:"Apontador"},

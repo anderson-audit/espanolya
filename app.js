@@ -1861,9 +1861,21 @@ function renderLessonView() {
   }
 
   if (lesson.text) {
+    // BUGFIX: el texto introductorio de la lección tenía botón de escuchar pero NUNCA tuvo
+    // botón de traducción (a diferencia de vocabulario y diálogo) — el campo "textPt" ni
+    // siquiera existía en los datos. El usuario lo notó en un módulo y pidió revisar TODOS
+    // los módulos: se agregó "textPt" a cada lección con "text" en todos los archivos
+    // content-*.js, y aquí se reutiliza exactamente el mismo patrón de botón/estructura
+    // que ya se usa en diálogo y vocabulario (mismas clases CSS, mismo toggle show/hide).
     html += `<div class="card"><h3>📖 Texto</h3><div class="dialogue-line" data-fulltext="${escapeHtml(lesson.text)}">
-      <div class="bubble"><span class="text-content">${wrapWordsForHighlight(lesson.text)}</span>
-      <button class="speak-icon-btn" title="Escuchar">🔊</button></div></div></div>`;
+      <div class="bubble">
+        <div class="bubble-main">
+          <span class="text-content">${wrapWordsForHighlight(lesson.text)}</span>
+          <button class="speak-icon-btn" title="Escuchar">🔊</button>
+          <button class="translate-toggle-btn" data-translate-toggle="1" title="${t("translate_toggle_title")}">🇧🇷 PT</button>
+        </div>
+        <div class="translation-text ${lesson.textPt ? "" : "missing"}">${lesson.textPt ? escapeHtml(lesson.textPt) : t("translation_missing")}</div>
+      </div></div></div>`;
   }
   if (lesson.dialogue && lesson.dialogue.length) {
     html += `<div class="card dialogue-card">

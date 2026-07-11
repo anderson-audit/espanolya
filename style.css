@@ -152,10 +152,19 @@ input, select, textarea { font-family: inherit; }
 
 /* ---------- Dashboard ---------- */
 .section-title { font-size: 1.3rem; font-weight: 700; margin: 28px 0 14px; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,.25); }
-.level-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
+/* BUGFIX: con CSS Grid + auto-fit, las columnas de la fila 1 quedan "reservadas" para
+   TODAS las filas del grid — si hay 4 tarjetas y solo caben 3 por fila, la 4ª queda sola
+   en la fila 2 dentro de la 1ª columna, con las otras 2 columnas en blanco al lado (auto-fit
+   solo colapsa columnas que ninguna fila usa, no las que la fila 1 ya ocupó). Con flexbox +
+   flex-grow, en cambio, CUALQUIER fila incompleta (la última o cualquier otra) hace que sus
+   tarjetas se estiren para ocupar todo el ancho disponible — sin importar cuántas tarjetas
+   haya en total. Esto es justamente lo que se pidió: que no quede espacio en blanco al lado.
+.level-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; } */
+.level-grid { display: flex; flex-wrap: wrap; gap: 20px; }
 .level-card {
   background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow);
   position: relative; overflow: hidden; transition: transform .15s, box-shadow .15s;
+  flex: 1 1 260px; max-width: 400px;
 }
 .level-card:not(.locked):hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
 .level-card.locked .level-card-photo { filter: grayscale(.65) brightness(.8); }
