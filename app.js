@@ -1623,8 +1623,8 @@ function renderLessonList() {
       }).join("")}
       ${lvl.exam ? `
       <div class="lesson-row exam-row ${!unlocked ? "locked" : ""}" id="go-exam" data-locked="${!unlocked}">
-        <div class="num">${unlocked ? "📝" : "🔒"}</div>
-        <div class="info"><h4>${lvl.exam.title}</h4><span>Nota mínima para aprobar: ${passScoreFor(lvl.id)}%${p.examPassed ? " · ✅ Aprobado con " + p.examScore + "%" : ""}${p.examAttempts > 1 && p.examFirstAttempt ? ` · 📈 ${p.examFirstAttempt.score}% → ${p.examScore}%` : ""}${matchingInProgress(null, true, lvl.id) ? " · 📍 Prueba en curso" : ""}</span></div>
+        <div class="num">${unlocked ? (p.examPassed ? "✓" : "📝") : "🔒"}</div>
+        <div class="info"><h4>${lvl.exam.title}</h4><span>Nota mínima para aprobar: ${passScoreFor(lvl.id)}%${p.examPassed ? " · ✅ Aprobado con " + p.examScore + "%" : (typeof p.examScore === "number" ? ` · ❌ No aprobado todavía — última nota: ${p.examScore}%` : "")}${p.examAttempts > 1 && p.examFirstAttempt ? ` · 📈 ${p.examFirstAttempt.score}% → ${p.examScore}%` : ""}${matchingInProgress(null, true, lvl.id) ? " · 📍 Prueba en curso" : ""}</span></div>
         ${p.examAttempts > 1 && p.examFirstAttempt ? `<button class="btn-icon lesson-review-btn" data-exam-first="1" title="Ver mi primer intento">🕐</button>` : ""}
         ${Array.isArray(p.examReview) && p.examReview.length ? `<button class="btn-icon lesson-review-btn" data-exam-review="1" title="Ver mis respuestas y el gabarito">🔍</button>` : ""}
         <div class="chev">${unlocked ? "›" : ""}</div>
@@ -1647,9 +1647,15 @@ function renderLessonList() {
       const examIp = matchingInProgress(null, true, state.currentLevelId);
       if (examIp && confirm(`Tienes una prueba en curso (pregunta ${examIp.answers.length + 1}/${examIp.total}). Aceptar para continuar donde la dejaste, o Cancelar para empezar de nuevo.`)) {
         startExam(state.currentLevelId, true);
-      } else {
-        startExam(state.currentLevelId, false);
+        return;
       }
+      // Si el alumno ya aprobó esta prueba, avisamos antes de dejarlo repetir: la aprobación
+      // y la nota más alta quedan guardadas para siempre (ver bugfix en saveExamResult), pero
+      // es mejor que sepa de antemano que puede reintentar libremente sin ningún riesgo.
+      if (p.examPassed && !confirm(`Ya aprobaste esta prueba con ${p.examScore}%. Puedes repetirla para intentar subir tu nota — tu aprobación ya está garantizada y solo se guardará el mejor resultado. ¿Deseas repetirla ahora?`)) {
+        return;
+      }
+      startExam(state.currentLevelId, false);
     };
   }
   document.querySelectorAll(".lesson-review-btn").forEach(btn => {
@@ -2357,10 +2363,20 @@ async function updateProgressSummary() {
 
 async function saveExamResult(levelId, score, passed, review) {
   const ref = db.collection("progress").doc(state.user.uid);
-  const xpGain = passed ? 50 : 5;
   const idx = MAIN_SEQUENCE.indexOf(levelId);
   const nextId = idx >= 0 ? MAIN_SEQUENCE[idx + 1] : null;
   const prevLevel = state.progress.levels[levelId];
+  const wasPassed = !!(prevLevel && prevLevel.examPassed);
+  // BUGFIX: una vez que el alumno aprobó la prueba de una etapa, esa aprobación queda
+  // definitiva — un reintento posterior (para intentar subir la nota, o por error) con
+  // una nota más baja NO puede "reprovarlo" de nuevo. Antes esto sobreescribía siempre
+  // examScore/examPassed con el último intento, así que un segundo intento peor borraba
+  // la aprobación ya obtenida (el nivel volvía a mostrar "Prueba pendiente" y el botón
+  // de certificado desaparecía). Ahora se guarda el MEJOR resultado: passed nunca vuelve
+  // a false, y la nota registrada es la más alta entre la anterior y la nueva.
+  const finalPassed = passed || wasPassed;
+  const finalScore = wasPassed && typeof prevLevel.examScore === "number" ? Math.max(prevLevel.examScore, score) : score;
+  const xpGain = passed ? 50 : 5;
   // Igual que en las lecciones: guarda el primer intento de la prueba (nota + gabarito) una
   // sola vez, sin sobreescribirlo en los siguientes intentos, para poder mostrar la evolución.
   const examFirstAttempt = (prevLevel && prevLevel.examFirstAttempt)
@@ -2368,24 +2384,24 @@ async function saveExamResult(levelId, score, passed, review) {
     : (prevLevel && prevLevel.examScore != null ? { score: prevLevel.examScore, passed: !!prevLevel.examPassed, review: prevLevel.examReview || [] } : { score, passed, review: review || [] });
   const examAttempts = (prevLevel && prevLevel.examAttempts ? prevLevel.examAttempts : 0) + 1;
   const updates = {
-    [`levels.${levelId}.examScore`]: score,
-    [`levels.${levelId}.examPassed`]: passed,
+    [`levels.${levelId}.examScore`]: finalScore,
+    [`levels.${levelId}.examPassed`]: finalPassed,
     [`levels.${levelId}.examReview`]: review || [],
     [`levels.${levelId}.examFirstAttempt`]: examFirstAttempt,
     [`levels.${levelId}.examAttempts`]: examAttempts,
     xp: firebase.firestore.FieldValue.increment(xpGain)
   };
-  if (passed && nextId) updates[`levels.${nextId}.unlocked`] = true;
+  if (finalPassed && nextId) updates[`levels.${nextId}.unlocked`] = true;
   await ref.update(updates);
 
   if (!state.progress.levels[levelId]) state.progress.levels[levelId] = {};
-  state.progress.levels[levelId].examScore = score;
-  state.progress.levels[levelId].examPassed = passed;
+  state.progress.levels[levelId].examScore = finalScore;
+  state.progress.levels[levelId].examPassed = finalPassed;
   state.progress.levels[levelId].examReview = review || [];
   state.progress.levels[levelId].examFirstAttempt = examFirstAttempt;
   state.progress.levels[levelId].examAttempts = examAttempts;
   state.progress.xp = (state.progress.xp || 0) + xpGain;
-  if (passed && nextId) {
+  if (finalPassed && nextId) {
     if (!state.progress.levels[nextId]) state.progress.levels[nextId] = {};
     state.progress.levels[nextId].unlocked = true;
   }
@@ -4325,8 +4341,12 @@ function generateCertificatePDF(levelId, opts) {
   doc.text("Plataforma desarrollada por Quallisi® — Consultoría y Auditoría", W / 2, 191, { align: "center" });
   doc.text(`Este certificado puede verificarse por su ID único: ${certId}`, W / 2, 195.5, { align: "center" });
 
-  const safeName = (studentName || "alumno").replace(/[^\w]+/g, "_");
-  doc.save(`${sample ? "Ejemplo_" : ""}Certificado_${lvl.name.replace(/\s+/g, "_")}_${safeName}.pdf`);
+  // Nombre del archivo pedido por el admin: "Cert_{Etapa}_Español_YA_{MM-AAAA}", con el
+  // mes/año de EMISIÓN del certificado (no de aprobación), sin el nombre del alumno.
+  const issueDate = new Date();
+  const etapaSlug = lvl.name.replace(/\s+/g, "_");
+  const mmYYYY = `${String(issueDate.getMonth() + 1).padStart(2, "0")}-${issueDate.getFullYear()}`;
+  doc.save(`${sample ? "Ejemplo_" : ""}Cert_${etapaSlug}_Español_YA_${mmYYYY}.pdf`);
 }
 
 // Vista previa del layout de certificado, usada en Admin → Certificados, sin exigir
