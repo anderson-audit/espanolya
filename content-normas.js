@@ -94,14 +94,14 @@ const LEVEL_NORMAS = {
       subtitle: "Sujetos compuestos, colectivos y frases sin sujeto claro · Tema: Medio Ambiente (ISO 14001)",
       text: "El lenguaje ambiental normativo añade dos retos gramaticales interesantes. El primero es la concordancia con sujetos compuestos o colectivos: cuando dos sustantivos se unen con 'y' (por ejemplo, 'el aspecto y el impacto ambiental'), el verbo casi siempre va en plural. El segundo es el 'se' impersonal, muy usado quan­do no importa quién realiza la acción, sino que la acción se cumpla: 'se debe reducir', 'se establece un procedimiento', 'se identifican los riesgos'. Fíjate en que, con 'se', el verbo concuerda con el sustantivo que sigue: 'se identifica el aspecto' (singular) pero 'se identifican los aspectos' (plural).",
       dialogue: [
-        { who: "Auditora Ambiental", es: "Buenos días. Vengo a revisar cómo la planta gestiona sus aspectos ambientales." },
-        { who: "Gerente de Planta", es: "Bienvenida. Aquí se identifican y se registran todos los aspectos e impactos cada año." },
-        { who: "Auditora Ambiental", es: "Perfecto. ¿Cómo se controla la huella de carbono de la planta?" },
-        { who: "Gerente de Planta", es: "Se debe reducir un 5% cada año, según nuestra política ambiental." },
-        { who: "Auditora Ambiental", es: "¿Y los residuos? ¿Se separan correctamente?" },
-        { who: "Gerente de Planta", es: "Sí, los residuos y los materiales reciclables se separan en contenedores distintos." },
-        { who: "Auditora Ambiental", es: "Muy bien. El equipo ambiental trabaja de forma organizada." },
-        { who: "Gerente de Planta", es: "Gracias. La prevención de la contaminación es una prioridad para toda la planta." }
+        { who: "Auditora Ambiental", es: "Buenos días. Vengo a revisar cómo la planta gestiona sus aspectos ambientales.", pt: "Bom dia. Vim revisar como a planta gerencia seus aspectos ambientais." },
+        { who: "Gerente de Planta", es: "Bienvenida. Aquí se identifican y se registran todos los aspectos e impactos cada año.", pt: "Bem-vinda. Aqui se identificam e se registram todos os aspectos e impactos todo ano." },
+        { who: "Auditora Ambiental", es: "Perfecto. ¿Cómo se controla la huella de carbono de la planta?", pt: "Perfeito. Como se controla a pegada de carbono da planta?" },
+        { who: "Gerente de Planta", es: "Se debe reducir un 5% cada año, según nuestra política ambiental.", pt: "Deve-se reduzir 5% a cada ano, conforme nossa política ambiental." },
+        { who: "Auditora Ambiental", es: "¿Y los residuos? ¿Se separan correctamente?", pt: "E os resíduos? Eles são separados corretamente?" },
+        { who: "Gerente de Planta", es: "Sí, los residuos y los materiales reciclables se separan en contenedores distintos.", pt: "Sim, os resíduos e os materiais recicláveis são separados em contêineres distintos." },
+        { who: "Auditora Ambiental", es: "Muy bien. El equipo ambiental trabaja de forma organizada.", pt: "Muito bem. A equipe ambiental trabalha de forma organizada." },
+        { who: "Gerente de Planta", es: "Gracias. La prevención de la contaminación es una prioridad para toda la planta.", pt: "Obrigado. A prevenção da poluição é uma prioridade para toda a planta." }
       ],
       vocabulary: [
         {
@@ -255,17 +255,17 @@ const LEVEL_NORMAS = {
       subtitle: "Deber + infinitivo, se impersonal, subjuntivo y voz pasiva, todos juntos",
       text: "Llegó el momento de combinar los cuatro patrones gramaticales que aprendiste con las cuatro normas: el modal de obligación (deber + infinitivo, de la calidad), el 'se' impersonal y la concordancia con sujetos compuestos (del medio ambiente), el subjuntivo de necesidad y riesgo (de la seguridad y salud en el trabajo), y la voz pasiva con concordancia de participio (de la seguridad de la información). Un auditor integral que revisa las cuatro normas al mismo tiempo necesita dominar los cuatro patrones para escribir un informe claro y profesional.",
       dialogue: [
-        { who: "Auditor Integral", es: "Buenos días. Hoy voy a auditar las cuatro normas: calidad, medio ambiente, seguridad laboral y seguridad de la información." },
-        { who: "Directora General", es: "Adelante. Nuestra organización debe cumplir los cuatro sistemas de gestión al mismo tiempo." },
-        { who: "Auditor Integral", es: "Perfecto. Empecemos por calidad: ¿la política de calidad se revisa cada año?" },
-        { who: "Directora General", es: "Sí, se revisa y se actualiza cada año, según la alta dirección." },
-        { who: "Auditor Integral", es: "Ahora medio ambiente: es necesario que todos los aspectos ambientales se identifiquen correctamente." },
-        { who: "Directora General", es: "Ya se identifican y se registran en nuestro sistema ambiental." },
-        { who: "Auditor Integral", es: "En seguridad laboral, es importante que los trabajadores participen en la evaluación de riesgos." },
-        { who: "Directora General", es: "Ellos participan activamente, y el equipo de protección personal es entregado a todos." },
-        { who: "Auditor Integral", es: "Por último, ¿la información confidencial es protegida con controles de acceso?" },
-        { who: "Directora General", es: "Sí, todos los activos son protegidos y las contraseñas deben ser cambiadas cada 90 días." },
-        { who: "Auditor Integral", es: "Excelente. Su organización demuestra un dominio real de las cuatro normas — y del español normativo." }
+        { who: "Auditor Integral", es: "Buenos días. Hoy voy a auditar las cuatro normas: calidad, medio ambiente, seguridad laboral y seguridad de la información.", pt: "Bom dia. Hoje vou auditar as quatro normas: qualidade, meio ambiente, segurança do trabalho e segurança da informação." },
+        { who: "Directora General", es: "Adelante. Nuestra organización debe cumplir los cuatro sistemas de gestión al mismo tiempo.", pt: "Pode prosseguir. Nossa organização deve cumprir os quatro sistemas de gestão ao mesmo tempo." },
+        { who: "Auditor Integral", es: "Perfecto. Empecemos por calidad: ¿la política de calidad se revisa cada año?", pt: "Perfeito. Vamos começar pela qualidade: a política da qualidade é revisada todo ano?" },
+        { who: "Directora General", es: "Sí, se revisa y se actualiza cada año, según la alta dirección.", pt: "Sim, é revisada e atualizada todo ano, conforme a alta direção." },
+        { who: "Auditor Integral", es: "Ahora medio ambiente: es necesario que todos los aspectos ambientales se identifiquen correctamente.", pt: "Agora meio ambiente: é necessário que todos os aspectos ambientais sejam identificados corretamente." },
+        { who: "Directora General", es: "Ya se identifican y se registran en nuestro sistema ambiental.", pt: "Eles já são identificados e registrados em nosso sistema ambiental." },
+        { who: "Auditor Integral", es: "En seguridad laboral, es importante que los trabajadores participen en la evaluación de riesgos.", pt: "Em segurança do trabalho, é importante que os trabalhadores participem da avaliação de riscos." },
+        { who: "Directora General", es: "Ellos participan activamente, y el equipo de protección personal es entregado a todos.", pt: "Eles participam ativamente, e o equipamento de proteção individual é entregue a todos." },
+        { who: "Auditor Integral", es: "Por último, ¿la información confidencial es protegida con controles de acceso?", pt: "Por último, a informação confidencial é protegida com controles de acesso?" },
+        { who: "Directora General", es: "Sí, todos los activos son protegidos y las contraseñas deben ser cambiadas cada 90 días.", pt: "Sim, todos os ativos são protegidos e as senhas devem ser trocadas a cada 90 dias." },
+        { who: "Auditor Integral", es: "Excelente. Su organización demuestra un dominio real de las cuatro normas — y del español normativo.", pt: "Excelente. Sua organização demonstra um domínio real das quatro normas — e do espanhol normativo." }
       ],
       vocabulary: [
         {

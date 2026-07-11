@@ -251,12 +251,19 @@ input, select, textarea { font-family: inherit; }
 .card { background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow); padding: 22px; margin-bottom: 18px; }
 .card h3 { margin-top:0; font-size: 1.05rem; color: var(--rojo-dark); }
 
-.dialogue-line { display:flex; gap:10px; margin-bottom: 10px; align-items:flex-start; }
+.dialogue-card-head { display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:8px; margin-bottom:6px; }
+.dialogue-card-head h3 { margin:0; }
+.play-all-btn { border:1.5px solid var(--rojo); border-radius:20px; padding:6px 14px; font-weight:700; font-size:.8rem; white-space:nowrap; }
+.play-all-btn.playing { background: var(--rojo); color:#fff; }
+
+.dialogue-line { display:flex; gap:10px; margin-bottom: 10px; align-items:flex-start; border-radius:12px; transition: background .2s; padding:2px; }
+.dialogue-line.active-line { background: #fff4e0; }
 .dialogue-line .who { font-weight:700; font-size:.8rem; color: var(--gray-2); width:70px; flex-shrink:0; padding-top:4px;}
 .dialogue-line .bubble {
   background: var(--gray-bg); border-radius: 12px; padding: 10px 14px; flex:1;
-  display:flex; align-items:center; gap:10px; justify-content:space-between;
+  display:flex; align-items:center; gap:10px; justify-content:space-between; flex-wrap:wrap;
 }
+.dialogue-line .bubble-main { display:flex; align-items:center; gap:10px; flex:1; min-width:0; }
 .speak-icon-btn {
   border:none; background: var(--rojo); color:#fff; width:30px;height:30px;border-radius:50%;
   flex-shrink:0; display:flex;align-items:center;justify-content:center; font-size:.85rem;
@@ -265,15 +272,28 @@ input, select, textarea { font-family: inherit; }
 .hl-word { transition: background .1s; border-radius:3px; padding: 0 1px;}
 .hl-word.active { background: var(--amarillo); }
 
+.translate-toggle-btn {
+  border:1px solid var(--rojo); background:transparent; color: var(--rojo); border-radius:14px;
+  font-size:.68rem; font-weight:700; padding:3px 9px; flex-shrink:0; white-space:nowrap;
+}
+.translate-toggle-btn.active { background: var(--rojo); color:#fff; }
+.translation-text {
+  display:none; width:100%; font-size:.82rem; font-style:italic; color: var(--gray-2);
+  padding-top:6px; margin-top:4px; border-top: 1px dashed #ddd;
+}
+.translation-text.show { display:block; }
+.translation-text.missing { color:#b08a00; font-style:normal; }
+
 .vocab-group { margin-bottom: 16px; }
 .vocab-group h4 { margin: 0 0 8px; font-size: .85rem; text-transform: uppercase; letter-spacing:.03em; color: var(--gray-2); }
 .vocab-chips { display:flex; flex-wrap:wrap; gap:8px; }
 .vocab-chip {
   background: var(--gray-bg); border-radius: 10px; padding: 8px 12px; font-size:.85rem;
-  display:flex; align-items:center; gap:8px; border: 1px solid #eee;
+  display:flex; align-items:center; flex-wrap:wrap; gap:8px; border: 1px solid #eee; max-width:100%;
 }
 .vocab-chip button { border:none;background:var(--rojo);color:#fff;width:22px;height:22px;border-radius:50%;font-size:.7rem; flex-shrink:0;}
 .vocab-chip .pt { color: var(--gray-2); font-style: italic; }
+.vocab-chip .translation-text { border-top: 1px dashed #ddd; margin-top:2px; }
 
 table.grammar-table { width:100%; border-collapse: collapse; font-size: .88rem; margin-top:8px;}
 table.grammar-table th, table.grammar-table td { border:1px solid #eee; padding:8px 10px; text-align:left; }
@@ -394,6 +414,24 @@ table.grammar-table th { background: var(--gray-bg); }
 }
 .font-option.active, .lang-option.active { background: var(--rojo); color:#fff; border-color: var(--rojo); }
 .settings-label { font-size:.85rem; font-weight:700; color:var(--gray-1); margin-bottom:10px; display:block; text-transform:uppercase; letter-spacing:.03em; }
+
+.voice-options { display:flex; flex-direction:column; gap:10px; margin-bottom: 10px; }
+.voice-option {
+  display:flex; align-items:center; gap:12px; padding: 10px 14px; border-radius: 12px;
+  border: 1.5px solid #e2e0db; background:#fff; cursor:pointer; transition: border-color .15s, box-shadow .15s;
+}
+.voice-option:hover { border-color: var(--rojo); }
+.voice-option.active { border-color: var(--rojo); box-shadow: var(--shadow); background: #fff7f2; }
+.voice-option-info { display:flex; flex-direction:column; flex:1; min-width:0; }
+.voice-option-info strong { font-size:.88rem; color: var(--ink); overflow:hidden; text-overflow:ellipsis; white-space:nowrap; }
+.voice-option-info span { font-size:.78rem; color: var(--gray-2); }
+.voice-preview-btn {
+  width: 34px; height: 34px; border-radius: 50%; border:none; background: var(--rojo); color:#fff;
+  font-size: 1rem; cursor:pointer; flex-shrink:0; display:flex; align-items:center; justify-content:center;
+}
+.voice-preview-btn:hover { background: var(--rojo-dark, var(--rojo)); }
+.voice-option-check { font-weight:800; color: var(--rojo); width:18px; text-align:center; flex-shrink:0; }
+.voice-empty-note { font-size:.8rem; color: var(--gray-2); margin: 4px 0 20px; }
 
 /* ---------- Painel do Aluno: resumo geral + status do cronograma ---------- */
 .panel-summary {

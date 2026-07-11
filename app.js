@@ -130,6 +130,15 @@ const I18N = {
     account_change_pass_btn: "Cambiar contraseña", account_pass_mismatch: "Las contraseñas nuevas no coinciden.",
     account_pass_changed: "¡Contraseña actualizada con éxito!", account_theme_label: "Color del tema", account_font_label: "Fuente",
     account_lang_label: "Idioma de la interfaz", account_save_appearance: "Guardar apariencia", account_appearance_saved: "¡Apariencia guardada!",
+    account_voice_label: "Voz de las lecciones (texto a voz)", account_voice_preview: "Escuchar ejemplo con esta voz",
+    account_voice_none: "Tu navegador no ofrece voces en español todavía. Prueba recargar la página o usar Google Chrome.",
+    account_voice_hint: "Elige la voz que más te guste — se usará en todos los botones 🔊 del curso. Si cambias de dispositivo o navegador, puede que tengas que elegirla de nuevo.",
+    account_voice_sample_text: "Hola, así sonará mi voz en tus lecciones de español.",
+    dialogue_play_all: "Escuchar diálogo completo", dialogue_stop_all: "Detener",
+    translate_toggle_title: "Mostrar/ocultar traducción al portugués", translation_missing: "Traducción aún no disponible para esta frase.",
+    account_voice2_label: "2ª voz (para diálogos con 2 personajes)",
+    account_voice2_hint: "Opcional: si eliges una 2ª voz, el primer personaje de cada diálogo habla con la Voz 1 (arriba) y el segundo con esta. Si no eliges ninguna, todos hablan con la Voz 1.",
+    account_voice2_none_opt: "🚫 No usar 2ª voz (un solo narrador)",
     nav_schedule: "📅 Cronograma", panel_title: "🎓 Panel del Alumno",
     sidebar_dashboard: "Panel", sidebar_settings: "Configuración", sidebar_toggle: "Mostrar/ocultar menú",
     sidebar_section_learn: "Aprender", sidebar_section_admin: "Administración",
@@ -247,6 +256,15 @@ const I18N = {
     account_change_pass_btn: "Alterar senha", account_pass_mismatch: "As novas senhas não coincidem.",
     account_pass_changed: "Senha atualizada com sucesso!", account_theme_label: "Cor do tema", account_font_label: "Fonte",
     account_lang_label: "Idioma da interface", account_save_appearance: "Salvar aparência", account_appearance_saved: "Aparência salva!",
+    account_voice_label: "Voz das lições (texto para voz)", account_voice_preview: "Ouvir exemplo com esta voz",
+    account_voice_none: "Seu navegador ainda não oferece vozes em espanhol. Tente recarregar a página ou usar o Google Chrome.",
+    account_voice_hint: "Escolha a voz de que mais gostar — ela será usada em todos os botões 🔊 do curso. Se trocar de dispositivo ou navegador, talvez precise escolher de novo.",
+    account_voice_sample_text: "Olá, assim vai soar minha voz nas suas lições de espanhol.",
+    dialogue_play_all: "Ouvir diálogo completo", dialogue_stop_all: "Parar",
+    translate_toggle_title: "Mostrar/ocultar tradução em português", translation_missing: "Tradução ainda não disponível para esta frase.",
+    account_voice2_label: "2ª voz (para diálogos com 2 personagens)",
+    account_voice2_hint: "Opcional: se você escolher uma 2ª voz, o primeiro personagem de cada diálogo fala com a Voz 1 (acima) e o segundo com esta. Se não escolher nenhuma, todos falam com a Voz 1.",
+    account_voice2_none_opt: "🚫 Não usar 2ª voz (um só narrador)",
     nav_schedule: "📅 Cronograma", panel_title: "🎓 Painel do Aluno",
     sidebar_dashboard: "Painel", sidebar_settings: "Configurações", sidebar_toggle: "Mostrar/ocultar menu",
     sidebar_section_learn: "Aprender", sidebar_section_admin: "Administração",
@@ -364,6 +382,15 @@ const I18N = {
     account_change_pass_btn: "Change password", account_pass_mismatch: "New passwords don't match.",
     account_pass_changed: "Password updated successfully!", account_theme_label: "Theme color", account_font_label: "Font",
     account_lang_label: "Interface language", account_save_appearance: "Save appearance", account_appearance_saved: "Appearance saved!",
+    account_voice_label: "Lesson voice (text-to-speech)", account_voice_preview: "Listen to a sample with this voice",
+    account_voice_none: "Your browser doesn't offer Spanish voices yet. Try reloading the page or using Google Chrome.",
+    account_voice_hint: "Pick the voice you like best — it will be used on every 🔊 button in the course. If you switch device or browser, you may need to choose it again.",
+    account_voice_sample_text: "Hi, this is how my voice will sound in your Spanish lessons.",
+    dialogue_play_all: "Listen to full dialogue", dialogue_stop_all: "Stop",
+    translate_toggle_title: "Show/hide Portuguese translation", translation_missing: "Translation not available yet for this sentence.",
+    account_voice2_label: "2nd voice (for 2-character dialogues)",
+    account_voice2_hint: "Optional: if you pick a 2nd voice, the first character in each dialogue speaks with Voice 1 (above) and the second with this one. If you don't pick one, everyone speaks with Voice 1.",
+    account_voice2_none_opt: "🚫 Don't use a 2nd voice (single narrator)",
     nav_schedule: "📅 Schedule", panel_title: "🎓 Student Panel",
     sidebar_dashboard: "Dashboard", sidebar_settings: "Settings", sidebar_toggle: "Show/hide menu",
     sidebar_section_learn: "Learn", sidebar_section_admin: "Admin",
@@ -955,7 +982,7 @@ auth.onAuthStateChanged(async (fbUser) => {
     // se consideran "approved" automáticamente (no afecta a nadie que ya usaba el curso).
     const status = userData.status || "approved";
     state.user = { uid: fbUser.uid, email: fbUser.email, name: userData.name, role: userData.role, status };
-    state.prefs = { theme: "espana", font: "poppins", lang: state.prefs.lang || "es", ...(userData.prefs || {}) };
+    state.prefs = { theme: "espana", font: "poppins", lang: state.prefs.lang || "es", voiceURI: null, voiceURI2: null, ...(userData.prefs || {}) };
     applyTheme(state.prefs.theme);
     applyFont(state.prefs.font);
     localStorage.setItem("ey_ui_lang", state.prefs.lang);
@@ -1050,10 +1077,37 @@ function loadVoices() {
 
 function pickSpanishVoice() {
   const voices = state.ttsVoices || [];
-  return voices.find(v => v.lang === "es-ES") ||
+  // Si el alumno eligió una voz propia en Configuración → Apariencia, se respeta esa elección
+  // (identificada por voiceURI, único por voz/navegador). Si esa voz ya no está disponible en
+  // este dispositivo/navegador (p. ej. cambió de PC), cae de forma segura a la selección automática.
+  const preferred = state.prefs && state.prefs.voiceURI ? voices.find(v => v.voiceURI === state.prefs.voiceURI) : null;
+  return preferred ||
+         voices.find(v => v.lang === "es-ES") ||
          voices.find(v => v.lang && v.lang.startsWith("es-ES")) ||
          voices.find(v => v.lang && v.lang.startsWith("es")) ||
          null;
+}
+
+// Lista de voces en español disponibles en ESTE navegador/dispositivo, hasta un máximo de 4
+// para no abrumar al alumno con la lista completa (que en algunos navegadores puede ser larga).
+// Se ordenan priorizando variedad de región (España, México/Latam, Estados Unidos, Argentina)
+// para ofrecer opciones bien distintas entre sí en vez de 4 voces casi iguales.
+const VOICE_REGION_ORDER = ["es-ES", "es-MX", "es-US", "es-AR", "es-419", "es-CO", "es"];
+function voiceRegionLabel(lang) {
+  const map = { "es-ES": "🇪🇸 España", "es-MX": "🇲🇽 México", "es-US": "🇺🇸 EE. UU.", "es-AR": "🇦🇷 Argentina", "es-CO": "🇨🇴 Colombia", "es-419": "🌎 Latinoamérica" };
+  return map[lang] || "🌐 Español";
+}
+function getSpanishVoiceOptions() {
+  const all = (state.ttsVoices || []).filter(v => v.lang && v.lang.toLowerCase().startsWith("es"));
+  const seen = new Set();
+  const unique = [];
+  all.forEach(v => { if (!seen.has(v.voiceURI)) { seen.add(v.voiceURI); unique.push(v); } });
+  unique.sort((a, b) => {
+    const ia = VOICE_REGION_ORDER.indexOf(a.lang) === -1 ? 99 : VOICE_REGION_ORDER.indexOf(a.lang);
+    const ib = VOICE_REGION_ORDER.indexOf(b.lang) === -1 ? 99 : VOICE_REGION_ORDER.indexOf(b.lang);
+    return ia - ib;
+  });
+  return unique.slice(0, 4);
 }
 
 function logout() { auth.signOut(); }
@@ -1061,12 +1115,12 @@ function logout() { auth.signOut(); }
 /* ---------------------------------------------------------------------- */
 /* 7. TTS COM DESTAQUE DE PALAVRAS (karaokê)                               */
 /* ---------------------------------------------------------------------- */
-function speak(text, onWordSpans, btn) {
+function speak(text, onWordSpans, btn, forceVoice, onFinish) {
   if (!("speechSynthesis" in window)) { alert("Tu navegador no soporta síntesis de voz. Prueba con Google Chrome."); return; }
   speechSynthesis.cancel();
   const utter = new SpeechSynthesisUtterance(text);
   utter.lang = "es-ES";
-  const voice = pickSpanishVoice();
+  const voice = forceVoice || pickSpanishVoice();
   if (voice) utter.voice = voice;
   utter.rate = 0.92;
 
@@ -1089,8 +1143,64 @@ function speak(text, onWordSpans, btn) {
   utter.onend = () => {
     if (btn) btn.classList.remove("playing");
     if (onWordSpans) onWordSpans.forEach(span => span.classList.remove("active"));
+    if (onFinish) onFinish();
   };
   speechSynthesis.speak(utter);
+}
+
+// Variante usada por el botón "🔊 escuchar" del selector de voz en Configuración: reproduce
+// una frase de ejemplo con una voz ESPECÍFICA (sin guardarla), para que el alumno pueda
+// comparar antes de elegir cuál dejar guardada como su voz preferida.
+function speakWithVoice(text, voice) {
+  speak(text, null, null, voice || null);
+}
+
+/* ---------------------------------------------------------------------- */
+/* 7b. REPRODUCIR UN DIÁLOGO COMPLETO (todas las líneas, una tras otra)     */
+/* ---------------------------------------------------------------------- */
+// Además de escuchar línea por línea (botón 🔊 de cada burbuja, ya existente), este botón
+// reproduce TODO el diálogo en secuencia, resaltando la línea y la palabra actual en tiempo
+// real, para que el alumno pueda seguir la conversación completa como si fuera un audio real.
+// Un segundo clic mientras suena lo detiene (toggle reproducir/detener).
+function playDialogueAll(container, btn, voiceMap) {
+  if (!("speechSynthesis" in window)) { alert("Tu navegador no soporta síntesis de voz. Prueba con Google Chrome."); return; }
+  if (state.dialoguePlayingAll) {
+    state.dialoguePlayingAll = false;
+    speechSynthesis.cancel();
+    stopDialogueAllUI(container, btn);
+    return;
+  }
+  const lineEls = Array.from(container.querySelectorAll(".dialogue-line"));
+  if (!lineEls.length) return;
+  speechSynthesis.cancel();
+  state.dialoguePlayingAll = true;
+  if (btn) { btn.classList.add("playing"); btn.innerHTML = `⏹ ${t("dialogue_stop_all")}`; }
+  let i = 0;
+  const playNext = () => {
+    if (!state.dialoguePlayingAll || i >= lineEls.length) {
+      state.dialoguePlayingAll = false;
+      stopDialogueAllUI(container, btn);
+      return;
+    }
+    const lineEl = lineEls[i];
+    const text = lineEl.dataset.fulltext || lineEl.querySelector(".text-content").textContent;
+    lineEls.forEach(le => le.classList.remove("active-line"));
+    lineEl.classList.add("active-line");
+    lineEl.scrollIntoView({ behavior: "smooth", block: "center" });
+    const spans = Array.from(lineEl.querySelectorAll(".hl-word"));
+    const lineBtn = lineEl.querySelector(".speak-icon-btn");
+    const voice = voiceMap ? voiceMap[lineEl.dataset.who] : null;
+    i++;
+    speak(text, spans, lineBtn, voice || null, () => {
+      if (state.dialoguePlayingAll) playNext();
+    });
+  };
+  playNext();
+}
+
+function stopDialogueAllUI(container, btn) {
+  if (btn) { btn.classList.remove("playing"); btn.innerHTML = `▶ ${t("dialogue_play_all")}`; }
+  container.querySelectorAll(".dialogue-line").forEach(le => le.classList.remove("active-line"));
 }
 
 function wrapWordsForHighlight(text) {
@@ -1098,10 +1208,28 @@ function wrapWordsForHighlight(text) {
   return words.map(w => w.trim() ? `<span class="hl-word">${escapeHtml(w)}</span>` : w).join("");
 }
 
-function attachSpeakButton(container, text) {
+function attachSpeakButton(container, text, forceVoice) {
   const btn = container.querySelector(".speak-icon-btn");
   const spans = Array.from(container.querySelectorAll(".hl-word"));
-  if (btn) btn.onclick = () => speak(text, spans, btn);
+  if (btn) btn.onclick = () => speak(text, spans, btn, forceVoice || null);
+}
+
+// Asigna una voz a cada personaje de un diálogo: el PRIMER personaje que habla (en orden de
+// aparición) usa la "Voz 1" del alumno (su voz preferida en Configuración), y el SEGUNDO
+// personaje distinto usa la "Voz 2" (si la configuró) — así una conversación con dos
+// interlocutores suena con dos voces distintas en vez de una sola leyendo todo. Si el alumno
+// no configuró una Voz 2, todos los personajes usan la Voz 1 (comportamiento de siempre).
+// No se basa en detectar el género real del personaje (el contenido no trae ese dato), sino
+// en alternar por orden de aparición — funciona bien para diálogos de 2 personas (la mayoría).
+function assignDialogueVoiceMap(dialogue) {
+  const map = {};
+  const v1 = pickSpanishVoice();
+  const voices = state.ttsVoices || [];
+  const v2 = state.prefs.voiceURI2 ? voices.find(v => v.voiceURI === state.prefs.voiceURI2) : null;
+  const order = [];
+  (dialogue || []).forEach(d => { if (d && d.who && !order.includes(d.who)) order.push(d.who); });
+  order.forEach((who, idx) => { map[who] = (!v2 || idx % 2 === 0) ? v1 : v2; });
+  return map;
 }
 
 /* ---------------------------------------------------------------------- */
@@ -1717,11 +1845,21 @@ function renderLessonView() {
       <button class="speak-icon-btn" title="Escuchar">🔊</button></div></div></div>`;
   }
   if (lesson.dialogue && lesson.dialogue.length) {
-    html += `<div class="card"><h3>💬 Diálogo</h3>` + lesson.dialogue.map((d, i) => `
-      <div class="dialogue-line" data-idx="${i}">
+    html += `<div class="card dialogue-card">
+      <div class="dialogue-card-head">
+        <h3>💬 Diálogo</h3>
+        <button type="button" class="btn btn-ghost btn-sm play-all-btn" id="play-all-dialogue">▶ ${t("dialogue_play_all")}</button>
+      </div>` + lesson.dialogue.map((d, i) => `
+      <div class="dialogue-line" data-idx="${i}" data-who="${escapeHtml(d.who)}">
         <div class="who">${escapeHtml(d.who)}</div>
-        <div class="bubble"><span class="text-content">${wrapWordsForHighlight(d.es)}</span>
-        <button class="speak-icon-btn" title="Escuchar">🔊</button></div>
+        <div class="bubble">
+          <div class="bubble-main">
+            <span class="text-content">${wrapWordsForHighlight(d.es)}</span>
+            <button class="speak-icon-btn" title="Escuchar">🔊</button>
+            <button class="translate-toggle-btn" data-translate-toggle="1" title="${t("translate_toggle_title")}">🇧🇷 PT</button>
+          </div>
+          <div class="translation-text ${d.pt ? "" : "missing"}">${d.pt ? escapeHtml(d.pt) : t("translation_missing")}</div>
+        </div>
       </div>`).join("") + `</div>`;
   }
   if (lesson.vocabulary && lesson.vocabulary.length) {
@@ -1731,8 +1869,10 @@ function renderLessonView() {
         <div class="vocab-chips">
           ${group.items.map(it => `
             <div class="vocab-chip" data-say="${escapeHtml(it.es)}">
-              <button title="Escuchar">🔊</button>
-              <span>${escapeHtml(it.es)}${it.pt ? `<span class="pt"> — ${escapeHtml(it.pt)}</span>` : ""}</span>
+              <button class="vocab-speak-btn" title="Escuchar">🔊</button>
+              <span>${escapeHtml(it.es)}</span>
+              <button class="translate-toggle-btn" data-translate-toggle="1" title="${t("translate_toggle_title")}">🇧🇷 PT</button>
+              <div class="translation-text ${it.pt ? "" : "missing"}">${it.pt ? escapeHtml(it.pt) : t("translation_missing")}</div>
             </div>`).join("")}
         </div>
       </div>`).join("") + `</div>`;
@@ -1765,21 +1905,40 @@ function renderLessonView() {
       <div class="bottom-space"></div>`;
   root.innerHTML = wrapShell(html, "lesson");
   attachShellEvents();
-  document.getElementById("back-list").onclick = () => { state.screen = "lessonList"; render(); };
+  state.dialoguePlayingAll = false;
+  document.getElementById("back-list").onclick = () => { speechSynthesis.cancel(); state.screen = "lessonList"; render(); };
   const contBtn = document.getElementById("continue-exercises");
-  if (contBtn) contBtn.onclick = () => startLessonExercises(lesson, true);
+  if (contBtn) contBtn.onclick = () => { speechSynthesis.cancel(); startLessonExercises(lesson, true); };
   const restartBtn = document.getElementById("restart-exercises");
-  if (restartBtn) restartBtn.onclick = () => startLessonExercises(lesson, false);
+  if (restartBtn) restartBtn.onclick = () => { speechSynthesis.cancel(); startLessonExercises(lesson, false); };
 
+  const dialogueVoiceMap = assignDialogueVoiceMap(lesson.dialogue);
   document.querySelectorAll(".dialogue-line").forEach(line => {
     const text = line.dataset.fulltext || (lesson.dialogue && lesson.dialogue[line.dataset.idx] ? lesson.dialogue[line.dataset.idx].es : "");
-    attachSpeakButton(line, text);
+    attachSpeakButton(line, text, dialogueVoiceMap[line.dataset.who]);
   });
+  const playAllBtn = document.getElementById("play-all-dialogue");
+  if (playAllBtn) {
+    const dialogueCard = playAllBtn.closest(".dialogue-card");
+    playAllBtn.onclick = () => playDialogueAll(dialogueCard, playAllBtn, dialogueVoiceMap);
+  }
   document.querySelectorAll(".vocab-chip").forEach(chip => {
-    chip.querySelector("button").onclick = () => speak(chip.dataset.say, null, null);
+    chip.querySelector(".vocab-speak-btn").onclick = () => speak(chip.dataset.say, null, null);
+  });
+  // Mostrar/ocultar traducción: cada botón 🇧🇷 revela (o esconde de nuevo) SOLO su propia
+  // línea de traducción, sin afectar a las demás — el alumno decide cuándo quiere ver el
+  // português, no aparece automáticamente.
+  document.querySelectorAll(".translate-toggle-btn").forEach(btn => {
+    btn.onclick = (ev) => {
+      ev.stopPropagation();
+      const wrap = btn.closest(".vocab-chip, .bubble");
+      const txt = wrap ? wrap.querySelector(".translation-text") : null;
+      if (txt) txt.classList.toggle("show");
+      btn.classList.toggle("active");
+    };
   });
 
-  document.getElementById("start-exercises").onclick = () => startLessonExercises(lesson);
+  document.getElementById("start-exercises").onclick = () => { speechSynthesis.cancel(); startLessonExercises(lesson); };
 }
 
 /* ---------------------------------------------------------------------- */
@@ -3750,6 +3909,23 @@ function renderAccount() {
     document.querySelectorAll(".lang-option").forEach(lo => {
       lo.onclick = () => { state.prefs.lang = lo.dataset.lang; render(); };
     });
+    // Si todavía no llegaron las voces del navegador (carga asíncrona), reintenta una vez
+    // apenas estén listas, para no dejar la lista vacía sin necesidad.
+    if (!(state.ttsVoices && state.ttsVoices.length)) { loadVoices().then(render); }
+    document.querySelectorAll(".voice-option").forEach(vo => {
+      vo.onclick = () => {
+        const key = vo.dataset.voiceGroup === "v2" ? "voiceURI2" : "voiceURI";
+        state.prefs[key] = vo.dataset.voiceUri || null;
+        render();
+      };
+    });
+    document.querySelectorAll(".voice-preview-btn").forEach(btn => {
+      btn.onclick = (ev) => {
+        ev.stopPropagation();
+        const voice = (state.ttsVoices || []).find(v => v.voiceURI === btn.dataset.voicePreview);
+        speakWithVoice(t("account_voice_sample_text"), voice);
+      };
+    });
     const saveBtn = document.getElementById("save-appearance");
     if (saveBtn) saveBtn.onclick = onSaveAppearance;
   }
@@ -3826,7 +4002,44 @@ function renderAccountAppearanceTab() {
     <div class="lang-options">
       ${Object.keys(UI_LANGS).map(id => `<div class="lang-option ${state.prefs.lang === id ? "active" : ""}" data-lang="${id}">${UI_LANGS[id]}</div>`).join("")}
     </div>
+    <span class="settings-label">${t("account_voice_label")}</span>
+    <p class="voice-empty-note">${t("account_voice_hint")}</p>
+    ${renderVoiceOptionsHtml("voiceURI", "v1", false)}
+    <span class="settings-label" style="margin-top:18px">${t("account_voice2_label")}</span>
+    <p class="voice-empty-note">${t("account_voice2_hint")}</p>
+    ${renderVoiceOptionsHtml("voiceURI2", "v2", true)}
     <div style="text-align:right;margin-top:8px"><button class="btn btn-primary btn-sm" id="save-appearance">${t("account_save_appearance")}</button></div>`;
+}
+
+// Selector de voz de la síntesis de voz (TTS): hasta 4 voces en español distintas, detectadas
+// en el navegador/dispositivo del alumno, cada una con botón de "escuchar ejemplo" antes de elegir.
+// prefKey: "voiceURI" (Voz 1) o "voiceURI2" (Voz 2). allowClear agrega una opción para dejar
+// la Voz 2 sin elegir (diálogos leídos por un solo narrador, con la Voz 1).
+function renderVoiceOptionsHtml(prefKey, groupName, allowClear) {
+  const options = getSpanishVoiceOptions();
+  if (!options.length) {
+    return `<p class="voice-empty-note">${t("account_voice_none")}</p>`;
+  }
+  const current = state.prefs[prefKey];
+  const clearOption = allowClear ? `
+    <div class="voice-option ${!current ? "active" : ""}" data-voice-uri="" data-voice-group="${groupName}">
+      <span style="width:34px"></span>
+      <div class="voice-option-info"><strong>${t("account_voice2_none_opt")}</strong></div>
+      <span class="voice-option-check">${!current ? "✓" : ""}</span>
+    </div>` : "";
+  return `
+    <div class="voice-options">
+      ${clearOption}
+      ${options.map(v => `
+        <div class="voice-option ${current === v.voiceURI ? "active" : ""}" data-voice-uri="${escapeHtml(v.voiceURI)}" data-voice-group="${groupName}">
+          <button type="button" class="voice-preview-btn" data-voice-preview="${escapeHtml(v.voiceURI)}" title="${t("account_voice_preview")}">🔊</button>
+          <div class="voice-option-info">
+            <strong>${escapeHtml(v.name)}</strong>
+            <span>${voiceRegionLabel(v.lang)}</span>
+          </div>
+          <span class="voice-option-check">${current === v.voiceURI ? "✓" : ""}</span>
+        </div>`).join("")}
+    </div>`;
 }
 
 async function onChangePasswordSubmit(e) {

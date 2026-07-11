@@ -12,16 +12,16 @@ const LEVEL_AVANZADO = {
     {
       id: "a1", order: 1, title: "Cocina", subtitle: "Utensílios, verbos culinários e o infinitivo composto",
       dialogue: [
-        { who: "A", es: "Oye, ¿qué hicieron en sus vacaciones?" },
-        { who: "B", es: "Fuimos a la playa y a una ciudad cercana de compras." },
-        { who: "A", es: "Bueno. ¿Y les gustó?" },
-        { who: "B", es: "Sí, pero creo que deberíamos haber ido a otra playa. Esta adonde fuimos era lejos de todo y no había ni restaurantes cerca de la casa." },
-        { who: "A", es: "¡Ah! ¿Se quedaron en una casa entonces?" },
-        { who: "B", es: "Sí, una casa muy bonita, sin embargo, no había casi nada en ella. Me gustaría haber cocinado más, ya que no había restaurantes por allá." },
-        { who: "A", es: "¿Qué necesitabas que no había?" },
-        { who: "B", es: "Todos los utensilios de cocina, ¿sabes? Como por ejemplo una buena sartén, ollas grandes, una licuadora y muchas otras cosas. No había ni siquiera tazas y cucharillas." },
-        { who: "A", es: "No lo puedo creer. Esto es un problema para ti porque te encanta cocinar. Pero, ¡qué bueno que se divirtieron igual!" },
-        { who: "B", es: "Sí, verdad. Haber elegido viajar fue estupendo. ¡Nos encantó el viaje!" }
+        { who: "A", es: "Oye, ¿qué hicieron en sus vacaciones?", pt: "Ei, o que vocês fizeram nas férias de vocês?" },
+        { who: "B", es: "Fuimos a la playa y a una ciudad cercana de compras.", pt: "Fomos à praia e a uma cidade próxima fazer compras." },
+        { who: "A", es: "Bueno. ¿Y les gustó?", pt: "Legal. E vocês gostaram?" },
+        { who: "B", es: "Sí, pero creo que deberíamos haber ido a otra playa. Esta adonde fuimos era lejos de todo y no había ni restaurantes cerca de la casa.", pt: "Sim, mas acho que deveríamos ter ido a outra praia. Essa aonde fomos era longe de tudo e não tinha nem restaurantes perto da casa." },
+        { who: "A", es: "¡Ah! ¿Se quedaron en una casa entonces?", pt: "Ah! Vocês ficaram numa casa então?" },
+        { who: "B", es: "Sí, una casa muy bonita, sin embargo, no había casi nada en ella. Me gustaría haber cocinado más, ya que no había restaurantes por allá.", pt: "Sim, uma casa muito bonita, porém, não tinha quase nada nela. Eu gostaria de ter cozinhado mais, já que não tinha restaurantes por lá." },
+        { who: "A", es: "¿Qué necesitabas que no había?", pt: "O que faltava que você precisava?" },
+        { who: "B", es: "Todos los utensilios de cocina, ¿sabes? Como por ejemplo una buena sartén, ollas grandes, una licuadora y muchas otras cosas. No había ni siquiera tazas y cucharillas.", pt: "Todos os utensílios de cozinha, sabe? Como por exemplo uma boa frigideira, panelas grandes, um liquidificador e muitas outras coisas. Não tinha nem xícaras e colherzinhas." },
+        { who: "A", es: "No lo puedo creer. Esto es un problema para ti porque te encanta cocinar. Pero, ¡qué bueno que se divirtieron igual!", pt: "Não acredito. Isso é um problema para você porque você adora cozinhar. Mas que bom que vocês se divertiram do mesmo jeito!" },
+        { who: "B", es: "Sí, verdad. Haber elegido viajar fue estupendo. ¡Nos encantó el viaje!", pt: "Sim, verdade. Ter escolhido viajar foi ótimo. Adoramos a viagem!" }
       ],
       vocabulary: [
         {
@@ -138,7 +138,7 @@ const LEVEL_AVANZADO = {
     {
       id: "a2", order: 2, title: "Comercio", subtitle: "Compras, vendas e o gerundio compuesto",
       dialogue: [
-        { who: "text", es: "María, habiendo sido invitada a la boda de su mejor amiga, fue rápidamente a una tienda de ropas a comprar un vestido para la fiesta. Ella fue a una tienda que se llama Vivir Bella y luego de haber entrado, vio el vestido más perfecto que había visto en su vida. Un vestido negro con dorado, largo y brillante. María luego le preguntó a la dependiente si tenía su talla, y por suerte, le dijo que sí. Ella fue al probador, lo probó y en el mismo momento se enamoró. Habiendo probado el vestido, ya fue a la caja y lo compró pagando con tarjeta de crédito en cuotas. Después de todo, era un vestido muy caro. Habiendo salido de la tienda, fue a pedir un turno con su peluquero y su manicura para estar linda en la boda de su amiga." }
+        { who: "text", es: "María, habiendo sido invitada a la boda de su mejor amiga, fue rápidamente a una tienda de ropas a comprar un vestido para la fiesta. Ella fue a una tienda que se llama Vivir Bella y luego de haber entrado, vio el vestido más perfecto que había visto en su vida. Un vestido negro con dorado, largo y brillante. María luego le preguntó a la dependiente si tenía su talla, y por suerte, le dijo que sí. Ella fue al probador, lo probó y en el mismo momento se enamoró. Habiendo probado el vestido, ya fue a la caja y lo compró pagando con tarjeta de crédito en cuotas. Después de todo, era un vestido muy caro. Habiendo salido de la tienda, fue a pedir un turno con su peluquero y su manicura para estar linda en la boda de su amiga.", pt: "Maria, tendo sido convidada para o casamento da melhor amiga dela, foi rapidamente a uma loja de roupas comprar um vestido para a festa. Ela foi a uma loja chamada Vivir Bella e, depois de ter entrado, viu o vestido mais perfeito que já tinha visto na vida. Um vestido preto com dourado, longo e brilhante. Maria então perguntou à atendente se tinha o tamanho dela, e por sorte, ela disse que sim. Foi ao provador, experimentou o vestido e no mesmo momento se apaixonou. Tendo experimentado o vestido, foi até o caixa e o comprou pagando com cartão de crédito parcelado. Afinal, era um vestido muito caro. Tendo saído da loja, foi marcar um horário com o cabeleireiro e a manicure para estar linda no casamento da amiga." }
       ],
       vocabulary: [
         {
@@ -164,23 +164,23 @@ const LEVEL_AVANZADO = {
         {
           category: "Frases útiles",
           items: [
-            { es: "¿Le puedo ayudar?" }, { es: "¿Le atienden?" }, { es: "¿Qué andaba/estaba buscando?" },
-            { es: "Estoy mirando solamente, gracias." }, { es: "Ahora no voy a llevar nada. No tengo dólares. Mañana vuelvo." },
-            { es: "¿Puede mostrarme el vestido que está en la vitrina?" }, { es: "Quisiera probarlo." },
-            { es: "¿Tiene otros colores de la camisa?" }, { es: "Me parece fuera de moda." },
-            { es: "No me gustó/ha gustado." }, { es: "Es el tono de la moda/del momento." },
-            { es: "¿Dónde está el probador?" }, { es: "¿Cuánto vale?/¿Cuánto cuesta?" },
-            { es: "Voy a pagar al contado. ¿Puede hacerme una rebaja?/un descuento?" },
-            { es: "¿Puedo pagar con tarjeta de crédito?" }, { es: "¿Se puede pagar a plazo/en cuotas?" },
-            { es: "Si paga al contado tiene descuento." }, { es: "Vuelva siempre." }
+            { es: "¿Le puedo ayudar?", pt: "Posso te ajudar?" }, { es: "¿Le atienden?", pt: "Já está sendo atendido(a)?" }, { es: "¿Qué andaba/estaba buscando?", pt: "O que você estava procurando?" },
+            { es: "Estoy mirando solamente, gracias.", pt: "Estou só olhando, obrigado(a)." }, { es: "Ahora no voy a llevar nada. No tengo dólares. Mañana vuelvo.", pt: "Agora não vou levar nada. Não tenho dinheiro. Amanhã eu volto." },
+            { es: "¿Puede mostrarme el vestido que está en la vitrina?", pt: "Pode me mostrar o vestido que está na vitrine?" }, { es: "Quisiera probarlo.", pt: "Eu gostaria de experimentá-lo." },
+            { es: "¿Tiene otros colores de la camisa?", pt: "Tem outras cores dessa camisa?" }, { es: "Me parece fuera de moda.", pt: "Me parece fora de moda." },
+            { es: "No me gustó/ha gustado.", pt: "Não gostei." }, { es: "Es el tono de la moda/del momento.", pt: "É a cor da moda/do momento." },
+            { es: "¿Dónde está el probador?", pt: "Onde fica o provador?" }, { es: "¿Cuánto vale?/¿Cuánto cuesta?", pt: "Quanto custa?" },
+            { es: "Voy a pagar al contado. ¿Puede hacerme una rebaja?/un descuento?", pt: "Vou pagar à vista. Pode me fazer um desconto?" },
+            { es: "¿Puedo pagar con tarjeta de crédito?", pt: "Posso pagar com cartão de crédito?" }, { es: "¿Se puede pagar a plazo/en cuotas?", pt: "Dá para pagar parcelado?" },
+            { es: "Si paga al contado tiene descuento.", pt: "Se pagar à vista tem desconto." }, { es: "Vuelva siempre.", pt: "Volte sempre." }
           ]
         },
         {
           category: "Placas y señales",
           items: [
-            { es: "Aceptamos Visa/Mastercard/Diners/American Express" }, { es: "No aceptamos tarjetas de crédito" },
-            { es: "Abierto las 24 horas del día" }, { es: "Rebajas" }, { es: "Liquidación" },
-            { es: "Liquidación de saldos" }, { es: "Liquidación de verano/invierno" }, { es: "Se habla (inglés)" }
+            { es: "Aceptamos Visa/Mastercard/Diners/American Express", pt: "Aceitamos Visa/Mastercard/Diners/American Express" }, { es: "No aceptamos tarjetas de crédito", pt: "Não aceitamos cartões de crédito" },
+            { es: "Abierto las 24 horas del día", pt: "Aberto 24 horas por dia" }, { es: "Rebajas", pt: "Promoções" }, { es: "Liquidación", pt: "Liquidação" },
+            { es: "Liquidación de saldos", pt: "Liquidação de estoque" }, { es: "Liquidación de verano/invierno", pt: "Liquidação de verão/inverno" }, { es: "Se habla (inglés)", pt: "Fala-se (inglês)" }
           ]
         }
       ],
@@ -213,39 +213,39 @@ const LEVEL_AVANZADO = {
     {
       id: "a3", order: 3, title: "Economía", subtitle: "Banco, mercado laboral e o futuro continuo",
       dialogue: [
-        { who: "A", es: "¡Buen día! ¿La puedo ayudar?" },
-        { who: "B", es: "Sí, por favor. Quisiera cambiar reales a pesos, ¿es posible?" },
-        { who: "A", es: "Sí, el cambio está a 5 por 1." },
-        { who: "B", es: "Bien, entonces quiero cambiar 300 reales." },
-        { who: "A", es: "Está bien, aquí tiene. ¿Necesita algo más?" },
-        { who: "B", es: "Sí, estaré viajando mañana y por eso necesito cobrar un cheque hoy. ¿Puede hacer efectivo el cheque?" },
-        { who: "A", es: "Por supuesto. ¿Prefiere billetes de menor valor?" },
-        { who: "B", es: "Sí, por favor." },
-        { who: "A", es: "Listo. ¿La ayudo en algo más?" },
-        { who: "B", es: "No, eso es todo. ¡Muchísimas gracias!" },
-        { who: "A", es: "¡Gracias a usted! ¡Que tenga un buen día!" }
+        { who: "A", es: "¡Buen día! ¿La puedo ayudar?", pt: "Bom dia! Posso ajudá-la?" },
+        { who: "B", es: "Sí, por favor. Quisiera cambiar reales a pesos, ¿es posible?", pt: "Sim, por favor. Eu gostaria de trocar reais por pesos, é possível?" },
+        { who: "A", es: "Sí, el cambio está a 5 por 1.", pt: "Sim, o câmbio está a 5 por 1." },
+        { who: "B", es: "Bien, entonces quiero cambiar 300 reales.", pt: "Certo, então eu quero trocar 300 reais." },
+        { who: "A", es: "Está bien, aquí tiene. ¿Necesita algo más?", pt: "Certo, aqui está. Precisa de mais alguma coisa?" },
+        { who: "B", es: "Sí, estaré viajando mañana y por eso necesito cobrar un cheque hoy. ¿Puede hacer efectivo el cheque?", pt: "Sim, estarei viajando amanhã e por isso preciso descontar um cheque hoje. Pode descontar o cheque?" },
+        { who: "A", es: "Por supuesto. ¿Prefiere billetes de menor valor?", pt: "Claro. Prefere notas de menor valor?" },
+        { who: "B", es: "Sí, por favor.", pt: "Sim, por favor." },
+        { who: "A", es: "Listo. ¿La ayudo en algo más?", pt: "Pronto. Posso ajudá-la em mais alguma coisa?" },
+        { who: "B", es: "No, eso es todo. ¡Muchísimas gracias!", pt: "Não, é só isso. Muito obrigada!" },
+        { who: "A", es: "¡Gracias a usted! ¡Que tenga un buen día!", pt: "Obrigado à senhora! Tenha um bom dia!" }
       ],
       vocabulary: [
         {
           category: "Economía y mercado laboral",
           items: [
-            { es: "Compra" }, { es: "Venta" }, { es: "Dinero/Plata" }, { es: "Moneda" },
-            { es: "Tarjeta de débito/crédito" }, { es: "Costo" }, { es: "Interés", pt: "juros" },
-            { es: "Cuota", pt: "Parcela" }, { es: "Precio" }, { es: "Valor" }, { es: "Acciones", pt: "Ações" },
-            { es: "Auditoría" }, { es: "Banco" }, { es: "Beneficios" }, { es: "Bienes", pt: "Bens" },
-            { es: "Pagar" }, { es: "Cobrar" }, { es: "Cliente" }, { es: "Declaración de la renta" },
-            { es: "Concesionario" }, { es: "Contrato" }, { es: "Crédito" }, { es: "Cuenta" },
-            { es: "Cajero automático" }, { es: "Bolsa de valores" }, { es: "Ahorro", pt: "Poupança" },
-            { es: "Cuenta de ahorros" }, { es: "Cuenta corriente" }, { es: "Depósito" }, { es: "Transferencia" },
-            { es: "Empleo/Desempleo" }, { es: "Empleados" }, { es: "Gerente" }, { es: "Gestión" },
-            { es: "Hipoteca" }, { es: "Giro" }, { es: "Honorarios" }, { es: "Horario comercial" },
-            { es: "Huelga", pt: "Greve" }, { es: "Importación" }, { es: "Impuesto (sobre la renta)" },
-            { es: "Inversión" }, { es: "Jefe(a)" }, { es: "Jubilación", pt: "Aposentadoria" },
-            { es: "Liderazgo" }, { es: "Mayorista/Minorista" }, { es: "Oferta" }, { es: "Producto" },
-            { es: "Mercado" }, { es: "Mercancía" }, { es: "Servicio" }, { es: "Queja" }, { es: "Riesgo" },
-            { es: "Vendedor(a)" }, { es: "Empresa/Negocio/Compañía" }, { es: "Renta/Ingresos" },
-            { es: "Saldo acreedor/deudor" }, { es: "Tabla de salarios" }, { es: "Tarjeta de visitas" },
-            { es: "Toma de decisiones" }, { es: "Vacaciones" }, { es: "Viable" }, { es: "Vencimiento" },
+            { es: "Compra", pt: "Compra" }, { es: "Venta", pt: "Venda" }, { es: "Dinero/Plata", pt: "Dinheiro" }, { es: "Moneda", pt: "Moeda" },
+            { es: "Tarjeta de débito/crédito", pt: "Cartão de débito/crédito" }, { es: "Costo", pt: "Custo" }, { es: "Interés", pt: "Juros" },
+            { es: "Cuota", pt: "Parcela" }, { es: "Precio", pt: "Preço" }, { es: "Valor", pt: "Valor" }, { es: "Acciones", pt: "Ações" },
+            { es: "Auditoría", pt: "Auditoria" }, { es: "Banco", pt: "Banco" }, { es: "Beneficios", pt: "Benefícios" }, { es: "Bienes", pt: "Bens" },
+            { es: "Pagar", pt: "Pagar" }, { es: "Cobrar", pt: "Cobrar/Receber" }, { es: "Cliente", pt: "Cliente" }, { es: "Declaración de la renta", pt: "Declaração de renda" },
+            { es: "Concesionario", pt: "Concessionária" }, { es: "Contrato", pt: "Contrato" }, { es: "Crédito", pt: "Crédito" }, { es: "Cuenta", pt: "Conta" },
+            { es: "Cajero automático", pt: "Caixa eletrônico" }, { es: "Bolsa de valores", pt: "Bolsa de valores" }, { es: "Ahorro", pt: "Poupança" },
+            { es: "Cuenta de ahorros", pt: "Conta poupança" }, { es: "Cuenta corriente", pt: "Conta corrente" }, { es: "Depósito", pt: "Depósito" }, { es: "Transferencia", pt: "Transferência" },
+            { es: "Empleo/Desempleo", pt: "Emprego/Desemprego" }, { es: "Empleados", pt: "Empregados/Funcionários" }, { es: "Gerente", pt: "Gerente" }, { es: "Gestión", pt: "Gestão" },
+            { es: "Hipoteca", pt: "Hipoteca" }, { es: "Giro", pt: "Saque/Transferência bancária" }, { es: "Honorarios", pt: "Honorários" }, { es: "Horario comercial", pt: "Horário comercial" },
+            { es: "Huelga", pt: "Greve" }, { es: "Importación", pt: "Importação" }, { es: "Impuesto (sobre la renta)", pt: "Imposto (de renda)" },
+            { es: "Inversión", pt: "Investimento" }, { es: "Jefe(a)", pt: "Chefe" }, { es: "Jubilación", pt: "Aposentadoria" },
+            { es: "Liderazgo", pt: "Liderança" }, { es: "Mayorista/Minorista", pt: "Atacadista/Varejista" }, { es: "Oferta", pt: "Oferta" }, { es: "Producto", pt: "Produto" },
+            { es: "Mercado", pt: "Mercado" }, { es: "Mercancía", pt: "Mercadoria" }, { es: "Servicio", pt: "Serviço" }, { es: "Queja", pt: "Reclamação" }, { es: "Riesgo", pt: "Risco" },
+            { es: "Vendedor(a)", pt: "Vendedor(a)" }, { es: "Empresa/Negocio/Compañía", pt: "Empresa/Negócio/Companhia" }, { es: "Renta/Ingresos", pt: "Renda/Receita" },
+            { es: "Saldo acreedor/deudor", pt: "Saldo credor/devedor" }, { es: "Tabla de salarios", pt: "Tabela salarial" }, { es: "Tarjeta de visitas", pt: "Cartão de visita" },
+            { es: "Toma de decisiones", pt: "Tomada de decisões" }, { es: "Vacaciones", pt: "Férias" }, { es: "Viable", pt: "Viável" }, { es: "Vencimiento", pt: "Vencimento" },
             { es: "Nómina de sueldos", pt: "Folha de pagamento" }, { es: "Recibo de sueldo", pt: "Contracheque" },
             { es: "Préstamo", pt: "Empréstimo" }, { es: "Deuda", pt: "Dívida" }, { es: "Invertir", pt: "Investir" }
           ]
@@ -299,39 +299,39 @@ const LEVEL_AVANZADO = {
     {
       id: "a4", order: 4, title: "Inmueble", subtitle: "Compra, venda, aluguel e o condicional 2",
       dialogue: [
-        { who: "A", es: "¡Buen día, Sr. Rodríguez! ¿Ya ha pensado en la propuesta que le hice para que compre el apartamento?" },
-        { who: "B", es: "Sí, pero todavía tengo miedo, porque la última vez que compré algo caro así, había pensado mucho antes de aceptarlo e igual tuve problemas después." },
-        { who: "A", es: "Lo entiendo. Si yo pudiera asegurarle de que no tendrá problemas, lo haría, pero inmuebles son así. Solo después de vivir en ellos, los conocemos bien y sabemos si realmente fue un buen negocio. Sin embargo, en mi opinión, este es el momento justo para comprar inmuebles, y además, si lo compra ahora, le puedo ofrecer un buen descuento y una garantía de un año. ¿Qué le parece?" },
-        { who: "B", es: "Me parece un buen negocio. Está bien...está bien… voy a comprarlo hoy. Dentro de algunos momentos le mando los documentos que me pidió." },
-        { who: "A", es: "¡Perfecto, señor! ¡Estoy seguro de que no se arrepentirá!" }
+        { who: "A", es: "¡Buen día, Sr. Rodríguez! ¿Ya ha pensado en la propuesta que le hice para que compre el apartamento?", pt: "Bom dia, Sr. Rodríguez! Já pensou na proposta que fiz para o senhor comprar o apartamento?" },
+        { who: "B", es: "Sí, pero todavía tengo miedo, porque la última vez que compré algo caro así, había pensado mucho antes de aceptarlo e igual tuve problemas después.", pt: "Sim, mas ainda tenho medo, porque da última vez que comprei algo caro assim, tinha pensado muito antes de aceitar e mesmo assim tive problemas depois." },
+        { who: "A", es: "Lo entiendo. Si yo pudiera asegurarle de que no tendrá problemas, lo haría, pero inmuebles son así. Solo después de vivir en ellos, los conocemos bien y sabemos si realmente fue un buen negocio. Sin embargo, en mi opinión, este es el momento justo para comprar inmuebles, y además, si lo compra ahora, le puedo ofrecer un buen descuento y una garantía de un año. ¿Qué le parece?", pt: "Eu entendo. Se eu pudesse garantir ao senhor que não terá problemas, eu faria isso, mas imóveis são assim. Só depois de morar neles é que os conhecemos bem e sabemos se realmente foi um bom negócio. No entanto, na minha opinião, este é o momento certo para comprar imóveis, e além disso, se comprar agora, posso oferecer um bom desconto e uma garantia de um ano. O que acha?" },
+        { who: "B", es: "Me parece un buen negocio. Está bien...está bien… voy a comprarlo hoy. Dentro de algunos momentos le mando los documentos que me pidió.", pt: "Me parece um bom negócio. Está bem... está bem... vou comprá-lo hoje. Daqui a pouco te mando os documentos que você pediu." },
+        { who: "A", es: "¡Perfecto, señor! ¡Estoy seguro de que no se arrepentirá!", pt: "Perfeito, senhor! Tenho certeza de que não vai se arrepender!" }
       ],
       vocabulary: [
         {
           category: "Comprando/Vendiendo",
           items: [
-            { es: "¿Cuáles son las ventajas del producto?" }, { es: "¿Puede darme un descuento?" },
-            { es: "¿Ustedes están dispuestos a…?" }, { es: "¿El transporte y el seguro son por cuenta de quién?" },
-            { es: "Si lo compra ahora, yo…" }, { es: "Es el mejor precio del mercado." },
-            { es: "Está perdiendo un negocio formidable." }, { es: "Aproveche la oportunidad." },
-            { es: "Es una promoción por tiempo limitado." }, { es: "¿Por qué no lo piensa mejor por algunos días?" }
+            { es: "¿Cuáles son las ventajas del producto?", pt: "Quais são as vantagens do produto?" }, { es: "¿Puede darme un descuento?", pt: "Pode me dar um desconto?" },
+            { es: "¿Ustedes están dispuestos a…?", pt: "Vocês estão dispostos a…?" }, { es: "¿El transporte y el seguro son por cuenta de quién?", pt: "O transporte e o seguro são por conta de quem?" },
+            { es: "Si lo compra ahora, yo…", pt: "Se comprar agora, eu…" }, { es: "Es el mejor precio del mercado.", pt: "É o melhor preço do mercado." },
+            { es: "Está perdiendo un negocio formidable.", pt: "Está perdendo um negócio e tanto." }, { es: "Aproveche la oportunidad.", pt: "Aproveite a oportunidade." },
+            { es: "Es una promoción por tiempo limitado.", pt: "É uma promoção por tempo limitado." }, { es: "¿Por qué no lo piensa mejor por algunos días?", pt: "Por que não pensa melhor por alguns dias?" }
           ]
         },
         {
           category: "Buscando una vivienda",
           items: [
-            { es: "He visto un anuncio en el diario sobre un apartamento para alquilar." },
-            { es: "¿Aún está disponible?" }, { es: "¿Dónde está ubicado?" }, { es: "¿Cómo es el apartamento?" },
-            { es: "¿Cuánto es el alquiler?" }, { es: "¿Cuánto es la fianza?" },
-            { es: "¿El alquiler incluye agua y gas?" }, { es: "¿Cuántos dormitorios tiene?" },
-            { es: "¿Está amueblado?" }, { es: "¿Puedo verlo?" }, { es: "¿El barrio es seguro?" },
-            { es: "¿A partir de cuándo puedo cambiarme?" }
+            { es: "He visto un anuncio en el diario sobre un apartamento para alquilar.", pt: "Vi um anúncio no jornal sobre um apartamento para alugar." },
+            { es: "¿Aún está disponible?", pt: "Ainda está disponível?" }, { es: "¿Dónde está ubicado?", pt: "Onde fica localizado?" }, { es: "¿Cómo es el apartamento?", pt: "Como é o apartamento?" },
+            { es: "¿Cuánto es el alquiler?", pt: "Quanto é o aluguel?" }, { es: "¿Cuánto es la fianza?", pt: "Quanto é a fiança/caução?" },
+            { es: "¿El alquiler incluye agua y gas?", pt: "O aluguel inclui água e gás?" }, { es: "¿Cuántos dormitorios tiene?", pt: "Quantos quartos tem?" },
+            { es: "¿Está amueblado?", pt: "Está mobiliado?" }, { es: "¿Puedo verlo?", pt: "Posso vê-lo?" }, { es: "¿El barrio es seguro?", pt: "O bairro é seguro?" },
+            { es: "¿A partir de cuándo puedo cambiarme?", pt: "A partir de quando posso me mudar?" }
           ]
         },
         {
           category: "Dinero/Precios (formatos)",
           items: [
-            { es: "USD 1" }, { es: "R$ 50" }, { es: "$ 250" }, { es: "EUR 10,50" },
-            { es: "CÉNTIMO" }, { es: "CENTAVO" }, { es: "CENTÉSIMO" }
+            { es: "USD 1", pt: "1 dólar americano" }, { es: "R$ 50", pt: "50 reais" }, { es: "$ 250", pt: "250 (símbolo genérico de peso/dólar, varia por país)" }, { es: "EUR 10,50", pt: "10,50 euros" },
+            { es: "CÉNTIMO", pt: "Cêntimo (moeda fracionária, ex: euro)" }, { es: "CENTAVO", pt: "Centavo (moeda fracionária, ex: peso/real)" }, { es: "CENTÉSIMO", pt: "Centésimo (moeda fracionária, ex: boliviano/sol)" }
           ]
         }
       ],
@@ -374,45 +374,45 @@ const LEVEL_AVANZADO = {
     {
       id: "a5", order: 5, title: "Carta", subtitle: "Correspondência formal e a licencia poética",
       dialogue: [
-        { who: "text", es: "Montevideo, Uruguay — 28, diciembre, 2024. Estimado Sr. Saavedra: Le escribo para agradecerle por haberme contestado pronto y haber resuelto nuestros problemas con el sistema. Le envío también adjuntos los datos solicitados referentes al viaje que vamos a hacer y los días en los cuales no vamos a estar en la oficina para que usted mande a alguien la semana siguiente para averiguar qué tenemos que hacer para cambiar los sistemas. ¡Les deseamos a usted y a su equipo un feliz año nuevo! Estamos a su servicio para cualquier pregunta. Saludos, Luciana Álvez — Equipo de ventas — Su mejor Internet" }
+        { who: "text", es: "Montevideo, Uruguay — 28, diciembre, 2024. Estimado Sr. Saavedra: Le escribo para agradecerle por haberme contestado pronto y haber resuelto nuestros problemas con el sistema. Le envío también adjuntos los datos solicitados referentes al viaje que vamos a hacer y los días en los cuales no vamos a estar en la oficina para que usted mande a alguien la semana siguiente para averiguar qué tenemos que hacer para cambiar los sistemas. ¡Les deseamos a usted y a su equipo un feliz año nuevo! Estamos a su servicio para cualquier pregunta. Saludos, Luciana Álvez — Equipo de ventas — Su mejor Internet", pt: "Montevidéu, Uruguai — 28 de dezembro de 2024. Prezado Sr. Saavedra: Escrevo para agradecer por ter me respondido rapidamente e ter resolvido nossos problemas com o sistema. Envio também em anexo os dados solicitados referentes à viagem que vamos fazer e os dias em que não estaremos no escritório, para que o senhor envie alguém na semana seguinte para verificar o que precisamos fazer para trocar os sistemas. Desejamos a você e à sua equipe um feliz ano novo! Estamos à disposição para qualquer dúvida. Saudações, Luciana Álvez — Equipe de vendas — Sua melhor Internet" }
       ],
       vocabulary: [
         {
           category: "Para empezar",
           items: [
-            { es: "Estimado(a) Sr./Sra. Rodríguez:" }, { es: "Distinguido(a) Sr./Sra." },
-            { es: "A la atención del (jefe de compras)." }, { es: "Le escribo porque…" },
-            { es: "Espero que esté todo bien." }, { es: "Gracias por su correo electrónico/carta." },
-            { es: "Le agradezco por haber contestado con tanta prontitud a mi solicitud." },
-            { es: "¡Querido(a) amigo/Felipe!" }, { es: "¡Hola, Paulo! ¿Qué tal? ¿Cómo te va?" }
+            { es: "Estimado(a) Sr./Sra. Rodríguez:", pt: "Prezado(a) Sr./Sra. Rodríguez:" }, { es: "Distinguido(a) Sr./Sra.", pt: "Distinto(a) Sr./Sra." },
+            { es: "A la atención del (jefe de compras).", pt: "Aos cuidados do (chefe de compras)." }, { es: "Le escribo porque…", pt: "Escrevo porque…" },
+            { es: "Espero que esté todo bien.", pt: "Espero que esteja tudo bem." }, { es: "Gracias por su correo electrónico/carta.", pt: "Obrigado(a) pelo seu e-mail/carta." },
+            { es: "Le agradezco por haber contestado con tanta prontitud a mi solicitud.", pt: "Agradeço por ter respondido tão prontamente à minha solicitação." },
+            { es: "¡Querido(a) amigo/Felipe!", pt: "Querido(a) amigo/Felipe!" }, { es: "¡Hola, Paulo! ¿Qué tal? ¿Cómo te va?", pt: "Olá, Paulo! Tudo bem? Como vai?" }
           ]
         },
         {
           category: "Propósito de la carta",
           items: [
-            { es: "En respuesta a sus preguntas…" }, { es: "Como consecuencia de nuestra conversación telefónica…" },
-            { es: "Como solicitó…" }, { es: "Le escribo para avisarle que recibimos el envío de…" },
-            { es: "Le escribo para agradecerle/felicitarle/pedirle disculpas por..." },
-            { es: "Te escribo para contarte una novedad/saber cómo estás…" }
+            { es: "En respuesta a sus preguntas…", pt: "Em resposta às suas perguntas…" }, { es: "Como consecuencia de nuestra conversación telefónica…", pt: "Em decorrência da nossa conversa por telefone…" },
+            { es: "Como solicitó…", pt: "Como solicitado…" }, { es: "Le escribo para avisarle que recibimos el envío de…", pt: "Escrevo para avisar que recebemos o envio de…" },
+            { es: "Le escribo para agradecerle/felicitarle/pedirle disculpas por...", pt: "Escrevo para agradecer/parabenizar/pedir desculpas por..." },
+            { es: "Te escribo para contarte una novedad/saber cómo estás…", pt: "Te escrevo para contar uma novidade/saber como você está…" }
           ]
         },
         {
           category: "Anejos e informaciones",
           items: [
-            { es: "(Le) envío/enviamos adjunto los datos solicitados…" },
-            { es: "Por favor, infórmenos en caso de estar de acuerdo." },
-            { es: "Le envié ... por fax ayer." }, { es: "Estaré fuera de la oficina y sin posibilidades de contacto hasta…" }
+            { es: "(Le) envío/enviamos adjunto los datos solicitados…", pt: "Envio/enviamos em anexo os dados solicitados…" },
+            { es: "Por favor, infórmenos en caso de estar de acuerdo.", pt: "Por favor, nos informe caso esteja de acordo." },
+            { es: "Le envié ... por fax ayer.", pt: "Enviei ... por fax ontem." }, { es: "Estaré fuera de la oficina y sin posibilidades de contacto hasta…", pt: "Estarei fora do escritório e sem possibilidade de contato até…" }
           ]
         },
         {
           category: "Para terminar la carta",
           items: [
-            { es: "Esperamos recibir…" }, { es: "Esperamos noticias suyas." }, { es: "Me pondré en contacto con Ud. nuevamente…" },
-            { es: "Le agradezco su paciencia." }, { es: "Estaré a la espera de su pronta respuesta." },
-            { es: "Estamos a su servicio para cualquier pregunta/duda." }, { es: "Cordiales saludos." },
-            { es: "Atentamente." }, { es: "Sinceramente." }, { es: "Con cariño." },
-            { es: "Besos y abrazos." }, { es: "Hasta pronto." }, { es: "Recuerdos a todos." },
-            { es: "Te echo de menos." }, { es: "No te desaparezcas." }
+            { es: "Esperamos recibir…", pt: "Aguardamos receber…" }, { es: "Esperamos noticias suyas.", pt: "Aguardamos notícias suas." }, { es: "Me pondré en contacto con Ud. nuevamente…", pt: "Entrarei em contato com o(a) senhor(a) novamente…" },
+            { es: "Le agradezco su paciencia.", pt: "Agradeço sua paciência." }, { es: "Estaré a la espera de su pronta respuesta.", pt: "Ficarei no aguardo de sua pronta resposta." },
+            { es: "Estamos a su servicio para cualquier pregunta/duda.", pt: "Estamos à disposição para qualquer pergunta/dúvida." }, { es: "Cordiales saludos.", pt: "Cordiais saudações." },
+            { es: "Atentamente.", pt: "Atenciosamente." }, { es: "Sinceramente.", pt: "Sinceramente." }, { es: "Con cariño.", pt: "Com carinho." },
+            { es: "Besos y abrazos.", pt: "Beijos e abraços." }, { es: "Hasta pronto.", pt: "Até breve." }, { es: "Recuerdos a todos.", pt: "Lembranças a todos." },
+            { es: "Te echo de menos.", pt: "Sinto sua falta." }, { es: "No te desaparezcas.", pt: "Não suma." }
           ]
         }
       ],
@@ -453,7 +453,7 @@ const LEVEL_AVANZADO = {
     {
       id: "a6", order: 6, title: "Intercambio", subtitle: "Vida acadêmica no exterior e o pretérito anterior",
       dialogue: [
-        { who: "text", es: "Evandro luego que hubo empezado sus clases en España cuando estaba de intercambio en 2002, tuvo algunos problemas en la escuela donde estaba estudiando. Sus compañeros de clase eran muy inteligentes y lo recibieron muy bien desde el primer día, pero él estaba teniendo algunos problemas con el idioma y no podía comunicarse muy bien con sus nuevos amigos. Apenas hubo hablado con su profesora sobre todos sus problemas, tuvo una buena idea. Perder la vergüenza y tratar de practicar con sus colegas, y realmente hacer todo lo que podía para aprender mucho mientras estaba en este viaje inolvidable. Empezó a salir con todos de su clase, ir a las fiestas, a restaurantes, ver la tele, películas en español, escuchar temas que le gustaban y hacer de todo. Apenas hubo pasado un mes de mucho esfuerzo, Evandro ya se dio cuenta de que estaba hablando mucho mejor y ya podía comunicarse bien con sus amigos, teniendo de esta forma, un intercambio mejor imposible." }
+        { who: "text", es: "Evandro luego que hubo empezado sus clases en España cuando estaba de intercambio en 2002, tuvo algunos problemas en la escuela donde estaba estudiando. Sus compañeros de clase eran muy inteligentes y lo recibieron muy bien desde el primer día, pero él estaba teniendo algunos problemas con el idioma y no podía comunicarse muy bien con sus nuevos amigos. Apenas hubo hablado con su profesora sobre todos sus problemas, tuvo una buena idea. Perder la vergüenza y tratar de practicar con sus colegas, y realmente hacer todo lo que podía para aprender mucho mientras estaba en este viaje inolvidable. Empezó a salir con todos de su clase, ir a las fiestas, a restaurantes, ver la tele, películas en español, escuchar temas que le gustaban y hacer de todo. Apenas hubo pasado un mes de mucho esfuerzo, Evandro ya se dio cuenta de que estaba hablando mucho mejor y ya podía comunicarse bien con sus amigos, teniendo de esta forma, un intercambio mejor imposible.", pt: "Evandro, assim que começou suas aulas na Espanha quando estava de intercâmbio em 2002, teve alguns problemas na escola onde estava estudando. Seus colegas de classe eram muito inteligentes e o receberam muito bem desde o primeiro dia, mas ele estava tendo alguns problemas com o idioma e não conseguia se comunicar muito bem com seus novos amigos. Assim que conversou com sua professora sobre todos os seus problemas, teve uma boa ideia. Perder a vergonha e tentar praticar com seus colegas, e realmente fazer tudo o que podia para aprender bastante enquanto estava nessa viagem inesquecível. Começou a sair com todos da turma, ir a festas, a restaurantes, ver TV, filmes em espanhol, ouvir músicas de que gostava e fazer de tudo. Assim que se passou um mês de muito esforço, Evandro já percebeu que estava falando muito melhor e já conseguia se comunicar bem com seus amigos, tendo, dessa forma, um intercâmbio impossível de ser melhor." }
       ],
       vocabulary: [
         {
@@ -473,19 +473,19 @@ const LEVEL_AVANZADO = {
         {
           category: "En las clases",
           items: [
-            { es: "Tengo una pregunta sobre…" }, { es: "Tengo una duda." },
-            { es: "No sé si estoy en el aula/la clase correcta." }, { es: "¿Cuál es la materia de la prueba?" },
-            { es: "¿Puede escribir eso en el pizarrón/la pizarra?" }, { es: "¿Puedo ver tus apuntes?" },
-            { es: "No puedo venir el día de la prueba." }, { es: "¿Puedo hacer una prueba sustitutiva?" },
-            { es: "¿Se puede usar el diccionario en la prueba?" }
+            { es: "Tengo una pregunta sobre…", pt: "Tenho uma pergunta sobre…" }, { es: "Tengo una duda.", pt: "Tenho uma dúvida." },
+            { es: "No sé si estoy en el aula/la clase correcta.", pt: "Não sei se estou na sala/aula certa." }, { es: "¿Cuál es la materia de la prueba?", pt: "Qual é a matéria da prova?" },
+            { es: "¿Puede escribir eso en el pizarrón/la pizarra?", pt: "Pode escrever isso no quadro?" }, { es: "¿Puedo ver tus apuntes?", pt: "Posso ver suas anotações?" },
+            { es: "No puedo venir el día de la prueba.", pt: "Não posso vir no dia da prova." }, { es: "¿Puedo hacer una prueba sustitutiva?", pt: "Posso fazer uma prova substitutiva?" },
+            { es: "¿Se puede usar el diccionario en la prueba?", pt: "Pode usar o dicionário na prova?" }
           ]
         },
         {
           category: "Qué puede decir el profesor",
           items: [
-            { es: "Va a haber prueba el viernes." }, { es: "La prueba vale 10 puntos." },
-            { es: "Abran el libro en la página…" }, { es: "Trabajen en pares/grupos de 4." },
-            { es: "¿Tienen alguna duda?" }, { es: "Hay que aprendérselo de memoria." }
+            { es: "Va a haber prueba el viernes.", pt: "Vai ter prova na sexta-feira." }, { es: "La prueba vale 10 puntos.", pt: "A prova vale 10 pontos." },
+            { es: "Abran el libro en la página…", pt: "Abram o livro na página…" }, { es: "Trabajen en pares/grupos de 4.", pt: "Trabalhem em duplas/grupos de 4." },
+            { es: "¿Tienen alguna duda?", pt: "Vocês têm alguma dúvida?" }, { es: "Hay que aprendérselo de memoria.", pt: "Precisa decorar isso." }
           ]
         }
       ],
@@ -521,41 +521,41 @@ const LEVEL_AVANZADO = {
     {
       id: "a7", order: 7, title: "Currículo", subtitle: "Como montar um CV atrativo e o futuro perfecto",
       dialogue: [
-        { who: "text", es: "10 consejos para hacer un currículum atractivo: 1 - Sea honesto. 2 - Haga un currículo de 1 página. 3 - Añada sus datos básicos. 4 - Especifique el nivel de sus habilidades. 5 - Especifique a cada puesto ocupado, las misiones y las tareas realizadas. 6 - Resalte sus experiencias y habilidades. 7 - Construya su CV en función del puesto al que aspira. 8 - Utilice un CV cronológico. 9 - Indique sus informaciones de contacto. 10 - Añada sus redes sociales." }
+        { who: "text", es: "10 consejos para hacer un currículum atractivo: 1 - Sea honesto. 2 - Haga un currículo de 1 página. 3 - Añada sus datos básicos. 4 - Especifique el nivel de sus habilidades. 5 - Especifique a cada puesto ocupado, las misiones y las tareas realizadas. 6 - Resalte sus experiencias y habilidades. 7 - Construya su CV en función del puesto al que aspira. 8 - Utilice un CV cronológico. 9 - Indique sus informaciones de contacto. 10 - Añada sus redes sociales.", pt: "10 dicas para fazer um currículo atraente: 1 - Seja honesto. 2 - Faça um currículo de 1 página. 3 - Adicione seus dados básicos. 4 - Especifique o nível das suas habilidades. 5 - Especifique, para cada cargo ocupado, as missões e as tarefas realizadas. 6 - Destaque suas experiências e habilidades. 7 - Construa seu currículo em função do cargo ao qual você aspira. 8 - Utilize um currículo cronológico. 9 - Indique suas informações de contato. 10 - Adicione suas redes sociais." }
       ],
       vocabulary: [
         {
           category: "Frases útiles (Currículo)",
           items: [
-            { es: "Yo estudié en...." }, { es: "Me recibí/gradué en…." }, { es: "Hice especialización en…" },
-            { es: "También hice cursos de/en…" }, { es: "Hablo (3) idiomas." },
-            { es: "Mientras estaba en la universidad, tuve la oportunidad de trabajar para…" },
-            { es: "Hice la práctica en la…" }, { es: "Trabajé como…" }, { es: "Trabajé como voluntario en…" },
-            { es: "Yo hice maestría en…" }, { es: "Durante el posgrado estudié…" }, { es: "Publiqué trabajos en…" },
-            { es: "Viví fuera por 3 años." }, { es: "Mi trabajo incluía…" }, { es: "Me hacía cargo de…" },
-            { es: "Era responsable por el desarrollo de…" }, { es: "Colaboré con la implementación de un nuevo…" },
-            { es: "Adquirí mucha experiencia con…" }, { es: "Aprendí mucho sobre…" },
-            { es: "Mi tesis trataba sobre…" }, { es: "Defendí tesis de doctorado en…" },
-            { es: "Luego me promovieron a…" }, { es: "De (asistente) fui para (gerente)." },
-            { es: "Salí de la empresa en que trabajaba porque…" }, { es: "Tengo amplia experiencia en casi todas las áreas de..." }
+            { es: "Yo estudié en....", pt: "Eu estudei em...." }, { es: "Me recibí/gradué en….", pt: "Me formei/me graduei em…." }, { es: "Hice especialización en…", pt: "Fiz especialização em…" },
+            { es: "También hice cursos de/en…", pt: "Também fiz cursos de/em…" }, { es: "Hablo (3) idiomas.", pt: "Falo (3) idiomas." },
+            { es: "Mientras estaba en la universidad, tuve la oportunidad de trabajar para…", pt: "Enquanto estava na universidade, tive a oportunidade de trabalhar para…" },
+            { es: "Hice la práctica en la…", pt: "Fiz o estágio na…" }, { es: "Trabajé como…", pt: "Trabalhei como…" }, { es: "Trabajé como voluntario en…", pt: "Trabalhei como voluntário em…" },
+            { es: "Yo hice maestría en…", pt: "Fiz mestrado em…" }, { es: "Durante el posgrado estudié…", pt: "Durante a pós-graduação estudei…" }, { es: "Publiqué trabajos en…", pt: "Publiquei trabalhos em…" },
+            { es: "Viví fuera por 3 años.", pt: "Morei fora por 3 anos." }, { es: "Mi trabajo incluía…", pt: "Meu trabalho incluía…" }, { es: "Me hacía cargo de…", pt: "Eu era responsável por…" },
+            { es: "Era responsable por el desarrollo de…", pt: "Era responsável pelo desenvolvimento de…" }, { es: "Colaboré con la implementación de un nuevo…", pt: "Colaborei com a implementação de um novo…" },
+            { es: "Adquirí mucha experiencia con…", pt: "Adquiri muita experiência com…" }, { es: "Aprendí mucho sobre…", pt: "Aprendi muito sobre…" },
+            { es: "Mi tesis trataba sobre…", pt: "Minha tese tratava sobre…" }, { es: "Defendí tesis de doctorado en…", pt: "Defendi tese de doutorado em…" },
+            { es: "Luego me promovieron a…", pt: "Depois fui promovido(a) a…" }, { es: "De (asistente) fui para (gerente).", pt: "De (assistente) fui para (gerente)." },
+            { es: "Salí de la empresa en que trabajaba porque…", pt: "Saí da empresa em que trabalhava porque…" }, { es: "Tengo amplia experiencia en casi todas las áreas de...", pt: "Tenho ampla experiência em quase todas as áreas de..." }
           ]
         },
         {
           category: "Informaciones para el currículo",
           items: [
-            { es: "Datos personales" }, { es: "Cargo/puesto deseado" }, { es: "Contacto" },
-            { es: "Formación (académica)/Estudios" }, { es: "Formación complementaria" },
-            { es: "Habilidades y destrezas" }, { es: "Experiencia profesional/laboral" },
-            { es: "Idiomas" }, { es: "Resumen profesional" }, { es: "Otros datos de interés" }
+            { es: "Datos personales", pt: "Dados pessoais" }, { es: "Cargo/puesto deseado", pt: "Cargo desejado" }, { es: "Contacto", pt: "Contato" },
+            { es: "Formación (académica)/Estudios", pt: "Formação (acadêmica)/Estudos" }, { es: "Formación complementaria", pt: "Formação complementar" },
+            { es: "Habilidades y destrezas", pt: "Habilidades e competências" }, { es: "Experiencia profesional/laboral", pt: "Experiência profissional" },
+            { es: "Idiomas", pt: "Idiomas" }, { es: "Resumen profesional", pt: "Resumo profissional" }, { es: "Otros datos de interés", pt: "Outros dados de interesse" }
           ]
         },
         {
           category: "Asignaturas",
           items: [
-            { es: "Matemáticas" }, { es: "Lengua" }, { es: "Arte/Dibujo" }, { es: "Biología" },
-            { es: "Geografía" }, { es: "Química" }, { es: "Religión" }, { es: "Informática" },
-            { es: "Tecnología" }, { es: "Educación Física" }, { es: "Ciencias" }, { es: "Música" },
-            { es: "Historia" }, { es: "Física" }
+            { es: "Matemáticas", pt: "Matemática" }, { es: "Lengua", pt: "Língua/Português" }, { es: "Arte/Dibujo", pt: "Arte/Desenho" }, { es: "Biología", pt: "Biologia" },
+            { es: "Geografía", pt: "Geografia" }, { es: "Química", pt: "Química" }, { es: "Religión", pt: "Religião" }, { es: "Informática", pt: "Informática" },
+            { es: "Tecnología", pt: "Tecnologia" }, { es: "Educación Física", pt: "Educação Física" }, { es: "Ciencias", pt: "Ciências" }, { es: "Música", pt: "Música" },
+            { es: "Historia", pt: "História" }, { es: "Física", pt: "Física" }
           ]
         }
       ],
@@ -589,33 +589,33 @@ const LEVEL_AVANZADO = {
     {
       id: "a8", order: 8, title: "Entrevista", subtitle: "Entrevista de trabalho e o condicional perfecto",
       dialogue: [
-        { who: "A", es: "¡Gracias por haber venido!" },
-        { who: "B", es: "¡Yo que les agradezco por la oportunidad! Me interesé mucho por la compañía, porque creo que tiene todo que ver conmigo y me encuadro bien en este cargo." },
-        { who: "A", es: "Estamos felices de escuchar eso y le agradecemos por su interés en formar parte del equipo. Tuvimos buena impresión de usted y de su experiencia laboral. Usted puede empezar a trabajar con nosotros inmediatamente." },
-        { who: "B", es: "¡Qué buena noticia! Si lo hubiera sabido, ya les habría enviado mi currículo mucho tiempo atrás." },
-        { who: "A", es: "¡Nos alegramos! ¡Sea bienvenido!" },
-        { who: "B", es: "¡Muchísimas gracias por la oportunidad que me están ofreciendo! No se van a arrepentir." }
+        { who: "A", es: "¡Gracias por haber venido!", pt: "Obrigado por ter vindo!" },
+        { who: "B", es: "¡Yo que les agradezco por la oportunidad! Me interesé mucho por la compañía, porque creo que tiene todo que ver conmigo y me encuadro bien en este cargo.", pt: "Sou eu que agradeço a vocês pela oportunidade! Me interessei muito pela empresa, porque acho que tem tudo a ver comigo e me encaixo bem nesse cargo." },
+        { who: "A", es: "Estamos felices de escuchar eso y le agradecemos por su interés en formar parte del equipo. Tuvimos buena impresión de usted y de su experiencia laboral. Usted puede empezar a trabajar con nosotros inmediatamente.", pt: "Ficamos felizes em ouvir isso e agradecemos seu interesse em fazer parte da equipe. Tivemos uma boa impressão de você e da sua experiência profissional. Você pode começar a trabalhar conosco imediatamente." },
+        { who: "B", es: "¡Qué buena noticia! Si lo hubiera sabido, ya les habría enviado mi currículo mucho tiempo atrás.", pt: "Que boa notícia! Se eu soubesse, já teria enviado meu currículo há muito tempo." },
+        { who: "A", es: "¡Nos alegramos! ¡Sea bienvenido!", pt: "Ficamos felizes! Seja bem-vindo!" },
+        { who: "B", es: "¡Muchísimas gracias por la oportunidad que me están ofreciendo! No se van a arrepentir.", pt: "Muito obrigado pela oportunidade que estão me oferecendo! Vocês não vão se arrepender." }
       ],
       vocabulary: [
         {
           category: "Preguntas y comentarios del entrevistador",
           items: [
-            { es: "Gracias por haber venido." }, { es: "¿Puede hablar un poco sobre su formación?" },
-            { es: "Hábleme un poco sobre su experiencia en/como…" }, { es: "¿Qué le atrajo en este cargo?" },
-            { es: "¿Qué estudió/cursó en la universidad?" }, { es: "¿Tiene conocimientos de/en…?" },
-            { es: "¿Qué sueldo tiene actualmente?" }, { es: "¿Qué nivel/categoría salarial usted tiene en mente?" },
-            { es: "Tuvimos una buena impresión de usted." }, { es: "¿Cuándo puede empezar?" },
-            { es: "Nos pondremos/Entraremos en contacto." }, { es: "No estamos necesitando a nadie en este momento." }
+            { es: "Gracias por haber venido.", pt: "Obrigado por ter vindo." }, { es: "¿Puede hablar un poco sobre su formación?", pt: "Pode falar um pouco sobre a sua formação?" },
+            { es: "Hábleme un poco sobre su experiencia en/como…", pt: "Me fale um pouco sobre sua experiência em/como…" }, { es: "¿Qué le atrajo en este cargo?", pt: "O que te atraiu nesse cargo?" },
+            { es: "¿Qué estudió/cursó en la universidad?", pt: "O que você estudou/cursou na universidade?" }, { es: "¿Tiene conocimientos de/en…?", pt: "Você tem conhecimentos de/em…?" },
+            { es: "¿Qué sueldo tiene actualmente?", pt: "Qual é o seu salário atual?" }, { es: "¿Qué nivel/categoría salarial usted tiene en mente?", pt: "Qual nível/faixa salarial você tem em mente?" },
+            { es: "Tuvimos una buena impresión de usted.", pt: "Tivemos uma boa impressão de você." }, { es: "¿Cuándo puede empezar?", pt: "Quando você pode começar?" },
+            { es: "Nos pondremos/Entraremos en contacto.", pt: "Entraremos em contato." }, { es: "No estamos necesitando a nadie en este momento.", pt: "Não estamos precisando de ninguém neste momento." }
           ]
         },
         {
           category: "Preguntas y comentarios del entrevistado",
           items: [
-            { es: "Estoy en el momento buscando un cargo en…" }, { es: "Creo que me encuadro bien en este cargo porque…" },
-            { es: "Creo que mis puntos fuertes son…" }, { es: "Tengo mucha experiencia en…" },
-            { es: "Adjunté algunas recomendaciones de empleadores anteriores en mi currículo." },
-            { es: "En mi cargo anterior estaba recibiendo…" }, { es: "Es una propuesta interesante." },
-            { es: "¿Puedo darle una respuesta al comienzo de la semana?" }, { es: "Puedo empezar inmediatamente/hoy mismo." }
+            { es: "Estoy en el momento buscando un cargo en…", pt: "No momento estou procurando um cargo em…" }, { es: "Creo que me encuadro bien en este cargo porque…", pt: "Acho que me encaixo bem neste cargo porque…" },
+            { es: "Creo que mis puntos fuertes son…", pt: "Acho que meus pontos fortes são…" }, { es: "Tengo mucha experiencia en…", pt: "Tenho muita experiência em…" },
+            { es: "Adjunté algunas recomendaciones de empleadores anteriores en mi currículo.", pt: "Anexei algumas recomendações de empregadores anteriores no meu currículo." },
+            { es: "En mi cargo anterior estaba recibiendo…", pt: "No meu cargo anterior eu recebia…" }, { es: "Es una propuesta interesante.", pt: "É uma proposta interessante." },
+            { es: "¿Puedo darle una respuesta al comienzo de la semana?", pt: "Posso te dar uma resposta no começo da semana?" }, { es: "Puedo empezar inmediatamente/hoy mismo.", pt: "Posso começar imediatamente/hoje mesmo." }
           ]
         }
       ],
@@ -655,43 +655,43 @@ const LEVEL_AVANZADO = {
     {
       id: "a9", order: 9, title: "Medio Ambiente", subtitle: "Natureza, geografia e o pretérito perfecto del subjuntivo",
       dialogue: [
-        { who: "text", es: "El calentamiento global — 10 consejos: 1. Reduce el consumo de agua. 2. Planta un árbol. 3. Educa a los más jóvenes. 4. Modera el uso del vehículo y reduce el consumo del aire acondicionado. 5. Evita usar en exceso la plancha, el calentador de agua o la lavadora. 6. Usa habitualmente papel reciclado y reduce el consumo de papel. 7. Recicla la basura. 8. No consumas animales exóticos como tortugas e iguanas, y pescado de tamaños pequeños. 9. Exige del gobierno la gestión sostenible a largo plazo de los recursos naturales. 10. Minimiza el uso de productos químicos como aerosoles, fertilizantes, etc." }
+        { who: "text", es: "El calentamiento global — 10 consejos: 1. Reduce el consumo de agua. 2. Planta un árbol. 3. Educa a los más jóvenes. 4. Modera el uso del vehículo y reduce el consumo del aire acondicionado. 5. Evita usar en exceso la plancha, el calentador de agua o la lavadora. 6. Usa habitualmente papel reciclado y reduce el consumo de papel. 7. Recicla la basura. 8. No consumas animales exóticos como tortugas e iguanas, y pescado de tamaños pequeños. 9. Exige del gobierno la gestión sostenible a largo plazo de los recursos naturales. 10. Minimiza el uso de productos químicos como aerosoles, fertilizantes, etc.", pt: "O aquecimento global — 10 dicas: 1. Reduza o consumo de água. 2. Plante uma árvore. 3. Eduque os mais jovens. 4. Modere o uso do veículo e reduza o consumo do ar-condicionado. 5. Evite usar em excesso o ferro de passar, o aquecedor de água ou a máquina de lavar. 6. Use habitualmente papel reciclado e reduza o consumo de papel. 7. Recicle o lixo. 8. Não consuma animais exóticos como tartarugas e iguanas, e peixes de tamanhos pequenos. 9. Exija do governo a gestão sustentável a longo prazo dos recursos naturais. 10. Minimize o uso de produtos químicos como aerossóis, fertilizantes, etc." }
       ],
       vocabulary: [
         {
           category: "Geografía - Medio Ambiente - Naturaleza",
           items: [
-            { es: "Sistema solar" }, { es: "Planeta" }, { es: "Tornado" }, { es: "Rayo" }, { es: "Trueno" },
-            { es: "Terremoto" }, { es: "Termómetro" }, { es: "Capa de ozono" }, { es: "Sombra" },
-            { es: "Tierra" }, { es: "Atmósfera" }, { es: "Roca" }, { es: "Cielo" }, { es: "Región" },
-            { es: "Línea Costera" }, { es: "Cascada" }, { es: "Evolución" }, { es: "Sol" }, { es: "Luna" },
-            { es: "Paisaje" }, { es: "Recurso natural" }, { es: "Elemento" }, { es: "Renovable/No renovable" },
-            { es: "Relieve" }, { es: "Mineral" }, { es: "Vegetación" }, { es: "Temperatura" },
-            { es: "Precipitación" }, { es: "Viento" }, { es: "Suelo", pt: "Solo" }, { es: "Volcán", pt: "Vulcão" },
-            { es: "Glaciar", pt: "Geleira" }, { es: "Hielo marino", pt: "Gelo marinho" }, { es: "Irradiación" },
-            { es: "Océano" }, { es: "Nivel del mar" }, { es: "Árbol" }, { es: "Flor" }, { es: "Hoja" },
-            { es: "Planta" }, { es: "Fauna" }, { es: "Flora" }, { es: "Densidad" }, { es: "Nube" },
-            { es: "Humedad" }, { es: "Insolación" }, { es: "Presión atmosférica" }, { es: "Ecosistema" },
-            { es: "Desierto" }, { es: "Selva" }, { es: "Bosque" }, { es: "Matorral", pt: "Matagal" },
-            { es: "Costa" }, { es: "Humedal", pt: "Pântano" }, { es: "Río" }, { es: "Lago" }, { es: "Mar" },
-            { es: "Meteoro" }, { es: "Estrella" }
+            { es: "Sistema solar", pt: "Sistema solar" }, { es: "Planeta", pt: "Planeta" }, { es: "Tornado", pt: "Tornado" }, { es: "Rayo", pt: "Raio" }, { es: "Trueno", pt: "Trovão" },
+            { es: "Terremoto", pt: "Terremoto" }, { es: "Termómetro", pt: "Termômetro" }, { es: "Capa de ozono", pt: "Camada de ozônio" }, { es: "Sombra", pt: "Sombra" },
+            { es: "Tierra", pt: "Terra" }, { es: "Atmósfera", pt: "Atmosfera" }, { es: "Roca", pt: "Rocha" }, { es: "Cielo", pt: "Céu" }, { es: "Región", pt: "Região" },
+            { es: "Línea Costera", pt: "Linha costeira" }, { es: "Cascada", pt: "Cachoeira" }, { es: "Evolución", pt: "Evolução" }, { es: "Sol", pt: "Sol" }, { es: "Luna", pt: "Lua" },
+            { es: "Paisaje", pt: "Paisagem" }, { es: "Recurso natural", pt: "Recurso natural" }, { es: "Elemento", pt: "Elemento" }, { es: "Renovable/No renovable", pt: "Renovável/Não renovável" },
+            { es: "Relieve", pt: "Relevo" }, { es: "Mineral", pt: "Mineral" }, { es: "Vegetación", pt: "Vegetação" }, { es: "Temperatura", pt: "Temperatura" },
+            { es: "Precipitación", pt: "Precipitação" }, { es: "Viento", pt: "Vento" }, { es: "Suelo", pt: "Solo" }, { es: "Volcán", pt: "Vulcão" },
+            { es: "Glaciar", pt: "Geleira" }, { es: "Hielo marino", pt: "Gelo marinho" }, { es: "Irradiación", pt: "Irradiação" },
+            { es: "Océano", pt: "Oceano" }, { es: "Nivel del mar", pt: "Nível do mar" }, { es: "Árbol", pt: "Árvore" }, { es: "Flor", pt: "Flor" }, { es: "Hoja", pt: "Folha" },
+            { es: "Planta", pt: "Planta" }, { es: "Fauna", pt: "Fauna" }, { es: "Flora", pt: "Flora" }, { es: "Densidad", pt: "Densidade" }, { es: "Nube", pt: "Nuvem" },
+            { es: "Humedad", pt: "Umidade" }, { es: "Insolación", pt: "Insolação" }, { es: "Presión atmosférica", pt: "Pressão atmosférica" }, { es: "Ecosistema", pt: "Ecossistema" },
+            { es: "Desierto", pt: "Deserto" }, { es: "Selva", pt: "Selva" }, { es: "Bosque", pt: "Floresta/Bosque" }, { es: "Matorral", pt: "Matagal" },
+            { es: "Costa", pt: "Costa" }, { es: "Humedal", pt: "Pântano" }, { es: "Río", pt: "Rio" }, { es: "Lago", pt: "Lago" }, { es: "Mar", pt: "Mar" },
+            { es: "Meteoro", pt: "Meteoro" }, { es: "Estrella", pt: "Estrela" }
           ]
         },
         {
           category: "El sistema solar",
           items: [
-            { es: "Sol" }, { es: "Mercurio" }, { es: "Venus" }, { es: "Tierra" }, { es: "Marte" },
-            { es: "Júpiter" }, { es: "Saturno" }, { es: "Urano" }, { es: "Neptuno" }, { es: "Plutón" }
+            { es: "Sol", pt: "Sol" }, { es: "Mercurio", pt: "Mercúrio" }, { es: "Venus", pt: "Vênus" }, { es: "Tierra", pt: "Terra" }, { es: "Marte", pt: "Marte" },
+            { es: "Júpiter", pt: "Júpiter" }, { es: "Saturno", pt: "Saturno" }, { es: "Urano", pt: "Urano" }, { es: "Neptuno", pt: "Netuno" }, { es: "Plutón", pt: "Plutão" }
           ]
         },
         {
           category: "Palabras biacentuales",
           items: [
-            { es: "Afrodisíaco/Afrodisiaco" }, { es: "Cardíaco/Cardiaco" }, { es: "Chófer/Chofer" },
-            { es: "Fútbol/Futbol" }, { es: "Cóctel/Coctel" }, { es: "Vídeo/Video" }, { es: "Kárate/Karate" },
-            { es: "Electrólisis/Electrolisis" }, { es: "Endoscopía/Endoscopia" }, { es: "Rinoplastía/Rinoplastia" },
-            { es: "Período/Periodo" }, { es: "Búmeran/Bumerán" }, { es: "Olimpíada/Olimpiada" },
-            { es: "Maníaco/Maniaco" }, { es: "Píxel/Pixel" }
+            { es: "Afrodisíaco/Afrodisiaco", pt: "Afrodisíaco (as duas grafias são aceitas em espanhol)" }, { es: "Cardíaco/Cardiaco", pt: "Cardíaco (as duas grafias são aceitas em espanhol)" }, { es: "Chófer/Chofer", pt: "Motorista (as duas grafias são aceitas em espanhol)" },
+            { es: "Fútbol/Futbol", pt: "Futebol (as duas grafias são aceitas em espanhol)" }, { es: "Cóctel/Coctel", pt: "Coquetel (as duas grafias são aceitas em espanhol)" }, { es: "Vídeo/Video", pt: "Vídeo (as duas grafias são aceitas em espanhol)" }, { es: "Kárate/Karate", pt: "Caratê (as duas grafias são aceitas em espanhol)" },
+            { es: "Electrólisis/Electrolisis", pt: "Eletrólise (as duas grafias são aceitas em espanhol)" }, { es: "Endoscopía/Endoscopia", pt: "Endoscopia (as duas grafias são aceitas em espanhol)" }, { es: "Rinoplastía/Rinoplastia", pt: "Rinoplastia (as duas grafias são aceitas em espanhol)" },
+            { es: "Período/Periodo", pt: "Período (as duas grafias são aceitas em espanhol)" }, { es: "Búmeran/Bumerán", pt: "Bumerangue (as duas grafias são aceitas em espanhol)" }, { es: "Olimpíada/Olimpiada", pt: "Olimpíada (as duas grafias são aceitas em espanhol)" },
+            { es: "Maníaco/Maniaco", pt: "Maníaco (as duas grafias são aceitas em espanhol)" }, { es: "Píxel/Pixel", pt: "Pixel (as duas grafias são aceitas em espanhol)" }
           ]
         }
       ],
@@ -725,28 +725,28 @@ const LEVEL_AVANZADO = {
     {
       id: "a10", order: 10, title: "Entretenimiento", subtitle: "Lazer, diversão e o pretérito pluscuamperfecto del subjuntivo",
       dialogue: [
-        { who: "text", es: "Trecho da canção 'Si no te hubieras ido' (Maná): Te extraño más que nunca y no sé qué hacer. Despierto y te recuerdo al amanecer. Me espera otro día por vivir sin ti. El espejo no miente me veo tan diferente. Me haces falta tú. La gente pasa y pasa siempre tan igual. El ritmo de la vida me parece mal. Era tan diferente cuando estabas tú. No hay nada más difícil que vivir sin ti. Sufriendo en la espera de verte llegar. Si no te hubieras ido sería tan feliz." }
+        { who: "text", es: "Trecho da canção 'Si no te hubieras ido' (Maná): Te extraño más que nunca y no sé qué hacer. Despierto y te recuerdo al amanecer. Me espera otro día por vivir sin ti. El espejo no miente me veo tan diferente. Me haces falta tú. La gente pasa y pasa siempre tan igual. El ritmo de la vida me parece mal. Era tan diferente cuando estabas tú. No hay nada más difícil que vivir sin ti. Sufriendo en la espera de verte llegar. Si no te hubieras ido sería tan feliz.", pt: "Trecho da canção 'Si no te hubieras ido' (Maná): Sinto sua falta mais do que nunca e não sei o que fazer. Acordo e me lembro de você ao amanhecer. Me espera mais um dia para viver sem você. O espelho não mente, me vejo tão diferente. Sinto sua falta. As pessoas passam e passam sempre do mesmo jeito. O ritmo da vida me parece ruim. Era tão diferente quando você estava aqui. Não há nada mais difícil que viver sem você. Sofrendo à espera de te ver chegar. Se você não tivesse ido embora, eu seria tão feliz." }
       ],
       vocabulary: [
         {
           category: "Tipos de entretenimiento",
           items: [
-            { es: "Hacer ejercicios" }, { es: "Mirar/Ver programas de televisión/películas/series/telenovelas" },
-            { es: "Escuchar música" }, { es: "Jugar juegos" }, { es: "Dibujar" }, { es: "Cantar (karaoke)" },
-            { es: "Leer un libro/historietas/noticias/artículos" }, { es: "Salir con los amigos" },
-            { es: "Navegar por internet" }, { es: "Ir a fiestas" }, { es: "Ir de compras" }, { es: "Ir de paseo" },
-            { es: "Bailar" }, { es: "Tomar un curso" }, { es: "Ir al cine" }, { es: "Ir al teatro" },
-            { es: "Cocinar" }, { es: "Ir a viajar" }, { es: "Ir a un concierto" }, { es: "Salir para comer en restaurantes" }
+            { es: "Hacer ejercicios", pt: "Fazer exercícios" }, { es: "Mirar/Ver programas de televisión/películas/series/telenovelas", pt: "Assistir a programas de televisão/filmes/séries/novelas" },
+            { es: "Escuchar música", pt: "Ouvir música" }, { es: "Jugar juegos", pt: "Jogar jogos" }, { es: "Dibujar", pt: "Desenhar" }, { es: "Cantar (karaoke)", pt: "Cantar (karaokê)" },
+            { es: "Leer un libro/historietas/noticias/artículos", pt: "Ler um livro/quadrinhos/notícias/artigos" }, { es: "Salir con los amigos", pt: "Sair com os amigos" },
+            { es: "Navegar por internet", pt: "Navegar na internet" }, { es: "Ir a fiestas", pt: "Ir a festas" }, { es: "Ir de compras", pt: "Ir às compras" }, { es: "Ir de paseo", pt: "Passear" },
+            { es: "Bailar", pt: "Dançar" }, { es: "Tomar un curso", pt: "Fazer um curso" }, { es: "Ir al cine", pt: "Ir ao cinema" }, { es: "Ir al teatro", pt: "Ir ao teatro" },
+            { es: "Cocinar", pt: "Cozinhar" }, { es: "Ir a viajar", pt: "Viajar" }, { es: "Ir a un concierto", pt: "Ir a um show" }, { es: "Salir para comer en restaurantes", pt: "Sair para comer em restaurantes" }
           ]
         },
         {
           category: "Frases útiles",
           items: [
-            { es: "¿Vamos a salir?" }, { es: "¿Quieren hacer algo esta noche?" }, { es: "¿Vamos a ver una peli?" },
-            { es: "¿Quieres ir al cine conmigo?" }, { es: "Quiero ir al gimnasio." },
-            { es: "Conozco un lugar muy bueno para bailar." }, { es: "¿Qué tipo de película te gusta más?" },
-            { es: "La fiesta estuvo buenísima." }, { es: "¿Te gusta leer?" }, { es: "¿Viste la telenovela...?" },
-            { es: "¿Te gustaría ir al concierto de Maluma?" }, { es: "Mi pasatiempo favorito es jugar en la compu." }
+            { es: "¿Vamos a salir?", pt: "Vamos sair?" }, { es: "¿Quieren hacer algo esta noche?", pt: "Vocês querem fazer algo hoje à noite?" }, { es: "¿Vamos a ver una peli?", pt: "Vamos ver um filme?" },
+            { es: "¿Quieres ir al cine conmigo?", pt: "Você quer ir ao cinema comigo?" }, { es: "Quiero ir al gimnasio.", pt: "Quero ir à academia." },
+            { es: "Conozco un lugar muy bueno para bailar.", pt: "Conheço um lugar muito bom para dançar." }, { es: "¿Qué tipo de película te gusta más?", pt: "Que tipo de filme você mais gosta?" },
+            { es: "La fiesta estuvo buenísima.", pt: "A festa estava ótima." }, { es: "¿Te gusta leer?", pt: "Você gosta de ler?" }, { es: "¿Viste la telenovela...?", pt: "Você viu a novela...?" },
+            { es: "¿Te gustaría ir al concierto de Maluma?", pt: "Você gostaria de ir ao show do Maluma?" }, { es: "Mi pasatiempo favorito es jugar en la compu.", pt: "Meu passatempo favorito é jogar no computador." }
           ]
         }
       ],
@@ -787,43 +787,43 @@ const LEVEL_AVANZADO = {
     {
       id: "a11", order: 11, title: "Hotel", subtitle: "Check-in, objetos do quarto e o futuro perfecto compuesto de subjuntivo",
       dialogue: [
-        { who: "A", es: "¡Buen día! Tengo una reserva para hoy a nombre de Luciano Pérez." },
-        { who: "B", es: "Sí, señor. Es una habitación doble por 5 noches, ¿verdad?" },
-        { who: "A", es: "Sí, eso mismo." },
-        { who: "B", es: "Su pasaporte, por favor." },
-        { who: "A", es: "Aquí lo tiene." },
-        { who: "B", es: "¡Perfecto! Rellene esta ficha con sus datos, por favor, y luego les acompañarán a su habitación." },
-        { who: "A", es: "Listo. ¿A qué hora es el desayuno?" },
-        { who: "B", es: "De las 7h30 a las 10h45." },
-        { who: "A", es: "¡Muchísimas gracias!" },
-        { who: "B", es: "¡Gracias a ustedes y que disfruten de sus vacaciones!" }
+        { who: "A", es: "¡Buen día! Tengo una reserva para hoy a nombre de Luciano Pérez.", pt: "Bom dia! Tenho uma reserva para hoje em nome de Luciano Pérez." },
+        { who: "B", es: "Sí, señor. Es una habitación doble por 5 noches, ¿verdad?", pt: "Sim, senhor. É um quarto duplo por 5 noites, certo?" },
+        { who: "A", es: "Sí, eso mismo.", pt: "Sim, isso mesmo." },
+        { who: "B", es: "Su pasaporte, por favor.", pt: "Seu passaporte, por favor." },
+        { who: "A", es: "Aquí lo tiene.", pt: "Aqui está." },
+        { who: "B", es: "¡Perfecto! Rellene esta ficha con sus datos, por favor, y luego les acompañarán a su habitación.", pt: "Perfeito! Preencha esta ficha com seus dados, por favor, e depois vão acompanhá-los até o quarto." },
+        { who: "A", es: "Listo. ¿A qué hora es el desayuno?", pt: "Pronto. A que horas é o café da manhã?" },
+        { who: "B", es: "De las 7h30 a las 10h45.", pt: "Das 7h30 às 10h45." },
+        { who: "A", es: "¡Muchísimas gracias!", pt: "Muito obrigado!" },
+        { who: "B", es: "¡Gracias a ustedes y que disfruten de sus vacaciones!", pt: "Obrigado a vocês e aproveitem as férias!" }
       ],
       vocabulary: [
         {
           category: "Habitación",
           items: [
-            { es: "Simple/Individual" }, { es: "Doble" }, { es: "Matrimonio" }, { es: "Con vistas al mar" },
-            { es: "En la parte delantera/trasera" }, { es: "En un piso alto/bajo" }, { es: "Con cama supletoria" },
-            { es: "Con cuna" }, { es: "Con baño" }, { es: "Con balcón/terraza" }, { es: "Con aire acondicionado" },
-            { es: "Con calefacción" }
+            { es: "Simple/Individual", pt: "Simples/Individual" }, { es: "Doble", pt: "Duplo" }, { es: "Matrimonio", pt: "Casal" }, { es: "Con vistas al mar", pt: "Com vista para o mar" },
+            { es: "En la parte delantera/trasera", pt: "Na parte da frente/dos fundos" }, { es: "En un piso alto/bajo", pt: "Em um andar alto/baixo" }, { es: "Con cama supletoria", pt: "Com cama extra" },
+            { es: "Con cuna", pt: "Com berço" }, { es: "Con baño", pt: "Com banheiro" }, { es: "Con balcón/terraza", pt: "Com varanda/terraço" }, { es: "Con aire acondicionado", pt: "Com ar-condicionado" },
+            { es: "Con calefacción", pt: "Com aquecimento" }
           ]
         },
         {
           category: "Objetos del hotel",
           items: [
-            { es: "Lámpara", pt: "Abajur" }, { es: "Cojín", pt: "Almofada" }, { es: "Calefacción" },
-            { es: "Aire acondicionado" }, { es: "Colgadores/Perchas", pt: "Cabides" }, { es: "Silla", pt: "Cadeira" },
+            { es: "Lámpara", pt: "Abajur" }, { es: "Cojín", pt: "Almofada" }, { es: "Calefacción", pt: "Aquecimento" },
+            { es: "Aire acondicionado", pt: "Ar-condicionado" }, { es: "Colgadores/Perchas", pt: "Cabides" }, { es: "Silla", pt: "Cadeira" },
             { es: "Timbre", pt: "Campainha" }, { es: "Cartel", pt: "Aviso" }, { es: "Frazada/Cobija/Manta", pt: "Coberta" },
             { es: "Colcha/Cubrecama", pt: "Colcha" }, { es: "Colchón", pt: "Colchão" },
-            { es: "Mando a distancia/Control remoto" }, { es: "Ducha", pt: "Chuveiro" }, { es: "Cuenta/Factura", pt: "Conta/Nota" },
+            { es: "Mando a distancia/Control remoto", pt: "Controle remoto" }, { es: "Ducha", pt: "Chuveiro" }, { es: "Cuenta/Factura", pt: "Conta/Nota" },
             { es: "Vaso", pt: "Copo" }, { es: "Mesita de noche/Velador", pt: "Mesa de cabeceira" },
             { es: "Espejo", pt: "Espelho" }, { es: "Cerradura", pt: "Fechadura" }, { es: "Funda", pt: "Fronha" },
-            { es: "Sábanas", pt: "Lençóis" }, { es: "Cajón", pt: "Gaveta" }, { es: "Interruptor/Switch" },
+            { es: "Sábanas", pt: "Lençóis" }, { es: "Cajón", pt: "Gaveta" }, { es: "Interruptor/Switch", pt: "Interruptor" },
             { es: "Ventana", pt: "Janela" }, { es: "Bombilla/Ampolleta", pt: "Lâmpada" },
             { es: "Picaporte/Manija", pt: "Maçaneta" }, { es: "Asidero", pt: "Barra de apoio" },
             { es: "Wáter/Inodoro", pt: "Vaso sanitário" }, { es: "Enchufe", pt: "Tomada" }, { es: "Lavatorio", pt: "Pia" },
-            { es: "Alfombra", pt: "Tapete" }, { es: "Televisor" }, { es: "Pestillo", pt: "Tranca" },
-            { es: "Ventilación" }, { es: "Voltaje" }, { es: "Minibar", pt: "Frigobar" }, { es: "Lecho/Cama" },
+            { es: "Alfombra", pt: "Tapete" }, { es: "Televisor", pt: "Televisor" }, { es: "Pestillo", pt: "Tranca" },
+            { es: "Ventilación", pt: "Ventilação" }, { es: "Voltaje", pt: "Voltagem" }, { es: "Minibar", pt: "Frigobar" }, { es: "Lecho/Cama", pt: "Cama" },
             { es: "Cable", pt: "Cabo" }, { es: "Cargador", pt: "Carregador" }, { es: "Supresor de picos", pt: "Régua" },
             { es: "Pila", pt: "Pilha" }, { es: "Plancha de pelo", pt: "Chapinha" }, { es: "Secador de pelo", pt: "Secador" }
           ]
@@ -831,11 +831,11 @@ const LEVEL_AVANZADO = {
         {
           category: "Frases útiles",
           items: [
-            { es: "¿Tiene habitaciones disponibles?" }, { es: "Quisiera una habitación simple/individual/doble…" },
-            { es: "¿Cuál es el precio por noche?" }, { es: "¿Está incluso el desayuno?" },
-            { es: "¿Puedo ver la habitación?" }, { es: "¿A qué hora debo desocupar la habitación?" },
-            { es: "Tengo una reserva para hoy a nombre de…" }, { es: "¿Podría darme mi cuenta?" },
-            { es: "Rellene esta ficha con sus datos, por favor." }, { es: "¿Consumieron algo del minibar?" }
+            { es: "¿Tiene habitaciones disponibles?", pt: "Tem quartos disponíveis?" }, { es: "Quisiera una habitación simple/individual/doble…", pt: "Eu gostaria de um quarto simples/individual/duplo…" },
+            { es: "¿Cuál es el precio por noche?", pt: "Qual é o preço por noite?" }, { es: "¿Está incluso el desayuno?", pt: "O café da manhã está incluso?" },
+            { es: "¿Puedo ver la habitación?", pt: "Posso ver o quarto?" }, { es: "¿A qué hora debo desocupar la habitación?", pt: "A que horas devo desocupar o quarto?" },
+            { es: "Tengo una reserva para hoy a nombre de…", pt: "Tenho uma reserva para hoje em nome de…" }, { es: "¿Podría darme mi cuenta?", pt: "Poderia me dar minha conta?" },
+            { es: "Rellene esta ficha con sus datos, por favor.", pt: "Preencha esta ficha com seus dados, por favor." }, { es: "¿Consumieron algo del minibar?", pt: "Vocês consumiram algo do frigobar?" }
           ]
         }
       ],
@@ -869,21 +869,21 @@ const LEVEL_AVANZADO = {
     {
       id: "a12", order: 12, title: "Deportes", subtitle: "Esportes, numerais especiais e o resumo dos condicionais",
       dialogue: [
-        { who: "text", es: "Estoy pensando en empezar a practicar algún deporte porque sé que además de hacer mejorar la capacidad física, también es bueno para el psicológico, porque la persona se siente mejor con su cuerpo y tiene la mente más despejada. El deporte no puede ser una cosa mala para tu vida, porque puede ser un pasatiempo, juego, diversión, competición y hacerte tener más disciplina. Estaba pensando en algún deporte externo y que también pueda ser practicado en el interior, como el vóleibol, pero después pensé mejor y he decidido que voy a nadar, porque la natación es buenísima para la salud y para todo lo demás. Estoy muy ansiosa para empezar. Si tuviera tiempo, empezaría hoy mismo, pero creo que empezaré el próximo mes pues estaré trabajando un tercio del tiempo que estoy trabajando en este momento. Después les cuento más novedades." }
+        { who: "text", es: "Estoy pensando en empezar a practicar algún deporte porque sé que además de hacer mejorar la capacidad física, también es bueno para el psicológico, porque la persona se siente mejor con su cuerpo y tiene la mente más despejada. El deporte no puede ser una cosa mala para tu vida, porque puede ser un pasatiempo, juego, diversión, competición y hacerte tener más disciplina. Estaba pensando en algún deporte externo y que también pueda ser practicado en el interior, como el vóleibol, pero después pensé mejor y he decidido que voy a nadar, porque la natación es buenísima para la salud y para todo lo demás. Estoy muy ansiosa para empezar. Si tuviera tiempo, empezaría hoy mismo, pero creo que empezaré el próximo mes pues estaré trabajando un tercio del tiempo que estoy trabajando en este momento. Después les cuento más novedades.", pt: "Estou pensando em começar a praticar algum esporte porque sei que, além de melhorar a capacidade física, também é bom para o psicológico, porque a pessoa se sente melhor com o corpo e tem a mente mais tranquila. O esporte não pode ser uma coisa ruim para a sua vida, porque pode ser um passatempo, jogo, diversão, competição e te fazer ter mais disciplina. Eu estava pensando em algum esporte externo que também pudesse ser praticado dentro de casa, como o vôlei, mas depois pensei melhor e decidi que vou nadar, porque a natação é ótima para a saúde e para tudo mais. Estou muito ansiosa para começar. Se eu tivesse tempo, começaria hoje mesmo, mas acho que vou começar no próximo mês, pois estarei trabalhando um terço do tempo que estou trabalhando neste momento. Depois conto mais novidades." }
       ],
       vocabulary: [
         {
           category: "Deportes",
           items: [
-            { es: "Alpinismo" }, { es: "Atletismo" }, { es: "Automovilismo" }, { es: "Básquet/Baloncesto" },
-            { es: "Béisbol" }, { es: "Boxeo" }, { es: "Buceo" }, { es: "Kárate" }, { es: "Ciclismo" },
-            { es: "Críquet" }, { es: "Equitación" }, { es: "Esgrima" }, { es: "Esquí (acuático)" },
-            { es: "Fútbol/Balonpié" }, { es: "Fútbol americano" }, { es: "Gimnasia artística/rítmica" },
-            { es: "Golf" }, { es: "Halterofilia" }, { es: "Hockey" }, { es: "Hándbol/Balonmano" },
-            { es: "Hipismo" }, { es: "Judo" }, { es: "Montañismo" }, { es: "Motociclismo" }, { es: "Natación" },
-            { es: "Paracaidismo" }, { es: "Parapente" }, { es: "Paragüismo" }, { es: "Patinaje" },
-            { es: "Ping-Pong" }, { es: "Remo" }, { es: "Rugby" }, { es: "Surf" }, { es: "Taekwondo" },
-            { es: "Tenis" }, { es: "Tiro con arco" }, { es: "Tiro al blanco" }, { es: "Vóleibol/Balonvolea" }
+            { es: "Alpinismo", pt: "Alpinismo" }, { es: "Atletismo", pt: "Atletismo" }, { es: "Automovilismo", pt: "Automobilismo" }, { es: "Básquet/Baloncesto", pt: "Basquete" },
+            { es: "Béisbol", pt: "Beisebol" }, { es: "Boxeo", pt: "Boxe" }, { es: "Buceo", pt: "Mergulho" }, { es: "Kárate", pt: "Caratê" }, { es: "Ciclismo", pt: "Ciclismo" },
+            { es: "Críquet", pt: "Críquete" }, { es: "Equitación", pt: "Hipismo/Equitação" }, { es: "Esgrima", pt: "Esgrima" }, { es: "Esquí (acuático)", pt: "Esqui (aquático)" },
+            { es: "Fútbol/Balonpié", pt: "Futebol" }, { es: "Fútbol americano", pt: "Futebol americano" }, { es: "Gimnasia artística/rítmica", pt: "Ginástica artística/rítmica" },
+            { es: "Golf", pt: "Golfe" }, { es: "Halterofilia", pt: "Halterofilismo" }, { es: "Hockey", pt: "Hóquei" }, { es: "Hándbol/Balonmano", pt: "Handebol" },
+            { es: "Hipismo", pt: "Hipismo" }, { es: "Judo", pt: "Judô" }, { es: "Montañismo", pt: "Montanhismo" }, { es: "Motociclismo", pt: "Motociclismo" }, { es: "Natación", pt: "Natação" },
+            { es: "Paracaidismo", pt: "Paraquedismo" }, { es: "Parapente", pt: "Parapente" }, { es: "Paragüismo", pt: "Paraquedismo (variante regional)" }, { es: "Patinaje", pt: "Patinação" },
+            { es: "Ping-Pong", pt: "Pingue-pongue" }, { es: "Remo", pt: "Remo" }, { es: "Rugby", pt: "Rúgbi" }, { es: "Surf", pt: "Surfe" }, { es: "Taekwondo", pt: "Taekwondo" },
+            { es: "Tenis", pt: "Tênis" }, { es: "Tiro con arco", pt: "Tiro com arco" }, { es: "Tiro al blanco", pt: "Tiro ao alvo" }, { es: "Vóleibol/Balonvolea", pt: "Vôlei" }
           ]
         },
         {
@@ -953,30 +953,30 @@ const LEVEL_AVANZADO = {
     {
       id: "a13", order: 13, title: "Música", subtitle: "Ritmos, instrumentos e o verbo gustar em outros tempos",
       dialogue: [
-        { who: "text", es: "Ritmos latinos = combinación de vários ritmos como son, salsa, cumbia, bachata, samba, mambo, cha cha cha, rumba, conga, merengue etc. El Son es considerado el 'abuelo' de la mayoría de los ritmos latinos actuales. La Salsa es una mezcla de estilos de música cubana y afro-caribeña. La Cumbia tiene origen africana y es popular en Panamá, Venezuela, Perú y, sobre todo, en Colombia. La Bachata tiene fuerte arraigo en la clase baja y zonas rurales. El Mambo nace en Cuba y llega a Europa en los años 60. El Cha, cha, cha fue creado por el violinista cubano Enrique Jorrín en 1948. La Rumba es forma musical y danza de salón para parejas, de origen en el folclore afrocubano. El Merengue es un estilo del Caribe con elementos de la contradanza, mazurca y vals europeos." }
+        { who: "text", es: "Ritmos latinos = combinación de vários ritmos como son, salsa, cumbia, bachata, samba, mambo, cha cha cha, rumba, conga, merengue etc. El Son es considerado el 'abuelo' de la mayoría de los ritmos latinos actuales. La Salsa es una mezcla de estilos de música cubana y afro-caribeña. La Cumbia tiene origen africana y es popular en Panamá, Venezuela, Perú y, sobre todo, en Colombia. La Bachata tiene fuerte arraigo en la clase baja y zonas rurales. El Mambo nace en Cuba y llega a Europa en los años 60. El Cha, cha, cha fue creado por el violinista cubano Enrique Jorrín en 1948. La Rumba es forma musical y danza de salón para parejas, de origen en el folclore afrocubano. El Merengue es un estilo del Caribe con elementos de la contradanza, mazurca y vals europeos.", pt: "Ritmos latinos = combinação de vários ritmos como o son, salsa, cúmbia, bachata, samba, mambo, cha cha cha, rumba, conga, merengue etc. O Son é considerado o 'avô' da maioria dos ritmos latinos atuais. A Salsa é uma mistura de estilos de música cubana e afro-caribenha. A Cúmbia tem origem africana e é popular no Panamá, na Venezuela, no Peru e, sobretudo, na Colômbia. A Bachata tem forte raiz na classe baixa e em zonas rurais. O Mambo nasce em Cuba e chega à Europa nos anos 60. O Cha, cha, cha foi criado pelo violinista cubano Enrique Jorrín em 1948. A Rumba é uma forma musical e dança de salão para casais, com origem no folclore afro-cubano. O Merengue é um estilo do Caribe com elementos da contradança, mazurca e valsa europeias." }
       ],
       vocabulary: [
         {
           category: "Estilos/Ritmos musicales",
           items: [
-            { es: "Rock" }, { es: "Pop" }, { es: "Música electrónica" }, { es: "Rap" }, { es: "Hip-Hop" },
-            { es: "Reggae" }, { es: "Bachata" }, { es: "Reggaetón" }, { es: "Clásica" }, { es: "Banda" },
-            { es: "Balada" }, { es: "Metal" }, { es: "Salsa" }, { es: "Punk" }, { es: "Jazz" },
-            { es: "Grunge" }, { es: "Cumbia" }, { es: "Ska" }, { es: "Samba" }, { es: "Dance" }, { es: "Soul" },
-            { es: "Folk" }, { es: "Disco" }, { es: "Trance" }, { es: "Swing" }, { es: "Country" },
-            { es: "Mambo" }, { es: "Dancehall" }, { es: "Blues" }, { es: "Merengue" }, { es: "Ranchero" },
-            { es: "Rhythm and Blues (R&B)" }, { es: "Ópera" }, { es: "Flamenco" }, { es: "Tango" },
-            { es: "Bolero" }, { es: "Vallenato" }, { es: "Trip-hop" }, { es: "Bossa nova" }
+            { es: "Rock", pt: "Rock" }, { es: "Pop", pt: "Pop" }, { es: "Música electrónica", pt: "Música eletrônica" }, { es: "Rap", pt: "Rap" }, { es: "Hip-Hop", pt: "Hip-Hop" },
+            { es: "Reggae", pt: "Reggae" }, { es: "Bachata", pt: "Bachata" }, { es: "Reggaetón", pt: "Reggaeton" }, { es: "Clásica", pt: "Clássica" }, { es: "Banda", pt: "Banda" },
+            { es: "Balada", pt: "Balada" }, { es: "Metal", pt: "Metal" }, { es: "Salsa", pt: "Salsa" }, { es: "Punk", pt: "Punk" }, { es: "Jazz", pt: "Jazz" },
+            { es: "Grunge", pt: "Grunge" }, { es: "Cumbia", pt: "Cúmbia" }, { es: "Ska", pt: "Ska" }, { es: "Samba", pt: "Samba" }, { es: "Dance", pt: "Dance" }, { es: "Soul", pt: "Soul" },
+            { es: "Folk", pt: "Folk" }, { es: "Disco", pt: "Disco" }, { es: "Trance", pt: "Trance" }, { es: "Swing", pt: "Swing" }, { es: "Country", pt: "Country" },
+            { es: "Mambo", pt: "Mambo" }, { es: "Dancehall", pt: "Dancehall" }, { es: "Blues", pt: "Blues" }, { es: "Merengue", pt: "Merengue" }, { es: "Ranchero", pt: "Ranchera (música mexicana)" },
+            { es: "Rhythm and Blues (R&B)", pt: "Rhythm and Blues (R&B)" }, { es: "Ópera", pt: "Ópera" }, { es: "Flamenco", pt: "Flamenco" }, { es: "Tango", pt: "Tango" },
+            { es: "Bolero", pt: "Bolero" }, { es: "Vallenato", pt: "Vallenato" }, { es: "Trip-hop", pt: "Trip-hop" }, { es: "Bossa nova", pt: "Bossa nova" }
           ]
         },
         {
           category: "Instrumentos musicales",
           items: [
-            { es: "Arpa" }, { es: "Clarinete" }, { es: "Guitarra" }, { es: "Guitarra eléctrica" }, { es: "Violín" },
-            { es: "Teclado" }, { es: "Batería" }, { es: "Flauta" }, { es: "Piano" }, { es: "Bajo eléctrico" },
-            { es: "Theremín" }, { es: "Sintetizador" }, { es: "Saxófano/Saxofón/Saxo" }, { es: "Tambor" },
-            { es: "Trompeta" }, { es: "Micrófono" }, { es: "Órgano clásico" }, { es: "Xilófono" }, { es: "Maraca" },
-            { es: "Oboe" }, { es: "Timbal" }, { es: "Platillos" }, { es: "Bombo" }, { es: "Contrabajo" }
+            { es: "Arpa", pt: "Harpa" }, { es: "Clarinete", pt: "Clarinete" }, { es: "Guitarra", pt: "Violão" }, { es: "Guitarra eléctrica", pt: "Guitarra elétrica" }, { es: "Violín", pt: "Violino" },
+            { es: "Teclado", pt: "Teclado" }, { es: "Batería", pt: "Bateria" }, { es: "Flauta", pt: "Flauta" }, { es: "Piano", pt: "Piano" }, { es: "Bajo eléctrico", pt: "Baixo elétrico" },
+            { es: "Theremín", pt: "Teremim" }, { es: "Sintetizador", pt: "Sintetizador" }, { es: "Saxófano/Saxofón/Saxo", pt: "Saxofone" }, { es: "Tambor", pt: "Tambor" },
+            { es: "Trompeta", pt: "Trompete" }, { es: "Micrófono", pt: "Microfone" }, { es: "Órgano clásico", pt: "Órgão clássico" }, { es: "Xilófono", pt: "Xilofone" }, { es: "Maraca", pt: "Maracá" },
+            { es: "Oboe", pt: "Oboé" }, { es: "Timbal", pt: "Tímbale/Timbal" }, { es: "Platillos", pt: "Pratos" }, { es: "Bombo", pt: "Bumbo" }, { es: "Contrabajo", pt: "Contrabaixo" }
           ]
         },
         {
@@ -1032,18 +1032,18 @@ const LEVEL_AVANZADO = {
     {
       id: "a14", order: 14, title: "Herramientas", subtitle: "Ferramentas, discurso indireto e pronomes relativos/indefinidos",
       dialogue: [
-        { who: "A", es: "¡Perdone! ¿Usted me podría ayudar?" },
-        { who: "B", es: "Por supuesto. ¿Qué necesita?" },
-        { who: "A", es: "Quisiera saber dónde hay una tienda de herramientas cerca de aquí. Necesito comprar unos clavos, tornillos y un martillo." },
-        { who: "B", es: "Hay una que se llama Señor Sierra a dos cuadras de aquí. Siga recto por una cuadra, luego gire a la izquierda y la encontrará." },
-        { who: "A", es: "¡Perfecto! ¡Muy amable!" },
-        { who: "B", es: "¿Le puedo ayudar con algo más?" },
-        { who: "A", es: "Sí, por favor. Después de la tienda quedé con mi amiga de encontrarnos en un restaurante cuya comida es china y no sé cómo llegar hasta allá." },
-        { who: "B", es: "¿Cómo se llama el restaurante?" },
-        { who: "A", es: "El Toro." },
-        { who: "B", es: "Bueno, queda cerca. Solo tiene que cruzar la calle cuando salga de la tienda y ahí estará ubicado." },
-        { who: "A", es: "¡Qué fácil! ¡Muchísimas gracias!" },
-        { who: "B", es: "¡No ha sido nada! ¡Que tenga un buen día!" }
+        { who: "A", es: "¡Perdone! ¿Usted me podría ayudar?", pt: "Com licença! Você poderia me ajudar?" },
+        { who: "B", es: "Por supuesto. ¿Qué necesita?", pt: "Claro. O que você precisa?" },
+        { who: "A", es: "Quisiera saber dónde hay una tienda de herramientas cerca de aquí. Necesito comprar unos clavos, tornillos y un martillo.", pt: "Eu gostaria de saber onde há uma loja de ferramentas perto daqui. Preciso comprar uns pregos, parafusos e um martelo." },
+        { who: "B", es: "Hay una que se llama Señor Sierra a dos cuadras de aquí. Siga recto por una cuadra, luego gire a la izquierda y la encontrará.", pt: "Tem uma que se chama Señor Sierra a duas quadras daqui. Siga reto por uma quadra, depois vire à esquerda e você vai encontrá-la." },
+        { who: "A", es: "¡Perfecto! ¡Muy amable!", pt: "Perfeito! Muito gentil!" },
+        { who: "B", es: "¿Le puedo ayudar con algo más?", pt: "Posso te ajudar com mais alguma coisa?" },
+        { who: "A", es: "Sí, por favor. Después de la tienda quedé con mi amiga de encontrarnos en un restaurante cuya comida es china y no sé cómo llegar hasta allá.", pt: "Sim, por favor. Depois da loja combinei com minha amiga de nos encontrarmos em um restaurante cuja comida é chinesa e não sei como chegar até lá." },
+        { who: "B", es: "¿Cómo se llama el restaurante?", pt: "Como se chama o restaurante?" },
+        { who: "A", es: "El Toro.", pt: "El Toro." },
+        { who: "B", es: "Bueno, queda cerca. Solo tiene que cruzar la calle cuando salga de la tienda y ahí estará ubicado.", pt: "Certo, fica perto. Só precisa atravessar a rua quando sair da loja e ele estará ali." },
+        { who: "A", es: "¡Qué fácil! ¡Muchísimas gracias!", pt: "Que fácil! Muito obrigada!" },
+        { who: "B", es: "¡No ha sido nada! ¡Que tenga un buen día!", pt: "Não foi nada! Tenha um bom dia!" }
       ],
       vocabulary: [
         {
@@ -1052,8 +1052,8 @@ const LEVEL_AVANZADO = {
             { es: "Alicates/Tenazas", pt: "Alicate/Torquês" }, { es: "Taladro", pt: "Furadeira" },
             { es: "Navaja", pt: "Navalha" }, { es: "Cincel", pt: "Cinzel" }, { es: "Cortador de cables", pt: "Cortador de cabos" },
             { es: "Linterna", pt: "Lanterna" }, { es: "Destornillador", pt: "Chave de fenda" }, { es: "Azada", pt: "Enxada" },
-            { es: "Extractor (de tornillos)/Broca" }, { es: "Formón", pt: "Formão" },
-            { es: "Juego de herramientas", pt: "Jogo de ferramentas" }, { es: "Llave (inglesa, hexagonal, de tuercas...)" },
+            { es: "Extractor (de tornillos)/Broca", pt: "Extrator (de parafusos)/Broca" }, { es: "Formón", pt: "Formão" },
+            { es: "Juego de herramientas", pt: "Jogo de ferramentas" }, { es: "Llave (inglesa, hexagonal, de tuercas...)", pt: "Chave (inglesa, hexagonal, de porcas...)" },
             { es: "Lija/Lima/Escofina", pt: "Lixa" }, { es: "Hacha", pt: "Machado" }, { es: "Mandarria", pt: "Marreta" },
             { es: "Martillo", pt: "Martelo" }, { es: "Pala", pt: "Pá" }, { es: "Tornillo", pt: "Parafuso" },
             { es: "Clavo", pt: "Prego" }, { es: "Punzón", pt: "Furador" }, { es: "Remachadora", pt: "Rebitador" },
@@ -1114,26 +1114,26 @@ const LEVEL_AVANZADO = {
     {
       id: "a15", order: 15, title: "Palabras", subtitle: "Concordância, palavras compostas, coletivos e heterotônicos",
       dialogue: [
-        { who: "A", es: "Lucia, ¿vamos al concierto esta noche?" },
-        { who: "B", es: "Amiga, creo que va a estar bueno pero va a haber una multitud, además de la pelirroja que me ha robado el novio." },
-        { who: "A", es: "Hmmm... Entiendo... Quizás podríamos ir entonces a cenar en la casa de Priscila. Nos ha invitado y dicho que seremos bienvenidas allá." },
-        { who: "B", es: "Sí, creo que puede ser una buena idea. Voy a hablar con mi familia a ver si me dejan usar el coche. Solo espero que nadie malo allá diga algo sobre mi ex y sea aguafiestas." },
-        { who: "A", es: "Estoy segura de que no va a pasar nada. Nadie te va a quitar la sonrisa de la cara. Somos todos como familia. ¡Nos vamos a divertir mucho!" },
-        { who: "B", es: "Está bien Mari, te llamo más tarde a ver a que hora quedamos." },
-        { who: "A", es: "Bueno, ¡hasta luego!" }
+        { who: "A", es: "Lucia, ¿vamos al concierto esta noche?", pt: "Lucia, vamos ao show hoje à noite?" },
+        { who: "B", es: "Amiga, creo que va a estar bueno pero va a haber una multitud, además de la pelirroja que me ha robado el novio.", pt: "Amiga, acho que vai ser bom, mas vai ter uma multidão, além da ruiva que me roubou o namorado." },
+        { who: "A", es: "Hmmm... Entiendo... Quizás podríamos ir entonces a cenar en la casa de Priscila. Nos ha invitado y dicho que seremos bienvenidas allá.", pt: "Hmmm... Entendo... Talvez a gente pudesse então ir jantar na casa da Priscila. Ela nos convidou e disse que seremos bem-vindas lá." },
+        { who: "B", es: "Sí, creo que puede ser una buena idea. Voy a hablar con mi familia a ver si me dejan usar el coche. Solo espero que nadie malo allá diga algo sobre mi ex y sea aguafiestas.", pt: "Sim, acho que pode ser uma boa ideia. Vou falar com a minha família para ver se me deixam usar o carro. Só espero que ninguém chato fale algo sobre meu ex e seja estraga-prazeres." },
+        { who: "A", es: "Estoy segura de que no va a pasar nada. Nadie te va a quitar la sonrisa de la cara. Somos todos como familia. ¡Nos vamos a divertir mucho!", pt: "Tenho certeza de que não vai acontecer nada. Ninguém vai tirar o sorriso do seu rosto. Somos todos como uma família. Vamos nos divertir muito!" },
+        { who: "B", es: "Está bien Mari, te llamo más tarde a ver a que hora quedamos.", pt: "Está bem, Mari, te ligo mais tarde para ver a que horas a gente combina." },
+        { who: "A", es: "Bueno, ¡hasta luego!", pt: "Certo, até mais!" }
       ],
       vocabulary: [
         {
           category: "Palabras compuestas (exemplos)",
           items: [
-            { es: "Abrebotellas" }, { es: "Abrelatas" }, { es: "Agridulce" }, { es: "Aguafiestas" },
-            { es: "Altibajo" }, { es: "Automóvil" }, { es: "Bajamar" }, { es: "Balompié" }, { es: "Baloncesto" },
-            { es: "Bienvenida" }, { es: "Bocacalle" }, { es: "Compraventa" }, { es: "Cortaplumas" },
-            { es: "Cumpleaños" }, { es: "Girasol" }, { es: "Guardarropa" }, { es: "Hispanoamericano" },
-            { es: "Lavaplatos" }, { es: "Limpiabotas" }, { es: "Mapamundi" }, { es: "Mediodía" },
-            { es: "Parabrisas" }, { es: "Paraguas" }, { es: "Pararrayos" }, { es: "Pasatiempo" },
-            { es: "Pelirrojo" }, { es: "Portaaviones" }, { es: "Rascacielos" }, { es: "Rompecabezas" },
-            { es: "Sabelotodo" }, { es: "Sacacorchos" }, { es: "Sacapuntas" }, { es: "Salvavidas" }
+            { es: "Abrebotellas", pt: "Abridor de garrafas" }, { es: "Abrelatas", pt: "Abridor de latas" }, { es: "Agridulce", pt: "Agridoce" }, { es: "Aguafiestas", pt: "Estraga-prazeres" },
+            { es: "Altibajo", pt: "Altos e baixos" }, { es: "Automóvil", pt: "Automóvel" }, { es: "Bajamar", pt: "Maré baixa" }, { es: "Balompié", pt: "Futebol (termo formal)" }, { es: "Baloncesto", pt: "Basquete" },
+            { es: "Bienvenida", pt: "Bem-vinda(o)" }, { es: "Bocacalle", pt: "Esquina/cruzamento de rua" }, { es: "Compraventa", pt: "Compra e venda" }, { es: "Cortaplumas", pt: "Canivete" },
+            { es: "Cumpleaños", pt: "Aniversário" }, { es: "Girasol", pt: "Girassol" }, { es: "Guardarropa", pt: "Guarda-roupa" }, { es: "Hispanoamericano", pt: "Hispano-americano" },
+            { es: "Lavaplatos", pt: "Lava-louças" }, { es: "Limpiabotas", pt: "Engraxate" }, { es: "Mapamundi", pt: "Mapa-múndi" }, { es: "Mediodía", pt: "Meio-dia" },
+            { es: "Parabrisas", pt: "Para-brisa" }, { es: "Paraguas", pt: "Guarda-chuva" }, { es: "Pararrayos", pt: "Para-raios" }, { es: "Pasatiempo", pt: "Passatempo" },
+            { es: "Pelirrojo", pt: "Ruivo" }, { es: "Portaaviones", pt: "Porta-aviões" }, { es: "Rascacielos", pt: "Arranha-céu" }, { es: "Rompecabezas", pt: "Quebra-cabeça" },
+            { es: "Sabelotodo", pt: "Sabe-tudo" }, { es: "Sacacorchos", pt: "Saca-rolhas" }, { es: "Sacapuntas", pt: "Apontador" }, { es: "Salvavidas", pt: "Salva-vidas" }
           ]
         },
         {
@@ -1152,23 +1152,23 @@ const LEVEL_AVANZADO = {
         {
           category: "Heterotónicos (acentuação diferente do português)",
           items: [
-            { es: "Academia" }, { es: "Alcohol" }, { es: "Alergia" }, { es: "Alguien" }, { es: "Atmósfera" },
-            { es: "Burocracia" }, { es: "Cerebro" }, { es: "Cráter" }, { es: "Diplomacia" }, { es: "Élite" },
-            { es: "Epidemia" }, { es: "Pandemia" }, { es: "Euforia" }, { es: "Fobia" }, { es: "Gaucho" },
-            { es: "Héroe" }, { es: "Imán" }, { es: "Imbécil" }, { es: "Límite" }, { es: "Magia" }, { es: "Metro" },
-            { es: "Micrófono" }, { es: "Miope" }, { es: "Nivel" }, { es: "Nostalgia" }, { es: "Oxígeno" },
-            { es: "Pantano" }, { es: "Parásito" }, { es: "Policía" }, { es: "Prototipo" }, { es: "Régimen" },
-            { es: "Sarampión" }, { es: "Síntoma" }, { es: "Teléfono" }, { es: "Tulipán" }
+            { es: "Academia", pt: "Academia" }, { es: "Alcohol", pt: "Álcool" }, { es: "Alergia", pt: "Alergia" }, { es: "Alguien", pt: "Alguém" }, { es: "Atmósfera", pt: "Atmosfera" },
+            { es: "Burocracia", pt: "Burocracia" }, { es: "Cerebro", pt: "Cérebro" }, { es: "Cráter", pt: "Cratera" }, { es: "Diplomacia", pt: "Diplomacia" }, { es: "Élite", pt: "Elite" },
+            { es: "Epidemia", pt: "Epidemia" }, { es: "Pandemia", pt: "Pandemia" }, { es: "Euforia", pt: "Euforia" }, { es: "Fobia", pt: "Fobia" }, { es: "Gaucho", pt: "Gaúcho" },
+            { es: "Héroe", pt: "Herói" }, { es: "Imán", pt: "Ímã" }, { es: "Imbécil", pt: "Imbecil" }, { es: "Límite", pt: "Limite" }, { es: "Magia", pt: "Magia" }, { es: "Metro", pt: "Metrô" },
+            { es: "Micrófono", pt: "Microfone" }, { es: "Miope", pt: "Míope" }, { es: "Nivel", pt: "Nível" }, { es: "Nostalgia", pt: "Nostalgia" }, { es: "Oxígeno", pt: "Oxigênio" },
+            { es: "Pantano", pt: "Pântano" }, { es: "Parásito", pt: "Parasita" }, { es: "Policía", pt: "Polícia" }, { es: "Prototipo", pt: "Protótipo" }, { es: "Régimen", pt: "Regime" },
+            { es: "Sarampión", pt: "Sarampo" }, { es: "Síntoma", pt: "Sintoma" }, { es: "Teléfono", pt: "Telefone" }, { es: "Tulipán", pt: "Tulipa" }
           ]
         },
         {
           category: "Heterogenéricos (gênero diferente do português)",
           items: [
-            { es: "El coraje", pt: "masc. em espanhol, fem. em português" }, { es: "El equipaje" }, { es: "El garaje" },
-            { es: "El viaje" }, { es: "El lenguaje" }, { es: "El puente" }, { es: "El fraude" }, { es: "El insomnio" },
-            { es: "El árbol" }, { es: "La mascota", pt: "fem. em espanhol, masc. em português" }, { es: "La nariz" },
-            { es: "La sonrisa" }, { es: "La sal" }, { es: "La señal" }, { es: "La licuadora" }, { es: "La leche" },
-            { es: "La miel" }
+            { es: "El coraje", pt: "masc. em espanhol, fem. em português" }, { es: "El equipaje", pt: "masc. em espanhol, fem. em português (bagagem)" }, { es: "El garaje", pt: "masc. em espanhol, fem. em português (garagem)" },
+            { es: "El viaje", pt: "masc. em espanhol, fem. em português (viagem)" }, { es: "El lenguaje", pt: "masc. em espanhol, fem. em português (linguagem)" }, { es: "El puente", pt: "masc. em espanhol, fem. em português (ponte)" }, { es: "El fraude", pt: "masc. em espanhol, fem. em português (fraude)" }, { es: "El insomnio", pt: "masc. em espanhol, fem. em português (insônia)" },
+            { es: "El árbol", pt: "masc. em espanhol, fem. em português (árvore)" }, { es: "La mascota", pt: "fem. em espanhol, masc. em português" }, { es: "La nariz", pt: "fem. em espanhol, masc. em português (nariz)" },
+            { es: "La sonrisa", pt: "fem. em espanhol, masc. em português (sorriso)" }, { es: "La sal", pt: "fem. em espanhol, masc. em português (sal)" }, { es: "La señal", pt: "fem. em espanhol, masc. em português (sinal)" }, { es: "La licuadora", pt: "fem. em espanhol, masc. em português (liquidificador)" }, { es: "La leche", pt: "fem. em espanhol, masc. em português (leite)" },
+            { es: "La miel", pt: "fem. em espanhol, masc. em português (mel)" }
           ]
         }
       ],

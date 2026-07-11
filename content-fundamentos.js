@@ -58,7 +58,13 @@ const LEVEL_FUNDAMENTOS = {
       order: 1,
       text: "El español es una lengua románica (deriva do latim), originada na Península Ibérica, na região de Castela — por isso também é chamado de 'castellano'. Os dois nomes, 'español' e 'castellano', estão corretos e são usados, principalmente na Espanha e em parte da América Latina, muitas vezes para diferenciá-lo de outros idiomas cooficiais da Espanha (catalão, galego, basco).\n\nAssim como o português tem variações entre Brasil e Portugal, o espanhol varia entre países. Exemplo: 'morango' é 'fresa' na Espanha e na maioria dos países, mas 'frutilla' na região do Rio da Prata (Argentina, Uruguai, Paraguai).\n\nO VOSEO: em vários países (Argentina, Uruguai, partes da América Central), usa-se 'vos' no lugar de 'tú' na forma informal.",
       vocabulary: [
-        {category:"Pronomes de tratamento", items:[{es:"tú"},{es:"vos"},{es:"usted"},{es:"vosotros/vosotras"},{es:"ustedes"}]}
+        {category:"Pronomes de tratamento", items:[
+          {es:"tú", pt:"você (informal, Espanha e maior parte da América)"},
+          {es:"vos", pt:"você (informal, voseo — Argentina, Uruguai, partes da América Central)"},
+          {es:"usted", pt:"você (formal/de respeito)"},
+          {es:"vosotros/vosotras", pt:"vocês (informal, usado na Espanha)"},
+          {es:"ustedes", pt:"vocês (formal na Espanha; único plural usado na América Latina)"}
+        ]}
       ],
       grammar: [
         {title:"Voseo — Presente do indicativo (conjugação de 'vosotros' menos o 'i')", headers:["Tú","Vos"], rows:[

@@ -16,24 +16,42 @@ const LEVEL_BASICO = {
     {
       id: "b1", order: 1, title: "Saludos, presentaciones y despedidas", subtitle: "Verbo SER · pontuação invertida",
       dialogue: [
-        {who:"A", es:"¡Buenos días! ¿Cómo se llama usted?"},
-        {who:"B", es:"¡Hola! ¿Cómo le va? Mi nombre es Juárez, ¿y usted?, ¿cómo se llama?"},
-        {who:"A", es:"Me llamo María, ¡mucho gusto!"},
-        {who:"B", es:"¡Es un placer conocerla y bienvenida a la empresa! ¿De dónde es, María?"},
-        {who:"A", es:"¡Gracias! Soy de Brasil pero ahora estoy viviendo aquí, ¿y usted?"},
-        {who:"B", es:"Casi todos en la empresa, incluso yo, somos de Venezuela. Hemos trabajado aquí desde hace 2 años, cuando la empresa fue fundada."},
-        {who:"A", es:"¡Qué bien! ¿Usted me podría decir dónde está la oficina del responsable por el departamento de Recursos Humanos, por favor?"},
-        {who:"B", es:"¡Sí, por supuesto! Pero, ahora ya somos amigos y nos vamos a ver todos los días, entonces esta formalidad no es necesaria."},
-        {who:"A", es:"¡Está bien! ¡Gracias una vez más, Juárez!"},
-        {who:"B", es:"Sin duda, vas a hacer muchos amigos. ¡Que tengas un buen día! ¡Nos vemos!"},
-        {who:"A", es:"¡Hasta luego!"}
+        {who:"A", es:"¡Buenos días! ¿Cómo se llama usted?", pt:"Bom dia! Como você se chama?"},
+        {who:"B", es:"¡Hola! ¿Cómo le va? Mi nombre es Juárez, ¿y usted?, ¿cómo se llama?", pt:"Olá! Como vai? Meu nome é Juárez, e você, como se chama?"},
+        {who:"A", es:"Me llamo María, ¡mucho gusto!", pt:"Me chamo María, muito prazer!"},
+        {who:"B", es:"¡Es un placer conocerla y bienvenida a la empresa! ¿De dónde es, María?", pt:"É um prazer conhecê-la e seja bem-vinda à empresa! De onde você é, María?"},
+        {who:"A", es:"¡Gracias! Soy de Brasil pero ahora estoy viviendo aquí, ¿y usted?", pt:"Obrigada! Sou do Brasil, mas agora estou morando aqui, e você?"},
+        {who:"B", es:"Casi todos en la empresa, incluso yo, somos de Venezuela. Hemos trabajado aquí desde hace 2 años, cuando la empresa fue fundada.", pt:"Quase todos na empresa, inclusive eu, somos da Venezuela. Trabalhamos aqui há 2 anos, desde quando a empresa foi fundada."},
+        {who:"A", es:"¡Qué bien! ¿Usted me podría decir dónde está la oficina del responsable por el departamento de Recursos Humanos, por favor?", pt:"Que bom! Você poderia me dizer onde fica o escritório do responsável pelo departamento de Recursos Humanos, por favor?"},
+        {who:"B", es:"¡Sí, por supuesto! Pero, ahora ya somos amigos y nos vamos a ver todos los días, entonces esta formalidad no es necesaria.", pt:"Sim, claro! Mas agora já somos amigos e vamos nos ver todos os dias, então essa formalidade não é necessária."},
+        {who:"A", es:"¡Está bien! ¡Gracias una vez más, Juárez!", pt:"Está bem! Obrigada mais uma vez, Juárez!"},
+        {who:"B", es:"Sin duda, vas a hacer muchos amigos. ¡Que tengas un buen día! ¡Nos vemos!", pt:"Sem dúvida, você vai fazer muitos amigos. Tenha um bom dia! Nos vemos!"},
+        {who:"A", es:"¡Hasta luego!", pt:"Até logo!"}
       ],
       vocabulary: [
-        {category:"Saludos", items:[{es:"¡Hola!"},{es:"¿Qué tal?"},{es:"¿Cómo le va?/¿Cómo te va?"},{es:"¿Cómo está?/¿Cómo estás?"},{es:"¡Buenos días!/¡Buen día!"},{es:"¡Buenas tardes!"},{es:"¡Buenas noches!"}]},
-        {category:"Presentaciones", items:[{es:"¿Cómo (tú) te llamas?"},{es:"¿Cómo (usted) se llama?"},{es:"¿Cuál es tu nombre?"},{es:"¿Cuál es su nombre?"},{es:"Soy..."},{es:"Me llamo..."},{es:"Mi nombre es..."},{es:"¡Mucho gusto!"},{es:"¡Un placer!"},{es:"¡Encantado(a)!"},{es:"Te presento a..."},{es:"Le presento a..."}]},
-        {category:"Despedidas", items:[{es:"¡Hasta luego!"},{es:"¡Hasta pronto!"},{es:"¡Hasta mañana!"},{es:"¡Nos vemos…!"},{es:"¡Chau(o)!"},{es:"¡Adiós!"},{es:"¡Que tenga(s) un buen día!"}]},
-        {category:"Palabras mágicas", items:[{es:"¡Por favor!"},{es:"¡(Muchas) gracias!"},{es:"¡De nada!"},{es:"¡Permiso!"},{es:"¡Perdón!"},{es:"¡Discúlpame! (informal)"},{es:"¡Discúlpeme! (formal)"}]},
-        {category:"Pronombres personales", items:[{es:"Yo"},{es:"Tú"},{es:"Él"},{es:"Ella"},{es:"Usted"},{es:"Nosotros/Nosotras"},{es:"Vosotros/Vosotras"},{es:"Ellos/Ellas"},{es:"Ustedes"}]}
+        {category:"Saludos", items:[
+          {es:"¡Hola!", pt:"Olá!"},{es:"¿Qué tal?", pt:"E aí? / Tudo bem?"},{es:"¿Cómo le va?/¿Cómo te va?", pt:"Como vai? (formal/informal)"},
+          {es:"¿Cómo está?/¿Cómo estás?", pt:"Como você está? (formal/informal)"},{es:"¡Buenos días!/¡Buen día!", pt:"Bom dia!"},{es:"¡Buenas tardes!", pt:"Boa tarde!"},{es:"¡Buenas noches!", pt:"Boa noite!"}
+        ]},
+        {category:"Presentaciones", items:[
+          {es:"¿Cómo (tú) te llamas?", pt:"Como você se chama? (informal)"},{es:"¿Cómo (usted) se llama?", pt:"Como o(a) senhor(a) se chama? (formal)"},
+          {es:"¿Cuál es tu nombre?", pt:"Qual é o seu nome? (informal)"},{es:"¿Cuál es su nombre?", pt:"Qual é o seu nome? (formal)"},
+          {es:"Soy...", pt:"Eu sou..."},{es:"Me llamo...", pt:"Eu me chamo..."},{es:"Mi nombre es...", pt:"Meu nome é..."},
+          {es:"¡Mucho gusto!", pt:"Muito prazer!"},{es:"¡Un placer!", pt:"Um prazer!"},{es:"¡Encantado(a)!", pt:"Encantado(a)!"},
+          {es:"Te presento a...", pt:"Apresento a você... (informal)"},{es:"Le presento a...", pt:"Apresento ao(à) senhor(a)... (formal)"}
+        ]},
+        {category:"Despedidas", items:[
+          {es:"¡Hasta luego!", pt:"Até logo!"},{es:"¡Hasta pronto!", pt:"Até breve!"},{es:"¡Hasta mañana!", pt:"Até amanhã!"},
+          {es:"¡Nos vemos…!", pt:"A gente se vê!"},{es:"¡Chau(o)!", pt:"Tchau!"},{es:"¡Adiós!", pt:"Adeus!"},{es:"¡Que tenga(s) un buen día!", pt:"Que você tenha um bom dia!"}
+        ]},
+        {category:"Palabras mágicas", items:[
+          {es:"¡Por favor!", pt:"Por favor!"},{es:"¡(Muchas) gracias!", pt:"(Muito) obrigado(a)!"},{es:"¡De nada!", pt:"De nada!"},
+          {es:"¡Permiso!", pt:"Com licença!"},{es:"¡Perdón!", pt:"Perdão! / Desculpe!"},{es:"¡Discúlpame! (informal)", pt:"Me desculpe! (informal)"},{es:"¡Discúlpeme! (formal)", pt:"Desculpe-me! (formal)"}
+        ]},
+        {category:"Pronombres personales", items:[
+          {es:"Yo", pt:"Eu"},{es:"Tú", pt:"Você (informal)"},{es:"Él", pt:"Ele"},{es:"Ella", pt:"Ela"},{es:"Usted", pt:"Você (formal)"},
+          {es:"Nosotros/Nosotras", pt:"Nós"},{es:"Vosotros/Vosotras", pt:"Vós / vocês (informal, Espanha)"},{es:"Ellos/Ellas", pt:"Eles/Elas"},{es:"Ustedes", pt:"Vocês"}
+        ]}
       ],
       grammar: [
         {title:"Presente de indicativo — verbo SER", headers:["Pronombre","Conjugación"], rows:[["Yo","Soy"],["Tú/Vos","Eres/Sos"],["Él/Ella/Usted","Es"],["Nosotros/Nosotras","Somos"],["Vosotros/Vosotras","Sois"],["Ellos/Ellas/Ustedes","Son"]]}
@@ -58,14 +76,54 @@ const LEVEL_BASICO = {
       text: "Mi nombre es María, soy brasileña, de Rio de Janeiro, o sea, tengo el portugués como lengua materna. Hablo también español e inglés. Tengo 25 años pero ya cumplo 26 mañana. Tengo un novio, Roberto, y vivo con él. No tenemos hijos pero quizás después de casarnos pensemos en esta posibilidad. Nos graduamos de la universidad en Publicidad en 2009 y trabajamos actualmente juntos en una agencia de publicidad. Lo que más me gusta hacer es salir para comer en restaurantes con mis amigos y con mi novio. También me encanta escuchar reggaetón y ver películas de terror.",
       vocabulary: [
         {category:"Países, nacionalidades e idiomas", items:[
-          {es:"Brasil – Brasileño(a) – Portugués"},{es:"Argentina – Argentino(a) – Español"},{es:"Uruguay – Uruguayo(a) – Español"},{es:"Paraguay – Paraguayo(a) – Español/Guaraní"},{es:"Bolivia – Boliviano(a) – Español"},{es:"Estados Unidos – Americano(a) – Inglés"},{es:"Francia – Francés/Francesa – Francés"},{es:"México – Mexicano(a) – Español"},{es:"Italia – Italiano(a) – Italiano"},{es:"Inglaterra – Inglés/Inglesa – Inglés"},{es:"Alemania – Alemán/Alemana – Alemán"},{es:"Chile – Chileno(a) – Español"},{es:"Canadá – Canadiense – Inglés/Francés"},{es:"Japón – Japonés/Japonesa – Japonés"},{es:"Suiza – Suizo(a) – Alemán/Francés/Italiano"},{es:"Rusia – Ruso(a) – Ruso"},{es:"Ecuador – Ecuatoriano(a) – Español"},{es:"Cuba – Cubano(a) – Español"},{es:"Colombia – Colombiano(a) – Español"},{es:"Australia – Australiano(a) – Inglés"},{es:"China – Chino(a) – Chino"},{es:"España – Español(a) – Español"},{es:"India – Indio(a) – Hindi"},{es:"Grecia – Griego(a) – Griego"},{es:"Polonia – Polaco(a) – Polaco"},{es:"Portugal – Portugués/Portuguesa – Portugués"},{es:"Perú – Peruano(a) – Español"},{es:"Venezuela – Venezolano(a) – Español"},{es:"Egipto – Egipcio(a) – Árabe"},{es:"Israel – Israelí – Hebreo"},{es:"Panamá – Panameño(a) – Español"},{es:"República Dominicana – Dominicano(a) – Español"},{es:"Puerto Rico – Puertorriqueño(a) – Español/Inglés"}
+          {es:"Brasil – Brasileño(a) – Portugués", pt:"Brasil – brasileiro(a) – Português"},{es:"Argentina – Argentino(a) – Español", pt:"Argentina – argentino(a) – Espanhol"},
+          {es:"Uruguay – Uruguayo(a) – Español", pt:"Uruguai – uruguaio(a) – Espanhol"},{es:"Paraguay – Paraguayo(a) – Español/Guaraní", pt:"Paraguai – paraguaio(a) – Espanhol/Guarani"},
+          {es:"Bolivia – Boliviano(a) – Español", pt:"Bolívia – boliviano(a) – Espanhol"},{es:"Estados Unidos – Americano(a) – Inglés", pt:"Estados Unidos – americano(a) – Inglês"},
+          {es:"Francia – Francés/Francesa – Francés", pt:"França – francês/francesa – Francês"},{es:"México – Mexicano(a) – Español", pt:"México – mexicano(a) – Espanhol"},
+          {es:"Italia – Italiano(a) – Italiano", pt:"Itália – italiano(a) – Italiano"},{es:"Inglaterra – Inglés/Inglesa – Inglés", pt:"Inglaterra – inglês/inglesa – Inglês"},
+          {es:"Alemania – Alemán/Alemana – Alemán", pt:"Alemanha – alemão/alemã – Alemão"},{es:"Chile – Chileno(a) – Español", pt:"Chile – chileno(a) – Espanhol"},
+          {es:"Canadá – Canadiense – Inglés/Francés", pt:"Canadá – canadense – Inglês/Francês"},{es:"Japón – Japonés/Japonesa – Japonés", pt:"Japão – japonês/japonesa – Japonês"},
+          {es:"Suiza – Suizo(a) – Alemán/Francés/Italiano", pt:"Suíça – suíço(a) – Alemão/Francês/Italiano"},{es:"Rusia – Ruso(a) – Ruso", pt:"Rússia – russo(a) – Russo"},
+          {es:"Ecuador – Ecuatoriano(a) – Español", pt:"Equador – equatoriano(a) – Espanhol"},{es:"Cuba – Cubano(a) – Español", pt:"Cuba – cubano(a) – Espanhol"},
+          {es:"Colombia – Colombiano(a) – Español", pt:"Colômbia – colombiano(a) – Espanhol"},{es:"Australia – Australiano(a) – Inglés", pt:"Austrália – australiano(a) – Inglês"},
+          {es:"China – Chino(a) – Chino", pt:"China – chinês/chinesa – Chinês"},{es:"España – Español(a) – Español", pt:"Espanha – espanhol(a) – Espanhol"},
+          {es:"India – Indio(a) – Hindi", pt:"Índia – indiano(a) – Hindi"},{es:"Grecia – Griego(a) – Griego", pt:"Grécia – grego(a) – Grego"},
+          {es:"Polonia – Polaco(a) – Polaco", pt:"Polônia – polonês/polonesa – Polonês"},{es:"Portugal – Portugués/Portuguesa – Portugués", pt:"Portugal – português/portuguesa – Português"},
+          {es:"Perú – Peruano(a) – Español", pt:"Peru – peruano(a) – Espanhol"},{es:"Venezuela – Venezolano(a) – Español", pt:"Venezuela – venezuelano(a) – Espanhol"},
+          {es:"Egipto – Egipcio(a) – Árabe", pt:"Egito – egípcio(a) – Árabe"},{es:"Israel – Israelí – Hebreo", pt:"Israel – israelense – Hebraico"},
+          {es:"Panamá – Panameño(a) – Español", pt:"Panamá – panamenho(a) – Espanhol"},{es:"República Dominicana – Dominicano(a) – Español", pt:"República Dominicana – dominicano(a) – Espanhol"},
+          {es:"Puerto Rico – Puertorriqueño(a) – Español/Inglés", pt:"Porto Rico – porto-riquenho(a) – Espanhol/Inglês"}
         ]},
-        {category:"Frases útiles", items:[{es:"Yo soy Argentino. Vengo de Buenos Aires, Argentina."},{es:"¿De dónde eres?"},{es:"¿De dónde es?"},{es:"¿Qué idioma hablas?"},{es:"¿Hablas (español)?"},{es:"¡Hablas muy bien portugués!"},{es:"¡Me gusta tu acento!"}]},
-        {category:"Estado Civil", items:[{es:"Soltero(a)"},{es:"Casado(a)"},{es:"Viudo(a)"},{es:"Separado(a)"},{es:"Divorciado(a)"},{es:"Prometido(a)/Comprometido(a)"},{es:"Novio(a)"}]},
-        {category:"Edad", items:[{es:"¿Cuántos años tienes?"},{es:"¿Cuál es tu(su) edad?"},{es:"Tengo (17) años."},{es:"Cumplo ______ mañana."},{es:"¿Cuándo es tu(su) cumpleaños?"},{es:"Mi cumpleaños es el (29 de octubre)."}]},
-        {category:"Oficios (profissões)", items:[{es:"Administrador"},{es:"Doctor/Médico"},{es:"Abogado"},{es:"Electricista"},{es:"Analista Contable"},{es:"Enfermero"},{es:"Ingeniero"},{es:"Arquitecto"},{es:"Escritor"},{es:"Artista"},{es:"Fisioterapeuta"},{es:"Gerente Comercial"},{es:"Contador"},{es:"Auditor Interno"},{es:"Mecánico"},{es:"Bombero"},{es:"Conductor"},{es:"Peluquero"},{es:"Vendedor"},{es:"Camarero/Mesero/Mozo"},{es:"Psicólogo"},{es:"Cocinero"},{es:"Recepcionista"},{es:"Dentista"},{es:"Diseñador"},{es:"Secretario(a) bilingüe"},{es:"Guardia de Seguridad"},{es:"Traductor"},{es:"Profesor/maestro"},{es:"Pintor"},{es:"Cajero"},{es:"Panadero"},{es:"Carpintero"},{es:"Piloto"},{es:"Policía"},{es:"Cirujano"},{es:"Programador"}
+        {category:"Frases útiles", items:[
+          {es:"Yo soy Argentino. Vengo de Buenos Aires, Argentina.", pt:"Eu sou argentino. Venho de Buenos Aires, Argentina."},
+          {es:"¿De dónde eres?", pt:"De onde você é? (informal)"},{es:"¿De dónde es?", pt:"De onde você é? (formal)"},
+          {es:"¿Qué idioma hablas?", pt:"Que idioma você fala?"},{es:"¿Hablas (español)?", pt:"Você fala (espanhol)?"},
+          {es:"¡Hablas muy bien portugués!", pt:"Você fala muito bem português!"},{es:"¡Me gusta tu acento!", pt:"Eu gosto do seu sotaque!"}
         ]},
-        {category:"Trabajo — frases", items:[{es:"Soy profesor(a)."},{es:"Trabajo con (análisis de costos)."},{es:"Tengo experiencia en/con…."},{es:"¿A qué te dedicas?"},{es:"¿A qué se dedica?"}]}
+        {category:"Estado Civil", items:[
+          {es:"Soltero(a)", pt:"Solteiro(a)"},{es:"Casado(a)", pt:"Casado(a)"},{es:"Viudo(a)", pt:"Viúvo(a)"},{es:"Separado(a)", pt:"Separado(a)"},
+          {es:"Divorciado(a)", pt:"Divorciado(a)"},{es:"Prometido(a)/Comprometido(a)", pt:"Noivo(a) / comprometido(a)"},{es:"Novio(a)", pt:"Namorado(a)"}
+        ]},
+        {category:"Edad", items:[
+          {es:"¿Cuántos años tienes?", pt:"Quantos anos você tem?"},{es:"¿Cuál es tu(su) edad?", pt:"Qual é a sua idade?"},
+          {es:"Tengo (17) años.", pt:"Tenho (17) anos."},{es:"Cumplo ______ mañana.", pt:"Faço ___ anos amanhã."},
+          {es:"¿Cuándo es tu(su) cumpleaños?", pt:"Quando é o seu aniversário?"},{es:"Mi cumpleaños es el (29 de octubre).", pt:"Meu aniversário é (29 de outubro)."}
+        ]},
+        {category:"Oficios (profissões)", items:[
+          {es:"Administrador", pt:"Administrador(a)"},{es:"Doctor/Médico", pt:"Doutor(a) / Médico(a)"},{es:"Abogado", pt:"Advogado(a)"},{es:"Electricista", pt:"Eletricista"},
+          {es:"Analista Contable", pt:"Analista Contábil"},{es:"Enfermero", pt:"Enfermeiro(a)"},{es:"Ingeniero", pt:"Engenheiro(a)"},{es:"Arquitecto", pt:"Arquiteto(a)"},
+          {es:"Escritor", pt:"Escritor(a)"},{es:"Artista", pt:"Artista"},{es:"Fisioterapeuta", pt:"Fisioterapeuta"},{es:"Gerente Comercial", pt:"Gerente Comercial"},
+          {es:"Contador", pt:"Contador(a)"},{es:"Auditor Interno", pt:"Auditor(a) Interno(a)"},{es:"Mecánico", pt:"Mecânico(a)"},{es:"Bombero", pt:"Bombeiro(a)"},
+          {es:"Conductor", pt:"Motorista"},{es:"Peluquero", pt:"Cabeleireiro(a)"},{es:"Vendedor", pt:"Vendedor(a)"},{es:"Camarero/Mesero/Mozo", pt:"Garçom/Garçonete"},
+          {es:"Psicólogo", pt:"Psicólogo(a)"},{es:"Cocinero", pt:"Cozinheiro(a)"},{es:"Recepcionista", pt:"Recepcionista"},{es:"Dentista", pt:"Dentista"},
+          {es:"Diseñador", pt:"Designer"},{es:"Secretario(a) bilingüe", pt:"Secretário(a) bilíngue"},{es:"Guardia de Seguridad", pt:"Guarda de Segurança"},{es:"Traductor", pt:"Tradutor(a)"},
+          {es:"Profesor/maestro", pt:"Professor(a)"},{es:"Pintor", pt:"Pintor(a)"},{es:"Cajero", pt:"Caixa (de loja/banco)"},{es:"Panadero", pt:"Padeiro(a)"},
+          {es:"Carpintero", pt:"Carpinteiro(a)"},{es:"Piloto", pt:"Piloto"},{es:"Policía", pt:"Policial"},{es:"Cirujano", pt:"Cirurgião(ã)"},{es:"Programador", pt:"Programador(a)"}
+        ]},
+        {category:"Trabajo — frases", items:[
+          {es:"Soy profesor(a).", pt:"Sou professor(a)."},{es:"Trabajo con (análisis de costos).", pt:"Trabalho com (análise de custos)."},
+          {es:"Tengo experiencia en/con….", pt:"Tenho experiência em/com…."},{es:"¿A qué te dedicas?", pt:"O que você faz (da vida)? (informal)"},{es:"¿A qué se dedica?", pt:"O que o(a) senhor(a) faz (da vida)? (formal)"}
+        ]}
       ],
       grammar: [
         {title:"Presente de indicativo — verbos regulares", headers:["Pronombre","Hablar (AR)","Comer (ER)","Vivir (IR)"], rows:[
@@ -94,8 +152,28 @@ const LEVEL_BASICO = {
       id: "b3", order: 3, title: "Familia", subtitle: "Posesivos, artículos, verbo GUSTAR",
       text: "¡Hola! Me llamo Sofía y hoy quiero hablar un poco de mi familia. Nuestra familia tiene 7 miembros: mi padre Juan, mi madre María, mi hermana Julia, mi hermano Luís y nuestras dos mascotas: nuestra tortuga Brigitte y nuestro perro Toby. Nacimos todos en Montevideo, Uruguay. Mi padre tiene 45 años y es médico, mi madre tiene 38 y es profesora de español, Julia tiene 10 años, Luís 7 u 8 y yo tengo 15. Nos gusta hacer muchas cosas juntos los fines de semana, como cocinar, jugar, ver películas e ir al zoológico.",
       vocabulary: [
-        {category:"Miembros de la familia", items:[{es:"Ahijado(a)"},{es:"Abuelo(a)"},{es:"Bisabuelo(a)"},{es:"Bisnieto(a)"},{es:"Hermano(a) gemelo(a)/mellizo(a)"},{es:"Cuñado(a)"},{es:"Hijastro(a)"},{es:"Esposo(a)/Pareja"},{es:"Ex-esposo(a)"},{es:"Hijo(a)"},{es:"Hijo(a) adoptivo(a)"},{es:"Yerno/Nuera"},{es:"Hermano(a)"},{es:"Nieto(a)"},{es:"Primo(a)"},{es:"Madrastra/Padrastro"},{es:"Madre/Padre"},{es:"Mamá/Papá"},{es:"Madrina/Padrino"},{es:"Marido/Mujer"},{es:"Medio(a) Hermano(a)"},{es:"Sobrino(a)"},{es:"Suegro(a)"},{es:"Tío(a)"}]},
-        {category:"Animales (salvajes y mascotas)", items:[{es:"Abeja"},{es:"Gato"},{es:"Águila"},{es:"Jirafa"},{es:"Araña"},{es:"Delfín"},{es:"Avestruz"},{es:"Ballena"},{es:"Cucaracha"},{es:"Caimán/Yacaré"},{es:"Jabalí"},{es:"Buey"},{es:"Mariposa"},{es:"León"},{es:"Caballo"},{es:"Mono"},{es:"Cabra"},{es:"Perro"},{es:"Mosquito"},{es:"Camello"},{es:"Murciélago"},{es:"Canguro"},{es:"Cangrejo"},{es:"Oveja"},{es:"Cigüeña"},{es:"Pájaro"},{es:"Pato"},{es:"Pez"},{es:"Conejo"},{es:"Pingüino"},{es:"Búho/Lechuza"},{es:"Paloma"},{es:"Cocodrilo"},{es:"Cerdo/Chancho"},{es:"Gallina"},{es:"Ratón"},{es:"Elefante"},{es:"Sapo"},{es:"Tortuga"},{es:"Foca"},{es:"Tigre"},{es:"Hormiga"},{es:"Toro"},{es:"Oso"},{es:"Vaca"},{es:"Gallo"},{es:"Cebra"}]}
+        {category:"Miembros de la familia", items:[
+          {es:"Ahijado(a)", pt:"Afilhado(a)"},{es:"Abuelo(a)", pt:"Avô/Avó"},{es:"Bisabuelo(a)", pt:"Bisavô/Bisavó"},{es:"Bisnieto(a)", pt:"Bisneto(a)"},
+          {es:"Hermano(a) gemelo(a)/mellizo(a)", pt:"Irmão/irmã gêmeo(a)"},{es:"Cuñado(a)", pt:"Cunhado(a)"},{es:"Hijastro(a)", pt:"Enteado(a)"},
+          {es:"Esposo(a)/Pareja", pt:"Esposo(a) / Parceiro(a)"},{es:"Ex-esposo(a)", pt:"Ex-esposo(a)"},{es:"Hijo(a)", pt:"Filho(a)"},
+          {es:"Hijo(a) adoptivo(a)", pt:"Filho(a) adotivo(a)"},{es:"Yerno/Nuera", pt:"Genro/Nora"},{es:"Hermano(a)", pt:"Irmão/Irmã"},
+          {es:"Nieto(a)", pt:"Neto(a)"},{es:"Primo(a)", pt:"Primo(a)"},{es:"Madrastra/Padrastro", pt:"Madrasta/Padrasto"},
+          {es:"Madre/Padre", pt:"Mãe/Pai"},{es:"Mamá/Papá", pt:"Mamãe/Papai"},{es:"Madrina/Padrino", pt:"Madrinha/Padrinho"},
+          {es:"Marido/Mujer", pt:"Marido/Esposa"},{es:"Medio(a) Hermano(a)", pt:"Meio-irmão/Meia-irmã"},{es:"Sobrino(a)", pt:"Sobrinho(a)"},
+          {es:"Suegro(a)", pt:"Sogro(a)"},{es:"Tío(a)", pt:"Tio(a)"}
+        ]},
+        {category:"Animales (salvajes y mascotas)", items:[
+          {es:"Abeja", pt:"Abelha"},{es:"Gato", pt:"Gato"},{es:"Águila", pt:"Águia"},{es:"Jirafa", pt:"Girafa"},{es:"Araña", pt:"Aranha"},
+          {es:"Delfín", pt:"Golfinho"},{es:"Avestruz", pt:"Avestruz"},{es:"Ballena", pt:"Baleia"},{es:"Cucaracha", pt:"Barata"},
+          {es:"Caimán/Yacaré", pt:"Jacaré"},{es:"Jabalí", pt:"Javali"},{es:"Buey", pt:"Boi"},{es:"Mariposa", pt:"Borboleta"},{es:"León", pt:"Leão"},
+          {es:"Caballo", pt:"Cavalo"},{es:"Mono", pt:"Macaco"},{es:"Cabra", pt:"Cabra"},{es:"Perro", pt:"Cachorro/Cão"},{es:"Mosquito", pt:"Mosquito"},
+          {es:"Camello", pt:"Camelo"},{es:"Murciélago", pt:"Morcego"},{es:"Canguro", pt:"Canguru"},{es:"Cangrejo", pt:"Caranguejo"},{es:"Oveja", pt:"Ovelha"},
+          {es:"Cigüeña", pt:"Cegonha"},{es:"Pájaro", pt:"Pássaro"},{es:"Pato", pt:"Pato"},{es:"Pez", pt:"Peixe"},{es:"Conejo", pt:"Coelho"},
+          {es:"Pingüino", pt:"Pinguim"},{es:"Búho/Lechuza", pt:"Coruja"},{es:"Paloma", pt:"Pomba"},{es:"Cocodrilo", pt:"Crocodilo"},{es:"Cerdo/Chancho", pt:"Porco"},
+          {es:"Gallina", pt:"Galinha"},{es:"Ratón", pt:"Rato/Camundongo"},{es:"Elefante", pt:"Elefante"},{es:"Sapo", pt:"Sapo"},{es:"Tortuga", pt:"Tartaruga"},
+          {es:"Foca", pt:"Foca"},{es:"Tigre", pt:"Tigre"},{es:"Hormiga", pt:"Formiga"},{es:"Toro", pt:"Touro"},{es:"Oso", pt:"Urso"},
+          {es:"Vaca", pt:"Vaca"},{es:"Gallo", pt:"Galo"},{es:"Cebra", pt:"Zebra"}
+        ]}
       ],
       grammar: [
         {title:"Los posesivos (plenos y apocopados)", headers:["Pronombre","Pleno","Apocopado"], rows:[["Yo","Mío(a)(s)","Mi(s)"],["Tú","Tuyo(a)(s)","Tu(s)"],["Él/Ella/Usted","Suyo(a)(s)","Su(s)"],["Nosotros(as)","Nuestro(a)(s)","Nuestro(a)(s)"],["Vosotros(as)","Vuestro(a)(s)","Vuestro(a)(s)"],["Ellos(as)/Ustedes","Suyo(a)(s)","Su(s)"]]},
@@ -129,9 +207,22 @@ const LEVEL_BASICO = {
       id: "b4", order: 4, title: "Rutina diaria", subtitle: "Reflexivos, horário, verbos irregulares",
       text: "Por la mañana me despierto generalmente a las 7:30, me levanto a las 7:45 y me preparo el desayuno. A las 8:05 me visto, me cepillo los dientes y suelo salir para trabajar a las 08:20. Trabajo hasta las 12:00 y tengo una pausa de 1 hora para comer. Después del trabajo voy al supermercado y llego a mi casa a las 06:50. Ceno, me ducho, lavo la ropa sucia, saco la basura, veo alguna película y después me voy a dormir a las 10:00.",
       vocabulary: [
-        {category:"Actividades diarias", items:[{es:"Despertarse"},{es:"Levantarse"},{es:"Cepillarse los dientes"},{es:"Peinarse"},{es:"Ducharse/Bañarse"},{es:"Limpiar la casa"},{es:"Ir a trabajar"},{es:"Hacer compras en el supermercado"},{es:"Lavar la ropa sucia/hacer la colada"},{es:"Ir al gimnasio"},{es:"Hacer ejercicios"},{es:"Caminar"},{es:"Salir con los amigos"},{es:"Ver películas/televisión"},{es:"Planchar"},{es:"Vestirse"},{es:"Preparar(se) el desayuno/almuerzo/cena"},{es:"Almorzar/Desayunar/Cenar"},{es:"Cocinar"},{es:"Ir a dormir"},{es:"Acostarse"},{es:"Sacar la basura"},{es:"Hacer la tarea"}]},
-        {category:"Adverbios de frecuencia", items:[{es:"Siempre"},{es:"Casi siempre"},{es:"Normalmente"},{es:"Frecuentemente"},{es:"A menudo"},{es:"A veces"},{es:"Raramente"},{es:"Casi nunca"},{es:"Nunca"},{es:"Jamás"},{es:"Una vez por semana"},{es:"Todos los días"},{es:"A diario"}]},
-        {category:"Estaciones del año", items:[{es:"Primavera"},{es:"Verano"},{es:"Otoño"},{es:"Invierno"}]}
+        {category:"Actividades diarias", items:[
+          {es:"Despertarse", pt:"Acordar"},{es:"Levantarse", pt:"Levantar-se"},{es:"Cepillarse los dientes", pt:"Escovar os dentes"},
+          {es:"Peinarse", pt:"Pentear-se"},{es:"Ducharse/Bañarse", pt:"Tomar banho"},{es:"Limpiar la casa", pt:"Limpar a casa"},
+          {es:"Ir a trabajar", pt:"Ir trabalhar"},{es:"Hacer compras en el supermercado", pt:"Fazer compras no supermercado"},
+          {es:"Lavar la ropa sucia/hacer la colada", pt:"Lavar a roupa suja"},{es:"Ir al gimnasio", pt:"Ir à academia"},{es:"Hacer ejercicios", pt:"Fazer exercícios"},
+          {es:"Caminar", pt:"Caminhar"},{es:"Salir con los amigos", pt:"Sair com os amigos"},{es:"Ver películas/televisión", pt:"Ver filmes/televisão"},
+          {es:"Planchar", pt:"Passar roupa"},{es:"Vestirse", pt:"Vestir-se"},{es:"Preparar(se) el desayuno/almuerzo/cena", pt:"Preparar o café da manhã/almoço/jantar"},
+          {es:"Almorzar/Desayunar/Cenar", pt:"Almoçar/Tomar café da manhã/Jantar"},{es:"Cocinar", pt:"Cozinhar"},{es:"Ir a dormir", pt:"Ir dormir"},
+          {es:"Acostarse", pt:"Deitar-se"},{es:"Sacar la basura", pt:"Tirar o lixo"},{es:"Hacer la tarea", pt:"Fazer a tarefa (de casa)"}
+        ]},
+        {category:"Adverbios de frecuencia", items:[
+          {es:"Siempre", pt:"Sempre"},{es:"Casi siempre", pt:"Quase sempre"},{es:"Normalmente", pt:"Normalmente"},{es:"Frecuentemente", pt:"Frequentemente"},
+          {es:"A menudo", pt:"Com frequência"},{es:"A veces", pt:"Às vezes"},{es:"Raramente", pt:"Raramente"},{es:"Casi nunca", pt:"Quase nunca"},
+          {es:"Nunca", pt:"Nunca"},{es:"Jamás", pt:"Jamais"},{es:"Una vez por semana", pt:"Uma vez por semana"},{es:"Todos los días", pt:"Todos os dias"},{es:"A diario", pt:"Diariamente"}
+        ]},
+        {category:"Estaciones del año", items:[{es:"Primavera", pt:"Primavera"},{es:"Verano", pt:"Verão"},{es:"Otoño", pt:"Outono"},{es:"Invierno", pt:"Inverno"}]}
       ],
       grammar: [
         {title:"Pronombres reflexivos átonos", headers:["Pronombre","Reflexivo"], rows:[["Yo","me"],["Tú/Vos","te"],["Él/Ella/Usted","se"],["Nosotros/Nosotras","nos"],["Vosotros/Vosotras","os"],["Ellos/Ellas/Ustedes","se"]]},
@@ -157,18 +248,37 @@ const LEVEL_BASICO = {
     {
       id: "b5", order: 5, title: "Aspectos físicos", subtitle: "Descrições, artigo indefinido",
       dialogue: [
-        {who:"A", es:"¡Hola, María! ¿Cómo estás?"},
-        {who:"B", es:"¡Hola, Julia! Estoy muy bien, ¿y tú? Supe que estás saliendo con alguien, ¿verdad?"},
-        {who:"A", es:"¡Sí! Su nombre es Mateus. ¿Lo conoces?"},
-        {who:"B", es:"No. ¿Y qué tal es? ¿Guapo? ¿Buena onda?"},
-        {who:"A", es:"¡Es perfecto! Tiene 17 años, es un chico fuerte, rubio, tiene ojos azules, es vanidoso y demasiado celoso."},
-        {who:"B", es:"¡Qué lindo eso, amiga! ¡Me alegro por ti!"}
+        {who:"A", es:"¡Hola, María! ¿Cómo estás?", pt:"Olá, María! Como você está?"},
+        {who:"B", es:"¡Hola, Julia! Estoy muy bien, ¿y tú? Supe que estás saliendo con alguien, ¿verdad?", pt:"Olá, Julia! Estou muito bem, e você? Fiquei sabendo que você está namorando alguém, né?"},
+        {who:"A", es:"¡Sí! Su nombre es Mateus. ¿Lo conoces?", pt:"Sim! O nome dele é Mateus. Você o conhece?"},
+        {who:"B", es:"No. ¿Y qué tal es? ¿Guapo? ¿Buena onda?", pt:"Não. E como ele é? Bonito? Legal?"},
+        {who:"A", es:"¡Es perfecto! Tiene 17 años, es un chico fuerte, rubio, tiene ojos azules, es vanidoso y demasiado celoso.", pt:"É perfeito! Tem 17 anos, é um rapaz forte, loiro, tem olhos azuis, é vaidoso e ciumento demais."},
+        {who:"B", es:"¡Qué lindo eso, amiga! ¡Me alegro por ti!", pt:"Que legal isso, amiga! Fico feliz por você!"}
       ],
       vocabulary: [
-        {category:"Cabello, ojos, rostro", items:[{es:"Tiene el pelo corto/largo"},{es:"Es pelado/calvo"},{es:"Usa barba/bigote"},{es:"Es moreno(a)/castaño(a)/rubio(a)/pelirrojo(a)"},{es:"Tiene canas"},{es:"Tiene el pelo rizado/liso/ondulado"},{es:"Tiene los ojos azules/verdes/marrones/negros"},{es:"Lleva/usa gafas/lentes"},{es:"Tiene las pestañas largas"},{es:"Tiene las cejas espesas"},{es:"Es narigón/narigona"},{es:"Tiene hoyuelos"}]},
-        {category:"Cuerpo/porte", items:[{es:"Es flaco(a)/delgado(a)"},{es:"Es gordo(a)"},{es:"Es fuerte"},{es:"Es débil"},{es:"Tiene espaldas anchas"},{es:"Está en forma"},{es:"Es musculoso(a)"}]},
-        {category:"Personalidad y apariencia", items:[{es:"Guapo(a)"},{es:"Hermoso(a)"},{es:"Precioso(a)"},{es:"Encantador(a)"},{es:"Feliz"},{es:"Triste"},{es:"Buena onda"},{es:"Feo(a)"},{es:"Joven"},{es:"Inteligente"},{es:"Viejo(a)"},{es:"Tonto(a)"},{es:"Tranquilo(a)"},{es:"Nervioso(a)"},{es:"Elegante"},{es:"Simpático(a)"},{es:"Antipático(a)"},{es:"Tacaño(a)"},{es:"Ñoño"},{es:"Mentiroso(a)"},{es:"Aburrido(a)"}]},
-        {category:"Formas de tratamiento", items:[{es:"Tú/vos, Usted, Señor(a), Don/Doña"},{es:"Entre amigos: tío, colega, cuate, hermano, compadre"},{es:"En el trabajo: Jefe/Jefa, Señor/Señora"}]}
+        {category:"Cabello, ojos, rostro", items:[
+          {es:"Tiene el pelo corto/largo", pt:"Tem o cabelo curto/comprido"},{es:"Es pelado/calvo", pt:"É careca"},{es:"Usa barba/bigote", pt:"Usa barba/bigode"},
+          {es:"Es moreno(a)/castaño(a)/rubio(a)/pelirrojo(a)", pt:"É moreno(a)/castanho(a)/loiro(a)/ruivo(a)"},{es:"Tiene canas", pt:"Tem cabelos brancos"},
+          {es:"Tiene el pelo rizado/liso/ondulado", pt:"Tem o cabelo cacheado/liso/ondulado"},{es:"Tiene los ojos azules/verdes/marrones/negros", pt:"Tem os olhos azuis/verdes/castanhos/pretos"},
+          {es:"Lleva/usa gafas/lentes", pt:"Usa óculos"},{es:"Tiene las pestañas largas", pt:"Tem os cílios longos"},{es:"Tiene las cejas espesas", pt:"Tem as sobrancelhas grossas"},
+          {es:"Es narigón/narigona", pt:"Tem nariz grande"},{es:"Tiene hoyuelos", pt:"Tem covinhas"}
+        ]},
+        {category:"Cuerpo/porte", items:[
+          {es:"Es flaco(a)/delgado(a)", pt:"É magro(a)"},{es:"Es gordo(a)", pt:"É gordo(a)"},{es:"Es fuerte", pt:"É forte"},{es:"Es débil", pt:"É fraco(a)"},
+          {es:"Tiene espaldas anchas", pt:"Tem costas largas"},{es:"Está en forma", pt:"Está em forma"},{es:"Es musculoso(a)", pt:"É musculoso(a)"}
+        ]},
+        {category:"Personalidad y apariencia", items:[
+          {es:"Guapo(a)", pt:"Bonito(a)"},{es:"Hermoso(a)", pt:"Formoso(a) / Lindo(a)"},{es:"Precioso(a)", pt:"Precioso(a)"},{es:"Encantador(a)", pt:"Encantador(a)"},
+          {es:"Feliz", pt:"Feliz"},{es:"Triste", pt:"Triste"},{es:"Buena onda", pt:"Legal / Gente boa"},{es:"Feo(a)", pt:"Feio(a)"},{es:"Joven", pt:"Jovem"},
+          {es:"Inteligente", pt:"Inteligente"},{es:"Viejo(a)", pt:"Velho(a)"},{es:"Tonto(a)", pt:"Bobo(a)"},{es:"Tranquilo(a)", pt:"Tranquilo(a)"},
+          {es:"Nervioso(a)", pt:"Nervoso(a)"},{es:"Elegante", pt:"Elegante"},{es:"Simpático(a)", pt:"Simpático(a)"},{es:"Antipático(a)", pt:"Antipático(a)"},
+          {es:"Tacaño(a)", pt:"Pão-duro / Sovina"},{es:"Ñoño", pt:"Chato / Sem graça"},{es:"Mentiroso(a)", pt:"Mentiroso(a)"},{es:"Aburrido(a)", pt:"Chato(a) / Entediante"}
+        ]},
+        {category:"Formas de tratamiento", items:[
+          {es:"Tú/vos, Usted, Señor(a), Don/Doña", pt:"Você (informal), Você (formal), Senhor(a), Dom/Dona (título de respeito)"},
+          {es:"Entre amigos: tío, colega, cuate, hermano, compadre", pt:"Entre amigos: cara, colega, amigo, mano, compadre"},
+          {es:"En el trabajo: Jefe/Jefa, Señor/Señora", pt:"No trabalho: Chefe, Senhor/Senhora"}
+        ]}
       ],
       grammar: [
         {title:"Artículo indefinido", headers:["","Masculino","Femenino"], rows:[["Singular","UN","UNA"],["Plural","UNOS","UNAS"]]},
@@ -192,24 +302,43 @@ const LEVEL_BASICO = {
     {
       id: "b6", order: 6, title: "Restaurante", subtitle: "Comidas, bebidas, verbos irregulares",
       dialogue: [
-        {who:"Camarero", es:"¡Buenas noches, señores! ¿Una mesa para dos?"},
-        {who:"Cliente", es:"¡Hola, buenas noches! Sí, para dos, por favor."},
-        {who:"Camarero", es:"Aquí tienen el menú y la carta de vinos. Vuelvo en un instante."},
-        {who:"Cliente", es:"Quisiera el camarón con alioli y mi mujer el pollo con salsa cuatro quesos."},
-        {who:"Camarero", es:"¡Por supuesto! ¿Y qué desean tomar?"},
-        {who:"Cliente", es:"¿Qué nos recomiendas?"},
-        {who:"Camarero", es:"Tenemos este vino chileno muy especial."},
-        {who:"Cliente", es:"¡Camarero! Quisiéramos saber qué hay de postre."},
-        {who:"Cliente", es:"¡No, gracias! Solo la cuenta, por favor."},
-        {who:"Camarero", es:"¿Usted va a pagar con tarjeta o en efectivo?"},
-        {who:"Cliente", es:"En efectivo, aquí tienes. ¡Muchas gracias y buenas noches!"}
+        {who:"Camarero", es:"¡Buenas noches, señores! ¿Una mesa para dos?", pt:"Boa noite, senhores! Uma mesa para dois?"},
+        {who:"Cliente", es:"¡Hola, buenas noches! Sí, para dos, por favor.", pt:"Olá, boa noite! Sim, para dois, por favor."},
+        {who:"Camarero", es:"Aquí tienen el menú y la carta de vinos. Vuelvo en un instante.", pt:"Aqui está o cardápio e a carta de vinhos. Volto em um instante."},
+        {who:"Cliente", es:"Quisiera el camarón con alioli y mi mujer el pollo con salsa cuatro quesos.", pt:"Eu gostaria do camarão com alho e óleo, e minha esposa, o frango com molho quatro queijos."},
+        {who:"Camarero", es:"¡Por supuesto! ¿Y qué desean tomar?", pt:"Claro! E o que desejam beber?"},
+        {who:"Cliente", es:"¿Qué nos recomiendas?", pt:"O que você nos recomenda?"},
+        {who:"Camarero", es:"Tenemos este vino chileno muy especial.", pt:"Temos este vinho chileno muito especial."},
+        {who:"Cliente", es:"¡Camarero! Quisiéramos saber qué hay de postre.", pt:"Garçom! Gostaríamos de saber o que tem de sobremesa."},
+        {who:"Cliente", es:"¡No, gracias! Solo la cuenta, por favor.", pt:"Não, obrigado! Só a conta, por favor."},
+        {who:"Camarero", es:"¿Usted va a pagar con tarjeta o en efectivo?", pt:"O senhor vai pagar com cartão ou em dinheiro?"},
+        {who:"Cliente", es:"En efectivo, aquí tienes. ¡Muchas gracias y buenas noches!", pt:"Em dinheiro, aqui está. Muito obrigado e boa noite!"}
       ],
       vocabulary: [
-        {category:"Frases del camarero", items:[{es:"¿Cuántas personas, por favor?"},{es:"¿Fumadores o no fumadores?"},{es:"Aquí tienen el menú/la carta."},{es:"¿Qué desean de primer/segundo plato?"},{es:"¿Y para beber?"},{es:"¿Vino blanco o tinto?"},{es:"¿Qué tomarán de postre?"},{es:"Aquí tienen la cuenta."},{es:"¿Van a pagar con tarjeta o en efectivo?"}]},
-        {category:"Frases del cliente", items:[{es:"Una mesa para dos personas, por favor."},{es:"He hecho una reserva a nombre de..."},{es:"Quisiera un pollo con vegetales salteados."},{es:"¿Me trae otra servilleta, por favor?"},{es:"¿Nos trae la cuenta, por favor?"},{es:"¡Qué rico/exquisito/delicioso!"}]},
-        {category:"Comidas", items:[{es:"Arroz"},{es:"Frijoles/porotos"},{es:"Lentejas"},{es:"Pasta"},{es:"Huevo frito/duro/revuelto"},{es:"Puré de papas"},{es:"Papas fritas"},{es:"Ensalada"},{es:"Sopa"},{es:"Tortilla"},{es:"Pizza"},{es:"Pan"},{es:"Hamburguesa"},{es:"Filete"},{es:"Pollo"},{es:"Pescado"},{es:"Marisco"},{es:"Camarones"},{es:"Salmón"},{es:"Paella de marisco"},{es:"Empanadas"}]},
-        {category:"Bebidas", items:[{es:"Agua (con/sin gas)"},{es:"Café"},{es:"Chocolate (caliente)"},{es:"Cerveza"},{es:"Té"},{es:"Leche"},{es:"Jugo/Zumo"},{es:"Gaseosa/refresco"},{es:"Vino (tinto, blanco, rosado)"},{es:"Sangría"}]},
-        {category:"Postres", items:[{es:"Pastel/torta/tarta"},{es:"Helado"},{es:"Flan"},{es:"Mousse"}]}
+        {category:"Frases del camarero", items:[
+          {es:"¿Cuántas personas, por favor?", pt:"Quantas pessoas, por favor?"},{es:"¿Fumadores o no fumadores?", pt:"Fumantes ou não fumantes?"},
+          {es:"Aquí tienen el menú/la carta.", pt:"Aqui está o cardápio."},{es:"¿Qué desean de primer/segundo plato?", pt:"O que desejam de entrada/prato principal?"},
+          {es:"¿Y para beber?", pt:"E para beber?"},{es:"¿Vino blanco o tinto?", pt:"Vinho branco ou tinto?"},{es:"¿Qué tomarán de postre?", pt:"O que vão querer de sobremesa?"},
+          {es:"Aquí tienen la cuenta.", pt:"Aqui está a conta."},{es:"¿Van a pagar con tarjeta o en efectivo?", pt:"Vão pagar com cartão ou em dinheiro?"}
+        ]},
+        {category:"Frases del cliente", items:[
+          {es:"Una mesa para dos personas, por favor.", pt:"Uma mesa para duas pessoas, por favor."},{es:"He hecho una reserva a nombre de...", pt:"Fiz uma reserva em nome de..."},
+          {es:"Quisiera un pollo con vegetales salteados.", pt:"Eu gostaria de um frango com legumes salteados."},{es:"¿Me trae otra servilleta, por favor?", pt:"Você me traz outro guardanapo, por favor?"},
+          {es:"¿Nos trae la cuenta, por favor?", pt:"Você nos traz a conta, por favor?"},{es:"¡Qué rico/exquisito/delicioso!", pt:"Que gostoso/saboroso/delicioso!"}
+        ]},
+        {category:"Comidas", items:[
+          {es:"Arroz", pt:"Arroz"},{es:"Frijoles/porotos", pt:"Feijão"},{es:"Lentejas", pt:"Lentilhas"},{es:"Pasta", pt:"Macarrão/Massa"},
+          {es:"Huevo frito/duro/revuelto", pt:"Ovo frito/cozido/mexido"},{es:"Puré de papas", pt:"Purê de batata"},{es:"Papas fritas", pt:"Batata frita"},
+          {es:"Ensalada", pt:"Salada"},{es:"Sopa", pt:"Sopa"},{es:"Tortilla", pt:"Omelete (tortilha espanhola de batata)"},{es:"Pizza", pt:"Pizza"},
+          {es:"Pan", pt:"Pão"},{es:"Hamburguesa", pt:"Hambúrguer"},{es:"Filete", pt:"Filé"},{es:"Pollo", pt:"Frango"},{es:"Pescado", pt:"Peixe"},
+          {es:"Marisco", pt:"Frutos do mar"},{es:"Camarones", pt:"Camarões"},{es:"Salmón", pt:"Salmão"},{es:"Paella de marisco", pt:"Paella de frutos do mar"},{es:"Empanadas", pt:"Empanadas (salgados recheados assados/fritos)"}
+        ]},
+        {category:"Bebidas", items:[
+          {es:"Agua (con/sin gas)", pt:"Água (com/sem gás)"},{es:"Café", pt:"Café"},{es:"Chocolate (caliente)", pt:"Chocolate (quente)"},{es:"Cerveza", pt:"Cerveja"},
+          {es:"Té", pt:"Chá"},{es:"Leche", pt:"Leite"},{es:"Jugo/Zumo", pt:"Suco"},{es:"Gaseosa/refresco", pt:"Refrigerante"},
+          {es:"Vino (tinto, blanco, rosado)", pt:"Vinho (tinto, branco, rosé)"},{es:"Sangría", pt:"Sangria"}
+        ]},
+        {category:"Postres", items:[{es:"Pastel/torta/tarta", pt:"Bolo/torta"},{es:"Helado", pt:"Sorvete"},{es:"Flan", pt:"Pudim (flan)"},{es:"Mousse", pt:"Mousse"}]}
       ],
       grammar: [
         {title:"Verbos irregulares — presente", headers:["Pronombre","Oír","Dar","Dormir","Venir"], rows:[
@@ -237,7 +366,14 @@ const LEVEL_BASICO = {
       id: "b7", order: 7, title: "Oficina", subtitle: "Materiais, demonstrativos, palavras com/sem til",
       text: "Hoy empiezo a trabajar en la oficina a las 8:30 de la mañana. Tengo mucho que hacer allá. Muchos documentos para firmar, reuniones para ir, llamadas a clientes para hacer y aún tengo que ir a una papelería para comprar los materiales escolares de mi hija. Ella necesita cuadernos, tijeras, lápices, bolígrafos, reglas. Lo peor es que nuestro ordenador no está funcionando y tengo que llevarlo para arreglar.",
       vocabulary: [
-        {category:"Materiales escolares y de oficina", items:[{es:"Bolígrafo/Pluma/Lapicero"},{es:"Lápiz"},{es:"Goma (de borrar)"},{es:"Sacapuntas"},{es:"Tijera"},{es:"Cuaderno"},{es:"Regla"},{es:"Carpeta"},{es:"Pegamento"},{es:"Mochila"},{es:"Diccionario"},{es:"Marcador/Rotulador"},{es:"Calculadora"},{es:"Grapadora"},{es:"Impresora"},{es:"Ordenador/Computador(a)"},{es:"Pizarra"},{es:"Papel/Folio/Hoja"},{es:"Documento"},{es:"Papelera"},{es:"Agenda"},{es:"Archivo"},{es:"Teléfono"},{es:"Correo electrónico"}]}
+        {category:"Materiales escolares y de oficina", items:[
+          {es:"Bolígrafo/Pluma/Lapicero", pt:"Caneta"},{es:"Lápiz", pt:"Lápis"},{es:"Goma (de borrar)", pt:"Borracha"},{es:"Sacapuntas", pt:"Apontador"},
+          {es:"Tijera", pt:"Tesoura"},{es:"Cuaderno", pt:"Caderno"},{es:"Regla", pt:"Régua"},{es:"Carpeta", pt:"Pasta (de arquivo)"},
+          {es:"Pegamento", pt:"Cola"},{es:"Mochila", pt:"Mochila"},{es:"Diccionario", pt:"Dicionário"},{es:"Marcador/Rotulador", pt:"Marcador / Caneta hidrográfica"},
+          {es:"Calculadora", pt:"Calculadora"},{es:"Grapadora", pt:"Grampeador"},{es:"Impresora", pt:"Impressora"},{es:"Ordenador/Computador(a)", pt:"Computador"},
+          {es:"Pizarra", pt:"Quadro (branco/negro)"},{es:"Papel/Folio/Hoja", pt:"Papel/Folha"},{es:"Documento", pt:"Documento"},{es:"Papelera", pt:"Lixeira"},
+          {es:"Agenda", pt:"Agenda"},{es:"Archivo", pt:"Arquivo"},{es:"Teléfono", pt:"Telefone"},{es:"Correo electrónico", pt:"E-mail"}
+        ]}
       ],
       grammar: [
         {title:"Pronombres/adjetivos demostrativos", headers:["","Masc. Sing.","Masc. Plural","Fem. Sing.","Fem. Plural"], rows:[["Cerca (this)","Este","Estos","Esta","Estas"],["Médio (that)","Ese","Esos","Esa","Esas"],["Longe (that, over there)","Aquel","Aquellos","Aquella","Aquellas"]]},
@@ -261,9 +397,24 @@ const LEVEL_BASICO = {
       id: "b8", order: 8, title: "Casa", subtitle: "Haber x Tener x Contar con, números 0-100",
       text: "Mi casa tiene dos pisos y es un lugar muy acogedor. Tengo una habitación y un baño solo para mí, hay también una cocina, otro baño, 2 habitaciones más, un garaje, un comedor, y cuenta también con un bello jardín y una pequeña piscina. Mi dirección es calle Bolívar, 47.",
       vocabulary: [
-        {category:"Partes de la casa", items:[{es:"Casa/vivienda/piso/departamento"},{es:"Habitación/Dormitorio"},{es:"Cuarto de baño"},{es:"Cocina"},{es:"Sala de estar/Living"},{es:"Comedor"},{es:"Escalera"},{es:"Garaje/Cochera"},{es:"Terraza"},{es:"Sótano"},{es:"Jardín"},{es:"Balcón"},{es:"Ático/Buhardilla"},{es:"Piscina/Pileta"},{es:"Chimenea"},{es:"Puerta"},{es:"Ventana"},{es:"Tejado"},{es:"Pared"}]},
-        {category:"Adjetivos para objetos", items:[{es:"Agradable"},{es:"Alegre"},{es:"Alto(a)/Bajo(a)"},{es:"Barato(a)/Caro(a)"},{es:"Bonito(a)/Feo(a)"},{es:"Bueno(a)"},{es:"Caliente/Frío(a)"},{es:"Cómodo(a)"},{es:"Corto(a)/Largo(a)"},{es:"Débil/Fuerte"},{es:"Grande/Pequeño(a)"},{es:"Limpio(a)/Sucio(a)"},{es:"Nuevo(a)/Viejo(a)"},{es:"Peligroso(a)"},{es:"Rico(a)"},{es:"Seco(a)/Húmedo(a)"}]},
-        {category:"Adverbios de lugar", items:[{es:"Aquí/Acá"},{es:"Ahí/Allí"},{es:"Cerca/Lejos"},{es:"Arriba/Abajo"},{es:"Delante/Detrás"},{es:"Encima/Debajo"},{es:"Adentro/Afuera"}]}
+        {category:"Partes de la casa", items:[
+          {es:"Casa/vivienda/piso/departamento", pt:"Casa/moradia/andar/apartamento"},{es:"Habitación/Dormitorio", pt:"Quarto"},{es:"Cuarto de baño", pt:"Banheiro"},
+          {es:"Cocina", pt:"Cozinha"},{es:"Sala de estar/Living", pt:"Sala de estar"},{es:"Comedor", pt:"Sala de jantar"},{es:"Escalera", pt:"Escada"},
+          {es:"Garaje/Cochera", pt:"Garagem"},{es:"Terraza", pt:"Terraço"},{es:"Sótano", pt:"Porão"},{es:"Jardín", pt:"Jardim"},{es:"Balcón", pt:"Varanda/Sacada"},
+          {es:"Ático/Buhardilla", pt:"Sótão/Mansarda"},{es:"Piscina/Pileta", pt:"Piscina"},{es:"Chimenea", pt:"Lareira"},{es:"Puerta", pt:"Porta"},
+          {es:"Ventana", pt:"Janela"},{es:"Tejado", pt:"Telhado"},{es:"Pared", pt:"Parede"}
+        ]},
+        {category:"Adjetivos para objetos", items:[
+          {es:"Agradable", pt:"Agradável"},{es:"Alegre", pt:"Alegre"},{es:"Alto(a)/Bajo(a)", pt:"Alto(a)/Baixo(a)"},{es:"Barato(a)/Caro(a)", pt:"Barato(a)/Caro(a)"},
+          {es:"Bonito(a)/Feo(a)", pt:"Bonito(a)/Feio(a)"},{es:"Bueno(a)", pt:"Bom/Boa"},{es:"Caliente/Frío(a)", pt:"Quente/Frio(a)"},{es:"Cómodo(a)", pt:"Confortável"},
+          {es:"Corto(a)/Largo(a)", pt:"Curto(a)/Comprido(a)"},{es:"Débil/Fuerte", pt:"Fraco(a)/Forte"},{es:"Grande/Pequeño(a)", pt:"Grande/Pequeno(a)"},
+          {es:"Limpio(a)/Sucio(a)", pt:"Limpo(a)/Sujo(a)"},{es:"Nuevo(a)/Viejo(a)", pt:"Novo(a)/Velho(a)"},{es:"Peligroso(a)", pt:"Perigoso(a)"},
+          {es:"Rico(a)", pt:"Rico(a) / Gostoso(a)"},{es:"Seco(a)/Húmedo(a)", pt:"Seco(a)/Úmido(a)"}
+        ]},
+        {category:"Adverbios de lugar", items:[
+          {es:"Aquí/Acá", pt:"Aqui"},{es:"Ahí/Allí", pt:"Ali/Lá"},{es:"Cerca/Lejos", pt:"Perto/Longe"},{es:"Arriba/Abajo", pt:"Em cima/Embaixo"},
+          {es:"Delante/Detrás", pt:"Na frente/Atrás"},{es:"Encima/Debajo", pt:"Em cima de/Embaixo de"},{es:"Adentro/Afuera", pt:"Dentro/Fora"}
+        ]}
       ],
       grammar: [
         {title:"Números cardinales 0-100 (amostras)", headers:["Número","Espanhol"], rows:[["0-9","Cero, Uno, Dos, Tres, Cuatro, Cinco, Seis, Siete, Ocho, Nueve"],["10-19","Diez, Once, Doce, Trece, Catorce, Quince, Dieciséis, Diecisiete, Dieciocho, Diecinueve"],["20-29","Veinte, Veintiuno...Veintinueve"],["30-90 (dezenas)","Treinta, Cuarenta, Cincuenta, Sesenta, Setenta, Ochenta, Noventa"],["100","Cien"]]}
@@ -283,19 +434,28 @@ const LEVEL_BASICO = {
     {
       id: "b9", order: 9, title: "Preferencias", subtitle: "Verbo PREFERIR, dias, meses, ordinais",
       dialogue: [
-        {who:"A", es:"¡Buenos días! ¿Cómo te llamas?"},
-        {who:"B", es:"¡Hola! Soy Henrico."},
-        {who:"A", es:"¿Podrías contestarnos algunas preguntas sobre gustos y preferencias?"},
-        {who:"B", es:"¡Por supuesto!"},
-        {who:"A", es:"¿De qué equipo eres hincha?"},
-        {who:"B", es:"De River. ¡Lo amo!"},
-        {who:"A", es:"¿Qué les gusta más comer cuando están viajando?"},
-        {who:"B", es:"A mí me gusta comer pescado y odio comer pizza, mi mujer prefiere pasta a pescado."}
+        {who:"A", es:"¡Buenos días! ¿Cómo te llamas?", pt:"Bom dia! Como você se chama?"},
+        {who:"B", es:"¡Hola! Soy Henrico.", pt:"Olá! Eu sou Henrico."},
+        {who:"A", es:"¿Podrías contestarnos algunas preguntas sobre gustos y preferencias?", pt:"Você poderia responder algumas perguntas sobre gostos e preferências?"},
+        {who:"B", es:"¡Por supuesto!", pt:"Claro!"},
+        {who:"A", es:"¿De qué equipo eres hincha?", pt:"De que time você é torcedor?"},
+        {who:"B", es:"De River. ¡Lo amo!", pt:"Do River. Eu amo esse time!"},
+        {who:"A", es:"¿Qué les gusta más comer cuando están viajando?", pt:"O que vocês mais gostam de comer quando estão viajando?"},
+        {who:"B", es:"A mí me gusta comer pescado y odio comer pizza, mi mujer prefiere pasta a pescado.", pt:"Eu gosto de comer peixe e odeio comer pizza, minha esposa prefere macarrão a peixe."}
       ],
       vocabulary: [
-        {category:"Días de la semana", items:[{es:"Lunes"},{es:"Martes"},{es:"Miércoles"},{es:"Jueves"},{es:"Viernes"},{es:"Sábado"},{es:"Domingo"}]},
-        {category:"Meses del año", items:[{es:"Enero"},{es:"Febrero"},{es:"Marzo"},{es:"Abril"},{es:"Mayo"},{es:"Junio"},{es:"Julio"},{es:"Agosto"},{es:"Septiembre"},{es:"Octubre"},{es:"Noviembre"},{es:"Diciembre"}]},
-        {category:"Números ordinales", items:[{es:"1º Primero"},{es:"2º Segundo"},{es:"3º Tercero"},{es:"4º Cuarto"},{es:"5º Quinto"},{es:"6º Sexto"},{es:"7º Séptimo"},{es:"8º Octavo"},{es:"9º Noveno"},{es:"10º Décimo"}]}
+        {category:"Días de la semana", items:[
+          {es:"Lunes", pt:"Segunda-feira"},{es:"Martes", pt:"Terça-feira"},{es:"Miércoles", pt:"Quarta-feira"},{es:"Jueves", pt:"Quinta-feira"},
+          {es:"Viernes", pt:"Sexta-feira"},{es:"Sábado", pt:"Sábado"},{es:"Domingo", pt:"Domingo"}
+        ]},
+        {category:"Meses del año", items:[
+          {es:"Enero", pt:"Janeiro"},{es:"Febrero", pt:"Fevereiro"},{es:"Marzo", pt:"Março"},{es:"Abril", pt:"Abril"},{es:"Mayo", pt:"Maio"},{es:"Junio", pt:"Junho"},
+          {es:"Julio", pt:"Julho"},{es:"Agosto", pt:"Agosto"},{es:"Septiembre", pt:"Setembro"},{es:"Octubre", pt:"Outubro"},{es:"Noviembre", pt:"Novembro"},{es:"Diciembre", pt:"Dezembro"}
+        ]},
+        {category:"Números ordinales", items:[
+          {es:"1º Primero", pt:"1º Primeiro"},{es:"2º Segundo", pt:"2º Segundo"},{es:"3º Tercero", pt:"3º Terceiro"},{es:"4º Cuarto", pt:"4º Quarto"},
+          {es:"5º Quinto", pt:"5º Quinto"},{es:"6º Sexto", pt:"6º Sexto"},{es:"7º Séptimo", pt:"7º Sétimo"},{es:"8º Octavo", pt:"8º Oitavo"},{es:"9º Noveno", pt:"9º Nono"},{es:"10º Décimo", pt:"10º Décimo"}
+        ]}
       ],
       grammar: [
         {title:"Verbo PREFERIR — presente", headers:["Pronombre","Conjugación"], rows:[["Yo","Prefiero"],["Tú/Vos","Prefieres/Preferís"],["Él/Ella/Usted","Prefiere"],["Nosotros(as)","Preferimos"],["Vosotros(as)","Preferís"],["Ellos/Ellas/Ustedes","Prefieren"]]},
@@ -317,9 +477,23 @@ const LEVEL_BASICO = {
       id: "b10", order: 10, title: "Cuerpo", subtitle: "Saúde, imperativo afirmativo/negativo",
       text: "Muchas veces, puedes sentirte agotado o tienes dolores raros, y es muy importante que escuches tu cuerpo. Si te duele el estómago o la cabeza, si te sientes muy cansado, con mucho sueño o con tensión muscular, todo eso tiene un significado. ¡Escucha lo que te dice tu cuerpo! Empieza a relajarte más, medita, duerme más, come alimentos más saludables.",
       vocabulary: [
-        {category:"Salud — frases útiles", items:[{es:"¡Me siento mal!"},{es:"Llamen a un doctor."},{es:"Me duele…"},{es:"Tengo un resfriado."},{es:"Tengo alergia/soy alérgico(a) a…"},{es:"No tengo ninguna enfermedad."},{es:"Estoy embarazada."},{es:"¿Tengo que quedarme en cama?"},{es:"Tengo una receta médica para esta medicina."}]},
-        {category:"Problemas de salud", items:[{es:"Me duele(n) la/el/las/los..."},{es:"Estoy enfermo(a)."},{es:"Tengo fiebre"},{es:"Tengo escalofríos"},{es:"Tengo diarrea"},{es:"Tengo jaqueca"},{es:"Tengo tos"},{es:"Tengo la nariz tapada"},{es:"Tengo calambres"},{es:"Catarro/Resfrío/Gripa/Resfriado (sinônimos de gripe)"}]},
-        {category:"Partes del cuerpo", items:[{es:"Cabeza"},{es:"Cara"},{es:"Ojos"},{es:"Nariz"},{es:"Boca"},{es:"Orejas"},{es:"Cuello"},{es:"Hombros"},{es:"Brazos"},{es:"Manos"},{es:"Dedos"},{es:"Pecho"},{es:"Espalda"},{es:"Barriga/Estómago"},{es:"Piernas"},{es:"Rodillas"},{es:"Pies"}]}
+        {category:"Salud — frases útiles", items:[
+          {es:"¡Me siento mal!", pt:"Estou me sentindo mal!"},{es:"Llamen a un doctor.", pt:"Chamem um médico."},{es:"Me duele…", pt:"Dói-me... / Estou com dor em..."},
+          {es:"Tengo un resfriado.", pt:"Estou resfriado(a)."},{es:"Tengo alergia/soy alérgico(a) a…", pt:"Tenho alergia / sou alérgico(a) a..."},
+          {es:"No tengo ninguna enfermedad.", pt:"Não tenho nenhuma doença."},{es:"Estoy embarazada.", pt:"Estou grávida."},
+          {es:"¿Tengo que quedarme en cama?", pt:"Eu preciso ficar de cama?"},{es:"Tengo una receta médica para esta medicina.", pt:"Tenho uma receita médica para este remédio."}
+        ]},
+        {category:"Problemas de salud", items:[
+          {es:"Me duele(n) la/el/las/los...", pt:"Dói/Doem o(s)/a(s)..."},{es:"Estoy enfermo(a).", pt:"Estou doente."},{es:"Tengo fiebre", pt:"Estou com febre"},
+          {es:"Tengo escalofríos", pt:"Estou com calafrios"},{es:"Tengo diarrea", pt:"Estou com diarreia"},{es:"Tengo jaqueca", pt:"Estou com enxaqueca"},
+          {es:"Tengo tos", pt:"Estou com tosse"},{es:"Tengo la nariz tapada", pt:"Estou com o nariz entupido"},{es:"Tengo calambres", pt:"Estou com cãibras"},
+          {es:"Catarro/Resfrío/Gripa/Resfriado (sinônimos de gripe)", pt:"Catarro/Resfriado/Gripe (sinônimos)"}
+        ]},
+        {category:"Partes del cuerpo", items:[
+          {es:"Cabeza", pt:"Cabeça"},{es:"Cara", pt:"Rosto"},{es:"Ojos", pt:"Olhos"},{es:"Nariz", pt:"Nariz"},{es:"Boca", pt:"Boca"},{es:"Orejas", pt:"Orelhas"},
+          {es:"Cuello", pt:"Pescoço"},{es:"Hombros", pt:"Ombros"},{es:"Brazos", pt:"Braços"},{es:"Manos", pt:"Mãos"},{es:"Dedos", pt:"Dedos"},{es:"Pecho", pt:"Peito"},
+          {es:"Espalda", pt:"Costas"},{es:"Barriga/Estómago", pt:"Barriga/Estômago"},{es:"Piernas", pt:"Pernas"},{es:"Rodillas", pt:"Joelhos"},{es:"Pies", pt:"Pés"}
+        ]}
       ],
       grammar: [
         {title:"Imperativo afirmativo e negativo — AMAR/COMER/VIVIR", headers:["Pronombre","Amar (afirm.)","Amar (neg.)","Comer (afirm.)","Vivir (afirm.)"], rows:[
@@ -341,15 +515,24 @@ const LEVEL_BASICO = {
     {
       id: "b11", order: 11, title: "Direcciones", subtitle: "Imperativo irregular, localização",
       dialogue: [
-        {who:"A", es:"¡Buen día, María! ¿Qué haces por acá?"},
-        {who:"B", es:"Estoy buscando un lugar adonde tengo que ir. El consultorio está en la avenida Don Juan, 74."},
-        {who:"A", es:"Es cerca de aquí. Gira a la izquierda, sigue recto hasta el supermercado Diones, cruza la calle y ahí va a estar el edificio."},
-        {who:"B", es:"¡Ah, sí! Creo que ahora me ubiqué. ¡Muchísimas gracias!"}
+        {who:"A", es:"¡Buen día, María! ¿Qué haces por acá?", pt:"Bom dia, María! O que você está fazendo por aqui?"},
+        {who:"B", es:"Estoy buscando un lugar adonde tengo que ir. El consultorio está en la avenida Don Juan, 74.", pt:"Estou procurando um lugar aonde preciso ir. O consultório fica na avenida Don Juan, 74."},
+        {who:"A", es:"Es cerca de aquí. Gira a la izquierda, sigue recto hasta el supermercado Diones, cruza la calle y ahí va a estar el edificio.", pt:"É perto daqui. Vire à esquerda, siga reto até o supermercado Diones, atravesse a rua e ali vai estar o prédio."},
+        {who:"B", es:"¡Ah, sí! Creo que ahora me ubiqué. ¡Muchísimas gracias!", pt:"Ah, sim! Acho que agora eu me situei. Muitíssimo obrigada!"}
       ],
       vocabulary: [
-        {category:"Pedir/dar direcciones", items:[{es:"Doblar/girar a la izquierda"},{es:"Doblar/girar a la derecha"},{es:"Seguir/Ir todo recto"},{es:"Cruzar/Atravesar (la calle)"},{es:"Subir/Bajar la calle"},{es:"Volver/Regresar/Retornar"}]},
-        {category:"Ubicación", items:[{es:"Está a la izquierda"},{es:"Está al final de la calle"},{es:"Está cerca de…"},{es:"Está ubicado/se encuentra enfrente a/al"},{es:"Está en la esquina de…"},{es:"Está al lado de..."}]},
-        {category:"Preguntas útiles", items:[{es:"¿Dónde está la parada de colectivo/la farmacia/el hospital?"},{es:"¿Cómo se va hasta…?"},{es:"¿Dónde puedo encontrar…?"}]}
+        {category:"Pedir/dar direcciones", items:[
+          {es:"Doblar/girar a la izquierda", pt:"Virar à esquerda"},{es:"Doblar/girar a la derecha", pt:"Virar à direita"},{es:"Seguir/Ir todo recto", pt:"Seguir/Ir todo reto"},
+          {es:"Cruzar/Atravesar (la calle)", pt:"Cruzar/Atravessar (a rua)"},{es:"Subir/Bajar la calle", pt:"Subir/Descer a rua"},{es:"Volver/Regresar/Retornar", pt:"Voltar/Regressar/Retornar"}
+        ]},
+        {category:"Ubicación", items:[
+          {es:"Está a la izquierda", pt:"Fica à esquerda"},{es:"Está al final de la calle", pt:"Fica no final da rua"},{es:"Está cerca de…", pt:"Fica perto de..."},
+          {es:"Está ubicado/se encuentra enfrente a/al", pt:"Fica localizado/se encontra em frente a/ao"},{es:"Está en la esquina de…", pt:"Fica na esquina de..."},{es:"Está al lado de...", pt:"Fica ao lado de..."}
+        ]},
+        {category:"Preguntas útiles", items:[
+          {es:"¿Dónde está la parada de colectivo/la farmacia/el hospital?", pt:"Onde fica o ponto de ônibus/a farmácia/o hospital?"},
+          {es:"¿Cómo se va hasta…?", pt:"Como se vai até...?"},{es:"¿Dónde puedo encontrar…?", pt:"Onde posso encontrar...?"}
+        ]}
       ],
       grammar: [
         {title:"Imperativo irregular — IR / SEGUIR", headers:["Pronombre","Ir (afirm.)","Ir (neg.)","Seguir (afirm.)"], rows:[
@@ -369,14 +552,17 @@ const LEVEL_BASICO = {
     {
       id: "b12", order: 12, title: "Viaje de vacaciones", subtitle: "Futuro próximo, verbos pronominales",
       dialogue: [
-        {who:"A", es:"¡Hola, Joana! ¿Qué estás haciendo?"},
-        {who:"B", es:"Estoy arreglando mis maletas, voy a viajar mañana. Voy de vacaciones a una playa con mi novio."},
-        {who:"A", es:"¡Qué lindo! ¿Y cuánto tiempo se van a quedar allá?"},
-        {who:"B", es:"Nos vamos a quedar solo una semana."},
-        {who:"A", es:"¡Buen viaje y espero que se diviertan mucho!"}
+        {who:"A", es:"¡Hola, Joana! ¿Qué estás haciendo?", pt:"Olá, Joana! O que você está fazendo?"},
+        {who:"B", es:"Estoy arreglando mis maletas, voy a viajar mañana. Voy de vacaciones a una playa con mi novio.", pt:"Estou arrumando minhas malas, vou viajar amanhã. Vou de férias para uma praia com meu namorado."},
+        {who:"A", es:"¡Qué lindo! ¿Y cuánto tiempo se van a quedar allá?", pt:"Que legal! E quanto tempo vocês vão ficar lá?"},
+        {who:"B", es:"Nos vamos a quedar solo una semana.", pt:"Vamos ficar só uma semana."},
+        {who:"A", es:"¡Buen viaje y espero que se diviertan mucho!", pt:"Boa viagem e espero que vocês se divirtam muito!"}
       ],
       vocabulary: [
-        {category:"A - AL - A LA - A LOS - A LAS", items:[{es:"Voy a un restaurante esta noche."},{es:"¿Vamos al centro comercial?"},{es:"¿Queréis ir a la panadería?"},{es:"¿Qué pasa a los chicos?"}]}
+        {category:"A - AL - A LA - A LOS - A LAS", items:[
+          {es:"Voy a un restaurante esta noche.", pt:"Vou a um restaurante esta noite."},{es:"¿Vamos al centro comercial?", pt:"Vamos ao shopping?"},
+          {es:"¿Queréis ir a la panadería?", pt:"Vocês querem ir à padaria?"},{es:"¿Qué pasa a los chicos?", pt:"O que está acontecendo com os garotos?"}
+        ]}
       ],
       grammar: [
         {title:"Futuro próximo/inmediato — IR + A + infinitivo", headers:["Pronombre","Ir","+ a + infinitivo (ex.)"], rows:[
@@ -401,14 +587,17 @@ const LEVEL_BASICO = {
     {
       id: "b13", order: 13, title: "¿Qué estás haciendo?", subtitle: "Presente continuo, gerundio, interjeições",
       dialogue: [
-        {who:"Madre", es:"¡Martina! ¿Podrías ayudarme a limpiar la casa?"},
-        {who:"Martina", es:"¡Perdón, mamá!, pero ahora estoy estudiando."},
-        {who:"Madre", es:"¿A qué hora vas a terminar?"},
-        {who:"Martina", es:"Cuando termine, voy a estar ordenando mi cuarto, jugando, viendo la tele."},
-        {who:"Madre", es:"Si cuando vuelva, no hayas terminado todo, vas a tener problemas conmigo."}
+        {who:"Madre", es:"¡Martina! ¿Podrías ayudarme a limpiar la casa?", pt:"Martina! Você poderia me ajudar a limpar a casa?"},
+        {who:"Martina", es:"¡Perdón, mamá!, pero ahora estoy estudiando.", pt:"Desculpa, mãe! Mas agora estou estudando."},
+        {who:"Madre", es:"¿A qué hora vas a terminar?", pt:"A que horas você vai terminar?"},
+        {who:"Martina", es:"Cuando termine, voy a estar ordenando mi cuarto, jugando, viendo la tele.", pt:"Quando eu terminar, vou estar arrumando meu quarto, brincando, vendo tevê."},
+        {who:"Madre", es:"Si cuando vuelva, no hayas terminado todo, vas a tener problemas conmigo.", pt:"Se quando eu voltar você não tiver terminado tudo, vai ter problemas comigo."}
       ],
       vocabulary: [
-        {category:"Interjecciones", items:[{es:"¡Caramba!"},{es:"¡Dios mío!"},{es:"¡Bravo!"},{es:"¡Ojalá!"},{es:"¡Bah!"},{es:"¡Ay!"},{es:"¡Uy!"},{es:"¡Vale!"},{es:"¡Dale!"},{es:"¡Che!"}]}
+        {category:"Interjecciones", items:[
+          {es:"¡Caramba!", pt:"Caramba!"},{es:"¡Dios mío!", pt:"Meu Deus!"},{es:"¡Bravo!", pt:"Bravo!"},{es:"¡Ojalá!", pt:"Tomara!"},{es:"¡Bah!", pt:"Bah!"},
+          {es:"¡Ay!", pt:"Ai!"},{es:"¡Uy!", pt:"Ui!"},{es:"¡Vale!", pt:"Tá bom! / Combinado! (uso espanhol)"},{es:"¡Dale!", pt:"Vai! / Combinado! (uso rio-platense)"},{es:"¡Che!", pt:"Ei! / Cara! (uso argentino)"}
+        ]}
       ],
       grammar: [
         {title:"Presente continuo — ESTAR + gerundio", headers:["Pronombre","Estar + gerundio"], rows:[
@@ -432,8 +621,16 @@ const LEVEL_BASICO = {
       id: "b14", order: 14, title: "Clima", subtitle: "Expressões de tempo, temperatura, números 100-1000",
       text: "El clima brasileño es muy distinto en cada región. En enero se puede sentir el clima tropical, hace calor y hay humedad. En el sur, en la primavera hay muchas flores, en el verano hace muchísimo calor, en el otoño se pueden ver las hojas cayendo y en el invierno hace mucho frío y es posible ver la nieve.",
       vocabulary: [
-        {category:"El clima (expresiones)", items:[{es:"Hace buen tiempo"},{es:"Hace mal tiempo"},{es:"Nieva"},{es:"Hace calor"},{es:"Hay niebla"},{es:"Hace frío"},{es:"Hay nubes"},{es:"Hace fresco"},{es:"Hay sol"},{es:"Hace sol"},{es:"Hace viento"},{es:"Hay una tormenta"},{es:"Está despejado"},{es:"Está nublado"},{es:"Llueve"}]},
-        {category:"El tiempo está...", items:[{es:"Soleado"},{es:"Lluvioso"},{es:"Ventoso"},{es:"Nublado"},{es:"Frío"},{es:"Caliente"},{es:"Fresco"},{es:"Agradable"}]}
+        {category:"El clima (expresiones)", items:[
+          {es:"Hace buen tiempo", pt:"Está fazendo bom tempo"},{es:"Hace mal tiempo", pt:"Está fazendo mau tempo"},{es:"Nieva", pt:"Neva"},
+          {es:"Hace calor", pt:"Está fazendo calor"},{es:"Hay niebla", pt:"Há neblina"},{es:"Hace frío", pt:"Está fazendo frio"},{es:"Hay nubes", pt:"Há nuvens"},
+          {es:"Hace fresco", pt:"Está fazendo fresco"},{es:"Hay sol", pt:"Há sol"},{es:"Hace sol", pt:"Está fazendo sol"},{es:"Hace viento", pt:"Está ventando"},
+          {es:"Hay una tormenta", pt:"Há uma tempestade"},{es:"Está despejado", pt:"Está limpo (céu sem nuvens)"},{es:"Está nublado", pt:"Está nublado"},{es:"Llueve", pt:"Chove"}
+        ]},
+        {category:"El tiempo está...", items:[
+          {es:"Soleado", pt:"Ensolarado"},{es:"Lluvioso", pt:"Chuvoso"},{es:"Ventoso", pt:"Ventoso"},{es:"Nublado", pt:"Nublado"},
+          {es:"Frío", pt:"Frio"},{es:"Caliente", pt:"Quente"},{es:"Fresco", pt:"Fresco"},{es:"Agradable", pt:"Agradável"}
+        ]}
       ],
       grammar: [
         {title:"Estaciones por hemisferio", headers:["Hemisferio","Verano","Invierno"], rows:[["Sur (Argentina)","Dic-Ene-Feb","Jun-Jul-Ago"],["Norte (España)","Jun-Jul-Ago","Dic-Ene-Feb"]]},
@@ -453,14 +650,18 @@ const LEVEL_BASICO = {
     {
       id: "b15", order: 15, title: "Navidad", subtitle: "Condicional, feriados, repaso geral",
       dialogue: [
-        {who:"Hija", es:"¡Mamá y papá! ¿Qué vamos a hacer esta Navidad?"},
-        {who:"Padre", es:"Pensamos en cenar con la familia y después salir a la calle para darles comida a los que no tienen familia o casa."},
-        {who:"Hija", es:"¡Me parece lindo, papá! Me gustaría dibujar el Papá Noel."},
-        {who:"Padre", es:"¡Sí, buenísima idea! ¿Te gustaría ayudarnos a elegir ropas para regalar?"},
-        {who:"Hija", es:"¡Por supuesto! Quisiera ir ahora."}
+        {who:"Hija", es:"¡Mamá y papá! ¿Qué vamos a hacer esta Navidad?", pt:"Mamãe e papai! O que vamos fazer neste Natal?"},
+        {who:"Padre", es:"Pensamos en cenar con la familia y después salir a la calle para darles comida a los que no tienen familia o casa.", pt:"Pensamos em jantar com a família e depois sair pela rua para dar comida para quem não tem família ou casa."},
+        {who:"Hija", es:"¡Me parece lindo, papá! Me gustaría dibujar el Papá Noel.", pt:"Acho lindo, papai! Eu gostaria de desenhar o Papai Noel."},
+        {who:"Padre", es:"¡Sí, buenísima idea! ¿Te gustaría ayudarnos a elegir ropas para regalar?", pt:"Sim, ótima ideia! Você gostaria de nos ajudar a escolher roupas para doar?"},
+        {who:"Hija", es:"¡Por supuesto! Quisiera ir ahora.", pt:"Claro! Eu gostaria de ir agora."}
       ],
       vocabulary: [
-        {category:"Feriados y fechas importantes", items:[{es:"Año Nuevo"},{es:"Día de San Valentín"},{es:"Pascuas"},{es:"Día Internacional de la Mujer"},{es:"Día del Trabajo"},{es:"Día de la Madre"},{es:"Día del Padre"},{es:"Halloween"},{es:"Navidad"},{es:"Día Mundial del Idioma Español (23 de abril)"}]}
+        {category:"Feriados y fechas importantes", items:[
+          {es:"Año Nuevo", pt:"Ano Novo"},{es:"Día de San Valentín", pt:"Dia dos Namorados"},{es:"Pascuas", pt:"Páscoa"},
+          {es:"Día Internacional de la Mujer", pt:"Dia Internacional da Mulher"},{es:"Día del Trabajo", pt:"Dia do Trabalho"},{es:"Día de la Madre", pt:"Dia das Mães"},
+          {es:"Día del Padre", pt:"Dia dos Pais"},{es:"Halloween", pt:"Halloween"},{es:"Navidad", pt:"Natal"},{es:"Día Mundial del Idioma Español (23 de abril)", pt:"Dia Mundial do Idioma Espanhol (23 de abril)"}
+        ]}
       ],
       grammar: [
         {title:"Condicional — GUSTAR / QUERER / QUERER (subj. imperf.)", headers:["Pronombre","Gustaría","Querría","Quisiera"], rows:[

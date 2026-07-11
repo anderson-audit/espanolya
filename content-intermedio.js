@@ -16,15 +16,15 @@ const LEVEL_INTERMEDIO = {
       title: "Supermercado",
       subtitle: "Frutas, vegetais e o Pretérito Perfecto Simple",
       dialogue: [
-        { who: "A", es: "Mari! Fuiste al supermercado a comprar lo que te pedí ayer?" },
-        { who: "B", es: "Discúlpame, mamá! Me lo olvidé." },
-        { who: "A", es: "Al menos escribiste lo que tenías que comprar en un papel?" },
-        { who: "B", es: "Sí!, hice una lista. Quieres que vaya ahora, madre?" },
-        { who: "A", es: "Por supuesto! Pero no te olvides de los huevos, las zanahorias, la harina y la mantequilla, si no, no tendré como hacer el almuerzo." },
-        { who: "B", es: "Está bien! Puedo comprar algo para mí?" },
-        { who: "A", es: "Voy a darte la plata para que compres lo que está en la lista. Si hay cambio, puedes comprarte algo." },
-        { who: "B", es: "Gracias, mamá! Ahorita me voy." },
-        { who: "A", es: "Cuídate, hija! Hasta luego!" }
+        { who: "A", es: "Mari! Fuiste al supermercado a comprar lo que te pedí ayer?", pt: "Mari! Você foi ao supermercado comprar o que eu te pedi ontem?" },
+        { who: "B", es: "Discúlpame, mamá! Me lo olvidé.", pt: "Desculpa, mãe! Eu esqueci." },
+        { who: "A", es: "Al menos escribiste lo que tenías que comprar en un papel?", pt: "Pelo menos você escreveu num papel o que tinha que comprar?" },
+        { who: "B", es: "Sí!, hice una lista. Quieres que vaya ahora, madre?", pt: "Sim! Fiz uma lista. Quer que eu vá agora, mãe?" },
+        { who: "A", es: "Por supuesto! Pero no te olvides de los huevos, las zanahorias, la harina y la mantequilla, si no, no tendré como hacer el almuerzo.", pt: "Claro! Mas não esqueça dos ovos, das cenouras, da farinha e da manteiga, senão não terei como fazer o almoço." },
+        { who: "B", es: "Está bien! Puedo comprar algo para mí?", pt: "Está bem! Posso comprar algo para mim?" },
+        { who: "A", es: "Voy a darte la plata para que compres lo que está en la lista. Si hay cambio, puedes comprarte algo.", pt: "Vou te dar o dinheiro para você comprar o que está na lista. Se sobrar troco, você pode comprar algo para você." },
+        { who: "B", es: "Gracias, mamá! Ahorita me voy.", pt: "Obrigada, mãe! Já vou indo." },
+        { who: "A", es: "Cuídate, hija! Hasta luego!", pt: "Se cuida, filha! Até mais!" }
       ],
       vocabulary: [
         {
@@ -215,41 +215,53 @@ const LEVEL_INTERMEDIO = {
       subtitle: "Pretérito Perfecto Compuesto e Participios",
       text: "Hola, cariño! Te estoy enviando este correo electrónico para contarte un poco acerca de mi viaje de negocios a Barcelona. No he podido llamarte por teléfono todavía, entonces he decidido escribirte algunas palabritas por aquí. Todavía no he visitado muchos sitios por acá pues he trabajado mucho y mis días han sido muy ajetreados. Sin embargo, he visto algunas atracciones turísticas, como por ejemplo, el Museo Picasso, el zoológico y he estado por la Rambla, que es una calle muy conocida acá. Creo que volveré allá para comprar algunos regalos en las tiendas que hay en la calle. Bueno, creo que es eso y espero que me contestes contándome un poco de tu semana y cómo la ha pasado. Te quiero mucho y nos vemos pronto! Lucas",
       vocabulary: [
-        { category: "Lugares/Sitios/Destinos", items: [{ es: "Playa" }, { es: "Campo" }, { es: "Ciudad" }, { es: "Esquí" }, { es: "Naturaleza" }] },
-        { category: "Tipos de viajes", items: [{ es: "Viaje de negocios" }, { es: "Viaje de estudios" }, { es: "Viaje de vacaciones" }, { es: "Viaje por salud" }, { es: "Viaje por trabajo" }, { es: "Viaje gastronómica" }, { es: "Gira/Excursión" }, { es: "Escapadas" }, { es: "Viaje en familia" }, { es: "Viaje solidario" }, { es: "Viaje de aventura" }, { es: "Viaje de naturaleza" }, { es: "Viaje de luna de miel" }] },
-        { category: "Conjunciones", items: [
-          { es: "Y — Me gustan los dulces y salados." },
-          { es: "NI — No me gusta vino ni cerveza." },
-          { es: "QUE — Deseo que vengas." },
-          { es: "O — Te gustan más las verduras o frutas?" },
-          { es: "PERO — No nos vemos mucho pero nos queremos." },
-          { es: "MAS — Quise hacerlo, mas no pude." },
-          { es: "AUNQUE — Aunque te quiera, no voy a casarme contigo." },
-          { es: "SINO — Julieta no es americana, sino puertorriqueña." },
-          { es: "SIN EMBARGO — Fuimos a España, sin embargo, no fuimos a Madrid." },
-          { es: "A PESAR DE — A pesar de los problemas, aún quiero estar aquí." },
-          { es: "PUES — Te dejo, pues ya no te quiero más." },
-          { es: "ASÍ QUE — Podemos comprarlo, así que vamos antes que cierre el mercado." },
-          { es: "ES DECIR — Mi padre siempre tiene razón, es decir, siempre me convence." },
-          { es: "POR LO TANTO — Ya es tarde, por lo tanto, apúrate." },
-          { es: "SI — Si te vas, yo también me voy." },
-          { es: "POR CONSIGUIENTE — Ya estamos todos acá, por consiguiente, podemos empezar." },
-          { es: "COMO — Como quiero aprobar, estudio." },
-          { es: "LUEGO — Se abrazaron y luego cada uno fue a su casa." },
-          { es: "O SEA — No podemos seguir así, o sea, tenemos que terminar lo nuestro." },
-          { es: "POR ESTO — Estaba errado, por esto te pido perdón." },
-          { es: "YA QUE — La fiesta va a estar buena ya que es mi cumpleaños." },
-          { es: "PUESTO QUE — No me sorprendió, puesto que ya lo sabía." },
-          { es: "PORQUE — Vamos a aprobar, porque estudiamos mucho." },
-          { es: "CON TAL QUE — Te llevaré al cine con tal que pares de molestarme." },
-          { es: "DE TAL MANERA QUE — Se comportó de tal manera que hubo que expulsarlo." },
-          { es: "DE MODO QUE — Todo va a estar bien, de modo que, no te preocupes." },
-          { es: "HASTA QUE — Relaja hasta que estés bien." },
-          { es: "CONQUE — Ya es la hora, conque, vámonos." },
-          { es: "APENAS — Apenas supo la noticia, la fue a ver." }
+        { category: "Lugares/Sitios/Destinos", items: [{ es: "Playa", pt: "Praia" }, { es: "Campo", pt: "Campo" }, { es: "Ciudad", pt: "Cidade" }, { es: "Esquí", pt: "Esqui" }, { es: "Naturaleza", pt: "Natureza" }] },
+        { category: "Tipos de viajes", items: [
+          { es: "Viaje de negocios", pt: "Viagem de negócios" }, { es: "Viaje de estudios", pt: "Viagem de estudos" }, { es: "Viaje de vacaciones", pt: "Viagem de férias" },
+          { es: "Viaje por salud", pt: "Viagem por saúde" }, { es: "Viaje por trabajo", pt: "Viagem a trabalho" }, { es: "Viaje gastronómica", pt: "Viagem gastronômica" },
+          { es: "Gira/Excursión", pt: "Excursão/Passeio" }, { es: "Escapadas", pt: "Escapadinhas (viagens curtas)" }, { es: "Viaje en familia", pt: "Viagem em família" },
+          { es: "Viaje solidario", pt: "Viagem solidária" }, { es: "Viaje de aventura", pt: "Viagem de aventura" }, { es: "Viaje de naturaleza", pt: "Viagem de natureza" }, { es: "Viaje de luna de miel", pt: "Viagem de lua de mel" }
         ] },
-        { category: "Aumentativos (sufixos)", items: [{ es: "-ÓN/ONA (Mandón/Mandona)" }, { es: "-OTE/OTA (Feote, Cabezota)" }, { es: "-ACHO/ACHA (Ricacho/a)" }, { es: "-UCHO/UCHA (Gorducho, Flacucha)" }] },
-        { category: "Diminutivos (sufixos)", items: [{ es: "-ITO/ITA (Casita, Besito)" }, { es: "-ZUELO (Ladronzuelo)" }, { es: "-ÍN/INA (Chiquitín, Chiquitina)" }, { es: "-CITO/CITA (Cafecito, Madrecita)" }, { es: "-ILLO(A)/CILLO(A)/ECILLO(A) (Chiquillo, Friecillo)" }, { es: "-ECITO/ECITA (Florecita, Piececito)" }] },
+        { category: "Conjunciones", items: [
+          { es: "Y — Me gustan los dulces y salados.", pt: "E — Eu gosto de doces e salgados." },
+          { es: "NI — No me gusta vino ni cerveza.", pt: "NEM — Eu não gosto de vinho nem de cerveja." },
+          { es: "QUE — Deseo que vengas.", pt: "QUE — Desejo que você venha." },
+          { es: "O — Te gustan más las verduras o frutas?", pt: "OU — Você gosta mais de verduras ou de frutas?" },
+          { es: "PERO — No nos vemos mucho pero nos queremos.", pt: "MAS — Não nos vemos muito, mas nos amamos." },
+          { es: "MAS — Quise hacerlo, mas no pude.", pt: "MAS (forma culta) — Quis fazer isso, mas não pude." },
+          { es: "AUNQUE — Aunque te quiera, no voy a casarme contigo.", pt: "EMBORA/AINDA QUE — Embora eu te ame, não vou me casar com você." },
+          { es: "SINO — Julieta no es americana, sino puertorriqueña.", pt: "SENÃO/E SIM — Julieta não é americana, e sim porto-riquenha." },
+          { es: "SIN EMBARGO — Fuimos a España, sin embargo, no fuimos a Madrid.", pt: "NO ENTANTO — Fomos à Espanha, no entanto, não fomos a Madri." },
+          { es: "A PESAR DE — A pesar de los problemas, aún quiero estar aquí.", pt: "APESAR DE — Apesar dos problemas, ainda quero estar aqui." },
+          { es: "PUES — Te dejo, pues ya no te quiero más.", pt: "POIS — Vou te deixar, pois já não te amo mais." },
+          { es: "ASÍ QUE — Podemos comprarlo, así que vamos antes que cierre el mercado.", pt: "ENTÃO — Podemos comprá-lo, então vamos antes que o mercado feche." },
+          { es: "ES DECIR — Mi padre siempre tiene razón, es decir, siempre me convence.", pt: "OU SEJA — Meu pai sempre tem razão, ou seja, sempre me convence." },
+          { es: "POR LO TANTO — Ya es tarde, por lo tanto, apúrate.", pt: "PORTANTO — Já é tarde, portanto, se apresse." },
+          { es: "SI — Si te vas, yo también me voy.", pt: "SE — Se você for, eu também vou." },
+          { es: "POR CONSIGUIENTE — Ya estamos todos acá, por consiguiente, podemos empezar.", pt: "POR CONSEGUINTE — Já estamos todos aqui, por conseguinte, podemos começar." },
+          { es: "COMO — Como quiero aprobar, estudio.", pt: "COMO (já que) — Como eu quero passar, eu estudo." },
+          { es: "LUEGO — Se abrazaron y luego cada uno fue a su casa.", pt: "DEPOIS/LOGO — Eles se abraçaram e depois cada um foi para sua casa." },
+          { es: "O SEA — No podemos seguir así, o sea, tenemos que terminar lo nuestro.", pt: "OU SEJA — Não podemos continuar assim, ou seja, temos que terminar o nosso relacionamento." },
+          { es: "POR ESTO — Estaba errado, por esto te pido perdón.", pt: "POR ISSO — Eu estava errado, por isso peço perdão." },
+          { es: "YA QUE — La fiesta va a estar buena ya que es mi cumpleaños.", pt: "JÁ QUE — A festa vai estar boa já que é meu aniversário." },
+          { es: "PUESTO QUE — No me sorprendió, puesto que ya lo sabía.", pt: "UMA VEZ QUE — Não me surpreendeu, uma vez que eu já sabia." },
+          { es: "PORQUE — Vamos a aprobar, porque estudiamos mucho.", pt: "PORQUE — Vamos passar, porque estudamos muito." },
+          { es: "CON TAL QUE — Te llevaré al cine con tal que pares de molestarme.", pt: "DESDE QUE — Vou te levar ao cinema desde que você pare de me incomodar." },
+          { es: "DE TAL MANERA QUE — Se comportó de tal manera que hubo que expulsarlo.", pt: "DE TAL MANEIRA QUE — Ele se comportou de tal maneira que foi preciso expulsá-lo." },
+          { es: "DE MODO QUE — Todo va a estar bien, de modo que, no te preocupes.", pt: "DE MODO QUE — Tudo vai ficar bem, de modo que não se preocupe." },
+          { es: "HASTA QUE — Relaja hasta que estés bien.", pt: "ATÉ QUE — Relaxe até que você esteja bem." },
+          { es: "CONQUE — Ya es la hora, conque, vámonos.", pt: "ENTÃO/PORTANTO — Já é a hora, então vamos." },
+          { es: "APENAS — Apenas supo la noticia, la fue a ver.", pt: "ASSIM QUE — Assim que soube a notícia, foi vê-la." }
+        ] },
+        { category: "Aumentativos (sufixos)", items: [
+          { es: "-ÓN/ONA (Mandón/Mandona)", pt: "sufixo aumentativo: mandão/mandona" },{ es: "-OTE/OTA (Feote, Cabezota)", pt: "sufixo aumentativo: feião, cabeçudo(a)" },
+          { es: "-ACHO/ACHA (Ricacho/a)", pt: "sufixo aumentativo/pejorativo: ricaço(a)" },{ es: "-UCHO/UCHA (Gorducho, Flacucha)", pt: "sufixo aumentativo/pejorativo: gorducho, magricela" }
+        ] },
+        { category: "Diminutivos (sufixos)", items: [
+          { es: "-ITO/ITA (Casita, Besito)", pt: "sufixo diminutivo: casinha, beijinho" },{ es: "-ZUELO (Ladronzuelo)", pt: "sufixo diminutivo/pejorativo: ladrãozinho" },
+          { es: "-ÍN/INA (Chiquitín, Chiquitina)", pt: "sufixo diminutivo carinhoso: pequenininho(a)" },{ es: "-CITO/CITA (Cafecito, Madrecita)", pt: "sufixo diminutivo: cafezinho, mãezinha" },
+          { es: "-ILLO(A)/CILLO(A)/ECILLO(A) (Chiquillo, Friecillo)", pt: "sufixo diminutivo: garotinho, friozinho" },{ es: "-ECITO/ECITA (Florecita, Piececito)", pt: "sufixo diminutivo: florzinha, pezinho" }
+        ] },
         { category: "Participios regulares", items: [{ es: "Comprar", pt: "Comprado" }, { es: "Beber", pt: "Bebido" }, { es: "Cumplir", pt: "Cumplido" }] },
         { category: "Participios irregulares", items: [
           { es: "Ver", pt: "Visto" }, { es: "Volver", pt: "Vuelto" }, { es: "Hacer", pt: "Hecho" }, { es: "Romper", pt: "Roto" },
@@ -298,35 +310,35 @@ const LEVEL_INTERMEDIO = {
       title: "Con Quién Hablabas?",
       subtitle: "Verbos pronominales e Pretérito Imperfecto",
       dialogue: [
-        { who: "A", es: "Oye, Lucy! Con quién hablabas por teléfono anoche? Traté de llamarte por dos horas y nunca logré hablar contigo." },
-        { who: "B", es: "Ah, Julieta, una amiga de París con quien no charlaba hacía mucho tiempo. Y al mismo tiempo cocinaba porque ayer mis padres y mi hermana estaban acá para cenar con nosotros." },
-        { who: "A", es: "Ah, sí? Y qué preparabas mientras hablabas por teléfono?" },
-        { who: "B", es: "Preparaba una pasta con salsa de camarones. Estaba muy exquisita! Nos comimos todo. Solo es una lástima que mis parientes ya se fueron." },
-        { who: "A", es: "Qué rico! Algún día quiero probar esta comida maravillosa. Ahora tengo que trabajar porque ayer no me sentía bien y no pude hacer nada." },
-        { who: "B", es: "Ok! Hasta pronto, amiga!" }
+        { who: "A", es: "Oye, Lucy! Con quién hablabas por teléfono anoche? Traté de llamarte por dos horas y nunca logré hablar contigo.", pt: "Ei, Lucy! Com quem você estava falando ao telefone ontem à noite? Tentei te ligar por duas horas e nunca consegui falar com você." },
+        { who: "B", es: "Ah, Julieta, una amiga de París con quien no charlaba hacía mucho tiempo. Y al mismo tiempo cocinaba porque ayer mis padres y mi hermana estaban acá para cenar con nosotros.", pt: "Ah, Julieta, uma amiga de Paris com quem eu não conversava fazia muito tempo. E ao mesmo tempo eu estava cozinhando porque ontem meus pais e minha irmã estavam aqui para jantar conosco." },
+        { who: "A", es: "Ah, sí? Y qué preparabas mientras hablabas por teléfono?", pt: "Ah, é? E o que você estava preparando enquanto falava ao telefone?" },
+        { who: "B", es: "Preparaba una pasta con salsa de camarones. Estaba muy exquisita! Nos comimos todo. Solo es una lástima que mis parientes ya se fueron.", pt: "Eu estava preparando um macarrão com molho de camarão. Estava uma delícia! Comemos tudo. Só é uma pena que meus parentes já foram embora." },
+        { who: "A", es: "Qué rico! Algún día quiero probar esta comida maravillosa. Ahora tengo que trabajar porque ayer no me sentía bien y no pude hacer nada.", pt: "Que gostoso! Um dia eu quero provar essa comida maravilhosa. Agora tenho que trabalhar porque ontem eu não estava me sentindo bem e não consegui fazer nada." },
+        { who: "B", es: "Ok! Hasta pronto, amiga!", pt: "Ok! Até breve, amiga!" }
       ],
       vocabulary: [
         { category: "Verbos pronominales — pares e diferença de sentido", items: [
-          { es: "ACORDAR (chegar a um acordo) x ACORDARSE (lembrar)" },
-          { es: "APRENDER x APRENDERSE (aprender com mais ênfase)" },
-          { es: "APROVECHAR (empregar algo) x APROVECHARSE (tirar proveito de algo)" },
-          { es: "BEBER x BEBERSE (exagero no ato de beber)" },
-          { es: "CAER (mover algo, marcar uma data) x CAERSE (queda acidental)" },
-          { es: "COMER x COMERSE (exagero no ato de comer)" },
-          { es: "DEJAR (deixar algo em um lugar) x DEJARSE (esquecer algo em algum lugar)" },
-          { es: "DORMIR x DORMIRSE (começar a dormir)" },
-          { es: "FUMAR x FUMARSE (exagero no ato de fumar)" },
-          { es: "HACER x HACERSE (passar por característica que não é a sua)" },
-          { es: "IR (movimento a um lugar) x IRSE (ato de abandono)" },
-          { es: "JUGAR (brincar) x JUGARSE (arriscar)" },
-          { es: "LARGAR (deixar as coisas para alguém) x LARGARSE (deixar um lugar/sair)" },
-          { es: "LLEVAR (carregar coisas) x LLEVARSE (tomar para si algo)" },
-          { es: "LEER x LEERSE (exagero no ato de ler)" },
-          { es: "MORIR x MORIRSE (referir-se a uma morte com mais sentimento)" },
-          { es: "PONER (colocar) x PONERSE (mudança de curta duração)" },
-          { es: "QUEDAR (combinar) x QUEDARSE (permanecer em um lugar)" },
-          { es: "VENIR (referir-se a um sujeito/origem) x VENIRSE (deixar um lugar e ir a outro)" },
-          { es: "VOLVER (regressar) x VOLVERSE (dar a volta/mudar de estado ou aspecto)" }
+          { es: "ACORDAR (chegar a um acordo) x ACORDARSE (lembrar)", pt: "ACORDAR = chegar a um acordo; ACORDARSE = lembrar-se" },
+          { es: "APRENDER x APRENDERSE (aprender com mais ênfase)", pt: "APRENDER = aprender; APRENDERSE = aprender de cor/com mais ênfase" },
+          { es: "APROVECHAR (empregar algo) x APROVECHARSE (tirar proveito de algo)", pt: "APROVECHAR = aproveitar/empregar algo; APROVECHARSE = tirar proveito de alguém/algo" },
+          { es: "BEBER x BEBERSE (exagero no ato de beber)", pt: "BEBER = beber; BEBERSE = beber tudo/exagero no ato de beber" },
+          { es: "CAER (mover algo, marcar uma data) x CAERSE (queda acidental)", pt: "CAER = cair (em uma data, calhar); CAERSE = cair acidentalmente" },
+          { es: "COMER x COMERSE (exagero no ato de comer)", pt: "COMER = comer; COMERSE = comer tudo/exagero no ato de comer" },
+          { es: "DEJAR (deixar algo em um lugar) x DEJARSE (esquecer algo em algum lugar)", pt: "DEJAR = deixar algo em um lugar; DEJARSE = esquecer algo em algum lugar" },
+          { es: "DORMIR x DORMIRSE (começar a dormir)", pt: "DORMIR = dormir; DORMIRSE = pegar no sono/adormecer" },
+          { es: "FUMAR x FUMARSE (exagero no ato de fumar)", pt: "FUMAR = fumar; FUMARSE = fumar tudo/exagero no ato de fumar" },
+          { es: "HACER x HACERSE (passar por característica que não é a sua)", pt: "HACER = fazer; HACERSE = fingir ser (característica que não é a sua)" },
+          { es: "IR (movimento a um lugar) x IRSE (ato de abandono)", pt: "IR = ir a um lugar; IRSE = ir embora/abandonar" },
+          { es: "JUGAR (brincar) x JUGARSE (arriscar)", pt: "JUGAR = jogar/brincar; JUGARSE = arriscar(-se)" },
+          { es: "LARGAR (deixar as coisas para alguém) x LARGARSE (deixar um lugar/sair)", pt: "LARGAR = largar/deixar algo para alguém; LARGARSE = ir embora, dar o fora" },
+          { es: "LLEVAR (carregar coisas) x LLEVARSE (tomar para si algo)", pt: "LLEVAR = carregar/levar coisas; LLEVARSE = levar para si algo" },
+          { es: "LEER x LEERSE (exagero no ato de ler)", pt: "LEER = ler; LEERSE = ler tudo/por completo" },
+          { es: "MORIR x MORIRSE (referir-se a uma morte com mais sentimento)", pt: "MORIR = morrer; MORIRSE = morrer (com mais carga emocional)" },
+          { es: "PONER (colocar) x PONERSE (mudança de curta duração)", pt: "PONER = colocar; PONERSE = ficar (mudança de estado passageira, ex: ficar nervoso)" },
+          { es: "QUEDAR (combinar) x QUEDARSE (permanecer em um lugar)", pt: "QUEDAR = combinar/marcar; QUEDARSE = ficar/permanecer em um lugar" },
+          { es: "VENIR (referir-se a um sujeito/origem) x VENIRSE (deixar um lugar e ir a outro)", pt: "VENIR = vir (referir-se à origem); VENIRSE = vir embora de um lugar para outro" },
+          { es: "VOLVER (regressar) x VOLVERSE (dar a volta/mudar de estado ou aspecto)", pt: "VOLVER = voltar/regressar; VOLVERSE = virar-se/tornar-se (mudança de estado)" }
         ] }
       ],
       grammar: [
@@ -384,12 +396,12 @@ const LEVEL_INTERMEDIO = {
       title: "Qué Estaba Haciendo?",
       subtitle: "Objetos da casa, verbo ECHAR e Pasado Continuo",
       dialogue: [
-        { who: "A", es: "Hola, Bianca!, qué tal?" },
-        { who: "B", es: "Hola Mari! Bien, gracias! Quisiera preguntarte una cosa. Ayer estaba de paseo por el centro comercial cuando vi a Lucy comprando cosas para la casa. Sabes si ella ha comprado finalmente el departamento que estaba soñando en comprar?" },
-        { who: "A", es: "Sí! Ella está muy feliz. Estuve hablando mucho con ella estos días. Ayer me contó que ya ha comprado casi todo lo que necesita para su hogar. Me parece que le falta solo comprar algunas toallas, los cubiertos y un sofá." },
-        { who: "B", es: "Qué buena noticia! Voy a llamarla esta noche entonces para felicitarla y saber cómo va todo." },
-        { who: "A", es: "Ella va a sentirse muy feliz que la llames. Nos vemos amiga!" },
-        { who: "B", es: "Vale! Hasta pronto!" }
+        { who: "A", es: "Hola, Bianca!, qué tal?", pt: "Olá, Bianca! Tudo bem?" },
+        { who: "B", es: "Hola Mari! Bien, gracias! Quisiera preguntarte una cosa. Ayer estaba de paseo por el centro comercial cuando vi a Lucy comprando cosas para la casa. Sabes si ella ha comprado finalmente el departamento que estaba soñando en comprar?", pt: "Olá Mari! Bem, obrigada! Eu queria te perguntar uma coisa. Ontem eu estava passeando no shopping quando vi a Lucy comprando coisas para a casa. Você sabe se ela finalmente comprou o apartamento que estava sonhando em comprar?" },
+        { who: "A", es: "Sí! Ella está muy feliz. Estuve hablando mucho con ella estos días. Ayer me contó que ya ha comprado casi todo lo que necesita para su hogar. Me parece que le falta solo comprar algunas toallas, los cubiertos y un sofá.", pt: "Sim! Ela está muito feliz. Estive conversando muito com ela nestes dias. Ontem ela me contou que já comprou quase tudo o que precisa para o lar dela. Acho que só falta comprar umas toalhas, os talheres e um sofá." },
+        { who: "B", es: "Qué buena noticia! Voy a llamarla esta noche entonces para felicitarla y saber cómo va todo.", pt: "Que boa notícia! Vou ligar para ela hoje à noite então para parabenizá-la e saber como está tudo." },
+        { who: "A", es: "Ella va a sentirse muy feliz que la llames. Nos vemos amiga!", pt: "Ela vai ficar muito feliz que você ligue. Nos vemos, amiga!" },
+        { who: "B", es: "Vale! Hasta pronto!", pt: "Combinado! Até breve!" }
       ],
       vocabulary: [
         { category: "Cosas/objetos de la casa", items: [
@@ -410,9 +422,9 @@ const LEVEL_INTERMEDIO = {
           { es: "Váter", pt: "Vaso sanitário" }, { es: "Grifo/Canilla", pt: "Torneira" }
         ] },
         { category: "Verbo ECHAR (verbo comodín)", items: [
-          { es: "Echar abajo" }, { es: "Echar a perder" }, { es: "Echar un vistazo" }, { es: "Echar de menos" },
-          { es: "Echar por alto" }, { es: "Echar tras uno" }, { es: "Echar una mano" }, { es: "Echar un cigarrillo" },
-          { es: "Echar un bocado" }, { es: "Echar un trago" }, { es: "Echar un discurso" }, { es: "Echar a la lotería" }
+          { es: "Echar abajo", pt: "Derrubar" }, { es: "Echar a perder", pt: "Estragar" }, { es: "Echar un vistazo", pt: "Dar uma olhada" }, { es: "Echar de menos", pt: "Sentir falta" },
+          { es: "Echar por alto", pt: "Ignorar/desprezar" }, { es: "Echar tras uno", pt: "Perseguir alguém" }, { es: "Echar una mano", pt: "Dar uma mão/ajudar" }, { es: "Echar un cigarrillo", pt: "Fumar um cigarro" },
+          { es: "Echar un bocado", pt: "Dar uma bocada/comer algo" }, { es: "Echar un trago", pt: "Tomar um gole/uma bebida" }, { es: "Echar un discurso", pt: "Fazer um discurso" }, { es: "Echar a la lotería", pt: "Jogar na loteria" }
         ] }
       ],
       grammar: [
@@ -463,20 +475,20 @@ const LEVEL_INTERMEDIO = {
       text: "Mañana voy a levantarme temprano porque probablemente empezaré a trabajar a las ocho de la mañana. Tendré muchas cosas que hacer. Antes de salir, mientras me preparo el desayuno, llamaré a mi madre por teléfono y después de comer, saldré más o menos a las siete y media para el trabajo. Después de volver del trabajo creo que mis amigos me invitarán a cenar con ellos, pues será el cumpleaños de María, una amiga muy querida. Será un gusto verla y ya le he comprado un regalito! Seguramente me divertiré, comeré mucho y luego volveré a mi casa para dormir y el próximo día empezar todo de nuevo. Siempre ha sido y creo que siempre será así.",
       vocabulary: [
         { category: "MUY x MUCHO", items: [
-          { es: "MUY (advérbio, invariável, antes de adjetivo/advérbio) — Julia es muy guapa." },
-          { es: "MUCHO (adjetivo, varia em gênero/número, antes de substantivo) — Tengo mucho trabajo en la oficina hoy." },
-          { es: "MUCHO (advérbio, invariável, depois de verbo) — Siempre como mucho." },
-          { es: "MUCHO (pronome) — Muchos lo ayudaron." },
-          { es: "MUCHÍSIMO (intensificado) — Te quiero muchísimo!" },
-          { es: "Exceções fixas: MUCHO antes / MUCHO después; MUCHO más / MUCHO menos; MUCHO mayor / MUCHO menor; MUCHO mejor / MUCHO peor." }
+          { es: "MUY (advérbio, invariável, antes de adjetivo/advérbio) — Julia es muy guapa.", pt: "MUY = muito (advérbio, invariável); Julia é muito bonita." },
+          { es: "MUCHO (adjetivo, varia em gênero/número, antes de substantivo) — Tengo mucho trabajo en la oficina hoy.", pt: "MUCHO = muito(a) (adjetivo, varia em gênero/número); Tenho muito trabalho no escritório hoje." },
+          { es: "MUCHO (advérbio, invariável, depois de verbo) — Siempre como mucho.", pt: "MUCHO = muito (advérbio, invariável, depois do verbo); Eu sempre como muito." },
+          { es: "MUCHO (pronome) — Muchos lo ayudaron.", pt: "MUCHO(S) = muitos (pronome); Muitos o ajudaram." },
+          { es: "MUCHÍSIMO (intensificado) — Te quiero muchísimo!", pt: "MUCHÍSIMO = muitíssimo (forma intensificada); Eu te amo muitíssimo!" },
+          { es: "Exceções fixas: MUCHO antes / MUCHO después; MUCHO más / MUCHO menos; MUCHO mayor / MUCHO menor; MUCHO mejor / MUCHO peor.", pt: "Exceções fixas (não usam MUY): MUCHO antes/depois; MUCHO mais/menos; MUCHO maior/menor; MUCHO melhor/pior." }
         ] },
         { category: "Pronombres Personales Átonos — Objeto Directo", items: [
-          { es: "Yo — me" }, { es: "Tú/Vos — te" }, { es: "Él/Ella/Usted — lo/la/le*" },
-          { es: "Nosotros/Nosotras — nos" }, { es: "Vosotros/Vosotras — os" }, { es: "Ellos/Ellas/Ustedes — los/las/les*" }
+          { es: "Yo — me", pt: "Eu — me" }, { es: "Tú/Vos — te", pt: "Você — te" }, { es: "Él/Ella/Usted — lo/la/le*", pt: "Ele/Ela/Você (formal) — o/a/lhe*" },
+          { es: "Nosotros/Nosotras — nos", pt: "Nós — nos" }, { es: "Vosotros/Vosotras — os", pt: "Vós/vocês (Espanha) — vos/os" }, { es: "Ellos/Ellas/Ustedes — los/las/les*", pt: "Eles/Elas/Vocês — os/as/lhes*" }
         ] },
         { category: "Pronombres Personales Átonos — Objeto Indirecto", items: [
-          { es: "Yo — me" }, { es: "Tú/Vos — te" }, { es: "Él/Ella/Usted — le/se*" },
-          { es: "Nosotros/Nosotras — nos" }, { es: "Vosotros/Vosotras — os" }, { es: "Ellos/Ellas/Ustedes — les/se" }
+          { es: "Yo — me", pt: "Eu — me" }, { es: "Tú/Vos — te", pt: "Você — te" }, { es: "Él/Ella/Usted — le/se*", pt: "Ele/Ela/Você (formal) — lhe/se*" },
+          { es: "Nosotros/Nosotras — nos", pt: "Nós — nos" }, { es: "Vosotros/Vosotras — os", pt: "Vós/vocês (Espanha) — vos/os" }, { es: "Ellos/Ellas/Ustedes — les/se", pt: "Eles/Elas/Vocês — lhes/se" }
         ] }
       ],
       grammar: [
@@ -520,31 +532,31 @@ const LEVEL_INTERMEDIO = {
       title: "Gira",
       subtitle: "Conselhos, Condicional e Pretérito Imperfecto de Subjuntivo",
       dialogue: [
-        { who: "A", es: "Hola, Fede! Cómo te fue la gira de ayer?" },
-        { who: "B", es: "Mal! Fuimos al zoológico pero no estuvo muy buena la gira. Mañana vamos a salir de paseo pero no sé cuál lugar elegir." },
-        { who: "A", es: "Bueno...Si yo fuera tú, seguramente elegiría ir a conocer un museo, qué te parece?" },
-        { who: "B", es: "Me parece una buena idea, pero, y el almuerzo? Tenemos que elegir ir a comer en un restaurante chino, un restaurante japonés o uno que tiene comida regional." },
-        { who: "A", es: "Yo probaría sin duda los platos regionales a ver cómo saben." },
-        { who: "B", es: "Perfecto, amiga! Ahora ya tengo casi todo planeado para mañana. Solo quisiera preguntarte una cosita más." },
-        { who: "A", es: "Dime, Fede!" },
-        { who: "B", es: "No me siento muy bien, creo que estoy enfermo por el frío. Qué debo hacer para sentirme mejor por la mañana?" },
-        { who: "A", es: "Debes tomar una aspirina e ir a dormir. Estoy segura de que vas a sentirte mejor mañana." },
-        { who: "B", es: "Ok, voy a hacerlo ya! Gracias por todo! Mañana te lo cuento." }
+        { who: "A", es: "Hola, Fede! Cómo te fue la gira de ayer?", pt: "Olá, Fede! Como foi o passeio de ontem?" },
+        { who: "B", es: "Mal! Fuimos al zoológico pero no estuvo muy buena la gira. Mañana vamos a salir de paseo pero no sé cuál lugar elegir.", pt: "Mal! Fomos ao zoológico, mas o passeio não foi muito bom. Amanhã vamos sair para passear, mas não sei qual lugar escolher." },
+        { who: "A", es: "Bueno...Si yo fuera tú, seguramente elegiría ir a conocer un museo, qué te parece?", pt: "Bem... Se eu fosse você, com certeza escolheria conhecer um museu, o que acha?" },
+        { who: "B", es: "Me parece una buena idea, pero, y el almuerzo? Tenemos que elegir ir a comer en un restaurante chino, un restaurante japonés o uno que tiene comida regional.", pt: "Acho uma boa ideia, mas e o almoço? Temos que escolher entre comer em um restaurante chinês, um restaurante japonês ou um que tem comida regional." },
+        { who: "A", es: "Yo probaría sin duda los platos regionales a ver cómo saben.", pt: "Eu provaria sem dúvida os pratos regionais para ver como são." },
+        { who: "B", es: "Perfecto, amiga! Ahora ya tengo casi todo planeado para mañana. Solo quisiera preguntarte una cosita más.", pt: "Perfeito, amiga! Agora já tenho quase tudo planejado para amanhã. Só queria te perguntar mais uma coisinha." },
+        { who: "A", es: "Dime, Fede!", pt: "Diga, Fede!" },
+        { who: "B", es: "No me siento muy bien, creo que estoy enfermo por el frío. Qué debo hacer para sentirme mejor por la mañana?", pt: "Não estou me sentindo muito bem, acho que estou doente por causa do frio. O que devo fazer para me sentir melhor amanhã de manhã?" },
+        { who: "A", es: "Debes tomar una aspirina e ir a dormir. Estoy segura de que vas a sentirte mejor mañana.", pt: "Você deve tomar uma aspirina e ir dormir. Tenho certeza de que vai se sentir melhor amanhã." },
+        { who: "B", es: "Ok, voy a hacerlo ya! Gracias por todo! Mañana te lo cuento.", pt: "Ok, vou fazer isso agora! Obrigado por tudo! Amanhã eu te conto." }
       ],
       vocabulary: [
         { category: "Como hablar de un paseo (positivo)", items: [
-          { es: "Me encantó!" }, { es: "Estuvo muy bueno!" }, { es: "Me gustó mucho!" }, { es: "Quiero hacerlo de nuevo!" },
-          { es: "Quiero ir más veces allá!" }, { es: "Que bueno que decidí ir!" }, { es: "Lo recomendaré a mis amigos!" }, { es: "Fue inolvidable!" }
+          { es: "Me encantó!", pt: "Adorei!" }, { es: "Estuvo muy bueno!", pt: "Foi muito bom!" }, { es: "Me gustó mucho!", pt: "Gostei muito!" }, { es: "Quiero hacerlo de nuevo!", pt: "Quero fazer de novo!" },
+          { es: "Quiero ir más veces allá!", pt: "Quero ir mais vezes lá!" }, { es: "Que bueno que decidí ir!", pt: "Que bom que decidi ir!" }, { es: "Lo recomendaré a mis amigos!", pt: "Vou recomendar aos meus amigos!" }, { es: "Fue inolvidable!", pt: "Foi inesquecível!" }
         ] },
         { category: "Como hablar de un paseo (negativo)", items: [
-          { es: "Lo detesté/odié" }, { es: "Peor imposible" }, { es: "La peor cosa que ya he hecho" }, { es: "Me morí de sueño" },
-          { es: "No podía ser peor" }, { es: "Se lo recomendaré a mis enemigos" }, { es: "Muy aburrido" }, { es: "Un horror/desastre" }
+          { es: "Lo detesté/odié", pt: "Detestei/odiei" }, { es: "Peor imposible", pt: "Impossível ser pior" }, { es: "La peor cosa que ya he hecho", pt: "A pior coisa que já fiz" }, { es: "Me morí de sueño", pt: "Morri de sono" },
+          { es: "No podía ser peor", pt: "Não podia ser pior" }, { es: "Se lo recomendaré a mis enemigos", pt: "Vou recomendar aos meus inimigos" }, { es: "Muy aburrido", pt: "Muito chato/entediante" }, { es: "Un horror/desastre", pt: "Um horror/desastre" }
         ] },
         { category: "Consejos y recomendaciones", items: [
-          { es: "Opción 1: Deber + Infinitivo — Debes tomar una aspirina." },
-          { es: "Opción 2: Yo + Condicional — Yo bebería menos." },
-          { es: "Opción 3: Yo que tú + Condicional — Yo que tú iría de vacaciones a Barcelona." },
-          { es: "Opción 4: Si yo fuera tú + Condicional — Si yo fuera tú estudiaría más." }
+          { es: "Opción 1: Deber + Infinitivo — Debes tomar una aspirina.", pt: "Opção 1: Dever + Infinitivo — Você deve tomar uma aspirina." },
+          { es: "Opción 2: Yo + Condicional — Yo bebería menos.", pt: "Opção 2: Eu + Condicional — Eu beberia menos." },
+          { es: "Opción 3: Yo que tú + Condicional — Yo que tú iría de vacaciones a Barcelona.", pt: "Opção 3: Se eu fosse você + Condicional — Se eu fosse você iria de férias para Barcelona." },
+          { es: "Opción 4: Si yo fuera tú + Condicional — Si yo fuera tú estudiaría más.", pt: "Opção 4: Se eu fosse você + Condicional — Se eu fosse você estudaria mais." }
         ] }
       ],
       grammar: [
@@ -614,30 +626,30 @@ const LEVEL_INTERMEDIO = {
       text: "El DELE (Diploma de Español como Lengua Extranjera) es un examen internacional de lengua española que mide la habilidad de comunicación en español de una persona de cuatro maneras: oyendo, leyendo, escribiendo y hablando. Este test es buscado principalmente por personas que desean estudiar o trabajar donde el español es la lengua de comunicación y necesitan o simplemente quieren saber cuál es su nivel en este idioma. Desde 1991, el DELE ha sido probado y confiado por todo el mundo como un test seguro y auténtico, además de ser reconocido internacionalmente en muchas instituciones de educación. El DELE es elaborado por el Instituto Cervantes y es ofrecido en más de 650 centros que hay en más de 100 países del mundo.",
       vocabulary: [
         { category: "Usos del verbo HABER", items: [
-          { es: "Sentido de existir (invariável) — Hay mucho sol. / Hubo un problema." },
-          { es: "Como verbo auxiliar nos tempos compostos — He estado muy enferma estos días." },
-          { es: "Para transmitir um pedido/aviso geral (invariável) — Hay que esperar." }
+          { es: "Sentido de existir (invariável) — Hay mucho sol. / Hubo un problema.", pt: "HABER = existir (invariável); Há muito sol. / Houve um problema." },
+          { es: "Como verbo auxiliar nos tempos compostos — He estado muy enferma estos días.", pt: "Como verbo auxiliar nos tempos compostos; Estive muito doente esses dias." },
+          { es: "Para transmitir um pedido/aviso geral (invariável) — Hay que esperar.", pt: "Para transmitir uma obrigação/aviso geral (invariável); É preciso esperar." }
         ] },
         { category: "Usos del verbo HACER", items: [
-          { es: "Sentido de atividade — Y ahora, qué voy a hacer?" },
-          { es: "Para descrever o tempo (invariável) — Hace sol. / Hace calor. / Hacía frío." },
-          { es: "Para indicar ideia de tempo passado (invariável) — Hace 10 años que estudia japonés." },
-          { es: "Como verbo de mudança (converter) — El vino se hizo vinagre." }
+          { es: "Sentido de atividade — Y ahora, qué voy a hacer?", pt: "Sentido de atividade/fazer algo; E agora, o que eu vou fazer?" },
+          { es: "Para descrever o tempo (invariável) — Hace sol. / Hace calor. / Hacía frío.", pt: "Para descrever o clima (invariável); Está fazendo sol. / Está fazendo calor. / Estava fazendo frio." },
+          { es: "Para indicar ideia de tempo passado (invariável) — Hace 10 años que estudia japonés.", pt: "Para indicar tempo decorrido (invariável); Faz 10 anos que ele(a) estuda japonês." },
+          { es: "Como verbo de mudança (converter) — El vino se hizo vinagre.", pt: "Como verbo de transformação; O vinho virou vinagre." }
         ] },
         { category: "Usos del verbo IR", items: [
-          { es: "Sentido de movimento — Yo siempre voy en coche al trabajo." },
-          { es: "Para indicar futuro próximo — Yo voy a salir pronto." }
+          { es: "Sentido de movimento — Yo siempre voy en coche al trabajo.", pt: "Sentido de movimento; Eu sempre vou de carro para o trabalho." },
+          { es: "Para indicar futuro próximo — Yo voy a salir pronto.", pt: "Para indicar futuro próximo; Eu vou sair logo." }
         ] },
         { category: "Usos del verbo PODER", items: [
-          { es: "Indicar permissão — Puedo ir a la fiesta, mamá?" },
-          { es: "Ideia de capacidade/habilidade — Puedo nadar con facilidad." },
-          { es: "Ideia de possibilidade/probabilidade — Está muy nublado, puede que llueva." }
+          { es: "Indicar permissão — Puedo ir a la fiesta, mamá?", pt: "Indicar permissão; Posso ir à festa, mãe?" },
+          { es: "Ideia de capacidade/habilidade — Puedo nadar con facilidad.", pt: "Ideia de capacidade/habilidade; Eu consigo nadar com facilidade." },
+          { es: "Ideia de possibilidade/probabilidade — Está muy nublado, puede que llueva.", pt: "Ideia de possibilidade/probabilidade; Está muito nublado, pode ser que chova." }
         ] },
         { category: "Usos del verbo TENER", items: [
-          { es: "Expressa posse — Tengo un auto." },
-          { es: "Expressa condição — Tengo frío. Tener calor, cuidado, deseos, éxito, ganas, la culpa, miedo, prisa, razón, sueño, suerte, vergüenza." },
-          { es: "Indica idade — Julia tiene 12 años." },
-          { es: "Expressa preocupação — Qué tiene usted?" }
+          { es: "Expressa posse — Tengo un auto.", pt: "Expressa posse; Eu tenho um carro." },
+          { es: "Expressa condição — Tengo frío. Tener calor, cuidado, deseos, éxito, ganas, la culpa, miedo, prisa, razón, sueño, suerte, vergüenza.", pt: "Expressa condição/sensação (tener + substantivo = 'estar com'); Estou com frio. Estar com calor, cuidado, vontade, sucesso, vontade de, culpa, medo, pressa, razão, sono, sorte, vergonha." },
+          { es: "Indica idade — Julia tiene 12 años.", pt: "Indica idade; Julia tem 12 anos." },
+          { es: "Expressa preocupação — Qué tiene usted?", pt: "Expressa preocupação; O que você tem? / O que está acontecendo com você?" }
         ] }
       ],
       grammar: [
@@ -731,25 +743,25 @@ const LEVEL_INTERMEDIO = {
       text: "Usted está buscando un empleo? Cada vez más personas están procurando empleo o cambiando de puesto debido a los cambios del mercado laboral. Y cómo encontrar oportunidades de trabajo entre las millones que hay? Usted puede buscarlas en los periódicos locales, en grupos de Facebook, en sitios web y en otros lugares que tienen informaciones de posibles ofertas de trabajo. Una de las formas más rápidas de conseguir un empleo, es andando por la calle. Hay muchas tiendas y otros tipos de empresas que tienen carteles pegados delante de su negocio informando cuáles son los puestos disponibles para aquel lugar. Para terminar, hay muchos negocios que contratan su personal por medio de agencias de empleo. Seguramente vas a lograrlo pronto.",
       vocabulary: [
         { category: "Usos del verbo PEGAR", items: [
-          { es: "Unir uma coisa a outra com substância adesiva — Ella pegó una hoja a otra usando un pegamento." },
-          { es: "Golpear alguém — Ella le pegó a su amiga." },
-          { es: "Transmitir uma doença/pensamento/ideia — Ella le pegó su gripe." }
+          { es: "Unir uma coisa a outra com substância adesiva — Ella pegó una hoja a otra usando un pegamento.", pt: "Colar uma coisa na outra; Ela colou uma folha na outra usando cola." },
+          { es: "Golpear alguém — Ella le pegó a su amiga.", pt: "Bater em alguém; Ela bateu na amiga dela." },
+          { es: "Transmitir uma doença/pensamento/ideia — Ella le pegó su gripe.", pt: "Transmitir/passar uma doença; Ela passou a gripe dela para a amiga." }
         ] },
         { category: "Otros números", items: [
-          { es: "1.002 — mil dos" }, { es: "1.500 — mil quinientos" }, { es: "1.752 — mil setecientos cincuenta y dos" },
-          { es: "3.011 — tres mil once" }, { es: "6.024 — seis mil veinticuatro" }, { es: "1.000.000 — un millón" },
-          { es: "2.000.000 — dos millones" }, { es: "1.000.000.000 — Mil millones (España) / Un billón (otros países)" },
-          { es: "1.000.000.000.000 — Un billón (España) / Un trillón (otros países)" }
+          { es: "1.002 — mil dos", pt: "1.002 — mil e dois" }, { es: "1.500 — mil quinientos", pt: "1.500 — mil e quinhentos" }, { es: "1.752 — mil setecientos cincuenta y dos", pt: "1.752 — mil setecentos e cinquenta e dois" },
+          { es: "3.011 — tres mil once", pt: "3.011 — três mil e onze" }, { es: "6.024 — seis mil veinticuatro", pt: "6.024 — seis mil e vinte e quatro" }, { es: "1.000.000 — un millón", pt: "1.000.000 — um milhão" },
+          { es: "2.000.000 — dos millones", pt: "2.000.000 — dois milhões" }, { es: "1.000.000.000 — Mil millones (España) / Un billón (otros países)", pt: "1.000.000.000 — um bilhão (chamado 'mil millones' na Espanha; atenção: 'un billón' em outros países é falso cognato)" },
+          { es: "1.000.000.000.000 — Un billón (España) / Un trillón (otros países)", pt: "1.000.000.000.000 — um trilhão (chamado 'un billón' na Espanha, 'un trillón' em outros países)" }
         ] },
         { category: "Comparativos de igualdad", items: [
-          { es: "TAN + adjetivo/adverbio + COMO — María es tan inteligente como Lucas." },
-          { es: "IGUAL DE + adjetivo/adverbio + QUE — La hormiga es igual de lenta que la tortuga." },
-          { es: "LO MISMO QUE — Ir de paseo cuesta lo mismo que ir al teatro." },
-          { es: "TANTO/TANTA/TANTOS/TANTAS + substantivo + COMO — Mi hermano bebe tanta leche como yo." }
+          { es: "TAN + adjetivo/adverbio + COMO — María es tan inteligente como Lucas.", pt: "TÃO...QUANTO; María é tão inteligente quanto Lucas." },
+          { es: "IGUAL DE + adjetivo/adverbio + QUE — La hormiga es igual de lenta que la tortuga.", pt: "TÃO...QUANTO ('igual de'); A formiga é tão lenta quanto a tartaruga." },
+          { es: "LO MISMO QUE — Ir de paseo cuesta lo mismo que ir al teatro.", pt: "O MESMO QUE; Passear custa o mesmo que ir ao teatro." },
+          { es: "TANTO/TANTA/TANTOS/TANTAS + substantivo + COMO — Mi hermano bebe tanta leche como yo.", pt: "TANTO(A/S)...QUANTO; Meu irmão bebe tanto leite quanto eu." }
         ] },
         { category: "Superlativos irregulares", items: [
-          { es: "Bueno-Mejor-Óptimo" }, { es: "Malo-Peor-Pésimo" }, { es: "Grande-Mayor-Máximo" },
-          { es: "Pequeño-Menor-Mínimo" }, { es: "Alto-Superior-Supremo" }, { es: "Bajo-Inferior-Ínfimo" }
+          { es: "Bueno-Mejor-Óptimo", pt: "Bom-Melhor-Ótimo" }, { es: "Malo-Peor-Pésimo", pt: "Mau-Pior-Péssimo" }, { es: "Grande-Mayor-Máximo", pt: "Grande-Maior-Máximo" },
+          { es: "Pequeño-Menor-Mínimo", pt: "Pequeno-Menor-Mínimo" }, { es: "Alto-Superior-Supremo", pt: "Alto-Superior-Supremo" }, { es: "Bajo-Inferior-Ínfimo", pt: "Baixo-Inferior-Ínfimo" }
         ] }
       ],
       grammar: [
@@ -799,17 +811,17 @@ const LEVEL_INTERMEDIO = {
       text: "ENSALADA DE TOMATES, PIÑONES Y ALBAHACA CON HUEVOS DE CODORNIZ. INGREDIENTES: 400 gr de tomates cereza; 50 gr de piñones; 8 huevitos de codorniz; 10 aceitunas verdes con hueso; 1 ramito de albahaca; Aceite de oliva virgen; Sal. PASOS (10 minutos): Cocer los huevos de codorniz durante 3 minutos y enfriarlos bajo el chorro de agua; Una vez fríos, pelarlos y partirlos por la mitad a lo largo; Lavar y cortar los tomatitos en cuartos y ponerlos en una ensaladera; Añadir el resto de ingredientes y aderezar con aceite y sal.",
       vocabulary: [
         { category: "Como escribir una receta", items: [
-          { es: "1 - Infinitivo — Picar la cebolla y el morrón... Condimentar con bastante pimentón... Freír en abundante grasa..." },
-          { es: "2 - Presente (SE + presente indicativo) — Previamente ponemos a cocer... Picamos al gusto los vegetales..." },
-          { es: "3 - Imperativo — Calienta en un hervidor el agua... Cuécelas por 5 o 6 minutos... Coloca una salchicha en el pan..." }
+          { es: "1 - Infinitivo — Picar la cebolla y el morrón... Condimentar con bastante pimentón... Freír en abundante grasa...", pt: "1 - Infinitivo (estilo impessoal, muito comum em receitas escritas) — Picar a cebola e o pimentão... Temperar com bastante páprica... Fritar em bastante gordura..." },
+          { es: "2 - Presente (SE + presente indicativo) — Previamente ponemos a cocer... Picamos al gusto los vegetales...", pt: "2 - Presente (SE + presente do indicativo, forma impessoal) — Primeiro colocamos para cozinhar... Picamos os vegetais a gosto..." },
+          { es: "3 - Imperativo — Calienta en un hervidor el agua... Cuécelas por 5 o 6 minutos... Coloca una salchicha en el pan...", pt: "3 - Imperativo (como se estivesse dando instruções diretas a alguém) — Esquente a água numa chaleira... Cozinhe-as por 5 ou 6 minutos... Coloque uma salsicha no pão..." }
         ] },
         { category: "Contracciones", items: [
-          { es: "A + el = al" }, { es: "De + el = del" }, { es: "De + ella = della" }, { es: "Donde + quiera = doquiera" },
-          { es: "Entre + ambos = entrambos" }, { es: "Otra + hora = otrora" }, { es: "De + esto = desto" }
+          { es: "A + el = al", pt: "A + o = ao (contração obrigatória, igual em português)" }, { es: "De + el = del", pt: "De + o = do (contração obrigatória, igual em português)" }, { es: "De + ella = della", pt: "De + ela = dela (forma antiga/em desuso; hoje se diz simplesmente 'de ella')" }, { es: "Donde + quiera = doquiera", pt: "Onde + quer = onde quer que (forma antiga/literária, sentido de 'em qualquer lugar')" },
+          { es: "Entre + ambos = entrambos", pt: "Entre + ambos = entrambos (forma antiga/literária para 'entre os dois')" }, { es: "Otra + hora = otrora", pt: "Outra + hora = outrora (forma antiga/literária para 'antigamente')" }, { es: "De + esto = desto", pt: "De + isto = 'desto' (forma antiga, hoje se diz 'de esto')" }
         ] },
         { category: "Contracciones coloquiais", items: [
-          { es: "Para + allá = pa'lla" }, { es: "Para + arriba = pa'rriba" }, { es: "Para adelante = p'alante" },
-          { es: "Para + que = pa' que" }, { es: "Para + atrás = p'atrás" }, { es: "Para + el = pal'" }
+          { es: "Para + allá = pa'lla", pt: "Para + lá = 'pa'lla' (forma coloquial e reduzida)" }, { es: "Para + arriba = pa'rriba", pt: "Para + cima = 'pa'rriba' (forma coloquial e reduzida)" }, { es: "Para adelante = p'alante", pt: "Para frente = 'p'alante' (forma coloquial e reduzida)" },
+          { es: "Para + que = pa' que", pt: "Para + que = 'pa' que' (forma coloquial e reduzida)" }, { es: "Para + atrás = p'atrás", pt: "Para + trás = 'p'atrás' (forma coloquial e reduzida)" }, { es: "Para + el = pal'", pt: "Para + o = 'pal'' (forma coloquial e reduzida)" }
         ] }
       ],
       grammar: [
@@ -845,14 +857,14 @@ const LEVEL_INTERMEDIO = {
       title: "Gustos",
       subtitle: "Lugares da cidade, roupas e concordar/discordar",
       dialogue: [
-        { who: "A", es: "Lucy! Vamos al cine mañana?" },
-        { who: "B", es: "Amiga, discúlpame pero no me gustan las películas que hay en el cine estos días." },
-        { who: "A", es: "Verdad...A mí tampoco. Y qué tal ir al centro de paseo y comprar unas prendas nuevas en alguna tienda? Eso sí me gusta hacer!" },
-        { who: "B", es: "A mí también me gusta esa idea. Necesito unas camisetas, unos pantalones y zapatos. Podemos hacerlo, pero ahora me acordé, no tengo plata." },
-        { who: "A", es: "Yo sí...Pasamos por el cajero automático en un banco cercano y puedo prestarte algunos pesos. Me los devuelves otro día, qué te parece?" },
-        { who: "B", es: "Buenísimo! Muchas gracias, amiga! También quiero comer algo rico en mi restaurante favorito." },
-        { who: "A", es: "Yo también ya que nos gusta el mismo restaurante. Entonces nos vemos mañana!" },
-        { who: "B", es: "Sí, hasta pronto!" }
+        { who: "A", es: "Lucy! Vamos al cine mañana?", pt: "Lucy! Vamos ao cinema amanhã?" },
+        { who: "B", es: "Amiga, discúlpame pero no me gustan las películas que hay en el cine estos días.", pt: "Amiga, me desculpa, mas eu não gosto dos filmes que estão em cartaz esses dias." },
+        { who: "A", es: "Verdad...A mí tampoco. Y qué tal ir al centro de paseo y comprar unas prendas nuevas en alguna tienda? Eso sí me gusta hacer!", pt: "Verdade... Eu também não. E que tal ir passear no centro e comprar umas roupas novas em alguma loja? Isso sim eu gosto de fazer!" },
+        { who: "B", es: "A mí también me gusta esa idea. Necesito unas camisetas, unos pantalones y zapatos. Podemos hacerlo, pero ahora me acordé, no tengo plata.", pt: "Eu também gosto dessa ideia. Preciso de umas camisetas, umas calças e sapatos. Podemos fazer isso, mas agora me lembrei, não tenho dinheiro." },
+        { who: "A", es: "Yo sí...Pasamos por el cajero automático en un banco cercano y puedo prestarte algunos pesos. Me los devuelves otro día, qué te parece?", pt: "Eu tenho... Passamos no caixa eletrônico de um banco perto e posso te emprestar alguns pesos. Você me devolve outro dia, o que acha?" },
+        { who: "B", es: "Buenísimo! Muchas gracias, amiga! También quiero comer algo rico en mi restaurante favorito.", pt: "Ótimo! Muito obrigada, amiga! Também quero comer algo gostoso no meu restaurante favorito." },
+        { who: "A", es: "Yo también ya que nos gusta el mismo restaurante. Entonces nos vemos mañana!", pt: "Eu também, já que a gente gosta do mesmo restaurante. Então nos vemos amanhã!" },
+        { who: "B", es: "Sí, hasta pronto!", pt: "Sim, até logo!" }
       ],
       vocabulary: [
         { category: "Lugares de la ciudad", items: [
@@ -935,32 +947,32 @@ const LEVEL_INTERMEDIO = {
       text: "Luciano se levanta todos los días a las siete de la mañana, desayuna con su mujer y luego sale para ir a trabajar. El va a trabajar en coche porque la empresa queda lejos, pero no le gusta para nada el tránsito de su ciudad. Hay muchos conductores yendo al trabajo al mismo tiempo entonces el tráfico empieza a embotellarse. Como en todas ciudades grandes, hay siempre calles y avenidas atascadas, pero este no es el único problema que le impide de tener una mañana tranquila. Después de todo eso, Luciano aún tiene que encontrar un sitio para aparcar su coche cerca de la empresa. El año que viene, quiere cambiar de trabajo y buscar un puesto en una empresa más cerca de su casa, adonde pueda ir a pie.",
       vocabulary: [
         { category: "Expresiones de tiempo — Pasado", items: [
-          { es: "Ayer" }, { es: "Anteayer" }, { es: "Anoche" }, { es: "Anteanoche" }, { es: "El año pasado" },
-          { es: "La semana pasada" }, { es: "El lunes pasado" }, { es: "Hace dos días" }, { es: "Desde 1990" },
-          { es: "Desde hace mucho tiempo" }, { es: "En 2015" }, { es: "En octubre" }
+          { es: "Ayer", pt: "Ontem" }, { es: "Anteayer", pt: "Anteontem" }, { es: "Anoche", pt: "Ontem à noite" }, { es: "Anteanoche", pt: "Anteontem à noite" }, { es: "El año pasado", pt: "O ano passado" },
+          { es: "La semana pasada", pt: "A semana passada" }, { es: "El lunes pasado", pt: "A segunda-feira passada" }, { es: "Hace dos días", pt: "Há dois dias" }, { es: "Desde 1990", pt: "Desde 1990" },
+          { es: "Desde hace mucho tiempo", pt: "Há muito tempo" }, { es: "En 2015", pt: "Em 2015" }, { es: "En octubre", pt: "Em outubro" }
         ] },
         { category: "Expresiones de tiempo — Presente", items: [
-          { es: "Ahora" }, { es: "Ahorita" }, { es: "Hoy" }, { es: "Esta semana" }, { es: "En este momento" }
+          { es: "Ahora", pt: "Agora" }, { es: "Ahorita", pt: "Agorinha/já já (uso coloquial)" }, { es: "Hoy", pt: "Hoje" }, { es: "Esta semana", pt: "Esta semana" }, { es: "En este momento", pt: "Neste momento" }
         ] },
         { category: "Expresiones de tiempo — Futuro", items: [
-          { es: "Mañana" }, { es: "Pasado mañana" }, { es: "El próximo año" }, { es: "La próxima semana" },
-          { es: "El mes que viene" }, { es: "En 2035" }
+          { es: "Mañana", pt: "Amanhã" }, { es: "Pasado mañana", pt: "Depois de amanhã" }, { es: "El próximo año", pt: "O próximo ano" }, { es: "La próxima semana", pt: "A próxima semana" },
+          { es: "El mes que viene", pt: "O mês que vem" }, { es: "En 2035", pt: "Em 2035" }
         ] },
         { category: "Medios de transporte", items: [
-          { es: "A pie" }, { es: "En coche/auto/carro" }, { es: "Autobús/bus/colectivo/ómnibus/guagua/camión" },
-          { es: "Camión" }, { es: "Tren" }, { es: "Avión" }, { es: "Motocicleta/moto" }, { es: "Metro/subte" },
-          { es: "Microbús/buseta" }, { es: "Lancha" }, { es: "Helicóptero" }, { es: "Taxi" }, { es: "Tranvía" }
+          { es: "A pie", pt: "A pé" }, { es: "En coche/auto/carro", pt: "De carro" }, { es: "Autobús/bus/colectivo/ómnibus/guagua/camión", pt: "Ônibus (várias formas regionais)" },
+          { es: "Camión", pt: "Caminhão" }, { es: "Tren", pt: "Trem" }, { es: "Avión", pt: "Avião" }, { es: "Motocicleta/moto", pt: "Motocicleta/moto" }, { es: "Metro/subte", pt: "Metrô" },
+          { es: "Microbús/buseta", pt: "Micro-ônibus" }, { es: "Lancha", pt: "Lancha" }, { es: "Helicóptero", pt: "Helicóptero" }, { es: "Taxi", pt: "Táxi" }, { es: "Tranvía", pt: "Bonde/VLT" }
         ] },
         { category: "Verbos e termos relacionados ao trânsito", items: [
-          { es: "Conducir" }, { es: "Manejar" }, { es: "Embotellar" }, { es: "Atascar" }, { es: "Alquilar" },
-          { es: "Aparcar/Estacionar" }, { es: "Tránsito" }, { es: "Tráfico" }, { es: "Trayecto" }, { es: "Taxista/Chofer" },
-          { es: "Esquina" }, { es: "Calle" }, { es: "Carretera" }, { es: "Avenida" }, { es: "Semáforo" },
-          { es: "Carné de conducir" }, { es: "Alquiler de coches" }, { es: "Peatón" }, { es: "Paso peatonal/de peatones" }
+          { es: "Conducir", pt: "Conduzir/dirigir (Espanha)" }, { es: "Manejar", pt: "Dirigir (América Latina)" }, { es: "Embotellar", pt: "Engarrafar" }, { es: "Atascar", pt: "Entupir/travar (trânsito parado)" }, { es: "Alquilar", pt: "Alugar" },
+          { es: "Aparcar/Estacionar", pt: "Estacionar" }, { es: "Tránsito", pt: "Trânsito" }, { es: "Tráfico", pt: "Tráfego" }, { es: "Trayecto", pt: "Trajeto" }, { es: "Taxista/Chofer", pt: "Taxista/motorista" },
+          { es: "Esquina", pt: "Esquina" }, { es: "Calle", pt: "Rua" }, { es: "Carretera", pt: "Rodovia/estrada" }, { es: "Avenida", pt: "Avenida" }, { es: "Semáforo", pt: "Semáforo" },
+          { es: "Carné de conducir", pt: "Carteira de motorista" }, { es: "Alquiler de coches", pt: "Aluguel de carros" }, { es: "Peatón", pt: "Pedestre" }, { es: "Paso peatonal/de peatones", pt: "Faixa de pedestres" }
         ] },
         { category: "Señales de tránsito (preventivas, exemplos)", items: [
-          { es: "Curva" }, { es: "Curva cerrada" }, { es: "Camino sinuoso" }, { es: "Contracurva" }, { es: "Bifurcación" },
-          { es: "Cruce" }, { es: "Doble circulación" }, { es: "Glorieta" }, { es: "Zona escolar" }, { es: "Paso peatonal" },
-          { es: "Alto próximo" }, { es: "Cruce de ferrocarril" }, { es: "Semáforo" }, { es: "Ciclistas" }
+          { es: "Curva", pt: "Curva" }, { es: "Curva cerrada", pt: "Curva fechada" }, { es: "Camino sinuoso", pt: "Caminho sinuoso" }, { es: "Contracurva", pt: "Contracurva" }, { es: "Bifurcación", pt: "Bifurcação" },
+          { es: "Cruce", pt: "Cruzamento" }, { es: "Doble circulación", pt: "Mão dupla" }, { es: "Glorieta", pt: "Rotatória" }, { es: "Zona escolar", pt: "Zona escolar" }, { es: "Paso peatonal", pt: "Faixa de pedestres" },
+          { es: "Alto próximo", pt: "Pare à frente" }, { es: "Cruce de ferrocarril", pt: "Cruzamento de ferrovia" }, { es: "Semáforo", pt: "Semáforo" }, { es: "Ciclistas", pt: "Ciclistas" }
         ] }
       ],
       grammar: [
@@ -1002,33 +1014,33 @@ const LEVEL_INTERMEDIO = {
       title: "Llamada Telefónica",
       subtitle: "Aparelhos de comunicação e frases úteis ao telefone",
       dialogue: [
-        { who: "N", es: "Suena el teléfono" },
-        { who: "A", es: "Diga!" },
-        { who: "B", es: "Quién habla?" },
-        { who: "A", es: "Hola! Le habla Julieta." },
-        { who: "B", es: "Por favor!, puedo hablar con Fernando?" },
-        { who: "A", es: "De parte de quién?" },
-        { who: "B", es: "Soy Lucía, trabajo con él." },
-        { who: "A", es: "Un momento, por favor!" },
-        { who: "B", es: "Gracias!" },
-        { who: "C", es: "Hola, Lucía! Qué tal?" },
-        { who: "B", es: "Bien, gracias! Y tú?" },
-        { who: "C", es: "Tranquilo...Mira, estoy cocinando ahora. Te puedo llamar dentro de un rato?" },
-        { who: "B", es: "Por supuesto!, espero tu llamada." },
-        { who: "C", es: "Ok. Hasta luego!" },
-        { who: "N", es: "1 hora después - Suena el teléfono" },
-        { who: "B", es: "Aló!" },
-        { who: "C", es: "Lucía, te habla Fernando. Perdón por no haber podido hablar antes. Qué necesitabas?" },
-        { who: "B", es: "No te preocupes. Esta noche vamos a por una cerve en la U donde estudia Julieta. Quieres ir con nosotros?" },
-        { who: "C", es: "Por supuesto. Estoy libre a las 8h. Nos vemos allá! Gracias por la invitación!" },
-        { who: "B", es: "De nada! Hasta luego!" }
+        { who: "N", es: "Suena el teléfono", pt: "O telefone toca" },
+        { who: "A", es: "Diga!", pt: "Diga! (forma usada na Espanha)" },
+        { who: "B", es: "Quién habla?", pt: "Quem fala?" },
+        { who: "A", es: "Hola! Le habla Julieta.", pt: "Olá! Aqui é a Julieta." },
+        { who: "B", es: "Por favor!, puedo hablar con Fernando?", pt: "Por favor, posso falar com o Fernando?" },
+        { who: "A", es: "De parte de quién?", pt: "Da parte de quem?" },
+        { who: "B", es: "Soy Lucía, trabajo con él.", pt: "Sou a Lucía, trabalho com ele." },
+        { who: "A", es: "Un momento, por favor!", pt: "Um momento, por favor!" },
+        { who: "B", es: "Gracias!", pt: "Obrigada!" },
+        { who: "C", es: "Hola, Lucía! Qué tal?", pt: "Olá, Lucía! Tudo bem?" },
+        { who: "B", es: "Bien, gracias! Y tú?", pt: "Bem, obrigada! E você?" },
+        { who: "C", es: "Tranquilo...Mira, estoy cocinando ahora. Te puedo llamar dentro de un rato?", pt: "Tranquilo... Olha, estou cozinhando agora. Posso te ligar daqui a pouco?" },
+        { who: "B", es: "Por supuesto!, espero tu llamada.", pt: "Claro! Vou esperar sua ligação." },
+        { who: "C", es: "Ok. Hasta luego!", pt: "Ok. Até mais!" },
+        { who: "N", es: "1 hora después - Suena el teléfono", pt: "1 hora depois - O telefone toca" },
+        { who: "B", es: "Aló!", pt: "Alô!" },
+        { who: "C", es: "Lucía, te habla Fernando. Perdón por no haber podido hablar antes. Qué necesitabas?", pt: "Lucía, aqui é o Fernando. Desculpa por não ter conseguido falar antes. O que você precisava?" },
+        { who: "B", es: "No te preocupes. Esta noche vamos a por una cerve en la U donde estudia Julieta. Quieres ir con nosotros?", pt: "Não se preocupe. Hoje à noite vamos tomar uma cerveja na universidade onde a Julieta estuda. Quer ir com a gente?" },
+        { who: "C", es: "Por supuesto. Estoy libre a las 8h. Nos vemos allá! Gracias por la invitación!", pt: "Claro. Estou livre às 8h. Nos vemos lá! Obrigado pelo convite!" },
+        { who: "B", es: "De nada! Hasta luego!", pt: "De nada! Até mais!" }
       ],
       vocabulary: [
         { category: "Aparatos/dispositivos de comunicación", items: [
-          { es: "Correo" }, { es: "Teléfono fijo" }, { es: "Teléfono celular o móvil" }, { es: "Videoconferencias" },
-          { es: "Sitios de redes sociales" }, { es: "Herramientas de ciberchat" }, { es: "Fax" }, { es: "Computador(a)/Ordenador" },
-          { es: "Computador portátil/laptop" }, { es: "Notebook y Netbook" }, { es: "Tableta/Tablet" }, { es: "Software" },
-          { es: "Televisión/Tele" }, { es: "Radio" }
+          { es: "Correo", pt: "Correio" }, { es: "Teléfono fijo", pt: "Telefone fixo" }, { es: "Teléfono celular o móvil", pt: "Telefone celular ou móvel" }, { es: "Videoconferencias", pt: "Videoconferências" },
+          { es: "Sitios de redes sociales", pt: "Sites de redes sociais" }, { es: "Herramientas de ciberchat", pt: "Ferramentas de chat online" }, { es: "Fax", pt: "Fax" }, { es: "Computador(a)/Ordenador", pt: "Computador" },
+          { es: "Computador portátil/laptop", pt: "Notebook/laptop" }, { es: "Notebook y Netbook", pt: "Notebook e Netbook" }, { es: "Tableta/Tablet", pt: "Tablet" }, { es: "Software", pt: "Software" },
+          { es: "Televisión/Tele", pt: "Televisão/TV" }, { es: "Radio", pt: "Rádio" }
         ] },
         { category: "Verbos útiles relacionados", items: [
           { es: "Hablar", pt: "Falar" }, { es: "Charlar", pt: "Bater papo" }, { es: "Atender", pt: "Atender" },
@@ -1037,27 +1049,27 @@ const LEVEL_INTERMEDIO = {
           { es: "Colgar", pt: "Desligar" }, { es: "Coger", pt: "Pegar" }, { es: "Llamar", pt: "Ligar" }, { es: "Anotar", pt: "Anotar" }
         ] },
         { category: "Haciendo la llamada", items: [
-          { es: "Hola! Por favor, puedo hablar con (Luciara)?" }, { es: "Puede(s) pasarme con (Julia)?" },
-          { es: "Hola!, (Helio) está?" }, { es: "Aquí es (Mauro)." }, { es: "Trabajo con él/ella." },
-          { es: "Puede(s) hablar ahora?" }, { es: "Recibiste mi recado/mensaje?" }
+          { es: "Hola! Por favor, puedo hablar con (Luciara)?", pt: "Olá! Por favor, posso falar com (Luciara)?" }, { es: "Puede(s) pasarme con (Julia)?", pt: "Você pode me passar para (Julia)?" },
+          { es: "Hola!, (Helio) está?", pt: "Olá, o (Helio) está?" }, { es: "Aquí es (Mauro).", pt: "Aqui é o (Mauro)." }, { es: "Trabajo con él/ella.", pt: "Trabalho com ele/ela." },
+          { es: "Puede(s) hablar ahora?", pt: "Você pode falar agora?" }, { es: "Recibiste mi recado/mensaje?", pt: "Você recebeu meu recado/mensagem?" }
         ] },
         { category: "Contestando el teléfono", items: [
-          { es: "Diga!/Dígame!" }, { es: "Aló!" }, { es: "Bueno!" }, { es: "Sí?" }, { es: "Quién habla?" },
-          { es: "De parte de quién?" }, { es: "Un momento, no cuelgue(s)." }
+          { es: "Diga!/Dígame!", pt: "Diga!/Pode falar! (forma usada na Espanha)" }, { es: "Aló!", pt: "Alô! (forma usada na América Latina)" }, { es: "Bueno!", pt: "Alô! (forma usada no México)" }, { es: "Sí?", pt: "Sim?" }, { es: "Quién habla?", pt: "Quem fala?" },
+          { es: "De parte de quién?", pt: "Da parte de quem?" }, { es: "Un momento, no cuelgue(s).", pt: "Um momento, não desligue." }
         ] },
         { category: "Problemas durante la llamada", items: [
-          { es: "Perdón, se cortó la llamada." }, { es: "Hay un cruce de líneas." }, { es: "Hay muchas interferencias." },
-          { es: "Te escucho mal." }, { es: "Lo siento, me he equivocado de número." }, { es: "El teléfono está ocupado." }
+          { es: "Perdón, se cortó la llamada.", pt: "Desculpe, a ligação caiu." }, { es: "Hay un cruce de líneas.", pt: "Há um cruzamento de linhas." }, { es: "Hay muchas interferencias.", pt: "Há muita interferência." },
+          { es: "Te escucho mal.", pt: "Estou te ouvindo mal." }, { es: "Lo siento, me he equivocado de número.", pt: "Desculpe, eu me enganei de número." }, { es: "El teléfono está ocupado.", pt: "O telefone está ocupado." }
         ] },
         { category: "Acortamientos (exemplos)", items: [
-          { es: "Automóvil-Auto" }, { es: "Autobús-Bus" }, { es: "Celular-Celu" }, { es: "Bicicleta-Bici" }, { es: "Cerveza-Cerve" },
-          { es: "Fin de semana-Finde" }, { es: "Facultad-Facu/Facul" }, { es: "Computadora-Compu" }, { es: "Cumpleaños-Cumple" },
-          { es: "Oficina-Ofi" }, { es: "Por favor-Porfa" }, { es: "Universidad-Uni/U" }, { es: "Profesor-Profe" }, { es: "Película-Peli" }
+          { es: "Automóvil-Auto", pt: "Automóvel-Carro (redução coloquial)" }, { es: "Autobús-Bus", pt: "Ônibus-Bus (redução coloquial)" }, { es: "Celular-Celu", pt: "Celular-Celu (redução coloquial)" }, { es: "Bicicleta-Bici", pt: "Bicicleta-Bici (redução coloquial)" }, { es: "Cerveza-Cerve", pt: "Cerveja-Cerve (redução coloquial)" },
+          { es: "Fin de semana-Finde", pt: "Fim de semana-Finde (redução coloquial)" }, { es: "Facultad-Facu/Facul", pt: "Faculdade-Facu/Facul (redução coloquial)" }, { es: "Computadora-Compu", pt: "Computador-Compu (redução coloquial)" }, { es: "Cumpleaños-Cumple", pt: "Aniversário-Cumple (redução coloquial)" },
+          { es: "Oficina-Ofi", pt: "Escritório-Ofi (redução coloquial)" }, { es: "Por favor-Porfa", pt: "Por favor-Porfa (redução coloquial)" }, { es: "Universidad-Uni/U", pt: "Universidade-Uni/U (redução coloquial)" }, { es: "Profesor-Profe", pt: "Professor-Profe (redução coloquial)" }, { es: "Película-Peli", pt: "Filme-Peli (redução coloquial)" }
         ] },
         { category: "Jergas en línea/lenguaje chat/SMS", items: [
-          { es: "Ademas-Ade+" }, { es: "Cuánto-Knto" }, { es: "Porque-Xq/Xk" }, { es: "Tampoco-Tp" }, { es: "Nada-Nd" },
-          { es: "No te preocupes-Ntp" }, { es: "Gracias-Grax" }, { es: "También-Tmb/Tb" }, { es: "Te quiero-Tq/Tk" },
-          { es: "Estoy-Toy" }, { es: "Que-Q" }, { es: "Nos vemos-Ns Vms" }, { es: "Adiós-A2" }, { es: "Beso-B/X" }
+          { es: "Ademas-Ade+", pt: "Além disso-Ade+ (abreviação de chat/SMS)" }, { es: "Cuánto-Knto", pt: "Quanto-Knto (abreviação de chat/SMS)" }, { es: "Porque-Xq/Xk", pt: "Porque-Xq/Xk (abreviação de chat/SMS)" }, { es: "Tampoco-Tp", pt: "Tampouco-Tp (abreviação de chat/SMS)" }, { es: "Nada-Nd", pt: "Nada-Nd (abreviação de chat/SMS)" },
+          { es: "No te preocupes-Ntp", pt: "Não se preocupe-Ntp (abreviação de chat/SMS)" }, { es: "Gracias-Grax", pt: "Obrigado-Grax (abreviação de chat/SMS)" }, { es: "También-Tmb/Tb", pt: "Também-Tmb/Tb (abreviação de chat/SMS)" }, { es: "Te quiero-Tq/Tk", pt: "Te amo/Gosto de você-Tq/Tk (abreviação de chat/SMS)" },
+          { es: "Estoy-Toy", pt: "Estou-Toy (abreviação de chat/SMS)" }, { es: "Que-Q", pt: "Que-Q (abreviação de chat/SMS)" }, { es: "Nos vemos-Ns Vms", pt: "Nos vemos-Ns Vms (abreviação de chat/SMS)" }, { es: "Adiós-A2", pt: "Adeus-A2 (abreviação de chat/SMS)" }, { es: "Beso-B/X", pt: "Beijo-B/X (abreviação de chat/SMS)" }
         ] }
       ],
       grammar: [
@@ -1095,33 +1107,33 @@ const LEVEL_INTERMEDIO = {
       title: "Vamos de Compras",
       subtitle: "Cores, cosméticos e Condicional 1 (Si + presente)",
       dialogue: [
-        { who: "A", es: "Amiga, vamos de compras al centro comercial mañana?" },
-        { who: "B", es: "No sé...Si tengo plata, voy. Qué necesitas comprar?" },
-        { who: "A", es: "No necesito nada, pero si puedo, voy a comprar un vestido nuevo para una fiesta." },
-        { who: "B", es: "Y en qué color lo quieres?" },
-        { who: "A", es: "Creo que dorado o negro. Si puedes elegir por mí, cuál color vas a preferir?" },
-        { who: "B", es: "Seguramente el dorado. Es un color muy vibrante, bonito y chic." },
-        { who: "A", es: "Buena elección. Tengo ganas de comprarme también unos cosméticos, perfume y maquillaje. Qué te parece?" },
-        { who: "B", es: "Buena idea. También necesito unas cositas pero no sé si tengo plata. Igual voy contigo." },
-        { who: "A", es: "Averígüelo. Espero que puedas comprarte algo también." },
-        { who: "B", es: "Ojalá! Quedamos a las 10h?" },
-        { who: "A", es: "Perfecto! Besitos y hasta mañana!" },
-        { who: "B", es: "Chao, amiga!" }
+        { who: "A", es: "Amiga, vamos de compras al centro comercial mañana?", pt: "Amiga, vamos às compras no shopping amanhã?" },
+        { who: "B", es: "No sé...Si tengo plata, voy. Qué necesitas comprar?", pt: "Não sei... Se eu tiver dinheiro, eu vou. O que você precisa comprar?" },
+        { who: "A", es: "No necesito nada, pero si puedo, voy a comprar un vestido nuevo para una fiesta.", pt: "Não preciso de nada, mas se eu puder, vou comprar um vestido novo para uma festa." },
+        { who: "B", es: "Y en qué color lo quieres?", pt: "E em que cor você quer?" },
+        { who: "A", es: "Creo que dorado o negro. Si puedes elegir por mí, cuál color vas a preferir?", pt: "Acho que dourado ou preto. Se você pudesse escolher por mim, qual cor prefere?" },
+        { who: "B", es: "Seguramente el dorado. Es un color muy vibrante, bonito y chic.", pt: "Com certeza o dourado. É uma cor bem vibrante, bonita e chique." },
+        { who: "A", es: "Buena elección. Tengo ganas de comprarme también unos cosméticos, perfume y maquillaje. Qué te parece?", pt: "Boa escolha. Estou com vontade de comprar também uns cosméticos, perfume e maquiagem. O que você acha?" },
+        { who: "B", es: "Buena idea. También necesito unas cositas pero no sé si tengo plata. Igual voy contigo.", pt: "Boa ideia. Também preciso de umas coisinhas, mas não sei se tenho dinheiro. De qualquer jeito vou com você." },
+        { who: "A", es: "Averígüelo. Espero que puedas comprarte algo también.", pt: "Descubra isso. Espero que você também possa comprar algo." },
+        { who: "B", es: "Ojalá! Quedamos a las 10h?", pt: "Tomara! Combinamos às 10h?" },
+        { who: "A", es: "Perfecto! Besitos y hasta mañana!", pt: "Perfeito! Beijinhos e até amanhã!" },
+        { who: "B", es: "Chao, amiga!", pt: "Tchau, amiga!" }
       ],
       vocabulary: [
         { category: "Los colores", items: [
-          { es: "Azul claro" }, { es: "Azul marino/oscuro" }, { es: "Morado-Violeta-Lila" }, { es: "Plata" }, { es: "Dorado" },
-          { es: "Amarillento" }, { es: "Rojizo" }, { es: "Anaranjado" }, { es: "Azulado" }, { es: "Verdoso" }, { es: "Rosado" },
-          { es: "Rosáceo" }, { es: "Grisáceo" }, { es: "Negruzco" }, { es: "Blancuzco" }, { es: "Pardusco" }
+          { es: "Azul claro", pt: "Azul claro" }, { es: "Azul marino/oscuro", pt: "Azul marinho/escuro" }, { es: "Morado-Violeta-Lila", pt: "Roxo-Violeta-Lilás" }, { es: "Plata", pt: "Prata" }, { es: "Dorado", pt: "Dourado" },
+          { es: "Amarillento", pt: "Amarelado" }, { es: "Rojizo", pt: "Avermelhado" }, { es: "Anaranjado", pt: "Alaranjado" }, { es: "Azulado", pt: "Azulado" }, { es: "Verdoso", pt: "Esverdeado" }, { es: "Rosado", pt: "Rosado" },
+          { es: "Rosáceo", pt: "Rosáceo" }, { es: "Grisáceo", pt: "Acinzentado" }, { es: "Negruzco", pt: "Enegrecido" }, { es: "Blancuzco", pt: "Esbranquiçado" }, { es: "Pardusco", pt: "Amarronzado" }
         ] },
         { category: "Productos de higiene y cosméticos (amostra)", items: [
-          { es: "Jabón facial/corporal" }, { es: "Champú" }, { es: "Champú anticaspa/anticaída" }, { es: "Acondicionador/Crema de enjuague" },
-          { es: "Tónico/Loción capilar" }, { es: "Tintura capilar" }, { es: "Dentífrico/Pasta de dientes" }, { es: "Enjuague bucal" },
-          { es: "Desodorante/Antitranspirante axilar" }, { es: "Crema/gel/loción/espuma para afeitarse" }, { es: "Delineador para labios/ojos y cejas" },
-          { es: "Protector labial" }, { es: "Lápiz labial/Pintalabios" }, { es: "Brillo labial" }, { es: "Sombra para párpados" },
-          { es: "Máscara de pestañas/Rímel" }, { es: "Corrector de ojeras" }, { es: "Base (con FPS)" }, { es: "Protector solar" },
-          { es: "Bronceador" }, { es: "Toallitas húmedas" }, { es: "Mascarilla facial" }, { es: "Desmaquillante" },
-          { es: "Depilador" }, { es: "Esmalte/barniz para uñas" }, { es: "Quitaesmaltes" }, { es: "Perfume" }
+          { es: "Jabón facial/corporal", pt: "Sabonete facial/corporal" }, { es: "Champú", pt: "Xampu" }, { es: "Champú anticaspa/anticaída", pt: "Xampu anticaspa/antiqueda" }, { es: "Acondicionador/Crema de enjuague", pt: "Condicionador" },
+          { es: "Tónico/Loción capilar", pt: "Tônico/Loção capilar" }, { es: "Tintura capilar", pt: "Tintura de cabelo" }, { es: "Dentífrico/Pasta de dientes", pt: "Creme dental/Pasta de dente" }, { es: "Enjuague bucal", pt: "Enxaguante bucal" },
+          { es: "Desodorante/Antitranspirante axilar", pt: "Desodorante/Antitranspirante" }, { es: "Crema/gel/loción/espuma para afeitarse", pt: "Creme/gel/loção/espuma de barbear" }, { es: "Delineador para labios/ojos y cejas", pt: "Delineador para lábios/olhos e sobrancelhas" },
+          { es: "Protector labial", pt: "Protetor labial" }, { es: "Lápiz labial/Pintalabios", pt: "Batom" }, { es: "Brillo labial", pt: "Brilho labial/gloss" }, { es: "Sombra para párpados", pt: "Sombra para pálpebras" },
+          { es: "Máscara de pestañas/Rímel", pt: "Máscara de cílios/Rímel" }, { es: "Corrector de ojeras", pt: "Corretivo para olheiras" }, { es: "Base (con FPS)", pt: "Base (com FPS)" }, { es: "Protector solar", pt: "Protetor solar" },
+          { es: "Bronceador", pt: "Bronzeador" }, { es: "Toallitas húmedas", pt: "Lenços umedecidos" }, { es: "Mascarilla facial", pt: "Máscara facial" }, { es: "Desmaquillante", pt: "Demaquilante" },
+          { es: "Depilador", pt: "Depilador" }, { es: "Esmalte/barniz para uñas", pt: "Esmalte de unha" }, { es: "Quitaesmaltes", pt: "Removedor de esmalte" }, { es: "Perfume", pt: "Perfume" }
         ] }
       ],
       grammar: [
@@ -1162,44 +1174,44 @@ const LEVEL_INTERMEDIO = {
       title: "Aeropuerto",
       subtitle: "Frases de aeroporto e Futuro de Subjuntivo",
       dialogue: [
-        { who: "A", es: "Señora, su pasaje y pasaporte, por favor." },
-        { who: "B", es: "Aquí los tiene." },
-        { who: "A", es: "Gracias! Usted va a facturar alguna maleta?" },
-        { who: "B", es: "Sí, solo esta y tengo equipaje de mano." },
-        { who: "A", es: "Bueno, aquí tiene su tarjeta de embarque y etiqueta para el equipaje de mano. Embarque a las 8 y media en la puerta 9." },
-        { who: "B", es: "Una pregunta, cuál es mi asiento?" },
-        { who: "A", es: "Es el 22B. Le puedo ayudar en algo más?" },
-        { who: "B", es: "Sí. Quisiera saber si es directo el vuelo. No me acuerdo." },
-        { who: "A", es: "No, señora. Hay una escala en Lisboa. Si quiere, usted puede cambiarlo por un vuelo directo todavía." },
-        { who: "B", es: "Entiendo. No hay problema que tenga una escala. Muchísimas gracias!" },
-        { who: "A", es: "Gracias a usted! Buen viaje!" }
+        { who: "A", es: "Señora, su pasaje y pasaporte, por favor.", pt: "Senhora, sua passagem e passaporte, por favor." },
+        { who: "B", es: "Aquí los tiene.", pt: "Aqui estão." },
+        { who: "A", es: "Gracias! Usted va a facturar alguna maleta?", pt: "Obrigado! A senhora vai despachar alguma mala?" },
+        { who: "B", es: "Sí, solo esta y tengo equipaje de mano.", pt: "Sim, só esta, e tenho bagagem de mão." },
+        { who: "A", es: "Bueno, aquí tiene su tarjeta de embarque y etiqueta para el equipaje de mano. Embarque a las 8 y media en la puerta 9.", pt: "Certo, aqui está seu cartão de embarque e a etiqueta para a bagagem de mão. Embarque às 8 e meia no portão 9." },
+        { who: "B", es: "Una pregunta, cuál es mi asiento?", pt: "Uma pergunta, qual é o meu assento?" },
+        { who: "A", es: "Es el 22B. Le puedo ayudar en algo más?", pt: "É o 22B. Posso ajudar em mais alguma coisa?" },
+        { who: "B", es: "Sí. Quisiera saber si es directo el vuelo. No me acuerdo.", pt: "Sim. Eu gostaria de saber se o voo é direto. Não me lembro." },
+        { who: "A", es: "No, señora. Hay una escala en Lisboa. Si quiere, usted puede cambiarlo por un vuelo directo todavía.", pt: "Não, senhora. Há uma escala em Lisboa. Se quiser, a senhora ainda pode trocar por um voo direto." },
+        { who: "B", es: "Entiendo. No hay problema que tenga una escala. Muchísimas gracias!", pt: "Entendo. Não tem problema ter uma escala. Muito obrigada!" },
+        { who: "A", es: "Gracias a usted! Buen viaje!", pt: "Obrigado à senhora! Boa viagem!" }
       ],
       vocabulary: [
         { category: "Usos del verbo TIRAR", items: [
-          { es: "Lançar algo com a mão em uma direção — El me tiró un bolígrafo en la cara." },
-          { es: "Derrubar ou jogar ao chão — Nos peleamos y ella me tiró al suelo." },
-          { es: "Descartar/jogar fora — Voy a tirar este vestido, no me gusta más." },
-          { es: "Lançar uma peça de jogo — Tiró los dados y obtuvo el número 4." },
-          { es: "Desperdiçar/não aproveitar algo — Tiraron el dinero comprando este coche." },
-          { es: "Disparar com câmera fotográfica — Le pedí que me tirara una foto." }
+          { es: "Lançar algo com a mão em uma direção — El me tiró un bolígrafo en la cara.", pt: "Jogar algo com a mão em uma direção: Ele jogou uma caneta na minha cara." },
+          { es: "Derrubar ou jogar ao chão — Nos peleamos y ella me tiró al suelo.", pt: "Derrubar ou jogar ao chão: Brigamos e ela me jogou no chão." },
+          { es: "Descartar/jogar fora — Voy a tirar este vestido, no me gusta más.", pt: "Descartar/jogar fora: Vou jogar fora este vestido, não gosto mais dele." },
+          { es: "Lançar uma peça de jogo — Tiró los dados y obtuvo el número 4.", pt: "Lançar uma peça de jogo: Ele jogou os dados e tirou o número 4." },
+          { es: "Desperdiçar/não aproveitar algo — Tiraron el dinero comprando este coche.", pt: "Desperdiçar/não aproveitar algo: Jogaram o dinheiro fora comprando este carro." },
+          { es: "Disparar com câmera fotográfica — Le pedí que me tirara una foto.", pt: "Tirar uma foto (fotografar): Pedi que ele tirasse uma foto minha." }
         ] },
         { category: "Frases útiles — Aeropuerto", items: [
-          { es: "Su pasaporte/identidad/pasaje, por favor." }, { es: "Va a facturar el equipaje?" },
-          { es: "Este es el billete de vuelta, no de ida." }, { es: "Dónde puedo facturar mi maleta?" },
-          { es: "A qué puerta de embarque debo ir?" }, { es: "Buen viaje!" },
-          { es: "No llevo ningún objeto punzante/líquido en mi bolsa." }, { es: "Tiene algo a declarar?" },
-          { es: "Dónde recogemos las maletas?" }, { es: "Hay alguna escala en este vuelo?" },
-          { es: "Es directo este vuelo?" }, { es: "Cuándo sale/llega el vuelo?" }, { es: "Cuál es mi número de vuelo?" },
-          { es: "Le gusta la ventanilla o pasillo?" }, { es: "Abróchense los cinturones." }, { es: "El avión va a despegar/aterrizar?" }
+          { es: "Su pasaporte/identidad/pasaje, por favor.", pt: "Seu passaporte/identidade/passagem, por favor." }, { es: "Va a facturar el equipaje?", pt: "Vai despachar a bagagem?" },
+          { es: "Este es el billete de vuelta, no de ida.", pt: "Esta é a passagem de volta, não a de ida." }, { es: "Dónde puedo facturar mi maleta?", pt: "Onde posso despachar minha mala?" },
+          { es: "A qué puerta de embarque debo ir?", pt: "A qual portão de embarque devo ir?" }, { es: "Buen viaje!", pt: "Boa viagem!" },
+          { es: "No llevo ningún objeto punzante/líquido en mi bolsa.", pt: "Não estou levando nenhum objeto cortante/líquido na minha bolsa." }, { es: "Tiene algo a declarar?", pt: "Tem algo a declarar?" },
+          { es: "Dónde recogemos las maletas?", pt: "Onde pegamos as malas?" }, { es: "Hay alguna escala en este vuelo?", pt: "Há alguma escala neste voo?" },
+          { es: "Es directo este vuelo?", pt: "Este voo é direto?" }, { es: "Cuándo sale/llega el vuelo?", pt: "Quando o voo sai/chega?" }, { es: "Cuál es mi número de vuelo?", pt: "Qual é o meu número de voo?" },
+          { es: "Le gusta la ventanilla o pasillo?", pt: "Prefere janela ou corredor?" }, { es: "Abróchense los cinturones.", pt: "Apertem os cintos." }, { es: "El avión va a despegar/aterrizar?", pt: "O avião vai decolar/aterrissar?" }
         ] },
         { category: "Vocabulario relacionado", items: [
-          { es: "Avión (a jato)" }, { es: "Línea aérea" }, { es: "Aeropuerto" }, { es: "Tripulación" }, { es: "Azafata/Auxiliar de vuelo" },
-          { es: "Llegadas" }, { es: "Salidas" }, { es: "Equipaje/Bagaje" }, { es: "Equipaje de mano" }, { es: "Maleta/Valija" },
-          { es: "Billete/Pasaje (ida y vuelta)" }, { es: "Puerta de embarque" }, { es: "Tarjeta de embarque" }, { es: "Facturación/Check-in" },
-          { es: "Aduana" }, { es: "Retrasado/Atrasado" }, { es: "Destino" }, { es: "Clase turista/económica" }, { es: "Vuelo" },
-          { es: "Número de vuelo" }, { es: "Embarque" }, { es: "Pasaporte" }, { es: "Pasajero" }, { es: "Piloto" },
-          { es: "Cinturón de seguridad" }, { es: "Asiento de pasillo/ventanilla" }, { es: "Control de seguridad" },
-          { es: "Despegar/Despegue" }, { es: "Aterrizar/Aterrizaje" }, { es: "Escala/Conexión" }
+          { es: "Avión (a jato)", pt: "Avião (a jato)" }, { es: "Línea aérea", pt: "Companhia aérea" }, { es: "Aeropuerto", pt: "Aeroporto" }, { es: "Tripulación", pt: "Tripulação" }, { es: "Azafata/Auxiliar de vuelo", pt: "Aeromoça/Comissário(a) de bordo" },
+          { es: "Llegadas", pt: "Chegadas" }, { es: "Salidas", pt: "Saídas" }, { es: "Equipaje/Bagaje", pt: "Bagagem" }, { es: "Equipaje de mano", pt: "Bagagem de mão" }, { es: "Maleta/Valija", pt: "Mala" },
+          { es: "Billete/Pasaje (ida y vuelta)", pt: "Passagem (ida e volta)" }, { es: "Puerta de embarque", pt: "Portão de embarque" }, { es: "Tarjeta de embarque", pt: "Cartão de embarque" }, { es: "Facturación/Check-in", pt: "Check-in" },
+          { es: "Aduana", pt: "Alfândega" }, { es: "Retrasado/Atrasado", pt: "Atrasado" }, { es: "Destino", pt: "Destino" }, { es: "Clase turista/económica", pt: "Classe turística/econômica" }, { es: "Vuelo", pt: "Voo" },
+          { es: "Número de vuelo", pt: "Número do voo" }, { es: "Embarque", pt: "Embarque" }, { es: "Pasaporte", pt: "Passaporte" }, { es: "Pasajero", pt: "Passageiro" }, { es: "Piloto", pt: "Piloto" },
+          { es: "Cinturón de seguridad", pt: "Cinto de segurança" }, { es: "Asiento de pasillo/ventanilla", pt: "Assento de corredor/janela" }, { es: "Control de seguridad", pt: "Controle de segurança" },
+          { es: "Despegar/Despegue", pt: "Decolar/Decolagem" }, { es: "Aterrizar/Aterrizaje", pt: "Aterrissar/Aterrissagem" }, { es: "Escala/Conexión", pt: "Escala/Conexão" }
         ] }
       ],
       grammar: [
@@ -1238,48 +1250,48 @@ const LEVEL_INTERMEDIO = {
       title: "Cumpleaños",
       subtitle: "Ver x Asistir x Mirar, surpresa e arrependimento",
       dialogue: [
-        { who: "A", es: "Hola Mari, qué onda?" },
-        { who: "B", es: "Todo tranquilo. Cómo te fue la fiesta de cumpleaños? Una lástima no haber podido asistir." },
-        { who: "A", es: "Buenísima, pero..." },
-        { who: "B", es: "Qué sucedió?" },
-        { who: "A", es: "Bueno...Conoces a Mauricio?" },
-        { who: "B", es: "Sí, me parece un buen tipo. Qué pasó?" },
-        { who: "A", es: "Me invitó a salir después de la fiesta y yo dije no." },
-        { who: "B", es: "No lo creo! Pero, por qué?" },
-        { who: "A", es: "No lo sé amiga...Ahora es demasiado tarde." },
-        { who: "B", es: "Tú deberías haber aceptado salir con él. Estoy segura de que no es tarde. Mándale un mensaje ahora mismo." },
-        { who: "A", es: "Está bien, vamos a ver cómo van las cosas. Después te lo cuento todo." },
-        { who: "B", es: "Ok. Suerte, amiga, y feliz cumple de nuevo!" },
-        { who: "A", es: "Gracias, cuídate, cariño!" }
+        { who: "A", es: "Hola Mari, qué onda?", pt: "Oi Mari, e aí?" },
+        { who: "B", es: "Todo tranquilo. Cómo te fue la fiesta de cumpleaños? Una lástima no haber podido asistir.", pt: "Tudo tranquilo. Como foi a festa de aniversário? Que pena não ter conseguido ir." },
+        { who: "A", es: "Buenísima, pero...", pt: "Ótima, mas..." },
+        { who: "B", es: "Qué sucedió?", pt: "O que aconteceu?" },
+        { who: "A", es: "Bueno...Conoces a Mauricio?", pt: "Bom... Você conhece o Mauricio?" },
+        { who: "B", es: "Sí, me parece un buen tipo. Qué pasó?", pt: "Sim, parece um cara legal. O que houve?" },
+        { who: "A", es: "Me invitó a salir después de la fiesta y yo dije no.", pt: "Ele me convidou para sair depois da festa e eu disse não." },
+        { who: "B", es: "No lo creo! Pero, por qué?", pt: "Não acredito! Mas por quê?" },
+        { who: "A", es: "No lo sé amiga...Ahora es demasiado tarde.", pt: "Não sei, amiga... Agora é tarde demais." },
+        { who: "B", es: "Tú deberías haber aceptado salir con él. Estoy segura de que no es tarde. Mándale un mensaje ahora mismo.", pt: "Você deveria ter aceitado sair com ele. Tenho certeza de que não é tarde. Manda uma mensagem para ele agora mesmo." },
+        { who: "A", es: "Está bien, vamos a ver cómo van las cosas. Después te lo cuento todo.", pt: "Está bem, vamos ver como as coisas vão. Depois te conto tudo." },
+        { who: "B", es: "Ok. Suerte, amiga, y feliz cumple de nuevo!", pt: "Ok. Boa sorte, amiga, e feliz aniversário de novo!" },
+        { who: "A", es: "Gracias, cuídate, cariño!", pt: "Obrigada, se cuida, querida!" }
       ],
       vocabulary: [
         { category: "VER x ASISTIR x MIRAR", items: [
-          { es: "VER: perceber algo pela visão — Desde tu casa se ve perfectamente toda la ciudad." },
-          { es: "VER: assistir como espectador — Fuimos al cine a ver 'Contratiempo'." },
-          { es: "MIRAR: dirigir a vista para algo — Mira el espejo. Qué es lo que ves?" },
-          { es: "MIRAR: preocupar-se com alguém — En casa de mi abuela miran mucho por mí." },
-          { es: "ASISTIR: estar presente em um lugar/ato — La mayoría de los invitados asistió a la boda." },
-          { es: "ASISTIR: procurar ajuda/socorro — En urgencias se asisten muchas dolencias." }
+          { es: "VER: perceber algo pela visão — Desde tu casa se ve perfectamente toda la ciudad.", pt: "VER: perceber algo pela visão: Da sua casa se vê perfeitamente toda a cidade." },
+          { es: "VER: assistir como espectador — Fuimos al cine a ver 'Contratiempo'.", pt: "VER: assistir como espectador: Fomos ao cinema ver 'Contratiempo'." },
+          { es: "MIRAR: dirigir a vista para algo — Mira el espejo. Qué es lo que ves?", pt: "MIRAR: dirigir o olhar para algo: Olhe o espelho. O que você vê?" },
+          { es: "MIRAR: preocupar-se com alguém — En casa de mi abuela miran mucho por mí.", pt: "MIRAR: preocupar-se/cuidar de alguém: Na casa da minha avó cuidam muito de mim." },
+          { es: "ASISTIR: estar presente em um lugar/ato — La mayoría de los invitados asistió a la boda.", pt: "ASISTIR: estar presente em um lugar/evento: A maioria dos convidados compareceu ao casamento." },
+          { es: "ASISTIR: procurar ajuda/socorro — En urgencias se asisten muchas dolencias.", pt: "ASISTIR: prestar socorro/atendimento: No pronto-socorro atendem muitos males." }
         ] },
         { category: "Expresiones de sorpresa", items: [
-          { es: "Dios mío!" }, { es: "Verdad?!" }, { es: "No lo creo!" }, { es: "Hablas en serio?" }, { es: "Estás bromeando!" },
-          { es: "No consigo/puedo creerlo." }, { es: "De veras?" }, { es: "Quién lo diría?!" }, { es: "(Estás) seguro(a)?" }
+          { es: "Dios mío!", pt: "Meu Deus!" }, { es: "Verdad?!", pt: "Verdade?!" }, { es: "No lo creo!", pt: "Não acredito!" }, { es: "Hablas en serio?", pt: "Você está falando sério?" }, { es: "Estás bromeando!", pt: "Você está brincando!" },
+          { es: "No consigo/puedo creerlo.", pt: "Não consigo/posso acreditar." }, { es: "De veras?", pt: "Sério mesmo?" }, { es: "Quién lo diría?!", pt: "Quem diria?!" }, { es: "(Estás) seguro(a)?", pt: "Você tem certeza?" }
         ] },
         { category: "Describiendo una sorpresa", items: [
-          { es: "De veras que no lo estaba esperando." }, { es: "Me pilló de sorpresa." }, { es: "Nunca lo habría imaginado." },
-          { es: "Jamás lo he soñado." }, { es: "Me asusté." }, { es: "Me costó aceptarlo." }, { es: "Quedé pasmado." }
+          { es: "De veras que no lo estaba esperando.", pt: "De verdade eu não estava esperando por isso." }, { es: "Me pilló de sorpresa.", pt: "Me pegou de surpresa." }, { es: "Nunca lo habría imaginado.", pt: "Eu nunca teria imaginado isso." },
+          { es: "Jamás lo he soñado.", pt: "Eu jamais sonhei com isso." }, { es: "Me asusté.", pt: "Eu me assustei." }, { es: "Me costó aceptarlo.", pt: "Foi difícil aceitar isso." }, { es: "Quedé pasmado.", pt: "Fiquei pasmo/espantado." }
         ] },
         { category: "Aceptando un suceso o noticia desagradable", items: [
-          { es: "Sí, pues." }, { es: "Hace parte." }, { es: "Es la vida." }, { es: "Que se le va a hacer, no?" },
-          { es: "Ley de Murphy." }, { es: "No es el fin del mundo." }, { es: "Qué tristeza!" }, { es: "Mis pésames/condolencias!" }
+          { es: "Sí, pues.", pt: "Pois é." }, { es: "Hace parte.", pt: "Faz parte." }, { es: "Es la vida.", pt: "É a vida." }, { es: "Que se le va a hacer, no?", pt: "O que se vai fazer, né?" },
+          { es: "Ley de Murphy.", pt: "Lei de Murphy." }, { es: "No es el fin del mundo.", pt: "Não é o fim do mundo." }, { es: "Qué tristeza!", pt: "Que tristeza!" }, { es: "Mis pésames/condolencias!", pt: "Meus pêsames/condolências!" }
         ] },
         { category: "Arrepentimiento", items: [
-          { es: "Ahora es demasiado tarde." }, { es: "Ahora no tiene más remedio." }, { es: "Nunca voy a perdonarme por..." },
-          { es: "No sé por qué no cerré la boca." }, { es: "Qué tenía yo que hablar?" }, { es: "No sé qué me dio." },
-          { es: "Quería poder volver atrás y tratar otra vez." }, { es: "Si supiera antes lo que sé ahora." }
+          { es: "Ahora es demasiado tarde.", pt: "Agora é tarde demais." }, { es: "Ahora no tiene más remedio.", pt: "Agora não tem mais jeito." }, { es: "Nunca voy a perdonarme por...", pt: "Nunca vou me perdoar por..." },
+          { es: "No sé por qué no cerré la boca.", pt: "Não sei por que não fiquei calado(a)." }, { es: "Qué tenía yo que hablar?", pt: "Por que eu tinha que falar?" }, { es: "No sé qué me dio.", pt: "Não sei o que deu em mim." },
+          { es: "Quería poder volver atrás y tratar otra vez.", pt: "Eu queria poder voltar atrás e tentar de novo." }, { es: "Si supiera antes lo que sé ahora.", pt: "Se eu soubesse antes o que sei agora." }
         ] },
         { category: "PARABIENES x FELICIDADES x FELICITACIONES x ENHORABUENA", items: [
-          { es: "Todas expressões usadas para desejar felicidade/parabenizar alguém por algo bom que aconteceu." }
+          { es: "Todas expressões usadas para desejar felicidade/parabenizar alguém por algo bom que aconteceu.", pt: "Todas as expressões usadas para desejar felicidade/parabenizar alguém por algo bom que aconteceu." }
         ] }
       ],
       grammar: [
