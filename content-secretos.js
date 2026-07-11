@@ -280,7 +280,33 @@ const LEVEL_SECRETOS = {
     },
     {
       id: "s5", order: 5, title: "Palabras Diferentes en Cada País", subtitle: "Variação regional de vocabulário",
+      dialogue: [
+        { who: "Lucía (España)", es: "¿Sabes? Estoy planeando un viaje por varios países de América Latina este verano. ¡Quiero conocer paisajes diferentes!", pt: "Sabe? Estou planejando uma viagem por vários países da América Latina neste verão. Quero conhecer paisagens diferentes!" },
+        { who: "Martín (Argentina)", es: "¡Qué copado! ¿Por dónde vas a empezar?", pt: "Que legal! Por onde você vai começar?" },
+        { who: "Lucía (España)", es: "Primero México, para ver las playas de Cancún y escuchar mariachi en vivo. Después quiero ir a Perú, a caminar por Machu Picchu.", pt: "Primeiro o México, para ver as praias de Cancún e ouvir mariachi ao vivo. Depois quero ir ao Peru, caminhar por Machu Picchu." },
+        { who: "Martín (Argentina)", es: "Y no te olvides de pasar por Argentina. Te llevo a bailar tango y te muestro la Patagonia, con sus montañas y sus lagos.", pt: "E não esqueça de passar pela Argentina. Te levo para dançar tango e te mostro a Patagônia, com suas montanhas e seus lagos." },
+        { who: "Lucía (España)", es: "¡Me encanta la idea! ¿Y en Colombia? Escuché que la música vallenata es preciosa.", pt: "Adoro a ideia! E na Colômbia? Ouvi dizer que a música vallenata é linda." },
+        { who: "Martín (Argentina)", es: "Sí, y también puedes escuchar salsa en Cali y ver el paisaje del Eje Cafetero, con sus montañas verdes llenas de café.", pt: "Sim, e você também pode ouvir salsa em Cali e ver a paisagem do Eixo Cafeeiro, com suas montanhas verdes cheias de café." },
+        { who: "Lucía (España)", es: "Voy a necesitar un coche para moverme cuando vuelva a España, pero allá en América dicen 'auto' o 'carro', ¿verdad?", pt: "Vou precisar de um carro para me locomover quando eu voltar à Espanha, mas lá na América dizem 'auto' ou 'carro', né?" },
+        { who: "Martín (Argentina)", es: "Exacto. Y ojo: si tienes hambre, en Argentina le decimos 'mozo' al camarero, no 'mesero' como en México.", pt: "Exato. E atenção: se tiver fome, na Argentina chamamos o garçom de 'mozo', não 'mesero' como no México." },
+        { who: "Lucía (España)", es: "Voy a apuntar todo eso. También quiero llevar una maleta con protector solar, porque el paisaje de la costa caribeña es espectacular.", pt: "Vou anotar tudo isso. Também quero levar uma mala com protetor solar, porque a paisagem da costa caribenha é espetacular." },
+        { who: "Martín (Argentina)", es: "Buena idea. Y no olvides tu cámara: los paisajes de los Andes, del Amazonas y de la Patagonia son increíbles para fotografiar.", pt: "Boa ideia. E não esqueça sua câmera: as paisagens dos Andes, da Amazônia e da Patagônia são incríveis para fotografar." },
+        { who: "Lucía (España)", es: "¡Este viaje va a ser inolvidable! Voy a aprender canciones de cada país para cantar por el camino.", pt: "Esta viagem vai ser inesquecível! Vou aprender canções de cada país para cantar pelo caminho." },
+        { who: "Martín (Argentina)", es: "¡Perfecto plan! Un viaje así te enseña más español que cualquier libro: cada país tiene su propia forma de hablar, cantar y vivir.", pt: "Plano perfeito! Uma viagem assim te ensina mais espanhol que qualquer livro: cada país tem seu próprio jeito de falar, cantar e viver." }
+      ],
       vocabulary: [
+        {category:"Viajes, paisajes y canciones", items:[
+          {es:"paisaje", pt:"paisagem"},
+          {es:"playa", pt:"praia"},
+          {es:"montaña", pt:"montanha"},
+          {es:"lago", pt:"lago"},
+          {es:"costa caribeña", pt:"costa caribenha"},
+          {es:"canción típica", pt:"canção típica"},
+          {es:"mariachi (México)", pt:"mariachi (México)"},
+          {es:"tango (Argentina)", pt:"tango (Argentina)"},
+          {es:"vallenato / salsa (Colombia)", pt:"vallenato / salsa (Colômbia)"},
+          {es:"viaje inolvidable", pt:"viagem inesquecível"}
+        ]},
         {category:"Vida cotidiana", items:[
           {es:"Camarero (España) / Mozo (Argentina) / Mesero (geral)", pt:"garçom"},
           {es:"Coche (España) / Auto, Carro (América)", pt:"carro"},

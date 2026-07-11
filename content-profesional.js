@@ -133,19 +133,24 @@ const LEVEL_PROFESIONAL = {
       title: "La Reunión de Apertura y Cierre",
       subtitle: "Frases de la reunión de auditoría",
       dialogue: [
-        { speaker: "Auditor", line: "Buenos días a todos. Permítanme presentarme: soy el auditor líder responsable de esta auditoría." },
-        { speaker: "Auditor", line: "Vamos a comenzar con la reunión de apertura. Gracias por recibirme." },
-        { speaker: "Representante", line: "Bienvenido. Estamos a su disposición para lo que necesite." },
-        { speaker: "Auditor", line: "¿Podrían firmar la hoja de asistencia, por favor?" },
-        { speaker: "Representante", line: "Claro, aquí tiene." },
-        { speaker: "Auditor", line: "Este es el alcance de la auditoría de hoy, según el plan de auditoría que les envié previamente." },
-        { speaker: "Auditor", line: "Durante la visita, voy a verificar los procedimientos documentados y las evidencias de cumplimiento." },
-        { speaker: "Representante", line: "Entendido. ¿Podría explicarnos cómo funciona el proceso de comunicación de resultados?" },
-        { speaker: "Auditor", line: "Por supuesto. Al final de cada entrevista, les informaré si hay algún hallazgo o no conformidad." },
-        { speaker: "Auditor", line: "He identificado una no conformidad menor en el área de TI, relacionada con el control de acceso." },
-        { speaker: "Auditor", line: "Quiero ser claro y respetuoso al comunicar los resultados." },
-        { speaker: "Auditor", line: "Con esto cerramos la auditoría de hoy. Agradezco su tiempo y colaboración." },
-        { speaker: "Representante", line: "Muchas gracias a usted. Quedamos atentos al informe de auditoría." }
+        { who: "Auditora", es: "Buenos días a todos. Permítanme presentarme: soy la auditora líder del equipo que va a realizar la auditoría integrada de hoy.", pt: "Bom dia a todos. Permitam-me me apresentar: sou a auditora líder da equipe que vai realizar a auditoria integrada de hoje." },
+        { who: "Auditora", es: "Vamos a auditar cuatro sistemas de gestión al mismo tiempo: calidad según la ISO 9001, medio ambiente según la ISO 14001, seguridad y salud en el trabajo según la ISO 45001, y seguridad de la información según la ISO/IEC 27001.", pt: "Vamos auditar quatro sistemas de gestão ao mesmo tempo: qualidade conforme a ISO 9001, meio ambiente conforme a ISO 14001, segurança e saúde no trabalho conforme a ISO 45001, e segurança da informação conforme a ISO/IEC 27001." },
+        { who: "Representante", es: "Bienvenida. Estamos a su disposición para lo que necesite durante estos dos días de auditoría.", pt: "Bem-vinda. Estamos à disposição para o que precisar durante estes dois dias de auditoria." },
+        { who: "Auditora", es: "Gracias. ¿Podrían firmar la hoja de asistencia y confirmar los nombres de las personas que voy a entrevistar hoy?", pt: "Obrigada. Poderiam assinar a lista de presença e confirmar os nomes das pessoas que vou entrevistar hoje?" },
+        { who: "Representante", es: "Claro, aquí tiene la lista completa, con Producción, Medio Ambiente, Recursos Humanos y Tecnología de la Información.", pt: "Claro, aqui está a lista completa, com Produção, Meio Ambiente, Recursos Humanos e Tecnologia da Informação." },
+        { who: "Auditora", es: "Perfecto. Este es el plan de auditoría que les envié previamente, con el alcance de cada norma y los horarios de cada entrevista.", pt: "Perfeito. Este é o plano de auditoria que enviei previamente, com o escopo de cada norma e os horários de cada entrevista." },
+        { who: "Representante", es: "Entendido. ¿Podría explicarnos cómo van a comunicar los resultados al final del día?", pt: "Entendido. Poderia nos explicar como vão comunicar os resultados ao final do dia?" },
+        { who: "Auditora", es: "Por supuesto. Al final de cada entrevista indicaré si hay algún hallazgo, y al cierre de la auditoría vamos a presentar un resumen con las no conformidades, las oportunidades de mejora y las buenas prácticas.", pt: "Claro. Ao final de cada entrevista vou indicar se há algum achado, e no encerramento da auditoria vamos apresentar um resumo com as não conformidades, as oportunidades de melhoria e as boas práticas." },
+        { who: "Auditora", es: "Empecemos por calidad: ¿la política de calidad se revisa cada año, según exige la ISO 9001?", pt: "Vamos começar pela qualidade: a política da qualidade é revisada todo ano, como exige a ISO 9001?" },
+        { who: "Representante", es: "Sí, se revisa y se actualiza cada año, con la aprobación de la alta dirección.", pt: "Sim, é revisada e atualizada todo ano, com a aprovação da alta direção." },
+        { who: "Auditora", es: "Ahora medio ambiente: he identificado que el aspecto ambiental 'consumo de agua' no está documentado en la matriz de aspectos e impactos, como exige la ISO 14001.", pt: "Agora meio ambiente: identifiquei que o aspecto ambiental 'consumo de água' não está documentado na matriz de aspectos e impactos, como exige a ISO 14001." },
+        { who: "Representante", es: "Tiene razón, es un descuido. Vamos a corregirlo con una acción correctiva esta misma semana.", pt: "Você tem razão, foi um descuido. Vamos corrigir isso com uma ação corretiva ainda esta semana." },
+        { who: "Auditora", es: "En seguridad laboral, ¿los trabajadores participan en la evaluación de riesgos, como exige la ISO 45001?", pt: "Em segurança do trabalho, os trabalhadores participam da avaliação de riscos, como exige a ISO 45001?" },
+        { who: "Representante", es: "Sí, participan activamente, y todos reciben el equipo de protección personal antes de entrar a planta.", pt: "Sim, participam ativamente, e todos recebem o equipamento de proteção individual antes de entrar na planta." },
+        { who: "Auditora", es: "Por último, seguridad de la información: ¿las contraseñas del sistema son cambiadas cada 90 días, conforme a la política de la ISO/IEC 27001?", pt: "Por último, segurança da informação: as senhas do sistema são trocadas a cada 90 dias, conforme a política da ISO/IEC 27001?" },
+        { who: "Representante", es: "Sí, y además todos los activos críticos son protegidos con doble factor de autenticación.", pt: "Sim, e além disso todos os ativos críticos são protegidos com autenticação de dois fatores." },
+        { who: "Auditora", es: "Excelente. He identificado solo una no conformidad menor, en medio ambiente, ya con acción correctiva definida. Con esto cerramos la auditoría integrada de hoy. Agradezco su tiempo y colaboración.", pt: "Excelente. Identifiquei apenas uma não conformidade menor, em meio ambiente, já com ação corretiva definida. Com isso encerramos a auditoria integrada de hoje. Agradeço o tempo e a colaboração de vocês." },
+        { who: "Representante", es: "Muchas gracias a usted. Quedamos atentos al informe de auditoría integrada.", pt: "Muito obrigado a você. Ficamos no aguardo do relatório da auditoria integrada." }
       ],
       vocabulary: [
         {
@@ -200,7 +205,10 @@ const LEVEL_PROFESIONAL = {
         { type: "mc", q: "¿Qué se dice al agradecer al final de la auditoría?", options: ["Agradezco su tiempo y colaboración", "Vamos a comenzar", "Permítanme presentarme", "¿Tiene un procedimiento?"], correct: 0 },
         { type: "speak", prompt: "Practica la frase de apertura de la reunión.", target: "Vamos a comenzar con la reunión de apertura." },
         { type: "speak", prompt: "Practica cómo comunicar una no conformidad con respeto.", target: "He identificado una no conformidad menor." },
-        { type: "open", q: "Escribe dos frases que usarías para conducir una entrevista de auditoría con un colaborador del área de TI.", sample: "¿Podría explicarme cómo funciona el control de acceso? ¿Dónde se almacenan los registros de los backups?" }
+        { type: "open", q: "Escribe dos frases que usarías para conducir una entrevista de auditoría con un colaborador del área de TI.", sample: "¿Podría explicarme cómo funciona el control de acceso? ¿Dónde se almacenan los registros de los backups?" },
+        { type: "mc", q: "En la auditoría integrada del diálogo, ¿cuántas normas se auditan al mismo tiempo?", options: ["Dos", "Tres", "Cuatro", "Cinco"], correct: 2 },
+        { type: "mc", q: "¿En qué área se identificó la no conformidad menor durante la auditoría?", options: ["Calidad", "Medio ambiente", "Seguridad laboral", "Seguridad de la información"], correct: 1 },
+        { type: "open", q: "Redacta un breve resumen de cierre de auditoría (de 4 a 6 frases) mencionando al menos dos de las cuatro normas (ISO 9001, ISO 14001, ISO 45001, ISO/IEC 27001), un hallazgo encontrado y una acción correctiva propuesta. Vas a poder comparar tu texto con un modelo de referencia al terminar.", sample: "Durante la auditoría integrada se revisaron los sistemas de gestión de calidad (ISO 9001) y de seguridad de la información (ISO/IEC 27001). Se identificó una no conformidad menor relacionada con el control de acceso a los servidores. La organización propuso, como acción correctiva, implementar la autenticación de dos factores en un plazo de 30 días. Los procesos de calidad, en cambio, mostraron un alto nivel de madurez, sin hallazgos relevantes. Se recomienda mantener el mismo ritmo de mejora continua para la próxima auditoría de seguimiento." }
       ]
     },
     {

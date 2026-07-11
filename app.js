@@ -100,6 +100,9 @@ const I18N = {
     result_retry_msg: "Repasa la lección y vuelve a intentar la prueba cuando estés listo(a).",
     btn_back_to: "Volver a {name}", btn_retry: "Intentar de nuevo",
     admin_title: "⚙️ Panel de Administrador", admin_scores_title: "Nota mínima para aprobar cada nivel (%)",
+    admin_passrate_title: "Aprobación por nivel", admin_passrate_none: "Todavía no hay alumnos con intentos registrados en este nivel.",
+    admin_passrate_row: "{passed} de {total} alumnos aprobados ({attempted} rindieron la prueba)",
+    admin_certs_issued: "certificados emitidos",
     admin_save: "Guardar configuración", admin_saved: "¡Configuración guardada!",
     admin_gabarito_title: "Liberación del gabarito", admin_gabarito_label: "¿Cuándo se muestra la respuesta correcta?",
     admin_gabarito_immediate: "Inmediato — al responder cada pregunta", admin_gabarito_after: "Solo al finalizar — el alumno revisa todo junto al terminar",
@@ -124,12 +127,12 @@ const I18N = {
     admin_songs_live_count: "{lines} líneas · {blanks} huecos marcados",
     admin_students_title: "Alumnos y progreso ({n})", admin_no_students: "Todavía no hay alumnos con pruebas realizadas.",
     back_panel: "← Volver al panel",
-    account_title: "👤 Mi Cuenta", account_tab_security: "Seguridad", account_tab_appearance: "Apariencia", account_tab_profile: "Perfil", account_tab_access: "Mis Accesos",
+    account_title: "👤 Mi Cuenta", account_tab_security: "Seguridad", account_tab_appearance: "Apariencia", account_tab_profile: "Perfil", account_tab_access: "Mis Accesos", account_tab_voice: "Voz",
     profile_name_label: "Nombre completo", profile_name_ph: "Tu nombre", profile_save: "Guardar nombre", profile_saved: "¡Nombre actualizado!",
     account_current_pass: "Contraseña actual", account_new_pass: "Nueva contraseña", account_confirm_pass: "Confirmar nueva contraseña",
     account_change_pass_btn: "Cambiar contraseña", account_pass_mismatch: "Las contraseñas nuevas no coinciden.",
     account_pass_changed: "¡Contraseña actualizada con éxito!", account_theme_label: "Color del tema", account_font_label: "Fuente",
-    account_lang_label: "Idioma de la interfaz", account_save_appearance: "Guardar apariencia", account_appearance_saved: "¡Apariencia guardada!",
+    account_lang_label: "Idioma de la interfaz", account_save_appearance: "Guardar apariencia", account_appearance_saved: "¡Apariencia guardada!", account_save_voice: "Guardar voz",
     account_voice_label: "Voz de las lecciones (texto a voz)", account_voice_preview: "Escuchar ejemplo con esta voz",
     account_voice_none: "Tu navegador no ofrece voces en español todavía. Prueba recargar la página o usar Google Chrome.",
     account_voice_hint: "Elige la voz que más te guste — se usará en todos los botones 🔊 del curso. Si cambias de dispositivo o navegador, puede que tengas que elegirla de nuevo.",
@@ -226,6 +229,9 @@ const I18N = {
     result_retry_msg: "Revise a lição e tente a prova novamente quando estiver pronto(a).",
     btn_back_to: "Voltar a {name}", btn_retry: "Tentar novamente",
     admin_title: "⚙️ Painel do Administrador", admin_scores_title: "Nota mínima para aprovar cada nível (%)",
+    admin_passrate_title: "Aprovação por nível", admin_passrate_none: "Ainda não há alunos com tentativas registradas neste nível.",
+    admin_passrate_row: "{passed} de {total} alunos aprovados ({attempted} fizeram a prova)",
+    admin_certs_issued: "certificados emitidos",
     admin_save: "Salvar configuração", admin_saved: "Configuração salva!",
     admin_gabarito_title: "Liberação do gabarito", admin_gabarito_label: "Quando a resposta correta é exibida?",
     admin_gabarito_immediate: "Imediato — ao responder cada pergunta", admin_gabarito_after: "Só ao final — o aluno revisa tudo junto ao terminar",
@@ -250,12 +256,12 @@ const I18N = {
     admin_songs_live_count: "{lines} linhas · {blanks} lacunas marcadas",
     admin_students_title: "Alunos e progresso ({n})", admin_no_students: "Ainda não há alunos com provas realizadas.",
     back_panel: "← Voltar ao painel",
-    account_title: "👤 Minha Conta", account_tab_security: "Segurança", account_tab_appearance: "Aparência", account_tab_profile: "Perfil", account_tab_access: "Meus Acessos",
+    account_title: "👤 Minha Conta", account_tab_security: "Segurança", account_tab_appearance: "Aparência", account_tab_profile: "Perfil", account_tab_access: "Meus Acessos", account_tab_voice: "Voz",
     profile_name_label: "Nome completo", profile_name_ph: "Seu nome", profile_save: "Salvar nome", profile_saved: "Nome atualizado!",
     account_current_pass: "Senha atual", account_new_pass: "Nova senha", account_confirm_pass: "Confirmar nova senha",
     account_change_pass_btn: "Alterar senha", account_pass_mismatch: "As novas senhas não coincidem.",
     account_pass_changed: "Senha atualizada com sucesso!", account_theme_label: "Cor do tema", account_font_label: "Fonte",
-    account_lang_label: "Idioma da interface", account_save_appearance: "Salvar aparência", account_appearance_saved: "Aparência salva!",
+    account_lang_label: "Idioma da interface", account_save_appearance: "Salvar aparência", account_appearance_saved: "Aparência salva!", account_save_voice: "Salvar voz",
     account_voice_label: "Voz das lições (texto para voz)", account_voice_preview: "Ouvir exemplo com esta voz",
     account_voice_none: "Seu navegador ainda não oferece vozes em espanhol. Tente recarregar a página ou usar o Google Chrome.",
     account_voice_hint: "Escolha a voz de que mais gostar — ela será usada em todos os botões 🔊 do curso. Se trocar de dispositivo ou navegador, talvez precise escolher de novo.",
@@ -352,6 +358,9 @@ const I18N = {
     result_retry_msg: "Review the lesson and retry the exam when you're ready.",
     btn_back_to: "Back to {name}", btn_retry: "Try again",
     admin_title: "⚙️ Admin Panel", admin_scores_title: "Minimum passing score per level (%)",
+    admin_passrate_title: "Pass rate by level", admin_passrate_none: "No students have attempted this level's exam yet.",
+    admin_passrate_row: "{passed} of {total} students passed ({attempted} took the exam)",
+    admin_certs_issued: "certificates issued",
     admin_save: "Save settings", admin_saved: "Settings saved!",
     admin_gabarito_title: "Answer key release", admin_gabarito_label: "When is the correct answer shown?",
     admin_gabarito_immediate: "Immediately — as each question is answered", admin_gabarito_after: "Only at the end — the student reviews everything together when finished",
@@ -376,12 +385,12 @@ const I18N = {
     admin_songs_live_count: "{lines} lines · {blanks} blanks marked",
     admin_students_title: "Students and progress ({n})", admin_no_students: "No students have taken exams yet.",
     back_panel: "← Back to panel",
-    account_title: "👤 My Account", account_tab_security: "Security", account_tab_appearance: "Appearance", account_tab_profile: "Profile", account_tab_access: "My Access Log",
+    account_title: "👤 My Account", account_tab_security: "Security", account_tab_appearance: "Appearance", account_tab_profile: "Profile", account_tab_access: "My Access Log", account_tab_voice: "Voice",
     profile_name_label: "Full name", profile_name_ph: "Your name", profile_save: "Save name", profile_saved: "Name updated!",
     account_current_pass: "Current password", account_new_pass: "New password", account_confirm_pass: "Confirm new password",
     account_change_pass_btn: "Change password", account_pass_mismatch: "New passwords don't match.",
     account_pass_changed: "Password updated successfully!", account_theme_label: "Theme color", account_font_label: "Font",
-    account_lang_label: "Interface language", account_save_appearance: "Save appearance", account_appearance_saved: "Appearance saved!",
+    account_lang_label: "Interface language", account_save_appearance: "Save appearance", account_appearance_saved: "Appearance saved!", account_save_voice: "Save voice",
     account_voice_label: "Lesson voice (text-to-speech)", account_voice_preview: "Listen to a sample with this voice",
     account_voice_none: "Your browser doesn't offer Spanish voices yet. Try reloading the page or using Google Chrome.",
     account_voice_hint: "Pick the voice you like best — it will be used on every 🔊 button in the course. If you switch device or browser, you may need to choose it again.",
@@ -682,10 +691,10 @@ function getSchedule() {
 }
 
 // Calcula % esperado hasta hoy, % real, estado (adelantado/atrasado/en plazo) y fecha prevista de finalización.
-function computeScheduleStatus() {
-  const schedule = getSchedule();
-  const total = totalUnitsCount();
-  const actual = actualUnitsCompleted();
+// Extraída a partir de (schedule, actual, total) para poder reutilizarse tanto para el propio
+// alumno (state.progress) como para CUALQUIER alumno visto desde el panel de Admin (Alumnos/
+// Analíticas), donde solo se dispone del resumen público (progress_summary), no del progreso completo.
+function computeScheduleStatusFrom(schedule, actual, total) {
   const start = new Date(schedule.startDate);
   const now = new Date();
   const monthsElapsed = Math.max(0, (now - start) / MS_PER_MONTH);
@@ -712,6 +721,18 @@ function computeScheduleStatus() {
   }
 
   return { total, actual, expectedPct, actualPct, status, projectedDate, durationMonths, startDate: start };
+}
+
+function computeScheduleStatus() {
+  return computeScheduleStatusFrom(getSchedule(), actualUnitsCompleted(), totalUnitsCount());
+}
+
+// Misma cuenta, pero para un alumno visto desde el Admin (a partir de su doc en progress_summary,
+// que ahora también guarda `schedule` y `unitsCompleted` — ver updateProgressSummary()).
+function computeStudentScheduleStatus(summary) {
+  const schedule = summary.schedule || { durationMonths: DEFAULT_SCHEDULE_MONTHS, startDate: new Date().toISOString() };
+  const actual = typeof summary.unitsCompleted === "number" ? summary.unitsCompleted : 0;
+  return computeScheduleStatusFrom(schedule, actual, totalUnitsCount());
 }
 
 function formatDate(d, lang) {
@@ -1743,7 +1764,7 @@ function renderLessonList() {
         return `
         <div class="lesson-row ${done ? "done" : ""} ${!unlocked ? "locked preview-only" : ""}" data-lesson="${unlocked ? lesson.id : ""}">
           <div class="num">${done ? "✓" : !unlocked ? "🔒" : (lesson.order || i + 1)}</div>
-          <div class="info"><h4>${escapeHtml(lesson.title)}</h4><span>${escapeHtml(lesson.subtitle || "")}${hasEvolution ? ` · 📈 ${lp.firstAttempt.score}% → ${lp.score}%` : ""}</span></div>
+          <div class="info"><h4>${escapeHtml(lesson.title)}</h4><span>${escapeHtml(lesson.subtitle || "")}${done ? (hasEvolution ? ` · 📈 ${lp.firstAttempt.score}% → ${lp.score}%` : ` · ✅ ${lp.score}%`) : ""}</span></div>
           ${hasEvolution ? `<button class="btn-icon lesson-review-btn" data-lesson-first="${lesson.id}" title="Ver mi primer intento">🕐</button>` : ""}
           ${hasReview ? `<button class="btn-icon lesson-review-btn" data-lesson-review="${lesson.id}" title="Ver mis respuestas y el gabarito">🔍</button>` : ""}
           <div class="chev">${unlocked ? "›" : ""}</div>
@@ -2065,6 +2086,7 @@ const EX_TYPE_BADGE = {
 };
 
 function renderExercise() {
+  clearAutoAdvance(); // cualquier temporizador de la pantalla anterior queda obsoleto en este render
   destroySongPlayers(); // el iframe de la canción anterior ya no existe en el DOM tras el re-render
   const ex = currentExercise();
   const total = state.exerciseQueue.length;
@@ -2093,7 +2115,7 @@ function renderExercise() {
       <div class="ex-question">${label} ${ttsBtnHtml}</div>
       ${ex.youtubeId ? `<p class="ex-hint">🔇 ${ex.startSec != null ? "El video ya abrió en el fragmento de este hueco" : "Puedes escuchar la canción mientras completas el hueco"}, pero empieza SIN sonido (los navegadores bloquean el audio automático) — toca "${ex.startSec != null ? "Escuchar el fragmento" : "Activar sonido"}" cuantas veces quieras.</p>` : ""}
       <input type="text" class="ex-input" id="ex-answer" placeholder="Escribe tu respuesta aquí..." autocomplete="off">
-      <div class="ex-actions"><button class="btn btn-secondary btn-sm" id="ex-check">Comprobar</button><button class="btn btn-primary" id="ex-next" disabled>Siguiente →</button></div>
+      <div class="ex-actions"><button class="btn btn-secondary btn-sm" id="ex-check">Comprobar</button><button class="btn btn-primary" id="ex-next">Siguiente →</button></div>
       <div id="ex-feedback"></div>`;
     body = ex.youtubeId ? `
       <div class="song-ex-split">
@@ -2105,7 +2127,7 @@ function renderExercise() {
       <div class="ex-question">🎧 ${escapeHtml(ex.q)}</div>
       <div style="text-align:center;margin-bottom:18px"><button class="mic-btn" id="ex-play" style="background:var(--rojo)">🔊</button></div>
       <input type="text" class="ex-input" id="ex-answer" placeholder="Tu respuesta..." autocomplete="off">
-      <div class="ex-actions"><button class="btn btn-secondary btn-sm" id="ex-check">Comprobar</button><button class="btn btn-primary" id="ex-next" disabled>Siguiente →</button></div>
+      <div class="ex-actions"><button class="btn btn-secondary btn-sm" id="ex-check">Comprobar</button><button class="btn btn-primary" id="ex-next">Siguiente →</button></div>
       <div id="ex-feedback"></div>`;
   } else if (ex.type === "songListen") {
     // Dictado con la canción real: el alumno usa los controles nativos del video de
@@ -2118,7 +2140,7 @@ function renderExercise() {
           <div class="ex-question">🎧 ${escapeHtml(ex.q || "Escucha la canción y escribe lo que oyes en este fragmento.")}</div>
           <p class="ex-hint">🔇 El video abre sin sonido — toca "${ex.startSec != null ? "Escuchar el fragmento" : "Activar sonido"}" para escuchar.</p>
           <input type="text" class="ex-input" id="ex-answer" placeholder="Escribe lo que escuchas..." autocomplete="off">
-          <div class="ex-actions"><button class="btn btn-secondary btn-sm" id="ex-check">Comprobar</button><button class="btn btn-primary" id="ex-next" disabled>Siguiente →</button></div>
+          <div class="ex-actions"><button class="btn btn-secondary btn-sm" id="ex-check">Comprobar</button><button class="btn btn-primary" id="ex-next">Siguiente →</button></div>
           <div id="ex-feedback"></div>
         </div>
       </div>`;
@@ -2135,7 +2157,7 @@ function renderExercise() {
       <div class="ex-question">Ordena el diálogo (haz clic en orden): ${ttsBtnHtml}</div>
       <div id="order-list">${ex.items.map((it, i) => `<div class="order-item" data-i="${i}">${escapeHtml(it)}</div>`).join("")}</div>
       <div id="ex-feedback"></div>
-      <div class="ex-actions"><button class="btn btn-secondary btn-sm" id="ex-check">Comprobar</button><button class="btn btn-primary" id="ex-next" disabled>Siguiente →</button></div>`;
+      <div class="ex-actions"><button class="btn btn-secondary btn-sm" id="ex-check">Comprobar</button><button class="btn btn-primary" id="ex-next">Siguiente →</button></div>`;
   } else if (ex.type === "open") {
     body = `
       <div class="ex-question">✍️ ${escapeHtml(ex.q)}</div>
@@ -2167,6 +2189,7 @@ function renderExercise() {
     `, state.isExam ? "exam" : "exercises");
   attachShellEvents();
   document.getElementById("back-exit").onclick = () => {
+    clearAutoAdvance();
     if (state.isRetry || (idx === 0 && state.exerciseAnswers.length === 0)) {
       state.screen = "lessonList";
       render();
@@ -2312,7 +2335,14 @@ function showFeedback(correct, correctText) {
 
 function wireExerciseInteractions(ex) {
   const nextBtn = document.getElementById("ex-next");
-  if (nextBtn) nextBtn.onclick = goToNextExercise;
+  // answered: controla el comportamiento del botón "Siguiente" para los tipos que tienen
+  // un "Comprobar" separado — el primer clic en "Siguiente" (antes de comprobar) EJECUTA
+  // la comprobación (igual que el botón "Comprobar"), deja el feedback visible ~5s y avanza
+  // solo; un clic manual posterior (o en "Comprobar") avanza/reprograma de inmediato.
+  let answered = false;
+  if (nextBtn) nextBtn.onclick = () => {
+    if (answered) { clearAutoAdvance(); goToNextExercise(); }
+  };
 
   // Preguntas abiertas/dissertativas: no se auto-corrigen, pero SÍ deben quedar registradas
   // (el alumno tiene que poder consultar después lo que escribió — antes no se guardaba nada).
@@ -2344,12 +2374,14 @@ function wireExerciseInteractions(ex) {
         showFeedback(correct, ex.options[ex.correct]);
         markAnswered(correct);
         logAttempt(ex, correct, ex.options[i]);
+        answered = true;
+        scheduleAutoAdvance(5000);
       };
     });
   }
 
   if (ex.type === "fill" || ex.type === "translate") {
-    document.getElementById("ex-check").onclick = () => {
+    const doCheck = () => {
       const val = document.getElementById("ex-answer").value;
       const target = ex.answer;
       const alts = ex.altAnswers || [];
@@ -2359,12 +2391,16 @@ function wireExerciseInteractions(ex) {
       logAttempt(ex, correct, val);
       document.getElementById("ex-answer").disabled = true;
       document.getElementById("ex-check").disabled = true;
+      answered = true;
+      scheduleAutoAdvance(5000);
     };
+    document.getElementById("ex-check").onclick = doCheck;
+    if (nextBtn) nextBtn.onclick = () => { if (answered) { clearAutoAdvance(); goToNextExercise(); } else { doCheck(); } };
   }
 
   if (ex.type === "listen") {
     document.getElementById("ex-play").onclick = () => speak(ex.audioText, null, document.getElementById("ex-play"));
-    document.getElementById("ex-check").onclick = () => {
+    const doCheck = () => {
       const val = document.getElementById("ex-answer").value;
       const correct = similarity(val, ex.answer) > 0.6; // resposta livre/descritiva, mais tolerante
       showFeedback(correct, ex.answer);
@@ -2372,13 +2408,17 @@ function wireExerciseInteractions(ex) {
       logAttempt(ex, correct, val);
       document.getElementById("ex-answer").disabled = true;
       document.getElementById("ex-check").disabled = true;
+      answered = true;
+      scheduleAutoAdvance(5000);
     };
+    document.getElementById("ex-check").onclick = doCheck;
+    if (nextBtn) nextBtn.onclick = () => { if (answered) { clearAutoAdvance(); goToNextExercise(); } else { doCheck(); } };
   }
 
   if (ex.type === "songListen") {
     // Sin botón de reproducir propio: el alumno usa los controles nativos del iframe de
     // YouTube (puede rebobinar y escuchar el fragmento las veces que quiera).
-    document.getElementById("ex-check").onclick = () => {
+    const doCheck = () => {
       const val = document.getElementById("ex-answer").value;
       const correct = similarity(val, ex.answer) > 0.55; // dictado de canción real: más tolerante que TTS
       showFeedback(correct, ex.answer);
@@ -2386,7 +2426,11 @@ function wireExerciseInteractions(ex) {
       logAttempt(ex, correct, val);
       document.getElementById("ex-answer").disabled = true;
       document.getElementById("ex-check").disabled = true;
+      answered = true;
+      scheduleAutoAdvance(5000);
     };
+    document.getElementById("ex-check").onclick = doCheck;
+    if (nextBtn) nextBtn.onclick = () => { if (answered) { clearAutoAdvance(); goToNextExercise(); } else { doCheck(); } };
   }
 
   if (ex.type === "order") {
@@ -2399,20 +2443,29 @@ function wireExerciseInteractions(ex) {
         item.innerHTML = `${chosen.length}. ${item.innerHTML}`;
       };
     });
-    document.getElementById("ex-check").onclick = () => {
+    const doCheck = () => {
       const correct = JSON.stringify(chosen) === JSON.stringify(ex.correctOrder);
       showFeedback(correct, "Orden correcto aplicado.");
       markAnswered(correct);
       logAttempt(ex, correct, chosen.join(" → "));
       document.getElementById("ex-check").disabled = true;
+      answered = true;
+      scheduleAutoAdvance(5000);
     };
+    document.getElementById("ex-check").onclick = doCheck;
+    if (nextBtn) nextBtn.onclick = () => { if (answered) { clearAutoAdvance(); goToNextExercise(); } else { doCheck(); } };
   }
 
   if (ex.type === "speak") {
     const micBtn = document.getElementById("ex-mic");
     const transcriptEl = document.getElementById("ex-transcript");
     const rec = getSpeechRecognition();
-    document.getElementById("ex-skip").onclick = () => { markAnswered(true); showFeedback(true, ex.target); logAttempt(ex, true, "(omitido)"); document.getElementById("ex-skip").disabled = true; };
+    document.getElementById("ex-skip").onclick = () => {
+      markAnswered(true); showFeedback(true, ex.target); logAttempt(ex, true, "(omitido)");
+      document.getElementById("ex-skip").disabled = true;
+      answered = true;
+      scheduleAutoAdvance(5000);
+    };
     if (!rec) {
       micBtn.disabled = true;
       transcriptEl.textContent = "Tu navegador no soporta reconocimiento de voz. Usa Google Chrome en computadora o Android, o haz clic en 'No puedo grabar ahora'.";
@@ -2430,6 +2483,8 @@ function wireExerciseInteractions(ex) {
         markAnswered(correct);
         logAttempt(ex, correct, transcript);
         micBtn.classList.remove("listening");
+        answered = true;
+        scheduleAutoAdvance(5000);
       };
       rec.onerror = () => { micBtn.classList.remove("listening"); transcriptEl.textContent = "No se pudo escuchar. Intenta de nuevo o usa 'No puedo grabar ahora'."; };
       rec.onend = () => micBtn.classList.remove("listening");
@@ -2437,7 +2492,21 @@ function wireExerciseInteractions(ex) {
   }
 }
 
+// Auto-avance: después de responder (por "Comprobar" o directamente por "Siguiente"),
+// el feedback queda visible en pantalla unos segundos y luego se avanza solo — el alumno
+// ya no necesita dar dos clics (uno para comprobar, otro para seguir). Un clic manual en
+// "Siguiente" en cualquier momento cancela la espera y avanza de inmediato.
+let _autoAdvanceTimer = null;
+function scheduleAutoAdvance(delayMs) {
+  clearAutoAdvance();
+  _autoAdvanceTimer = setTimeout(() => { _autoAdvanceTimer = null; goToNextExercise(); }, delayMs);
+}
+function clearAutoAdvance() {
+  if (_autoAdvanceTimer) { clearTimeout(_autoAdvanceTimer); _autoAdvanceTimer = null; }
+}
+
 function goToNextExercise() {
+  clearAutoAdvance();
   if (state.exerciseIndex < state.exerciseQueue.length - 1) {
     state.exerciseIndex++;
     render();
@@ -2515,7 +2584,12 @@ async function updateProgressSummary() {
       name: state.user.name, email: state.user.email,
       updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
       xp: state.progress.xp,
-      levels: Object.fromEntries(Object.entries(state.progress.levels).map(([k, v]) => [k, { examScore: v.examScore || null, examPassed: !!v.examPassed }]))
+      levels: Object.fromEntries(Object.entries(state.progress.levels).map(([k, v]) => [k, { examScore: v.examScore || null, examPassed: !!v.examPassed }])),
+      // Datos del cronograma del alumno + su avance real (en "unidades" = lecciones + pruebas),
+      // guardados aquí para que el Admin pueda calcular, para CADA alumno, si está adelantado,
+      // atrasado o en plazo respecto a lo que él mismo planeó — sin necesitar leer su progreso completo.
+      schedule: getSchedule(),
+      unitsCompleted: actualUnitsCompleted()
     }, { merge: true });
   } catch (e) { console.warn("No se pudo actualizar el resumen para el admin.", e); }
 }
@@ -2657,8 +2731,19 @@ function logAccess() {
 async function loadMyAccessLog() {
   try {
     if (!state.user) return;
-    const snap = await db.collection("access_log").where("uid", "==", state.user.uid).orderBy("at", "desc").limit(100).get();
-    state.myAccessLog = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    // BUGFIX: antes esto combinaba where("uid","==",...) con orderBy("at","desc") en la
+    // MISMA consulta — Firestore exige un índice compuesto para eso, que este proyecto nunca
+    // tuvo creado (no hay firestore.indexes.json ni fue creado manualmente en la consola).
+    // La consulta fallaba en silencio (el error solo aparecía en la consola del navegador,
+    // nunca visible para el alumno) y el catch dejaba myAccessLog en [], por lo que "Mis
+    // Accesos" siempre mostraba "Todavía no hay accesos registrados" aunque hubiera logins
+    // reales guardados. Ahora se filtra solo por uid (no exige índice) y se ordena en el
+    // cliente, evitando depender de crear un índice en la consola de Firebase.
+    const snap = await db.collection("access_log").where("uid", "==", state.user.uid).limit(200).get();
+    state.myAccessLog = snap.docs
+      .map(d => ({ id: d.id, ...d.data() }))
+      .sort((a, b) => (b.at && b.at.toMillis ? b.at.toMillis() : 0) - (a.at && a.at.toMillis ? a.at.toMillis() : 0))
+      .slice(0, 100);
   } catch (e) {
     console.warn("No se pudo cargar tu historial de acceso.", e);
     state.myAccessLog = [];
@@ -3058,9 +3143,16 @@ function buildSongExercises(lines, youtubeId, fragmentSec) {
   const frag = fragmentSec && fragmentSec > 0 ? fragmentSec : 30;
   const exercises = [];
   const parsed = lines.map(l => extractLineTimestamp(l));
+  // Antes esto alineaba el trecho a una grilla fija (0-30s, 30-60s...), así que una línea
+  // cuyo timestamp cayera cerca del final de esa grilla (p. ej. sec=29 con frag=30) quedaba
+  // con apenas 1 segundo de margen antes del corte — el video se pausaba (por endSec, más
+  // abajo) ANTES de que la palabra terminara de sonar. Ahora el trecho se ancla al propio
+  // timestamp de la línea (con un pequeño margen previo, para dar contexto), garantizando
+  // que siempre quede la mayor parte de "frag" segundos DESPUÉS de la palabra a adivinar.
   const windowOf = (sec) => {
     if (sec == null) return null;
-    const start = Math.floor(sec / frag) * frag;
+    const lead = Math.min(3, frag * 0.25);
+    const start = Math.max(0, Math.round(sec - lead));
     return { start, end: start + frag };
   };
 
@@ -3334,6 +3426,11 @@ function renderAdminOverview() {
     return { id, attempted, passed };
   });
   const avgXp = totalStudents ? Math.round(state.adminStudents.reduce((a, s) => a + (s.xp || 0), 0) / totalStudents) : 0;
+  // "Certificados": antes esta tarjeta solo mostraba el emoji 🎓 sin ningún número — el
+  // usuario preguntó "quer dizer o que?" con razón, no comunicaba nada. Un certificado se
+  // emite cada vez que un alumno aprueba la prueba final de un nivel, así que el total de
+  // certificados emitidos es simplemente la suma de aprobados en todos los niveles.
+  const certsIssued = passRates.reduce((a, r) => a + r.passed, 0);
   root.innerHTML = wrapShell(`
       <button class="back-link" id="back-dash">← Volver al panel</button>
       <div class="section-title">${t("admin_title")}</div>
@@ -3341,14 +3438,14 @@ function renderAdminOverview() {
       <div class="home-stats-row">
         <div class="home-stat-card"><span class="hs-label">${t("analytics_students_count")}</span><strong class="hs-value">${totalStudents}</strong></div>
         <div class="home-stat-card"><span class="hs-label">⭐ XP (promedio)</span><strong class="hs-value">${avgXp}</strong></div>
-        <div class="home-stat-card"><span class="hs-label">${t("admin_nav_certs")}</span><strong class="hs-value">🎓</strong></div>
+        <div class="home-stat-card"><span class="hs-label">🎓 ${t("admin_nav_certs")}</span><strong class="hs-value">${certsIssued}</strong><span style="color:var(--gray-2);font-size:.72rem">${t("admin_certs_issued")}</span></div>
       </div>
       <div class="card">
-        <h3>${t("admin_scores_title")}</h3>
-        ${passRates.map(r => `
+        <h3>${t("admin_passrate_title")}</h3>
+        ${totalStudents === 0 ? `<p style="color:var(--gray-2)">${t("admin_no_students")}</p>` : passRates.map(r => `
           <div class="config-row">
             <span>${getLevel(r.id).icon} ${getLevel(r.id).name}</span>
-            <span style="color:var(--gray-2);font-size:.85rem">${r.passed} / ${r.attempted || 0} ${t("notas_status_passed")}</span>
+            <span style="color:var(--gray-2);font-size:.85rem">${r.attempted === 0 ? t("admin_passrate_none") : t("admin_passrate_row", { passed: r.passed, total: totalStudents, attempted: r.attempted })}</span>
           </div>`).join("")}
       </div>
       <div class="bottom-space"></div>
@@ -3401,16 +3498,32 @@ function renderAdminApprovals() {
 }
 
 function renderAdminStudents() {
+  // Para cada alumno, calcula si está atrasado/adelantado/en plazo respecto a SU PROPIO
+  // cronograma (usa los datos guardados en progress_summary por updateProgressSummary()).
+  // Sin esto, el Admin tenía un cronograma configurable por alumno pero ninguna forma de ver
+  // quién está atrasado — pedido explícito: mostrar el estado de cada uno, no solo el propio.
+  const withStatus = state.adminStudents.map(s => ({ s, sc: computeStudentScheduleStatus(s) }));
+  const behindCount = withStatus.filter(x => x.sc.status === "behind").length;
+  const aheadCount = withStatus.filter(x => x.sc.status === "ahead").length;
+  // Atrasados primero, para que salten a la vista de inmediato.
+  const order = { behind: 0, ontrack: 1, ahead: 2 };
+  withStatus.sort((a, b) => order[a.sc.status] - order[b.sc.status]);
+
   root.innerHTML = wrapShell(`
       <button class="back-link" id="back-dash">← Volver al panel</button>
       <div class="section-title">${t("admin_title")}</div>
       ${adminTabsHtml("adminStudents")}
       <div class="card">
         <h3>${t("admin_students_title", { n: state.adminStudents.length })}</h3>
-        ${state.adminStudents.length === 0 ? `<p style="color:var(--gray-2)">${t("admin_no_students")}</p>` : state.adminStudents.map(s => `
+        ${state.adminStudents.length > 0 ? `<p style="color:var(--gray-2);font-size:.85rem;margin-top:-6px">
+          🟠 ${behindCount} atrasado(s) respecto a su cronograma · 🔵 ${aheadCount} adelantado(s)
+        </p>` : ""}
+        ${state.adminStudents.length === 0 ? `<p style="color:var(--gray-2)">${t("admin_no_students")}</p>` : withStatus.map(({ s, sc }) => `
           <div class="student-row">
             <div><strong>${escapeHtml(s.name || s.email)}</strong><br><span style="color:var(--gray-2)">${escapeHtml(s.email || "")}</span></div>
             <div>⭐ ${s.xp || 0} XP</div>
+            <div><span class="sched-badge ${sc.status}">${t(sc.status === "ahead" ? "panel_schedule_ahead" : sc.status === "behind" ? "panel_schedule_behind" : "panel_schedule_ontrack")}</span>
+              <span style="color:var(--gray-2);font-size:.72rem;display:block;margin-top:2px">${sc.actualPct}% real vs ${sc.expectedPct}% esperado</span></div>
             <div>${MAIN_SEQUENCE.map(id => (s.levels && s.levels[id] && s.levels[id].examPassed) ? `<span class="badge admin" style="background:var(--success)">${id} ✓</span>` : "").join(" ")}</div>
           </div>`).join("")}
       </div>
@@ -3791,6 +3904,10 @@ function renderAdminAnalytics() {
   })();
   const byType = groupAttemptsBy(attempts, a => a.exType);
   const byLevel = groupAttemptsBy(attempts, a => a.levelId);
+  // Nuevo indicador (a pedido): distribución de alumnos según su estado de cronograma —
+  // reutiliza el mismo cálculo que ahora aparece por alumno en "Alumnos".
+  const byScheduleStatus = { ahead: 0, ontrack: 0, behind: 0 };
+  state.adminStudents.forEach(s => { byScheduleStatus[computeStudentScheduleStatus(s).status]++; });
   const recentErrors = attempts.filter(a => !a.correct).slice(0, 12);
   const openResponses = attempts.filter(a => a.exType === "open").slice(0, 20);
   const studentNameFor = (uid) => {
@@ -3807,6 +3924,11 @@ function renderAdminAnalytics() {
         <div class="home-stat-card"><span class="hs-label">${t("analytics_avg_score")}</span><strong class="hs-value">${avgScore !== null ? avgScore + "%" : "—"}</strong></div>
         <div class="home-stat-card"><span class="hs-label">${t("analytics_total_attempts")}</span><strong class="hs-value">${attempts.length}</strong></div>
       </div>
+      ${totalStudents > 0 ? `
+      <div class="card">
+        <h3>${t("admin_passrate_title")} — 📅 ${t("nav_schedule")}</h3>
+        <canvas id="chart-admin-schedule" height="120"></canvas>
+      </div>` : ""}
       ${attempts.length === 0 ? `<div class="card"><p style="color:var(--gray-2);margin:0">${t("analytics_no_data")}</p></div>` : `
       <div class="analytics-grid">
         <div class="card"><h3>${t("analytics_by_type_title")}</h3><canvas id="chart-admin-type" height="200"></canvas></div>
@@ -3840,6 +3962,14 @@ function renderAdminAnalytics() {
     else if (target === "adminAccessLog") loadAdminAccessLog().then(render);
     else loadAdminStudents().then(render);
   });
+  if (totalStudents > 0) {
+    renderChart("chart-admin-schedule", {
+      type: "bar",
+      data: { labels: [t("panel_schedule_behind"), t("panel_schedule_ontrack"), t("panel_schedule_ahead")],
+        datasets: [{ data: [byScheduleStatus.behind, byScheduleStatus.ontrack, byScheduleStatus.ahead], backgroundColor: ["#e65100", "#2e7d32", "#1565c0"] }] },
+      options: { indexAxis: "y", responsive: true, plugins: { legend: { display: false } }, scales: { x: { beginAtZero: true, ticks: { stepSize: 1 } } } }
+    });
+  }
   if (attempts.length) {
     renderChart("chart-admin-type", {
       type: "bar",
@@ -3865,6 +3995,7 @@ function renderAccount() {
   const tabContent = tab === "profile" ? renderAccountProfileTab()
     : tab === "security" ? renderAccountSecurityTab()
     : tab === "access" ? renderAccountAccessTab()
+    : tab === "voice" ? renderAccountVoiceTab()
     : renderAccountAppearanceTab();
   root.innerHTML = wrapShell(`
       <button class="back-link" id="back-dash">${t("back_panel")}</button>
@@ -3873,6 +4004,7 @@ function renderAccount() {
         <button class="account-tab-btn ${tab === "profile" ? "active" : ""}" data-tab="profile">👤 ${t("account_tab_profile")}</button>
         <button class="account-tab-btn ${tab === "security" ? "active" : ""}" data-tab="security">🔒 ${t("account_tab_security")}</button>
         <button class="account-tab-btn ${tab === "appearance" ? "active" : ""}" data-tab="appearance">🎨 ${t("account_tab_appearance")}</button>
+        <button class="account-tab-btn ${tab === "voice" ? "active" : ""}" data-tab="voice">🔊 ${t("account_tab_voice")}</button>
         <button class="account-tab-btn ${tab === "access" ? "active" : ""}" data-tab="access">🕓 ${t("account_tab_access")}</button>
       </div>
       ${state.accountMsg ? `<div class="${state.accountMsg.ok ? "success-msg" : "error-msg"}">${escapeHtml(state.accountMsg.text)}</div>` : ""}
@@ -3909,6 +4041,12 @@ function renderAccount() {
     document.querySelectorAll(".lang-option").forEach(lo => {
       lo.onclick = () => { state.prefs.lang = lo.dataset.lang; render(); };
     });
+    const saveBtn = document.getElementById("save-appearance");
+    if (saveBtn) saveBtn.onclick = onSaveAppearance;
+  } else if (tab === "voice") {
+    // Antes esto vivía dentro de la pestaña "Apariencia" — el usuario pidió que la voz
+    // tuviera su propia pestaña, al mismo nivel que Perfil/Seguridad/Apariencia/Accesos,
+    // porque quedaba "escondida" y no era intuitivo que la configuración de voz estuviera ahí.
     // Si todavía no llegaron las voces del navegador (carga asíncrona), reintenta una vez
     // apenas estén listas, para no dejar la lista vacía sin necesidad.
     if (!(state.ttsVoices && state.ttsVoices.length)) { loadVoices().then(render); }
@@ -3926,8 +4064,8 @@ function renderAccount() {
         speakWithVoice(t("account_voice_sample_text"), voice);
       };
     });
-    const saveBtn = document.getElementById("save-appearance");
-    if (saveBtn) saveBtn.onclick = onSaveAppearance;
+    const saveVoiceBtn = document.getElementById("save-voice");
+    if (saveVoiceBtn) saveVoiceBtn.onclick = onSaveAppearance;
   }
 }
 
@@ -4002,13 +4140,21 @@ function renderAccountAppearanceTab() {
     <div class="lang-options">
       ${Object.keys(UI_LANGS).map(id => `<div class="lang-option ${state.prefs.lang === id ? "active" : ""}" data-lang="${id}">${UI_LANGS[id]}</div>`).join("")}
     </div>
+    <div style="text-align:right;margin-top:8px"><button class="btn btn-primary btn-sm" id="save-appearance">${t("account_save_appearance")}</button></div>`;
+}
+
+// Pestaña propia "Voz" (Mi Cuenta): antes vivía dentro de "Apariencia", lo que confundía —
+// ahora es una pestaña hermana, al mismo nivel que Perfil/Seguridad/Apariencia/Accesos.
+function renderAccountVoiceTab() {
+  return `
+    <h3>🔊 ${t("account_tab_voice")}</h3>
     <span class="settings-label">${t("account_voice_label")}</span>
     <p class="voice-empty-note">${t("account_voice_hint")}</p>
     ${renderVoiceOptionsHtml("voiceURI", "v1", false)}
     <span class="settings-label" style="margin-top:18px">${t("account_voice2_label")}</span>
     <p class="voice-empty-note">${t("account_voice2_hint")}</p>
     ${renderVoiceOptionsHtml("voiceURI2", "v2", true)}
-    <div style="text-align:right;margin-top:8px"><button class="btn btn-primary btn-sm" id="save-appearance">${t("account_save_appearance")}</button></div>`;
+    <div style="text-align:right;margin-top:8px"><button class="btn btn-primary btn-sm" id="save-voice">${t("account_save_voice")}</button></div>`;
 }
 
 // Selector de voz de la síntesis de voz (TTS): hasta 4 voces en español distintas, detectadas
@@ -4141,6 +4287,7 @@ function renderSchedule() {
       const newSchedule = { ...schedule, durationMonths: months };
       await db.collection("progress").doc(state.user.uid).set({ schedule: newSchedule }, { merge: true });
       state.progress.schedule = newSchedule;
+      updateProgressSummary();
       state.scheduleMsg = t("schedule_saved");
       render();
     } catch (e) {

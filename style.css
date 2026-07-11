@@ -152,7 +152,7 @@ input, select, textarea { font-family: inherit; }
 
 /* ---------- Dashboard ---------- */
 .section-title { font-size: 1.3rem; font-weight: 700; margin: 28px 0 14px; color: #fff; text-shadow: 0 1px 3px rgba(0,0,0,.25); }
-.level-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 20px; }
+.level-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px; }
 .level-card {
   background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow);
   position: relative; overflow: hidden; transition: transform .15s, box-shadow .15s;
@@ -457,6 +457,13 @@ table.grammar-table th { background: var(--gray-bg); }
 .status-ontrack .panel-status-badge { background: #e8f5e9; color: var(--success); }
 .status-ahead .panel-status-badge   { background: #e3f2fd; color: #1565c0; }
 .status-behind .panel-status-badge  { background: #fff3e0; color: #e65100; }
+
+/* Mismos tres colores que el badge del Panel del Alumno, pero como clase independiente
+   (sin necesitar el div contenedor .status-x) para usarse en filas de tabla del Admin. */
+.sched-badge { display: inline-block; padding: 3px 11px; border-radius: 999px; font-weight: 700; font-size: .72rem; white-space: nowrap; }
+.sched-badge.ontrack { background: #e8f5e9; color: var(--success); }
+.sched-badge.ahead   { background: #e3f2fd; color: #1565c0; }
+.sched-badge.behind  { background: #fff3e0; color: #e65100; }
 
 .final-diploma-card {
   display: flex; align-items: center; gap: 18px; margin-bottom: 24px; border-radius: var(--radius);
