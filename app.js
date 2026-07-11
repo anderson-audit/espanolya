@@ -3155,17 +3155,30 @@ function buildSongExercises(lines, youtubeId, fragmentSec) {
   const frag = fragmentSec && fragmentSec > 0 ? fragmentSec : 30;
   const exercises = [];
   const parsed = lines.map(l => extractLineTimestamp(l));
-  // Antes esto alineaba el trecho a una grilla fija (0-30s, 30-60s...), así que una línea
-  // cuyo timestamp cayera cerca del final de esa grilla (p. ej. sec=29 con frag=30) quedaba
-  // con apenas 1 segundo de margen antes del corte — el video se pausaba (por endSec, más
-  // abajo) ANTES de que la palabra terminara de sonar. Ahora el trecho se ancla al propio
-  // timestamp de la línea (con un pequeño margen previo, para dar contexto), garantizando
-  // que siempre quede la mayor parte de "frag" segundos DESPUÉS de la palabra a adivinar.
+  // BUGFIX (segunda vuelta): el intento anterior anclaba el tramo al timestamp de la LÍNEA
+  // y sumaba "frag" segundos fijos — pero "frag" es un promedio general (duración de la
+  // canción ÷ cantidad de palabras a adivinar), calculado por computeSongFragmentSec(). En
+  // canciones con muchos huecos (más de los configurados en targetWordCount) ese promedio
+  // sale muy chico — a veces 6-10 segundos —, y una línea con varias frases cortas seguidas
+  // (p. ej. "Tanto busqué, cuánto encontré, cuánto perdí, cuánto gané") tarda en cantarse
+  // MÁS que esos pocos segundos. Resultado: el corte (endSec) llegaba ANTES de que la
+  // palabra a adivinar empezara siquiera a sonar — exactamente el síntoma reportado.
+  // Ahora, además del margen mínimo de "frag" segundos, el tramo se extiende hasta justo
+  // antes de la PRÓXIMA marca de tiempo real de la letra (si existe una más adelante) —
+  // así el corte nunca cae en medio de la línea actual, sea cual sea su duración real.
+  const allTimestamps = parsed.map(p => p.seconds).filter(s => s != null).sort((a, b) => a - b);
+  const nextTimestampAfter = (sec) => {
+    for (const t of allTimestamps) { if (t > sec + 0.05) return t; }
+    return null;
+  };
   const windowOf = (sec) => {
     if (sec == null) return null;
     const lead = Math.min(3, frag * 0.25);
     const start = Math.max(0, Math.round(sec - lead));
-    return { start, end: start + frag };
+    const minEnd = start + frag;
+    const next = nextTimestampAfter(sec);
+    const end = next != null ? Math.max(minEnd, Math.round(next - 0.3)) : minEnd;
+    return { start, end };
   };
 
   const seenWordsByWindow = new Map(); // "start-end" -> Set(palabra normalizada)

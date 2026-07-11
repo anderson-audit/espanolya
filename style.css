@@ -164,7 +164,13 @@ input, select, textarea { font-family: inherit; }
 .level-card {
   background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow);
   position: relative; overflow: hidden; transition: transform .15s, box-shadow .15s;
-  flex: 1 1 260px; max-width: 400px;
+  /* Sin max-width: si una tarjeta queda sola en su fila (p. ej. "Avançado" cuando las
+     otras 3 ya llenaron la fila de arriba), flex-grow la estira para ocupar TODO el ancho
+     disponible en esa fila — ni un pixel de espacio en blanco al lado, se adapta al tamaño
+     real de la pantalla (igual que en el celular, donde una sola tarjeta por fila siempre
+     ocupa el 100% del ancho). Antes había un tope de 400px "por las dudas", pero eso era
+     justo lo que dejaba el espacio en blanco que se pidió eliminar. */
+  flex: 1 1 260px;
 }
 .level-card:not(.locked):hover { transform: translateY(-4px); box-shadow: var(--shadow-lg); }
 .level-card.locked .level-card-photo { filter: grayscale(.65) brightness(.8); }
