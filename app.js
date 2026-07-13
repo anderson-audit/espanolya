@@ -49,7 +49,7 @@ const db = firebase.firestore();
 // Versión del sistema, visible en Mi Cuenta / Configuración y en el pie de la barra lateral.
 // Se debe actualizar manualmente cada vez que se sube una nueva versión al repositorio
 // (formato AAAA.MM.DD.N — N = número de subida ese día, empieza en 1).
-const APP_VERSION = "2026.07.13.2";
+const APP_VERSION = "2026.07.13.3";
 
 const DEFAULT_PASS_SCORES = { fundamentos: 70, basico: 70, intermedio: 70, avanzado: 70 };
 // Modo de liberación del gabarito (respuesta correcta): "immediate" = se muestra apenas
@@ -1467,7 +1467,22 @@ function attachShellEvents() {
 const LEVEL_HERO_FIRST_LESSON = {
   fundamentos: "fund-0", basico: "b1", intermedio: "i1", avanzado: "a1", secretos: "s1", profesional: "p1", normas: "n1",
 };
+// Anderson reportó (2026-07-13, print de "Mis Niveles"): el card de "Avanzado" quedaba feo
+// porque reusaba la imagen de la lección "a1" (una sartén vista desde arriba — buena DENTRO
+// de esa lección de vocabulario de cocina, pero como fondo grande de todo el card se ve solo
+// como un círculo negro). Y "Canciones" ni siquiera tenía imagen: no está en
+// LEVEL_HERO_FIRST_LESSON porque sus lecciones son dinámicas (canciones que el admin agrega),
+// no vienen de LESSON_IMAGES. Por eso este mapa aparte: SOLO afecta el fondo del card del
+// nivel (no toca LESSON_IMAGES ni la imagen dentro de la lección "a1", que sigue siendo
+// correcta ahí). Confirmadas por WebSearch en Wikimedia Commons (mismo criterio que el resto
+// de LESSON_IMAGES: nombre de archivo real, licencia libre).
+const LEVEL_COVER_OVERRIDE = {
+  avanzado: { file: "Plaza_Mayor_de_Madrid_06.jpg", alt: "Plaza Mayor de Madrid" },
+  canciones: { file: "Flamenco_granada-1.jpg", alt: "Guitarra flamenca" },
+};
 function levelHeroImageUrl(levelId) {
+  const override = LEVEL_COVER_OVERRIDE[levelId];
+  if (override) return wikimediaImg(override.file);
   const lessonId = LEVEL_HERO_FIRST_LESSON[levelId];
   const img = lessonId && LESSON_IMAGES[lessonId];
   return img ? wikimediaImg(img.file) : "";
