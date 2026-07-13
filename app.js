@@ -49,7 +49,7 @@ const db = firebase.firestore();
 // Versión del sistema, visible en Mi Cuenta / Configuración y en el pie de la barra lateral.
 // Se debe actualizar manualmente cada vez que se sube una nueva versión al repositorio
 // (formato AAAA.MM.DD.N — N = número de subida ese día, empieza en 1).
-const APP_VERSION = "2026.07.09.4";
+const APP_VERSION = "2026.07.13.2";
 
 const DEFAULT_PASS_SCORES = { fundamentos: 70, basico: 70, intermedio: 70, avanzado: 70 };
 // Modo de liberación del gabarito (respuesta correcta): "immediate" = se muestra apenas
@@ -82,6 +82,7 @@ const I18N = {
   es: {
     auth_login_sub: "Entra para continuar aprendiendo", auth_register_sub: "Crea tu cuenta gratis", auth_forgot_sub: "Recuperar contraseña",
     auth_name: "Nombre", auth_name_ph: "Tu nombre", auth_email: "E-mail", auth_password: "Contraseña", auth_password_ph: "••••••••",
+    pass_show: "Mostrar contraseña", pass_hide: "Ocultar contraseña",
     auth_btn_login: "Entrar", auth_btn_register: "Crear cuenta", auth_btn_forgot: "Enviar e-mail de recuperación",
     auth_no_account: "¿No tienes cuenta?", auth_register_link: "Regístrate", auth_forgot_link: "¿Olvidaste tu contraseña?",
     auth_have_account: "¿Ya tienes cuenta?", auth_login_link: "Entra aquí", auth_back_login: "Volver al login",
@@ -120,7 +121,7 @@ const I18N = {
     admin_songs_calculating: "Calculando duración del video...",
     admin_songs_time_error: "No se pudo calcular la duración del video. Intenta de nuevo o marca los tiempos a mano con [mm:ss].",
     admin_songs_field_words: "Cantidad de palabras a practicar",
-    admin_songs_field_words_hint: "El sistema calcula solo el tamaño del trecho de video (duración real de la canción ÷ esta cantidad). Menos palabras = trechos más largos; más palabras = trechos más cortos.",
+    admin_songs_field_words_hint: "El sistema calcula solo el tamaño del trecho de video (duración real de la canción ÷ esta cantidad). Menos palabras = trechos más largos; más palabras = trechos más cortos. Recomendado: entre 10 y 20, y cerca de la cantidad real de huecos {{...}} que marcaste abajo — un número mucho más alto que los huecos reales hace los trechos innecesariamente cortos.",
     admin_songs_list_title: "Canciones agregadas ({n})", admin_songs_empty: "Todavía no agregaste ninguna canción.",
     admin_songs_lines_unit: "líneas", admin_songs_blanks_unit: "huecos", admin_songs_bad_youtube: "No se pudo identificar el video de YouTube — revisa el link.",
     admin_songs_saved: "¡Canción guardada!", admin_songs_confirm_delete: "¿Eliminar esta canción? El alumno ya no podrá practicarla.",
@@ -211,6 +212,7 @@ const I18N = {
   pt: {
     auth_login_sub: "Entre para continuar aprendendo", auth_register_sub: "Crie sua conta grátis", auth_forgot_sub: "Recuperar senha",
     auth_name: "Nome", auth_name_ph: "Seu nome", auth_email: "E-mail", auth_password: "Senha", auth_password_ph: "••••••••",
+    pass_show: "Mostrar senha", pass_hide: "Ocultar senha",
     auth_btn_login: "Entrar", auth_btn_register: "Criar conta", auth_btn_forgot: "Enviar e-mail de recuperação",
     auth_no_account: "Não tem conta?", auth_register_link: "Cadastre-se", auth_forgot_link: "Esqueceu sua senha?",
     auth_have_account: "Já tem conta?", auth_login_link: "Entre aqui", auth_back_login: "Voltar ao login",
@@ -249,7 +251,7 @@ const I18N = {
     admin_songs_calculating: "Calculando duração do vídeo...",
     admin_songs_time_error: "Não foi possível calcular a duração do vídeo. Tente de novo ou marque os tempos manualmente com [mm:ss].",
     admin_songs_field_words: "Quantidade de palavras a praticar",
-    admin_songs_field_words_hint: "O sistema calcula sozinho o tamanho do trecho de vídeo (duração real da música ÷ essa quantidade). Menos palavras = trechos mais longos; mais palavras = trechos mais curtos.",
+    admin_songs_field_words_hint: "O sistema calcula sozinho o tamanho do trecho de vídeo (duração real da música ÷ essa quantidade). Menos palavras = trechos mais longos; mais palavras = trechos mais curtos. Recomendado: entre 10 e 20, e próximo da quantidade real de lacunas {{...}} marcadas abaixo — um número bem maior que as lacunas reais deixa os trechos curtos demais sem necessidade.",
     admin_songs_list_title: "Canções adicionadas ({n})", admin_songs_empty: "Você ainda não adicionou nenhuma canção.",
     admin_songs_lines_unit: "linhas", admin_songs_blanks_unit: "lacunas", admin_songs_bad_youtube: "Não consegui identificar o vídeo do YouTube — confira o link.",
     admin_songs_saved: "Canção salva!", admin_songs_confirm_delete: "Excluir esta canção? O aluno não vai poder mais praticá-la.",
@@ -340,6 +342,7 @@ const I18N = {
   en: {
     auth_login_sub: "Sign in to keep learning", auth_register_sub: "Create your free account", auth_forgot_sub: "Reset password",
     auth_name: "Name", auth_name_ph: "Your name", auth_email: "Email", auth_password: "Password", auth_password_ph: "••••••••",
+    pass_show: "Show password", pass_hide: "Hide password",
     auth_btn_login: "Sign in", auth_btn_register: "Create account", auth_btn_forgot: "Send reset email",
     auth_no_account: "Don't have an account?", auth_register_link: "Sign up", auth_forgot_link: "Forgot your password?",
     auth_have_account: "Already have an account?", auth_login_link: "Sign in here", auth_back_login: "Back to login",
@@ -378,7 +381,7 @@ const I18N = {
     admin_songs_calculating: "Calculating video duration...",
     admin_songs_time_error: "Couldn't calculate the video's duration. Try again or mark the times by hand with [mm:ss].",
     admin_songs_field_words: "Number of words to practice",
-    admin_songs_field_words_hint: "The system only uses this to size the video snippet (the song's real duration ÷ this number). Fewer words = longer snippets; more words = shorter snippets.",
+    admin_songs_field_words_hint: "The system only uses this to size the video snippet (the song's real duration ÷ this number). Fewer words = longer snippets; more words = shorter snippets. Recommended: between 10 and 20, and close to the real number of {{...}} blanks marked below — a number much higher than the real blanks makes snippets needlessly short.",
     admin_songs_list_title: "Songs added ({n})", admin_songs_empty: "You haven't added any songs yet.",
     admin_songs_lines_unit: "lines", admin_songs_blanks_unit: "blanks", admin_songs_bad_youtube: "Couldn't identify the YouTube video — check the link.",
     admin_songs_saved: "Song saved!", admin_songs_confirm_delete: "Delete this song? The student won't be able to practice it anymore.",
@@ -534,6 +537,23 @@ const state = {
 
 applyTheme(state.prefs.theme);
 applyFont(state.prefs.font);
+
+// Botón "olhinho" (👁️) para mostrar/ocultar la contraseña mientras se escribe.
+// Delegado en document (una sola vez, al cargar la app) para funcionar en
+// cualquier campo .pass-wrap, en cualquier pantalla, sin necesidad de volver
+// a conectar el evento después de cada render().
+document.addEventListener("click", (ev) => {
+  const btn = ev.target.closest(".pass-eye");
+  if (!btn) return;
+  const input = document.getElementById(btn.dataset.target);
+  if (!input) return;
+  const nowVisible = input.type === "password";
+  input.type = nowVisible ? "text" : "password";
+  btn.textContent = nowVisible ? "🙈" : "👁️";
+  const label = nowVisible ? t("pass_hide") : t("pass_show");
+  btn.setAttribute("aria-label", label);
+  btn.setAttribute("title", label);
+});
 
 const root = document.getElementById("app");
 
@@ -856,7 +876,7 @@ function renderAuth() {
             <div class="field"><label>${t("auth_name")}</label><input type="text" id="f-name" required placeholder="${t("auth_name_ph")}"></div>` : ""}
             <div class="field"><label>${t("auth_email")}</label><input type="email" id="f-email" required placeholder="tu@email.com"></div>
             ${mode !== "forgot" ? `
-            <div class="field"><label>${t("auth_password")}</label><input type="password" id="f-pass" required placeholder="${t("auth_password_ph")}" minlength="6"></div>` : ""}
+            <div class="field"><label>${t("auth_password")}</label><div class="pass-wrap"><input type="password" id="f-pass" required placeholder="${t("auth_password_ph")}" minlength="6"><button type="button" class="pass-eye" data-target="f-pass" aria-label="${t("pass_show")}" title="${t("pass_show")}">👁️</button></div></div>` : ""}
             <button type="submit" class="btn btn-primary btn-block">
               ${mode === "login" ? t("auth_btn_login") : mode === "register" ? t("auth_btn_register") : t("auth_btn_forgot")}
             </button>
@@ -3082,15 +3102,35 @@ function estimateSongTimestamps(rawLyrics, durationSec) {
   const intro = Math.min(8, durationSec * 0.06);
   const outro = Math.min(6, durationSec * 0.05);
   const available = Math.max(1, durationSec - intro - outro);
-  const step = available / nonEmptyIdx.length;
   const fmt = (sec) => {
     const m = Math.floor(sec / 60);
     const s = Math.floor(sec % 60);
     return `[${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}]`;
   };
+  // BUGFIX (2026-07-13): antes se repartía "available" en partes IGUALES por línea (available /
+  // cantidad de líneas), sin importar si la línea era corta ("Vente ya") o larga (varias frases
+  // seguidas). Eso hacía que el timestamp de una línea larga cayera muy cerca del de la línea
+  // siguiente, dejando muy poco tiempo real para cantarla — y como el trecho de audio del
+  // ejercicio corta cerca del PRÓXIMO timestamp (ver windowOf en buildSongExercises), el corte
+  // llegaba antes de que la palabra marcada como hueco terminara de sonar. Síntoma reportado:
+  // "el tiempo está diferente, no combina la frase que hay que escuchar con la música". Ahora
+  // el tiempo se reparte proporcional al largo del texto de cada línea (peso = cantidad de
+  // caracteres, con piso de 6 para que una línea de 1-2 palabras no quede con peso ~0) — una
+  // línea con el doble de caracteres recibe aproximadamente el doble de tiempo antes de la
+  // siguiente marca. Sigue siendo una aproximación (no analiza el audio real), pero ya no
+  // asume que todas las líneas duran lo mismo.
+  const weights = nonEmptyIdx.map(i => {
+    const { text } = extractLineTimestamp(rawLines[i]);
+    const clean = text.replace(SONG_BLANK_RE, (_, w) => w).trim();
+    return Math.max(6, clean.length);
+  });
+  const totalWeight = weights.reduce((a, b) => a + b, 0) || 1;
+  let acc = 0;
   nonEmptyIdx.forEach((lineIdx, k) => {
     const { text } = extractLineTimestamp(rawLines[lineIdx]); // quita marca previa, si había
-    rawLines[lineIdx] = `${fmt(intro + k * step)} ${text}`;
+    const pos = intro + (acc / totalWeight) * available;
+    rawLines[lineIdx] = `${fmt(pos)} ${text}`;
+    acc += weights[k];
   });
   return rawLines.join("\n");
 }
@@ -3171,13 +3211,48 @@ function buildSongExercises(lines, youtubeId, fragmentSec) {
     for (const t of allTimestamps) { if (t > sec + 0.05) return t; }
     return null;
   };
-  const windowOf = (sec) => {
+  // BUGFIX (2026-07-13): la línea con la marca de tiempo MÁS ALTA (la última con [mm:ss] en
+  // toda la letra) no tiene una "próxima marca" de la que tomar el límite del trecho — antes
+  // caía directo en "minEnd" (start + frag), y frag es un promedio general que puede ser bien
+  // chico (canciones con muchos huecos configurados). Resultado: para esa última línea (y
+  // cualquier otra sin marca siguiente) el video se cortaba a los pocos segundos, casi siempre
+  // ANTES de que la palabra a adivinar terminara de sonar. Para estimar un límite más realista
+  // sin analizar el audio real, calculamos un "ritmo" (segundos por carácter) a partir de los
+  // pares de líneas consecutivas que SÍ tienen ambas marca de tiempo — ese ritmo, aplicado a la
+  // cantidad de caracteres de la línea en cuestión, da una duración estimada mucho más fiel que
+  // usar siempre el mismo "frag" fijo. Se descartan saltos raros (>20s entre líneas, típico de
+  // silencios/instrumental) para no distorsionar el promedio.
+  let _secPerChar = null;
+  const secondsPerChar = () => {
+    if (_secPerChar != null) return _secPerChar;
+    let totalChars = 0, totalSecs = 0;
+    for (let i = 0; i < parsed.length - 1; i++) {
+      const a = parsed[i], b = parsed[i + 1];
+      if (a.seconds == null || b.seconds == null) continue;
+      const dur = b.seconds - a.seconds;
+      const chars = Math.max(1, a.text.replace(SONG_BLANK_RE, (_m, w) => w).trim().length);
+      if (dur > 0 && dur < 20) { totalChars += chars; totalSecs += dur; }
+    }
+    _secPerChar = totalChars > 0 ? totalSecs / totalChars : 0.14; // ~0.14s/carácter si no hay datos suficientes
+    return _secPerChar;
+  };
+  const windowOf = (sec, lineText) => {
     if (sec == null) return null;
     const lead = Math.min(3, frag * 0.25);
     const start = Math.max(0, Math.round(sec - lead));
     const minEnd = start + frag;
     const next = nextTimestampAfter(sec);
-    const end = next != null ? Math.max(minEnd, Math.round(next - 0.3)) : minEnd;
+    let end;
+    if (next != null) {
+      end = Math.max(minEnd, Math.round(next - 0.3));
+    } else {
+      // Sin próxima marca (última línea marcada): estimar cuánto tarda ESTA línea en cantarse
+      // según el ritmo real de la canción, con un 40% de margen de seguridad, en vez de cortar
+      // apenas "frag" segundos después del inicio.
+      const chars = Math.max(1, (lineText || "").replace(SONG_BLANK_RE, (_m, w) => w).trim().length);
+      const estDur = Math.round(chars * secondsPerChar() * 1.4);
+      end = Math.max(minEnd, start + estDur);
+    }
     return { start, end };
   };
 
@@ -3188,7 +3263,7 @@ function buildSongExercises(lines, youtubeId, fragmentSec) {
     // así que es seguro aunque una misma línea tenga 2+ huecos — evita un loop infinito.
     const matches = [...line.matchAll(SONG_BLANK_RE)];
     if (!matches.length) return;
-    const win = windowOf(p.seconds);
+    const win = windowOf(p.seconds, line);
     matches.forEach(m => {
       const word = m[1];
       const start = m.index;
@@ -3224,7 +3299,7 @@ function buildSongExercises(lines, youtubeId, fragmentSec) {
       const step = Math.max(1, Math.floor(candidates.length / 3));
       for (let k = 0, picked = 0; k < candidates.length && picked < 3; k += step, picked++) {
         const c = candidates[k];
-        const win = windowOf(c.seconds);
+        const win = windowOf(c.seconds, c.text);
         exercises.push({ type: "songListen", answer: c.text, youtubeId, startSec: win ? win.start : null, endSec: win ? win.end : null });
       }
     }
@@ -4122,9 +4197,9 @@ function renderAccountSecurityTab() {
   return `
     <h3>${t("account_tab_security")}</h3>
     <form id="pass-form">
-      <div class="field"><label>${t("account_current_pass")}</label><input type="password" id="cur-pass" required></div>
-      <div class="field"><label>${t("account_new_pass")}</label><input type="password" id="new-pass" required minlength="6"></div>
-      <div class="field"><label>${t("account_confirm_pass")}</label><input type="password" id="new-pass2" required minlength="6"></div>
+      <div class="field"><label>${t("account_current_pass")}</label><div class="pass-wrap"><input type="password" id="cur-pass" required><button type="button" class="pass-eye" data-target="cur-pass" aria-label="${t("pass_show")}" title="${t("pass_show")}">👁️</button></div></div>
+      <div class="field"><label>${t("account_new_pass")}</label><div class="pass-wrap"><input type="password" id="new-pass" required minlength="6"><button type="button" class="pass-eye" data-target="new-pass" aria-label="${t("pass_show")}" title="${t("pass_show")}">👁️</button></div></div>
+      <div class="field"><label>${t("account_confirm_pass")}</label><div class="pass-wrap"><input type="password" id="new-pass2" required minlength="6"><button type="button" class="pass-eye" data-target="new-pass2" aria-label="${t("pass_show")}" title="${t("pass_show")}">👁️</button></div></div>
       <button type="submit" class="btn btn-primary">${t("account_change_pass_btn")}</button>
     </form>`;
 }
