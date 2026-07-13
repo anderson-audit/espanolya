@@ -49,7 +49,7 @@ const db = firebase.firestore();
 // Versión del sistema, visible en Mi Cuenta / Configuración y en el pie de la barra lateral.
 // Se debe actualizar manualmente cada vez que se sube una nueva versión al repositorio
 // (formato AAAA.MM.DD.N — N = número de subida ese día, empieza en 1).
-const APP_VERSION = "2026.07.13.3";
+const APP_VERSION = "2026.07.13.4";
 
 const DEFAULT_PASS_SCORES = { fundamentos: 70, basico: 70, intermedio: 70, avanzado: 70 };
 // Modo de liberación del gabarito (respuesta correcta): "immediate" = se muestra apenas
@@ -96,6 +96,8 @@ const I18N = {
     level_preview_note: "puedes ver el temario, pero las lecciones se abren al desbloquear el nivel.",
     exit: "✕ Salir", exit_confirm: "¿Seguro que quieres salir? Vas a perder el progreso de este ejercicio/prueba.",
     ex_next: "Siguiente →", ex_check: "Comprobar", ex_skip: "No puedo grabar ahora",
+    ex_resume_title: "📍 Tienes un ejercicio en curso", ex_resume_progress: "vas por la pregunta {cur} de {total}.",
+    ex_continue_btn: "Continuar donde lo dejé →", ex_restart_btn: "Empezar de nuevo", ex_discover_lyrics_btn: "🎤 Descubrir la letra",
     result_pass_title: "¡Aprobado!", result_fail_title: "Todavía no...", result_lesson_title: "¡Ejercicios completados!",
     result_min_score: "Nota mínima exigida: {score}%", result_unlocked: "🔓 ¡Has desbloqueado el próximo nivel!",
     result_retry_msg: "Repasa la lección y vuelve a intentar la prueba cuando estés listo(a).",
@@ -127,7 +129,7 @@ const I18N = {
     admin_songs_saved: "¡Canción guardada!", admin_songs_confirm_delete: "¿Eliminar esta canción? El alumno ya no podrá practicarla.",
     admin_songs_live_count: "{lines} líneas · {blanks} huecos marcados",
     admin_students_title: "Alumnos y progreso ({n})", admin_no_students: "Todavía no hay alumnos con pruebas realizadas.",
-    back_panel: "← Volver al panel",
+    back_panel: "← Volver al panel", back_generic: "← Volver",
     account_title: "👤 Mi Cuenta", account_tab_security: "Seguridad", account_tab_appearance: "Apariencia", account_tab_profile: "Perfil", account_tab_access: "Mis Accesos", account_tab_voice: "Voz",
     profile_name_label: "Nombre completo", profile_name_ph: "Tu nombre", profile_save: "Guardar nombre", profile_saved: "¡Nombre actualizado!",
     account_current_pass: "Contraseña actual", account_new_pass: "Nueva contraseña", account_confirm_pass: "Confirmar nueva contraseña",
@@ -226,6 +228,8 @@ const I18N = {
     level_preview_note: "você pode ver o conteúdo, mas as lições abrem ao desbloquear o nível.",
     exit: "✕ Sair", exit_confirm: "Tem certeza que quer sair? Você vai perder o progresso deste exercício/prova.",
     ex_next: "Próximo →", ex_check: "Verificar", ex_skip: "Não posso gravar agora",
+    ex_resume_title: "📍 Você tem um exercício em andamento", ex_resume_progress: "você está na pergunta {cur} de {total}.",
+    ex_continue_btn: "Continuar de onde parei →", ex_restart_btn: "Começar de novo", ex_discover_lyrics_btn: "🎤 Descobrir a letra",
     result_pass_title: "Aprovado!", result_fail_title: "Ainda não...", result_lesson_title: "Exercícios concluídos!",
     result_min_score: "Nota mínima exigida: {score}%", result_unlocked: "🔓 Você desbloqueou o próximo nível!",
     result_retry_msg: "Revise a lição e tente a prova novamente quando estiver pronto(a).",
@@ -257,7 +261,7 @@ const I18N = {
     admin_songs_saved: "Canção salva!", admin_songs_confirm_delete: "Excluir esta canção? O aluno não vai poder mais praticá-la.",
     admin_songs_live_count: "{lines} linhas · {blanks} lacunas marcadas",
     admin_students_title: "Alunos e progresso ({n})", admin_no_students: "Ainda não há alunos com provas realizadas.",
-    back_panel: "← Voltar ao painel",
+    back_panel: "← Voltar ao painel", back_generic: "← Voltar",
     account_title: "👤 Minha Conta", account_tab_security: "Segurança", account_tab_appearance: "Aparência", account_tab_profile: "Perfil", account_tab_access: "Meus Acessos", account_tab_voice: "Voz",
     profile_name_label: "Nome completo", profile_name_ph: "Seu nome", profile_save: "Salvar nome", profile_saved: "Nome atualizado!",
     account_current_pass: "Senha atual", account_new_pass: "Nova senha", account_confirm_pass: "Confirmar nova senha",
@@ -356,6 +360,8 @@ const I18N = {
     level_preview_note: "you can preview the content, but lessons open once the level is unlocked.",
     exit: "✕ Exit", exit_confirm: "Are you sure you want to exit? You'll lose progress on this exercise/exam.",
     ex_next: "Next →", ex_check: "Check", ex_skip: "I can't record now",
+    ex_resume_title: "📍 You have an exercise in progress", ex_resume_progress: "you're on question {cur} of {total}.",
+    ex_continue_btn: "Continue where I left off →", ex_restart_btn: "Start over", ex_discover_lyrics_btn: "🎤 Discover the lyrics",
     result_pass_title: "Passed!", result_fail_title: "Not yet...", result_lesson_title: "Exercises completed!",
     result_min_score: "Minimum required score: {score}%", result_unlocked: "🔓 You've unlocked the next level!",
     result_retry_msg: "Review the lesson and retry the exam when you're ready.",
@@ -387,7 +393,7 @@ const I18N = {
     admin_songs_saved: "Song saved!", admin_songs_confirm_delete: "Delete this song? The student won't be able to practice it anymore.",
     admin_songs_live_count: "{lines} lines · {blanks} blanks marked",
     admin_students_title: "Students and progress ({n})", admin_no_students: "No students have taken exams yet.",
-    back_panel: "← Back to panel",
+    back_panel: "← Back to panel", back_generic: "← Back",
     account_title: "👤 My Account", account_tab_security: "Security", account_tab_appearance: "Appearance", account_tab_profile: "Profile", account_tab_access: "My Access Log", account_tab_voice: "Voice",
     profile_name_label: "Full name", profile_name_ph: "Your name", profile_save: "Save name", profile_saved: "Name updated!",
     account_current_pass: "Current password", account_new_pass: "New password", account_confirm_pass: "Confirm new password",
@@ -1785,7 +1791,7 @@ function renderLessonList() {
   const idx = MAIN_SEQUENCE.indexOf(state.currentLevelId);
   const prevLvl = idx > 0 ? getLevel(MAIN_SEQUENCE[idx - 1]) : null;
   root.innerHTML = wrapShell(`
-      <button class="back-link" id="back-dash">← Volver a los módulos</button>
+      <button class="back-link" id="back-dash">${t("back_modules")}</button>
       <div class="lesson-header">
         <h2>${lvl.icon} ${lvl.name}</h2>
         <div class="sub">${lvl.description}</div>
@@ -1869,7 +1875,7 @@ function renderLessonView() {
   const lesson = getLesson(state.currentLevelId, state.currentLessonId);
   const lvl = getLevel(state.currentLevelId);
   let html = `
-      <button class="back-link" id="back-list">← Volver a ${lvl.name}</button>
+      <button class="back-link" id="back-list">${t("back_to", { name: lvl.name })}</button>
       <div class="lesson-header">
         <h2>${escapeHtml(lesson.title)}</h2>
         <div class="sub">${escapeHtml(lesson.subtitle || "")}</div>
@@ -1960,15 +1966,15 @@ function renderLessonView() {
   html += `
       ${ip ? `
       <div class="card continue-progress">
-        <div><strong>📍 Tienes un ejercicio en curso</strong> — vas por la pregunta ${ip.answers.length + 1} de ${ip.total}.</div>
+        <div><strong>${t("ex_resume_title")}</strong> — ${t("ex_resume_progress", { cur: ip.answers.length + 1, total: ip.total })}</div>
         <div class="progress-bar-track"><div class="progress-bar-fill" style="width:${Math.round((ip.answers.length / ip.total) * 100)}%"></div></div>
         <div style="display:flex;gap:10px;margin-top:10px;flex-wrap:wrap">
-          <button class="btn btn-primary btn-sm" id="continue-exercises">Continuar donde lo dejé →</button>
-          <button class="btn btn-secondary btn-sm" id="restart-exercises">Empezar de nuevo</button>
+          <button class="btn btn-primary btn-sm" id="continue-exercises">${t("ex_continue_btn")}</button>
+          <button class="btn btn-secondary btn-sm" id="restart-exercises">${t("ex_restart_btn")}</button>
         </div>
       </div>` : ""}
       <div style="text-align:center;margin: 24px 0 40px">
-        <button class="btn btn-primary" id="start-exercises" style="padding:16px 34px">${ip ? "Empezar de nuevo" : (lesson.youtubeId ? "🎤 Descubrir la letra" : "Empezar ejercicios")} (${lesson.exercises.length}) →</button>
+        <button class="btn btn-primary" id="start-exercises" style="padding:16px 34px">${ip ? t("ex_restart_btn") : (lesson.youtubeId ? t("ex_discover_lyrics_btn") : t("start_exercises", { n: lesson.exercises.length }))}${ip || lesson.youtubeId ? ` (${lesson.exercises.length}) →` : ""}</button>
       </div>
       <div class="bottom-space"></div>`;
   root.innerHTML = wrapShell(html, "lesson");
@@ -2155,14 +2161,14 @@ function renderExercise() {
         ${ex.options.map((opt, i) => `<button class="ex-option" data-i="${i}">${escapeHtml(opt)}</button>`).join("")}
       </div>
       <div id="ex-feedback"></div>
-      <div class="ex-actions"><button class="btn btn-primary" id="ex-next" disabled>Siguiente →</button></div>`;
+      <div class="ex-actions"><button class="btn btn-primary" id="ex-next" disabled>${t("ex_next")}</button></div>`;
   } else if (ex.type === "fill" || ex.type === "translate") {
     const label = ex.type === "translate" ? `Traduce${ex.from === "pt" ? " (Português → Español)" : " (Español → Português)"}: ${escapeHtml(ex.text)}` : escapeHtml(ex.q);
     const fillInner = `
       <div class="ex-question">${label} ${ttsBtnHtml}</div>
       ${ex.youtubeId ? `<p class="ex-hint">🔇 ${ex.startSec != null ? "El video ya abrió en el fragmento de este hueco" : "Puedes escuchar la canción mientras completas el hueco"}, pero empieza SIN sonido (los navegadores bloquean el audio automático) — toca "${ex.startSec != null ? "Escuchar el fragmento" : "Activar sonido"}" cuantas veces quieras.</p>` : ""}
       <input type="text" class="ex-input" id="ex-answer" placeholder="Escribe tu respuesta aquí..." autocomplete="off">
-      <div class="ex-actions"><button class="btn btn-secondary btn-sm" id="ex-check">Comprobar</button><button class="btn btn-primary" id="ex-next">Siguiente →</button></div>
+      <div class="ex-actions"><button class="btn btn-secondary btn-sm" id="ex-check">${t("ex_check")}</button><button class="btn btn-primary" id="ex-next">${t("ex_next")}</button></div>
       <div id="ex-feedback"></div>`;
     body = ex.youtubeId ? `
       <div class="song-ex-split">
@@ -2174,7 +2180,7 @@ function renderExercise() {
       <div class="ex-question">🎧 ${escapeHtml(ex.q)}</div>
       <div style="text-align:center;margin-bottom:18px"><button class="mic-btn" id="ex-play" style="background:var(--rojo)">🔊</button></div>
       <input type="text" class="ex-input" id="ex-answer" placeholder="Tu respuesta..." autocomplete="off">
-      <div class="ex-actions"><button class="btn btn-secondary btn-sm" id="ex-check">Comprobar</button><button class="btn btn-primary" id="ex-next">Siguiente →</button></div>
+      <div class="ex-actions"><button class="btn btn-secondary btn-sm" id="ex-check">${t("ex_check")}</button><button class="btn btn-primary" id="ex-next">${t("ex_next")}</button></div>
       <div id="ex-feedback"></div>`;
   } else if (ex.type === "songListen") {
     // Dictado con la canción real: el alumno usa los controles nativos del video de
@@ -2187,7 +2193,7 @@ function renderExercise() {
           <div class="ex-question">🎧 ${escapeHtml(ex.q || "Escucha la canción y escribe lo que oyes en este fragmento.")}</div>
           <p class="ex-hint">🔇 El video abre sin sonido — toca "${ex.startSec != null ? "Escuchar el fragmento" : "Activar sonido"}" para escuchar.</p>
           <input type="text" class="ex-input" id="ex-answer" placeholder="Escribe lo que escuchas..." autocomplete="off">
-          <div class="ex-actions"><button class="btn btn-secondary btn-sm" id="ex-check">Comprobar</button><button class="btn btn-primary" id="ex-next">Siguiente →</button></div>
+          <div class="ex-actions"><button class="btn btn-secondary btn-sm" id="ex-check">${t("ex_check")}</button><button class="btn btn-primary" id="ex-next">${t("ex_next")}</button></div>
           <div id="ex-feedback"></div>
         </div>
       </div>`;
@@ -2198,13 +2204,13 @@ function renderExercise() {
       <div style="text-align:center"><button class="mic-btn" id="ex-mic">🎤</button></div>
       <div class="speak-transcript" id="ex-transcript"></div>
       <div id="ex-feedback"></div>
-      <div class="ex-actions"><button class="btn btn-secondary btn-sm" id="ex-skip">No puedo grabar ahora</button><button class="btn btn-primary" id="ex-next" disabled>Siguiente →</button></div>`;
+      <div class="ex-actions"><button class="btn btn-secondary btn-sm" id="ex-skip">${t("ex_skip")}</button><button class="btn btn-primary" id="ex-next" disabled>${t("ex_next")}</button></div>`;
   } else if (ex.type === "order") {
     body = `
       <div class="ex-question">Ordena el diálogo (haz clic en orden): ${ttsBtnHtml}</div>
       <div id="order-list">${ex.items.map((it, i) => `<div class="order-item" data-i="${i}">${escapeHtml(it)}</div>`).join("")}</div>
       <div id="ex-feedback"></div>
-      <div class="ex-actions"><button class="btn btn-secondary btn-sm" id="ex-check">Comprobar</button><button class="btn btn-primary" id="ex-next">Siguiente →</button></div>`;
+      <div class="ex-actions"><button class="btn btn-secondary btn-sm" id="ex-check">${t("ex_check")}</button><button class="btn btn-primary" id="ex-next">${t("ex_next")}</button></div>`;
   } else if (ex.type === "open") {
     body = `
       <div class="ex-question">✍️ ${escapeHtml(ex.q)}</div>
@@ -2212,7 +2218,7 @@ function renderExercise() {
       ${isGabaritoImmediate()
         ? `<div class="ex-feedback ok">Respuesta modelo: <em>${escapeHtml(ex.sample || "")}</em></div>`
         : `<div class="ex-feedback neutral">📝 Vas a poder comparar tu respuesta con la respuesta modelo en la Revisión, al terminar.</div>`}
-      <div class="ex-actions"><button class="btn btn-primary" id="ex-next">Siguiente →</button></div>`;
+      <div class="ex-actions"><button class="btn btn-primary" id="ex-next">${t("ex_next")}</button></div>`;
   }
 
   const correctSoFar = state.exerciseAnswers.filter(Boolean).length;
@@ -3439,7 +3445,7 @@ function renderReview() {
   const rightCount = items.filter(it => it.correct).length;
 
   root.innerHTML = wrapShell(`
-      <button class="back-link" id="review-back">← Volver</button>
+      <button class="back-link" id="review-back">${t("back_generic")}</button>
       <div class="section-title">🔍 ${escapeHtml(data.title || "Revisión")}</div>
       <p style="color:var(--gray-2);margin-top:-8px">Aquí ves, pregunta a pregunta, lo que respondiste y cuál era la respuesta correcta (el gabarito).</p>
       ${items.length === 0 ? `<div class="card"><p style="color:var(--gray-2);margin:0">Todavía no hay respuestas registradas para mostrar aquí.</p></div>` : `
@@ -3547,7 +3553,7 @@ function renderAdminOverview() {
   // certificados emitidos es simplemente la suma de aprobados en todos los niveles.
   const certsIssued = passRates.reduce((a, r) => a + r.passed, 0);
   root.innerHTML = wrapShell(`
-      <button class="back-link" id="back-dash">← Volver al panel</button>
+      <button class="back-link" id="back-dash">${t("back_dashboard")}</button>
       <div class="section-title">${t("admin_title")}</div>
       ${adminTabsHtml("admin")}
       <div class="home-stats-row">
@@ -3580,7 +3586,7 @@ function renderAdminOverview() {
 
 function renderAdminApprovals() {
   root.innerHTML = wrapShell(`
-      <button class="back-link" id="back-dash">← Volver al panel</button>
+      <button class="back-link" id="back-dash">${t("back_dashboard")}</button>
       <div class="section-title">${t("admin_title")}</div>
       ${adminTabsHtml("adminApprovals")}
       <div class="card">
@@ -3625,7 +3631,7 @@ function renderAdminStudents() {
   withStatus.sort((a, b) => order[a.sc.status] - order[b.sc.status]);
 
   root.innerHTML = wrapShell(`
-      <button class="back-link" id="back-dash">← Volver al panel</button>
+      <button class="back-link" id="back-dash">${t("back_dashboard")}</button>
       <div class="section-title">${t("admin_title")}</div>
       ${adminTabsHtml("adminStudents")}
       <div class="card">
@@ -3666,7 +3672,7 @@ function renderAdminSongs() {
   const showForm = editing === "new" || !!editingSong;
 
   root.innerHTML = wrapShell(`
-      <button class="back-link" id="back-dash">← Volver al panel</button>
+      <button class="back-link" id="back-dash">${t("back_dashboard")}</button>
       <div class="section-title">${t("admin_title")}</div>
       ${adminTabsHtml("adminSongs")}
       <div class="card">
@@ -3842,7 +3848,7 @@ async function onDeleteSong(id) {
 function renderAdminAccessLog() {
   const log = state.adminAccessLog || [];
   root.innerHTML = wrapShell(`
-      <button class="back-link" id="back-dash">← Volver al panel</button>
+      <button class="back-link" id="back-dash">${t("back_dashboard")}</button>
       <div class="section-title">🕓 ${t("access_log_title")}</div>
       ${adminTabsHtml("adminAccessLog")}
       <div class="card">
@@ -3880,7 +3886,7 @@ function renderAdminConfig() {
   const ps = state.config.passScores;
   const schedule = getSchedule();
   root.innerHTML = wrapShell(`
-      <button class="back-link" id="back-dash">← Volver al panel</button>
+      <button class="back-link" id="back-dash">${t("back_dashboard")}</button>
       <div class="section-title">${t("admin_title")}</div>
       ${adminTabsHtml("adminConfig")}
       <div class="card">
@@ -3943,7 +3949,7 @@ function renderAdminConfig() {
 
 function renderAdminCerts() {
   root.innerHTML = wrapShell(`
-      <button class="back-link" id="back-dash">← Volver al panel</button>
+      <button class="back-link" id="back-dash">${t("back_dashboard")}</button>
       <div class="section-title">${t("admin_title")}</div>
       ${adminTabsHtml("adminCerts")}
       <div class="card">
@@ -4031,7 +4037,7 @@ function renderAdminAnalytics() {
   };
 
   root.innerHTML = wrapShell(`
-      <button class="back-link" id="back-dash">← Volver al panel</button>
+      <button class="back-link" id="back-dash">${t("back_dashboard")}</button>
       <div class="section-title">${t("analytics_admin_title")}</div>
       ${adminTabsHtml("adminAnalytics")}
       <div class="home-stats-row">

@@ -39,8 +39,16 @@
 <!-- jsPDF (geração dos certificados em PDF, sem build step) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 
-<!-- Chart.js (gráficos dos dashboards de analytics, sem build step) -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.5.0/chart.min.js"></script>
+<!-- Chart.js (gráficos dos dashboards de analytics, sem build step).
+     BUGFIX (2026-07-13): "chart.min.js" en cdnjs para la v4.x es el build ESM (usa "import"
+     internamente) — cargarlo con un <script> normal (no type="module") tira
+     "Uncaught SyntaxError: Cannot use import statement outside a module" y Chart.js NUNCA
+     se define en window. Como renderChart() en app.js ya chequea "typeof Chart === undefined"
+     y sale en silencio si no está, todos los gráficos (Analíticas admin Y "Mis Notas" del
+     alumno) quedaban con el canvas vacío, sin ningún error visible para quien no abre la
+     consola — confirmado en vivo con Claude-in-Chrome en producción. El build correcto para
+     <script> clásico es "chart.umd.min.js" (UMD, define window.Chart). -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.5.0/chart.umd.min.js"></script>
 
 <!-- Motor do app -->
 <script src="app.js"></script>
