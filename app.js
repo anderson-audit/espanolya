@@ -55,7 +55,7 @@ const functions = (typeof firebase.functions === "function") ? firebase.function
 // Versión del sistema, visible en Mi Cuenta / Configuración y en el pie de la barra lateral.
 // Se debe actualizar manualmente cada vez que se sube una nueva versión al repositorio
 // (formato AAAA.MM.DD.N — N = número de subida ese día, empieza en 1).
-const APP_VERSION = "2026.07.14.2";
+const APP_VERSION = "2026.07.15.1";
 
 // Valores por defecto de la mensualidad/anualidad — el admin puede cambiarlos en
 // Configuración → Planes y precios (guardados en config/settings, campos priceMonthly/priceAnnual).
@@ -160,6 +160,9 @@ const I18N = {
     admin_billing_title: "💳 Planes y precios", admin_billing_intro: "Valores cobrados por Mercado Pago. Cambios acá no afectan a quien ya tiene un plan activo, solo a nuevas elecciones de plan.",
     admin_billing_monthly_label: "Valor del plan mensual (R$)", admin_billing_annual_label: "Valor del plan anual (R$)",
     admin_pay_suspend_btn: "Suspender acceso", admin_pay_reactivate_btn: "Reactivar acceso", admin_pay_suspend_confirm: "¿Seguro que querés suspender el acceso de este alumno? Va a dejar de poder entrar al curso hasta que lo reactivés.",
+    xp_tooltip: "XP = puntos de experiencia, ganados al completar lecciones y pruebas.",
+    xp_explain_title: "⭐ ¿Qué es el XP?",
+    xp_explain_body: "El XP (puntos de experiencia) es un indicador de tu actividad dentro del curso — no es una nota. Ganas XP cada vez que completas una lección o una prueba (cuanto mejor la nota de la prueba, un poco más de XP ganas). Sirve para que veas, de un vistazo, cuánto has practicado — pero tu aprobación real en cada nivel depende de la nota de la prueba, no del XP acumulado.",
     profile_name_label: "Nombre completo", profile_name_ph: "Tu nombre", profile_save: "Guardar nombre", profile_saved: "¡Nombre actualizado!",
     account_current_pass: "Contraseña actual", account_new_pass: "Nueva contraseña", account_confirm_pass: "Confirmar nueva contraseña",
     account_change_pass_btn: "Cambiar contraseña", account_pass_mismatch: "Las contraseñas nuevas no coinciden.",
@@ -310,6 +313,9 @@ const I18N = {
     admin_billing_title: "💳 Planos e preços", admin_billing_intro: "Valores cobrados via Mercado Pago. Mudanças aqui não afetam quem já tem um plano ativo, só novas escolhas de plano.",
     admin_billing_monthly_label: "Valor do plano mensal (R$)", admin_billing_annual_label: "Valor do plano anual (R$)",
     admin_pay_suspend_btn: "Suspender acesso", admin_pay_reactivate_btn: "Reativar acesso", admin_pay_suspend_confirm: "Tem certeza que quer suspender o acesso deste aluno? Ele vai deixar de conseguir entrar no curso até você reativar.",
+    xp_tooltip: "XP = pontos de experiência, ganhos ao completar lições e provas.",
+    xp_explain_title: "⭐ O que é o XP?",
+    xp_explain_body: "O XP (pontos de experiência) é um indicador da sua atividade dentro do curso — não é uma nota. Você ganha XP toda vez que completa uma lição ou uma prova (quanto melhor a nota da prova, um pouco mais de XP você ganha). Serve para você ver, de relance, o quanto já praticou — mas sua aprovação real em cada nível depende da nota da prova, não do XP acumulado.",
     profile_name_label: "Nome completo", profile_name_ph: "Seu nome", profile_save: "Salvar nome", profile_saved: "Nome atualizado!",
     account_current_pass: "Senha atual", account_new_pass: "Nova senha", account_confirm_pass: "Confirmar nova senha",
     account_change_pass_btn: "Alterar senha", account_pass_mismatch: "As novas senhas não coincidem.",
@@ -460,6 +466,9 @@ const I18N = {
     admin_billing_title: "💳 Plans and prices", admin_billing_intro: "Amounts charged via Mercado Pago. Changes here don't affect students who already have an active plan, only new plan choices.",
     admin_billing_monthly_label: "Monthly plan price (R$)", admin_billing_annual_label: "Annual plan price (R$)",
     admin_pay_suspend_btn: "Suspend access", admin_pay_reactivate_btn: "Reactivate access", admin_pay_suspend_confirm: "Are you sure you want to suspend this student's access? They won't be able to enter the course until you reactivate it.",
+    xp_tooltip: "XP = experience points, earned by completing lessons and exams.",
+    xp_explain_title: "⭐ What is XP?",
+    xp_explain_body: "XP (experience points) is a marker of your activity within the course — it's not a grade. You earn XP every time you complete a lesson or an exam (the better your exam score, the more XP you earn). It's there so you can see, at a glance, how much you've practiced — but your actual pass/fail in each level depends on your exam score, not your accumulated XP.",
     profile_name_label: "Full name", profile_name_ph: "Your name", profile_save: "Save name", profile_saved: "Name updated!",
     account_current_pass: "Current password", account_new_pass: "New password", account_confirm_pass: "Confirm new password",
     account_change_pass_btn: "Change password", account_pass_mismatch: "New passwords don't match.",
@@ -1635,7 +1644,7 @@ function topbarSlimHtml() {
   return `
     <div class="topbar-slim">
       <div class="topbar-clock" id="topbar-clock">🕒 ${nowDateTimeLabel()}</div>
-      <div class="xp-pill">⭐ ${xp} XP</div>
+      <div class="xp-pill" title="${t("xp_tooltip")}">⭐ ${xp} XP</div>
     </div>`;
 }
 
@@ -1856,7 +1865,7 @@ function renderDashboard() {
           <strong class="hs-value">${aprov ? aprov.avg + "%" : "—"}</strong>
           <a class="hs-link" id="home-link-notas">${t("sidebar_notas")} →</a>
         </div>
-        <div class="home-stat-card">
+        <div class="home-stat-card" title="${t("xp_tooltip")}">
           <span class="hs-label">⭐ XP</span>
           <strong class="hs-value">${(state.progress && state.progress.xp) || 0}</strong>
           <a class="hs-link" id="home-link-analytics">${t("analytics_title")} →</a>
@@ -3102,8 +3111,20 @@ function friendlyDeviceFromUA(ua) {
 async function loadMyAttempts() {
   try {
     if (!state.user) return;
-    const snap = await db.collection("attempts").where("uid", "==", state.user.uid).orderBy("at", "desc").limit(300).get();
-    state.myAttempts = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+    // BUGFIX (2026-07-15): combinar where("uid","==",...) + orderBy("at","desc") en la
+    // MISMA query exige un índice compuesto en Firestore que nunca fue creado — el mismo
+    // problema real que ya había pasado antes con loadMyAccessLog() (ver historial). La
+    // query fallaba en silencio (catch → console.warn) y "Mi Actividad" quedaba siempre en
+    // cero aunque el alumno ya tuviera XP y progreso real. Fix: filtrar solo por uid (sin
+    // índice) y ordenar del lado del cliente.
+    // Sin orderBy en la query, un limit() del lado del servidor podría devolver 300
+    // intentos cualquiera (no necesariamente los más recientes) — por eso traemos todos
+    // los del alumno y recién LUEGO de ordenar por fecha (más reciente primero) cortamos
+    // a los últimos 300, ya del lado del cliente.
+    const snap = await db.collection("attempts").where("uid", "==", state.user.uid).get();
+    state.myAttempts = snap.docs.map(d => ({ id: d.id, ...d.data() }))
+      .sort((a, b) => (b.at && b.at.toMillis ? b.at.toMillis() : 0) - (a.at && a.at.toMillis ? a.at.toMillis() : 0))
+      .slice(0, 300);
   } catch (e) {
     console.warn("No se pudieron cargar tus analíticas.", e);
     state.myAttempts = [];
@@ -4514,12 +4535,17 @@ function renderAccount() {
 
 function renderAccountProfileTab() {
   const name = (state.user && state.user.name) || "";
+  const xp = (state.progress && state.progress.xp) || 0;
   return `
     <h3>${t("account_tab_profile")}</h3>
     <form id="profile-form">
       <div class="field"><label>${t("profile_name_label")}</label><input type="text" id="profile-name" required placeholder="${t("profile_name_ph")}" value="${escapeHtml(name)}"></div>
       <button type="submit" class="btn btn-primary">${t("profile_save")}</button>
-    </form>`;
+    </form>
+    <div class="xp-explain-box" style="margin-top:18px;border:1px solid var(--border);border-radius:10px;padding:14px 16px">
+      <h4 style="margin:0 0 6px">${t("xp_explain_title")} <span style="color:var(--gray-2);font-weight:500">(${xp} XP)</span></h4>
+      <p style="color:var(--gray-2);font-size:.88rem;margin:0;line-height:1.6">${t("xp_explain_body")}</p>
+    </div>`;
 }
 
 async function onSaveProfileSubmit(e) {
