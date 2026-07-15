@@ -1327,6 +1327,691 @@ const LEVEL_INTERMEDIO = {
         { type: "speak", prompt: "Diga em espanhol: 'Feliz aniversário de novo!'", target: "Feliz cumple de nuevo!" },
         { type: "open", q: "Você já se arrependeu de algo? Escreva uma frase em espanhol usando 'debería haber' ou 'si tuviera otra chance'.", sample: "Si tuviera otra chance, estudiaría más para el examen." }
       ]
+    },
+    {
+      id: "i16",
+      order: 16,
+      title: "Medios de Transporte",
+      subtitle: "Experiencias de viaje — Pretérito Indefinido x Imperfecto (repaso)",
+      text: "El verano pasado viajé en tren desde Barcelona hasta París. El viaje duró seis horas y fue muy cómodo. Durante el trayecto, leí un libro y observé el paisaje. Cuando era niño, siempre viajaba en coche con mis padres, y esos viajes eran más largos y cansados. Sin embargo, ahora prefiero el tren porque es más rápido y me permite disfrutar del camino. Fue una experiencia inolvidable.",
+      textPt: "No verão passado, viajei de trem de Barcelona até Paris. A viagem durou seis horas e foi muito confortável. Durante o trajeto, li um livro e observei a paisagem. Quando eu era criança, sempre viajava de carro com meus pais, e essas viagens eram mais longas e cansativas. No entanto, agora prefiro o trem porque é mais rápido e me permite aproveitar o caminho. Foi uma experiência inesquecível.",
+      vocabulary: [
+        { category: "Transporte y viajes", items: [
+          { es: "Avión — Viajé en avión a Madrid el año pasado.", pt: "Avião — Viajei de avião para Madri no ano passado." },
+          { es: "Tren — El tren fue rápido y muy cómodo.", pt: "Trem — O trem foi rápido e muito confortável." },
+          { es: "Autobús — Tomamos un autobús nocturno para llegar a la playa.", pt: "Ônibus — Pegamos um ônibus noturno para chegar à praia." },
+          { es: "Barco — Mi familia viajó en barco por el Mediterráneo.", pt: "Barco — Minha família viajou de barco pelo Mediterrâneo." },
+          { es: "Coche — Conduje mi coche por toda la costa.", pt: "Carro — Dirigi meu carro por toda a costa." },
+          { es: "Metro — En la ciudad usamos el metro todos los días.", pt: "Metrô — Na cidade usamos o metrô todos os dias." },
+          { es: "Reservar — Reservamos los billetes con anticipación.", pt: "Reservar — Reservamos as passagens com antecedência." },
+          { es: "Retraso — El vuelo tuvo dos horas de retraso.", pt: "Atraso — O voo teve duas horas de atraso." },
+          { es: "Cancelar — Cancelaron nuestro viaje por mal tiempo.", pt: "Cancelar — Cancelaram nossa viagem por causa do mau tempo." },
+          { es: "Experiencia inolvidable — Fue una experiencia inolvidable viajar en tren nocturno.", pt: "Experiência inesquecível — Foi uma experiência inesquecível viajar de trem noturno." }
+        ] }
+      ],
+      grammar: [
+        { title: "Pretérito Indefinido x Imperfecto — narrar un viaje (repaso)", headers: ["Uso", "Ejemplo"], rows: [
+          ["Indefinido: hecho puntual y concluido", "El viaje duró seis horas."],
+          ["Imperfecto: descripción/hábito en el pasado", "Cuando era niño, siempre viajaba en coche."],
+          ["Los dos juntos en una narración", "Leí un libro mientras el tren avanzaba por el paisaje."]
+        ] }
+      ],
+      notes: ["Conectores útiles para narrar un viaje: primero, después, sin embargo, además, finalmente."],
+      exercises: [
+        { type: "mc", q: "¿Cuál de estas palabras NO es un medio de transporte?", options: ["Metro", "Barco", "Retraso"], correct: 2 },
+        { type: "fill", q: "El verano pasado yo ___ (viajar - indefinido) en tren desde Barcelona.", answer: "viajé" },
+        { type: "fill", q: "Cuando era niño, siempre ___ (viajar - imperfecto) en coche con mi familia.", answer: "viajaba" },
+        { type: "fill", q: "Mi vuelo a Madrid ___ (tener - indefinido) dos horas de retraso.", answer: "tuvo" },
+        { type: "order", items: ["Viajé en tren de Barcelona a París.", "El viaje en tren fue cómodo y duró seis horas.", "Cuando era niño, viajaba en coche con mi familia.", "Prefiero el tren porque es más rápido.", "Fue una experiencia inolvidable."], correctOrder: [0, 1, 2, 3, 4] },
+        { type: "translate", from: "pt", text: "Reservamos as passagens com antecedência.", answer: "Reservamos los billetes con anticipación." },
+        { type: "translate", from: "es", text: "Cancelaron nuestro viaje por mal tiempo.", answer: "Cancelaram nossa viagem por causa do mau tempo." },
+        { type: "listen", audioText: "El viaje duró seis horas y fue muy cómodo.", q: "¿Cuánto duró el viaje en tren?", answer: "Seis horas." },
+        { type: "open", q: "Escribe un párrafo (6 a 8 líneas) contando una experiencia de viaje real o imaginada: ¿a dónde fuiste?, ¿qué transporte usaste?, ¿cómo fue? Usa conectores: primero, después, sin embargo, además, finalmente.", sample: "El año pasado viajé a Lisboa en autobús. Primero, compré los billetes con anticipación. Después, el viaje fue largo, pero cómodo. Sin embargo, tuvimos un pequeño retraso. Además, conocí a otros viajeros muy simpáticos. Finalmente, llegamos y fue una experiencia inolvidable." }
+      ]
+    },
+    {
+      id: "i17",
+      order: 17,
+      title: "Alojamientos y Servicios Turísticos",
+      subtitle: "Hoteles, hostales y campings — SER x ESTAR describiendo lugares",
+      text: "Durante mis vacaciones en México, me alojé en un hotel frente al mar. La habitación tenía balcón y una vista espectacular. El servicio de limpieza era excelente, y el desayuno estaba incluido. Sin embargo, el internet era muy lento y la piscina estaba llena casi todo el tiempo. A pesar de esos detalles, fue una estancia muy agradable y lo recomendaría a mis amigos.",
+      textPt: "Durante minhas férias no México, me hospedei em um hotel de frente para o mar. O quarto tinha varanda e uma vista espetacular. O serviço de limpeza era excelente, e o café da manhã estava incluído. No entanto, a internet era muito lenta e a piscina estava cheia quase o tempo todo. Apesar desses detalhes, foi uma estadia muito agradável e eu a recomendaria aos meus amigos.",
+      vocabulary: [
+        { category: "Alojamientos y servicios", items: [
+          { es: "Hotel — El hotel tenía piscina y gimnasio.", pt: "Hotel — O hotel tinha piscina e academia." },
+          { es: "Hostal — Nos alojamos en un hostal económico.", pt: "Hostel — Nos hospedamos em um hostel econômico." },
+          { es: "Apartamento turístico — Alquilamos un apartamento con vista al mar.", pt: "Apartamento turístico — Alugamos um apartamento com vista para o mar." },
+          { es: "Camping — Dormimos en tiendas de campaña en el camping.", pt: "Camping — Dormimos em barracas no camping." },
+          { es: "Recepción — Preguntamos en la recepción por el horario del desayuno.", pt: "Recepção — Perguntamos na recepção o horário do café da manhã." },
+          { es: "Desayuno incluido — El alojamiento ofrecía desayuno incluido.", pt: "Café da manhã incluído — A hospedagem oferecia café da manhã incluído." },
+          { es: "Reservar — Reservamos la habitación por internet.", pt: "Reservar — Reservamos o quarto pela internet." },
+          { es: "Cancelar — Tuvimos que cancelar la reserva por enfermedad.", pt: "Cancelar — Tivemos que cancelar a reserva por causa de doença." },
+          { es: "Limpieza — El servicio de limpieza era excelente.", pt: "Limpeza — O serviço de limpeza era excelente." },
+          { es: "Servicio al cliente — El servicio al cliente fue muy amable.", pt: "Atendimento ao cliente — O atendimento ao cliente foi muito gentil." }
+        ] }
+      ],
+      grammar: [
+        { title: "SER x ESTAR describiendo un alojamiento", headers: ["Uso", "Ejemplo"], rows: [
+          ["SER: característica/ubicación permanente del lugar", "El hotel era frente al mar."],
+          ["ESTAR: estado o condición temporal", "La piscina estaba llena casi todo el tiempo."],
+          ["ESTAR + participio: resultado de una acción", "El desayuno estaba incluido."]
+        ] }
+      ],
+      exercises: [
+        { type: "mc", q: "¿Cuál de estas palabras describe un lugar para dormir en tiendas de campaña?", options: ["Hostal", "Camping", "Apartamento"], correct: 1 },
+        { type: "fill", q: "El hotel ___ (ser) frente al mar.", answer: "era" },
+        { type: "fill", q: "La piscina ___ (estar) llena casi todo el tiempo.", answer: "estaba" },
+        { type: "fill", q: "El servicio de limpieza ___ (ser) excelente.", answer: "era" },
+        { type: "order", items: ["Me alojé en un hotel frente al mar.", "La habitación tenía balcón y vista espectacular.", "El desayuno estaba incluido.", "La piscina estaba llena casi todo el tiempo.", "A pesar de los problemas, la estancia fue agradable."], correctOrder: [0, 1, 2, 3, 4] },
+        { type: "translate", from: "pt", text: "Reservamos o quarto pela internet.", answer: "Reservamos la habitación por internet." },
+        { type: "translate", from: "es", text: "El desayuno estaba incluido.", answer: "O café da manhã estava incluído." },
+        { type: "open", q: "Escribe una reseña breve (8 a 10 líneas) de un alojamiento en el que te quedaste, real o imaginado.", sample: "Me alojé en un apartamento cerca de la playa. Era pequeño, pero muy cómodo. El servicio de limpieza era excelente y la recepción siempre estaba disponible. Sin embargo, el wifi era lento. En general, fue una experiencia agradable y lo recomendaría." }
+      ]
+    },
+    {
+      id: "i18",
+      order: 18,
+      title: "Gastronomía y Viajes",
+      subtitle: "Sabores del mundo — Pretérito Pluscuamperfecto (repaso)",
+      text: "Durante mis vacaciones en México, probé muchos platos típicos que nunca había comido antes. En un mercado local, degusté tacos de carne con diferentes salsas, y me sorprendió el sabor picante de algunos ingredientes. La gastronomía no solo fue deliciosa, también me permitió conocer mejor la cultura. Cada comida tenía una historia, una tradición y un significado especial. Al final del viaje, entendí que viajar también significa saborear la identidad de un país.",
+      textPt: "Durante minhas férias no México, provei muitos pratos típicos que nunca tinha comido antes. Em um mercado local, degustei tacos de carne com molhos diferentes, e me surpreendi com o sabor picante de alguns ingredientes. A gastronomia não foi só deliciosa, também me permitiu conhecer melhor a cultura. Cada comida tinha uma história, uma tradição e um significado especial. No final da viagem, entendi que viajar também significa saborear a identidade de um país.",
+      vocabulary: [
+        { category: "Gastronomía y viajes", items: [
+          { es: "Degustar — En España degusté tapas tradicionales.", pt: "Degustar — Na Espanha degustei tapas tradicionais." },
+          { es: "Probar — Siempre quiero probar la comida típica del lugar.", pt: "Provar — Sempre quero provar a comida típica do lugar." },
+          { es: "Saborear — Me gusta saborear los postres locales.", pt: "Saborear — Gosto de saborear as sobremesas locais." },
+          { es: "Plato típico — La paella es un plato típico de Valencia.", pt: "Prato típico — A paella é um prato típico de Valência." },
+          { es: "Especialidad — La especialidad de la región es el marisco.", pt: "Especialidade — A especialidade da região são os frutos do mar." },
+          { es: "Ingredientes — Los ingredientes frescos hacen la diferencia.", pt: "Ingredientes — Os ingredientes frescos fazem a diferença." },
+          { es: "Gastronomía — La gastronomía local refleja la cultura del país.", pt: "Gastronomia — A gastronomia local reflete a cultura do país." },
+          { es: "Restaurante local — Prefiero comer en restaurantes locales.", pt: "Restaurante local — Prefiro comer em restaurantes locais." },
+          { es: "Mercado — En el mercado conocí muchos productos nuevos.", pt: "Mercado — No mercado conheci muitos produtos novos." },
+          { es: "Costumbre — Es una costumbre beber mate en Argentina.", pt: "Costume — É um costume beber mate na Argentina." }
+        ] }
+      ],
+      grammar: [
+        { title: "Pretérito Pluscuamperfecto — acción anterior a otra acción pasada (repaso)", headers: ["Estructura", "Ejemplo"], rows: [
+          ["HABÍA + Participio", "Probé platos que nunca había comido antes."],
+          ["HABÍA + Participio (negación)", "Nunca había probado algo tan picante."]
+        ] }
+      ],
+      exercises: [
+        { type: "mc", q: "¿Qué verbo significa 'probar algo prestando atención al sabor'?", options: ["Degustar", "Cancelar", "Reservar"], correct: 0 },
+        { type: "fill", q: "En mis vacaciones en México, ___ (probar - indefinido) tacos de carne.", answer: "probé" },
+        { type: "fill", q: "Nunca ___ (comer - pluscuamperfecto) platos tan picantes antes de ese viaje.", answer: "había comido" },
+        { type: "order", items: ["Probé muchos platos típicos en México.", "En un mercado local degusté tacos con salsas.", "Me sorprendió el sabor picante de algunos ingredientes.", "Cada comida tenía una historia y tradición.", "Entendí que viajar es saborear la identidad de un país."], correctOrder: [0, 1, 2, 3, 4] },
+        { type: "translate", from: "pt", text: "A gastronomia me permitiu conhecer melhor a cultura.", answer: "La gastronomía me permitió conocer mejor la cultura." },
+        { type: "translate", from: "es", text: "Cada plato típico tiene una historia.", answer: "Cada prato típico tem uma história." },
+        { type: "listen", audioText: "La gastronomía no solo fue deliciosa, también me permitió conocer mejor la cultura.", q: "Además de deliciosa, ¿qué le permitió la gastronomía?", answer: "Conocer mejor la cultura." },
+        { type: "open", q: "Escribe un párrafo (5 a 8 líneas) sobre una experiencia gastronómica durante un viaje, real o inventada.", sample: "Cuando viajé a Perú, probé un ceviche delicioso en un mercado local. Nunca había comido algo tan fresco. El sabor era ácido y picante a la vez. Me encantó y ahora quiero aprender a prepararlo." }
+      ]
+    },
+    {
+      id: "i19",
+      order: 19,
+      title: "Actividades y Ocio en Vacaciones",
+      subtitle: "Excursiones y aventuras — Pretérito Indefinido (repaso)",
+      text: "El verano pasado viajé a Costa Rica con mis amigos. Durante las vacaciones hicimos muchas actividades diferentes. Un día fuimos de excursión a la selva y practicamos senderismo. Otro día fuimos a la playa, donde algunos decidieron relajarse y otros quisimos bucear. Además, visitamos un museo en la capital y participamos en una actividad cultural donde aprendimos bailes típicos. Cada día fue una experiencia única, y al final del viaje todos sentimos que habíamos disfrutado de unas vacaciones inolvidables.",
+      textPt: "No verão passado, viajei para a Costa Rica com meus amigos. Durante as férias fizemos muitas atividades diferentes. Um dia fomos fazer uma excursão à selva e praticamos trilha. Outro dia fomos à praia, onde alguns decidiram relaxar e outros quisemos mergulhar. Além disso, visitamos um museu na capital e participamos de uma atividade cultural onde aprendemos danças típicas. Cada dia foi uma experiência única, e no final da viagem todos sentimos que tínhamos aproveitado umas férias inesquecíveis.",
+      vocabulary: [
+        { category: "Actividades y ocio", items: [
+          { es: "Excursión — Hicimos una excursión a las montañas.", pt: "Excursão — Fizemos uma excursão às montanhas." },
+          { es: "Senderismo — Practicamos senderismo por el bosque.", pt: "Trilha — Praticamos trilha pela floresta." },
+          { es: "Bucear — En el mar Caribe buceamos con peces de colores.", pt: "Mergulhar — No mar do Caribe mergulhamos com peixes coloridos." },
+          { es: "Visitar museos — Visitamos museos de arte y de historia.", pt: "Visitar museus — Visitamos museus de arte e de história." },
+          { es: "Relajarse — Nos relajamos en la playa bajo el sol.", pt: "Relaxar — Relaxamos na praia sob o sol." },
+          { es: "Disfrutar — Disfrutamos mucho de las vacaciones en familia.", pt: "Aproveitar — Aproveitamos muito as férias em família." },
+          { es: "Aventura — Fue una verdadera aventura viajar en barco.", pt: "Aventura — Foi uma verdadeira aventura viajar de barco." },
+          { es: "Descubrir — Descubrimos lugares nuevos y sorprendentes.", pt: "Descobrir — Descobrimos lugares novos e surpreendentes." },
+          { es: "Pasear — Paseamos por las calles del centro histórico.", pt: "Passear — Passeamos pelas ruas do centro histórico." },
+          { es: "Actividad cultural — Asistimos a una actividad cultural en la ciudad.", pt: "Atividade cultural — Assistimos a uma atividade cultural na cidade." }
+        ] }
+      ],
+      grammar: [
+        { title: "Pretérito Indefinido — narrar actividades de vacaciones (repaso)", headers: ["Pronombre", "Practicar (-ar)", "Visitar (-ar)"], rows: [
+          ["Yo", "practiqué", "visité"],
+          ["Nosotros/Nosotras", "practicamos", "visitamos"],
+          ["Ellos/Ellas/Ustedes", "practicaron", "visitaron"]
+        ] }
+      ],
+      exercises: [
+        { type: "mc", q: "¿Qué actividad se hace bajo el agua?", options: ["Senderismo", "Bucear", "Pasear"], correct: 1 },
+        { type: "fill", q: "En la selva ___ (practicar - indefinido, yo) senderismo con mis amigos.", answer: "practiqué" },
+        { type: "fill", q: "En la capital ___ (visitar - indefinido, nosotros) un museo.", answer: "visitamos" },
+        { type: "fill", q: "Al final del viaje ___ (disfrutar - indefinido, nosotros) unas vacaciones inolvidables.", answer: "disfrutamos" },
+        { type: "order", items: ["Viajé a Costa Rica con mis amigos.", "Practicamos senderismo en la selva.", "En la playa algunos se relajaron y otros bucearon.", "Visitamos un museo en la capital.", "Participamos en una actividad cultural con bailes típicos.", "Sentimos que habíamos disfrutado de vacaciones inolvidables."], correctOrder: [0, 1, 2, 3, 4, 5] },
+        { type: "translate", from: "pt", text: "Praticamos trilha pela floresta.", answer: "Practicamos senderismo por el bosque." },
+        { type: "translate", from: "es", text: "Descubrimos lugares nuevos y sorprendentes.", answer: "Descobrimos lugares novos e surpreendentes." },
+        { type: "open", q: "Escribe un pequeño texto (5 a 8 líneas) comparando dos tipos de vacaciones: tranquilas vs. activas.", sample: "Las vacaciones tranquilas son perfectas para descansar en la playa y relajarse. En cambio, las vacaciones activas incluyen excursiones, senderismo y aventuras. Prefiero una mezcla de las dos: unos días tranquilos y otros llenos de actividades." }
+      ]
+    },
+    {
+      id: "i20",
+      order: 20,
+      title: "Experiencias Culturales en el Extranjero",
+      subtitle: "Festivales y museos — Pretérito Perfecto Compuesto x Indefinido (repaso)",
+      text: "El verano pasado viajé a Italia y tuve la oportunidad de vivir muchas experiencias culturales. Visité museos famosos en Roma y Florencia, y aprendí sobre la historia del arte renacentista. Además, asistí a un festival local donde probé comidas típicas y participé en bailes tradicionales. Cada experiencia me permitió conocer mejor la cultura italiana y practicar mi español con otros turistas. Al final del viaje, sentí que había aprendido mucho y que esas experiencias culturales habían enriquecido mi vida.",
+      textPt: "No verão passado, viajei para a Itália e tive a oportunidade de viver muitas experiências culturais. Visitei museus famosos em Roma e Florença, e aprendi sobre a história da arte renascentista. Além disso, assisti a um festival local onde provei comidas típicas e participei de danças tradicionais. Cada experiência me permitiu conhecer melhor a cultura italiana e praticar meu espanhol com outros turistas. No final da viagem, senti que tinha aprendido muito e que essas experiências culturais tinham enriquecido minha vida.",
+      vocabulary: [
+        { category: "Experiencias culturales", items: [
+          { es: "Festival — Asistí a un festival de música en España.", pt: "Festival — Assisti a um festival de música na Espanha." },
+          { es: "Tradición — Aprendí sobre tradiciones locales en México.", pt: "Tradição — Aprendi sobre tradições locais no México." },
+          { es: "Museo — Visitamos un museo de arte moderno.", pt: "Museu — Visitamos um museu de arte moderna." },
+          { es: "Evento cultural — Participé en un evento cultural en Francia.", pt: "Evento cultural — Participei de um evento cultural na França." },
+          { es: "Patrimonio — El patrimonio histórico es muy importante para la cultura.", pt: "Patrimônio — O patrimônio histórico é muito importante para a cultura." },
+          { es: "Artesanía — Compré artesanía típica de la región.", pt: "Artesanato — Comprei artesanato típico da região." },
+          { es: "Monumento — Vimos monumentos históricos impresionantes.", pt: "Monumento — Vimos monumentos históricos impressionantes." },
+          { es: "Exposición — La exposición de fotografía fue increíble.", pt: "Exposição — A exposição de fotografia foi incrível." },
+          { es: "Experiencia — Fue una experiencia inolvidable.", pt: "Experiência — Foi uma experiência inesquecível." },
+          { es: "Conocer — Conocí personas de diferentes países.", pt: "Conhecer — Conheci pessoas de diferentes países." }
+        ] }
+      ],
+      grammar: [
+        { title: "Pretérito Perfecto Compuesto x Indefinido — narrar experiencias (repaso)", headers: ["Uso", "Ejemplo"], rows: [
+          ["Indefinido: hecho concluido, con tiempo específico", "El verano pasado visité museos en Roma."],
+          ["Perfecto compuesto: experiencia sin tiempo específico o con relación al presente", "He viajado a varios países europeos."]
+        ] }
+      ],
+      exercises: [
+        { type: "mc", q: "¿Qué palabra se refiere a bienes históricos/culturales de un lugar?", options: ["Patrimonio", "Exposición", "Artesanía"], correct: 0 },
+        { type: "fill", q: "En Italia ___ (visitar - indefinido) museos famosos en Roma.", answer: "visité" },
+        { type: "fill", q: "___ (asistir - pretérito perfecto compuesto, yo) a festivales en varios países.", answer: "He asistido" },
+        { type: "order", items: ["Viajé a Italia el verano pasado.", "Visité museos famosos en Roma y Florencia.", "Asistí a un festival local.", "Practiqué mi español con otros turistas.", "Sentí que había aprendido mucho."], correctOrder: [0, 1, 2, 3, 4] },
+        { type: "translate", from: "pt", text: "Aprendi sobre tradições locais no México.", answer: "Aprendí sobre tradiciones locales en México." },
+        { type: "translate", from: "es", text: "Compré artesanía típica de la región.", answer: "Comprei artesanato típico da região." },
+        { type: "open", q: "Escribe un párrafo (5 a 8 líneas) sobre una experiencia cultural que hayas vivido en el extranjero o que te gustaría vivir.", sample: "Me gustaría asistir a un festival de flamenco en España. Me encantaría aprender sobre la tradición y bailar con la gente local. Creo que sería una experiencia inolvidable y me ayudaría a entender mejor la cultura." }
+      ]
+    },
+    {
+      id: "i21",
+      order: 21,
+      title: "Planes de Viaje y Próximas Vacaciones",
+      subtitle: "IR A + Infinitivo, Futuro Simple y Primer Condicional",
+      text: "El próximo verano voy a viajar a España con mis amigos. Hemos decidido visitar Barcelona y Madrid, y nuestro itinerario incluirá excursiones a museos, monumentos históricos y parques famosos. Vamos a alojarnos en un apartamento cerca del centro, y usaremos transporte público para movernos por la ciudad. Si hace buen tiempo, también iremos a la playa y participaremos en actividades al aire libre. Estoy muy emocionado porque será una experiencia inolvidable.",
+      textPt: "No próximo verão, vou viajar para a Espanha com meus amigos. Decidimos visitar Barcelona e Madri, e nosso itinerário incluirá excursões a museus, monumentos históricos e parques famosos. Vamos nos hospedar em um apartamento perto do centro, e usaremos transporte público para nos movermos pela cidade. Se fizer bom tempo, também iremos à praia e participaremos de atividades ao ar livre. Estou muito animado porque será uma experiência inesquecível.",
+      vocabulary: [
+        { category: "Planes de viaje", items: [
+          { es: "Destino — Nuestro destino será Barcelona.", pt: "Destino — Nosso destino será Barcelona." },
+          { es: "Itinerario — Planeamos un itinerario de siete días.", pt: "Itinerário — Planejamos um itinerário de sete dias." },
+          { es: "Alojamiento — Reservaremos un alojamiento cerca del centro.", pt: "Hospedagem — Reservaremos uma hospedagem perto do centro." },
+          { es: "Transporte — Usaremos transporte público durante la estancia.", pt: "Transporte — Usaremos transporte público durante a estadia." },
+          { es: "Reserva — Hice la reserva del hotel por internet.", pt: "Reserva — Fiz a reserva do hotel pela internet." },
+          { es: "Excursión — Haremos excursiones a museos y monumentos.", pt: "Excursão — Faremos excursões a museus e monumentos." },
+          { es: "Maleta — Prepararé la maleta con ropa cómoda.", pt: "Mala — Vou preparar a mala com roupas confortáveis." },
+          { es: "Pasaporte — No olvides tu pasaporte para viajar al extranjero.", pt: "Passaporte — Não esqueça seu passaporte para viajar ao exterior." }
+        ] }
+      ],
+      grammar: [
+        { title: "IR A + Infinitivo x Futuro Simple x Primer Condicional", headers: ["Estructura", "Uso", "Ejemplo"], rows: [
+          ["IR A + Infinitivo", "Plan ya decidido", "Voy a viajar a España en verano."],
+          ["Futuro Simple", "Predicción o promesa", "Usaremos transporte público."],
+          ["SI + Presente + Futuro", "Condición y consecuencia futura", "Si hace buen tiempo, iremos a la playa."]
+        ] }
+      ],
+      exercises: [
+        { type: "mc", q: "'Voy a viajar' expresa principalmente:", options: ["Una predicción lejana", "Un plan ya decidido", "Una hipótesis irreal"], correct: 1 },
+        { type: "fill", q: "El próximo verano ___ (yo - ir a - viajar) a España.", answer: "voy a viajar" },
+        { type: "fill", q: "Si hace buen tiempo, ___ (nosotros - ir - futuro) a la playa.", answer: "iremos" },
+        { type: "fill", q: "Nuestro itinerario ___ (incluir - futuro) excursiones a museos.", answer: "incluirá" },
+        { type: "order", items: ["Planean excursiones a museos y monumentos históricos.", "Van a alojarse en un apartamento cerca del centro.", "Usarán transporte público para moverse por la ciudad.", "Participarán en actividades al aire libre si hace buen tiempo.", "Esperan que sea una experiencia inolvidable."], correctOrder: [0, 1, 2, 3, 4] },
+        { type: "translate", from: "pt", text: "Reservaremos uma hospedagem perto do centro.", answer: "Reservaremos un alojamiento cerca del centro." },
+        { type: "translate", from: "es", text: "No olvides tu pasaporte para viajar al extranjero.", answer: "Não esqueça seu passaporte para viajar ao exterior." },
+        { type: "open", q: "Describe tus próximas vacaciones (5-8 líneas): ¿qué actividades harás?, ¿a dónde irás?, ¿con quién viajarás?", sample: "El próximo año voy a viajar a Portugal con mi familia. Visitaremos Lisboa y Oporto. Si tenemos tiempo, iremos también a la playa. Será un viaje inolvidable." }
+      ]
+    },
+    {
+      id: "i22",
+      order: 22,
+      title: "Consejos para Viajeros",
+      subtitle: "Recomendaciones — Imperativo afirmativo y negativo (repaso)",
+      text: "Antes de viajar al extranjero, es importante tener cuidado con algunos puntos: primero, haz un plan de las actividades disponibles en el lugar y organiza todo según tu presupuesto. Lleva ropa variada, para el calor y el frío. No olvides tus documentos, principalmente el pasaporte. Y, por último, pero no menos importante, evita comer cosas que sabes que no toleras bien, porque es muy desagradable sentirse mal durante un viaje.",
+      textPt: "Antes de viajar para o exterior, é importante tomar cuidado com alguns pontos: primeiro, faça um plano das atividades disponíveis no lugar e organize tudo de acordo com seu orçamento. Leve roupas variadas, para o calor e o frio. Não esqueça seus documentos, principalmente o passaporte. E, por último, mas não menos importante, evite comer coisas que você sabe que não tolera bem, porque é muito desagradável se sentir mal durante uma viagem.",
+      vocabulary: [
+        { category: "Consejos de viaje", items: [
+          { es: "Presupuesto — Es importante hacer un presupuesto antes de viajar.", pt: "Orçamento — É importante fazer um orçamento antes de viajar." },
+          { es: "Equipaje/Maleta — Prepara el equipaje con anticipación.", pt: "Bagagem/Mala — Prepare a bagagem com antecedência." },
+          { es: "Seguro de viaje — Contrata un seguro de viaje antes de salir.", pt: "Seguro de viagem — Contrate um seguro de viagem antes de sair." },
+          { es: "Documentación — Revisa toda tu documentación antes del vuelo.", pt: "Documentação — Revise toda a sua documentação antes do voo." },
+          { es: "Imprevisto — Siempre puede surgir un imprevisto durante el viaje.", pt: "Imprevisto — Sempre pode surgir um imprevisto durante a viagem." },
+          { es: "Precaución — Ten precaución con tus objetos de valor.", pt: "Precaução — Tenha precaução com seus objetos de valor." }
+        ] }
+      ],
+      grammar: [
+        { title: "Imperativo afirmativo x negativo (tú) — dar consejos (repaso)", headers: ["Afirmativo", "Negativo"], rows: [
+          ["Lleva ropa variada.", "No lleves solo ropa de verano."],
+          ["Haz un plan de actividades.", "No hagas todo sin planear."],
+          ["Evita comidas que no toleras.", "No olvides tus documentos."]
+        ] }
+      ],
+      exercises: [
+        { type: "mc", q: "¿Qué palabra se refiere al dinero planeado para gastar en un viaje?", options: ["Presupuesto", "Imprevisto", "Seguro"], correct: 0 },
+        { type: "fill", q: "___ (llevar - imperativo tú) ropa variada, para el calor y el frío.", answer: "Lleva" },
+        { type: "fill", q: "No ___ (olvidar - imperativo negativo tú) tu pasaporte.", answer: "olvides" },
+        { type: "translate", from: "pt", text: "Contrate um seguro de viagem antes de sair.", answer: "Contrata un seguro de viaje antes de salir." },
+        { type: "translate", from: "es", text: "Ten precaución con tus objetos de valor.", answer: "Tenha precaução com seus objetos de valor." },
+        { type: "open", q: "Escribe 5 consejos (con imperativo) para alguien que viaja por primera vez al extranjero.", sample: "1. Haz un presupuesto antes de viajar. 2. Lleva ropa variada. 3. No olvides tu pasaporte. 4. Contrata un seguro de viaje. 5. Evita comidas que no toleras bien." }
+      ]
+    },
+    {
+      id: "i23",
+      order: 23,
+      title: "Problemas y Soluciones Durante un Viaje",
+      subtitle: "Imprevistos — Poder, Deber y Tener que + infinitivo",
+      text: "Durante mis vacaciones en Francia, perdí mi pasaporte en el aeropuerto. Al principio me asusté mucho, pero fui a la oficina de objetos perdidos y pedí ayuda. Después de esperar un poco, lograron encontrarlo. Otro día, nuestro vuelo tuvo un retraso de cinco horas. Decidimos reprogramar las actividades para aprovechar el tiempo. Aunque hubo varios problemas, aprendimos que mantener la calma y buscar soluciones es la mejor manera de enfrentar situaciones inesperadas.",
+      textPt: "Durante minhas férias na França, perdi meu passaporte no aeroporto. No início fiquei muito assustado, mas fui ao setor de achados e perdidos e pedi ajuda. Depois de esperar um pouco, conseguiram encontrá-lo. Outro dia, nosso voo teve um atraso de cinco horas. Decidimos reprogramar as atividades para aproveitar o tempo. Embora tenha havido vários problemas, aprendemos que manter a calma e buscar soluções é a melhor forma de enfrentar situações inesperadas.",
+      vocabulary: [
+        { category: "Problemas y soluciones", items: [
+          { es: "Perder documentos — Perdí mi pasaporte en el aeropuerto.", pt: "Perder documentos — Perdi meu passaporte no aeroporto." },
+          { es: "Retraso — Nuestro vuelo tuvo un gran retraso.", pt: "Atraso — Nosso voo teve um grande atraso." },
+          { es: "Cancelación — Cancelaron la excursión por mal tiempo.", pt: "Cancelamento — Cancelaram a excursão por causa do mau tempo." },
+          { es: "Enfermarse — Me enfermé durante el viaje.", pt: "Ficar doente — Fiquei doente durante a viagem." },
+          { es: "Hotel completo — El hotel estaba lleno.", pt: "Hotel lotado — O hotel estava lotado." },
+          { es: "Maleta perdida — La compañía perdió mi maleta.", pt: "Mala extraviada — A companhia perdeu minha mala." },
+          { es: "Llamar a la embajada — Tuve que llamar a la embajada.", pt: "Ligar para a embaixada — Tive que ligar para a embaixada." },
+          { es: "Pedir ayuda — Pedimos ayuda en la estación.", pt: "Pedir ajuda — Pedimos ajuda na estação." },
+          { es: "Reprogramar — Tuvimos que reprogramar la excursión.", pt: "Reprogramar — Tivemos que reprogramar a excursão." }
+        ] }
+      ],
+      grammar: [
+        { title: "Verbos modales — resolver problemas de viaje", headers: ["Verbo modal", "Ejemplo"], rows: [
+          ["Tener que (obligación)", "Tuve que llamar a la embajada."],
+          ["Deber (recomendación/obligación)", "Debes reprogramar la excursión."],
+          ["Poder (posibilidad)", "Podemos buscar otra solución."]
+        ] }
+      ],
+      exercises: [
+        { type: "mc", q: "¿Cuál expresa una obligación fuerte?", options: ["Poder", "Tener que", "Preferir"], correct: 1 },
+        { type: "fill", q: "___ (yo - tener que) llamar a la embajada.", answer: "Tuve que" },
+        { type: "fill", q: "___ (nosotros - deber) mantener la calma en situaciones difíciles.", answer: "Debemos" },
+        { type: "order", items: ["Perdí mi pasaporte en el aeropuerto.", "Pedí ayuda en la oficina de objetos perdidos.", "Recuperé el pasaporte después de esperar.", "Nuestro vuelo tuvo un retraso de cinco horas.", "Reprogramamos las actividades y mantuvimos la calma."], correctOrder: [0, 1, 2, 3, 4] },
+        { type: "translate", from: "pt", text: "A companhia perdeu minha mala.", answer: "La compañía perdió mi maleta." },
+        { type: "translate", from: "es", text: "Tuvimos que reprogramar la excursión.", answer: "Tivemos que reprogramar a excursão." },
+        { type: "open", q: "Escribe un párrafo (5-8 líneas) sobre un problema que hayas tenido en un viaje (real o hipotético) y cómo se resolvió.", sample: "Una vez perdí mi maleta en el aeropuerto. Tuve que hablar con la aerolínea y esperar dos días para recuperarla. Aprendí que siempre debo llevar ropa extra en mi equipaje de mano." }
+      ]
+    },
+    {
+      id: "i24",
+      order: 24,
+      title: "Redes Sociales en la Sociedad Actual",
+      subtitle: "Subjuntivo en oraciones de opinión y duda",
+      text: "Las redes sociales han transformado nuestra manera de comunicarnos. Hoy es posible estar en contacto con personas de cualquier parte del mundo en segundos. Sin embargo, muchos estudios indican que cuanto más tiempo pasamos conectados, más solos nos sentimos. No creo que el problema esté en las redes en sí, sino en cómo las usamos. Es posible que la búsqueda de aprobación social genere ansiedad y comparaciones constantes. Por eso, es importante aprender a usarlas con equilibrio y conciencia.",
+      textPt: "As redes sociais transformaram nossa forma de nos comunicarmos. Hoje é possível estar em contato com pessoas de qualquer parte do mundo em segundos. No entanto, muitos estudos indicam que quanto mais tempo passamos conectados, mais sozinhos nos sentimos. Não acho que o problema esteja nas redes em si, mas sim em como as usamos. É possível que a busca por aprovação social gere ansiedade e comparações constantes. Por isso, é importante aprender a usá-las com equilíbrio e consciência.",
+      vocabulary: [
+        { category: "Redes sociales y sociedad", items: [
+          { es: "Compartir — Comparto fotos y opiniones con mis amigos.", pt: "Compartilhar — Compartilho fotos e opiniões com meus amigos." },
+          { es: "Publicar — Publico contenido sobre temas de actualidad.", pt: "Publicar — Publico conteúdo sobre temas atuais." },
+          { es: "Influir — Las redes sociales influyen en nuestras decisiones.", pt: "Influenciar — As redes sociais influenciam nossas decisões." },
+          { es: "Seguidor — Tengo muchos seguidores en Instagram.", pt: "Seguidor — Tenho muitos seguidores no Instagram." },
+          { es: "Privacidad — Es importante proteger la privacidad en internet.", pt: "Privacidade — É importante proteger a privacidade na internet." },
+          { es: "Desinformación — Hay mucha desinformación en las redes.", pt: "Desinformação — Há muita desinformação nas redes." },
+          { es: "Viral — Un video puede hacerse viral en pocas horas.", pt: "Viral — Um vídeo pode viralizar em poucas horas." },
+          { es: "Ciberacoso — El ciberacoso es un problema serio en la red.", pt: "Cyberbullying — O cyberbullying é um problema sério na rede." },
+          { es: "Adicción — Muchas personas sufren adicción al móvil.", pt: "Vício — Muitas pessoas sofrem de vício no celular." }
+        ] }
+      ],
+      grammar: [
+        { title: "Subjuntivo en oraciones de opinión y duda", headers: ["Estructura", "Ejemplo"], rows: [
+          ["No creo que + subjuntivo", "No creo que las redes sean malas por sí mismas."],
+          ["Es posible que + subjuntivo", "Es posible que la gente busque aprobación en internet."],
+          ["Dudo que + subjuntivo", "Dudo que todos usen las redes con responsabilidad."]
+        ] }
+      ],
+      exercises: [
+        { type: "mc", q: "¿Cuál de estas expresiones exige subjuntivo?", options: ["Creo que", "No creo que", "Sé que"], correct: 1 },
+        { type: "fill", q: "No creo que las redes sociales ___ (ser) malas por sí mismas.", answer: "sean" },
+        { type: "fill", q: "Es posible que la gente ___ (buscar) aprobación en internet.", answer: "busque" },
+        { type: "fill", q: "Dudo que todos ___ (usar) las redes con responsabilidad.", answer: "usen" },
+        { type: "translate", from: "pt", text: "É importante proteger a privacidade na internet.", answer: "Es importante proteger la privacidad en internet." },
+        { type: "translate", from: "es", text: "Un video puede hacerse viral en pocas horas.", answer: "Um vídeo pode viralizar em poucas horas." },
+        { type: "open", q: "Escribe un texto breve opinando si las redes sociales son más beneficiosas o perjudiciales. Usa al menos 2 oraciones con subjuntivo.", sample: "En mi opinión, las redes sociales tienen ventajas y desventajas. No creo que sean malas por sí mismas, pero es posible que generen dependencia si no las usamos con equilibrio." }
+      ]
+    },
+    {
+      id: "i25",
+      order: 25,
+      title: "Tecnología y su Impacto en la Sociedad",
+      subtitle: "Voz Pasiva con SER + Participio",
+      text: "Hoy en día, la tecnología forma parte esencial de nuestra vida. Podemos estudiar, trabajar, comprar, viajar o hablar con cualquier persona usando un solo dispositivo. La inteligencia artificial realiza tareas complejas y muchas empresas ya sustituyen trabajos humanos por máquinas. Sin embargo, existen problemas. La adicción al móvil afecta la salud mental y muchas personas no pueden pasar un día sin redes sociales. Los algoritmos deciden lo que vemos y manipulan nuestra atención. Por eso, debemos aprender a usar la tecnología con equilibrio: no se trata de vivir sin ella, sino de controlarla, y no dejar que nos controle.",
+      textPt: "Hoje em dia, a tecnologia faz parte essencial da nossa vida. Podemos estudar, trabalhar, comprar, viajar ou falar com qualquer pessoa usando um só dispositivo. A inteligência artificial realiza tarefas complexas e muitas empresas já substituem trabalhos humanos por máquinas. No entanto, existem problemas. O vício no celular afeta a saúde mental e muitas pessoas não conseguem passar um dia sem redes sociais. Os algoritmos decidem o que vemos e manipulam nossa atenção. Por isso, devemos aprender a usar a tecnologia com equilíbrio: não se trata de viver sem ela, mas de controlá-la, e não deixar que ela nos controle.",
+      vocabulary: [
+        { category: "Tecnología", items: [
+          { es: "Inteligencia artificial — La IA puede tomar decisiones rápidas.", pt: "Inteligência artificial — A IA pode tomar decisões rápidas." },
+          { es: "Dispositivos móviles — Usamos dispositivos móviles para casi todo.", pt: "Dispositivos móveis — Usamos dispositivos móveis para quase tudo." },
+          { es: "Conectividad global — Hoy tenemos conectividad global.", pt: "Conectividade global — Hoje temos conectividade global." },
+          { es: "Privacidad digital — Es importante proteger nuestros datos.", pt: "Privacidade digital — É importante proteger nossos dados." },
+          { es: "Automatización — Muchos trabajos ya tienen automatización.", pt: "Automação — Muitos trabalhos já têm automação." },
+          { es: "Algoritmos — Los algoritmos deciden qué contenido vemos.", pt: "Algoritmos — Os algoritmos decidem qual conteúdo vemos." },
+          { es: "Comunicación digital — Nos permite enviar mensajes instantáneos.", pt: "Comunicação digital — Nos permite enviar mensagens instantâneas." },
+          { es: "Sustituir — Las máquinas pueden sustituir algunos trabajos.", pt: "Substituir — As máquinas podem substituir alguns trabalhos." }
+        ] }
+      ],
+      grammar: [
+        { title: "Voz Pasiva con SER + Participio", headers: ["Ejemplo", "Concordancia"], rows: [
+          ["La tecnología debe ser usada con equilibrio.", "femenino singular"],
+          ["Los datos personales son protegidos por la ley.", "masculino plural"],
+          ["Las contraseñas deben ser cambiadas periódicamente.", "femenino plural"]
+        ] }
+      ],
+      exercises: [
+        { type: "mc", q: "En 'La tecnología debe ser usada con equilibrio', el participio concuerda con:", options: ["El sujeto (femenino singular)", "El verbo deber", "El objeto directo"], correct: 0 },
+        { type: "fill", q: "La tecnología debe ___ (ser usada) con equilibrio.", answer: "ser usada" },
+        { type: "fill", q: "Los datos personales ___ (ser protegidos) por la ley.", answer: "son protegidos" },
+        { type: "translate", from: "pt", text: "Muitos trabalhos já têm automação.", answer: "Muchos trabajos ya tienen automatización." },
+        { type: "translate", from: "es", text: "Los algoritmos deciden qué contenido vemos.", answer: "Os algoritmos decidem qual conteúdo vemos." },
+        { type: "open", q: "Escribe un texto de 8 a 10 líneas respondiendo: ¿la tecnología ayuda más de lo que perjudica? Incluye ventajas, desventajas y tu opinión personal.", sample: "En mi opinión, la tecnología trae más ventajas que desventajas. Nos ayuda a comunicarnos, trabajar y aprender. Sin embargo, también puede generar dependencia. Por eso, debe ser usada con equilibrio y responsabilidad." }
+      ]
+    },
+    {
+      id: "i26",
+      order: 26,
+      title: "Vida Profesional Moderna y Equilibrio Personal",
+      subtitle: "Teletrabajo, burnout y conciliación laboral",
+      text: "En la última década, la vida laboral ha cambiado de manera impresionante. Muchas personas trabajan desde casa, los horarios son más flexibles y la tecnología permite que todo sea más rápido. Sin embargo, esto también trae nuevos problemas: sobrecarga, dificultad para desconectar y estrés constante. A pesar de esto, las empresas están buscando mejorar el bienestar de los empleados, ofreciendo espacios de descanso, días libres adicionales y programas de apoyo emocional. Encontrar el equilibrio perfecto sigue siendo un desafío, pero la sociedad avanza hacia un modelo laboral más humano.",
+      textPt: "Na última década, a vida profissional mudou de forma impressionante. Muitas pessoas trabalham de casa, os horários são mais flexíveis e a tecnologia permite que tudo seja mais rápido. No entanto, isso também traz novos problemas: sobrecarga, dificuldade para desconectar e estresse constante. Apesar disso, as empresas estão buscando melhorar o bem-estar dos funcionários, oferecendo espaços de descanso, dias de folga adicionais e programas de apoio emocional. Encontrar o equilíbrio perfeito continua sendo um desafio, mas a sociedade avança rumo a um modelo profissional mais humano.",
+      vocabulary: [
+        { category: "Trabajo y equilibrio personal", items: [
+          { es: "Agotamiento laboral (burnout) — Cansancio extremo causado por exceso de trabajo.", pt: "Esgotamento profissional (burnout) — Cansaço extremo causado por excesso de trabalho." },
+          { es: "Horario flexible — Permite trabajar en diferentes horas según la necesidad.", pt: "Horário flexível — Permite trabalhar em horários diferentes conforme a necessidade." },
+          { es: "Productividad — Cuánto trabajo haces en cierto tiempo.", pt: "Produtividade — Quanto trabalho você faz em determinado tempo." },
+          { es: "Teletrabajo/Trabajo remoto — Trabajar desde casa o desde cualquier lugar.", pt: "Teletrabalho/Trabalho remoto — Trabalhar de casa ou de qualquer lugar." },
+          { es: "Sobrecarga — Tener demasiadas tareas o responsabilidades.", pt: "Sobrecarga — Ter tarefas ou responsabilidades demais." },
+          { es: "Desconectar — Dejar de pensar en el trabajo para descansar.", pt: "Desconectar — Parar de pensar no trabalho para descansar." },
+          { es: "Conciliación laboral — Equilibrio entre vida personal y trabajo.", pt: "Conciliação profissional — Equilíbrio entre vida pessoal e trabalho." },
+          { es: "Plazo — Fecha límite para entregar algo.", pt: "Prazo — Data limite para entregar algo." }
+        ] }
+      ],
+      grammar: [
+        { title: "Estar + Gerundio y Ya/Todavía + Pretérito Perfecto — cambios en curso", headers: ["Estructura", "Ejemplo"], rows: [
+          ["Estar + Gerundio", "La sociedad está avanzando hacia un modelo más humano."],
+          ["Ya + Pretérito Perfecto Compuesto", "Las empresas ya han mejorado sus políticas de bienestar."],
+          ["Todavía + no + Pretérito Perfecto", "Muchos todavía no han encontrado el equilibrio perfecto."]
+        ] }
+      ],
+      exercises: [
+        { type: "mc", q: "¿Qué palabra describe trabajar desde casa?", options: ["Teletrabajo", "Sobrecarga", "Plazo"], correct: 0 },
+        { type: "fill", q: "Cuando tengo mucho trabajo y no descanso, siento ___ laboral. (agotamiento)", answer: "agotamiento" },
+        { type: "fill", q: "Es importante ___ (desconectar) después del trabajo.", answer: "desconectar" },
+        { type: "translate", from: "pt", text: "Muitas empresas oferecem apoio emocional aos funcionários.", answer: "Muchas empresas ofrecen apoyo emocional a los empleados." },
+        { type: "translate", from: "es", text: "Encontrar el equilibrio perfecto sigue siendo un desafío.", answer: "Encontrar o equilíbrio perfeito continua sendo um desafio." },
+        { type: "open", q: "Escribe un texto de 10 líneas explicando cómo sería tu trabajo ideal.", sample: "Mi trabajo ideal tendría horario flexible y la posibilidad de trabajar desde casa algunos días. Me gustaría sentir que mi trabajo tiene un propósito y poder desconectar sin sentir culpa. También valoro mucho tener un buen equipo y un ambiente sano." }
+      ]
+    },
+    {
+      id: "i27",
+      order: 27,
+      title: "Expresiones Cotidianas",
+      subtitle: "Modismos informales para sonar más natural",
+      text: "Ayer tuve un día bastante curioso. Me desperté tarde, y cuando vi la hora pensé: '¡Qué fuerte! Se me hizo tardísimo.' Llegué al trabajo y todos estaban corriendo de un lado a otro. 'Vaya lío tenemos hoy', dijo mi compañera. Yo estaba hecho polvo, pero traté de organizarme. Por suerte, al final mi jefe dijo: 'Tranquilos, no pasa nada. Ya terminamos por hoy.'",
+      textPt: "Ontem tive um dia bem curioso. Acordei tarde, e quando vi a hora pensei: 'Que loucura! Fiquei atrasadíssimo(a).' Cheguei no trabalho e todos estavam correndo de um lado para o outro. 'Que confusão temos hoje', disse minha colega. Eu estava exausto(a), mas tentei me organizar. Por sorte, no final meu chefe disse: 'Calma, não tem problema. Já terminamos por hoje.'",
+      vocabulary: [
+        { category: "Expresiones cotidianas", items: [
+          { es: "¡Qué fuerte! — Se usa para expresar sorpresa.", pt: "Nossa!/Que loucura! — Usado para expressar surpresa." },
+          { es: "No pasa nada — Significa 'no hay problema'.", pt: "Não tem problema — Significa 'tudo bem'." },
+          { es: "¡Qué va! — Expresa negación informal, 'que nada!'.", pt: "Que nada! — Expressa negação informal." },
+          { es: "Estar hecho polvo — Estar muy cansado.", pt: "Estar exausto — Estar muito cansado." },
+          { es: "Tener pinta de… — Parecer algo.", pt: "Ter cara de… — Parecer algo." },
+          { es: "Ni de broma — 'Nem brincando'.", pt: "Nem brincando — Recusa forte e informal." },
+          { es: "¡Anda ya! — Para mostrar incredulidad.", pt: "Não acredito!/Sério? — Para mostrar descrença." },
+          { es: "Por si acaso — 'Por via das dúvidas'.", pt: "Por via das dúvidas — Precaução." },
+          { es: "De una vez — Para hacer algo inmediatamente.", pt: "De uma vez — Fazer algo imediatamente." },
+          { es: "Vaya lío — 'Que confusão!'.", pt: "Que confusão! — Expressa bagunça/confusão." }
+        ] }
+      ],
+      notes: ["Estas expresiones son de registro informal — perfectas para conversaciones con amigos, pero evítalas en contextos muy formales o profesionales."],
+      exercises: [
+        { type: "mc", q: "¿Qué significa 'estar hecho polvo'?", options: ["Estar muy cansado", "Estar muy feliz", "Estar enojado"], correct: 0 },
+        { type: "mc", q: "¿Qué significa 'no pasa nada'?", options: ["No hay problema", "Es muy grave", "No es posible"], correct: 0 },
+        { type: "fill", q: "Después del trabajo estaba ___. (muy cansado)", answer: "hecho polvo" },
+        { type: "fill", q: "Si llueve, lleva un paraguas ___. (por via das dúvidas)", answer: "por si acaso" },
+        { type: "translate", from: "pt", text: "Que confusão temos hoje!", answer: "¡Vaya lío tenemos hoy!" },
+        { type: "translate", from: "es", text: "¡Ni de broma me quedo hoy!", answer: "Nem brincando eu fico hoje!" },
+        { type: "open", q: "Escribe un texto de 7 a 9 líneas usando al menos 5 de las expresiones aprendidas en esta lección.", sample: "Ayer estaba hecho polvo después del trabajo. Cuando vi el precio de la cena pensé: ¡qué fuerte! Por si acaso, decidí cocinar en casa. Mi amigo me invitó a salir, pero le dije: ¡ni de broma! Al final, no pasó nada y descansé tranquilo." }
+      ]
+    },
+    {
+      id: "i28",
+      order: 28,
+      title: "Conectores Avanzados de Argumentación",
+      subtitle: "Opinar, añadir, contrastar y concluir",
+      text: "Durante una conversación sobre el trabajo remoto, Ana comentó que muchas empresas están adoptando esta modalidad porque permite más flexibilidad para los empleados. Carlos respondió que, por un lado, el trabajo remoto ofrece comodidad; sin embargo, también puede dificultar la comunicación entre equipos. Finalmente, Marta explicó que, en su opinión, el equilibrio es la mejor solución. Es decir, combinar trabajo remoto con algunos días en la oficina puede ser más productivo para todos.",
+      textPt: "Durante uma conversa sobre o trabalho remoto, Ana comentou que muitas empresas estão adotando essa modalidade porque permite mais flexibilidade para os funcionários. Carlos respondeu que, por um lado, o trabalho remoto oferece comodidade; no entanto, também pode dificultar a comunicação entre equipes. Finalmente, Marta explicou que, em sua opinião, o equilíbrio é a melhor solução. Ou seja, combinar trabalho remoto com alguns dias no escritório pode ser mais produtivo para todos.",
+      vocabulary: [
+        { category: "Conectores de argumentación", items: [
+          { es: "En mi opinión / Desde mi punto de vista / Considero que — introducen una opinión personal.", pt: "Na minha opinião / Do meu ponto de vista / Considero que — introduzem uma opinião pessoal." },
+          { es: "Además / Asimismo / Incluso — añaden información o refuerzan un argumento.", pt: "Além disso / Da mesma forma / Inclusive — acrescentam informação ou reforçam um argumento." },
+          { es: "Sin embargo / No obstante / Por otro lado — contrastan una idea opuesta.", pt: "No entanto / Entretanto / Por outro lado — contrastam uma ideia oposta." },
+          { es: "En conclusión / Por lo tanto / En resumen — cierran una idea o presentan una conclusión.", pt: "Em conclusão / Portanto / Em resumo — fecham uma ideia ou apresentam uma conclusão." }
+        ] }
+      ],
+      grammar: [
+        { title: "Conectores argumentativos por función", headers: ["Función", "Conectores"], rows: [
+          ["Introducir opinión", "En mi opinión, Desde mi punto de vista, Considero que"],
+          ["Añadir información", "Además, Asimismo, Incluso"],
+          ["Contrastar ideas", "Sin embargo, No obstante, Por otro lado"],
+          ["Concluir", "En conclusión, Por lo tanto, En resumen"]
+        ] }
+      ],
+      exercises: [
+        { type: "mc", q: "¿Qué conector se usa para CONTRASTAR ideas?", options: ["Además", "Sin embargo", "En resumen"], correct: 1 },
+        { type: "fill", q: "___, trabajar desde casa puede mejorar la calidad de vida. (conclusión)", answer: "En conclusión" },
+        { type: "fill", q: "El proyecto es interesante; ___, necesita más inversión. (contraste)", answer: "sin embargo" },
+        { type: "translate", from: "pt", text: "Na minha opinião, o equilíbrio é a melhor solução.", answer: "En mi opinión, el equilibrio es la mejor solución." },
+        { type: "translate", from: "es", text: "Además, mejoró el ambiente laboral.", answer: "Além disso, melhorou o ambiente de trabalho." },
+        { type: "open", q: "Escribe un texto (10-12 líneas) expresando tu opinión sobre un tema actual (tecnología, educación, trabajo o redes sociales). Incluye al menos 4 conectores de argumentación.", sample: "En mi opinión, la inteligencia artificial es una gran aliada en el trabajo. Además, ahorra tiempo en tareas repetitivas. Sin embargo, también genera preocupación sobre el empleo. Por otro lado, crea nuevas oportunidades. En conclusión, creo que debemos aprender a usarla con responsabilidad." }
+      ]
+    },
+    {
+      id: "i29",
+      order: 29,
+      title: "Condicionales Irreales",
+      subtitle: "Hipótesis irreales en el presente y en el pasado",
+      text: "Muchas personas reflexionan sobre las decisiones que han tomado en el pasado. Algunas dicen: 'Si hubiera estudiado otra carrera, mi vida sería diferente'. Estas frases expresan situaciones que no ocurrieron, pero que podrían haber cambiado la realidad. En debates políticos o sociales, también se utilizan hipótesis irreales para analizar escenarios posibles. Por ejemplo, algunos expertos comentan: 'Si los gobiernos invirtieran más en educación, la sociedad sería más equitativa'.",
+      textPt: "Muitas pessoas refletem sobre as decisões que tomaram no passado. Algumas dizem: 'Se eu tivesse estudado outra carreira, minha vida seria diferente'. Essas frases expressam situações que não ocorreram, mas que poderiam ter mudado a realidade. Em debates políticos ou sociais, também se usam hipóteses irreais para analisar cenários possíveis. Por exemplo, alguns especialistas comentam: 'Se os governos investissem mais em educação, a sociedade seria mais equitativa'.",
+      vocabulary: [
+        { category: "Vocabulario de la hipótesis", items: [
+          { es: "Hipótesis — Una hipótesis irreal habla de algo que no ocurrió.", pt: "Hipótese — Uma hipótese irreal fala de algo que não ocorreu." },
+          { es: "Escenario — Analizamos diferentes escenarios posibles.", pt: "Cenário — Analisamos diferentes cenários possíveis." },
+          { es: "Reflexionar — Es bueno reflexionar sobre nuestras decisiones.", pt: "Refletir — É bom refletir sobre nossas decisões." },
+          { es: "Invertir — Si invirtiéramos más en educación...", pt: "Investir — Se investíssemos mais em educação..." },
+          { es: "Equitativo — Una sociedad más equitativa.", pt: "Equitativo — Uma sociedade mais equitativa." }
+        ] }
+      ],
+      grammar: [
+        { title: "Hipótesis irreal en el PRESENTE", headers: ["Estructura", "Ejemplo"], rows: [
+          ["SI + Imperfecto de Subjuntivo + Condicional Simple", "Si tuviera más tiempo, viajaría más."],
+          ["", "Si ganara la lotería, compraría una casa en la playa."]
+        ] },
+        { title: "Hipótesis irreal en el PASADO", headers: ["Estructura", "Ejemplo"], rows: [
+          ["SI + Pluscuamperfecto de Subjuntivo + Condicional Compuesto", "Si hubiera estudiado más, habría aprobado el examen."],
+          ["", "Si hubiéramos invertido antes, habríamos ganado más dinero."]
+        ] }
+      ],
+      exercises: [
+        { type: "mc", q: "'Si tuviera más tiempo, viajaría más' habla de una hipótesis irreal en:", options: ["El presente", "El pasado", "El futuro"], correct: 0 },
+        { type: "fill", q: "Si ___ (tener - imperfecto de subjuntivo) más tiempo, viajaría más.", answer: "tuviera" },
+        { type: "fill", q: "Si ___ (estudiar - pluscuamperfecto de subjuntivo) más, habría aprobado el examen.", answer: "hubiera estudiado", altAnswers: ["hubiese estudiado"] },
+        { type: "fill", q: "Si ganara la lotería, ___ (comprar - condicional) una casa en la playa.", answer: "compraría" },
+        { type: "translate", from: "pt", text: "Se eu tivesse mais confiança, tomaria decisões diferentes.", answer: "Si tuviera más confianza, tomaría decisiones diferentes." },
+        { type: "translate", from: "es", text: "Si hubiéramos invertido antes, habríamos ganado más dinero.", answer: "Se tivéssemos investido antes, teríamos ganhado mais dinheiro." },
+        { type: "open", q: "Escribe un texto (12-15 líneas) reflexionando sobre decisiones hipotéticas en la vida o en la sociedad. Incluye dos hipótesis irreales en el presente y dos en el pasado.", sample: "Si tuviera más tiempo libre, aprendería a tocar un instrumento. Si viviera en otro país, hablaría varios idiomas. Si hubiera viajado más de joven, tendría una visión más amplia del mundo. Si los gobiernos hubieran invertido más en salud, muchas vidas se habrían salvado. Reflexionar sobre estas hipótesis nos ayuda a valorar las decisiones que tomamos hoy." }
+      ]
+    },
+    {
+      id: "i30",
+      order: 30,
+      title: "Personalidad, Carácter y Comportamiento",
+      subtitle: "Vocabulario avanzado + hipótesis irreales + conectores",
+      text: "En una conversación entre compañeros, surgió el tema de la personalidad y de cómo las experiencias pueden cambiar la forma de ser. Andrés comentó que antes era muy inseguro, pero con el tiempo se volvió más confiado porque tuvo que enfrentar muchas situaciones difíciles. Laura respondió que, desde su punto de vista, el carácter no cambia completamente, pero sí puede mejorar con la experiencia. Explicó que, si hubiera tenido más confianza cuando era joven, habría tomado decisiones diferentes.",
+      textPt: "Em uma conversa entre colegas, surgiu o tema da personalidade e de como as experiências podem mudar a forma de ser. Andrés comentou que antes era muito inseguro, mas com o tempo ficou mais confiante porque teve que enfrentar muitas situações difíceis. Laura respondeu que, do seu ponto de vista, o caráter não muda completamente, mas pode melhorar com a experiência. Explicou que, se tivesse tido mais confiança quando era jovem, teria tomado decisões diferentes.",
+      vocabulary: [
+        { category: "Personalidad y comportamiento", items: [
+          { es: "Personalidad — Forma de pensar y actuar de una persona.", pt: "Personalidade — Forma de pensar e agir de uma pessoa." },
+          { es: "Carácter — Conjunto de cualidades que definen a alguien.", pt: "Caráter — Conjunto de qualidades que definem alguém." },
+          { es: "Actitud — Manera de reaccionar ante situaciones.", pt: "Atitude — Maneira de reagir diante de situações." },
+          { es: "Confianza — Seguridad en uno mismo.", pt: "Confiança — Segurança em si mesmo." },
+          { es: "Inseguridad — Falta de confianza personal.", pt: "Insegurança — Falta de confiança pessoal." },
+          { es: "Paciencia — Capacidad de esperar sin perder la calma.", pt: "Paciência — Capacidade de esperar sem perder a calma." },
+          { es: "Valentía — Capacidad de enfrentar el miedo.", pt: "Coragem — Capacidade de enfrentar o medo." },
+          { es: "Madurez — Capacidad de actuar con responsabilidad.", pt: "Maturidade — Capacidade de agir com responsabilidade." },
+          { es: "Impulsividad — Actuar sin pensar.", pt: "Impulsividade — Agir sem pensar." },
+          { es: "Hábito — Acción repetida con frecuencia.", pt: "Hábito — Ação repetida com frequência." }
+        ] }
+      ],
+      grammar: [
+        { title: "Hipótesis irreal aplicada a la personalidad (repaso de i29)", headers: ["Ejemplo"], rows: [
+          ["Si fuera más paciente, tendría menos problemas."],
+          ["Si hubiera tenido más confianza, habría tomado decisiones diferentes."]
+        ] }
+      ],
+      exercises: [
+        { type: "mc", q: "¿Qué palabra significa 'capacidad de enfrentar el miedo'?", options: ["Valentía", "Inseguridad", "Impulsividad"], correct: 0 },
+        { type: "fill", q: "Si ___ (ser - imperfecto de subjuntivo) más paciente, tendría menos problemas.", answer: "fuera" },
+        { type: "fill", q: "Si hubiera tenido más confianza, ___ (tomar - condicional compuesto) decisiones diferentes.", answer: "habría tomado" },
+        { type: "translate", from: "pt", text: "A experiência pode mudar nossa forma de ser.", answer: "La experiencia puede cambiar nuestra forma de ser." },
+        { type: "translate", from: "es", text: "El carácter no cambia completamente, pero sí puede mejorar.", answer: "O caráter não muda completamente, mas pode melhorar." },
+        { type: "open", q: "Escribe un texto (12-15 líneas) sobre tu personalidad. Incluye: hipótesis irreales, conectores argumentativos, vocabulario de la lección y una conclusión personal.", sample: "Creo que soy una persona bastante paciente, pero a veces actúo de forma impulsiva. Si fuera menos impulsivo, tomaría mejores decisiones. Además, si hubiera tenido más confianza de joven, habría intentado cosas nuevas. Sin embargo, con el tiempo he ganado madurez. En conclusión, pienso que la personalidad puede mejorar con la experiencia." }
+      ]
+    },
+    {
+      id: "i31",
+      order: 31,
+      title: "Discurso Indirecto Avanzado",
+      subtitle: "Cambios de tiempo verbal, pronombres y preguntas indirectas",
+      text: "En una reunión, el director dijo: 'La empresa necesita adaptarse a los cambios del mercado'. También afirmó: 'Estamos trabajando en nuevas estrategias'. Más tarde, un empleado explicó que el director había dicho que la empresa necesitaba adaptarse a los cambios del mercado y que estaban trabajando en nuevas estrategias. Añadió que el objetivo era mejorar la competitividad.",
+      textPt: "Em uma reunião, o diretor disse: 'A empresa precisa se adaptar às mudanças do mercado'. Também afirmou: 'Estamos trabalhando em novas estratégias'. Mais tarde, um funcionário explicou que o diretor tinha dito que a empresa precisava se adaptar às mudanças do mercado e que estavam trabalhando em novas estratégias. Acrescentou que o objetivo era melhorar a competitividade.",
+      vocabulary: [
+        { category: "Cambios en discurso indirecto", items: [
+          { es: "Yo → él/ella", pt: "Eu → ele/ela" },
+          { es: "Mi → su", pt: "Meu → dele/dela" },
+          { es: "Aquí → allí", pt: "Aqui → ali/lá" },
+          { es: "Hoy → ese día", pt: "Hoje → aquele dia" },
+          { es: "Mañana → al día siguiente", pt: "Amanhã → no dia seguinte" }
+        ] }
+      ],
+      grammar: [
+        { title: "Cambios de tiempo verbal en discurso indirecto (verbo introductorio en pasado)", headers: ["Estilo directo", "Estilo indirecto"], rows: [
+          ["Presente: 'Trabajo mucho'", "Imperfecto: Dijo que trabajaba mucho."],
+          ["Pretérito perfecto: 'He terminado'", "Pluscuamperfecto: Dijo que había terminado."],
+          ["Futuro: 'Viajaré mañana'", "Condicional: Dijo que viajaría al día siguiente."],
+          ["Pregunta: '¿Vienes mañana?'", "Preguntó si venía al día siguiente."],
+          ["Orden: 'Estudia más.'", "Me dijo que estudiara más."]
+        ] }
+      ],
+      exercises: [
+        { type: "mc", q: "En discurso indirecto (verbo introductorio en pasado), el Futuro cambia a:", options: ["Imperfecto", "Condicional", "Pluscuamperfecto"], correct: 1 },
+        { type: "fill", q: "'Trabajo mucho' → Dijo que ___ mucho.", answer: "trabajaba" },
+        { type: "fill", q: "'He terminado' → Dijo que ___ terminado.", answer: "había" },
+        { type: "fill", q: "'Viajaré mañana' → Dijo que ___ al día siguiente.", answer: "viajaría" },
+        { type: "translate", from: "pt", text: "Ele perguntou se eu vinha no dia seguinte.", answer: "Preguntó si yo venía al día siguiente." },
+        { type: "translate", from: "es", text: "Me dijo que estudiara más.", answer: "Ele me disse para eu estudar mais." },
+        { type: "open", q: "Escribe un texto (12-15 líneas) narrando una conversación formal usando discurso indirecto. Incluye: cambios de tiempo verbal, una pregunta indirecta, una orden transformada y un marcador temporal modificado.", sample: "En la reunión, mi jefe dijo que necesitábamos mejorar los resultados. Me preguntó si podía terminar el informe al día siguiente. También me indicó que revisara los datos con cuidado. Añadió que el objetivo era presentar todo antes del viernes." }
+      ]
+    },
+    {
+      id: "i32",
+      order: 32,
+      title: "Fiestas y Celebraciones",
+      subtitle: "Cumpleaños y tradiciones familiares — Pretérito Indefinido (repaso)",
+      text: "El mes pasado celebramos el cumpleaños de mi abuela. La fiesta fue en su casa y toda la familia estuvo presente. Decoramos la sala con globos y flores. Preparamos un almuerzo especial con su comida favorita. Cantamos, bailamos y reímos mucho. Mi abuela recibió muchos regalos y sopló las velas de un gran pastel de chocolate. Fue una celebración muy alegre y todos la recordaremos con cariño.",
+      textPt: "No mês passado, celebramos o aniversário da minha avó. A festa foi na casa dela e toda a família esteve presente. Decoramos a sala com balões e flores. Preparamos um almoço especial com a comida favorita dela. Cantamos, dançamos e rimos muito. Minha avó recebeu muitos presentes e soprou as velinhas de um grande bolo de chocolate. Foi uma celebração muito alegre e todos vamos lembrar dela com carinho.",
+      vocabulary: [
+        { category: "Fiestas y celebraciones", items: [
+          { es: "Celebrar", pt: "Celebrar/Comemorar" },
+          { es: "Invitar", pt: "Convidar" },
+          { es: "Reunirse", pt: "Reunir-se" },
+          { es: "Bailar", pt: "Dançar" },
+          { es: "Brindar", pt: "Brindar" },
+          { es: "Decorar", pt: "Decorar" },
+          { es: "Regalo", pt: "Presente" },
+          { es: "Pastel", pt: "Bolo" },
+          { es: "Tradición", pt: "Tradição" },
+          { es: "Soplar las velas", pt: "Soprar as velinhas" }
+        ] }
+      ],
+      grammar: [
+        { title: "Pretérito Indefinido — narrar una celebración (repaso)", headers: ["Pronombre", "Decorar", "Soplar"], rows: [
+          ["Nosotros/Nosotras", "decoramos", "soplamos"],
+          ["Ella/Él/Usted", "decoró", "sopló"]
+        ] }
+      ],
+      exercises: [
+        { type: "mc", q: "¿Qué se hace con las velas de un pastel de cumpleaños?", options: ["Se sopla", "Se decora", "Se brinda"], correct: 0 },
+        { type: "fill", q: "___ (decorar - indefinido, nosotros) la sala con globos.", answer: "Decoramos" },
+        { type: "fill", q: "Mi abuela ___ (soplar - indefinido) las velas del pastel.", answer: "sopló" },
+        { type: "translate", from: "pt", text: "Toda a família esteve presente na festa.", answer: "Toda la familia estuvo presente en la fiesta." },
+        { type: "translate", from: "es", text: "Cantamos, bailamos y reímos mucho.", answer: "Cantamos, dançamos e rimos muito." },
+        { type: "open", q: "Escribe un texto titulado 'La mejor celebración de mi vida'. Incluye: quiénes participaron, qué hicieron y qué te gustó más.", sample: "La mejor celebración de mi vida fue mi graduación. Toda mi familia estuvo presente. Preparamos una cena especial, brindamos y bailamos hasta tarde. Lo que más me gustó fue ver el orgullo de mis padres." }
+      ]
+    },
+    {
+      id: "i33",
+      order: 33,
+      title: "El Futuro de las Redes Sociales",
+      subtitle: "Futuro Simple x Futuro Perfecto",
+      text: "En el año 2040, las redes sociales habrán cambiado radicalmente. La mayoría de las personas no usará teléfonos ni computadoras tradicionales; interactuarán mediante lentes inteligentes, realidad aumentada y hologramas. Cada usuario tendrá un avatar que refleje su estado emocional, y la inteligencia artificial sugerirá contenido adaptado a cada persona. La privacidad será una prioridad, y los datos personales estarán más protegidos que nunca.",
+      textPt: "No ano de 2040, as redes sociais terão mudado radicalmente. A maioria das pessoas não usará telefones nem computadores tradicionais; vão interagir por meio de lentes inteligentes, realidade aumentada e hologramas. Cada usuário terá um avatar que reflita seu estado emocional, e a inteligência artificial vai sugerir conteúdo adaptado a cada pessoa. A privacidade será uma prioridade, e os dados pessoais estarão mais protegidos do que nunca.",
+      vocabulary: [
+        { category: "Redes sociales y futuro", items: [
+          { es: "Algoritmo — Los algoritmos decidirán qué contenido veremos.", pt: "Algoritmo — Os algoritmos vão decidir qual conteúdo veremos." },
+          { es: "Interfaz — La interfaz será más intuitiva.", pt: "Interface — A interface será mais intuitiva." },
+          { es: "Holograma — Podremos enviar mensajes mediante hologramas.", pt: "Holograma — Poderemos enviar mensagens por meio de hologramas." },
+          { es: "Avatar — Cada usuario tendrá un avatar virtual.", pt: "Avatar — Cada usuário terá um avatar virtual." },
+          { es: "Privacidad — La privacidad será más protegida.", pt: "Privacidade — A privacidade será mais protegida." },
+          { es: "Innovar — Las empresas deben innovar para atraer usuarios.", pt: "Inovar — As empresas devem inovar para atrair usuários." },
+          { es: "Conectividad — La conectividad será global y sin barreras.", pt: "Conectividade — A conectividade será global e sem barreiras." },
+          { es: "Plataforma — Nuevas plataformas ofrecerán experiencias inmersivas.", pt: "Plataforma — Novas plataformas oferecerão experiências imersivas." }
+        ] }
+      ],
+      grammar: [
+        { title: "Futuro Simple x Futuro Perfecto (HABRÁ + Participio)", headers: ["Estructura", "Ejemplo"], rows: [
+          ["Futuro Simple: predicción", "Cada usuario tendrá un avatar."],
+          ["Futuro Perfecto: acción terminada en un punto futuro", "En 2040, las redes habrán cambiado radicalmente."],
+          ["", "Para entonces, habremos aprendido a usarlas mejor."]
+        ] }
+      ],
+      exercises: [
+        { type: "mc", q: "¿Cuál expresa una acción que estará terminada en el futuro?", options: ["Futuro Simple", "Futuro Perfecto", "Presente"], correct: 1 },
+        { type: "fill", q: "En 2040, las redes sociales ___ (cambiar - futuro perfecto) radicalmente.", answer: "habrán cambiado" },
+        { type: "fill", q: "Cada usuario ___ (tener - futuro simple) un avatar.", answer: "tendrá" },
+        { type: "translate", from: "pt", text: "A inteligência artificial vai sugerir conteúdo adaptado a cada pessoa.", answer: "La inteligencia artificial sugerirá contenido adaptado a cada persona." },
+        { type: "translate", from: "es", text: "La privacidad será una prioridad en el futuro.", answer: "A privacidade será uma prioridade no futuro." },
+        { type: "open", q: "Escribe un texto (8-10 líneas) imaginando un día usando redes sociales en 2040.", sample: "En 2040, me despertaré y mis lentes inteligentes me mostrarán las noticias del día. Hablaré con mis amigos mediante hologramas. La inteligencia artificial habrá organizado mi agenda. Todo será más rápido, pero espero que también sigamos siendo humanos de verdad." }
+      ]
+    },
+    {
+      id: "i34",
+      order: 34,
+      title: "El Impacto del Turismo en la Sociedad",
+      subtitle: "Pretérito Perfecto Compuesto (repaso final del nivel)",
+      text: "En los últimos años, el turismo ha cambiado la vida de muchas ciudades. Miles de personas han viajado a destinos populares como Barcelona, Ciudad de México o Cusco, y esto ha generado millones de ingresos económicos. Sin embargo, el turismo masivo también ha traído problemas: las calles se han llenado de gente, los precios han subido y en algunos lugares se ha perdido parte de la cultura tradicional. A pesar de todo, muchos países han tomado medidas para preservar su patrimonio cultural y proteger el medio ambiente. El turismo seguirá siendo muy importante, pero necesitamos hacerlo más sostenible.",
+      textPt: "Nos últimos anos, o turismo mudou a vida de muitas cidades. Milhares de pessoas viajaram para destinos populares como Barcelona, Cidade do México ou Cusco, e isso gerou milhões em receita econômica. No entanto, o turismo em massa também trouxe problemas: as ruas ficaram cheias de gente, os preços subiram e em alguns lugares se perdeu parte da cultura tradicional. Apesar de tudo, muitos países tomaram medidas para preservar seu patrimônio cultural e proteger o meio ambiente. O turismo continuará sendo muito importante, mas precisamos torná-lo mais sustentável.",
+      vocabulary: [
+        { category: "Turismo y sociedad", items: [
+          { es: "Viajar — He viajado a varios países europeos.", pt: "Viajar — Já viajei para vários países europeus." },
+          { es: "Descubrir — Descubrí nuevas culturas durante mis vacaciones.", pt: "Descobrir — Descobri novas culturas durante minhas férias." },
+          { es: "Hospedarse — Nos hospedamos en un hotel muy cómodo.", pt: "Hospedar-se — Nos hospedamos em um hotel muito confortável." },
+          { es: "Gastar — Los turistas gastan mucho dinero en la economía local.", pt: "Gastar — Os turistas gastam muito dinheiro na economia local." },
+          { es: "Contaminar — El turismo masivo contamina las playas.", pt: "Contaminar — O turismo em massa contamina as praias." },
+          { es: "Preservar — Hemos preservado el patrimonio cultural de la ciudad.", pt: "Preservar — Preservamos o patrimônio cultural da cidade." },
+          { es: "Masificación — La masificación afecta a muchas ciudades históricas.", pt: "Massificação — A massificação afeta muitas cidades históricas." },
+          { es: "Patrimonio cultural — Toledo tiene un gran patrimonio cultural.", pt: "Patrimônio cultural — Toledo tem um grande patrimônio cultural." }
+        ] }
+      ],
+      grammar: [
+        { title: "Pretérito Perfecto Compuesto — hechos con relación al presente (repaso)", headers: ["Ejemplo"], rows: [
+          ["El turismo ha cambiado la vida de muchas ciudades."],
+          ["Miles de personas han viajado a destinos populares."],
+          ["Muchos países han tomado medidas para preservar su patrimonio."]
+        ] }
+      ],
+      exercises: [
+        { type: "mc", q: "¿Qué palabra describe el exceso de turistas en un lugar?", options: ["Masificación", "Preservación", "Gastronomía"], correct: 0 },
+        { type: "fill", q: "El turismo ___ (cambiar - pretérito perfecto compuesto) la vida de muchas ciudades.", answer: "ha cambiado" },
+        { type: "fill", q: "Miles de personas ___ (viajar - pretérito perfecto compuesto) a destinos populares.", answer: "han viajado" },
+        { type: "translate", from: "pt", text: "Muitos países tomaram medidas para proteger o meio ambiente.", answer: "Muchos países han tomado medidas para proteger el medio ambiente." },
+        { type: "translate", from: "es", text: "El turismo seguirá siendo muy importante.", answer: "O turismo continuará sendo muito importante." },
+        { type: "open", q: "Escribe una carta breve a un amigo contando tu última experiencia turística. Usa al menos 3 verbos en pretérito perfecto compuesto.", sample: "Querido amigo: Te escribo para contarte que he viajado a Cusco este año. He conocido lugares increíbles y he probado comidas típicas maravillosas. Ha sido una experiencia inolvidable. ¡Espero que puedas visitarlo pronto!" }
+      ]
     }
   ],
   exam: {
