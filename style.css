@@ -79,6 +79,14 @@ input, select, textarea { font-family: inherit; }
   cursor: pointer; transition: transform .12s;
 }
 .avatar-btn:hover { transform: scale(1.06); }
+.avatar-btn.has-photo { padding: 0; overflow: hidden; }
+.avatar-btn.has-photo img { width: 100%; height: 100%; object-fit: cover; border-radius: 50%; }
+.admin-avatar {
+  width: 36px; height: 36px; border-radius: 50%; background: var(--rojo); color: #fff;
+  font-weight: 700; font-size: .85rem; display: flex; align-items: center; justify-content: center;
+  overflow: hidden; flex-shrink: 0;
+}
+.admin-avatar img { width: 100%; height: 100%; object-fit: cover; }
 
 /* ---------- Layout ---------- */
 .main-content { flex: 1; padding: 24px; max-width: 980px; margin: 0 auto; width: 100%; }
@@ -462,6 +470,12 @@ table.grammar-table th { background: var(--gray-bg); }
   display: flex; gap: 26px; align-items: center; background: var(--card-bg);
   border-radius: var(--radius); box-shadow: var(--shadow); padding: 22px 26px; margin-bottom: 22px; flex-wrap: wrap;
 }
+.panel-avatar {
+  width: 76px; height: 76px; border-radius: 50%; background: var(--rojo); color: #fff;
+  font-weight: 700; font-size: 1.7rem; display: flex; align-items: center; justify-content: center;
+  overflow: hidden; flex-shrink: 0; box-shadow: 0 2px 8px rgba(0,0,0,.15);
+}
+.panel-avatar img { width: 100%; height: 100%; object-fit: cover; }
 .panel-ring-wrap { flex-shrink: 0; }
 .panel-ring {
   --pct: 0; width: 128px; height: 128px; border-radius: 50%;

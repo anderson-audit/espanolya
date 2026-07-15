@@ -32,6 +32,13 @@ service cloud.firestore {
       allow update: if isSignedIn() && request.auth.uid == uid &&
         !request.resource.data.diff(resource.data).affectedKeys().hasAny(["role", "status", "subscription"]);
       allow update, delete: if isAdmin();
+      // NOVO (2026-07-15) — campos de cadastro complementar (phone, secondaryEmail, address,
+      // observations, photoData, profileCompletedAt) y de consentimiento (lgpdAcceptedAt,
+      // termsAcceptedAt) NO están en la lista de bloqueo de arriba: el propio alumno puede
+      // escribirlos libremente (es exactamente lo que necesita completeProfile/Mi Cuenta).
+      // Atención con el tamaño del documento: photoData es una imagen JPEG en base64 ya
+      // redimensionada en el navegador a ~480px (unos 20-80 KB típico) — bien por debajo
+      // del límite de 1 MB por documento de Firestore, pero no lo agrandes sin re-comprimir.
     }
 
     match /progress/{uid} {

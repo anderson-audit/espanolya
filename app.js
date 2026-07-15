@@ -55,7 +55,7 @@ const functions = (typeof firebase.functions === "function") ? firebase.function
 // Versión del sistema, visible en Mi Cuenta / Configuración y en el pie de la barra lateral.
 // Se debe actualizar manualmente cada vez que se sube una nueva versión al repositorio
 // (formato AAAA.MM.DD.N — N = número de subida ese día, empieza en 1).
-const APP_VERSION = "2026.07.15.2";
+const APP_VERSION = "2026.07.15.3";
 
 // Valores por defecto de la mensualidad/anualidad — el admin puede cambiarlos en
 // Configuración → Planes y precios (guardados en config/settings, campos priceMonthly/priceAnnual).
@@ -143,6 +143,10 @@ const I18N = {
     back_panel: "← Volver al panel", back_generic: "← Volver",
     account_title: "👤 Mi Cuenta", account_tab_security: "Seguridad", account_tab_appearance: "Apariencia", account_tab_profile: "Perfil", account_tab_access: "Mis Accesos", account_tab_voice: "Voz",
     // --- Aceptación de términos + planes de pago (Mercado Pago) ---
+    lgpd_label: "Protección de datos personales (LGPD)",
+    lgpd_body: "De acuerdo con la Ley General de Protección de Datos (LGPD - Ley 13.709/2018) y normas de protección de datos aplicables, los datos personales que proporciones (nombre, e-mail, teléfono, dirección, foto y datos de uso del curso) serán recolectados y tratados por Quallisi — Consultoría y Auditoría, responsable de esta plataforma, con la única finalidad de gestionar tu matrícula, tu progreso académico, la emisión de certificados y el contacto relacionado al curso. Tus datos no serán vendidos ni compartidos con terceros ajenos a esta finalidad, y se conservarán mientras tu cuenta esté activa. Podés solicitar en cualquier momento el acceso, la corrección o la eliminación de tus datos personales escribiendo a la administración del curso.",
+    lgpd_checkbox_label: "Leí y acepto el tratamiento de mis datos personales conforme a lo descrito arriba (LGPD).",
+    lgpd_required_error: "Tenés que aceptar el tratamiento de datos personales para crear tu cuenta.",
     terms_title: "Antes de empezar", terms_intro: "Para liberar tu acceso al curso, primero aceptá las condiciones de uso y de pago.",
     terms_body: "Al continuar, confirmás que sos mayor de edad (o contás con autorización de tu responsable), que las lecciones y el material son de uso personal e intransferible, y que el acceso completo al curso depende de mantener al día el plan de pago que elijas a continuación. Los precios y condiciones pueden ser actualizados por la administración, siempre con aviso previo.",
     terms_checkbox_label: "Leí y acepto las condiciones de uso y de pago.",
@@ -164,6 +168,17 @@ const I18N = {
     xp_explain_title: "⭐ ¿Qué es el XP?",
     xp_explain_body: "El XP (puntos de experiencia) es un indicador de tu actividad dentro del curso — no es una nota. Ganas XP cada vez que completas una lección o una prueba (cuanto mejor la nota de la prueba, un poco más de XP ganas). Sirve para que veas, de un vistazo, cuánto has practicado — pero tu aprobación real en cada nivel depende de la nota de la prueba, no del XP acumulado.",
     profile_name_label: "Nombre completo", profile_name_ph: "Tu nombre", profile_save: "Guardar nombre", profile_saved: "¡Nombre actualizado!",
+    profile_extra_section_title: "Datos de contacto y perfil", profile_extra_section_hint: "Esta información complementa tu cuenta (que ya tiene tu e-mail de acceso) y ayuda a la administración a contactarte si es necesario.",
+    profile_photo_upload_btn: "📷 Subir foto", profile_photo_hint: "Se muestra en tu Panel y en el menú. Formatos: JPG, PNG.",
+    profile_photo_invalid: "Elegí un archivo de imagen válido.", profile_photo_error: "No se pudo procesar la imagen. Probá con otra.",
+    profile_phone_label: "Teléfono", profile_phone_ph: "Ej.: (11) 91234-5678",
+    profile_secondary_email_label: "E-mail adicional", profile_secondary_email_ph: "Un e-mail de contacto (puede ser distinto al de acceso)",
+    profile_address_street_label: "Dirección (calle y número)", profile_address_street_ph: "Ej.: Av. Principal, 123",
+    profile_address_city_label: "Ciudad", profile_address_state_label: "Provincia / Estado",
+    profile_address_country_label: "País", profile_address_zip_label: "Código postal",
+    profile_observations_label: "Observaciones", profile_observations_ph: "Algo más que quieras contarnos (opcional)",
+    profile_complete_title: "Completá tu registro", profile_complete_intro: "Antes de continuar, completá algunos datos adicionales. Ya usamos tu e-mail de acceso para el login — esto es información complementaria.",
+    profile_complete_save_btn: "Guardar y continuar", profile_complete_required_error: "Completá teléfono, e-mail adicional y dirección (calle, ciudad y país) para continuar.",
     account_current_pass: "Contraseña actual", account_new_pass: "Nueva contraseña", account_confirm_pass: "Confirmar nueva contraseña",
     account_change_pass_btn: "Cambiar contraseña", account_pass_mismatch: "Las contraseñas nuevas no coinciden.",
     account_pass_changed: "¡Contraseña actualizada con éxito!", account_theme_label: "Color del tema", account_font_label: "Fuente",
@@ -296,6 +311,10 @@ const I18N = {
     back_panel: "← Voltar ao painel", back_generic: "← Voltar",
     account_title: "👤 Minha Conta", account_tab_security: "Segurança", account_tab_appearance: "Aparência", account_tab_profile: "Perfil", account_tab_access: "Meus Acessos", account_tab_voice: "Voz",
     // --- Aceite de termos + planos de pagamento (Mercado Pago) ---
+    lgpd_label: "Proteção de dados pessoais (LGPD)",
+    lgpd_body: "De acordo com a Lei Geral de Proteção de Dados (LGPD - Lei 13.709/2018), os dados pessoais que você fornecer (nome, e-mail, telefone, endereço, foto e dados de uso do curso) serão coletados e tratados pela Quallisi — Consultoria e Auditoria, responsável por esta plataforma, com a única finalidade de gerenciar sua matrícula, seu progresso acadêmico, a emissão de certificados e o contato relacionado ao curso. Seus dados não serão vendidos nem compartilhados com terceiros alheios a essa finalidade, e serão mantidos enquanto sua conta estiver ativa. Você pode solicitar a qualquer momento o acesso, a correção ou a exclusão dos seus dados pessoais escrevendo para a administração do curso.",
+    lgpd_checkbox_label: "Li e aceito o tratamento dos meus dados pessoais conforme descrito acima (LGPD).",
+    lgpd_required_error: "Você precisa aceitar o tratamento de dados pessoais para criar sua conta.",
     terms_title: "Antes de começar", terms_intro: "Para liberar seu acesso ao curso, primeiro aceite as condições de uso e de pagamento.",
     terms_body: "Ao continuar, você confirma que é maior de idade (ou tem autorização do responsável), que as lições e o material são de uso pessoal e intransferível, e que o acesso completo ao curso depende de manter em dia o plano de pagamento escolhido a seguir. Preços e condições podem ser atualizados pela administração, sempre com aviso prévio.",
     terms_checkbox_label: "Li e aceito as condições de uso e de pagamento.",
@@ -317,6 +336,17 @@ const I18N = {
     xp_explain_title: "⭐ O que é o XP?",
     xp_explain_body: "O XP (pontos de experiência) é um indicador da sua atividade dentro do curso — não é uma nota. Você ganha XP toda vez que completa uma lição ou uma prova (quanto melhor a nota da prova, um pouco mais de XP você ganha). Serve para você ver, de relance, o quanto já praticou — mas sua aprovação real em cada nível depende da nota da prova, não do XP acumulado.",
     profile_name_label: "Nome completo", profile_name_ph: "Seu nome", profile_save: "Salvar nome", profile_saved: "Nome atualizado!",
+    profile_extra_section_title: "Dados de contato e perfil", profile_extra_section_hint: "Essas informações complementam sua conta (que já tem seu e-mail de acesso) e ajudam a administração a te contatar se necessário.",
+    profile_photo_upload_btn: "📷 Enviar foto", profile_photo_hint: "Aparece no seu Painel e no menu. Formatos: JPG, PNG.",
+    profile_photo_invalid: "Escolha um arquivo de imagem válido.", profile_photo_error: "Não foi possível processar a imagem. Tente outra.",
+    profile_phone_label: "Telefone", profile_phone_ph: "Ex.: (11) 91234-5678",
+    profile_secondary_email_label: "E-mail adicional", profile_secondary_email_ph: "Um e-mail de contato (pode ser diferente do de acesso)",
+    profile_address_street_label: "Endereço (rua e número)", profile_address_street_ph: "Ex.: Av. Principal, 123",
+    profile_address_city_label: "Cidade", profile_address_state_label: "Estado / Província",
+    profile_address_country_label: "País", profile_address_zip_label: "CEP / Código postal",
+    profile_observations_label: "Observações", profile_observations_ph: "Algo mais que queira nos contar (opcional)",
+    profile_complete_title: "Complete seu cadastro", profile_complete_intro: "Antes de continuar, complete alguns dados adicionais. Já usamos seu e-mail de acesso para o login — isso aqui é informação complementar.",
+    profile_complete_save_btn: "Salvar e continuar", profile_complete_required_error: "Preencha telefone, e-mail adicional e endereço (rua, cidade e país) para continuar.",
     account_current_pass: "Senha atual", account_new_pass: "Nova senha", account_confirm_pass: "Confirmar nova senha",
     account_change_pass_btn: "Alterar senha", account_pass_mismatch: "As novas senhas não coincidem.",
     account_pass_changed: "Senha atualizada com sucesso!", account_theme_label: "Cor do tema", account_font_label: "Fonte",
@@ -449,6 +479,10 @@ const I18N = {
     back_panel: "← Back to panel", back_generic: "← Back",
     account_title: "👤 My Account", account_tab_security: "Security", account_tab_appearance: "Appearance", account_tab_profile: "Profile", account_tab_access: "My Access Log", account_tab_voice: "Voice",
     // --- Terms acceptance + payment plans (Mercado Pago) ---
+    lgpd_label: "Personal data protection (LGPD)",
+    lgpd_body: "In accordance with Brazil's General Data Protection Law (LGPD - Law 13,709/2018) and applicable data protection rules, the personal data you provide (name, e-mail, phone, address, photo and course usage data) will be collected and processed by Quallisi — Consultoría y Auditoría, the party responsible for this platform, solely to manage your enrollment, academic progress, certificate issuance and course-related contact. Your data will not be sold or shared with third parties outside this purpose, and will be kept while your account is active. You can request access, correction or deletion of your personal data at any time by contacting the course administration.",
+    lgpd_checkbox_label: "I have read and accept the processing of my personal data as described above (LGPD).",
+    lgpd_required_error: "You need to accept the processing of personal data to create your account.",
     terms_title: "Before you start", terms_intro: "To unlock your course access, first accept the terms of use and payment.",
     terms_body: "By continuing, you confirm you are of legal age (or have guardian authorization), that lessons and materials are for personal, non-transferable use, and that full course access depends on keeping the payment plan you choose next up to date. Prices and terms may be updated by the administration, always with prior notice.",
     terms_checkbox_label: "I have read and accept the terms of use and payment.",
@@ -470,6 +504,17 @@ const I18N = {
     xp_explain_title: "⭐ What is XP?",
     xp_explain_body: "XP (experience points) is a marker of your activity within the course — it's not a grade. You earn XP every time you complete a lesson or an exam (the better your exam score, the more XP you earn). It's there so you can see, at a glance, how much you've practiced — but your actual pass/fail in each level depends on your exam score, not your accumulated XP.",
     profile_name_label: "Full name", profile_name_ph: "Your name", profile_save: "Save name", profile_saved: "Name updated!",
+    profile_extra_section_title: "Contact and profile details", profile_extra_section_hint: "This information complements your account (which already has your login e-mail) and helps the administration reach you if needed.",
+    profile_photo_upload_btn: "📷 Upload photo", profile_photo_hint: "Shown on your Dashboard and in the menu. Formats: JPG, PNG.",
+    profile_photo_invalid: "Please choose a valid image file.", profile_photo_error: "Couldn't process that image. Try another one.",
+    profile_phone_label: "Phone", profile_phone_ph: "E.g.: (11) 91234-5678",
+    profile_secondary_email_label: "Additional e-mail", profile_secondary_email_ph: "A contact e-mail (can differ from your login e-mail)",
+    profile_address_street_label: "Address (street and number)", profile_address_street_ph: "E.g.: 123 Main St.",
+    profile_address_city_label: "City", profile_address_state_label: "State / Province",
+    profile_address_country_label: "Country", profile_address_zip_label: "ZIP / Postal code",
+    profile_observations_label: "Notes", profile_observations_ph: "Anything else you'd like to tell us (optional)",
+    profile_complete_title: "Complete your registration", profile_complete_intro: "Before continuing, fill in a few extra details. We already use your login e-mail for sign-in — this is additional information.",
+    profile_complete_save_btn: "Save and continue", profile_complete_required_error: "Fill in phone, additional e-mail, and address (street, city and country) to continue.",
     account_current_pass: "Current password", account_new_pass: "New password", account_confirm_pass: "Confirm new password",
     account_change_pass_btn: "Change password", account_pass_mismatch: "New passwords don't match.",
     account_pass_changed: "Password updated successfully!", account_theme_label: "Theme color", account_font_label: "Font",
@@ -889,6 +934,7 @@ function render() {
     case "loading": return renderLoading();
     case "auth": return renderAuth();
     case "pendingApproval": return renderPendingApproval();
+    case "completeProfile": return renderCompleteProfile();
     case "acceptTerms": return renderAcceptTerms();
     case "choosePlan": return renderChoosePlan();
     case "checkoutReturn": return renderCheckoutReturn();
@@ -960,6 +1006,13 @@ function renderAuth() {
             <div class="field"><label>${t("auth_email")}</label><input type="email" id="f-email" required placeholder="tu@email.com"></div>
             ${mode !== "forgot" ? `
             <div class="field"><label>${t("auth_password")}</label><div class="pass-wrap"><input type="password" id="f-pass" required placeholder="${t("auth_password_ph")}" minlength="6"><button type="button" class="pass-eye" data-target="f-pass" aria-label="${t("pass_show")}" title="${t("pass_show")}">👁️</button></div></div>` : ""}
+            ${mode === "register" ? `
+            <div style="font-size:.78rem;font-weight:700;color:var(--gray-2);margin-bottom:4px">${t("lgpd_label")}</div>
+            <div class="lgpd-box" style="max-height:120px;overflow:auto;border:1px solid var(--border);border-radius:10px;padding:10px 12px;font-size:.76rem;color:var(--gray-2);line-height:1.5;margin-bottom:10px">${t("lgpd_body")}</div>
+            <label style="display:flex;gap:8px;align-items:flex-start;font-size:.82rem;margin-bottom:12px;cursor:pointer">
+              <input type="checkbox" id="f-lgpd" style="margin-top:3px">
+              <span>${t("lgpd_checkbox_label")}</span>
+            </label>` : ""}
             <button type="submit" class="btn btn-primary btn-block">
               ${mode === "login" ? t("auth_btn_login") : mode === "register" ? t("auth_btn_register") : t("auth_btn_forgot")}
             </button>
@@ -1004,6 +1057,16 @@ async function onAuthSubmit(e) {
       const pass = document.getElementById("f-pass").value;
       await auth.signInWithEmailAndPassword(email, pass);
     } else if (mode === "register") {
+      // Consentimiento LGPD: se exige ANTES de crear la cuenta (no solo antes de guardar
+      // el documento en Firestore), para que un registro nunca llegue a "efectivarse" sin
+      // el aceite — pedido explícito de Anderson. Si falta, ni siquiera se llama a
+      // createUserWithEmailAndPassword.
+      const lgpdBox = document.getElementById("f-lgpd");
+      if (!lgpdBox || !lgpdBox.checked) {
+        state.errorMsg = t("lgpd_required_error");
+        render();
+        return;
+      }
       const name = document.getElementById("f-name").value.trim();
       const pass = document.getElementById("f-pass").value;
       const cred = await auth.createUserWithEmailAndPassword(email, pass);
@@ -1014,6 +1077,7 @@ async function onAuthSubmit(e) {
       const status = role === "admin" ? "approved" : "pending";
       await db.collection("users").doc(cred.user.uid).set({
         name, email, role, status, createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+        lgpdAcceptedAt: firebase.firestore.FieldValue.serverTimestamp(),
         prefs: { theme: "espana", font: "poppins", lang: state.prefs.lang || "es" }
       });
       await initProgressDoc(cred.user.uid);
@@ -1072,6 +1136,180 @@ function renderPendingApproval() {
       </div>
     </div>`;
   document.getElementById("pending-logout").onclick = () => auth.signOut();
+}
+
+/* ---------------------------------------------------------------------- */
+/* 5a-bis. CADASTRO COMPLEMENTAR DEL ALUMNO (teléfono, e-mail, dirección,  */
+/* observaciones y foto) — se pide UNA vez, recién aprobado el registro,   */
+/* antes de aceptar términos/elegir plan. También editable después desde  */
+/* Mi Cuenta → Perfil (ver renderAccountProfileTab más abajo).             */
+/* ---------------------------------------------------------------------- */
+
+// Redimensiona la imagen elegida en el navegador (canvas, sin ninguna librería
+// externa) ANTES de convertirla a base64 — así el documento en Firestore (users/{uid})
+// se mantiene liviano (unos 20-80 KB típico) y nunca se acerca al límite de 1 MB por
+// documento. Decisión: se guarda directo en Firestore (campo photoData, data URL) en vez
+// de usar Firebase Storage, para no exigirle a Anderson configurar un bucket/reglas/CORS
+// adicionales solo para esto — el proyecto ya tiene una pendencia de infraestructura
+// (Cloud Functions de Mercado Pago) y esto evita sumar otra.
+function resizeImageFile(file, maxDim, quality) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const img = new Image();
+      img.onload = () => {
+        let { width, height } = img;
+        if (width > height && width > maxDim) { height = Math.round(height * maxDim / width); width = maxDim; }
+        else if (height >= width && height > maxDim) { width = Math.round(width * maxDim / height); height = maxDim; }
+        const canvas = document.createElement("canvas");
+        canvas.width = width; canvas.height = height;
+        canvas.getContext("2d").drawImage(img, 0, 0, width, height);
+        resolve(canvas.toDataURL("image/jpeg", quality));
+      };
+      img.onerror = () => reject(new Error("No se pudo leer la imagen."));
+      img.src = e.target.result;
+    };
+    reader.onerror = () => reject(new Error("No se pudo leer el archivo."));
+    reader.readAsDataURL(file);
+  });
+}
+
+function wirePhotoPicker(inputId, previewId) {
+  const input = document.getElementById(inputId);
+  if (!input) return;
+  input.onchange = async () => {
+    const file = input.files && input.files[0];
+    if (!file) return;
+    if (!file.type.startsWith("image/")) { alert(t("profile_photo_invalid")); input.value = ""; return; }
+    try {
+      const dataUrl = await resizeImageFile(file, 480, 0.72);
+      state.pendingPhotoData = dataUrl;
+      const preview = document.getElementById(previewId);
+      if (preview) {
+        // El placeholder inicial es un <span> (emoji); lo reemplazamos por una <img> real.
+        if (preview.tagName === "IMG") preview.src = dataUrl;
+        else preview.outerHTML = `<img id="${previewId}" src="${dataUrl}" style="width:100%;height:100%;object-fit:cover">`;
+      }
+    } catch (e) {
+      console.warn(e);
+      alert(t("profile_photo_error"));
+    }
+  };
+}
+
+// Genera los campos de teléfono/e-mail adicional/dirección/observaciones/foto, con ids
+// prefijados (prefix) para poder usar el mismo bloque tanto en la pantalla de onboarding
+// (prefix "cp") como en Mi Cuenta → Perfil (prefix "pf") sin que los ids choquen entre sí.
+function profileExtraFieldsHtml(prefix, data) {
+  data = data || {};
+  const addr = data.address || {};
+  const photo = state.pendingPhotoData || data.photoData || null;
+  return `
+    <div style="display:flex;gap:16px;align-items:center;margin-bottom:16px">
+      <div class="profile-photo-preview" style="width:84px;height:84px;border-radius:50%;overflow:hidden;background:var(--gray-bg,#eee);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+        ${photo ? `<img id="${prefix}-photo-preview" src="${photo}" style="width:100%;height:100%;object-fit:cover">` : `<span id="${prefix}-photo-preview" style="font-size:1.9rem">🧑</span>`}
+      </div>
+      <div>
+        <label class="btn btn-secondary btn-sm" for="${prefix}-photo-input" style="cursor:pointer;display:inline-block">${t("profile_photo_upload_btn")}</label>
+        <input type="file" id="${prefix}-photo-input" accept="image/*" style="display:none">
+        <p style="color:var(--gray-2);font-size:.75rem;margin:6px 0 0">${t("profile_photo_hint")}</p>
+      </div>
+    </div>
+    <div class="field"><label>${t("profile_phone_label")}</label><input type="tel" id="${prefix}-phone" required value="${escapeHtml(data.phone || "")}" placeholder="${t("profile_phone_ph")}"></div>
+    <div class="field"><label>${t("profile_secondary_email_label")}</label><input type="email" id="${prefix}-secemail" required value="${escapeHtml(data.secondaryEmail || "")}" placeholder="${t("profile_secondary_email_ph")}"></div>
+    <div class="field"><label>${t("profile_address_street_label")}</label><input type="text" id="${prefix}-street" required value="${escapeHtml(addr.street || "")}" placeholder="${t("profile_address_street_ph")}"></div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <div class="field" style="flex:1 1 160px"><label>${t("profile_address_city_label")}</label><input type="text" id="${prefix}-city" required value="${escapeHtml(addr.city || "")}"></div>
+      <div class="field" style="flex:1 1 160px"><label>${t("profile_address_state_label")}</label><input type="text" id="${prefix}-state" value="${escapeHtml(addr.state || "")}"></div>
+    </div>
+    <div style="display:flex;gap:12px;flex-wrap:wrap">
+      <div class="field" style="flex:1 1 160px"><label>${t("profile_address_country_label")}</label><input type="text" id="${prefix}-country" required value="${escapeHtml(addr.country || "")}"></div>
+      <div class="field" style="flex:1 1 160px"><label>${t("profile_address_zip_label")}</label><input type="text" id="${prefix}-zip" value="${escapeHtml(addr.zip || "")}"></div>
+    </div>
+    <div class="field"><label>${t("profile_observations_label")}</label><textarea id="${prefix}-obs" rows="3" maxlength="500" placeholder="${t("profile_observations_ph")}">${escapeHtml(data.observations || "")}</textarea></div>
+  `;
+}
+
+function readProfileExtraFields(prefix) {
+  return {
+    phone: document.getElementById(`${prefix}-phone`).value.trim(),
+    secondaryEmail: document.getElementById(`${prefix}-secemail`).value.trim(),
+    address: {
+      street: document.getElementById(`${prefix}-street`).value.trim(),
+      city: document.getElementById(`${prefix}-city`).value.trim(),
+      state: document.getElementById(`${prefix}-state`).value.trim(),
+      country: document.getElementById(`${prefix}-country`).value.trim(),
+      zip: document.getElementById(`${prefix}-zip`).value.trim()
+    },
+    observations: document.getElementById(`${prefix}-obs`).value.trim()
+  };
+}
+
+function renderCompleteProfile() {
+  root.innerHTML = `
+    <div class="auth-wrap">
+      <div class="auth-grid">
+        <div class="auth-hero">
+          <div class="auth-hero-flag"><div></div><div></div><div></div></div>
+          <div class="auth-hero-emblem">📇</div>
+          <h1>${t("auth_hero_title")}</h1>
+          <p>${t("auth_hero_sub")}</p>
+        </div>
+        <div class="auth-card">
+          <div class="flag-strip"><div></div><div></div><div></div></div>
+          <h1>¡Español Ya!</h1>
+          <div class="auth-sub">${t("profile_complete_title")}</div>
+          <p style="color:var(--gray-2);line-height:1.6;margin:10px 0 18px">${t("profile_complete_intro")}</p>
+          <form id="complete-profile-form">
+            ${profileExtraFieldsHtml("cp", {})}
+            <div id="complete-profile-error" class="error-msg" style="display:none"></div>
+            <button type="submit" class="btn btn-primary btn-block" style="margin-top:10px">${t("profile_complete_save_btn")}</button>
+          </form>
+          <button class="btn btn-secondary btn-block" id="complete-profile-logout-btn" style="margin-top:8px">${t("terms_logout_btn")}</button>
+        </div>
+      </div>
+    </div>`;
+  wirePhotoPicker("cp-photo-input", "cp-photo-preview");
+  document.getElementById("complete-profile-logout-btn").onclick = () => auth.signOut();
+  document.getElementById("complete-profile-form").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const data = readProfileExtraFields("cp");
+    const errBox = document.getElementById("complete-profile-error");
+    if (!data.phone || !data.secondaryEmail || !data.address.street || !data.address.city || !data.address.country) {
+      errBox.textContent = t("profile_complete_required_error");
+      errBox.style.display = "block";
+      return;
+    }
+    errBox.style.display = "none";
+    const submitBtn = e.target.querySelector("button[type=submit]");
+    submitBtn.disabled = true;
+    try {
+      const payload = {
+        phone: data.phone, secondaryEmail: data.secondaryEmail, address: data.address, observations: data.observations,
+        profileCompletedAt: firebase.firestore.FieldValue.serverTimestamp()
+      };
+      if (state.pendingPhotoData) payload.photoData = state.pendingPhotoData;
+      await db.collection("users").doc(state.user.uid).set(payload, { merge: true });
+      Object.assign(state.user, {
+        phone: data.phone, secondaryEmail: data.secondaryEmail, address: data.address, observations: data.observations,
+        photoData: state.pendingPhotoData || state.user.photoData || null
+      });
+      // Espejo liviano en progress_summary para que Admin → Alumnos ya muestre la foto/
+      // nombre desde el primer momento, aunque el alumno todavía no haya completado
+      // ninguna lección (progress_summary normalmente solo se llena recién ahí).
+      db.collection("progress_summary").doc(state.user.uid).set({
+        name: state.user.name, email: state.user.email, photoData: state.user.photoData || null
+      }, { merge: true }).catch(err => console.warn(err));
+      state.pendingPhotoData = null;
+      state.screen = "acceptTerms";
+      render();
+    } catch (err) {
+      console.warn(err);
+      errBox.textContent = "Error: " + err.message;
+      errBox.style.display = "block";
+      submitBtn.disabled = false;
+    }
+  });
 }
 
 /* ---------------------------------------------------------------------- */
@@ -1248,7 +1486,11 @@ auth.onAuthStateChanged(async (fbUser) => {
     // Cuentas creadas antes de que existiera este control no tienen campo "status":
     // se consideran "approved" automáticamente (no afecta a nadie que ya usaba el curso).
     const status = userData.status || "approved";
-    state.user = { uid: fbUser.uid, email: fbUser.email, name: userData.name, role: userData.role, status };
+    state.user = {
+      uid: fbUser.uid, email: fbUser.email, name: userData.name, role: userData.role, status,
+      photoData: userData.photoData || null, phone: userData.phone || "", secondaryEmail: userData.secondaryEmail || "",
+      address: userData.address || null, observations: userData.observations || ""
+    };
     state.prefs = { theme: "espana", font: "poppins", lang: state.prefs.lang || "es", voiceURI: null, voiceURI2: null, ...(userData.prefs || {}) };
     applyTheme(state.prefs.theme);
     applyFont(state.prefs.font);
@@ -1270,6 +1512,14 @@ auth.onAuthStateChanged(async (fbUser) => {
     // eso lo decide el administrador manualmente (botón "Suspender acceso" en Alumnos).
     await loadConfig();
     if (state.user.role !== "admin") {
+      // Cadastro complementar (teléfono, e-mail adicional, dirección, observaciones, foto):
+      // se pide una única vez, ANTES de términos/plan, porque es información de identidad
+      // básica — pedido explícito de Anderson, separado del aceite de términos de uso/pago.
+      if (!userData.profileCompletedAt) {
+        state.screen = "completeProfile";
+        render();
+        return;
+      }
       if (!userData.termsAcceptedAt) {
         state.screen = "acceptTerms";
         render();
@@ -1601,6 +1851,7 @@ function sidebarHtml(activeScreen) {
     <span class="sidebar-section-label">${t("sidebar_section_admin")}</span>
     ${sidebarNavGroup(SIDEBAR_ADMIN_ITEMS, activeScreen)}` : "";
   const initials = (state.user && state.user.name || "?").trim().charAt(0).toUpperCase();
+  const userPhoto = state.user && state.user.photoData;
   return `
     <aside class="sidebar">
       <div class="sidebar-head">
@@ -1617,7 +1868,7 @@ function sidebarHtml(activeScreen) {
       </nav>
       <div class="sidebar-foot">
         <div class="sidebar-user">
-          <button class="avatar-btn" id="btn-account-avatar" title="${t("account_title")}">${initials}</button>
+          <button class="avatar-btn ${userPhoto ? "has-photo" : ""}" id="btn-account-avatar" title="${t("account_title")}">${userPhoto ? `<img src="${userPhoto}" alt="">` : initials}</button>
           <div class="who"><strong>${escapeHtml((state.user && state.user.name) || "")}</strong><span>⭐ ${(state.progress && state.progress.xp) || 0} XP</span></div>
         </div>
         <button class="sidebar-item" id="btn-logout" title="${t("topbar_logout")}">
@@ -1803,9 +2054,12 @@ function panelSummaryHtml() {
   const statusDescKey = sc.status === "ahead" ? "panel_schedule_ahead_d" : sc.status === "behind" ? "panel_schedule_behind_d" : "panel_schedule_ontrack_d";
   const statusClass = sc.status;
   const allMainPassed = MAIN_SEQUENCE.every(id => levelProgress(id).examPassed);
+  const userPhoto = state.user && state.user.photoData;
+  const initials = (state.user && state.user.name || "?").trim().charAt(0).toUpperCase();
   return `
     <div class="section-title">${t("panel_title")}</div>
     <div class="panel-summary">
+      <div class="panel-avatar">${userPhoto ? `<img src="${userPhoto}" alt="">` : initials}</div>
       <div class="panel-ring-wrap">
         <div class="panel-ring" style="--pct:${overallPct}">
           <div class="panel-ring-inner">
@@ -2910,7 +3164,10 @@ async function updateProgressSummary() {
       // de verdad sigue siendo users/{uid}.subscription (actualizada por el webhook del
       // Mercado Pago vía Cloud Function); acá guardamos una copia liviana.
       subscription: state.subscription || null,
-      status: state.user.status || "approved"
+      status: state.user.status || "approved",
+      // Foto del alumno (ya redimensionada a ~480px/JPEG antes de guardarse) — espejada
+      // acá para que Admin → Alumnos pueda mostrar el avatar sin leer "users" uno por uno.
+      photoData: state.user.photoData || null
     }, { merge: true });
   } catch (e) { console.warn("No se pudo actualizar el resumen para el admin.", e); }
 }
@@ -3955,7 +4212,10 @@ function renderAdminStudents() {
           const suspended = payStatus === "suspended";
           return `
           <div class="student-row">
-            <div><strong>${escapeHtml(s.name || s.email)}</strong><br><span style="color:var(--gray-2)">${escapeHtml(s.email || "")}</span></div>
+            <div style="display:flex;align-items:center;gap:10px">
+              <div class="admin-avatar">${s.photoData ? `<img src="${s.photoData}" alt="">` : (s.name || s.email || "?").trim().charAt(0).toUpperCase()}</div>
+              <div><strong>${escapeHtml(s.name || s.email)}</strong><br><span style="color:var(--gray-2)">${escapeHtml(s.email || "")}</span></div>
+            </div>
             <div>⭐ ${s.xp || 0} XP</div>
             <div><span class="sched-badge ${sc.status}">${t(sc.status === "ahead" ? "panel_schedule_ahead" : sc.status === "behind" ? "panel_schedule_behind" : "panel_schedule_ontrack")}</span>
               <span style="color:var(--gray-2);font-size:.72rem;display:block;margin-top:2px">${sc.actualPct}% real vs ${sc.expectedPct}% esperado</span></div>
@@ -4492,6 +4752,7 @@ function renderAccount() {
   if (tab === "profile") {
     const form = document.getElementById("profile-form");
     if (form) form.addEventListener("submit", onSaveProfileSubmit);
+    wirePhotoPicker("pf-photo-input", "pf-photo-preview");
   } else if (tab === "security") {
     const form = document.getElementById("pass-form");
     if (form) form.addEventListener("submit", onChangePasswordSubmit);
@@ -4540,6 +4801,9 @@ function renderAccountProfileTab() {
     <h3>${t("account_tab_profile")}</h3>
     <form id="profile-form">
       <div class="field"><label>${t("profile_name_label")}</label><input type="text" id="profile-name" required placeholder="${t("profile_name_ph")}" value="${escapeHtml(name)}"></div>
+      <h4 style="margin:18px 0 4px">${t("profile_extra_section_title")}</h4>
+      <p style="color:var(--gray-2);font-size:.85rem;margin:0 0 12px">${t("profile_extra_section_hint")}</p>
+      ${profileExtraFieldsHtml("pf", state.user || {})}
       <button type="submit" class="btn btn-primary">${t("profile_save")}</button>
     </form>
     <div class="xp-explain-box" style="margin-top:18px;border:1px solid var(--border);border-radius:10px;padding:14px 16px">
@@ -4552,10 +4816,21 @@ async function onSaveProfileSubmit(e) {
   e.preventDefault();
   const newName = document.getElementById("profile-name").value.trim();
   if (!newName) return;
+  const extra = readProfileExtraFields("pf");
+  if (!extra.phone || !extra.secondaryEmail || !extra.address.street || !extra.address.city || !extra.address.country) {
+    state.accountMsg = { ok: false, text: t("profile_complete_required_error") };
+    render();
+    return;
+  }
   try {
-    await db.collection("users").doc(state.user.uid).set({ name: newName }, { merge: true });
+    const payload = { name: newName, phone: extra.phone, secondaryEmail: extra.secondaryEmail, address: extra.address, observations: extra.observations };
+    if (state.pendingPhotoData) payload.photoData = state.pendingPhotoData;
+    await db.collection("users").doc(state.user.uid).set(payload, { merge: true });
     state.user.name = newName;
+    Object.assign(state.user, { phone: extra.phone, secondaryEmail: extra.secondaryEmail, address: extra.address, observations: extra.observations });
+    if (state.pendingPhotoData) { state.user.photoData = state.pendingPhotoData; state.pendingPhotoData = null; }
     state.accountMsg = { ok: true, text: t("profile_saved") };
+    updateProgressSummary().catch(err => console.warn(err)); // refleja nombre/foto/etc. para el admin
   } catch (err) {
     state.accountMsg = { ok: false, text: "Error: " + err.message };
   }
