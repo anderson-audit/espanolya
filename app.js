@@ -45,11 +45,22 @@ function getLesson(levelId, lessonId) {
 firebase.initializeApp(FIREBASE_CONFIG);
 const auth = firebase.auth();
 const db = firebase.firestore();
+// Cloud Functions (backend serverless) — usado para hablar con la API del Mercado Pago
+// sin exponer el Access Token en el navegador. Requiere que index.html cargue
+// firebase-functions-compat.js y que el proyecto tenga las funciones desplegadas
+// (ver carpeta /functions y GUIA_PAGOS.md). Si no están desplegadas todavía,
+// startCheckout() simplemente muestra un error amigable — el resto del sistema sigue funcionando.
+const functions = (typeof firebase.functions === "function") ? firebase.functions() : null;
 
 // Versión del sistema, visible en Mi Cuenta / Configuración y en el pie de la barra lateral.
 // Se debe actualizar manualmente cada vez que se sube una nueva versión al repositorio
 // (formato AAAA.MM.DD.N — N = número de subida ese día, empieza en 1).
-const APP_VERSION = "2026.07.13.4";
+const APP_VERSION = "2026.07.14.2";
+
+// Valores por defecto de la mensualidad/anualidad — el admin puede cambiarlos en
+// Configuración → Planes y precios (guardados en config/settings, campos priceMonthly/priceAnnual).
+const DEFAULT_PRICE_MONTHLY = 29.90;
+const DEFAULT_PRICE_ANNUAL = 299.00;
 
 const DEFAULT_PASS_SCORES = { fundamentos: 70, basico: 70, intermedio: 70, avanzado: 70 };
 // Modo de liberación del gabarito (respuesta correcta): "immediate" = se muestra apenas
@@ -131,6 +142,24 @@ const I18N = {
     admin_students_title: "Alumnos y progreso ({n})", admin_no_students: "Todavía no hay alumnos con pruebas realizadas.",
     back_panel: "← Volver al panel", back_generic: "← Volver",
     account_title: "👤 Mi Cuenta", account_tab_security: "Seguridad", account_tab_appearance: "Apariencia", account_tab_profile: "Perfil", account_tab_access: "Mis Accesos", account_tab_voice: "Voz",
+    // --- Aceptación de términos + planes de pago (Mercado Pago) ---
+    terms_title: "Antes de empezar", terms_intro: "Para liberar tu acceso al curso, primero aceptá las condiciones de uso y de pago.",
+    terms_body: "Al continuar, confirmás que sos mayor de edad (o contás con autorización de tu responsable), que las lecciones y el material son de uso personal e intransferible, y que el acceso completo al curso depende de mantener al día el plan de pago que elijas a continuación. Los precios y condiciones pueden ser actualizados por la administración, siempre con aviso previo.",
+    terms_checkbox_label: "Leí y acepto las condiciones de uso y de pago.",
+    terms_accept_btn: "Aceptar y continuar", terms_required_error: "Tenés que marcar la casilla para continuar.", terms_logout_btn: "Salir",
+    plan_title: "Elegí tu plan", plan_intro: "Elegí cómo preferís pagar tu acceso a ¡Español Ya!. Podés cambiar de plan más adelante escribiéndole a la administración.",
+    plan_monthly_name: "Mensual", plan_monthly_desc: "Cobro recurrente todos los meses. Cancelás cuando quieras.",
+    plan_annual_name: "Anual", plan_annual_desc: "Pago único por los 12 meses — no se renueva solo.",
+    plan_per_month: "/ mes", plan_per_year: "/ año",
+    plan_choose_btn: "Elegir este plan", plan_processing: "Conectando con Mercado Pago...",
+    plan_generic_error: "No se pudo iniciar el pago. Puede que los pagos todavía no estén activados — contactá a la administración.",
+    plan_logout_btn: "Salir", plan_checkout_return_title: "¡Gracias!", plan_checkout_return_msg: "Estamos confirmando tu pago con Mercado Pago. Esto puede tardar unos minutos — mientras tanto, ya podés entrar al curso.",
+    plan_checkout_return_btn: "Ir al panel",
+    pay_status_active: "🟢 Al día", pay_status_pending: "🟡 Pago pendiente de confirmación", pay_status_overdue: "🔴 Atrasado", pay_status_none: "⚪ Sin plan elegido", pay_status_suspended: "⛔ Acceso suspendido",
+    pending_suspended_title: "Acceso suspendido", pending_suspended_msg: "Tu acceso fue suspendido por la administración (generalmente por una pendencia de pago). Contactá a la administración para regularizar tu situación.",
+    admin_billing_title: "💳 Planes y precios", admin_billing_intro: "Valores cobrados por Mercado Pago. Cambios acá no afectan a quien ya tiene un plan activo, solo a nuevas elecciones de plan.",
+    admin_billing_monthly_label: "Valor del plan mensual (R$)", admin_billing_annual_label: "Valor del plan anual (R$)",
+    admin_pay_suspend_btn: "Suspender acceso", admin_pay_reactivate_btn: "Reactivar acceso", admin_pay_suspend_confirm: "¿Seguro que querés suspender el acceso de este alumno? Va a dejar de poder entrar al curso hasta que lo reactivés.",
     profile_name_label: "Nombre completo", profile_name_ph: "Tu nombre", profile_save: "Guardar nombre", profile_saved: "¡Nombre actualizado!",
     account_current_pass: "Contraseña actual", account_new_pass: "Nueva contraseña", account_confirm_pass: "Confirmar nueva contraseña",
     account_change_pass_btn: "Cambiar contraseña", account_pass_mismatch: "Las contraseñas nuevas no coinciden.",
@@ -263,6 +292,24 @@ const I18N = {
     admin_students_title: "Alunos e progresso ({n})", admin_no_students: "Ainda não há alunos com provas realizadas.",
     back_panel: "← Voltar ao painel", back_generic: "← Voltar",
     account_title: "👤 Minha Conta", account_tab_security: "Segurança", account_tab_appearance: "Aparência", account_tab_profile: "Perfil", account_tab_access: "Meus Acessos", account_tab_voice: "Voz",
+    // --- Aceite de termos + planos de pagamento (Mercado Pago) ---
+    terms_title: "Antes de começar", terms_intro: "Para liberar seu acesso ao curso, primeiro aceite as condições de uso e de pagamento.",
+    terms_body: "Ao continuar, você confirma que é maior de idade (ou tem autorização do responsável), que as lições e o material são de uso pessoal e intransferível, e que o acesso completo ao curso depende de manter em dia o plano de pagamento escolhido a seguir. Preços e condições podem ser atualizados pela administração, sempre com aviso prévio.",
+    terms_checkbox_label: "Li e aceito as condições de uso e de pagamento.",
+    terms_accept_btn: "Aceitar e continuar", terms_required_error: "Você precisa marcar a caixa para continuar.", terms_logout_btn: "Sair",
+    plan_title: "Escolha seu plano", plan_intro: "Escolha como prefere pagar seu acesso ao ¡Español Ya!. Você pode mudar de plano depois falando com a administração.",
+    plan_monthly_name: "Mensal", plan_monthly_desc: "Cobrança recorrente todo mês. Cancele quando quiser.",
+    plan_annual_name: "Anual", plan_annual_desc: "Pagamento único pelos 12 meses — não renova sozinho.",
+    plan_per_month: "/ mês", plan_per_year: "/ ano",
+    plan_choose_btn: "Escolher este plano", plan_processing: "Conectando com o Mercado Pago...",
+    plan_generic_error: "Não foi possível iniciar o pagamento. Pode ser que os pagamentos ainda não estejam ativados — contate a administração.",
+    plan_logout_btn: "Sair", plan_checkout_return_title: "Obrigado!", plan_checkout_return_msg: "Estamos confirmando seu pagamento com o Mercado Pago. Isso pode levar alguns minutos — enquanto isso, você já pode entrar no curso.",
+    plan_checkout_return_btn: "Ir para o painel",
+    pay_status_active: "🟢 Em dia", pay_status_pending: "🟡 Pagamento aguardando confirmação", pay_status_overdue: "🔴 Atrasado", pay_status_none: "⚪ Sem plano escolhido", pay_status_suspended: "⛔ Acesso suspenso",
+    pending_suspended_title: "Acesso suspenso", pending_suspended_msg: "Seu acesso foi suspenso pela administração (geralmente por uma pendência de pagamento). Contate a administração para regularizar sua situação.",
+    admin_billing_title: "💳 Planos e preços", admin_billing_intro: "Valores cobrados via Mercado Pago. Mudanças aqui não afetam quem já tem um plano ativo, só novas escolhas de plano.",
+    admin_billing_monthly_label: "Valor do plano mensal (R$)", admin_billing_annual_label: "Valor do plano anual (R$)",
+    admin_pay_suspend_btn: "Suspender acesso", admin_pay_reactivate_btn: "Reativar acesso", admin_pay_suspend_confirm: "Tem certeza que quer suspender o acesso deste aluno? Ele vai deixar de conseguir entrar no curso até você reativar.",
     profile_name_label: "Nome completo", profile_name_ph: "Seu nome", profile_save: "Salvar nome", profile_saved: "Nome atualizado!",
     account_current_pass: "Senha atual", account_new_pass: "Nova senha", account_confirm_pass: "Confirmar nova senha",
     account_change_pass_btn: "Alterar senha", account_pass_mismatch: "As novas senhas não coincidem.",
@@ -395,6 +442,24 @@ const I18N = {
     admin_students_title: "Students and progress ({n})", admin_no_students: "No students have taken exams yet.",
     back_panel: "← Back to panel", back_generic: "← Back",
     account_title: "👤 My Account", account_tab_security: "Security", account_tab_appearance: "Appearance", account_tab_profile: "Profile", account_tab_access: "My Access Log", account_tab_voice: "Voice",
+    // --- Terms acceptance + payment plans (Mercado Pago) ---
+    terms_title: "Before you start", terms_intro: "To unlock your course access, first accept the terms of use and payment.",
+    terms_body: "By continuing, you confirm you are of legal age (or have guardian authorization), that lessons and materials are for personal, non-transferable use, and that full course access depends on keeping the payment plan you choose next up to date. Prices and terms may be updated by the administration, always with prior notice.",
+    terms_checkbox_label: "I have read and accept the terms of use and payment.",
+    terms_accept_btn: "Accept and continue", terms_required_error: "You need to check the box to continue.", terms_logout_btn: "Log out",
+    plan_title: "Choose your plan", plan_intro: "Choose how you'd prefer to pay for your ¡Español Ya! access. You can change plans later by contacting the administration.",
+    plan_monthly_name: "Monthly", plan_monthly_desc: "Recurring charge every month. Cancel anytime.",
+    plan_annual_name: "Annual", plan_annual_desc: "One-time payment for the full 12 months — doesn't auto-renew.",
+    plan_per_month: "/ month", plan_per_year: "/ year",
+    plan_choose_btn: "Choose this plan", plan_processing: "Connecting to Mercado Pago...",
+    plan_generic_error: "Couldn't start the payment. Payments may not be enabled yet — contact the administration.",
+    plan_logout_btn: "Log out", plan_checkout_return_title: "Thank you!", plan_checkout_return_msg: "We're confirming your payment with Mercado Pago. This can take a few minutes — meanwhile, you can already enter the course.",
+    plan_checkout_return_btn: "Go to dashboard",
+    pay_status_active: "🟢 Up to date", pay_status_pending: "🟡 Payment awaiting confirmation", pay_status_overdue: "🔴 Overdue", pay_status_none: "⚪ No plan chosen", pay_status_suspended: "⛔ Access suspended",
+    pending_suspended_title: "Access suspended", pending_suspended_msg: "Your access was suspended by the administration (usually due to a pending payment). Contact the administration to sort it out.",
+    admin_billing_title: "💳 Plans and prices", admin_billing_intro: "Amounts charged via Mercado Pago. Changes here don't affect students who already have an active plan, only new plan choices.",
+    admin_billing_monthly_label: "Monthly plan price (R$)", admin_billing_annual_label: "Annual plan price (R$)",
+    admin_pay_suspend_btn: "Suspend access", admin_pay_reactivate_btn: "Reactivate access", admin_pay_suspend_confirm: "Are you sure you want to suspend this student's access? They won't be able to enter the course until you reactivate it.",
     profile_name_label: "Full name", profile_name_ph: "Your name", profile_save: "Save name", profile_saved: "Name updated!",
     account_current_pass: "Current password", account_new_pass: "New password", account_confirm_pass: "Confirm new password",
     account_change_pass_btn: "Change password", account_pass_mismatch: "New passwords don't match.",
@@ -815,6 +880,9 @@ function render() {
     case "loading": return renderLoading();
     case "auth": return renderAuth();
     case "pendingApproval": return renderPendingApproval();
+    case "acceptTerms": return renderAcceptTerms();
+    case "choosePlan": return renderChoosePlan();
+    case "checkoutReturn": return renderCheckoutReturn();
     case "dashboard": return renderDashboard();
     case "levels": return renderLevels();
     case "syllabus": return renderSyllabus();
@@ -970,25 +1038,168 @@ function translateFirebaseError(err) {
 // rechazado) por un administrador. No carga nada de progreso/curso.
 function renderPendingApproval() {
   const rejected = state.user && state.user.status === "rejected";
+  // Suspendido = admin cortó el acceso manualmente (botón en Alumnos), casi siempre por
+  // atraso de pago — no confundir con "pending" (registro nuevo esperando primera aprobación).
+  const suspended = state.user && state.user.status === "suspended";
+  const emblem = suspended ? "⛔" : rejected ? "🚫" : "⏳";
+  const title = suspended ? t("pending_suspended_title") : rejected ? t("pending_rejected_title") : t("pending_title");
+  const msg = suspended ? t("pending_suspended_msg") : rejected ? t("pending_rejected_msg") : t("pending_msg");
   root.innerHTML = `
     <div class="auth-wrap">
       <div class="auth-grid">
         <div class="auth-hero">
           <div class="auth-hero-flag"><div></div><div></div><div></div></div>
-          <div class="auth-hero-emblem">${rejected ? "🚫" : "⏳"}</div>
+          <div class="auth-hero-emblem">${emblem}</div>
           <h1>${t("auth_hero_title")}</h1>
           <p>${t("auth_hero_sub")}</p>
         </div>
         <div class="auth-card">
           <div class="flag-strip"><div></div><div></div><div></div></div>
           <h1>¡Español Ya!</h1>
-          <div class="auth-sub">${rejected ? t("pending_rejected_title") : t("pending_title")}</div>
-          <p style="color:var(--gray-2);line-height:1.6;margin:14px 0 22px">${rejected ? t("pending_rejected_msg") : t("pending_msg")}</p>
+          <div class="auth-sub">${title}</div>
+          <p style="color:var(--gray-2);line-height:1.6;margin:14px 0 22px">${msg}</p>
           <button class="btn btn-primary btn-block" id="pending-logout">${t("pending_logout_btn")}</button>
         </div>
       </div>
     </div>`;
   document.getElementById("pending-logout").onclick = () => auth.signOut();
+}
+
+/* ---------------------------------------------------------------------- */
+/* 5b. TELAS: ACEPTACIÓN DE TÉRMINOS + ELECCIÓN DE PLAN (Mercado Pago)     */
+/* ---------------------------------------------------------------------- */
+function renderAcceptTerms() {
+  root.innerHTML = `
+    <div class="auth-wrap">
+      <div class="auth-grid">
+        <div class="auth-hero">
+          <div class="auth-hero-flag"><div></div><div></div><div></div></div>
+          <div class="auth-hero-emblem">📜</div>
+          <h1>${t("auth_hero_title")}</h1>
+          <p>${t("auth_hero_sub")}</p>
+        </div>
+        <div class="auth-card">
+          <div class="flag-strip"><div></div><div></div><div></div></div>
+          <h1>¡Español Ya!</h1>
+          <div class="auth-sub">${t("terms_title")}</div>
+          <p style="color:var(--gray-2);line-height:1.6;margin:10px 0 16px">${t("terms_intro")}</p>
+          <div class="terms-box" style="max-height:220px;overflow:auto;border:1px solid var(--border);border-radius:10px;padding:12px;font-size:.85rem;color:var(--gray-2);line-height:1.6;margin-bottom:16px">${t("terms_body")}</div>
+          <label style="display:flex;gap:8px;align-items:flex-start;font-size:.9rem;margin-bottom:6px;cursor:pointer">
+            <input type="checkbox" id="terms-checkbox" style="margin-top:3px">
+            <span>${t("terms_checkbox_label")}</span>
+          </label>
+          <div id="terms-error" class="error-msg" style="display:none">${t("terms_required_error")}</div>
+          <button class="btn btn-primary btn-block" id="terms-accept-btn" style="margin-top:10px">${t("terms_accept_btn")}</button>
+          <button class="btn btn-secondary btn-block" id="terms-logout-btn" style="margin-top:8px">${t("terms_logout_btn")}</button>
+        </div>
+      </div>
+    </div>`;
+  document.getElementById("terms-logout-btn").onclick = () => auth.signOut();
+  document.getElementById("terms-accept-btn").onclick = async () => {
+    const box = document.getElementById("terms-checkbox");
+    if (!box.checked) {
+      document.getElementById("terms-error").style.display = "block";
+      return;
+    }
+    try {
+      await db.collection("users").doc(state.user.uid).set({
+        termsAcceptedAt: firebase.firestore.FieldValue.serverTimestamp()
+      }, { merge: true });
+      state.screen = "choosePlan";
+      render();
+    } catch (e) {
+      console.warn(e);
+      alert("Error: " + e.message);
+    }
+  };
+}
+
+function renderChoosePlan() {
+  const monthly = state.config.priceMonthly ?? DEFAULT_PRICE_MONTHLY;
+  const annual = state.config.priceAnnual ?? DEFAULT_PRICE_ANNUAL;
+  root.innerHTML = `
+    <div class="auth-wrap">
+      <div class="auth-grid">
+        <div class="auth-hero">
+          <div class="auth-hero-flag"><div></div><div></div><div></div></div>
+          <div class="auth-hero-emblem">💳</div>
+          <h1>${t("auth_hero_title")}</h1>
+          <p>${t("auth_hero_sub")}</p>
+        </div>
+        <div class="auth-card">
+          <div class="flag-strip"><div></div><div></div><div></div></div>
+          <h1>¡Español Ya!</h1>
+          <div class="auth-sub">${t("plan_title")}</div>
+          <p style="color:var(--gray-2);line-height:1.6;margin:10px 0 18px">${t("plan_intro")}</p>
+          <div class="plan-cards" style="display:flex;flex-direction:column;gap:14px">
+            <div class="plan-card" style="border:1px solid var(--border);border-radius:12px;padding:16px">
+              <h3 style="margin:0 0 4px">${t("plan_monthly_name")}</h3>
+              <p style="color:var(--gray-2);font-size:.85rem;margin:0 0 10px">${t("plan_monthly_desc")}</p>
+              <div style="font-size:1.4rem;font-weight:800;margin-bottom:12px">${formatBRL(monthly)}<span style="font-size:.8rem;font-weight:500;color:var(--gray-2)">${t("plan_per_month")}</span></div>
+              <button class="btn btn-primary btn-block plan-choose-btn" data-plan="monthly">${t("plan_choose_btn")}</button>
+            </div>
+            <div class="plan-card" style="border:1px solid var(--border);border-radius:12px;padding:16px">
+              <h3 style="margin:0 0 4px">${t("plan_annual_name")}</h3>
+              <p style="color:var(--gray-2);font-size:.85rem;margin:0 0 10px">${t("plan_annual_desc")}</p>
+              <div style="font-size:1.4rem;font-weight:800;margin-bottom:12px">${formatBRL(annual)}<span style="font-size:.8rem;font-weight:500;color:var(--gray-2)">${t("plan_per_year")}</span></div>
+              <button class="btn btn-primary btn-block plan-choose-btn" data-plan="annual">${t("plan_choose_btn")}</button>
+            </div>
+          </div>
+          <div id="plan-feedback" style="margin-top:12px"></div>
+          <button class="btn btn-secondary btn-block" id="plan-logout-btn" style="margin-top:14px">${t("plan_logout_btn")}</button>
+        </div>
+      </div>
+    </div>`;
+  document.getElementById("plan-logout-btn").onclick = () => auth.signOut();
+  document.querySelectorAll(".plan-choose-btn").forEach(btn => {
+    btn.onclick = () => startCheckout(btn.dataset.plan);
+  });
+}
+
+// Llama a la Cloud Function "createMpCheckout" (ver /functions/index.js) que crea la
+// preferencia (anual, pago único) o la suscripción recurrente (mensual) en el Mercado Pago
+// y guarda subscription={plan,status:'pending',...} en el user — luego redirige al checkout.
+// Si las Functions todavía no están desplegadas (functions === null o falla la llamada),
+// muestra un error amigable en vez de romper la pantalla.
+async function startCheckout(plan) {
+  const feedback = document.getElementById("plan-feedback");
+  document.querySelectorAll(".plan-choose-btn").forEach(b => b.disabled = true);
+  feedback.innerHTML = `<p style="color:var(--gray-2)">${t("plan_processing")}</p>`;
+  try {
+    if (!functions) throw new Error("Cloud Functions no disponibles en este cliente.");
+    const call = functions.httpsCallable("createMpCheckout");
+    const returnUrl = window.location.origin + window.location.pathname;
+    const result = await call({ plan, returnUrl });
+    const initPoint = result && result.data && result.data.initPoint;
+    if (!initPoint) throw new Error("La función no devolvió un link de pago.");
+    window.location.href = initPoint;
+  } catch (e) {
+    console.warn(e);
+    feedback.innerHTML = `<div class="error-msg">${t("plan_generic_error")}</div>`;
+    document.querySelectorAll(".plan-choose-btn").forEach(b => b.disabled = false);
+  }
+}
+
+function renderCheckoutReturn() {
+  root.innerHTML = `
+    <div class="auth-wrap">
+      <div class="auth-grid">
+        <div class="auth-hero">
+          <div class="auth-hero-flag"><div></div><div></div><div></div></div>
+          <div class="auth-hero-emblem">🎉</div>
+          <h1>${t("auth_hero_title")}</h1>
+          <p>${t("auth_hero_sub")}</p>
+        </div>
+        <div class="auth-card">
+          <div class="flag-strip"><div></div><div></div><div></div></div>
+          <h1>¡Español Ya!</h1>
+          <div class="auth-sub">${t("plan_checkout_return_title")}</div>
+          <p style="color:var(--gray-2);line-height:1.6;margin:14px 0 22px">${t("plan_checkout_return_msg")}</p>
+          <button class="btn btn-primary btn-block" id="checkout-return-btn">${t("plan_checkout_return_btn")}</button>
+        </div>
+      </div>
+    </div>`;
+  document.getElementById("checkout-return-btn").onclick = () => { state.screen = "dashboard"; render(); };
 }
 
 async function initProgressDoc(uid) {
@@ -1035,11 +1246,32 @@ auth.onAuthStateChanged(async (fbUser) => {
     localStorage.setItem("ey_ui_lang", state.prefs.lang);
 
     if (state.user.role !== "admin" && state.user.status !== "approved") {
-      // Cuenta todavía no aprobada (o rechazada) por un administrador: no cargamos
-      // progreso/config, solo mostramos la pantalla de espera/rechazo.
+      // Cuenta todavía no aprobada (o rechazada), O suspendida manualmente por el admin
+      // (por ejemplo, por falta de pago — ver renderAdminStudents/suspendUserAccess): no
+      // cargamos progreso/config, solo mostramos la pantalla de espera/rechazo/suspensión.
       state.screen = "pendingApproval";
       render();
       return;
+    }
+
+    // Aceptación de términos + elección de plan de pago (Mercado Pago) — solo para alumnos,
+    // se verifica ANTES de cargar el progreso/curso porque el acceso completo depende de
+    // haber aceptado los términos y elegido un plan. El admin nunca pasa por acá.
+    // IMPORTANTE (pedido explícito): un pago atrasado NUNCA bloquea el acceso solo —
+    // eso lo decide el administrador manualmente (botón "Suspender acceso" en Alumnos).
+    await loadConfig();
+    if (state.user.role !== "admin") {
+      if (!userData.termsAcceptedAt) {
+        state.screen = "acceptTerms";
+        render();
+        return;
+      }
+      if (!userData.subscription || !userData.subscription.plan) {
+        state.screen = "choosePlan";
+        render();
+        return;
+      }
+      state.subscription = userData.subscription;
     }
 
     let progDoc = await db.collection("progress").doc(fbUser.uid).get();
@@ -1055,10 +1287,19 @@ auth.onAuthStateChanged(async (fbUser) => {
       db.collection("progress").doc(fbUser.uid).set({ schedule: fallbackSchedule }, { merge: true }).catch(e => console.warn(e));
     }
 
-    await loadConfig();
     await loadSongs();
     await loadVoices();
     logAccess(); // fire-and-forget: registra este acceso en el historial (Configuración/Mi Cuenta)
+
+    // Si venimos de vuelta del checkout del Mercado Pago (back_urls configuradas en la
+    // Cloud Function apuntan acá con ?mp_return=1), mostramos una pantalla de agradecimiento
+    // una única vez y limpiamos la URL para que un refresh no la muestre de nuevo.
+    if (state.user.role !== "admin" && new URLSearchParams(window.location.search).get("mp_return") === "1") {
+      window.history.replaceState({}, "", window.location.pathname);
+      state.screen = "checkoutReturn";
+      render();
+      return;
+    }
 
     state.screen = "dashboard";
     render();
@@ -1085,7 +1326,19 @@ async function loadConfig() {
       state.config.gabaritoMode = DEFAULT_GABARITO_MODE;
       await db.collection("config").doc("settings").set({ gabaritoMode: DEFAULT_GABARITO_MODE }, { merge: true });
     }
+    // Precios de los planes (Mercado Pago) — configurables por el admin en
+    // Configuración → Planes y precios. Si nunca se guardaron, usa los valores por defecto.
+    state.config.priceMonthly = (typeof data.priceMonthly === "number") ? data.priceMonthly : DEFAULT_PRICE_MONTHLY;
+    state.config.priceAnnual = (typeof data.priceAnnual === "number") ? data.priceAnnual : DEFAULT_PRICE_ANNUAL;
   } catch (e) { console.warn("No se pudo cargar config, usando valores por defecto.", e); }
+}
+
+// Formatea un valor numérico como Real brasileño (R$) — la moneda es fija en BRL porque
+// el cobro se hace vía Mercado Pago Brasil, independiente del idioma de la interfaz elegido.
+function formatBRL(value) {
+  try {
+    return (value || 0).toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+  } catch (e) { return `R$ ${(value || 0).toFixed(2).replace(".", ",")}`; }
 }
 
 // true  = el gabarito (respuesta correcta) se muestra apenas se responde cada pregunta.
@@ -2642,7 +2895,13 @@ async function updateProgressSummary() {
       // guardados aquí para que el Admin pueda calcular, para CADA alumno, si está adelantado,
       // atrasado o en plazo respecto a lo que él mismo planeó — sin necesitar leer su progreso completo.
       schedule: getSchedule(),
-      unitsCompleted: actualUnitsCompleted()
+      unitsCompleted: actualUnitsCompleted(),
+      // Copia del estado de pago (plan/status), para que Admin → Alumnos pueda mostrar el
+      // badge de pago sin tener que leer la colección "users" alumno por alumno. La fuente
+      // de verdad sigue siendo users/{uid}.subscription (actualizada por el webhook del
+      // Mercado Pago vía Cloud Function); acá guardamos una copia liviana.
+      subscription: state.subscription || null,
+      status: state.user.status || "approved"
     }, { merge: true });
   } catch (e) { console.warn("No se pudo actualizar el resumen para el admin.", e); }
 }
@@ -3514,6 +3773,37 @@ async function rejectUser(uid) {
   } catch (e) { console.warn(e); alert("No se pudo rechazar el registro. Intenta de nuevo."); }
 }
 
+// Deriva el estado de pago a mostrar en Admin → Alumnos a partir de la copia guardada
+// en progress_summary (status del user + subscription). "suspended" pisa a todo lo demás
+// porque es una decisión manual del admin, independiente de lo que diga Mercado Pago.
+function paymentStatusOf(s) {
+  if (s.status === "suspended") return "suspended";
+  const sub = s.subscription;
+  if (!sub || !sub.plan) return "none";
+  return sub.status || "pending";
+}
+
+// Corta manualmente el acceso de un alumno (típicamente por atraso de pago). Pedido
+// explícito de Anderson: el sistema NUNCA hace esto solo, siempre es una decisión del admin.
+async function suspendUserAccess(uid) {
+  if (!confirm(t("admin_pay_suspend_confirm"))) return;
+  try {
+    await db.collection("users").doc(uid).set({ status: "suspended", suspendedAt: firebase.firestore.FieldValue.serverTimestamp() }, { merge: true });
+    await db.collection("progress_summary").doc(uid).set({ status: "suspended" }, { merge: true });
+    await loadAdminStudents();
+    render();
+  } catch (e) { console.warn(e); alert("Error: " + e.message); }
+}
+
+async function reactivateUserAccess(uid) {
+  try {
+    await db.collection("users").doc(uid).set({ status: "approved", reactivatedAt: firebase.firestore.FieldValue.serverTimestamp() }, { merge: true });
+    await db.collection("progress_summary").doc(uid).set({ status: "approved" }, { merge: true });
+    await loadAdminStudents();
+    render();
+  } catch (e) { console.warn(e); alert("Error: " + e.message); }
+}
+
 // Carga los intentos de ejercicios de TODOS los alumnos (colección "attempts"),
 // limitado a los últimos 500 para no sobrecargar el panel de analíticas del admin.
 async function loadAdminAttempts() {
@@ -3639,14 +3929,23 @@ function renderAdminStudents() {
         ${state.adminStudents.length > 0 ? `<p style="color:var(--gray-2);font-size:.85rem;margin-top:-6px">
           🟠 ${behindCount} atrasado(s) respecto a su cronograma · 🔵 ${aheadCount} adelantado(s)
         </p>` : ""}
-        ${state.adminStudents.length === 0 ? `<p style="color:var(--gray-2)">${t("admin_no_students")}</p>` : withStatus.map(({ s, sc }) => `
+        ${state.adminStudents.length === 0 ? `<p style="color:var(--gray-2)">${t("admin_no_students")}</p>` : withStatus.map(({ s, sc }) => {
+          const payStatus = paymentStatusOf(s);
+          const suspended = payStatus === "suspended";
+          return `
           <div class="student-row">
             <div><strong>${escapeHtml(s.name || s.email)}</strong><br><span style="color:var(--gray-2)">${escapeHtml(s.email || "")}</span></div>
             <div>⭐ ${s.xp || 0} XP</div>
             <div><span class="sched-badge ${sc.status}">${t(sc.status === "ahead" ? "panel_schedule_ahead" : sc.status === "behind" ? "panel_schedule_behind" : "panel_schedule_ontrack")}</span>
               <span style="color:var(--gray-2);font-size:.72rem;display:block;margin-top:2px">${sc.actualPct}% real vs ${sc.expectedPct}% esperado</span></div>
+            <div>
+              <span class="pay-badge ${payStatus}">${t("pay_status_" + payStatus)}</span>
+              ${s.subscription && s.subscription.plan ? `<span style="color:var(--gray-2);font-size:.72rem;display:block;margin-top:2px">${s.subscription.plan === "annual" ? t("plan_annual_name") : t("plan_monthly_name")}</span>` : ""}
+              <button class="btn btn-secondary btn-sm pay-toggle-btn" data-uid="${s.id}" data-suspend="${suspended ? "0" : "1"}" style="margin-top:4px">${suspended ? t("admin_pay_reactivate_btn") : t("admin_pay_suspend_btn")}</button>
+            </div>
             <div>${MAIN_SEQUENCE.map(id => (s.levels && s.levels[id] && s.levels[id].examPassed) ? `<span class="badge admin" style="background:var(--success)">${id} ✓</span>` : "").join(" ")}</div>
-          </div>`).join("")}
+          </div>`;
+        }).join("")}
       </div>
       <div class="bottom-space"></div>
     `, "adminStudents");
@@ -3660,6 +3959,9 @@ function renderAdminStudents() {
     else if (target === "adminApprovals") loadAdminPending().then(render);
     else if (target === "adminAccessLog") loadAdminAccessLog().then(render);
     else loadAdminStudents().then(render);
+  });
+  document.querySelectorAll(".pay-toggle-btn").forEach(btn => {
+    btn.onclick = () => btn.dataset.suspend === "1" ? suspendUserAccess(btn.dataset.uid) : reactivateUserAccess(btn.dataset.uid);
   });
 }
 
@@ -3916,6 +4218,14 @@ function renderAdminConfig() {
         <div class="config-row"><span>${t("schedule_duration_label")}</span><span>${schedule.durationMonths || DEFAULT_SCHEDULE_MONTHS} ${t("schedule_months_unit")}</span></div>
       </div>
       <div class="card">
+        <h3>${t("admin_billing_title")}</h3>
+        <p style="color:var(--gray-2);font-size:.85rem;margin-top:0">${t("admin_billing_intro")}</p>
+        <div class="config-row"><span>${t("admin_billing_monthly_label")}</span><input type="number" min="0" step="0.01" id="price-monthly" value="${(state.config.priceMonthly ?? DEFAULT_PRICE_MONTHLY).toFixed(2)}"></div>
+        <div class="config-row"><span>${t("admin_billing_annual_label")}</span><input type="number" min="0" step="0.01" id="price-annual" value="${(state.config.priceAnnual ?? DEFAULT_PRICE_ANNUAL).toFixed(2)}"></div>
+        <div style="text-align:right;margin-top:14px"><button class="btn btn-primary btn-sm" id="save-billing">${t("admin_save")}</button></div>
+        <div id="billing-feedback"></div>
+      </div>
+      <div class="card">
         <h3>ℹ️ ${t("system_version_title")}</h3>
         <div class="config-row"><span>${t("system_version_label")}</span><span><strong>v${APP_VERSION}</strong></span></div>
       </div>
@@ -3943,6 +4253,18 @@ function renderAdminConfig() {
       document.getElementById("config-feedback").innerHTML = `<div class="success-msg">${t("admin_saved")}</div>`;
     } catch (e) {
       document.getElementById("config-feedback").innerHTML = `<div class="error-msg">Error: ${e.message}</div>`;
+    }
+  };
+  document.getElementById("save-billing").onclick = async () => {
+    const priceMonthly = parseFloat(document.getElementById("price-monthly").value) || DEFAULT_PRICE_MONTHLY;
+    const priceAnnual = parseFloat(document.getElementById("price-annual").value) || DEFAULT_PRICE_ANNUAL;
+    try {
+      await db.collection("config").doc("settings").set({ priceMonthly, priceAnnual }, { merge: true });
+      state.config.priceMonthly = priceMonthly;
+      state.config.priceAnnual = priceAnnual;
+      document.getElementById("billing-feedback").innerHTML = `<div class="success-msg">${t("admin_saved")}</div>`;
+    } catch (e) {
+      document.getElementById("billing-feedback").innerHTML = `<div class="error-msg">Error: ${e.message}</div>`;
     }
   };
 }

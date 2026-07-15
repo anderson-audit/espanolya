@@ -1,0 +1,70 @@
+// ==========================================================================
+// ¡Español Ya! — Reglas do Firestore (referencia)
+// ==========================================================================
+// ATENÇÃO, Anderson: este projeto sempre publicou as regras manualmente pelo console do
+// Firebase (nunca existiu este arquivo no repositório até agora). Eu NÃO tenho acesso às
+// suas regras atuais em produção — este arquivo é minha melhor reconstrução com base no que
+// sei das coleções usadas pelo app (users, progress, progress_summary, config, songs,
+// access_log, attempts), MAIS os trechos novos de pagamento (subscription/termsAcceptedAt).
+//
+// NÃO cole isso por cima das regras atuais sem comparar linha por linha com o que já está
+// publicado no console — pode haver ajustes finos de sessões anteriores que não estão
+// documentados aqui. O mais seguro é abrir as regras atuais no console e só ADICIONAR/AJUSTAR
+// os trechos marcados "NOVO" abaixo.
+// ==========================================================================
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function isSignedIn() { return request.auth != null; }
+    function isAdmin() {
+      return isSignedIn() &&
+        get(/databases/$(database)/documents/users/$(request.auth.uid)).data.role == "admin";
+    }
+
+    match /users/{uid} {
+      allow read: if isSignedIn() && (request.auth.uid == uid || isAdmin());
+      // NOVO — el alumno puede crear/actualizar su propio doc, PERO nunca puede escribir
+      // los campos "role", "status" o "subscription" (eso solo lo puede tocar el admin desde
+      // el panel, o las Cloud Functions con Admin SDK, que ignoran estas reglas). Así evitamos
+      // que alguien se auto-apruebe, se auto-declare admin, o se marque a sí mismo "pagado".
+      allow create: if isSignedIn() && request.auth.uid == uid;
+      allow update: if isSignedIn() && request.auth.uid == uid &&
+        !request.resource.data.diff(resource.data).affectedKeys().hasAny(["role", "status", "subscription"]);
+      allow update, delete: if isAdmin();
+    }
+
+    match /progress/{uid} {
+      allow read, write: if isSignedIn() && (request.auth.uid == uid || isAdmin());
+    }
+
+    match /progress_summary/{uid} {
+      allow read: if isSignedIn();
+      // NOVO — el alumno puede actualizar su propio resumen (xp/schedule/etc.), pero no puede
+      // escribir "status" ni "subscription" ahí tampoco (mismo motivo que en /users).
+      allow write: if isSignedIn() && request.auth.uid == uid &&
+        !request.resource.data.diff(resource.data).affectedKeys().hasAny(["status", "subscription"]);
+      allow write: if isAdmin();
+    }
+
+    match /config/{doc} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+
+    match /songs/{id} {
+      allow read: if isSignedIn();
+      allow write: if isAdmin();
+    }
+
+    match /access_log/{id} {
+      allow create: if isSignedIn() && request.resource.data.uid == request.auth.uid;
+      allow read: if isSignedIn() && (resource.data.uid == request.auth.uid || isAdmin());
+    }
+
+    match /attempts/{id} {
+      allow create: if isSignedIn() && request.resource.data.uid == request.auth.uid;
+      allow read: if isSignedIn() && (resource.data.uid == request.auth.uid || isAdmin());
+    }
+  }
+}

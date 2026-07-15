@@ -489,6 +489,14 @@ table.grammar-table th { background: var(--gray-bg); }
 .sched-badge.ahead   { background: #e3f2fd; color: #1565c0; }
 .sched-badge.behind  { background: #fff3e0; color: #e65100; }
 
+/* Badge de estado de pago (Admin -> Alumnos) — ver paymentStatusOf() en app.js */
+.pay-badge { display: inline-block; padding: 3px 11px; border-radius: 999px; font-weight: 700; font-size: .72rem; white-space: nowrap; }
+.pay-badge.active     { background: #e8f5e9; color: var(--success); }
+.pay-badge.pending    { background: #fffde7; color: #a67c00; }
+.pay-badge.overdue    { background: #ffebee; color: #c62828; }
+.pay-badge.suspended  { background: #eceff1; color: #455a64; }
+.pay-badge.none       { background: #f5f5f5; color: var(--gray-2); }
+
 .final-diploma-card {
   display: flex; align-items: center; gap: 18px; margin-bottom: 24px; border-radius: var(--radius);
   padding: 20px 24px; box-shadow: var(--shadow-lg);

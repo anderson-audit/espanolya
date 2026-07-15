@@ -1,0 +1,11 @@
+{
+  "name": "espanolya-functions",
+  "description": "Cloud Functions do ¡Español Ya! — integração de pagamentos com Mercado Pago (checkout + webhook).",
+  "engines": { "node": "20" },
+  "main": "index.js",
+  "dependencies": {
+    "firebase-admin": "^12.1.0",
+    "firebase-functions": "^5.0.0"
+  },
+  "private": true
+}

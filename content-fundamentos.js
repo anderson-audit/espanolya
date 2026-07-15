@@ -40,7 +40,8 @@ const LEVEL_FUNDAMENTOS = {
       title: "Bem-vindo(a)! Por que aprender espanhol?",
       subtitle: "Motivação e metodologia",
       order: 0,
-      text: "¡Bienvenido(a) a EspañolYa! Você está prestes a começar uma jornada rumo à fluência em espanhol — o idioma da Espanha, com sotaque e vocabulário castiço, para você usar na vida pessoal e profissional.\n\nAlguns motivos para seguir em frente:\n1. O espanhol é o 2º idioma com mais falantes nativos no mundo.\n2. Ganhou muita importância no mercado de trabalho e nas auditorias e negócios internacionais.\n3. É o idioma do livro mais vendido do mundo depois da Bíblia (Dom Quixote).\n4. Pode abrir portas para estudar, trabalhar ou morar no exterior.\n5. Facilita viajar por mais de 20 países.\n\nComo estudar bem:\n• Estude no seu próprio ritmo, sem pular etapas.\n• Gramática e vocabulário andam juntos — evite o 'portunhol'.\n• Repita frases em voz alta, ouça o áudio e tente falar — este app escuta você!\n• Revise sempre que precisar: o conteúdo fica disponível para sempre.\n• Avalie seu progresso fazendo as provas de cada módulo.",
+      text: "¡Bienvenido(a) a ¡Español Ya!! Estás a punto de comenzar un viaje hacia la fluidez en español — el idioma de España, con su acento y vocabulario auténtico, para que lo uses en tu vida personal y profesional.\n\nAlgunos motivos para seguir adelante:\n1. El español es el 2º idioma con más hablantes nativos en el mundo.\n2. Ganó mucha importancia en el mercado laboral y en las auditorías y negocios internacionales.\n3. Es el idioma del libro más vendido del mundo después de la Biblia (Don Quijote).\n4. Puede abrirte puertas para estudiar, trabajar o vivir en el extranjero.\n5. Facilita viajar por más de 20 países.\n\nCómo estudiar bien:\n• Estudia a tu propio ritmo, sin saltarte etapas.\n• La gramática y el vocabulario van de la mano — evita el 'portuñol'.\n• Repite frases en voz alta, escucha el audio e intenta hablar — ¡esta aplicación te escucha!\n• Repasa siempre que lo necesites: el contenido queda disponible para siempre.\n• Evalúa tu progreso haciendo las pruebas de cada módulo.",
+      textPt: "¡Bienvenido(a) a EspañolYa! Você está prestes a começar uma jornada rumo à fluência em espanhol — o idioma da Espanha, com sotaque e vocabulário castiço, para você usar na vida pessoal e profissional.\n\nAlguns motivos para seguir em frente:\n1. O espanhol é o 2º idioma com mais falantes nativos no mundo.\n2. Ganhou muita importância no mercado de trabalho e nas auditorias e negócios internacionais.\n3. É o idioma do livro mais vendido do mundo depois da Bíblia (Dom Quixote).\n4. Pode abrir portas para estudar, trabalhar ou morar no exterior.\n5. Facilita viajar por mais de 20 países.\n\nComo estudar bem:\n• Estude no seu próprio ritmo, sem pular etapas.\n• Gramática e vocabulário andam juntos — evite o 'portunhol'.\n• Repita frases em voz alta, ouça o áudio e tente falar — este app escuta você!\n• Revise sempre que precisar: o conteúdo fica disponível para sempre.\n• Avalie seu progresso fazendo as provas de cada módulo.",
       vocabulary: [],
       grammar: [],
       notes: [
@@ -56,7 +57,8 @@ const LEVEL_FUNDAMENTOS = {
       title: "Origem do espanhol e diferenças entre países",
       subtitle: "Castellano x Español, voseo",
       order: 1,
-      text: "El español es una lengua románica (deriva do latim), originada na Península Ibérica, na região de Castela — por isso também é chamado de 'castellano'. Os dois nomes, 'español' e 'castellano', estão corretos e são usados, principalmente na Espanha e em parte da América Latina, muitas vezes para diferenciá-lo de outros idiomas cooficiais da Espanha (catalão, galego, basco).\n\nAssim como o português tem variações entre Brasil e Portugal, o espanhol varia entre países. Exemplo: 'morango' é 'fresa' na Espanha e na maioria dos países, mas 'frutilla' na região do Rio da Prata (Argentina, Uruguai, Paraguai).\n\nO VOSEO: em vários países (Argentina, Uruguai, partes da América Central), usa-se 'vos' no lugar de 'tú' na forma informal.",
+      text: "El español es una lengua románica (deriva del latín), originada en la Península Ibérica, en la región de Castilla — por eso también se le llama 'castellano'. Los dos nombres, 'español' y 'castellano', son correctos y se usan, principalmente en España y en parte de América Latina, muchas veces para diferenciarlo de otros idiomas cooficiales de España (catalán, gallego, vasco).\n\nAsí como el portugués tiene variaciones entre Brasil y Portugal, el español varía entre países. Ejemplo: 'morango' es 'fresa' en España y en la mayoría de los países, pero 'frutilla' en la región del Río de la Plata (Argentina, Uruguay, Paraguay).\n\nEL VOSEO: en varios países (Argentina, Uruguay, partes de América Central), se usa 'vos' en lugar de 'tú' en la forma informal.",
+      textPt: "O espanhol é uma língua românica (deriva do latim), originária da Península Ibérica, na região de Castela — por isso também é chamado de 'castellano'. Os dois nomes, 'español' e 'castellano', estão corretos e são usados, principalmente na Espanha e em parte da América Latina, muitas vezes para diferenciá-lo de outros idiomas cooficiais da Espanha (catalão, galego, basco).\n\nAssim como o português tem variações entre Brasil e Portugal, o espanhol varia entre países. Exemplo: 'morango' é 'fresa' na Espanha e na maioria dos países, mas 'frutilla' na região do Rio da Prata (Argentina, Uruguai, Paraguai).\n\nO VOSEO: em vários países (Argentina, Uruguai, partes da América Central), usa-se 'vos' no lugar de 'tú' na forma informal.",
       vocabulary: [
         {category:"Pronomes de tratamento", items:[
           {es:"tú", pt:"você (informal, Espanha e maior parte da América)"},
@@ -91,7 +93,8 @@ const LEVEL_FUNDAMENTOS = {
       title: "El Alfabeto y la Pronunciación",
       subtitle: "27 letras, 5 dígrafos, sons especiais",
       order: 2,
-      text: "El español es descrito como uma língua fonética: tem regra fixa de pronúncia (relação letra-som bastante consistente, diferente do português/inglês). O alfabeto espanhol tem 27 letras (RAE, 2010): A B C D E F G H I J K L M N Ñ O P Q R S T U V W X Y Z. Todas as letras são substantivos femininos ('la a', 'la be'). O espanhol NÃO tem 'Ç' nem 'SS'. Possui 5 dígrafos: CH, LL, RR, GU, QU.",
+      text: "El español es descrito como una lengua fonética: tiene reglas fijas de pronunciación (relación letra-sonido bastante consistente, diferente del portugués/inglés). El alfabeto español tiene 27 letras (RAE, 2010): A B C D E F G H I J K L M N Ñ O P Q R S T U V W X Y Z. Todas las letras son sustantivos femeninos ('la a', 'la be'). El español NO tiene 'Ç' ni 'SS'. Tiene 5 dígrafos: CH, LL, RR, GU, QU.",
+      textPt: "O espanhol é descrito como uma língua fonética: tem regras fixas de pronúncia (relação letra-som bastante consistente, diferente do português/inglês). O alfabeto espanhol tem 27 letras (RAE, 2010): A B C D E F G H I J K L M N Ñ O P Q R S T U V W X Y Z. Todas as letras são substantivos femininos ('la a', 'la be'). O espanhol NÃO tem 'Ç' nem 'SS'. Possui 5 dígrafos: CH, LL, RR, GU, QU.",
       vocabulary: [
         {category:"Dígrafos e som", items:[
           {es:"CH — como em 'tchau'", pt:"chico, chancho, cuchara, cacho"},
@@ -132,7 +135,8 @@ const LEVEL_FUNDAMENTOS = {
       title: "Sílaba tônica e acentuação",
       subtitle: "Agudas, llanas, esdrújulas",
       order: 3,
-      text: "Sinais gráficos: tilde (á é í ó ú), diéresis (ü, em 'güe/güi'), virgulilla (~, forma o ñ). As palavras se classificam pela posição da sílaba tônica.",
+      text: "Signos gráficos: tilde (á é í ó ú), diéresis (ü, en 'güe/güi'), virgulilla (~, forma la ñ). Las palabras se clasifican según la posición de la sílaba tónica.",
+      textPt: "Sinais gráficos: acento (á é í ó ú), trema (ü, em 'güe/güi'), til (~, forma o ñ). As palavras se classificam pela posição da sílaba tônica.",
       vocabulary: [],
       grammar: [
         {title:"Regras de acentuação", headers:["Classe","Sílaba tônica","Regra","Exemplos"], rows:[
@@ -161,7 +165,8 @@ const LEVEL_FUNDAMENTOS = {
       title: "Separação silábica",
       subtitle: "Dígrafos, prefixos, ditongos e hiatos",
       order: 4,
-      text: "A separação silábica segue lógica semelhante à do português: a-pren-der, u-sur-par, me-sa, é-po-ca, la-drón.",
+      text: "La separación silábica sigue una lógica parecida a la del portugués: a-pren-der, u-sur-par, me-sa, é-po-ca, la-drón.",
+      textPt: "A separação silábica segue lógica semelhante à do português: a-pren-der, u-sur-par, me-sa, é-po-ca, la-drón.",
       vocabulary: [],
       grammar: [
         {title:"Regras especiais", headers:["Regra","Exemplos"], rows:[

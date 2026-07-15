@@ -400,6 +400,7 @@ const LEVEL_BASICO = {
     {
       id: "b8", order: 8, title: "Casa", subtitle: "Haber x Tener x Contar con, números 0-100",
       text: "Mi casa tiene dos pisos y es un lugar muy acogedor. Tengo una habitación y un baño solo para mí, hay también una cocina, otro baño, 2 habitaciones más, un garaje, un comedor, y cuenta también con un bello jardín y una pequeña piscina. Mi dirección es calle Bolívar, 47.",
+      textPt: "Minha casa tem dois andares e é um lugar muito aconchegante. Tenho um quarto e um banheiro só para mim, há também uma cozinha, outro banheiro, mais 2 quartos, uma garagem, uma sala de jantar, e conta também com um belo jardim e uma pequena piscina. Meu endereço é rua Bolívar, 47.",
       vocabulary: [
         {category:"Partes de la casa", items:[
           {es:"Casa/vivienda/piso/departamento", pt:"Casa/moradia/andar/apartamento"},{es:"Habitación/Dormitorio", pt:"Quarto"},{es:"Cuarto de baño", pt:"Banheiro"},
@@ -480,6 +481,7 @@ const LEVEL_BASICO = {
     {
       id: "b10", order: 10, title: "Cuerpo", subtitle: "Saúde, imperativo afirmativo/negativo",
       text: "Muchas veces, puedes sentirte agotado o tienes dolores raros, y es muy importante que escuches tu cuerpo. Si te duele el estómago o la cabeza, si te sientes muy cansado, con mucho sueño o con tensión muscular, todo eso tiene un significado. ¡Escucha lo que te dice tu cuerpo! Empieza a relajarte más, medita, duerme más, come alimentos más saludables.",
+      textPt: "Muitas vezes, você pode se sentir esgotado ou ter dores estranhas, e é muito importante que você escute seu corpo. Se você sente dor no estômago ou na cabeça, se sente muito cansado, com muito sono ou com tensão muscular, tudo isso tem um significado. Escute o que seu corpo está te dizendo! Comece a relaxar mais, medite, durma mais, coma alimentos mais saudáveis.",
       vocabulary: [
         {category:"Salud — frases útiles", items:[
           {es:"¡Me siento mal!", pt:"Estou me sentindo mal!"},{es:"Llamen a un doctor.", pt:"Chamem um médico."},{es:"Me duele…", pt:"Dói-me... / Estou com dor em..."},
@@ -624,6 +626,7 @@ const LEVEL_BASICO = {
     {
       id: "b14", order: 14, title: "Clima", subtitle: "Expressões de tempo, temperatura, números 100-1000",
       text: "El clima brasileño es muy distinto en cada región. En enero se puede sentir el clima tropical, hace calor y hay humedad. En el sur, en la primavera hay muchas flores, en el verano hace muchísimo calor, en el otoño se pueden ver las hojas cayendo y en el invierno hace mucho frío y es posible ver la nieve.",
+      textPt: "O clima brasileiro é muito diferente em cada região. Em janeiro dá para sentir o clima tropical, faz calor e há umidade. No sul, na primavera há muitas flores, no verão faz muitíssimo calor, no outono dá para ver as folhas caindo e no inverno faz muito frio e é possível ver neve.",
       vocabulary: [
         {category:"El clima (expresiones)", items:[
           {es:"Hace buen tiempo", pt:"Está fazendo bom tempo"},{es:"Hace mal tiempo", pt:"Está fazendo mau tempo"},{es:"Nieva", pt:"Neva"},
