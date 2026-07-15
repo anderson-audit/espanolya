@@ -55,7 +55,7 @@ const functions = (typeof firebase.functions === "function") ? firebase.function
 // Versión del sistema, visible en Mi Cuenta / Configuración y en el pie de la barra lateral.
 // Se debe actualizar manualmente cada vez que se sube una nueva versión al repositorio
 // (formato AAAA.MM.DD.N — N = número de subida ese día, empieza en 1).
-const APP_VERSION = "2026.07.15.3";
+const APP_VERSION = "2026.07.15.4";
 
 // Valores por defecto de la mensualidad/anualidad — el admin puede cambiarlos en
 // Configuración → Planes y precios (guardados en config/settings, campos priceMonthly/priceAnnual).
@@ -1296,13 +1296,18 @@ function renderCompleteProfile() {
       });
       // Espejo liviano en progress_summary para que Admin → Alumnos ya muestre la foto/
       // nombre desde el primer momento, aunque el alumno todavía no haya completado
-      // ninguna lección (progress_summary normalmente solo se llena recién ahí).
+      // ninguna lección (progress_summary normalmente solo se llena recién ahí). El admin
+      // no tiene fila en "Alumnos", pero el merge acá no hace ningún daño si igual se ejecuta.
       db.collection("progress_summary").doc(state.user.uid).set({
         name: state.user.name, email: state.user.email, photoData: state.user.photoData || null
       }, { merge: true }).catch(err => console.warn(err));
       state.pendingPhotoData = null;
-      state.screen = "acceptTerms";
-      render();
+      // En vez de fijar manualmente el próximo screen (que sería distinto para alumno —
+      // "acceptTerms" — y para admin — "dashboard" directo, sin progreso todavía cargado
+      // en memoria), recargamos la página: auth.onAuthStateChanged vuelve a correr desde
+      // cero, ve profileCompletedAt ya guardado, y decide el siguiente paso correcto para
+      // CUALQUIER rol (alumno → términos/plan si faltan; admin → directo al dashboard).
+      window.location.reload();
     } catch (err) {
       console.warn(err);
       errBox.textContent = "Error: " + err.message;
@@ -1511,15 +1516,17 @@ auth.onAuthStateChanged(async (fbUser) => {
     // IMPORTANTE (pedido explícito): un pago atrasado NUNCA bloquea el acceso solo —
     // eso lo decide el administrador manualmente (botón "Suspender acceso" en Alumnos).
     await loadConfig();
+    // Cadastro complementar (teléfono, e-mail adicional, dirección, observaciones, foto):
+    // se pide una única vez, ANTES de términos/plan, porque es información de identidad
+    // básica — pedido explícito de Anderson. A diferencia de términos/plan (que son solo
+    // para alumnos, por el pago), este paso NO tiene excepción de rol: el propio admin
+    // (Anderson) también tiene que completarlo, no solo los alumnos.
+    if (!userData.profileCompletedAt) {
+      state.screen = "completeProfile";
+      render();
+      return;
+    }
     if (state.user.role !== "admin") {
-      // Cadastro complementar (teléfono, e-mail adicional, dirección, observaciones, foto):
-      // se pide una única vez, ANTES de términos/plan, porque es información de identidad
-      // básica — pedido explícito de Anderson, separado del aceite de términos de uso/pago.
-      if (!userData.profileCompletedAt) {
-        state.screen = "completeProfile";
-        render();
-        return;
-      }
       if (!userData.termsAcceptedAt) {
         state.screen = "acceptTerms";
         render();
