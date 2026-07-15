@@ -1,7 +1,7 @@
 // ==========================================================================
 // ¡Español Ya! — Cloud Functions: integración de pagos con Mercado Pago
 // ==========================================================================
-// Dos funciones:
+// Funciones:
 //   1. createMpCheckout (callable) — el alumno la llama desde la pantalla "Elegí tu plan"
 //      (app.js -> startCheckout()). Crea la cobranza en Mercado Pago (pago único anual,
 //      o suscripción recurrente mensual) y devuelve el link de checkout (initPoint).
@@ -9,6 +9,12 @@
 //      suscripción cambia de estado. Confirma el estado real consultando la API de MP
 //      (nunca confía ciegamente en el contenido de la notificación) y actualiza
 //      Firestore: users/{uid}.subscription + progress_summary/{uid}.subscription.
+//   3. adminUpdateStudentEmail (callable) — el admin la llama desde Admin → Alumnos para
+//      cambiar el e-mail de LOGIN de un alumno (después de confirmar su identidad por
+//      teléfono/e-mail complementar, fuera del sistema — ej. WhatsApp). Existe porque el
+//      SDK de cliente de Firebase Auth solo puede cambiar el e-mail de la cuenta logueada
+//      en ese momento, nunca el de otra cuenta — eso requiere el Admin SDK, que solo corre
+//      en el servidor (acá).
 //
 // IMPORTANTE — nada de esto fue probado en vivo (este entorno no tiene acceso de red
 // saliente ni credenciales de Mercado Pago). Anderson necesita: (a) crear el secreto
@@ -199,5 +205,39 @@ exports.mpWebhook = onRequest({ secrets: [MP_ACCESS_TOKEN], region: "southameric
     // Devolvemos 200 igual: si devolvemos error, Mercado Pago reintenta en loop y puede
     // saturar los logs sin resolver nada si el error es de nuestro lado (ej. uid inexistente).
     res.status(200).send("error-logged");
+  }
+});
+
+// -------------------------------------------------------------------------
+// 3. adminUpdateStudentEmail — el admin cambia el e-mail de LOGIN de un alumno
+// -------------------------------------------------------------------------
+// Opción "simple" elegida por Anderson para la recuperación de acceso: el e-mail
+// complementar (guardado en users/{uid}.secondaryEmail, ver app.js completeProfile) NO
+// dispara ningún envío automático — sirve para que el admin confirme la identidad del
+// alumno por fuera del sistema (teléfono/WhatsApp/e-mail complementar) y después, acá,
+// cambie manualmente el e-mail de login de la cuenta. No hace falta ningún servicio de
+// envío de e-mail transaccional adicional.
+exports.adminUpdateStudentEmail = onCall({ region: "southamerica-east1" }, async (request) => {
+  if (!request.auth) {
+    throw new HttpsError("unauthenticated", "Necesitas estar logueado.");
+  }
+  const callerUid = request.auth.uid;
+  const callerDoc = await db.collection("users").doc(callerUid).get();
+  if (!callerDoc.exists || callerDoc.data().role !== "admin") {
+    throw new HttpsError("permission-denied", "Solo un administrador puede cambiar el e-mail de otro usuario.");
+  }
+  const targetUid = request.data && request.data.uid;
+  const newEmail = (request.data && request.data.newEmail || "").trim().toLowerCase();
+  if (!targetUid || !newEmail || !newEmail.includes("@")) {
+    throw new HttpsError("invalid-argument", "Faltan datos: uid y newEmail (e-mail válido) son obligatorios.");
+  }
+  try {
+    await admin.auth().updateUser(targetUid, { email: newEmail });
+    await db.collection("users").doc(targetUid).set({ email: newEmail }, { merge: true });
+    await db.collection("progress_summary").doc(targetUid).set({ email: newEmail }, { merge: true });
+    return { ok: true };
+  } catch (e) {
+    logger.error("adminUpdateStudentEmail falló", e);
+    throw new HttpsError("internal", "No se pudo cambiar el e-mail: " + e.message);
   }
 });

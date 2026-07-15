@@ -55,7 +55,7 @@ const functions = (typeof firebase.functions === "function") ? firebase.function
 // Versión del sistema, visible en Mi Cuenta / Configuración y en el pie de la barra lateral.
 // Se debe actualizar manualmente cada vez que se sube una nueva versión al repositorio
 // (formato AAAA.MM.DD.N — N = número de subida ese día, empieza en 1).
-const APP_VERSION = "2026.07.15.4";
+const APP_VERSION = "2026.07.15.5";
 
 // Valores por defecto de la mensualidad/anualidad — el admin puede cambiarlos en
 // Configuración → Planes y precios (guardados en config/settings, campos priceMonthly/priceAnnual).
@@ -164,6 +164,9 @@ const I18N = {
     admin_billing_title: "💳 Planes y precios", admin_billing_intro: "Valores cobrados por Mercado Pago. Cambios acá no afectan a quien ya tiene un plan activo, solo a nuevas elecciones de plan.",
     admin_billing_monthly_label: "Valor del plan mensual (R$)", admin_billing_annual_label: "Valor del plan anual (R$)",
     admin_pay_suspend_btn: "Suspender acceso", admin_pay_reactivate_btn: "Reactivar acceso", admin_pay_suspend_confirm: "¿Seguro que querés suspender el acceso de este alumno? Va a dejar de poder entrar al curso hasta que lo reactivés.",
+    admin_change_email_btn: "✏️ Cambiar e-mail", admin_change_email_prompt: "Nuevo e-mail de login para este alumno (confirmá su identidad por teléfono/e-mail complementar antes de cambiar):",
+    admin_change_email_confirm: "¿Confirmás cambiar el e-mail de login a {email}? El alumno deberá usar este nuevo e-mail para entrar.",
+    admin_change_email_success: "¡E-mail actualizado! Avisale al alumno que ya puede entrar con el nuevo e-mail.", admin_change_email_error: "No se pudo cambiar el e-mail:",
     xp_tooltip: "XP = puntos de experiencia, ganados al completar lecciones y pruebas.",
     xp_explain_title: "⭐ ¿Qué es el XP?",
     xp_explain_body: "El XP (puntos de experiencia) es un indicador de tu actividad dentro del curso — no es una nota. Ganas XP cada vez que completas una lección o una prueba (cuanto mejor la nota de la prueba, un poco más de XP ganas). Sirve para que veas, de un vistazo, cuánto has practicado — pero tu aprobación real en cada nivel depende de la nota de la prueba, no del XP acumulado.",
@@ -332,6 +335,9 @@ const I18N = {
     admin_billing_title: "💳 Planos e preços", admin_billing_intro: "Valores cobrados via Mercado Pago. Mudanças aqui não afetam quem já tem um plano ativo, só novas escolhas de plano.",
     admin_billing_monthly_label: "Valor do plano mensal (R$)", admin_billing_annual_label: "Valor do plano anual (R$)",
     admin_pay_suspend_btn: "Suspender acesso", admin_pay_reactivate_btn: "Reativar acesso", admin_pay_suspend_confirm: "Tem certeza que quer suspender o acesso deste aluno? Ele vai deixar de conseguir entrar no curso até você reativar.",
+    admin_change_email_btn: "✏️ Alterar e-mail", admin_change_email_prompt: "Novo e-mail de login para este aluno (confirme a identidade dele por telefone/e-mail complementar antes de trocar):",
+    admin_change_email_confirm: "Confirma trocar o e-mail de login para {email}? O aluno vai precisar usar esse novo e-mail para entrar.",
+    admin_change_email_success: "E-mail atualizado! Avise o aluno que já pode entrar com o novo e-mail.", admin_change_email_error: "Não foi possível trocar o e-mail:",
     xp_tooltip: "XP = pontos de experiência, ganhos ao completar lições e provas.",
     xp_explain_title: "⭐ O que é o XP?",
     xp_explain_body: "O XP (pontos de experiência) é um indicador da sua atividade dentro do curso — não é uma nota. Você ganha XP toda vez que completa uma lição ou uma prova (quanto melhor a nota da prova, um pouco mais de XP você ganha). Serve para você ver, de relance, o quanto já praticou — mas sua aprovação real em cada nível depende da nota da prova, não do XP acumulado.",
@@ -500,6 +506,9 @@ const I18N = {
     admin_billing_title: "💳 Plans and prices", admin_billing_intro: "Amounts charged via Mercado Pago. Changes here don't affect students who already have an active plan, only new plan choices.",
     admin_billing_monthly_label: "Monthly plan price (R$)", admin_billing_annual_label: "Annual plan price (R$)",
     admin_pay_suspend_btn: "Suspend access", admin_pay_reactivate_btn: "Reactivate access", admin_pay_suspend_confirm: "Are you sure you want to suspend this student's access? They won't be able to enter the course until you reactivate it.",
+    admin_change_email_btn: "✏️ Change e-mail", admin_change_email_prompt: "New login e-mail for this student (confirm their identity by phone/secondary e-mail before changing):",
+    admin_change_email_confirm: "Confirm changing the login e-mail to {email}? The student will need to use this new e-mail to sign in.",
+    admin_change_email_success: "E-mail updated! Let the student know they can now sign in with the new e-mail.", admin_change_email_error: "Couldn't change the e-mail:",
     xp_tooltip: "XP = experience points, earned by completing lessons and exams.",
     xp_explain_title: "⭐ What is XP?",
     xp_explain_body: "XP (experience points) is a marker of your activity within the course — it's not a grade. You earn XP every time you complete a lesson or an exam (the better your exam score, the more XP you earn). It's there so you can see, at a glance, how much you've practiced — but your actual pass/fail in each level depends on your exam score, not your accumulated XP.",
@@ -4217,21 +4226,27 @@ function renderAdminStudents() {
         ${state.adminStudents.length === 0 ? `<p style="color:var(--gray-2)">${t("admin_no_students")}</p>` : withStatus.map(({ s, sc }) => {
           const payStatus = paymentStatusOf(s);
           const suspended = payStatus === "suspended";
+          const passedLevels = MAIN_SEQUENCE.filter(id => s.levels && s.levels[id] && s.levels[id].examPassed);
           return `
-          <div class="student-row">
-            <div style="display:flex;align-items:center;gap:10px">
-              <div class="admin-avatar">${s.photoData ? `<img src="${s.photoData}" alt="">` : (s.name || s.email || "?").trim().charAt(0).toUpperCase()}</div>
-              <div><strong>${escapeHtml(s.name || s.email)}</strong><br><span style="color:var(--gray-2)">${escapeHtml(s.email || "")}</span></div>
+          <div class="student-card">
+            <div class="student-card-top">
+              <div class="student-card-id">
+                <div class="admin-avatar">${s.photoData ? `<img src="${s.photoData}" alt="">` : (s.name || s.email || "?").trim().charAt(0).toUpperCase()}</div>
+                <div><strong>${escapeHtml(s.name || s.email)}</strong><br><span style="color:var(--gray-2);font-size:.85rem">${escapeHtml(s.email || "")}</span></div>
+              </div>
+              <div class="student-card-xp">⭐ ${s.xp || 0} XP</div>
             </div>
-            <div>⭐ ${s.xp || 0} XP</div>
-            <div><span class="sched-badge ${sc.status}">${t(sc.status === "ahead" ? "panel_schedule_ahead" : sc.status === "behind" ? "panel_schedule_behind" : "panel_schedule_ontrack")}</span>
-              <span style="color:var(--gray-2);font-size:.72rem;display:block;margin-top:2px">${sc.actualPct}% real vs ${sc.expectedPct}% esperado</span></div>
-            <div>
+            <div class="student-card-badges">
+              <span class="sched-badge ${sc.status}">${t(sc.status === "ahead" ? "panel_schedule_ahead" : sc.status === "behind" ? "panel_schedule_behind" : "panel_schedule_ontrack")}</span>
+              <span style="color:var(--gray-2);font-size:.78rem">${sc.actualPct}% real vs ${sc.expectedPct}% esperado</span>
               <span class="pay-badge ${payStatus}">${t("pay_status_" + payStatus)}</span>
-              ${s.subscription && s.subscription.plan ? `<span style="color:var(--gray-2);font-size:.72rem;display:block;margin-top:2px">${s.subscription.plan === "annual" ? t("plan_annual_name") : t("plan_monthly_name")}</span>` : ""}
-              <button class="btn btn-secondary btn-sm pay-toggle-btn" data-uid="${s.id}" data-suspend="${suspended ? "0" : "1"}" style="margin-top:4px">${suspended ? t("admin_pay_reactivate_btn") : t("admin_pay_suspend_btn")}</button>
+              ${s.subscription && s.subscription.plan ? `<span style="color:var(--gray-2);font-size:.78rem">${s.subscription.plan === "annual" ? t("plan_annual_name") : t("plan_monthly_name")}</span>` : ""}
             </div>
-            <div>${MAIN_SEQUENCE.map(id => (s.levels && s.levels[id] && s.levels[id].examPassed) ? `<span class="badge admin" style="background:var(--success)">${id} ✓</span>` : "").join(" ")}</div>
+            ${passedLevels.length ? `<div class="student-card-levels">${passedLevels.map(id => `<span class="badge admin" style="background:var(--success)">${id} ✓</span>`).join("")}</div>` : ""}
+            <div class="student-card-actions">
+              <button class="btn btn-outline btn-sm pay-toggle-btn" data-uid="${s.id}" data-suspend="${suspended ? "0" : "1"}">${suspended ? t("admin_pay_reactivate_btn") : t("admin_pay_suspend_btn")}</button>
+              <button class="btn btn-outline btn-sm email-change-btn" data-uid="${s.id}" data-email="${escapeHtml(s.email || "")}">${t("admin_change_email_btn")}</button>
+            </div>
           </div>`;
         }).join("")}
       </div>
@@ -4251,6 +4266,32 @@ function renderAdminStudents() {
   document.querySelectorAll(".pay-toggle-btn").forEach(btn => {
     btn.onclick = () => btn.dataset.suspend === "1" ? suspendUserAccess(btn.dataset.uid) : reactivateUserAccess(btn.dataset.uid);
   });
+  document.querySelectorAll(".email-change-btn").forEach(btn => {
+    btn.onclick = () => changeStudentEmailPrompt(btn.dataset.uid, btn.dataset.email);
+  });
+}
+
+// Opción "simple" para recuperación de acceso (elegida por Anderson): el e-mail
+// complementar guardado en el cadastro NO dispara ningún envío automático — el admin
+// confirma la identidad del alumno por fuera del sistema (teléfono/e-mail complementar)
+// y después cambia acá el e-mail de LOGIN real de la cuenta. Sin modal propio: un
+// prompt()/confirm() nativos alcanzan para una acción tan poco frecuente como esta.
+async function changeStudentEmailPrompt(uid, currentEmail) {
+  const novo = prompt(t("admin_change_email_prompt"), currentEmail || "");
+  if (!novo) return;
+  const trimmed = novo.trim();
+  if (!trimmed || trimmed.toLowerCase() === (currentEmail || "").toLowerCase()) return;
+  if (!confirm(t("admin_change_email_confirm", { email: trimmed }))) return;
+  try {
+    if (!functions) throw new Error("Cloud Functions no disponibles en este cliente.");
+    const call = functions.httpsCallable("adminUpdateStudentEmail");
+    await call({ uid, newEmail: trimmed });
+    alert(t("admin_change_email_success"));
+    loadAdminStudents().then(render);
+  } catch (e) {
+    console.warn(e);
+    alert(t("admin_change_email_error") + " " + e.message);
+  }
 }
 
 /* ---------------------------------------------------------------------- */
