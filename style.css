@@ -519,6 +519,12 @@ table.grammar-table th { background: var(--gray-bg); }
 .sched-badge.ontrack { background: #e8f5e9; color: var(--success); }
 .sched-badge.ahead   { background: #e3f2fd; color: #1565c0; }
 .sched-badge.behind  { background: #fff3e0; color: #e65100; }
+/* Tendencia de ritmo (Admin -> Alumnos) — ver computeStudentTrend() en app.js: compara
+   el ritmo reciente del alumno contra su propio promedio histórico. */
+.sched-badge.up      { background: #e3f2fd; color: #1565c0; }
+.sched-badge.down    { background: #fdecea; color: #c62828; }
+.sched-badge.stable  { background: #f1f1ee; color: var(--gray-2); }
+.sched-badge.new     { background: #f1f1ee; color: var(--gray-2); }
 
 /* Badge de estado de pago (Admin -> Alumnos) — ver paymentStatusOf() en app.js */
 .pay-badge { display: inline-block; padding: 3px 11px; border-radius: 999px; font-weight: 700; font-size: .72rem; white-space: nowrap; }

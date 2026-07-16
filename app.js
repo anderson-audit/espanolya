@@ -55,7 +55,7 @@ const functions = (typeof firebase.functions === "function") ? firebase.function
 // Versión del sistema, visible en Mi Cuenta / Configuración y en el pie de la barra lateral.
 // Se debe actualizar manualmente cada vez que se sube una nueva versión al repositorio
 // (formato AAAA.MM.DD.N — N = número de subida ese día, empieza en 1).
-const APP_VERSION = "2026.07.15.5";
+const APP_VERSION = "2026.07.16.2";
 
 // Valores por defecto de la mensualidad/anualidad — el admin puede cambiarlos en
 // Configuración → Planes y precios (guardados en config/settings, campos priceMonthly/priceAnnual).
@@ -167,6 +167,13 @@ const I18N = {
     admin_change_email_btn: "✏️ Cambiar e-mail", admin_change_email_prompt: "Nuevo e-mail de login para este alumno (confirmá su identidad por teléfono/e-mail complementar antes de cambiar):",
     admin_change_email_confirm: "¿Confirmás cambiar el e-mail de login a {email}? El alumno deberá usar este nuevo e-mail para entrar.",
     admin_change_email_success: "¡E-mail actualizado! Avisale al alumno que ya puede entrar con el nuevo e-mail.", admin_change_email_error: "No se pudo cambiar el e-mail:",
+    admin_edit_student_btn: "📇 Editar datos", admin_edit_student_title: "Editar datos de {name}",
+    admin_edit_student_save_btn: "Guardar cambios", admin_edit_student_cancel_btn: "Cancelar",
+    admin_edit_student_success: "¡Datos del alumno actualizados!", admin_edit_student_error: "No se pudo guardar:",
+    admin_edit_student_required_error: "Completá al menos el nombre, teléfono, e-mail adicional y dirección (calle, ciudad y país).",
+    admin_edit_student_loading: "Cargando datos del alumno…",
+    admin_trend_up: "📈 Acelerando", admin_trend_down: "📉 Bajando el ritmo", admin_trend_stable: "➡️ Ritmo estable", admin_trend_new: "🆕 Sin historial aún",
+    admin_projected_finish: "Previsión de fin: {date}", admin_projected_finish_done: "¡Ya completó todo el contenido!",
     xp_tooltip: "XP = puntos de experiencia, ganados al completar lecciones y pruebas.",
     xp_explain_title: "⭐ ¿Qué es el XP?",
     xp_explain_body: "El XP (puntos de experiencia) es un indicador de tu actividad dentro del curso — no es una nota. Ganas XP cada vez que completas una lección o una prueba (cuanto mejor la nota de la prueba, un poco más de XP ganas). Sirve para que veas, de un vistazo, cuánto has practicado — pero tu aprobación real en cada nivel depende de la nota de la prueba, no del XP acumulado.",
@@ -338,6 +345,13 @@ const I18N = {
     admin_change_email_btn: "✏️ Alterar e-mail", admin_change_email_prompt: "Novo e-mail de login para este aluno (confirme a identidade dele por telefone/e-mail complementar antes de trocar):",
     admin_change_email_confirm: "Confirma trocar o e-mail de login para {email}? O aluno vai precisar usar esse novo e-mail para entrar.",
     admin_change_email_success: "E-mail atualizado! Avise o aluno que já pode entrar com o novo e-mail.", admin_change_email_error: "Não foi possível trocar o e-mail:",
+    admin_edit_student_btn: "📇 Editar dados", admin_edit_student_title: "Editar dados de {name}",
+    admin_edit_student_save_btn: "Salvar alterações", admin_edit_student_cancel_btn: "Cancelar",
+    admin_edit_student_success: "Dados do aluno atualizados!", admin_edit_student_error: "Não foi possível salvar:",
+    admin_edit_student_required_error: "Preencha ao menos o nome, telefone, e-mail adicional e endereço (rua, cidade e país).",
+    admin_edit_student_loading: "Carregando dados do aluno…",
+    admin_trend_up: "📈 Acelerando", admin_trend_down: "📉 Diminuindo o ritmo", admin_trend_stable: "➡️ Ritmo estável", admin_trend_new: "🆕 Sem histórico ainda",
+    admin_projected_finish: "Previsão de conclusão: {date}", admin_projected_finish_done: "Já concluiu todo o conteúdo!",
     xp_tooltip: "XP = pontos de experiência, ganhos ao completar lições e provas.",
     xp_explain_title: "⭐ O que é o XP?",
     xp_explain_body: "O XP (pontos de experiência) é um indicador da sua atividade dentro do curso — não é uma nota. Você ganha XP toda vez que completa uma lição ou uma prova (quanto melhor a nota da prova, um pouco mais de XP você ganha). Serve para você ver, de relance, o quanto já praticou — mas sua aprovação real em cada nível depende da nota da prova, não do XP acumulado.",
@@ -509,6 +523,13 @@ const I18N = {
     admin_change_email_btn: "✏️ Change e-mail", admin_change_email_prompt: "New login e-mail for this student (confirm their identity by phone/secondary e-mail before changing):",
     admin_change_email_confirm: "Confirm changing the login e-mail to {email}? The student will need to use this new e-mail to sign in.",
     admin_change_email_success: "E-mail updated! Let the student know they can now sign in with the new e-mail.", admin_change_email_error: "Couldn't change the e-mail:",
+    admin_edit_student_btn: "📇 Edit data", admin_edit_student_title: "Edit data for {name}",
+    admin_edit_student_save_btn: "Save changes", admin_edit_student_cancel_btn: "Cancel",
+    admin_edit_student_success: "Student data updated!", admin_edit_student_error: "Couldn't save:",
+    admin_edit_student_required_error: "Fill in at least name, phone, secondary e-mail, and address (street, city and country).",
+    admin_edit_student_loading: "Loading student data…",
+    admin_trend_up: "📈 Speeding up", admin_trend_down: "📉 Slowing down", admin_trend_stable: "➡️ Steady pace", admin_trend_new: "🆕 No history yet",
+    admin_projected_finish: "Projected finish: {date}", admin_projected_finish_done: "Already completed all content!",
     xp_tooltip: "XP = experience points, earned by completing lessons and exams.",
     xp_explain_title: "⭐ What is XP?",
     xp_explain_body: "XP (experience points) is a marker of your activity within the course — it's not a grade. You earn XP every time you complete a lesson or an exam (the better your exam score, the more XP you earn). It's there so you can see, at a glance, how much you've practiced — but your actual pass/fail in each level depends on your exam score, not your accumulated XP.",
@@ -667,6 +688,10 @@ const state = {
   accountTab: "profile",   // profile | security | appearance | access
   myAccessLog: [],         // historial de accesos del propio alumno (colección "access_log")
   adminAccessLog: [],      // historial de accesos de TODOS los alumnos (solo admin)
+  adminEditUid: null,      // uid del alumno cuyo formulario de edición de datos está abierto (Admin -> Alumnos)
+  adminEditData: null,     // datos completos (users/{uid}) del alumno en edición, cargados on-demand
+  adminEditLoading: false,
+  adminEditMsg: null,
 };
 
 applyTheme(state.prefs.theme);
@@ -886,7 +911,33 @@ function computeScheduleStatus() {
 function computeStudentScheduleStatus(summary) {
   const schedule = summary.schedule || { durationMonths: DEFAULT_SCHEDULE_MONTHS, startDate: new Date().toISOString() };
   const actual = typeof summary.unitsCompleted === "number" ? summary.unitsCompleted : 0;
-  return computeScheduleStatusFrom(schedule, actual, totalUnitsCount());
+  const sc = computeScheduleStatusFrom(schedule, actual, totalUnitsCount());
+  sc.trend = computeStudentTrend(summary, sc);
+  return sc;
+}
+
+// Indicador de TENDENCIA (pedido explícito: no alcanza con saber si el alumno está
+// adelantado/atrasado HOY — hay que saber si está acelerando o perdiendo ritmo respecto
+// a su propio promedio). Compara el ritmo reciente (desde el último snapshot guardado en
+// prevUnitsCompleted/prevUnitsAt) contra el ritmo promedio desde que empezó su cronograma.
+// El snapshot se renueva cada ~5 días dentro de updateProgressSummary() — así "reciente"
+// siempre representa una ventana de varios días, nunca una sola lección aislada (lo que
+// haría el indicador demasiado ruidoso/inestable).
+function computeStudentTrend(summary, sc) {
+  const prevUnits = summary.prevUnitsCompleted;
+  const prevAtRaw = summary.prevUnitsAt;
+  const prevAt = prevAtRaw && prevAtRaw.toDate ? prevAtRaw.toDate() : (prevAtRaw ? new Date(prevAtRaw) : null);
+  if (typeof prevUnits !== "number" || !prevAt) return { key: "new" };
+  const now = new Date();
+  const daysSincePrev = (now - prevAt) / (1000 * 60 * 60 * 24);
+  const daysSinceStart = (now - sc.startDate) / (1000 * 60 * 60 * 24);
+  if (daysSincePrev < 2 || daysSinceStart < 2) return { key: "new" };
+  const recentPace = Math.max(0, sc.actual - prevUnits) / daysSincePrev;
+  const overallPace = sc.actual / daysSinceStart;
+  if (overallPace <= 0) return { key: "new" };
+  const ratio = recentPace / overallPace;
+  const key = ratio > 1.15 ? "up" : ratio < 0.85 ? "down" : "stable";
+  return { key, recentPace, overallPace };
 }
 
 function formatDate(d, lang) {
@@ -944,6 +995,7 @@ function render() {
     case "auth": return renderAuth();
     case "pendingApproval": return renderPendingApproval();
     case "completeProfile": return renderCompleteProfile();
+    case "acceptLgpd": return renderAcceptLgpd();
     case "acceptTerms": return renderAcceptTerms();
     case "choosePlan": return renderChoosePlan();
     case "checkoutReturn": return renderCheckoutReturn();
@@ -1254,6 +1306,59 @@ function readProfileExtraFields(prefix) {
   };
 }
 
+// Pantalla RETROACTIVA de aceite de LGPD — pedido explícito de Anderson (2026-07-16): el
+// checkbox de LGPD solo se pedía en el formulario de REGISTRO (onAuthSubmit), así que
+// cualquier cuenta creada ANTES de que ese campo existiera (incluido el propio Anderson,
+// como admin) nunca vio ni aceptó el término. Se muestra una única vez, para CUALQUIER rol
+// (aluno o admin, sin excepción — mismo criterio ya usado en completeProfile), ANTES del
+// cadastro complementar (el consentimiento de tratamiento de datos es lógicamente anterior
+// a pedir más datos personales).
+function renderAcceptLgpd() {
+  root.innerHTML = `
+    <div class="auth-wrap">
+      <div class="auth-grid">
+        <div class="auth-hero">
+          <div class="auth-hero-flag"><div></div><div></div><div></div></div>
+          <div class="auth-hero-emblem">🔒</div>
+          <h1>${t("auth_hero_title")}</h1>
+          <p>${t("auth_hero_sub")}</p>
+        </div>
+        <div class="auth-card">
+          <div class="flag-strip"><div></div><div></div><div></div></div>
+          <h1>¡Español Ya!</h1>
+          <div class="auth-sub">${t("lgpd_label")}</div>
+          <div class="lgpd-box" style="max-height:220px;overflow:auto;border:1px solid var(--border);border-radius:10px;padding:12px 14px;font-size:.85rem;color:var(--gray-2);line-height:1.6;margin:14px 0 16px">${t("lgpd_body")}</div>
+          <label style="display:flex;gap:8px;align-items:flex-start;font-size:.9rem;margin-bottom:6px;cursor:pointer">
+            <input type="checkbox" id="lgpd-accept-checkbox" style="margin-top:3px">
+            <span>${t("lgpd_checkbox_label")}</span>
+          </label>
+          <div id="lgpd-accept-error" class="error-msg" style="display:none">${t("lgpd_required_error")}</div>
+          <button class="btn btn-primary btn-block" id="lgpd-accept-btn" style="margin-top:10px">${t("terms_accept_btn")}</button>
+          <button class="btn btn-secondary btn-block" id="lgpd-accept-logout-btn" style="margin-top:8px">${t("terms_logout_btn")}</button>
+        </div>
+      </div>
+    </div>`;
+  document.getElementById("lgpd-accept-logout-btn").onclick = () => auth.signOut();
+  document.getElementById("lgpd-accept-btn").onclick = async () => {
+    const box = document.getElementById("lgpd-accept-checkbox");
+    if (!box.checked) {
+      document.getElementById("lgpd-accept-error").style.display = "block";
+      return;
+    }
+    try {
+      await db.collection("users").doc(state.user.uid).set({
+        lgpdAcceptedAt: firebase.firestore.FieldValue.serverTimestamp()
+      }, { merge: true });
+      // Recarga completa (mismo patrón que completeProfile/acceptTerms): auth.onAuthStateChanged
+      // vuelve a correr desde cero y decide el siguiente paso correcto para CUALQUIER rol.
+      window.location.reload();
+    } catch (e) {
+      console.warn(e);
+      alert("Error: " + e.message);
+    }
+  };
+}
+
 function renderCompleteProfile() {
   root.innerHTML = `
     <div class="auth-wrap">
@@ -1515,6 +1620,18 @@ auth.onAuthStateChanged(async (fbUser) => {
       // (por ejemplo, por falta de pago — ver renderAdminStudents/suspendUserAccess): no
       // cargamos progreso/config, solo mostramos la pantalla de espera/rechazo/suspensión.
       state.screen = "pendingApproval";
+      render();
+      return;
+    }
+
+    // Aceite RETROACTIVO de LGPD (2026-07-16) — pedido explícito de Anderson: el checkbox
+    // de LGPD solo existía en el formulario de REGISTRO, así que ninguna cuenta creada antes
+    // de esa fecha (incluido el propio Anderson, admin) llegó a verlo/aceptarlo. Se pide UNA
+    // sola vez, para CUALQUIER rol sin excepción (mismo criterio de completeProfile), ANTES
+    // de todo lo demás — el consentimiento de tratamiento de datos es anterior lógicamente a
+    // pedir más datos personales (cadastro complementar) o cualquier otra pantalla.
+    if (!userData.lgpdAcceptedAt) {
+      state.screen = "acceptLgpd";
       render();
       return;
     }
@@ -3165,7 +3282,29 @@ async function saveLessonResult(levelId, lessonId, score, review) {
 // cualquier lección, para cualquier rol (admin o aluno), reflejando actividad real.
 async function updateProgressSummary() {
   try {
-    await db.collection("progress_summary").doc(state.user.uid).set({
+    const ref = db.collection("progress_summary").doc(state.user.uid);
+    // Rotación del snapshot para el indicador de TENDENCIA (ver computeStudentTrend()): antes
+    // de pisar unitsCompleted, si el snapshot anterior (prevUnitsAt) ya tiene 5+ días (o nunca
+    // existió), lo renovamos con el valor ACTUAL de unitsCompleted/updatedAt de este mismo doc
+    // (previo a esta escritura). Así "reciente" siempre compara contra un punto fijo de hace
+    // varios días, nunca contra la última escritura (que sería casi el mismo instante).
+    let prevUnitsCompleted, prevUnitsAt;
+    try {
+      const snap = await ref.get();
+      const cur = snap.exists ? snap.data() : null;
+      const curUpdatedAt = cur && cur.updatedAt && cur.updatedAt.toDate ? cur.updatedAt.toDate() : null;
+      const daysSinceCur = curUpdatedAt ? (new Date() - curUpdatedAt) / (1000 * 60 * 60 * 24) : Infinity;
+      if (cur && typeof cur.prevUnitsAt !== "undefined" && cur.prevUnitsAt && daysSinceCur < 5) {
+        // Todavía no pasaron 5 días desde el último snapshot: conserva el que ya había.
+        prevUnitsCompleted = cur.prevUnitsCompleted;
+        prevUnitsAt = cur.prevUnitsAt;
+      } else if (cur && typeof cur.unitsCompleted === "number" && curUpdatedAt) {
+        prevUnitsCompleted = cur.unitsCompleted;
+        prevUnitsAt = cur.updatedAt;
+      }
+    } catch (e) { console.warn("No se pudo leer el snapshot previo de tendencia.", e); }
+
+    const payload = {
       name: state.user.name, email: state.user.email,
       updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
       xp: state.progress.xp,
@@ -3184,7 +3323,10 @@ async function updateProgressSummary() {
       // Foto del alumno (ya redimensionada a ~480px/JPEG antes de guardarse) — espejada
       // acá para que Admin → Alumnos pueda mostrar el avatar sin leer "users" uno por uno.
       photoData: state.user.photoData || null
-    }, { merge: true });
+    };
+    if (typeof prevUnitsCompleted === "number") payload.prevUnitsCompleted = prevUnitsCompleted;
+    if (prevUnitsAt) payload.prevUnitsAt = prevUnitsAt;
+    await ref.set(payload, { merge: true });
   } catch (e) { console.warn("No se pudo actualizar el resumen para el admin.", e); }
 }
 
@@ -4227,6 +4369,10 @@ function renderAdminStudents() {
           const payStatus = paymentStatusOf(s);
           const suspended = payStatus === "suspended";
           const passedLevels = MAIN_SEQUENCE.filter(id => s.levels && s.levels[id] && s.levels[id].examPassed);
+          const editingThis = state.adminEditUid === s.id;
+          const lang = state.prefs.lang || "es";
+          const finishTxt = sc.actual >= sc.total && sc.total > 0 ? t("admin_projected_finish_done")
+            : sc.projectedDate ? t("admin_projected_finish", { date: formatDate(sc.projectedDate, lang) }) : "";
           return `
           <div class="student-card">
             <div class="student-card-top">
@@ -4242,11 +4388,17 @@ function renderAdminStudents() {
               <span class="pay-badge ${payStatus}">${t("pay_status_" + payStatus)}</span>
               ${s.subscription && s.subscription.plan ? `<span style="color:var(--gray-2);font-size:.78rem">${s.subscription.plan === "annual" ? t("plan_annual_name") : t("plan_monthly_name")}</span>` : ""}
             </div>
+            <div class="student-card-badges" style="margin-top:2px">
+              <span class="sched-badge ${sc.trend.key}">${t("admin_trend_" + sc.trend.key)}</span>
+              ${finishTxt ? `<span style="color:var(--gray-2);font-size:.78rem">${finishTxt}</span>` : ""}
+            </div>
             ${passedLevels.length ? `<div class="student-card-levels">${passedLevels.map(id => `<span class="badge admin" style="background:var(--success)">${id} ✓</span>`).join("")}</div>` : ""}
             <div class="student-card-actions">
               <button class="btn btn-outline btn-sm pay-toggle-btn" data-uid="${s.id}" data-suspend="${suspended ? "0" : "1"}">${suspended ? t("admin_pay_reactivate_btn") : t("admin_pay_suspend_btn")}</button>
               <button class="btn btn-outline btn-sm email-change-btn" data-uid="${s.id}" data-email="${escapeHtml(s.email || "")}">${t("admin_change_email_btn")}</button>
+              <button class="btn btn-outline btn-sm student-edit-btn" data-uid="${s.id}">${t("admin_edit_student_btn")}</button>
             </div>
+            ${editingThis ? renderStudentEditForm(s) : ""}
           </div>`;
         }).join("")}
       </div>
@@ -4269,6 +4421,106 @@ function renderAdminStudents() {
   document.querySelectorAll(".email-change-btn").forEach(btn => {
     btn.onclick = () => changeStudentEmailPrompt(btn.dataset.uid, btn.dataset.email);
   });
+  document.querySelectorAll(".student-edit-btn").forEach(btn => {
+    btn.onclick = () => openStudentEditForm(btn.dataset.uid);
+  });
+  if (state.adminEditUid) {
+    const form = document.getElementById("student-edit-form");
+    if (form) form.addEventListener("submit", onSaveStudentEditSubmit);
+    wirePhotoPicker("adm-photo-input", "adm-photo-preview");
+    const cancelBtn = document.getElementById("student-edit-cancel");
+    if (cancelBtn) cancelBtn.onclick = () => { closeStudentEditForm(); };
+  }
+}
+
+// Formulario inline de edición de datos del alumno (nombre, foto, teléfono, e-mail
+// adicional, dirección, observaciones) — pedido explícito: el admin necesita poder
+// corregir/completar estos datos EN NOMBRE del alumno (ej: alumno se equivocó al tipear,
+// o no consigue acceder para editar su propio perfil). Reutiliza profileExtraFieldsHtml,
+// el mismo bloque usado en el onboarding y en Mi Cuenta → Perfil, para no duplicar campos.
+function renderStudentEditForm(s) {
+  if (state.adminEditLoading) {
+    return `<div class="student-edit-box" style="margin-top:10px;border-top:1px solid var(--border);padding-top:12px">
+      <p style="color:var(--gray-2)">${t("admin_edit_student_loading")}</p>
+    </div>`;
+  }
+  const data = state.adminEditData || {};
+  return `
+    <div class="student-edit-box" style="margin-top:10px;border-top:1px solid var(--border);padding-top:12px">
+      <h4 style="margin:0 0 10px">${t("admin_edit_student_title", { name: escapeHtml(s.name || s.email || "") })}</h4>
+      ${state.adminEditMsg ? `<div class="${state.adminEditMsg.ok ? "success-msg" : "error-msg"}">${escapeHtml(state.adminEditMsg.text)}</div>` : ""}
+      <form id="student-edit-form">
+        <div class="field"><label>${t("profile_name_label")}</label><input type="text" id="adm-name" required value="${escapeHtml(data.name || "")}" placeholder="${t("profile_name_ph")}"></div>
+        ${profileExtraFieldsHtml("adm", data)}
+        <div style="display:flex;gap:10px;margin-top:6px">
+          <button type="submit" class="btn btn-primary btn-sm">${t("admin_edit_student_save_btn")}</button>
+          <button type="button" class="btn btn-secondary btn-sm" id="student-edit-cancel">${t("admin_edit_student_cancel_btn")}</button>
+        </div>
+      </form>
+    </div>`;
+}
+
+async function openStudentEditForm(uid) {
+  state.adminEditUid = uid;
+  state.adminEditData = null;
+  state.adminEditMsg = null;
+  state.adminEditLoading = true;
+  state.pendingPhotoData = null;
+  render();
+  try {
+    const doc = await db.collection("users").doc(uid).get();
+    state.adminEditData = doc.exists ? doc.data() : {};
+  } catch (e) {
+    console.warn(e);
+    state.adminEditData = {};
+    state.adminEditMsg = { ok: false, text: t("admin_edit_student_error") + " " + e.message };
+  }
+  state.adminEditLoading = false;
+  render();
+}
+
+function closeStudentEditForm() {
+  state.adminEditUid = null;
+  state.adminEditData = null;
+  state.adminEditMsg = null;
+  state.pendingPhotoData = null;
+  render();
+}
+
+async function onSaveStudentEditSubmit(e) {
+  e.preventDefault();
+  const uid = state.adminEditUid;
+  if (!uid) return;
+  const newName = document.getElementById("adm-name").value.trim();
+  const extra = readProfileExtraFields("adm");
+  if (!newName || !extra.phone || !extra.secondaryEmail || !extra.address.street || !extra.address.city || !extra.address.country) {
+    state.adminEditMsg = { ok: false, text: t("admin_edit_student_required_error") };
+    render();
+    return;
+  }
+  const submitBtn = e.target.querySelector("button[type=submit]");
+  submitBtn.disabled = true;
+  try {
+    const payload = { name: newName, phone: extra.phone, secondaryEmail: extra.secondaryEmail, address: extra.address, observations: extra.observations };
+    if (state.pendingPhotoData) payload.photoData = state.pendingPhotoData;
+    await db.collection("users").doc(uid).set(payload, { merge: true });
+    // Espejo en progress_summary (nombre/foto) para que la lista de Alumnos refleje el
+    // cambio de inmediato — mismo mecanismo que usa el propio alumno al guardar su perfil.
+    const summaryPayload = { name: newName };
+    if (state.pendingPhotoData) summaryPayload.photoData = state.pendingPhotoData;
+    db.collection("progress_summary").doc(uid).set(summaryPayload, { merge: true }).catch(err => console.warn(err));
+    const local = state.adminStudents.find(x => x.id === uid);
+    if (local) { local.name = newName; if (state.pendingPhotoData) local.photoData = state.pendingPhotoData; }
+    state.pendingPhotoData = null;
+    state.adminEditMsg = { ok: true, text: t("admin_edit_student_success") };
+    render();
+    loadAdminStudents().then(render);
+  } catch (err) {
+    console.warn(err);
+    state.adminEditMsg = { ok: false, text: t("admin_edit_student_error") + " " + err.message };
+    submitBtn.disabled = false;
+    render();
+  }
 }
 
 // Opción "simple" para recuperación de acceso (elegida por Anderson): el e-mail

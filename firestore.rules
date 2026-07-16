@@ -49,6 +49,9 @@ service cloud.firestore {
       allow read: if isSignedIn();
       // NOVO — el alumno puede actualizar su propio resumen (xp/schedule/etc.), pero no puede
       // escribir "status" ni "subscription" ahí tampoco (mismo motivo que en /users).
+      // Los campos prevUnitsCompleted/prevUnitsAt (2026-07-16, indicador de tendencia — ver
+      // computeStudentTrend() en app.js) los escribe el propio alumno vía updateProgressSummary(),
+      // por eso NO están en la lista de bloqueo.
       allow write: if isSignedIn() && request.auth.uid == uid &&
         !request.resource.data.diff(resource.data).affectedKeys().hasAny(["status", "subscription"]);
       allow write: if isAdmin();
