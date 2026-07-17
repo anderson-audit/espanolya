@@ -55,7 +55,7 @@ const functions = (typeof firebase.functions === "function") ? firebase.function
 // Versión del sistema, visible en Mi Cuenta / Configuración y en el pie de la barra lateral.
 // Se debe actualizar manualmente cada vez que se sube una nueva versión al repositorio
 // (formato AAAA.MM.DD.N — N = número de subida ese día, empieza en 1).
-const APP_VERSION = "2026.07.16.2";
+const APP_VERSION = "2026.07.17.1";
 
 // Valores por defecto de la mensualidad/anualidad — el admin puede cambiarlos en
 // Configuración → Planes y precios (guardados en config/settings, campos priceMonthly/priceAnnual).
@@ -109,6 +109,19 @@ const I18N = {
     ex_next: "Siguiente →", ex_check: "Comprobar", ex_skip: "No puedo grabar ahora",
     ex_resume_title: "📍 Tienes un ejercicio en curso", ex_resume_progress: "vas por la pregunta {cur} de {total}.",
     ex_continue_btn: "Continuar donde lo dejé →", ex_restart_btn: "Empezar de nuevo", ex_discover_lyrics_btn: "🎤 Descubrir la letra",
+    ex_translate_pt_es: "Traduce (Portugués → Español)", ex_translate_es_pt: "Traduce (Español → Portugués)",
+    ex_song_hint_opened: "El video ya abrió en el fragmento de este hueco", ex_song_hint_available: "Puedes escuchar la canción mientras completas el hueco",
+    ex_song_hint_suffix: ", pero empieza SIN sonido (los navegadores bloquean el audio automático) — toca \"{btn}\" cuantas veces quieras.",
+    ex_song_hint_muted: "🔇 El video abre sin sonido — toca \"{btn}\" para escuchar.",
+    ex_answer_placeholder: "Escribe tu respuesta aquí...", ex_your_answer_placeholder: "Tu respuesta...",
+    ex_write_what_hear_placeholder: "Escribe lo que escuchas...", ex_write_answer_placeholder: "Escribe tu respuesta...",
+    ex_song_listen_default_q: "Escucha la canción y escribe lo que oyes en este fragmento.",
+    song_listen_fragment: "🔊 Escuchar el fragmento", song_activate_sound: "🔊 Activar sonido",
+    ex_order_instruction: "Ordena el diálogo (haz clic en orden):",
+    ex_sample_answer_label: "Respuesta modelo:", ex_compare_later: "📝 Vas a poder comparar tu respuesta con la respuesta modelo en la Revisión, al terminar.",
+    ex_progress_review: "🔁 Repaso", ex_progress_exam: "Prueba", ex_progress_exercise: "Ejercicio",
+    ex_badge_mc: "🔠 Opción múltiple", ex_badge_fill: "✏️ Completar", ex_badge_translate: "🔁 Traducción", ex_badge_listen: "🎧 Escucha",
+    ex_badge_songlisten: "🎧 Dictado musical", ex_badge_speak: "🎙️ Pronunciación", ex_badge_order: "🔀 Ordenar", ex_badge_open: "✍️ Respuesta libre",
     result_pass_title: "¡Aprobado!", result_fail_title: "Todavía no...", result_lesson_title: "¡Ejercicios completados!",
     result_min_score: "Nota mínima exigida: {score}%", result_unlocked: "🔓 ¡Has desbloqueado el próximo nivel!",
     result_retry_msg: "Repasa la lección y vuelve a intentar la prueba cuando estés listo(a).",
@@ -287,6 +300,19 @@ const I18N = {
     ex_next: "Próximo →", ex_check: "Verificar", ex_skip: "Não posso gravar agora",
     ex_resume_title: "📍 Você tem um exercício em andamento", ex_resume_progress: "você está na pergunta {cur} de {total}.",
     ex_continue_btn: "Continuar de onde parei →", ex_restart_btn: "Começar de novo", ex_discover_lyrics_btn: "🎤 Descobrir a letra",
+    ex_translate_pt_es: "Traduza (Português → Espanhol)", ex_translate_es_pt: "Traduza (Espanhol → Português)",
+    ex_song_hint_opened: "O vídeo já abriu no trecho deste espaço", ex_song_hint_available: "Você pode ouvir a música enquanto completa o espaço",
+    ex_song_hint_suffix: ", mas começa SEM som (os navegadores bloqueiam áudio automático) — toque em \"{btn}\" quantas vezes quiser.",
+    ex_song_hint_muted: "🔇 O vídeo abre sem som — toque em \"{btn}\" para ouvir.",
+    ex_answer_placeholder: "Escreva sua resposta aqui...", ex_your_answer_placeholder: "Sua resposta...",
+    ex_write_what_hear_placeholder: "Escreva o que você ouve...", ex_write_answer_placeholder: "Escreva sua resposta...",
+    ex_song_listen_default_q: "Ouça a música e escreva o que você ouve neste trecho.",
+    song_listen_fragment: "🔊 Ouvir o trecho", song_activate_sound: "🔊 Ativar som",
+    ex_order_instruction: "Ordene o diálogo (clique na ordem):",
+    ex_sample_answer_label: "Resposta modelo:", ex_compare_later: "📝 Você vai poder comparar sua resposta com a resposta modelo na Revisão, ao terminar.",
+    ex_progress_review: "🔁 Revisão", ex_progress_exam: "Prova", ex_progress_exercise: "Exercício",
+    ex_badge_mc: "🔠 Múltipla escolha", ex_badge_fill: "✏️ Completar", ex_badge_translate: "🔁 Tradução", ex_badge_listen: "🎧 Escuta",
+    ex_badge_songlisten: "🎧 Ditado musical", ex_badge_speak: "🎙️ Pronúncia", ex_badge_order: "🔀 Ordenar", ex_badge_open: "✍️ Resposta livre",
     result_pass_title: "Aprovado!", result_fail_title: "Ainda não...", result_lesson_title: "Exercícios concluídos!",
     result_min_score: "Nota mínima exigida: {score}%", result_unlocked: "🔓 Você desbloqueou o próximo nível!",
     result_retry_msg: "Revise a lição e tente a prova novamente quando estiver pronto(a).",
@@ -465,6 +491,19 @@ const I18N = {
     ex_next: "Next →", ex_check: "Check", ex_skip: "I can't record now",
     ex_resume_title: "📍 You have an exercise in progress", ex_resume_progress: "you're on question {cur} of {total}.",
     ex_continue_btn: "Continue where I left off →", ex_restart_btn: "Start over", ex_discover_lyrics_btn: "🎤 Discover the lyrics",
+    ex_translate_pt_es: "Translate (Portuguese → Spanish)", ex_translate_es_pt: "Translate (Spanish → Portuguese)",
+    ex_song_hint_opened: "The video already opened at this blank's fragment", ex_song_hint_available: "You can listen to the song while you fill in the blank",
+    ex_song_hint_suffix: ", but it starts WITHOUT sound (browsers block autoplay audio) — tap \"{btn}\" as many times as you want.",
+    ex_song_hint_muted: "🔇 The video opens muted — tap \"{btn}\" to listen.",
+    ex_answer_placeholder: "Write your answer here...", ex_your_answer_placeholder: "Your answer...",
+    ex_write_what_hear_placeholder: "Write what you hear...", ex_write_answer_placeholder: "Write your answer...",
+    ex_song_listen_default_q: "Listen to the song and write what you hear in this fragment.",
+    song_listen_fragment: "🔊 Listen to the fragment", song_activate_sound: "🔊 Turn on sound",
+    ex_order_instruction: "Order the dialogue (click in order):",
+    ex_sample_answer_label: "Model answer:", ex_compare_later: "📝 You'll be able to compare your answer with the model answer in the Review, once you finish.",
+    ex_progress_review: "🔁 Review", ex_progress_exam: "Exam", ex_progress_exercise: "Exercise",
+    ex_badge_mc: "🔠 Multiple choice", ex_badge_fill: "✏️ Fill in", ex_badge_translate: "🔁 Translation", ex_badge_listen: "🎧 Listening",
+    ex_badge_songlisten: "🎧 Song dictation", ex_badge_speak: "🎙️ Pronunciation", ex_badge_order: "🔀 Order", ex_badge_open: "✍️ Free response",
     result_pass_title: "Passed!", result_fail_title: "Not yet...", result_lesson_title: "Exercises completed!",
     result_min_score: "Minimum required score: {score}%", result_unlocked: "🔓 You've unlocked the next level!",
     result_retry_msg: "Review the lesson and retry the exam when you're ready.",
@@ -2773,7 +2812,7 @@ function songFragmentHtml(frameId, youtubeId, startSec, endSec) {
   // autoplay funcione de manera confiable en todos los navegadores. Por eso este botón ya
   // no es solo "repetir" — es también la forma de activar el sonido la primera vez, ya que
   // el clic es un gesto real del usuario y el navegador sí permite audio ahí dentro.
-  const label = startSec != null ? "🔊 Escuchar el fragmento" : "🔊 Activar sonido";
+  const label = startSec != null ? t("song_listen_fragment") : t("song_activate_sound");
   return `
     <div class="song-video-wrap">
       <iframe id="${frameId}" src="${songEmbedSrc(youtubeId, startSec, endSec)}" frameborder="0"
@@ -2782,10 +2821,11 @@ function songFragmentHtml(frameId, youtubeId, startSec, endSec) {
     <button class="btn btn-secondary btn-sm song-replay-btn" type="button" id="${frameId}-replay">${label}</button>`;
 }
 
-const EX_TYPE_BADGE = {
-  mc: "🔠 Opción múltiple", fill: "✏️ Completar", translate: "🔁 Traducción", listen: "🎧 Escucha",
-  songListen: "🎧 Dictado musical", speak: "🎙️ Pronunciación", order: "🔀 Ordenar", open: "✍️ Respuesta libre",
+const EX_TYPE_BADGE_KEYS = {
+  mc: "ex_badge_mc", fill: "ex_badge_fill", translate: "ex_badge_translate", listen: "ex_badge_listen",
+  songListen: "ex_badge_songlisten", speak: "ex_badge_speak", order: "ex_badge_order", open: "ex_badge_open",
 };
+function exTypeBadge(type) { const key = EX_TYPE_BADGE_KEYS[type]; return key ? t(key) : ""; }
 
 function renderExercise() {
   clearAutoAdvance(); // cualquier temporizador de la pantalla anterior queda obsoleto en este render
@@ -2812,11 +2852,13 @@ function renderExercise() {
       <div id="ex-feedback"></div>
       <div class="ex-actions"><button class="btn btn-primary" id="ex-next" disabled>${t("ex_next")}</button></div>`;
   } else if (ex.type === "fill" || ex.type === "translate") {
-    const label = ex.type === "translate" ? `Traduce${ex.from === "pt" ? " (Português → Español)" : " (Español → Português)"}: ${escapeHtml(ex.text)}` : escapeHtml(ex.q);
+    const label = ex.type === "translate" ? `${ex.from === "pt" ? t("ex_translate_pt_es") : t("ex_translate_es_pt")}: ${escapeHtml(ex.text)}` : escapeHtml(ex.q);
+    const songHintBtn = ex.startSec != null ? t("song_listen_fragment") : t("song_activate_sound");
+    const songHintBase = ex.startSec != null ? t("ex_song_hint_opened") : t("ex_song_hint_available");
     const fillInner = `
       <div class="ex-question">${label} ${ttsBtnHtml}</div>
-      ${ex.youtubeId ? `<p class="ex-hint">🔇 ${ex.startSec != null ? "El video ya abrió en el fragmento de este hueco" : "Puedes escuchar la canción mientras completas el hueco"}, pero empieza SIN sonido (los navegadores bloquean el audio automático) — toca "${ex.startSec != null ? "Escuchar el fragmento" : "Activar sonido"}" cuantas veces quieras.</p>` : ""}
-      <input type="text" class="ex-input" id="ex-answer" placeholder="Escribe tu respuesta aquí..." autocomplete="off">
+      ${ex.youtubeId ? `<p class="ex-hint">🔇 ${songHintBase}${t("ex_song_hint_suffix", { btn: songHintBtn })}</p>` : ""}
+      <input type="text" class="ex-input" id="ex-answer" placeholder="${t("ex_answer_placeholder")}" autocomplete="off">
       <div class="ex-actions"><button class="btn btn-secondary btn-sm" id="ex-check">${t("ex_check")}</button><button class="btn btn-primary" id="ex-next">${t("ex_next")}</button></div>
       <div id="ex-feedback"></div>`;
     body = ex.youtubeId ? `
@@ -2828,7 +2870,7 @@ function renderExercise() {
     body = `
       <div class="ex-question">🎧 ${escapeHtml(ex.q)}</div>
       <div style="text-align:center;margin-bottom:18px"><button class="mic-btn" id="ex-play" style="background:var(--rojo)">🔊</button></div>
-      <input type="text" class="ex-input" id="ex-answer" placeholder="Tu respuesta..." autocomplete="off">
+      <input type="text" class="ex-input" id="ex-answer" placeholder="${t("ex_your_answer_placeholder")}" autocomplete="off">
       <div class="ex-actions"><button class="btn btn-secondary btn-sm" id="ex-check">${t("ex_check")}</button><button class="btn btn-primary" id="ex-next">${t("ex_next")}</button></div>
       <div id="ex-feedback"></div>`;
   } else if (ex.type === "songListen") {
@@ -2839,9 +2881,9 @@ function renderExercise() {
       <div class="song-ex-split">
         <div class="song-ex-video">${songFragmentHtml("song-listen-frame", ex.youtubeId, ex.startSec, ex.endSec)}</div>
         <div class="song-ex-content">
-          <div class="ex-question">🎧 ${escapeHtml(ex.q || "Escucha la canción y escribe lo que oyes en este fragmento.")}</div>
-          <p class="ex-hint">🔇 El video abre sin sonido — toca "${ex.startSec != null ? "Escuchar el fragmento" : "Activar sonido"}" para escuchar.</p>
-          <input type="text" class="ex-input" id="ex-answer" placeholder="Escribe lo que escuchas..." autocomplete="off">
+          <div class="ex-question">🎧 ${escapeHtml(ex.q || t("ex_song_listen_default_q"))}</div>
+          <p class="ex-hint">${t("ex_song_hint_muted", { btn: ex.startSec != null ? t("song_listen_fragment") : t("song_activate_sound") })}</p>
+          <input type="text" class="ex-input" id="ex-answer" placeholder="${t("ex_write_what_hear_placeholder")}" autocomplete="off">
           <div class="ex-actions"><button class="btn btn-secondary btn-sm" id="ex-check">${t("ex_check")}</button><button class="btn btn-primary" id="ex-next">${t("ex_next")}</button></div>
           <div id="ex-feedback"></div>
         </div>
@@ -2856,17 +2898,17 @@ function renderExercise() {
       <div class="ex-actions"><button class="btn btn-secondary btn-sm" id="ex-skip">${t("ex_skip")}</button><button class="btn btn-primary" id="ex-next" disabled>${t("ex_next")}</button></div>`;
   } else if (ex.type === "order") {
     body = `
-      <div class="ex-question">Ordena el diálogo (haz clic en orden): ${ttsBtnHtml}</div>
+      <div class="ex-question">${t("ex_order_instruction")} ${ttsBtnHtml}</div>
       <div id="order-list">${ex.items.map((it, i) => `<div class="order-item" data-i="${i}">${escapeHtml(it)}</div>`).join("")}</div>
       <div id="ex-feedback"></div>
       <div class="ex-actions"><button class="btn btn-secondary btn-sm" id="ex-check">${t("ex_check")}</button><button class="btn btn-primary" id="ex-next">${t("ex_next")}</button></div>`;
   } else if (ex.type === "open") {
     body = `
       <div class="ex-question">✍️ ${escapeHtml(ex.q)}</div>
-      <textarea class="ex-input" id="ex-answer" rows="3" placeholder="Escribe tu respuesta..."></textarea>
+      <textarea class="ex-input" id="ex-answer" rows="3" placeholder="${t("ex_write_answer_placeholder")}"></textarea>
       ${isGabaritoImmediate()
-        ? `<div class="ex-feedback ok">Respuesta modelo: <em>${escapeHtml(ex.sample || "")}</em></div>`
-        : `<div class="ex-feedback neutral">📝 Vas a poder comparar tu respuesta con la respuesta modelo en la Revisión, al terminar.</div>`}
+        ? `<div class="ex-feedback ok">${t("ex_sample_answer_label")} <em>${escapeHtml(ex.sample || "")}</em></div>`
+        : `<div class="ex-feedback neutral">${t("ex_compare_later")}</div>`}
       <div class="ex-actions"><button class="btn btn-primary" id="ex-next">${t("ex_next")}</button></div>`;
   }
 
@@ -2880,7 +2922,7 @@ function renderExercise() {
       <button class="back-link" id="back-exit">✕ Salir</button>
       <div class="card exercise-card">
         <div class="ex-topline">
-          <div class="ex-progress">${state.isRetry ? "🔁 Repaso" : state.isExam ? "Prueba" : "Ejercicio"} ${idx + 1} / ${total} <span class="ex-type-badge">${EX_TYPE_BADGE[ex.type] || ""}</span></div>
+          <div class="ex-progress">${state.isRetry ? t("ex_progress_review") : state.isExam ? t("ex_progress_exam") : t("ex_progress_exercise")} ${idx + 1} / ${total} <span class="ex-type-badge">${exTypeBadge(ex.type)}</span></div>
           <div class="ex-scoreboard" id="ex-scoreboard">✅ ${correctSoFar}/${answeredSoFar} ${streak >= 2 ? `· 🔥 racha ${streak}` : ""}</div>
         </div>
         <div class="progress-bar-track"><div class="progress-bar-fill" style="width:${Math.round(((idx) / total) * 100)}%"></div></div>
