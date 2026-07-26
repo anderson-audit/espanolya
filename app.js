@@ -55,7 +55,7 @@ const functions = (typeof firebase.functions === "function") ? firebase.function
 // Versión del sistema, visible en Mi Cuenta / Configuración y en el pie de la barra lateral.
 // Se debe actualizar manualmente cada vez que se sube una nueva versión al repositorio
 // (formato AAAA.MM.DD.N — N = número de subida ese día, empieza en 1).
-const APP_VERSION = "2026.07.17.1";
+const APP_VERSION = "2026.07.26.1";
 
 // Valores por defecto de la mensualidad/anualidad — el admin puede cambiarlos en
 // Configuración → Planes y precios (guardados en config/settings, campos priceMonthly/priceAnnual).
@@ -3386,7 +3386,15 @@ async function saveExamResult(levelId, score, passed, review) {
   // de certificado desaparecía). Ahora se guarda el MEJOR resultado: passed nunca vuelve
   // a false, y la nota registrada es la más alta entre la anterior y la nueva.
   const finalPassed = passed || wasPassed;
+  const keepsPreviousScore = wasPassed && typeof prevLevel.examScore === "number" && prevLevel.examScore >= score;
   const finalScore = wasPassed && typeof prevLevel.examScore === "number" ? Math.max(prevLevel.examScore, score) : score;
+  // BUGFIX (2026-07-26): el gabarito (examReview) se sobreescribía SIEMPRE con el intento
+  // más reciente, mientras que examScore/examPassed (arriba) preservan el MEJOR resultado.
+  // Eso desincronizaba nota y gabarito: un alumno que repite la prueba y saca una nota peor
+  // seguía viendo (correctamente) su nota anterior más alta, pero el botón 🔍 mostraba las
+  // respuestas del intento NUEVO (peor), no las que realmente generaron esa nota. Ahora el
+  // gabarito guardado siempre corresponde al mismo intento que quedó registrado como nota final.
+  const finalReview = keepsPreviousScore ? (prevLevel.examReview || []) : (review || []);
   const xpGain = passed ? 50 : 5;
   // Igual que en las lecciones: guarda el primer intento de la prueba (nota + gabarito) una
   // sola vez, sin sobreescribirlo en los siguientes intentos, para poder mostrar la evolución.
@@ -3397,7 +3405,7 @@ async function saveExamResult(levelId, score, passed, review) {
   const updates = {
     [`levels.${levelId}.examScore`]: finalScore,
     [`levels.${levelId}.examPassed`]: finalPassed,
-    [`levels.${levelId}.examReview`]: review || [],
+    [`levels.${levelId}.examReview`]: finalReview,
     [`levels.${levelId}.examFirstAttempt`]: examFirstAttempt,
     [`levels.${levelId}.examAttempts`]: examAttempts,
     xp: firebase.firestore.FieldValue.increment(xpGain)
@@ -3408,7 +3416,7 @@ async function saveExamResult(levelId, score, passed, review) {
   if (!state.progress.levels[levelId]) state.progress.levels[levelId] = {};
   state.progress.levels[levelId].examScore = finalScore;
   state.progress.levels[levelId].examPassed = finalPassed;
-  state.progress.levels[levelId].examReview = review || [];
+  state.progress.levels[levelId].examReview = finalReview;
   state.progress.levels[levelId].examFirstAttempt = examFirstAttempt;
   state.progress.levels[levelId].examAttempts = examAttempts;
   state.progress.xp = (state.progress.xp || 0) + xpGain;
