@@ -1,16 +1,12 @@
-O sandbox travou de novo nos arquivos de lock do git (dessa vez em .git\HEAD.lock e .git\index.lock ao mesmo tempo) e não consegui commitar por aqui. As mudanças já estão salvas nos arquivos, só falta você rodar isso no PowerShell:
+Travou de novo no lock do git (HEAD.lock) — não consegui commitar por aqui. Roda isso no PowerShell:
 
 cd "C:\XDADOS\ESPAÑOL"
 Remove-Item ".git\index.lock" -ErrorAction SilentlyContinue
 Remove-Item ".git\HEAD.lock" -ErrorAction SilentlyContinue
 git add -A
-git commit -m "Move la version del sistema para la tarjeta blanca de login, cambia la foto de Seguridad Ocupacional por otra mas profesional"
+git commit -m "Nombre del archivo del certificado usa solo el primer nombre del alumno"
 git push
 
-O que mudou nesta leva (v2026.07.27.5):
-- A versão do sistema saiu do canto (quase invisível em cima do fundo vermelho) e foi para dentro do quadro branco de login, embaixo do link "Olvidaste tu contraseña?".
-- Trocou a foto de "Seguridad y Salud Ocupacional" (Pronunciación) de novo — a anterior (PPE_kit.jpg) tambien ficou feia/cortada. Agora usa "Construction_Workers.jpg", que deve encaixar melhor no formato do card.
-
-Depois que subir, dá uma conferida na lição de Seguridad Ocupacional pra ver se a foto ficou boa dessa vez — se ainda estiver ruim, me manda o print que eu troco de novo.
+O que mudou (v2026.07.27.7): o PDF do certificado de nível agora baixa só com o primeiro nome do aluno no arquivo, ex: "Certificado_Nivel_Básico_Español_YA - Anderson - 07-2026.pdf". No corpo do certificado o nome completo continua aparecendo normalmente, só o nome do arquivo mudou.
 
 Depois que subir, pode apagar este arquivo.

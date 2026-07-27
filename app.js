@@ -58,7 +58,7 @@ const functions = (typeof firebase.functions === "function") ? firebase.function
 // Versión del sistema, visible en Mi Cuenta / Configuración y en el pie de la barra lateral.
 // Se debe actualizar manualmente cada vez que se sube una nueva versión al repositorio
 // (formato AAAA.MM.DD.N — N = número de subida ese día, empieza en 1).
-const APP_VERSION = "2026.07.27.6";
+const APP_VERSION = "2026.07.27.7";
 
 // Valores por defecto de la mensualidad/anualidad — el admin puede cambiarlos en
 // Configuración → Planes y precios (guardados en config/settings, campos priceMonthly/priceAnnual).
@@ -6017,11 +6017,14 @@ function generateCertificatePDF(levelId, opts) {
   doc.text(`Este certificado puede verificarse por su ID único: ${certId}`, W / 2, 195.5, { align: "center" });
 
   // Nombre del archivo pedido por Anderson: "Certificado_Nivel_{Etapa}_Español_YA - {Nombre} - {MM-AAAA}",
-  // con el mes/año de EMISIÓN del certificado (no de aprobación) y el nombre del alumno incluido.
+  // con el mes/año de EMISIÓN del certificado (no de aprobación). En el archivo va SOLO el
+  // primer nombre del alumno (pedido explícito) — en el cuerpo del certificado sigue apareciendo
+  // el nombre completo (studentName), esto solo afecta el nombre del archivo descargado.
   const issueDate = new Date();
   const etapaSlug = lvl.name.replace(/\s+/g, "_");
   const mmYYYY = `${String(issueDate.getMonth() + 1).padStart(2, "0")}-${issueDate.getFullYear()}`;
-  const safeStudentName = studentName.replace(/[\\/:*?"<>|]+/g, "").trim();
+  const firstName = studentName.trim().split(/\s+/)[0] || studentName;
+  const safeStudentName = firstName.replace(/[\\/:*?"<>|]+/g, "").trim();
   doc.save(`${sample ? "Ejemplo_" : ""}Certificado_Nivel_${etapaSlug}_Español_YA - ${safeStudentName} - ${mmYYYY}.pdf`);
 }
 
