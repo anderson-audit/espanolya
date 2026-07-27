@@ -1844,18 +1844,102 @@ function getSpanishVoiceOptions() {
 function logout() { auth.signOut(); }
 
 /* ---------------------------------------------------------------------- */
-/* 7. TTS COM DESTAQUE DE PALAVRAS (karaokê)                               */
+/* 7. TTS COM DESTAQUE DE PALAVRAS (karaokê) + PAUSAR/RETOMAR + CONTADOR   */
 /* ---------------------------------------------------------------------- */
+// Estado único del audio que está sonando (solo puede haber uno a la vez, ya que cada
+// speak() nuevo cancela el anterior). Guarda el botón activo y el cronómetro para poder
+// pausar/retomar desde el MISMO botón en vez de reiniciar la frase desde el principio.
+const ttsPlayback = { btn: null, paused: false, elapsedMs: 0, tickStart: 0, timerId: null };
+
+function ttsFormatTime(ms) {
+  const totalSec = Math.floor(ms / 1000);
+  const m = Math.floor(totalSec / 60);
+  const s = totalSec % 60;
+  return `${m}:${String(s).padStart(2, "0")}`;
+}
+
+// El contador se crea (una sola vez) justo después del botón de voz, sin tener que tocar
+// cada plantilla HTML que ya usa .speak-icon-btn / .vocab-speak-btn en toda la app.
+function ttsCounterEl(btn) {
+  let el = btn.nextElementSibling;
+  if (!el || !el.classList || !el.classList.contains("tts-counter")) {
+    el = document.createElement("span");
+    el.className = "tts-counter";
+    btn.insertAdjacentElement("afterend", el);
+  }
+  return el;
+}
+
+function ttsStartTicking(btn) {
+  const el = ttsCounterEl(btn);
+  el.style.display = "inline-block";
+  el.textContent = ttsFormatTime(ttsPlayback.elapsedMs);
+  ttsPlayback.tickStart = Date.now();
+  clearInterval(ttsPlayback.timerId);
+  ttsPlayback.timerId = setInterval(() => {
+    el.textContent = ttsFormatTime(ttsPlayback.elapsedMs + (Date.now() - ttsPlayback.tickStart));
+  }, 250);
+}
+
+function ttsPauseTicking() {
+  clearInterval(ttsPlayback.timerId);
+  ttsPlayback.timerId = null;
+  ttsPlayback.elapsedMs += Date.now() - ttsPlayback.tickStart;
+}
+
+function ttsResetUI(btn) {
+  clearInterval(ttsPlayback.timerId);
+  ttsPlayback.timerId = null;
+  if (!btn) return;
+  btn.classList.remove("playing", "paused");
+  btn.title = "Escuchar";
+  if (btn.dataset.ttsIcon) btn.textContent = btn.dataset.ttsIcon;
+  const el = btn.nextElementSibling;
+  if (el && el.classList && el.classList.contains("tts-counter")) el.style.display = "none";
+}
+
 function speak(text, onWordSpans, btn, forceVoice, onFinish) {
   if (!("speechSynthesis" in window)) { alert("Tu navegador no soporta síntesis de voz. Prueba con Google Chrome."); return; }
+
+  // Si el alumno vuelve a tocar EL MISMO botón mientras suena o está en pausa, alternamos
+  // pausar/retomar en vez de reiniciar la frase desde el principio — así puede detenerse a
+  // mitad de camino (por ejemplo para repetir algo en voz alta) y seguir justo donde iba.
+  if (btn && ttsPlayback.btn === btn) {
+    if (ttsPlayback.paused) {
+      speechSynthesis.resume();
+      ttsPlayback.paused = false;
+      btn.classList.add("playing"); btn.classList.remove("paused");
+      btn.title = "Pausar"; btn.textContent = "⏸";
+      ttsStartTicking(btn);
+    } else {
+      speechSynthesis.pause();
+      ttsPlayback.paused = true;
+      btn.classList.remove("playing"); btn.classList.add("paused");
+      btn.title = "Reanudar"; btn.textContent = "▶";
+      ttsPauseTicking();
+    }
+    return;
+  }
+
+  // Si había otro botón sonando, lo detenemos y limpiamos su UI antes de empezar este nuevo.
+  if (ttsPlayback.btn && ttsPlayback.btn !== btn) ttsResetUI(ttsPlayback.btn);
   speechSynthesis.cancel();
+  ttsPlayback.btn = btn || null;
+  ttsPlayback.paused = false;
+  ttsPlayback.elapsedMs = 0;
+
   const utter = new SpeechSynthesisUtterance(text);
   utter.lang = "es-ES";
   const voice = forceVoice || pickSpanishVoice();
   if (voice) utter.voice = voice;
   utter.rate = 0.92;
 
-  if (btn) btn.classList.add("playing");
+  if (btn) {
+    if (!btn.dataset.ttsIcon) btn.dataset.ttsIcon = btn.textContent.trim() || "🔊";
+    btn.classList.add("playing"); btn.classList.remove("paused");
+    btn.title = "Pausar"; btn.textContent = "⏸";
+    ttsStartTicking(btn);
+  }
 
   if (onWordSpans && onWordSpans.length) {
     utter.onboundary = (ev) => {
@@ -1872,8 +1956,9 @@ function speak(text, onWordSpans, btn, forceVoice, onFinish) {
     };
   }
   utter.onend = () => {
-    if (btn) btn.classList.remove("playing");
+    ttsResetUI(btn);
     if (onWordSpans) onWordSpans.forEach(span => span.classList.remove("active"));
+    if (ttsPlayback.btn === btn) ttsPlayback.btn = null;
     if (onFinish) onFinish();
   };
   speechSynthesis.speak(utter);
@@ -2685,7 +2770,8 @@ function renderLessonView() {
     playAllBtn.onclick = () => playDialogueAll(dialogueCard, playAllBtn, dialogueVoiceMap);
   }
   document.querySelectorAll(".vocab-chip").forEach(chip => {
-    chip.querySelector(".vocab-speak-btn").onclick = () => speak(chip.dataset.say, null, null);
+    const vBtn = chip.querySelector(".vocab-speak-btn");
+    vBtn.onclick = () => speak(chip.dataset.say, null, vBtn);
   });
   // Mostrar/ocultar traducción: cada botón 🇧🇷 revela (o esconde de nuevo) SOLO su propia
   // línea de traducción, sin afectar a las demás — el alumno decide cuándo quiere ver el
@@ -5903,6 +5989,19 @@ function wikimediaImg(filename) {
   return "https://commons.wikimedia.org/wiki/Special:FilePath/" + filename;
 }
 
+// Evita que una foto "alta" (retrato, cuadrada, etc.) quede cortada por la mitad dentro del
+// marco panorámico de la lección: si su proporción no encaja, la mostramos completa (contain)
+// sobre un fondo desenfocado hecho con la misma imagen, en vez de recortarla fea.
+function heroFitCheck(imgEl) {
+  const container = imgEl.closest(".lesson-hero");
+  if (!container || !imgEl.naturalWidth || !imgEl.naturalHeight) return;
+  const ratio = imgEl.naturalWidth / imgEl.naturalHeight;
+  if (ratio < 1.2) {
+    container.style.setProperty("--hero-bg", `url("${imgEl.src}")`);
+    container.classList.add("hero-contain");
+  }
+}
+
 const LESSON_IMAGES = {
   // Fundamentos
   "fund-0": { file: "Pen-writing-notes-studying.jpg", alt: "Estudiante escribiendo apuntes", caption: "Todo comienzo empieza con la motivación de aprender." },
@@ -5914,8 +6013,8 @@ const LESSON_IMAGES = {
   "b1":  { file: "Man_and_Woman_Shaking_Hands.jpg", alt: "Saludo entre dos personas", caption: "¡Hola! Así empiezan todas las conversaciones." },
   "b2":  { file: "Flag_map_of_the_World.svg", alt: "Mapa de banderas del mundo", caption: "Cada país tiene su propia nacionalidad y bandera." },
   "b3":  { file: "Family_Portrait.jpg", alt: "Retrato de familia", caption: "La familia es el primer vocabulario que aprendemos." },
-  "b4":  { file: "Kitchen_alarm_clock.JPG", alt: "Despertador", caption: "La rutina diaria empieza con el despertador." },
-  "b5":  { file: "Portraits_from_human_ethnic_groups.jpg", alt: "Retratos de personas diversas", caption: "Describir el aspecto físico de las personas." },
+  "b4":  { file: "Alarm_clock_on_a_chair_(Unsplash).jpg", alt: "Despertador clásico sobre una mesa", caption: "La rutina diaria empieza con el despertador." },
+  "b5":  { file: "Gray-haired_man_portrait_(Unsplash).jpg", alt: "Retrato de un hombre para describir su aspecto físico", caption: "Describir el aspecto físico de las personas." },
   "b6":  { file: "Tapa_aceitunas.JPG", alt: "Tapa de aceitunas españolas", caption: "El restaurante y la comida típica española." },
   "b7":  { file: "Working_at_office_(Unsplash).jpg", alt: "Persona trabajando en la oficina", caption: "El vocabulario de la oficina y los materiales de trabajo." },
   "b8":  { file: "Living_Room.jpg", alt: "Sala de estar", caption: "La casa y sus espacios." },
@@ -5926,6 +6025,7 @@ const LESSON_IMAGES = {
   "b13": { file: "Woman_reading_a_book_on_lap_(Unsplash).jpg", alt: "Persona leyendo", caption: "¿Qué estás haciendo ahora mismo?" },
   "b14": { file: "Storm_clouds.jpg", alt: "Nubes de tormenta", caption: "El clima y sus expresiones." },
   "b15": { file: "Cabalgata_de_los_Reyes_Magos.jpg", alt: "Cabalgata de los Reyes Magos", caption: "La Navidad española y sus tradiciones." },
+  "b16": { file: "Calendar_Year_(Unsplash).jpg", alt: "Calendario mostrando una fecha", caption: "Números, años, fechas y horas." },
   // Intermedio
   "i1":  { file: "Supermarket_shelves.jpg", alt: "Estantes de supermercado", caption: "De compras por frutas y verduras." },
   "i2":  { file: "Briefcase-photo.jpg", alt: "Maletín de negocios", caption: "Un viaje de negocios y el pretérito perfecto compuesto." },
@@ -5935,8 +6035,8 @@ const LESSON_IMAGES = {
   "i6":  { file: "Color_Concert.jpg", alt: "Concierto con luces de colores", caption: "De gira: el condicional y los consejos." },
   "i7":  { file: "School_children_doing_exams_inside_a_classroom_(15727213731).jpg", alt: "Estudiantes haciendo un examen", caption: "Preparación para el examen DELE." },
   "i8":  { file: "WAITING.jpg", alt: "Persona esperando", caption: "Buscando empleo: comparativos y superlativos." },
-  "i9":  { file: "Cassell's_dictionary_of_cookery_-_containing_about_nine_thousand_recipes_(1892)_(14770089371).jpg", alt: "Libro antiguo de recetas", caption: "Cómo escribir una receta paso a paso." },
-  "i10": { file: "Modern_Fashion_Store-3.jpg", alt: "Tienda de moda", caption: "Gustos, lugares de la ciudad y ropa." },
+  "i9":  { file: "Chef's_Station_(Unsplash).jpg", alt: "Ingredientes y utensilios listos para cocinar", caption: "Cómo escribir una receta paso a paso." },
+  "i10": { file: "Clothes_hangers_on_railing_(Unsplash).jpg", alt: "Perchas con ropa en una tienda de moda", caption: "Gustos, lugares de la ciudad y ropa." },
   "i11": { file: "Miami_traffic_jam,_I-95_North_rush_hour.jpg", alt: "Atasco de tráfico", caption: "El tránsito y los transportes." },
   "i12": { file: "1960s_Ericsson_Etelphone_706_Diakon_Black_Rotary_Dial_Wall_Telephone.JPG", alt: "Teléfono antiguo de disco", caption: "Frases útiles para una llamada telefónica." },
   "i13": { file: "Iconsiam_shopping_mall.jpg", alt: "Centro comercial", caption: "Vamos de compras: colores y condicionales." },
@@ -5964,7 +6064,7 @@ const LESSON_IMAGES = {
   "s3": { file: "Flag_map_of_Latin_America.svg", alt: "Mapa de banderas de Latinoamérica", caption: "Jergas y expresiones de cada país." },
   "s4": { file: "The_grandmother’s_lesson_(1880-81),_by_Silvestro_Lega.jpg", alt: "La lección de la abuela", caption: "La sabiduría popular en los dichos y refranes." },
   "s5": { file: "Flag_Map_of_South_America.png", alt: "Mapa de banderas de Sudamérica", caption: "El mismo objeto, palabras distintas según el país." },
-  "s6": { file: "Old_man_laughing_out_loud_in_Don_Det.jpg", alt: "Persona riendo", caption: "Trabalenguas: diversión con la pronunciación." },
+  "s6": { file: "Sitting_And_Smiling_(Unsplash).jpg", alt: "Persona sonriendo", caption: "Trabalenguas: diversión con la pronunciación." },
   // Español Profesional
   "p1": { file: "Analyzing_Financial_Data_(5099605109).jpg", alt: "Analizando datos financieros", caption: "El vocabulario esencial de auditoría." },
   "p2": { file: "Meeting_room,_table_and_paper_board.jpg", alt: "Sala de reuniones", caption: "Frases para abrir y cerrar una reunión de auditoría." },
@@ -5984,6 +6084,7 @@ function lessonHeroImageHtml(lessonId) {
   return `
     <div class="lesson-hero">
       <img src="${wikimediaImg(img.file)}" alt="${escapeHtml(img.alt)}" loading="lazy"
+           onload="heroFitCheck(this)"
            onerror="this.closest('.lesson-hero').style.display='none'">
       <div class="lesson-hero-caption">${escapeHtml(img.caption)}</div>
     </div>`;
@@ -6023,6 +6124,7 @@ function exerciseImageHtml(lessonId, exerciseIdx) {
   return `
     <div class="lesson-hero ex-hero">
       <img src="${wikimediaImg(img.file)}" alt="${escapeHtml(img.alt)}" loading="lazy"
+           onload="heroFitCheck(this)"
            onerror="this.closest('.ex-hero').style.display='none'">
     </div>`;
 }

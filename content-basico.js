@@ -11,7 +11,7 @@ const LEVEL_BASICO = {
   icon: "🌱",
   colorFrom: "#2e7d32",
   colorTo: "#AA151B",
-  description: "15 aulas para sair do zero: saudações, família, rotina, casa, comida, corpo, direções, clima e muito mais — a base sólida do espanhol.",
+  description: "16 aulas para sair do zero: saudações, família, rotina, casa, comida, corpo, direções, clima, números, años, fechas, horas e muito mais — a base sólida do espanhol.",
   lessons: [
     {
       id: "b1", order: 1, title: "Saludos, presentaciones y despedidas", subtitle: "Verbo SER · pontuação invertida",
@@ -687,6 +687,60 @@ const LEVEL_BASICO = {
         {type:"translate", from:"pt", text:"Eu gostaria de comer batatas fritas e peixe no vapor.", answer:"Me gustaría comer papas fritas y pescado al vapor."},
         {type:"translate", from:"pt", text:"Como está o tempo hoje? Está chovendo?", answer:"¿Cómo está el tiempo hoy? ¿Está lloviendo?"},
         {type:"speak", prompt:"Diga um desejo de festa em espanhol (Me gustaría...)", target:"Me gustaría"}
+      ]
+    },
+    {
+      id: "b16", order: 16, title: "Números, años, fechas y horas", subtitle: "Centenas, miles y millones · cómo leer un año · la fecha y la hora completas",
+      text: "Hoy es lunes, 27 de julio de 2026. Son las ocho y cuarto de la mañana y mi tren sale a las nueve menos diez, así que tengo apenas media hora para desayunar. Nací en mil novecientos noventa y ocho, o sea que este año cumplo veintiocho años el tres de noviembre. La empresa donde trabajo fue fundada en el año dos mil doce y hoy tiene más de mil quinientos empleados en total. El mes que viene, el primero de agosto, empezamos un proyecto nuevo con un presupuesto de tres millones de pesos.",
+      textPt: "Hoje é segunda-feira, 27 de julho de 2026. São oito e quinze da manhã e meu trem sai às nove menos dez, então tenho apenas meia hora para tomar café da manhã. Nasci em mil novecentos e noventa e oito, ou seja, este ano faço vinte e oito anos no dia três de novembro. A empresa onde trabalho foi fundada no ano de dois mil e doze e hoje tem mais de mil e quinhentos funcionários no total. No mês que vem, no dia primeiro de agosto, começamos um projeto novo com um orçamento de três milhões de pesos.",
+      vocabulary: [
+        {category:"Números grandes", items:[
+          {es:"Cien / Ciento uno", pt:"Cem / Cento e um"},{es:"Doscientos(as)", pt:"Duzentos(as)"},{es:"Trescientos(as)", pt:"Trezentos(as)"},
+          {es:"Quinientos(as)", pt:"Quinhentos(as)"},{es:"Setecientos(as)", pt:"Setecentos(as)"},{es:"Novecientos(as)", pt:"Novecentos(as)"},
+          {es:"Mil", pt:"Mil"},{es:"Dos mil", pt:"Dois mil"},{es:"Cien mil", pt:"Cem mil"},{es:"Un millón (de)", pt:"Um milhão (de)"},{es:"Dos millones (de)", pt:"Dois milhões (de)"}
+        ]},
+        {category:"Cómo se dice el año", items:[
+          {es:"¿En qué año naciste/nació?", pt:"Em que ano você nasceu?"},{es:"Nací en (mil novecientos noventa y ocho).", pt:"Nasci em (mil novecentos e noventa e oito)."},
+          {es:"¿Qué año es?", pt:"Que ano é?"},{es:"Estamos en el año (dos mil veintiséis).", pt:"Estamos no ano de (dois mil e vinte e seis)."},
+          {es:"El siglo XX (veinte) / El siglo XXI (veintiuno)", pt:"O século XX / O século XXI"}
+        ]},
+        {category:"La fecha", items:[
+          {es:"¿Qué fecha es hoy?/¿A qué (día) estamos?", pt:"Que data é hoje?"},{es:"Hoy es (27) de (julio) de (2026).", pt:"Hoje é (27) de (julho) de (2026)."},
+          {es:"El primero de enero", pt:"O primeiro de janeiro (dia 1)"},{es:"El dos/tres/treinta y uno de...", pt:"O dia dois/três/trinta e um de..."},
+          {es:"¿Cuál es tu fecha de nacimiento?", pt:"Qual é a sua data de nascimento?"},{es:"Mi cumpleaños es el (3 de noviembre).", pt:"Meu aniversário é (dia 3 de novembro)."}
+        ]},
+        {category:"La hora", items:[
+          {es:"¿Qué hora es?", pt:"Que horas são?"},{es:"Es la una (en punto).", pt:"É uma hora (em ponto)."},{es:"Son las dos.", pt:"São duas horas."},
+          {es:"Y cuarto / Y media / Menos cuarto", pt:"E quinze / E meia / Quinze para"},{es:"De la mañana/tarde/noche", pt:"Da manhã/tarde/noite"},
+          {es:"Es mediodía. / Es medianoche.", pt:"É meio-dia. / É meia-noite."},{es:"¿A qué hora...?", pt:"A que horas...?"}
+        ]}
+      ],
+      grammar: [
+        {title:"Cómo leer un año en español (siempre como número completo, nunca de dos en dos)", headers:["Año","Cómo se lee"], rows:[
+          ["1500","Mil quinientos"],["1776","Mil setecientos setenta y seis"],["1998","Mil novecientos noventa y ocho"],["2000","Dos mil (o 'año dos mil')"],["2026","Dos mil veintiséis"]
+        ]},
+        {title:"La hora — estructura", headers:["Reloj","Español"], rows:[
+          ["1:00","Es la una"],["2:15","Son las dos y cuarto"],["3:30","Son las tres y media"],["4:45","Son las cinco menos cuarto"],["12:00 (día)","Es mediodía"],["00:00","Es medianoche"]
+        ]}
+      ],
+      notes: [
+        "CIEN se usa exacto (100 personas); a partir de 101 se usa CIENTO (ciento uno, ciento veinte).",
+        "Las centenas (200-900) concuerdan en género con el sustantivo: 'doscientas personas', 'quinientos dólares'.",
+        "MIL nunca lleva artículo indefinido: se dice 'mil', nunca 'un mil'. MILLÓN sí: 'un millón DE habitantes' (con 'de').",
+        "En las fechas, solo el día 1 usa el ordinal ('el primero de mayo'); los demás días usan el número cardinal ('el dos de mayo', 'el treinta y uno de diciembre')."
+      ],
+      exercises: [
+        {type:"fill", q:"1997 → escreva por extenso", answer:"Mil novecientos noventa y siete"},
+        {type:"fill", q:"2026 → escreva por extenso", answer:"Dos mil veintiséis"},
+        {type:"mc", q:"¿Cómo se dice 'meio-dia'?", options:["Mediodía","Medianoche","Doce horas"], correct:0},
+        {type:"mc", q:"Son las cinco _______ diez. (16:50)", options:["y","menos","en punto"], correct:1},
+        {type:"fill", q:"3:15 → Son las tres ____ ____.", answer:"y cuarto"},
+        {type:"mc", q:"El primer día del mes se dice:", options:["El uno de...","El primero de...","El primer de..."], correct:1},
+        {type:"fill", q:"500 (concordando com 'personas') → ______ personas", answer:"Quinientas"},
+        {type:"translate", from:"pt", text:"Meu aniversário é no dia trinta e um de dezembro.", answer:"Mi cumpleaños es el treinta y uno de diciembre."},
+        {type:"translate", from:"pt", text:"Ela nasceu em 1985.", answer:"Ella nació en mil novecientos ochenta y cinco."},
+        {type:"listen", audioText:"Son las nueve y media de la noche.", q:"Que horas são?", answer:"21:30"},
+        {type:"speak", prompt:"Diga a data de hoy en español completa (Hoy es...)", target:"Hoy es"}
       ]
     }
   ],
