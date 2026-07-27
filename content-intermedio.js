@@ -1,6 +1,6 @@
 // content-intermedio.js
 // Conteudo do Nivel Intermediario (Modulo 4) do curso "Metodo Espanhol de Verdade"
-// 15 aulas + Exame Final. Gerado a partir do material fonte extraido do curso original.
+// 34 aulas + Exame Final. Gerado a partir do material fonte extraido do curso original.
 
 const LEVEL_INTERMEDIO = {
   id: "intermedio",
@@ -8,7 +8,7 @@ const LEVEL_INTERMEDIO = {
   icon: "🚀",
   colorFrom: "#1565c0",
   colorTo: "#AA151B",
-  description: "15 aulas para avançar: supermercado, viagens de negócios, pretérito, imperfecto, subjuntivo, condicional e muito mais.",
+  description: "34 aulas para avançar: supermercado, viagens de negócios, pretérito, imperfecto, subjuntivo, condicional, viagens, tecnologia, cultura e muito mais.",
   lessons: [
     {
       id: "i1",

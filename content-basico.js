@@ -1,7 +1,7 @@
 /* ==========================================================================
    EspañolYa! — Conteúdo: Nível 1 · BÁSICO
    Fonte: Método Espanhol de Verdade (MEV), Módulo 3 — Español Básico
-   15 aulas + Prova Final. Conteúdo real extraído fielmente dos PDFs originais.
+   16 aulas + Prova Final. Conteúdo real extraído fielmente dos PDFs originais.
    Schema: ver cabeçalho de content-fundamentos.js
    ========================================================================== */
 

@@ -10,8 +10,8 @@ Este guia leva você do zero até o app no ar, gratuitamente e sem cartão de cr
 
 Estrutura do curso:
 - **Fundamentos** (pré-requisito): alfabeto, pronúncia, acentuação
-- **Básico**: 15 aulas + prova
-- **Intermediário**: 15 aulas + prova
+- **Básico**: 16 aulas + prova
+- **Intermediário**: 34 aulas + prova
 - **Avançado**: 15 aulas + prova
 - **Secretos del Español** (bônus, sempre liberado): falsos cognatos, gírias por país, ditados, trava-línguas
 - **Español Profesional — Auditoría y Negocios** (bônus, sempre liberado): vocabulário real de auditoria ISO, reuniões, e-mails formais — o diferencial do seu curso
