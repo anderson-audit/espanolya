@@ -1,11 +1,16 @@
-Rode isso no PowerShell (pasta C:\XDADOS\ESPAÑOL):
+O sandbox travou de novo nos arquivos de lock do git (dessa vez em .git\HEAD.lock e .git\index.lock ao mesmo tempo) e não consegui commitar por aqui. As mudanças já estão salvas nos arquivos, só falta você rodar isso no PowerShell:
 
 cd "C:\XDADOS\ESPAÑOL"
 Remove-Item ".git\index.lock" -ErrorAction SilentlyContinue
+Remove-Item ".git\HEAD.lock" -ErrorAction SilentlyContinue
 git add -A
-git commit -m "Agrega foto de capa a los cards de Tiempos Verbales y Mejora de Pronunciación"
+git commit -m "Move la version del sistema para la tarjeta blanca de login, cambia la foto de Seguridad Ocupacional por otra mas profesional"
 git push
 
-Isso é só uma mudança pequena: as duas capas (Tiempos Verbales e Mejora de Pronunciación) ganham foto de fundo igual às outras (Secretos, Profesional, Normas), em vez de ficar só com o ícone. O conteúdo grande (textos ampliados, pr16/pr17, imagens dentro das lições) já está no ar desde o commit anterior, confirmado no Vercel.
+O que mudou nesta leva (v2026.07.27.5):
+- A versão do sistema saiu do canto (quase invisível em cima do fundo vermelho) e foi para dentro do quadro branco de login, embaixo do link "Olvidaste tu contraseña?".
+- Trocou a foto de "Seguridad y Salud Ocupacional" (Pronunciación) de novo — a anterior (PPE_kit.jpg) tambien ficou feia/cortada. Agora usa "Construction_Workers.jpg", que deve encaixar melhor no formato do card.
 
-Depois que subir, pode apagar este arquivo (_deploy_2026-07-27.txt) — ele é só um lembrete temporário.
+Depois que subir, dá uma conferida na lição de Seguridad Ocupacional pra ver se a foto ficou boa dessa vez — se ainda estiver ruim, me manda o print que eu troco de novo.
+
+Depois que subir, pode apagar este arquivo.

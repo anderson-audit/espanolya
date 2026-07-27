@@ -181,6 +181,7 @@ input, select, textarea { font-family: inherit; }
 .btn-sm { padding: 8px 14px; font-size: .82rem; border-radius: 8px; }
 .auth-switch { text-align: center; margin-top: 18px; font-size: .88rem; color: var(--gray-1); }
 .auth-switch button { background: none; border: none; color: var(--rojo); font-weight: 700; }
+.auth-version { text-align: center; margin-top: 16px; font-size: .72rem; color: var(--gray-2); opacity: .7; }
 .error-msg { background: #fdecea; color: var(--danger); padding: 10px 14px; border-radius: 8px; font-size: .85rem; margin-bottom: 14px; }
 .success-msg { background: #e8f5e9; color: var(--success); padding: 10px 14px; border-radius: 8px; font-size: .85rem; margin-bottom: 14px; }
 

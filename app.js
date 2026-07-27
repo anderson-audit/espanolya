@@ -58,7 +58,7 @@ const functions = (typeof firebase.functions === "function") ? firebase.function
 // Versión del sistema, visible en Mi Cuenta / Configuración y en el pie de la barra lateral.
 // Se debe actualizar manualmente cada vez que se sube una nueva versión al repositorio
 // (formato AAAA.MM.DD.N — N = número de subida ese día, empieza en 1).
-const APP_VERSION = "2026.07.27.4";
+const APP_VERSION = "2026.07.27.5";
 
 // Valores por defecto de la mensualidad/anualidad — el admin puede cambiarlos en
 // Configuración → Planes y precios (guardados en config/settings, campos priceMonthly/priceAnnual).
@@ -1163,9 +1163,9 @@ function renderAuth() {
               <button id="go-login">${t("auth_back_login")}</button>
             `}
           </div>
+          <div class="auth-version">v${APP_VERSION}</div>
         </div>
       </div>
-      <div class="auth-version">v${APP_VERSION}</div>
     </div>`;
 
   document.getElementById("auth-form").addEventListener("submit", onAuthSubmit);
@@ -6227,7 +6227,7 @@ const LESSON_IMAGES = {
   "pr9":  { file: "Business_man_and_woman_handshake_in_work_office.jpg", alt: "Apretón de manos en una oficina", caption: "Negocios y reuniones: cerrando acuerdos." },
   "pr10": { file: "Kate_Edger_Information_Commons_PC_and_desk.JPG", alt: "Escritorio con ordenador de trabajo", caption: "El día a día laboral: rutina y reuniones." },
   "pr11": { file: "Solar_Panels.jpg", alt: "Paneles solares", caption: "Medio ambiente y energías renovables." },
-  "pr12": { file: "PPE_kit.jpg", alt: "Equipo de protección personal completo", caption: "Seguridad y salud ocupacional: prevenir riesgos." },
+  "pr12": { file: "Construction_Workers.jpg", alt: "Trabajadores de la construcción con casco de seguridad", caption: "Seguridad y salud ocupacional: prevenir riesgos." },
   "pr13": { file: "Hyundai_car_assembly_line.jpg", alt: "Línea de producción industrial", caption: "Calidad de procesos y procedimientos." },
   "pr14": { file: "Staff_meeting_(3).jpg", alt: "Reunión de dirección de una empresa", caption: "Gobernanza, dirección y organigrama." },
   "pr15": { file: "Marketing_dashboard.png", alt: "Panel de indicadores y métricas", caption: "Indicadores y sostenibilidad: midiendo el progreso." },
