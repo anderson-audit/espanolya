@@ -3,7 +3,9 @@ Rode isso no PowerShell (pasta C:\XDADOS\ESPAÑOL):
 cd "C:\XDADOS\ESPAÑOL"
 Remove-Item ".git\index.lock" -ErrorAction SilentlyContinue
 git add -A
-git commit -m "Añade módulos bônus Tiempos Verbales y Mejora de Pronunciación, busca en Temario Completo, TTS+score en ejercicios de pronunciación, y amplía textos/diálogos del Intermedio y Avanzado"
+git commit -m "Agrega foto de capa a los cards de Tiempos Verbales y Mejora de Pronunciación"
 git push
+
+Isso é só uma mudança pequena: as duas capas (Tiempos Verbales e Mejora de Pronunciación) ganham foto de fundo igual às outras (Secretos, Profesional, Normas), em vez de ficar só com o ícone. O conteúdo grande (textos ampliados, pr16/pr17, imagens dentro das lições) já está no ar desde o commit anterior, confirmado no Vercel.
 
 Depois que subir, pode apagar este arquivo (_deploy_2026-07-27.txt) — ele é só um lembrete temporário.

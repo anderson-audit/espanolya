@@ -58,7 +58,7 @@ const functions = (typeof firebase.functions === "function") ? firebase.function
 // Versión del sistema, visible en Mi Cuenta / Configuración y en el pie de la barra lateral.
 // Se debe actualizar manualmente cada vez que se sube una nueva versión al repositorio
 // (formato AAAA.MM.DD.N — N = número de subida ese día, empieza en 1).
-const APP_VERSION = "2026.07.27.2";
+const APP_VERSION = "2026.07.27.3";
 
 // Valores por defecto de la mensualidad/anualidad — el admin puede cambiarlos en
 // Configuración → Planes y precios (guardados en config/settings, campos priceMonthly/priceAnnual).
@@ -2257,6 +2257,7 @@ function attachShellEvents() {
 // foto de fondo del card (mismo criterio visual del panel, sin duplicar investigación).
 const LEVEL_HERO_FIRST_LESSON = {
   fundamentos: "fund-0", basico: "b1", intermedio: "i1", avanzado: "a1", secretos: "s1", profesional: "p1", normas: "n1",
+  tiempos: "t1", pronunciacion: "pr1",
 };
 // Anderson reportó (2026-07-13, print de "Mis Niveles"): el card de "Avanzado" quedaba feo
 // porque reusaba la imagen de la lección "a1" (una sartén vista desde arriba — buena DENTRO
