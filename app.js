@@ -58,7 +58,7 @@ const functions = (typeof firebase.functions === "function") ? firebase.function
 // Versión del sistema, visible en Mi Cuenta / Configuración y en el pie de la barra lateral.
 // Se debe actualizar manualmente cada vez que se sube una nueva versión al repositorio
 // (formato AAAA.MM.DD.N — N = número de subida ese día, empieza en 1).
-const APP_VERSION = "2026.07.27.5";
+const APP_VERSION = "2026.07.27.6";
 
 // Valores por defecto de la mensualidad/anualidad — el admin puede cambiarlos en
 // Configuración → Planes y precios (guardados en config/settings, campos priceMonthly/priceAnnual).
@@ -6016,12 +6016,13 @@ function generateCertificatePDF(levelId, opts) {
   doc.text("Plataforma desarrollada por Quallisi® — Consultoría y Auditoría", W / 2, 191, { align: "center" });
   doc.text(`Este certificado puede verificarse por su ID único: ${certId}`, W / 2, 195.5, { align: "center" });
 
-  // Nombre del archivo pedido por el admin: "Cert_{Etapa}_Español_YA_{MM-AAAA}", con el
-  // mes/año de EMISIÓN del certificado (no de aprobación), sin el nombre del alumno.
+  // Nombre del archivo pedido por Anderson: "Certificado_Nivel_{Etapa}_Español_YA - {Nombre} - {MM-AAAA}",
+  // con el mes/año de EMISIÓN del certificado (no de aprobación) y el nombre del alumno incluido.
   const issueDate = new Date();
   const etapaSlug = lvl.name.replace(/\s+/g, "_");
   const mmYYYY = `${String(issueDate.getMonth() + 1).padStart(2, "0")}-${issueDate.getFullYear()}`;
-  doc.save(`${sample ? "Ejemplo_" : ""}Cert_${etapaSlug}_Español_YA_${mmYYYY}.pdf`);
+  const safeStudentName = studentName.replace(/[\\/:*?"<>|]+/g, "").trim();
+  doc.save(`${sample ? "Ejemplo_" : ""}Certificado_Nivel_${etapaSlug}_Español_YA - ${safeStudentName} - ${mmYYYY}.pdf`);
 }
 
 // Vista previa del layout de certificado, usada en Admin → Certificados, sin exigir
