@@ -58,7 +58,7 @@ const functions = (typeof firebase.functions === "function") ? firebase.function
 // Versión del sistema, visible en Mi Cuenta / Configuración y en el pie de la barra lateral.
 // Se debe actualizar manualmente cada vez que se sube una nueva versión al repositorio
 // (formato AAAA.MM.DD.N — N = número de subida ese día, empieza en 1).
-const APP_VERSION = "2026.07.27.3";
+const APP_VERSION = "2026.07.27.4";
 
 // Valores por defecto de la mensualidad/anualidad — el admin puede cambiarlos en
 // Configuración → Planes y precios (guardados en config/settings, campos priceMonthly/priceAnnual).
@@ -108,6 +108,7 @@ const I18N = {
     exam_min_pass: "Nota mínima para aprobar: {score}%", exam_approved_with: " · ✅ Aprobado con {score}%",
     level_locked_alert: "Primero tienes que aprobar la prueba del nivel anterior para desbloquear este módulo.",
     level_preview_note: "puedes ver el temario, pero las lecciones se abren al desbloquear el nivel.",
+    level_avg_score: "Aprovechamiento medio de este módulo: {pct}%",
     exit: "✕ Salir", exit_confirm: "¿Seguro que quieres salir? Vas a perder el progreso de este ejercicio/prueba.",
     ex_next: "Siguiente →", ex_check: "Comprobar", ex_skip: "No puedo grabar ahora",
     ex_resume_title: "📍 Tienes un ejercicio en curso", ex_resume_progress: "vas por la pregunta {cur} de {total}.",
@@ -303,6 +304,7 @@ const I18N = {
     exam_min_pass: "Nota mínima para aprovar: {score}%", exam_approved_with: " · ✅ Aprovado com {score}%",
     level_locked_alert: "Primeiro você precisa passar na prova do nível anterior para desbloquear este módulo.",
     level_preview_note: "você pode ver o conteúdo, mas as lições abrem ao desbloquear o nível.",
+    level_avg_score: "Aproveitamento médio deste módulo: {pct}%",
     exit: "✕ Sair", exit_confirm: "Tem certeza que quer sair? Você vai perder o progresso deste exercício/prova.",
     ex_next: "Próximo →", ex_check: "Verificar", ex_skip: "Não posso gravar agora",
     ex_resume_title: "📍 Você tem um exercício em andamento", ex_resume_progress: "você está na pergunta {cur} de {total}.",
@@ -498,6 +500,7 @@ const I18N = {
     exam_min_pass: "Minimum passing score: {score}%", exam_approved_with: " · ✅ Passed with {score}%",
     level_locked_alert: "You first need to pass the previous level's exam to unlock this module.",
     level_preview_note: "you can preview the content, but lessons open once the level is unlocked.",
+    level_avg_score: "Average score in this module: {pct}%",
     exit: "✕ Exit", exit_confirm: "Are you sure you want to exit? You'll lose progress on this exercise/exam.",
     ex_next: "Next →", ex_check: "Check", ex_skip: "I can't record now",
     ex_resume_title: "📍 You have an exercise in progress", ex_resume_progress: "you're on question {cur} of {total}.",
@@ -828,6 +831,24 @@ function levelCompletionPct(levelId) {
   return Math.round((done / lvl.lessons.length) * 100);
 }
 
+// % de aprovechamiento MEDIO del nivel: promedio de las notas de cada lección ya completada
+// (más la prueba del nivel, si ya fue intentada), no confundir con levelCompletionPct (que mide
+// CUÁNTAS lecciones ya se hicieron, no CON QUÉ NOTA). Devuelve null si todavía no hay nada
+// completado, para que la pantalla pueda ocultar el badge en vez de mostrar un "0%" engañoso.
+function levelAverageScore(levelId) {
+  const lvl = getLevel(levelId);
+  if (!lvl) return null;
+  const p = levelProgress(levelId);
+  const scores = [];
+  lvl.lessons.forEach(l => {
+    const lp = p.lessonsCompleted && p.lessonsCompleted[l.id];
+    if (lp && lp.done && typeof lp.score === "number") scores.push(lp.score);
+  });
+  if (lvl.exam && typeof p.examScore === "number") scores.push(p.examScore);
+  if (!scores.length) return null;
+  return Math.round(scores.reduce((a, b) => a + b, 0) / scores.length);
+}
+
 function passScoreFor(levelId) {
   return (state.config.passScores && state.config.passScores[levelId]) || DEFAULT_PASS_SCORES[levelId] || 70;
 }
@@ -1144,6 +1165,7 @@ function renderAuth() {
           </div>
         </div>
       </div>
+      <div class="auth-version">v${APP_VERSION}</div>
     </div>`;
 
   document.getElementById("auth-form").addEventListener("submit", onAuthSubmit);
@@ -2658,11 +2680,13 @@ function renderLessonList() {
   const unlocked = isLevelUnlocked(state.currentLevelId);
   const idx = MAIN_SEQUENCE.indexOf(state.currentLevelId);
   const prevLvl = idx > 0 ? getLevel(MAIN_SEQUENCE[idx - 1]) : null;
+  const avgScore = levelAverageScore(state.currentLevelId);
   root.innerHTML = wrapShell(`
       <button class="back-link" id="back-dash">${t("back_modules")}</button>
       <div class="lesson-header">
         <h2>${lvl.icon} ${lvl.name}</h2>
         <div class="sub">${lvl.description}</div>
+        ${avgScore !== null ? `<div class="lesson-avg-badge">📊 ${t("level_avg_score", { pct: avgScore })}</div>` : ""}
       </div>
       ${!unlocked ? `<div class="locked-banner">🔒 ${t("level_locked_alert")}${prevLvl ? ` (${prevLvl.name})` : ""} — ${t("level_preview_note")}</div>` : ""}
       ${lvl.lessons.map((lesson, i) => {
@@ -6198,15 +6222,15 @@ const LESSON_IMAGES = {
   "pr4":  { file: "Departure_board_at_Geneva_Airport.jpg", alt: "Panel de salidas en un aeropuerto", caption: "En el aeropuerto: vuelos, puertas y equipaje." },
   "pr5":  { file: "Driving_Cars_in_a_Traffic_Jam.jpg", alt: "Coches en un atasco de tráfico", caption: "En el tránsito: atascos y direcciones." },
   "pr6":  { file: "Job_interview_0001.jpg", alt: "Entrevista de trabajo", caption: "La entrevista: presente, pasado y futuro profesional." },
-  "pr7":  { file: "Clipboard_check.svg", alt: "Portapapeles con verificación", caption: "La auditoría: verificar, constatar, cerrar hallazgos." },
+  "pr7":  { file: "Audit.jpg", alt: "Auditoría financiera y de procesos", caption: "La auditoría: verificar, constatar, cerrar hallazgos." },
   "pr8":  { file: "Whiteboard_in_seminar_room.jpg", alt: "Pizarra blanca en sala de reuniones", caption: "La consultoría: diagnóstico y plan de acción." },
   "pr9":  { file: "Business_man_and_woman_handshake_in_work_office.jpg", alt: "Apretón de manos en una oficina", caption: "Negocios y reuniones: cerrando acuerdos." },
   "pr10": { file: "Kate_Edger_Information_Commons_PC_and_desk.JPG", alt: "Escritorio con ordenador de trabajo", caption: "El día a día laboral: rutina y reuniones." },
   "pr11": { file: "Solar_Panels.jpg", alt: "Paneles solares", caption: "Medio ambiente y energías renovables." },
-  "pr12": { file: "Hard_Hat_Worker_HHW01.JPG", alt: "Trabajador con casco de seguridad", caption: "Seguridad y salud ocupacional: prevenir riesgos." },
+  "pr12": { file: "PPE_kit.jpg", alt: "Equipo de protección personal completo", caption: "Seguridad y salud ocupacional: prevenir riesgos." },
   "pr13": { file: "Hyundai_car_assembly_line.jpg", alt: "Línea de producción industrial", caption: "Calidad de procesos y procedimientos." },
-  "pr14": { file: "Organizational_chart.svg", alt: "Organigrama de una empresa", caption: "Gobernanza, dirección y organigrama." },
-  "pr15": { file: "Commons_Growth.svg", alt: "Gráfico de crecimiento con indicadores", caption: "Indicadores y sostenibilidad: midiendo el progreso." },
+  "pr14": { file: "Staff_meeting_(3).jpg", alt: "Reunión de dirección de una empresa", caption: "Gobernanza, dirección y organigrama." },
+  "pr15": { file: "Marketing_dashboard.png", alt: "Panel de indicadores y métricas", caption: "Indicadores y sostenibilidad: midiendo el progreso." },
   "pr16": { file: "Data_security_privacy_lock_password_(41237924492).jpg", alt: "Candado sobre datos digitales", caption: "Seguridad de la información y privacidad de datos." },
   "pr17": { file: "Laptop_computer.jpg", alt: "Ordenador portátil", caption: "Tecnología e innovación digital." },
 };
