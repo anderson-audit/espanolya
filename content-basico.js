@@ -678,6 +678,14 @@ const LEVEL_BASICO = {
           {es:"¿Qué hora es?", pt:"Que horas são?"},{es:"Es la una (en punto).", pt:"É uma hora (em ponto)."},{es:"Son las dos.", pt:"São duas horas."},
           {es:"Y cuarto / Y media / Menos cuarto", pt:"E quinze / E meia / Quinze para"},{es:"De la mañana/tarde/noche", pt:"Da manhã/tarde/noite"},
           {es:"Es mediodía. / Es medianoche.", pt:"É meio-dia. / É meia-noite."},{es:"¿A qué hora...?", pt:"A que horas...?"}
+        ]},
+        {category:"Números decimales", items:[
+          {es:"3,5 → Tres con cinco / Tres coma cinco", pt:"3,5 → Três vírgula cinco (uso cotidiano/formal en español)"},
+          {es:"12,45 → Doce con cuarenta y cinco", pt:"12,45 → Doze vírgula quarenta e cinco"},
+          {es:"120 → Ciento veinte (NUNCA 'ciento y veinte')", pt:"120 → Cento e vinte (en portugués sí lleva 'e')"},
+          {es:"16 → Dieciséis (NUNCA 'diez y seis')", pt:"16 → Dezesseis"},
+          {es:"7,00 € → Siete euros", pt:"7,00 € → Sete euros (los ceros no se dicen)"},
+          {es:"15,50 € → Quince euros con cincuenta", pt:"15,50 € → Quinze euros e cinquenta (cêntimos)"}
         ]}
       ],
       grammar: [
@@ -686,13 +694,23 @@ const LEVEL_BASICO = {
         ]},
         {title:"La hora — estructura", headers:["Reloj","Español"], rows:[
           ["1:00","Es la una"],["2:15","Son las dos y cuarto"],["3:30","Son las tres y media"],["4:45","Son las cinco menos cuarto"],["12:00 (día)","Es mediodía"],["00:00","Es medianoche"]
+        ]},
+        {title:"Números decimales — cómo se separan y se leen", headers:["Número","Habla cotidiana (España)","Contexto formal/matemático"], rows:[
+          ["2,5","Dos con cinco","Dos coma cinco / Dos y cinco décimas"],
+          ["14,25","Catorce con veinticinco","Catorce coma veinticinco centésimas"],
+          ["130,05","Ciento treinta con cero cinco","Ciento treinta enteros y cinco centésimas"],
+          ["45,18","Cuarenta y cinco con dieciocho","Cuarenta y cinco coma dieciocho"],
+          ["19,95 €","Diecinueve con noventa y cinco (o 'veinte' redondeando)","Diecinueve euros con noventa y cinco céntimos"]
         ]}
       ],
       notes: [
         "CIEN se usa exacto (100 personas); a partir de 101 se usa CIENTO (ciento uno, ciento veinte).",
         "Las centenas (200-900) concuerdan en género con el sustantivo: 'doscientas personas', 'quinientos dólares'.",
         "MIL nunca lleva artículo indefinido: se dice 'mil', nunca 'un mil'. MILLÓN sí: 'un millón DE habitantes' (con 'de').",
-        "En las fechas, solo el día 1 usa el ordinal ('el primero de mayo'); los demás días usan el número cardinal ('el dos de mayo', 'el treinta y uno de diciembre')."
+        "En las fechas, solo el día 1 usa el ordinal ('el primero de mayo'); los demás días usan el número cardinal ('el dos de mayo', 'el treinta y uno de diciembre').",
+        "DECIMALES — separador: en España se escribe con COMA (3,5), nunca con punto como en inglés. Al hablar, lo más común en el día a día es decir 'CON' (tres con cinco); en contextos formales o matemáticos se dice 'COMA' (tres coma cinco) o se nombra el lugar decimal ('tres y cinco décimas').",
+        "DECIMALES — la palabra 'Y' solo conecta decenas con unidades a partir del 31 ('treinta Y cuatro', 'doce con cuarenta Y cinco') o, en contexto formal, separa la parte entera de la decimal ('cinco Y ocho centésimas'). NUNCA se usa 'y' después de las centenas ('ciento veinte', no 'ciento y veinte') ni dentro del 0 al 30 ('dieciséis', no 'diez y seis').",
+        "DECIMALES — en dinero, 'CON' conecta la moneda con los céntimos: 'quince euros CON cincuenta'. Si los decimales son ceros, normalmente no se dicen: '7,00' se dice solo 'siete'."
       ],
       exercises: [
         {type:"fill", q:"1997 → escreva por extenso", answer:"Mil novecientos noventa y siete"},
@@ -705,7 +723,13 @@ const LEVEL_BASICO = {
         {type:"translate", from:"pt", text:"Meu aniversário é no dia trinta e um de dezembro.", answer:"Mi cumpleaños es el treinta y uno de diciembre."},
         {type:"translate", from:"pt", text:"Ela nasceu em 1985.", answer:"Ella nació en mil novecientos ochenta y cinco."},
         {type:"listen", audioText:"Son las nueve y media de la noche.", q:"Que horas são?", answer:"21:30"},
-        {type:"speak", prompt:"Diga a data de hoy en español completa (Hoy es...)", target:"Hoy es"}
+        {type:"speak", prompt:"Diga a data de hoy en español completa (Hoy es...)", target:"Hoy es"},
+        {type:"mc", q:"¿Cómo se escribe el número decimal 'tres y medio' en España?", options:["3.5","3,5","3'5"], correct:1},
+        {type:"fill", q:"120 → escreva por extenso (nunca use 'y' después de las centenas)", answer:"Ciento veinte"},
+        {type:"mc", q:"12,45 (habla cotidiana) se dice:", options:["Doce coma cuarenta y cinco","Doce con cuarenta y cinco","Doce y cuarenta y cinco"], correct:1},
+        {type:"fill", q:"7,00 € (los ceros no se dicen) → ______ euros", answer:"Siete"},
+        {type:"translate", from:"pt", text:"O produto custa quinze euros e cinquenta cêntimos.", answer:"El producto cuesta quince euros con cincuenta céntimos."},
+        {type:"speak", prompt:"Diga en voz alta este número decimal en habla cotidiana:", target:"El presupuesto es de catorce con veinticinco millones de euros."}
       ]
     },
     {

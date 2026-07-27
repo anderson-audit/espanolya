@@ -429,6 +429,8 @@ table.grammar-table th { background: var(--gray-bg); }
 @keyframes pulse { 0%{box-shadow:0 0 0 0 rgba(198,40,40,.5);} 70%{box-shadow:0 0 0 16px rgba(198,40,40,0);} 100%{box-shadow:0 0 0 0 rgba(198,40,40,0);} }
 .speak-target { text-align:center; font-size:1.15rem; font-weight:700; margin-bottom: 6px; color: var(--rojo-dark); }
 .speak-transcript { text-align:center; color:var(--gray-2); font-size:.9rem; min-height:22px; }
+#ex-speak-tts { display:block; margin: 0 auto 12px; }
+.speak-score { text-align:center; font-weight:700; margin-top:6px; color: var(--rojo-dark); }
 .order-item { padding: 12px 14px; border-radius: 10px; background: var(--gray-bg); margin-bottom:8px; cursor: grab; border: 1.5px solid transparent; transition: border-color .15s; }
 .order-item.chosen { border-color: var(--rojo); background: #fdecea; }
 
@@ -661,6 +663,12 @@ table.grammar-table th { background: var(--gray-bg); }
 .syllabus-lesson-text { color: var(--gray-1); }
 .syllabus-lesson-text strong { color: inherit; }
 .syllabus-exam-row .syllabus-lesson-text strong { color: var(--rojo); }
+.syllabus-search-card { padding: 16px 22px; }
+.syllabus-search-card .ex-input { margin: 0; }
+.syllabus-search-locked { opacity: .72; cursor: default; }
+.syllabus-search-locked .syllabus-lesson-num { color: var(--gray-2); }
+#syllabus-search-results.syllabus-lesson-list { padding: 0; }
+#syllabus-search-results .empty-hint { list-style: none; padding: 10px 0; color: var(--gray-2); font-size: .9rem; }
 
 /* ---------- Analíticas (aluno + admin) ---------- */
 .analytics-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin-bottom: 18px; }

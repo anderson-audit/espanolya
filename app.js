@@ -25,13 +25,16 @@ const COURSE_LEVELS = [
   LEVEL_SECRETOS,
   LEVEL_PROFESIONAL,
   LEVEL_NORMAS,
+  LEVEL_TIEMPOS,
+  LEVEL_PRONUNCIACION,
   LEVEL_CANCIONES,
 ].filter(Boolean);
 
 // Ordem de progressão "principal" (o que precisa ser feito em sequência).
-// Secretos, Profesional, Normas y Canciones son bônus: sempre desbloqueados, sem pré-requisito.
+// Secretos, Profesional, Normas, Tiempos, Pronunciación y Canciones son bônus: sempre
+// desbloqueados, sem pré-requisito.
 const MAIN_SEQUENCE = ["fundamentos", "basico", "intermedio", "avanzado"];
-const BONUS_LEVELS = ["secretos", "profesional", "normas", "canciones"];
+const BONUS_LEVELS = ["secretos", "profesional", "normas", "tiempos", "pronunciacion", "canciones"];
 
 function getLevel(id) { return COURSE_LEVELS.find(l => l.id === id); }
 function getLesson(levelId, lessonId) {
@@ -55,7 +58,7 @@ const functions = (typeof firebase.functions === "function") ? firebase.function
 // Versión del sistema, visible en Mi Cuenta / Configuración y en el pie de la barra lateral.
 // Se debe actualizar manualmente cada vez que se sube una nueva versión al repositorio
 // (formato AAAA.MM.DD.N — N = número de subida ese día, empieza en 1).
-const APP_VERSION = "2026.07.26.1";
+const APP_VERSION = "2026.07.27.1";
 
 // Valores por defecto de la mensualidad/anualidad — el admin puede cambiarlos en
 // Configuración → Planes y precios (guardados en config/settings, campos priceMonthly/priceAnnual).
@@ -122,6 +125,9 @@ const I18N = {
     ex_progress_review: "🔁 Repaso", ex_progress_exam: "Prueba", ex_progress_exercise: "Ejercicio",
     ex_badge_mc: "🔠 Opción múltiple", ex_badge_fill: "✏️ Completar", ex_badge_translate: "🔁 Traducción", ex_badge_listen: "🎧 Escucha",
     ex_badge_songlisten: "🎧 Dictado musical", ex_badge_speak: "🎙️ Pronunciación", ex_badge_order: "🔀 Ordenar", ex_badge_open: "✍️ Respuesta libre",
+    ex_speak_listen_model: "Escuchar pronunciación", ex_speak_heard: "Escuchamos", ex_speak_score: "🎯 Pronunciación: {pct}% de similitud",
+    ex_speak_no_support: "Tu navegador no soporta reconocimiento de voz. Usa Google Chrome en computadora o Android, o haz clic en 'No puedo grabar ahora'.",
+    ex_speak_listening: "Escuchando...", ex_speak_error: "No se pudo escuchar. Intenta de nuevo o usa 'No puedo grabar ahora'.",
     result_pass_title: "¡Aprobado!", result_fail_title: "Todavía no...", result_lesson_title: "¡Ejercicios completados!",
     result_min_score: "Nota mínima exigida: {score}%", result_unlocked: "🔓 ¡Has desbloqueado el próximo nivel!",
     result_retry_msg: "Repasa la lección y vuelve a intentar la prueba cuando estés listo(a).",
@@ -241,6 +247,7 @@ const I18N = {
 
     sidebar_levels: "Mis Niveles", sidebar_syllabus: "Temario Completo", sidebar_notas: "Mis Notas", sidebar_notebook: "Cuaderno",
     syllabus_title: "Temario Completo del Curso", syllabus_intro: "Todos los niveles y todas las lecciones de un vistazo, con su tema principal — para consultar el material de estudio sin tener que entrar nivel por nivel.",
+    syllabus_search_placeholder: "🔍 Busca un tema (ej.: subjuntivo, auditoría, comida)...", syllabus_search_empty: "No se encontró ningún tema con ese término.", syllabus_search_locked_in: "Disponible en {level} — nivel bloqueado todavía",
     sidebar_analytics: "Mi Actividad", sidebar_schedule: "Cronograma", sidebar_tutorial: "Tutorial",
     sidebar_section_progress: "Mi Progreso",
     admin_nav_overview: "Resumen", admin_nav_students: "Alumnos", admin_nav_analytics: "Analíticas",
@@ -313,6 +320,9 @@ const I18N = {
     ex_progress_review: "🔁 Revisão", ex_progress_exam: "Prova", ex_progress_exercise: "Exercício",
     ex_badge_mc: "🔠 Múltipla escolha", ex_badge_fill: "✏️ Completar", ex_badge_translate: "🔁 Tradução", ex_badge_listen: "🎧 Escuta",
     ex_badge_songlisten: "🎧 Ditado musical", ex_badge_speak: "🎙️ Pronúncia", ex_badge_order: "🔀 Ordenar", ex_badge_open: "✍️ Resposta livre",
+    ex_speak_listen_model: "Ouvir pronúncia", ex_speak_heard: "Ouvimos", ex_speak_score: "🎯 Pronúncia: {pct}% de similaridade",
+    ex_speak_no_support: "Seu navegador não suporta reconhecimento de voz. Use o Google Chrome no computador ou Android, ou clique em 'Não posso gravar agora'.",
+    ex_speak_listening: "Ouvindo...", ex_speak_error: "Não foi possível ouvir. Tente de novo ou clique em 'Não posso gravar agora'.",
     result_pass_title: "Aprovado!", result_fail_title: "Ainda não...", result_lesson_title: "Exercícios concluídos!",
     result_min_score: "Nota mínima exigida: {score}%", result_unlocked: "🔓 Você desbloqueou o próximo nível!",
     result_retry_msg: "Revise a lição e tente a prova novamente quando estiver pronto(a).",
@@ -432,6 +442,7 @@ const I18N = {
 
     sidebar_levels: "Meus Níveis", sidebar_syllabus: "Programa Completo", sidebar_notas: "Minhas Notas", sidebar_notebook: "Caderno",
     syllabus_title: "Programa Completo do Curso", syllabus_intro: "Todos os níveis e todas as lições em um só lugar, com o tema principal de cada uma — para consultar o material de estudo sem precisar entrar nível por nível.",
+    syllabus_search_placeholder: "🔍 Busque um assunto (ex.: subjuntivo, auditoria, comida)...", syllabus_search_empty: "Nenhum assunto encontrado com esse termo.", syllabus_search_locked_in: "Disponível em {level} — nível ainda bloqueado",
     sidebar_analytics: "Minha Atividade", sidebar_schedule: "Cronograma", sidebar_tutorial: "Tutorial",
     sidebar_section_progress: "Meu Progresso",
     admin_nav_overview: "Resumo", admin_nav_students: "Alunos", admin_nav_analytics: "Analíticas",
@@ -504,6 +515,9 @@ const I18N = {
     ex_progress_review: "🔁 Review", ex_progress_exam: "Exam", ex_progress_exercise: "Exercise",
     ex_badge_mc: "🔠 Multiple choice", ex_badge_fill: "✏️ Fill in", ex_badge_translate: "🔁 Translation", ex_badge_listen: "🎧 Listening",
     ex_badge_songlisten: "🎧 Song dictation", ex_badge_speak: "🎙️ Pronunciation", ex_badge_order: "🔀 Order", ex_badge_open: "✍️ Free response",
+    ex_speak_listen_model: "Listen to pronunciation", ex_speak_heard: "We heard", ex_speak_score: "🎯 Pronunciation: {pct}% match",
+    ex_speak_no_support: "Your browser doesn't support speech recognition. Use Google Chrome on computer or Android, or click 'I can't record now'.",
+    ex_speak_listening: "Listening...", ex_speak_error: "Couldn't hear you. Try again or click 'I can't record now'.",
     result_pass_title: "Passed!", result_fail_title: "Not yet...", result_lesson_title: "Exercises completed!",
     result_min_score: "Minimum required score: {score}%", result_unlocked: "🔓 You've unlocked the next level!",
     result_retry_msg: "Review the lesson and retry the exam when you're ready.",
@@ -623,6 +637,7 @@ const I18N = {
 
     sidebar_levels: "My Levels", sidebar_syllabus: "Full Syllabus", sidebar_notas: "My Grades", sidebar_notebook: "Notebook",
     syllabus_title: "Full Course Syllabus", syllabus_intro: "Every level and every lesson at a glance, with its main topic — so you can check the study material without opening each level one by one.",
+    syllabus_search_placeholder: "🔍 Search a topic (e.g.: subjunctive, audit, food)...", syllabus_search_empty: "No topic found for that term.", syllabus_search_locked_in: "Available in {level} — level still locked",
     sidebar_analytics: "My Activity", sidebar_schedule: "Schedule", sidebar_tutorial: "Tutorial",
     sidebar_section_progress: "My Progress",
     admin_nav_overview: "Overview", admin_nav_students: "Students", admin_nav_analytics: "Analytics",
@@ -2530,27 +2545,106 @@ function syllabusLevelBlockHtml(levelId, isBonus) {
     </div>`;
 }
 
+// Busca de conteúdo dentro do Temario Completo: varre título/subtítulo/texto/vocabulário/
+// gramática/notas de TODAS as lições de TODOS os níveis (inclusive os bloqueados) e monta um
+// índice já normalizado (minúsculas, sem acentos — reaproveita normalize(), já usado no motor
+// de exercícios) para que a busca funcione digitando "auditoria" e encontrar "Auditoría", etc.
+// Níveis bloqueados aparecem no resultado (o aluno vê ONDE está o conteúdo), mas a linha não é
+// clicável — só os níveis já desbloqueados levam direto para a lição.
+function buildSyllabusSearchIndex() {
+  const index = [];
+  MAIN_SEQUENCE.concat(BONUS_LEVELS).forEach(levelId => {
+    const lvl = getLevel(levelId);
+    if (!lvl || !lvl.lessons) return;
+    const unlocked = isLevelUnlocked(levelId);
+    lvl.lessons.forEach((lesson, i) => {
+      const parts = [lesson.title, lesson.subtitle, lesson.text, lesson.textPt];
+      (lesson.vocabulary || []).forEach(group => {
+        parts.push(group.category);
+        (group.items || []).forEach(it => { parts.push(it.es); parts.push(it.pt); });
+      });
+      (lesson.grammar || []).forEach(g => parts.push(g.title));
+      (lesson.notes || []).forEach(n => parts.push(n));
+      index.push({
+        levelId, levelName: lvl.name, levelIcon: lvl.icon, unlocked,
+        lessonId: lesson.id, lessonTitle: lesson.title, lessonSubtitle: lesson.subtitle,
+        blob: normalize(parts.filter(Boolean).join(" | ")),
+      });
+    });
+  });
+  return index;
+}
+
+function syllabusSearchResultRowHtml(m) {
+  if (m.unlocked) {
+    return `
+      <li class="syllabus-lesson-row clickable" data-goto-lesson="${m.lessonId}" data-goto-level="${m.levelId}">
+        <span class="syllabus-lesson-num">${m.levelIcon}</span>
+        <span class="syllabus-lesson-text"><strong>${escapeHtml(m.lessonTitle)}</strong>${m.lessonSubtitle ? ` — ${escapeHtml(m.lessonSubtitle)}` : ""}<br><span style="color:var(--gray-2);font-size:.85em">${escapeHtml(m.levelName)}</span></span>
+      </li>`;
+  }
+  return `
+    <li class="syllabus-lesson-row syllabus-search-locked">
+      <span class="syllabus-lesson-num">🔒</span>
+      <span class="syllabus-lesson-text"><strong>${escapeHtml(m.lessonTitle)}</strong>${m.lessonSubtitle ? ` — ${escapeHtml(m.lessonSubtitle)}` : ""}<br><span style="color:var(--gray-2);font-size:.85em">${t("syllabus_search_locked_in", { level: m.levelName })}</span></span>
+    </li>`;
+}
+
 function renderSyllabus() {
   root.innerHTML = wrapShell(`
       <div class="section-title">🗂️ ${t("syllabus_title")}</div>
       <p style="color:var(--gray-2);margin-top:-8px">${t("syllabus_intro")}</p>
-      <div class="section-title" style="font-size:1rem;margin-top:22px">📚 ${t("sidebar_levels")}</div>
-      ${MAIN_SEQUENCE.map(id => syllabusLevelBlockHtml(id, false)).join("")}
-      <div class="section-title" style="font-size:1rem;margin-top:22px">${t("dash_bonus")}</div>
-      ${BONUS_LEVELS.map(id => syllabusLevelBlockHtml(id, true)).join("")}
+      <div class="card syllabus-search-card">
+        <input type="text" id="syllabus-search-input" class="ex-input" placeholder="${t("syllabus_search_placeholder")}" autocomplete="off">
+        <ol class="syllabus-lesson-list" id="syllabus-search-results" style="display:none;margin-top:12px"></ol>
+      </div>
+      <div id="syllabus-all-levels">
+        <div class="section-title" style="font-size:1rem;margin-top:22px">📚 ${t("sidebar_levels")}</div>
+        ${MAIN_SEQUENCE.map(id => syllabusLevelBlockHtml(id, false)).join("")}
+        <div class="section-title" style="font-size:1rem;margin-top:22px">${t("dash_bonus")}</div>
+        ${BONUS_LEVELS.map(id => syllabusLevelBlockHtml(id, true)).join("")}
+      </div>
       <div class="bottom-space"></div>
     `, "syllabus");
   attachShellEvents();
-  document.querySelectorAll("[data-goto-lesson]").forEach(row => {
-    row.onclick = () => {
-      state.currentLevelId = row.dataset.gotoLevel;
-      state.currentLessonId = row.dataset.gotoLesson;
-      state.screen = "lesson";
-      render();
-    };
-  });
+
+  function wireLessonLinks(scopeEl) {
+    scopeEl.querySelectorAll("[data-goto-lesson]").forEach(row => {
+      row.onclick = () => {
+        state.currentLevelId = row.dataset.gotoLevel;
+        state.currentLessonId = row.dataset.gotoLesson;
+        state.screen = "lesson";
+        render();
+      };
+    });
+  }
+  wireLessonLinks(document);
   document.querySelectorAll(".syllabus-level-head[data-goto-level]").forEach(head => {
     head.onclick = () => { if (head.dataset.gotoLevel) goToLevel(head.dataset.gotoLevel); };
+  });
+
+  // Busca: filtra em memória a cada tecla, sem re-renderizar a tela inteira (render() trocaria
+  // o innerHTML da raiz e o campo de texto perderia o foco a cada letra digitada).
+  const searchInput = document.getElementById("syllabus-search-input");
+  const resultsEl = document.getElementById("syllabus-search-results");
+  const allLevelsEl = document.getElementById("syllabus-all-levels");
+  let searchIndex = null;
+  searchInput.addEventListener("input", () => {
+    const q = normalize(searchInput.value);
+    if (q.length < 2) {
+      resultsEl.style.display = "none";
+      resultsEl.innerHTML = "";
+      allLevelsEl.style.display = "";
+      return;
+    }
+    if (!searchIndex) searchIndex = buildSyllabusSearchIndex();
+    const matches = searchIndex.filter(item => item.blob.includes(q));
+    allLevelsEl.style.display = "none";
+    resultsEl.style.display = "";
+    resultsEl.innerHTML = matches.length
+      ? matches.map(syllabusSearchResultRowHtml).join("")
+      : `<li class="empty-hint">${t("syllabus_search_empty")}</li>`;
+    wireLessonLinks(resultsEl);
   });
 }
 
@@ -2978,6 +3072,9 @@ function renderExercise() {
     body = `
       <div class="ex-question">🎙️ ${escapeHtml(ex.prompt)}</div>
       <div class="speak-target">"${escapeHtml(ex.target)}"</div>
+      <div style="text-align:center">
+        <button class="btn btn-outline btn-sm" id="ex-speak-tts" type="button">🔊 ${t("ex_speak_listen_model")}</button>
+      </div>
       <div style="text-align:center"><button class="mic-btn" id="ex-mic">🎤</button></div>
       <div class="speak-transcript" id="ex-transcript"></div>
       <div id="ex-feedback"></div>
@@ -3289,7 +3386,12 @@ function wireExerciseInteractions(ex) {
   if (ex.type === "speak") {
     const micBtn = document.getElementById("ex-mic");
     const transcriptEl = document.getElementById("ex-transcript");
+    const ttsBtn = document.getElementById("ex-speak-tts");
     const rec = getSpeechRecognition();
+    // Botón "Escuchar pronunciación": deja que el alumno oiga el modelo (TTS, es-ES) antes de
+    // intentarlo, y también sirve para volver a escuchar después del intento — siempre visible,
+    // no depende de si acertó o no.
+    if (ttsBtn) ttsBtn.onclick = () => speak(ex.target, null, ttsBtn);
     document.getElementById("ex-skip").onclick = () => {
       markAnswered(true); showFeedback(true, ex.target); logAttempt(ex, true, "(omitido)");
       document.getElementById("ex-skip").disabled = true;
@@ -3298,25 +3400,33 @@ function wireExerciseInteractions(ex) {
     };
     if (!rec) {
       micBtn.disabled = true;
-      transcriptEl.textContent = "Tu navegador no soporta reconocimiento de voz. Usa Google Chrome en computadora o Android, o haz clic en 'No puedo grabar ahora'.";
+      transcriptEl.textContent = t("ex_speak_no_support");
     } else {
       micBtn.onclick = () => {
         micBtn.classList.add("listening");
-        transcriptEl.textContent = "Escuchando...";
+        transcriptEl.textContent = t("ex_speak_listening");
         rec.start();
       };
       rec.onresult = (event) => {
         const transcript = event.results[0][0].transcript;
-        transcriptEl.textContent = `Escuchamos: "${transcript}"`;
-        const correct = similarity(transcript, ex.target) > 0.55;
+        transcriptEl.textContent = `${t("ex_speak_heard")}: "${transcript}"`;
+        // similarity() ya se usaba solo para decidir correcto/incorrecto (umbral 0.55) — ahora
+        // también se muestra como porcentaje, así el alumno ve CUÁNTO se acercó a la
+        // pronunciación objetivo, no solo un sí/no.
+        const pct = Math.round(similarity(transcript, ex.target) * 100);
+        const correct = pct > 55;
         showFeedback(correct, ex.target);
+        const fb = document.getElementById("ex-feedback");
+        if (fb && isGabaritoImmediate()) {
+          fb.insertAdjacentHTML("beforeend", `<div class="speak-score">${t("ex_speak_score", { pct })}</div>`);
+        }
         markAnswered(correct);
         logAttempt(ex, correct, transcript);
         micBtn.classList.remove("listening");
         answered = true;
         scheduleAutoAdvance(5000);
       };
-      rec.onerror = () => { micBtn.classList.remove("listening"); transcriptEl.textContent = "No se pudo escuchar. Intenta de nuevo o usa 'No puedo grabar ahora'."; };
+      rec.onerror = () => { micBtn.classList.remove("listening"); transcriptEl.textContent = t("ex_speak_error"); };
       rec.onend = () => micBtn.classList.remove("listening");
     }
   }

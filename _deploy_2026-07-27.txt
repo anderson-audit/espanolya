@@ -1,0 +1,9 @@
+Rode isso no PowerShell (pasta C:\XDADOS\ESPAÑOL):
+
+cd "C:\XDADOS\ESPAÑOL"
+Remove-Item ".git\index.lock" -ErrorAction SilentlyContinue
+git add -A
+git commit -m "Añade módulos bônus Tiempos Verbales y Mejora de Pronunciación, busca en Temario Completo, TTS+score en ejercicios de pronunciación, y amplía textos/diálogos del Intermedio y Avanzado"
+git push
+
+Depois que subir, pode apagar este arquivo (_deploy_2026-07-27.txt) — ele é só um lembrete temporário.
