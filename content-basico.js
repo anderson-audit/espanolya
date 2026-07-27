@@ -655,42 +655,7 @@ const LEVEL_BASICO = {
       ]
     },
     {
-      id: "b15", order: 15, title: "Navidad", subtitle: "Condicional, feriados, repaso geral",
-      dialogue: [
-        {who:"Hija", es:"¡Mamá y papá! ¿Qué vamos a hacer esta Navidad?", pt:"Mamãe e papai! O que vamos fazer neste Natal?"},
-        {who:"Padre", es:"Pensamos en cenar con la familia y después salir a la calle para darles comida a los que no tienen familia o casa.", pt:"Pensamos em jantar com a família e depois sair pela rua para dar comida para quem não tem família ou casa."},
-        {who:"Hija", es:"¡Me parece lindo, papá! Me gustaría dibujar el Papá Noel.", pt:"Acho lindo, papai! Eu gostaria de desenhar o Papai Noel."},
-        {who:"Padre", es:"¡Sí, buenísima idea! ¿Te gustaría ayudarnos a elegir ropas para regalar?", pt:"Sim, ótima ideia! Você gostaria de nos ajudar a escolher roupas para doar?"},
-        {who:"Hija", es:"¡Por supuesto! Quisiera ir ahora.", pt:"Claro! Eu gostaria de ir agora."}
-      ],
-      vocabulary: [
-        {category:"Feriados y fechas importantes", items:[
-          {es:"Año Nuevo", pt:"Ano Novo"},{es:"Día de San Valentín", pt:"Dia dos Namorados"},{es:"Pascuas", pt:"Páscoa"},
-          {es:"Día Internacional de la Mujer", pt:"Dia Internacional da Mulher"},{es:"Día del Trabajo", pt:"Dia do Trabalho"},{es:"Día de la Madre", pt:"Dia das Mães"},
-          {es:"Día del Padre", pt:"Dia dos Pais"},{es:"Halloween", pt:"Halloween"},{es:"Navidad", pt:"Natal"},{es:"Día Mundial del Idioma Español (23 de abril)", pt:"Dia Mundial do Idioma Espanhol (23 de abril)"}
-        ]}
-      ],
-      grammar: [
-        {title:"Condicional — GUSTAR / QUERER / QUERER (subj. imperf.)", headers:["Pronombre","Gustaría","Querría","Quisiera"], rows:[
-          ["Yo","me gustaría(n)","querría","quisiera"],["Tú/Vos","te gustaría(n)","querrías","quisieras"],["Él/Ella/Usted","le gustaría(n)","querría","quisiera"],["Nosotros(as)","nos gustaría(n)","querríamos","quisiéramos"]
-        ]}
-      ],
-      notes: ["Tener + frío/calor/hambre/sed/sueño/ganas de... (necessidades)."],
-      exercises: [
-        {type:"mc", q:"¿Qué vamos a comer? ¡Tengo __________!", options:["hambre","frío","ganas"], correct:0},
-        {type:"mc", q:"¡Mozo! ___________ un trozo de tarta, por favor.", options:["Quiero","Quisiera","Querré"], correct:1},
-        {type:"mc", q:"¡Feliz ___________!", options:["año nuevo","navidad árbol","pascua fiesta"], correct:0},
-        {type:"fill", q:"¿Qué feriado se celebra em abril com ovos de chocolate?", answer:"Pascua", altAnswers:["Pascuas"]},
-        {type:"fill", q:"Qual é a festa religiosa do nascimento de Jesus Cristo?", answer:"Navidad"},
-        {type:"translate", from:"pt", text:"Eles comem muito.", answer:"Ellos comen mucho."},
-        {type:"translate", from:"pt", text:"Ela se chama Julieta.", answer:"Ella se llama Julieta."},
-        {type:"translate", from:"pt", text:"Eu gostaria de comer batatas fritas e peixe no vapor.", answer:"Me gustaría comer papas fritas y pescado al vapor."},
-        {type:"translate", from:"pt", text:"Como está o tempo hoje? Está chovendo?", answer:"¿Cómo está el tiempo hoy? ¿Está lloviendo?"},
-        {type:"speak", prompt:"Diga um desejo de festa em espanhol (Me gustaría...)", target:"Me gustaría"}
-      ]
-    },
-    {
-      id: "b16", order: 16, title: "Números, años, fechas y horas", subtitle: "Centenas, miles y millones · cómo leer un año · la fecha y la hora completas",
+      id: "b16", order: 15, title: "Números, años, fechas y horas", subtitle: "Centenas, miles y millones · cómo leer un año · la fecha y la hora completas",
       text: "Hoy es lunes, 27 de julio de 2026. Son las ocho y cuarto de la mañana y mi tren sale a las nueve menos diez, así que tengo apenas media hora para desayunar. Nací en mil novecientos noventa y ocho, o sea que este año cumplo veintiocho años el tres de noviembre. La empresa donde trabajo fue fundada en el año dos mil doce y hoy tiene más de mil quinientos empleados en total. El mes que viene, el primero de agosto, empezamos un proyecto nuevo con un presupuesto de tres millones de pesos.",
       textPt: "Hoje é segunda-feira, 27 de julho de 2026. São oito e quinze da manhã e meu trem sai às nove menos dez, então tenho apenas meia hora para tomar café da manhã. Nasci em mil novecentos e noventa e oito, ou seja, este ano faço vinte e oito anos no dia três de novembro. A empresa onde trabalho foi fundada no ano de dois mil e doze e hoje tem mais de mil e quinhentos funcionários no total. No mês que vem, no dia primeiro de agosto, começamos um projeto novo com um orçamento de três milhões de pesos.",
       vocabulary: [
@@ -741,6 +706,41 @@ const LEVEL_BASICO = {
         {type:"translate", from:"pt", text:"Ela nasceu em 1985.", answer:"Ella nació en mil novecientos ochenta y cinco."},
         {type:"listen", audioText:"Son las nueve y media de la noche.", q:"Que horas são?", answer:"21:30"},
         {type:"speak", prompt:"Diga a data de hoy en español completa (Hoy es...)", target:"Hoy es"}
+      ]
+    },
+    {
+      id: "b15", order: 16, title: "Navidad", subtitle: "Condicional, feriados, repaso geral",
+      dialogue: [
+        {who:"Hija", es:"¡Mamá y papá! ¿Qué vamos a hacer esta Navidad?", pt:"Mamãe e papai! O que vamos fazer neste Natal?"},
+        {who:"Padre", es:"Pensamos en cenar con la familia y después salir a la calle para darles comida a los que no tienen familia o casa.", pt:"Pensamos em jantar com a família e depois sair pela rua para dar comida para quem não tem família ou casa."},
+        {who:"Hija", es:"¡Me parece lindo, papá! Me gustaría dibujar el Papá Noel.", pt:"Acho lindo, papai! Eu gostaria de desenhar o Papai Noel."},
+        {who:"Padre", es:"¡Sí, buenísima idea! ¿Te gustaría ayudarnos a elegir ropas para regalar?", pt:"Sim, ótima ideia! Você gostaria de nos ajudar a escolher roupas para doar?"},
+        {who:"Hija", es:"¡Por supuesto! Quisiera ir ahora.", pt:"Claro! Eu gostaria de ir agora."}
+      ],
+      vocabulary: [
+        {category:"Feriados y fechas importantes", items:[
+          {es:"Año Nuevo", pt:"Ano Novo"},{es:"Día de San Valentín", pt:"Dia dos Namorados"},{es:"Pascuas", pt:"Páscoa"},
+          {es:"Día Internacional de la Mujer", pt:"Dia Internacional da Mulher"},{es:"Día del Trabajo", pt:"Dia do Trabalho"},{es:"Día de la Madre", pt:"Dia das Mães"},
+          {es:"Día del Padre", pt:"Dia dos Pais"},{es:"Halloween", pt:"Halloween"},{es:"Navidad", pt:"Natal"},{es:"Día Mundial del Idioma Español (23 de abril)", pt:"Dia Mundial do Idioma Espanhol (23 de abril)"}
+        ]}
+      ],
+      grammar: [
+        {title:"Condicional — GUSTAR / QUERER / QUERER (subj. imperf.)", headers:["Pronombre","Gustaría","Querría","Quisiera"], rows:[
+          ["Yo","me gustaría(n)","querría","quisiera"],["Tú/Vos","te gustaría(n)","querrías","quisieras"],["Él/Ella/Usted","le gustaría(n)","querría","quisiera"],["Nosotros(as)","nos gustaría(n)","querríamos","quisiéramos"]
+        ]}
+      ],
+      notes: ["Tener + frío/calor/hambre/sed/sueño/ganas de... (necessidades)."],
+      exercises: [
+        {type:"mc", q:"¿Qué vamos a comer? ¡Tengo __________!", options:["hambre","frío","ganas"], correct:0},
+        {type:"mc", q:"¡Mozo! ___________ un trozo de tarta, por favor.", options:["Quiero","Quisiera","Querré"], correct:1},
+        {type:"mc", q:"¡Feliz ___________!", options:["año nuevo","navidad árbol","pascua fiesta"], correct:0},
+        {type:"fill", q:"¿Qué feriado se celebra em abril com ovos de chocolate?", answer:"Pascua", altAnswers:["Pascuas"]},
+        {type:"fill", q:"Qual é a festa religiosa do nascimento de Jesus Cristo?", answer:"Navidad"},
+        {type:"translate", from:"pt", text:"Eles comem muito.", answer:"Ellos comen mucho."},
+        {type:"translate", from:"pt", text:"Ela se chama Julieta.", answer:"Ella se llama Julieta."},
+        {type:"translate", from:"pt", text:"Eu gostaria de comer batatas fritas e peixe no vapor.", answer:"Me gustaría comer papas fritas y pescado al vapor."},
+        {type:"translate", from:"pt", text:"Como está o tempo hoje? Está chovendo?", answer:"¿Cómo está el tiempo hoy? ¿Está lloviendo?"},
+        {type:"speak", prompt:"Diga um desejo de festa em espanhol (Me gustaría...)", target:"Me gustaría"}
       ]
     }
   ],
