@@ -58,7 +58,7 @@ const functions = (typeof firebase.functions === "function") ? firebase.function
 // Versión del sistema, visible en Mi Cuenta / Configuración y en el pie de la barra lateral.
 // Se debe actualizar manualmente cada vez que se sube una nueva versión al repositorio
 // (formato AAAA.MM.DD.N — N = número de subida ese día, empieza en 1).
-const APP_VERSION = "2026.07.27.1";
+const APP_VERSION = "2026.07.27.2";
 
 // Valores por defecto de la mensualidad/anualidad — el admin puede cambiarlos en
 // Configuración → Planes y precios (guardados en config/settings, campos priceMonthly/priceAnnual).
@@ -6186,6 +6186,28 @@ const LESSON_IMAGES = {
   "n3": { file: "Occupational_Safety_Equipment.jpg", alt: "Equipo de protección personal", caption: "El subjuntivo del riesgo (ISO 45001)." },
   "n4": { file: "Cybersecurity.png", alt: "Ilustración de ciberseguridad", caption: "La voz pasiva de la seguridad (ISO/IEC 27001)." },
   "n5": { file: "Team_work.jpg", alt: "Equipo trabajando en conjunto", caption: "Repaso integrador: la auditoría de las cuatro normas." },
+  // Tiempos Verbales (módulo bônus)
+  "t1": { file: "Wall_clock_in_morning_time.jpg", alt: "Reloj de pared por la mañana", caption: "El presente: lo que pasa aquí y ahora." },
+  "t2": { file: "Old_Memories_(5985546638).jpg", alt: "Fotografías antiguas de recuerdos", caption: "El pasado: lo que ya viviste y recuerdas." },
+  "t3": { file: "Missouri-Highway-80-sunset-mo.jpg", alt: "Carretera al atardecer hacia el horizonte", caption: "El futuro: el camino que todavía queda por recorrer." },
+  // Mejora de Pronunciación (módulo bônus)
+  "pr1":  { file: "Clothes_rack.jpg", alt: "Perchero con ropa en una tienda", caption: "De compras: talla, precio y probador." },
+  "pr2":  { file: "View_of_Old_Town_Toledo.jpg", alt: "Vista del casco antiguo de Toledo", caption: "De paseo por el casco antiguo español." },
+  "pr3":  { file: "Cooking_a_paella.jpg", alt: "Cocinando una paella", caption: "En la cocina: sabores y verbos de preparación." },
+  "pr4":  { file: "Departure_board_at_Geneva_Airport.jpg", alt: "Panel de salidas en un aeropuerto", caption: "En el aeropuerto: vuelos, puertas y equipaje." },
+  "pr5":  { file: "Driving_Cars_in_a_Traffic_Jam.jpg", alt: "Coches en un atasco de tráfico", caption: "En el tránsito: atascos y direcciones." },
+  "pr6":  { file: "Job_interview_0001.jpg", alt: "Entrevista de trabajo", caption: "La entrevista: presente, pasado y futuro profesional." },
+  "pr7":  { file: "Clipboard_check.svg", alt: "Portapapeles con verificación", caption: "La auditoría: verificar, constatar, cerrar hallazgos." },
+  "pr8":  { file: "Whiteboard_in_seminar_room.jpg", alt: "Pizarra blanca en sala de reuniones", caption: "La consultoría: diagnóstico y plan de acción." },
+  "pr9":  { file: "Business_man_and_woman_handshake_in_work_office.jpg", alt: "Apretón de manos en una oficina", caption: "Negocios y reuniones: cerrando acuerdos." },
+  "pr10": { file: "Kate_Edger_Information_Commons_PC_and_desk.JPG", alt: "Escritorio con ordenador de trabajo", caption: "El día a día laboral: rutina y reuniones." },
+  "pr11": { file: "Solar_Panels.jpg", alt: "Paneles solares", caption: "Medio ambiente y energías renovables." },
+  "pr12": { file: "Hard_Hat_Worker_HHW01.JPG", alt: "Trabajador con casco de seguridad", caption: "Seguridad y salud ocupacional: prevenir riesgos." },
+  "pr13": { file: "Hyundai_car_assembly_line.jpg", alt: "Línea de producción industrial", caption: "Calidad de procesos y procedimientos." },
+  "pr14": { file: "Organizational_chart.svg", alt: "Organigrama de una empresa", caption: "Gobernanza, dirección y organigrama." },
+  "pr15": { file: "Commons_Growth.svg", alt: "Gráfico de crecimiento con indicadores", caption: "Indicadores y sostenibilidad: midiendo el progreso." },
+  "pr16": { file: "Data_security_privacy_lock_password_(41237924492).jpg", alt: "Candado sobre datos digitales", caption: "Seguridad de la información y privacidad de datos." },
+  "pr17": { file: "Laptop_computer.jpg", alt: "Ordenador portátil", caption: "Tecnología e innovación digital." },
 };
 
 function lessonHeroImageHtml(lessonId) {
