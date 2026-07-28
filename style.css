@@ -852,3 +852,171 @@ table.grammar-table th { background: var(--gray-bg); }
   .sidebar-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,.35); z-index: 45; }
   .app-shell:not(.sidebar-collapsed) .sidebar-overlay { display: block; }
 }
+
+/* ==========================================================================
+   MÓDULO "🎮 JUEGOS" — hub + 6 juegos gráficos e interactivos
+   ========================================================================== */
+
+/* --- Hub --------------------------------------------------------------- */
+.games-hub-grid { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 6px; }
+.game-hub-card {
+  --game-color: #AA151B;
+  flex: 1 1 220px; text-align: left; border: none; border-radius: var(--radius);
+  padding: 22px 20px; cursor: pointer; color: #fff; position: relative; overflow: hidden;
+  background: linear-gradient(135deg, var(--game-color), color-mix(in srgb, var(--game-color) 60%, #000));
+  box-shadow: var(--shadow); transition: transform .18s ease, box-shadow .18s ease;
+}
+.game-hub-card:hover { transform: translateY(-4px) scale(1.02); box-shadow: var(--shadow-lg); }
+.game-hub-card:active { transform: translateY(-1px) scale(.99); }
+.game-hub-icon { font-size: 2.6rem; line-height: 1; margin-bottom: 10px; filter: drop-shadow(0 3px 4px rgba(0,0,0,.25)); }
+.game-hub-title { font-weight: 700; font-size: 1.08rem; margin-bottom: 4px; }
+.game-hub-sub { font-size: .85rem; opacity: .92; }
+
+/* --- Contenedor genérico de un juego en curso --------------------------- */
+.game-card {
+  background: var(--card-bg); border-radius: var(--radius); box-shadow: var(--shadow);
+  padding: 26px; margin-bottom: 18px; text-align: center; display: flex; flex-direction: column; align-items: center; gap: 14px;
+}
+.game-result { font-size: 1.1rem; font-weight: 700; padding: 12px 18px; border-radius: 12px; animation: gamePop .35s ease; }
+.game-result.win { background: rgba(46,125,50,.12); color: var(--success); }
+.game-result.lose { background: rgba(198,40,40,.12); color: var(--danger); }
+.game-feedback { font-weight: 600; margin: 0; }
+.game-feedback.ok { color: var(--success); }
+.game-feedback.no { color: var(--danger); }
+@keyframes gamePop { from { transform: scale(.85); opacity: 0; } to { transform: scale(1); opacity: 1; } }
+
+.game-opt-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 10px; width: 100%; max-width: 520px; }
+.game-opt-btn {
+  border: 2px solid #e2e0db; background: #fff; border-radius: 12px; padding: 12px 14px;
+  font-size: .95rem; font-weight: 600; color: var(--ink); transition: all .15s ease;
+}
+.game-opt-btn:not(:disabled):hover { border-color: var(--amarillo); background: rgba(241,191,0,.08); transform: translateY(-2px); }
+.game-opt-btn.correct { border-color: var(--success); background: rgba(46,125,50,.12); color: var(--success); }
+.game-opt-btn.wrong { border-color: var(--danger); background: rgba(198,40,40,.12); color: var(--danger); animation: gameShake .3s ease; }
+.game-opt-btn:disabled { cursor: default; opacity: .85; }
+@keyframes gameShake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+
+/* --- 🪢 Ahorcado ---------------------------------------------------------- */
+.hangman-svg { width: 200px; height: 200px; }
+.hg-base { stroke: var(--gray-1); stroke-width: 4; stroke-linecap: round; }
+.hg-part { stroke: var(--rojo); stroke-width: 5; stroke-linecap: round; fill: none; animation: gamePop .3s ease; }
+circle.hg-part { fill: none; }
+.hg-word { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; font-family: monospace; }
+.hg-letter {
+  display: inline-flex; align-items: center; justify-content: center; min-width: 26px; height: 34px;
+  border-bottom: 3px solid var(--gray-1); font-size: 1.3rem; font-weight: 700; color: transparent;
+}
+.hg-letter.revealed { color: var(--ink); animation: gamePop .25s ease; }
+.hg-letter.hg-space { border-bottom: none; min-width: 14px; }
+.hg-hint { color: var(--gray-2); margin: 0; display: flex; align-items: center; gap: 8px; justify-content: center; flex-wrap: wrap; }
+.hg-keyboard { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; max-width: 480px; }
+.hg-key {
+  width: 34px; height: 34px; border: none; border-radius: 8px; background: var(--gray-bg);
+  font-weight: 700; text-transform: uppercase; color: var(--ink); transition: all .15s ease;
+}
+.hg-key:not(:disabled):hover { background: var(--amarillo); }
+.hg-key.correct { background: var(--success); color: #fff; }
+.hg-key.wrong { background: var(--danger); color: #fff; }
+.hg-key:disabled { opacity: .55; }
+.hg-tries { color: var(--gray-2); font-weight: 600; margin: 0; }
+
+/* --- 🗣️ Muñeco Parlanchín ------------------------------------------------- */
+.muneco-stage { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+.muneco-doll { width: 140px; animation: munecoIdle 2.6s ease-in-out infinite; }
+@keyframes munecoIdle { 0%,100% { transform: translateY(0) rotate(0deg); } 50% { transform: translateY(-6px) rotate(-1.5deg); } }
+.muneco-doll.mood-happy { animation: munecoHappy .6s ease; }
+.muneco-doll.mood-sad { animation: gameShake .4s ease; }
+@keyframes munecoHappy { 0%,100% { transform: translateY(0) scale(1); } 30% { transform: translateY(-16px) scale(1.06); } 60% { transform: translateY(0) scale(1); } }
+.muneco-head {
+  width: 110px; height: 110px; border-radius: 50%; margin: 0 auto;
+  background: linear-gradient(160deg, #ffd9a0, #f3b76a); position: relative; box-shadow: 0 6px 14px rgba(0,0,0,.15);
+}
+.muneco-eye {
+  position: absolute; top: 42px; width: 14px; height: 14px; border-radius: 50%; background: #2b2b2b;
+  animation: munecoBlink 4s infinite;
+}
+.muneco-eye.left { left: 28px; } .muneco-eye.right { right: 28px; }
+@keyframes munecoBlink { 0%, 92%, 100% { transform: scaleY(1); } 96% { transform: scaleY(.1); } }
+.muneco-cheeks { position: absolute; top: 60px; left: 14px; right: 14px; display: flex; justify-content: space-between; }
+.muneco-cheeks::before, .muneco-cheeks::after {
+  content: ""; width: 16px; height: 9px; border-radius: 50%; background: rgba(255,255,255,0);
+}
+.muneco-mouth {
+  position: absolute; bottom: 24px; left: 50%; transform: translateX(-50%);
+  width: 34px; height: 8px; border-radius: 0 0 16px 16px; background: #7a3b2e; transition: height .1s ease, width .1s ease;
+}
+.muneco-doll.is-talking .muneco-mouth { animation: munecoTalk .28s ease-in-out infinite; }
+@keyframes munecoTalk { 0%,100% { height: 8px; width: 34px; } 50% { height: 20px; width: 24px; border-radius: 0 0 20px 20px; } }
+.muneco-body {
+  width: 90px; height: 60px; margin: -8px auto 0; border-radius: 40px 40px 20px 20px;
+  background: linear-gradient(160deg, var(--rojo), var(--rojo-dark));
+}
+.muneco-progress { color: var(--gray-2); font-weight: 600; }
+
+/* --- 🧠 Memoria ------------------------------------------------------------ */
+.memoria-stats { display: flex; gap: 20px; font-weight: 700; color: var(--gray-1); }
+.memoria-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; max-width: 480px; perspective: 800px; }
+.memoria-card { background: none; border: none; padding: 0; aspect-ratio: 1; }
+.memoria-card-inner {
+  position: relative; display: block; width: 100%; height: 100%; transform-style: preserve-3d;
+  transition: transform .45s ease;
+}
+.memoria-card.flipped .memoria-card-inner { transform: rotateY(180deg); }
+.memoria-card.matched .memoria-card-inner { animation: memoriaMatch .5s ease; }
+@keyframes memoriaMatch { 0%,100% { transform: rotateY(180deg) scale(1); } 50% { transform: rotateY(180deg) scale(1.1); } }
+.memoria-face {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  border-radius: 12px; backface-visibility: hidden; font-weight: 700; font-size: .82rem; padding: 4px; text-align: center;
+}
+.memoria-face.back { background: linear-gradient(135deg, var(--rojo), var(--rojo-dark)); color: #fff; font-size: 1.4rem; }
+.memoria-face.front { background: #fff; border: 2px solid var(--amarillo); color: var(--ink); transform: rotateY(180deg); }
+.memoria-face.front.pt { border-color: var(--success); }
+.memoria-card.matched .memoria-face.front { background: rgba(46,125,50,.14); border-color: var(--success); }
+
+/* --- 🎡 Ruleta de Vocabulario --------------------------------------------- */
+.ruleta-score { font-weight: 700; color: var(--gray-1); font-size: 1.05rem; }
+.ruleta-wheel-wrap { position: relative; width: 240px; height: 240px; margin: 6px auto; }
+.ruleta-pointer { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); font-size: 1.6rem; color: var(--ink); z-index: 2; }
+.ruleta-wheel {
+  width: 100%; height: 100%; border-radius: 50%; position: relative; border: 6px solid #fff;
+  box-shadow: 0 6px 24px rgba(0,0,0,.25);
+}
+.ruleta-seg-label {
+  position: absolute; top: 14px; left: 50%; transform-origin: 50% 106px;
+  font-weight: 700; color: #fff; text-shadow: 0 1px 2px rgba(0,0,0,.4); font-size: .9rem;
+}
+.ruleta-question { display: flex; flex-direction: column; align-items: center; gap: 12px; }
+.ruleta-question p { margin: 0; color: var(--gray-1); }
+
+/* --- 🔍 Sopa de Letras ------------------------------------------------------ */
+.sopa-layout { display: flex; gap: 24px; flex-wrap: wrap; justify-content: center; align-items: flex-start; width: 100%; }
+.sopa-grid {
+  display: grid; gap: 2px; user-select: none; touch-action: none; background: var(--gray-bg);
+  padding: 8px; border-radius: 12px; max-width: 420px;
+}
+.sopa-cell {
+  aspect-ratio: 1; display: flex; align-items: center; justify-content: center; font-weight: 700;
+  font-size: .85rem; background: #fff; border-radius: 4px; cursor: pointer; color: var(--ink);
+}
+.sopa-cell.selecting { background: var(--amarillo); color: #3a2c00; }
+.sopa-cell.found { background: rgba(46,125,50,.18); color: var(--success); }
+.sopa-wordlist { min-width: 160px; text-align: left; }
+.sopa-wordlist ul { list-style: none; padding: 0; margin: 8px 0 0; display: flex; flex-direction: column; gap: 6px; }
+.sopa-wordlist li { font-weight: 600; color: var(--gray-1); }
+.sopa-wordlist li.done { color: var(--success); text-decoration: line-through; opacity: .75; }
+
+/* --- ⚡ Carrera contra el Reloj -------------------------------------------- */
+.carrera-track { position: relative; width: 100%; max-width: 480px; height: 40px; background: var(--gray-bg); border-radius: 20px; overflow: hidden; }
+.carrera-runner { position: absolute; top: 50%; transform: translate(-50%, -50%); font-size: 1.6rem; transition: left .5s ease; }
+.carrera-flag { position: absolute; right: 6px; top: 50%; transform: translateY(-50%); font-size: 1.4rem; }
+.carrera-hud { display: flex; gap: 18px; font-weight: 700; color: var(--gray-1); flex-wrap: wrap; justify-content: center; }
+.carrera-timebar-track { width: 100%; max-width: 480px; height: 10px; background: var(--gray-bg); border-radius: 6px; overflow: hidden; }
+.carrera-timebar { height: 100%; background: linear-gradient(90deg, var(--success), var(--amarillo), var(--danger)); transition: width .2s linear; }
+.carrera-question { font-size: 1.15rem; color: var(--ink); }
+
+@media (max-width: 640px) {
+  .hangman-svg { width: 160px; height: 160px; }
+  .memoria-grid { grid-template-columns: repeat(3, 1fr); }
+  .ruleta-wheel-wrap { width: 190px; height: 190px; }
+  .sopa-layout { flex-direction: column; align-items: center; }
+}
