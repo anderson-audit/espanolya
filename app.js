@@ -58,7 +58,7 @@ const functions = (typeof firebase.functions === "function") ? firebase.function
 // Versión del sistema, visible en Mi Cuenta / Configuración y en el pie de la barra lateral.
 // Se debe actualizar manualmente cada vez que se sube una nueva versión al repositorio
 // (formato AAAA.MM.DD.N — N = número de subida ese día, empieza en 1).
-const APP_VERSION = "2026.07.28.1";
+const APP_VERSION = "2026.07.28.2";
 
 // Valores por defecto de la mensualidad/anualidad — el admin puede cambiarlos en
 // Configuración → Planes y precios (guardados en config/settings, campos priceMonthly/priceAnnual).
@@ -6209,6 +6209,12 @@ const LESSON_IMAGES = {
   "p2": { file: "Meeting_room,_table_and_paper_board.jpg", alt: "Sala de reuniones", caption: "Frases para abrir y cerrar una reunión de auditoría." },
   "p3": { file: "Conference_room_table_(Unsplash).jpg", alt: "Mesa de sala de conferencias", caption: "Cómo redactar el informe y el plan de auditoría." },
   "p4": { file: "Workspace_Looking_Out.jpg", alt: "Espacio de trabajo profesional", caption: "Comunicación formal: correos y llamadas de negocios." },
+  "p5": { file: "ASTM_Certificate.jpg", alt: "Certificado oficial de una norma técnica", caption: "El certificado: alcance y ciclo de certificación." },
+  "p6": { file: "Audit.jpg", alt: "Documentos de una auditoría", caption: "El informe de auditoría: hallazgos y recomendación." },
+  "p7": { file: "Questionnaire-checklist-completed.png", alt: "Lista de verificación completada", caption: "No conformidad: descripción, evidencia y acción correctiva." },
+  "p8": { file: "Ishikawa_Fishbone_Diagram.svg", alt: "Diagrama de Ishikawa o espina de pescado", caption: "Análisis de causas: los 5 porqués y el diagrama de Ishikawa." },
+  "p9": { file: "139_Server_Room_01.jpg", alt: "Sala de servidores", caption: "Lineamientos de TI: accesos, seguridad física y terceros." },
+  "p10": { file: "Working_at_office_(Unsplash).jpg", alt: "Persona trabajando en la oficina", caption: "El correo de difusión: comunicar actualizaciones de seguridad." },
   // Español de las Normas (módulo bônus especial — gramática a partir de las normas ISO)
   "n1": { file: "Audit_Cycle.jpg", alt: "Ciclo de auditoría de calidad", caption: "El verbo que manda: deber + infinitivo (ISO 9001)." },
   "n2": { file: "Reduce_Reuse_Recycle.jpg", alt: "Símbolo de reducir, reusar y reciclar", caption: "Concordancia en cadena y el se impersonal (ISO 14001)." },
