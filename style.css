@@ -858,13 +858,14 @@ table.grammar-table th { background: var(--gray-bg); }
    ========================================================================== */
 
 /* --- Hub --------------------------------------------------------------- */
-.games-hub-grid { display: flex; flex-wrap: wrap; gap: 18px; margin-top: 6px; }
+.games-hub-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 18px; margin-top: 6px; }
 .game-hub-card {
   --game-color: #AA151B;
-  flex: 1 1 220px; text-align: left; border: none; border-radius: var(--radius);
+  text-align: left; border: none; border-radius: var(--radius);
   padding: 22px 20px; cursor: pointer; color: #fff; position: relative; overflow: hidden;
   background: linear-gradient(135deg, var(--game-color), color-mix(in srgb, var(--game-color) 60%, #000));
   box-shadow: var(--shadow); transition: transform .18s ease, box-shadow .18s ease;
+  display: flex; flex-direction: column; justify-content: flex-start; min-height: 150px;
 }
 .game-hub-card:hover { transform: translateY(-4px) scale(1.02); box-shadow: var(--shadow-lg); }
 .game-hub-card:active { transform: translateY(-1px) scale(.99); }
@@ -1055,6 +1056,92 @@ circle.hg-part { fill: none; }
 .carrera-timebar { height: 100%; background: linear-gradient(90deg, var(--success), var(--amarillo), var(--danger)); transition: width .2s linear; }
 .carrera-question { font-size: 1.15rem; color: var(--ink); }
 
+/* --- 🔤 Anagrama / 🧩 Ordena la Frase (comparten estilo de fichas) --------- */
+.anagrama-slots, .frase-slots { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.anagrama-slot {
+  width: 40px; height: 48px; border-radius: 8px; border: 2px dashed var(--gray-2);
+  display: flex; align-items: center; justify-content: center; font-size: 1.3rem; font-weight: 800;
+  color: var(--ink); text-transform: uppercase; background: var(--gray-bg);
+}
+.anagrama-slot.filled { border-style: solid; border-color: var(--amarillo); background: #fff; box-shadow: var(--shadow); }
+.frase-slot {
+  min-width: 56px; height: 44px; padding: 0 10px; border-radius: 8px; border: 2px dashed var(--gray-2);
+  display: flex; align-items: center; justify-content: center; font-size: .95rem; font-weight: 700;
+  color: var(--ink); background: var(--gray-bg);
+}
+.frase-slot.filled { border-style: solid; border-color: var(--amarillo); background: #fff; box-shadow: var(--shadow); }
+.anagrama-letters, .frase-tiles { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; max-width: 560px; }
+.anagrama-letter {
+  width: 44px; height: 48px; border-radius: 10px; border: 2px solid var(--rojo); background: linear-gradient(160deg, #fff, var(--gray-bg));
+  font-size: 1.3rem; font-weight: 800; color: var(--rojo); text-transform: uppercase; cursor: pointer; transition: all .15s ease;
+}
+.anagrama-letter:hover:not(:disabled) { transform: translateY(-2px); box-shadow: var(--shadow); }
+.anagrama-letter.used, .anagrama-letter:disabled { opacity: .3; cursor: default; transform: none; }
+.frase-tile {
+  padding: 10px 16px; border-radius: 10px; border: 2px solid var(--rojo); background: linear-gradient(160deg, #fff, var(--gray-bg));
+  font-size: .95rem; font-weight: 700; color: var(--rojo); cursor: pointer; transition: all .15s ease;
+}
+.frase-tile:hover:not(:disabled) { transform: translateY(-2px); box-shadow: var(--shadow); }
+.frase-tile.used, .frase-tile:disabled { opacity: .3; cursor: default; transform: none; }
+
+/* --- ✅ Verdadero o Falso --------------------------------------------------- */
+.vf-card {
+  background: linear-gradient(160deg, #fff, var(--gray-bg)); border-radius: var(--radius); padding: 22px 26px;
+  box-shadow: var(--shadow); display: flex; flex-direction: column; align-items: center; gap: 6px; min-width: 240px;
+}
+.vf-es { font-size: 1.3rem; font-weight: 800; color: var(--ink); }
+.vf-eq { font-size: 1.1rem; color: var(--gray-2); }
+.vf-pt { font-size: 1.15rem; font-weight: 700; color: var(--rojo); }
+.vf-buttons { display: flex; gap: 14px; }
+.vf-btn { min-width: 130px; font-size: 1.05rem; }
+.vf-btn.vf-true { background: var(--success); color: #fff; border: none; }
+.vf-btn.vf-false { background: var(--danger); color: #fff; border: none; }
+.vf-btn.correct { outline: 4px solid var(--success); }
+.vf-btn.wrong { outline: 4px solid var(--danger); opacity: .7; }
+
+/* --- 🎯 Bingo de Vocabulario ------------------------------------------------ */
+.bingo-grid { display: grid; gap: 6px; max-width: 520px; margin: 0 auto; }
+.bingo-cell {
+  aspect-ratio: 1; border-radius: 10px; border: 2px solid #e2e0db; background: #fff; color: var(--ink);
+  font-weight: 700; font-size: .78rem; padding: 4px; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  text-align: center; transition: all .15s ease;
+}
+.bingo-cell:hover:not(:disabled) { border-color: var(--amarillo); }
+.bingo-cell.marked { background: rgba(46,125,50,.16); border-color: var(--success); color: var(--success); }
+
+/* --- 🎈 Globos de Palabras --------------------------------------------------- */
+.globos-sky { position: relative; width: 100%; max-width: 640px; height: 320px; overflow: hidden; border-radius: var(--radius); background: linear-gradient(180deg, #cfe8ff, #eef8ff); }
+.globo {
+  position: absolute; bottom: -70px; transform: translateX(-50%);
+  width: 92px; height: 108px; border: none; border-radius: 50% 50% 50% 50% / 45% 45% 55% 55%;
+  background: radial-gradient(circle at 35% 30%, #ff8a8a, var(--rojo) 70%);
+  color: #fff; font-weight: 800; font-size: .78rem; padding: 10px 8px 18px; cursor: pointer;
+  box-shadow: 0 6px 14px rgba(0,0,0,.18); animation: globoFloat linear infinite;
+}
+.globo:nth-child(2n) { background: radial-gradient(circle at 35% 30%, #7fd0ff, var(--rojo-dark, #1565C0) 70%); }
+.globo:nth-child(3n) { background: radial-gradient(circle at 35% 30%, #b5f0c0, var(--success) 70%); }
+.globo:nth-child(4n) { background: radial-gradient(circle at 35% 30%, #ffe08a, var(--amarillo) 70%); color: #3a2c00; }
+.globo::after {
+  content: ""; position: absolute; bottom: -14px; left: 50%; transform: translateX(-50%);
+  width: 2px; height: 14px; background: rgba(0,0,0,.25);
+}
+.globo.correct { outline: 4px solid var(--success); }
+.globo.wrong { outline: 4px solid var(--danger); opacity: .6; }
+@keyframes globoFloat { from { bottom: -90px; } to { bottom: 340px; } }
+
+/* --- 🎵 Simón Dice ----------------------------------------------------------- */
+.simon-board { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; max-width: 320px; margin: 0 auto; }
+.simon-pads-4 { grid-template-columns: repeat(2, 1fr); max-width: 220px; }
+.simon-pads-5 { grid-template-columns: repeat(3, 1fr); max-width: 320px; }
+.simon-pads-6 { grid-template-columns: repeat(3, 1fr); max-width: 320px; }
+.simon-pad {
+  aspect-ratio: 1; border-radius: 16px; border: none; cursor: pointer; background: var(--pad-color, #ccc);
+  opacity: .55; transition: opacity .1s ease, transform .1s ease; box-shadow: inset 0 -6px 0 rgba(0,0,0,.2);
+}
+.simon-pad:hover:not(:disabled) { opacity: .75; }
+.simon-pad.lit { opacity: 1; transform: scale(1.05); box-shadow: 0 0 0 6px rgba(255,255,255,.5), inset 0 -6px 0 rgba(0,0,0,.2); }
+.simon-pad:disabled { cursor: default; }
+
 @media (max-width: 640px) {
   .hangman-svg { width: 160px; height: 160px; }
   .memoria-grid, .memoria-grid.memoria-size-facil, .memoria-grid.memoria-size-medio { grid-template-columns: repeat(3, 1fr); max-width: 360px; gap: 10px; }
@@ -1063,4 +1150,12 @@ circle.hg-part { fill: none; }
   .memoria-face.back { font-size: 1.5rem; }
   .ruleta-wheel-wrap { width: 190px; height: 190px; }
   .sopa-layout { flex-direction: column; align-items: center; }
+  .bingo-cell { font-size: .62rem; }
+  .globos-sky { height: 260px; }
+  .globo { width: 74px; height: 88px; font-size: .68rem; }
+  .simon-board, .simon-pads-4, .simon-pads-5, .simon-pads-6 { max-width: 220px; }
+  .vf-buttons { flex-direction: column; width: 100%; max-width: 220px; }
+  .vf-btn { width: 100%; }
+  .anagrama-letter { width: 38px; height: 42px; font-size: 1.1rem; }
+  .anagrama-slot { width: 34px; height: 42px; font-size: 1.1rem; }
 }

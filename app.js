@@ -58,7 +58,7 @@ const functions = (typeof firebase.functions === "function") ? firebase.function
 // Versión del sistema, visible en Mi Cuenta / Configuración y en el pie de la barra lateral.
 // Se debe actualizar manualmente cada vez que se sube una nueva versión al repositorio
 // (formato AAAA.MM.DD.N — N = número de subida ese día, empieza en 1).
-const APP_VERSION = "2026.07.28.4";
+const APP_VERSION = "2026.07.28.5";
 
 // Valores por defecto de la mensualidad/anualidad — el admin puede cambiarlos en
 // Configuración → Planes y precios (guardados en config/settings, campos priceMonthly/priceAnnual).
@@ -248,7 +248,7 @@ const I18N = {
 
     sidebar_levels: "Mis Niveles", sidebar_syllabus: "Temario Completo", sidebar_notas: "Mis Notas", sidebar_notebook: "Cuaderno",
     sidebar_games: "Juegos",
-    games_title: "Juegos de Español", games_intro: "Practica jugando: 6 juegos gráficos e interactivos para reforzar vocabulario de todo el curso, en cualquier momento y sin nota.",
+    games_title: "Juegos de Español", games_intro: "Practica jugando: 12 juegos gráficos e interactivos para reforzar vocabulario de todo el curso, en cualquier momento y sin nota.",
     games_back: "← Volver a Juegos", games_play_again: "🔁 Jugar de nuevo", games_score: "Puntos", games_you_win: "¡Ganaste!", games_you_lose: "¡Casi! Inténtalo de nuevo.",
     game_ahorcado_sub: "Adivina la palabra letra por letra", game_muneco_sub: "Escucha y elige la traducción correcta",
     game_memoria_sub: "Encuentra los pares español-portugués", game_ruleta_sub: "Gira la ruleta y adivina la palabra",
@@ -274,6 +274,21 @@ const I18N = {
     game_sopa_explain: "Encuentra las palabras escondidas en la sopa de letras arrastrando el dedo o el mouse. Elige el tamaño del tablero y la categoría de vocabulario que quieres practicar.",
     game_carrera_explain: "Responde tantas traducciones como puedas antes de que se acabe el tiempo de cada pregunta. Elige el tiempo por pregunta y el nivel de vocabulario — cuanto más avanzado, más difíciles las palabras.",
     game_carrera_time_label: "Tiempo por pregunta",
+    game_anagrama_sub: "Ordena las letras y forma la palabra", game_vf_sub: "Rondas relámpago: ¿verdadero o falso?",
+    game_bingo_sub: "Completa tu cartela de vocabulario", game_globos_sub: "Explota el globo con la traducción correcta",
+    game_frase_sub: "Ordena las palabras y arma la frase", game_simon_sub: "Repite la secuencia de colores",
+    game_anagrama_title: "🔤 Anagrama", game_anagrama_hint: "Pista (PT):", game_anagrama_undo: "Borrar",
+    game_anagrama_explain: "Ordena las letras desordenadas para formar la palabra en español. Usa la pista en portugués y el botón 🔊 si necesitas escucharla. Elige la dificultad según el largo de la palabra.",
+    game_vf_title: "✅ Verdadero o Falso", game_vf_true: "Verdadero", game_vf_false: "Falso",
+    game_vf_explain: "Vas a ver una palabra en español junto a una posible traducción en portugués. Decide rápido: ¿es correcta (Verdadero) o no (Falso)? Cada ronda tiene tiempo limitado.",
+    game_bingo_title: "🎯 Bingo de Vocabulario", game_bingo_call: "Buscas:", game_bingo_complete: "¡Completaste tu cartela!",
+    game_bingo_explain: "Escucha (o lee) la palabra llamada en portugués y encuentra su traducción en español en tu cartela. ¡Completa toda la cartela para ganar!",
+    game_globos_title: "🎈 Globos de Palabras", game_globos_find: "Encuentra:",
+    game_globos_explain: "Varios globos flotan en la pantalla, cada uno con una palabra en español. Explota el globo con la traducción correcta de la palabra en portugués antes de que se acabe el tiempo.",
+    game_frase_title: "🧩 Ordena la Frase", game_frase_hint: "Traducción (PT):",
+    game_frase_explain: "Ordena las palabras desordenadas para formar una frase real del curso en español. Usa la traducción en portugués como pista y el botón 🔊 para escuchar la frase completa.",
+    game_simon_title: "🎵 Simón Dice", game_simon_round: "Ronda", game_simon_watch: "Observa y escucha la secuencia...", game_simon_repeat: "¡Ahora repítela tocando los colores!", game_simon_over: "¡Juego terminado!",
+    game_simon_explain: "Presta atención a la secuencia de colores que se ilumina (¡y dice su nombre en español!) y repítela tocando los botones en el mismo orden. Cada ronda agrega un color más — ¿hasta dónde puedes llegar?",
     syllabus_title: "Temario Completo del Curso", syllabus_intro: "Todos los niveles y todas las lecciones de un vistazo, con su tema principal — para consultar el material de estudio sin tener que entrar nivel por nivel.",
     syllabus_search_placeholder: "🔍 Busca un tema (ej.: subjuntivo, auditoría, comida)...", syllabus_search_empty: "No se encontró ningún tema con ese término.", syllabus_search_locked_in: "Disponible en {level} — nivel bloqueado todavía",
     sidebar_analytics: "Mi Actividad", sidebar_schedule: "Cronograma", sidebar_tutorial: "Tutorial",
@@ -471,7 +486,7 @@ const I18N = {
 
     sidebar_levels: "Meus Níveis", sidebar_syllabus: "Programa Completo", sidebar_notas: "Minhas Notas", sidebar_notebook: "Caderno",
     sidebar_games: "Jogos",
-    games_title: "Jogos de Espanhol", games_intro: "Pratique jogando: 6 jogos gráficos e interativos para reforçar o vocabulário de todo o curso, a qualquer momento e sem nota.",
+    games_title: "Jogos de Espanhol", games_intro: "Pratique jogando: 12 jogos gráficos e interativos para reforçar o vocabulário de todo o curso, a qualquer momento e sem nota.",
     games_back: "← Voltar aos Jogos", games_play_again: "🔁 Jogar de novo", games_score: "Pontos", games_you_win: "Você ganhou!", games_you_lose: "Quase! Tente de novo.",
     game_ahorcado_sub: "Adivinhe a palavra letra por letra", game_muneco_sub: "Escute e escolha a tradução correta",
     game_memoria_sub: "Encontre os pares espanhol-português", game_ruleta_sub: "Gire a roleta e adivinhe a palavra",
@@ -497,6 +512,21 @@ const I18N = {
     game_sopa_explain: "Encontre as palavras escondidas na caça-palavras arrastando o dedo ou o mouse. Escolha o tamanho do tabuleiro e a categoria de vocabulário que quer praticar.",
     game_carrera_explain: "Responda o máximo de traduções que puder antes que o tempo de cada pergunta acabe. Escolha o tempo por pergunta e o nível de vocabulário — quanto mais avançado, mais difíceis as palavras.",
     game_carrera_time_label: "Tempo por pergunta",
+    game_anagrama_sub: "Ordene as letras e forme a palavra", game_vf_sub: "Rodadas relâmpago: verdadeiro ou falso?",
+    game_bingo_sub: "Complete sua cartela de vocabulário", game_globos_sub: "Estoure o balão com a tradução correta",
+    game_frase_sub: "Ordene as palavras e monte a frase", game_simon_sub: "Repita a sequência de cores",
+    game_anagrama_title: "🔤 Anagrama", game_anagrama_hint: "Dica (PT):", game_anagrama_undo: "Apagar",
+    game_anagrama_explain: "Ordene as letras embaralhadas para formar a palavra em espanhol. Use a dica em português e o botão 🔊 se precisar escutá-la. Escolha a dificuldade de acordo com o tamanho da palavra.",
+    game_vf_title: "✅ Verdadeiro ou Falso", game_vf_true: "Verdadeiro", game_vf_false: "Falso",
+    game_vf_explain: "Você vai ver uma palavra em espanhol junto com uma possível tradução em português. Decida rápido: está correta (Verdadeiro) ou não (Falso)? Cada rodada tem tempo limitado.",
+    game_bingo_title: "🎯 Bingo de Vocabulário", game_bingo_call: "Você procura:", game_bingo_complete: "Você completou sua cartela!",
+    game_bingo_explain: "Escute (ou leia) a palavra chamada em português e encontre sua tradução em espanhol na sua cartela. Complete toda a cartela para ganhar!",
+    game_globos_title: "🎈 Balões de Palavras", game_globos_find: "Encontre:",
+    game_globos_explain: "Vários balões flutuam na tela, cada um com uma palavra em espanhol. Estoure o balão com a tradução correta da palavra em português antes que o tempo acabe.",
+    game_frase_title: "🧩 Ordene a Frase", game_frase_hint: "Tradução (PT):",
+    game_frase_explain: "Ordene as palavras embaralhadas para formar uma frase real do curso em espanhol. Use a tradução em português como dica e o botão 🔊 para ouvir a frase completa.",
+    game_simon_title: "🎵 Simón Dice", game_simon_round: "Rodada", game_simon_watch: "Observe e escute a sequência...", game_simon_repeat: "Agora repita tocando as cores!", game_simon_over: "Jogo terminado!",
+    game_simon_explain: "Preste atenção na sequência de cores que acende (e diz seu nome em espanhol!) e repita tocando os botões na mesma ordem. Cada rodada adiciona mais uma cor — até onde você consegue chegar?",
     syllabus_title: "Programa Completo do Curso", syllabus_intro: "Todos os níveis e todas as lições em um só lugar, com o tema principal de cada uma — para consultar o material de estudo sem precisar entrar nível por nível.",
     syllabus_search_placeholder: "🔍 Busque um assunto (ex.: subjuntivo, auditoria, comida)...", syllabus_search_empty: "Nenhum assunto encontrado com esse termo.", syllabus_search_locked_in: "Disponível em {level} — nível ainda bloqueado",
     sidebar_analytics: "Minha Atividade", sidebar_schedule: "Cronograma", sidebar_tutorial: "Tutorial",
@@ -694,7 +724,7 @@ const I18N = {
 
     sidebar_levels: "My Levels", sidebar_syllabus: "Full Syllabus", sidebar_notas: "My Grades", sidebar_notebook: "Notebook",
     sidebar_games: "Games",
-    games_title: "Spanish Games", games_intro: "Practice by playing: 6 graphic, interactive games to reinforce vocabulary from the whole course, anytime, ungraded.",
+    games_title: "Spanish Games", games_intro: "Practice by playing: 12 graphic, interactive games to reinforce vocabulary from the whole course, anytime, ungraded.",
     games_back: "← Back to Games", games_play_again: "🔁 Play again", games_score: "Score", games_you_win: "You won!", games_you_lose: "So close! Try again.",
     game_ahorcado_sub: "Guess the word letter by letter", game_muneco_sub: "Listen and choose the correct translation",
     game_memoria_sub: "Find the Spanish-Portuguese pairs", game_ruleta_sub: "Spin the wheel and guess the word",
@@ -720,6 +750,21 @@ const I18N = {
     game_sopa_explain: "Find the hidden words in the word search by dragging your finger or mouse. Choose the board size and the vocabulary category you want to practice.",
     game_carrera_explain: "Answer as many translations as you can before each question's time runs out. Choose the time per question and the vocabulary level — the more advanced, the harder the words.",
     game_carrera_time_label: "Time per question",
+    game_anagrama_sub: "Unscramble the letters and form the word", game_vf_sub: "Lightning rounds: true or false?",
+    game_bingo_sub: "Complete your vocabulary card", game_globos_sub: "Pop the balloon with the correct translation",
+    game_frase_sub: "Put the words in order to build the sentence", game_simon_sub: "Repeat the color sequence",
+    game_anagrama_title: "🔤 Anagram", game_anagrama_hint: "Hint (PT):", game_anagrama_undo: "Undo",
+    game_anagrama_explain: "Unscramble the letters to form the Spanish word. Use the Portuguese hint and the 🔊 button if you need to hear it. Choose the difficulty based on word length.",
+    game_vf_title: "✅ True or False", game_vf_true: "True", game_vf_false: "False",
+    game_vf_explain: "You'll see a Spanish word next to a possible Portuguese translation. Decide fast: is it correct (True) or not (False)? Each round has a time limit.",
+    game_bingo_title: "🎯 Vocabulary Bingo", game_bingo_call: "You're looking for:", game_bingo_complete: "You completed your card!",
+    game_bingo_explain: "Listen to (or read) the word called in Portuguese and find its Spanish translation on your card. Complete the whole card to win!",
+    game_globos_title: "🎈 Word Balloons", game_globos_find: "Find:",
+    game_globos_explain: "Several balloons float on screen, each with a Spanish word. Pop the balloon with the correct translation of the Portuguese word before time runs out.",
+    game_frase_title: "🧩 Sentence Order", game_frase_hint: "Translation (PT):",
+    game_frase_explain: "Put the scrambled words in order to build a real sentence from the course, in Spanish. Use the Portuguese translation as a hint and the 🔊 button to hear the full sentence.",
+    game_simon_title: "🎵 Simon Says", game_simon_round: "Round", game_simon_watch: "Watch and listen to the sequence...", game_simon_repeat: "Now repeat it by tapping the colors!", game_simon_over: "Game over!",
+    game_simon_explain: "Pay attention to the color sequence that lights up (and says its name in Spanish!) and repeat it by tapping the buttons in the same order. Each round adds one more color — how far can you get?",
     syllabus_title: "Full Course Syllabus", syllabus_intro: "Every level and every lesson at a glance, with its main topic — so you can check the study material without opening each level one by one.",
     syllabus_search_placeholder: "🔍 Search a topic (e.g.: subjunctive, audit, food)...", syllabus_search_empty: "No topic found for that term.", syllabus_search_locked_in: "Available in {level} — level still locked",
     sidebar_analytics: "My Activity", sidebar_schedule: "Schedule", sidebar_tutorial: "Tutorial",
@@ -6386,7 +6431,7 @@ function exerciseImageHtml(lessonId, exerciseIdx) {
 // Módulo bônus totalmente distinto de los demás: no usa el motor de exercises/lecciones
 // (renderExercise), tiene su propia pantalla fuera del sistema de niveles, sin nota ni
 // progreso oficial — es solo práctica libre y divertida. Datos (GAMES_META, RULETA_SEGMENTS,
-// SOPA_SIZE/DIRS, CARRERA_TOTAL/TIME, GAME_FALLBACK_WORDS) viven en content-juegos.js.
+// SOPA_SIZES/DIRS, CARRERA_TOTAL/TIME_OPTIONS, GAME_FALLBACK_WORDS, *_DIFF) viven en content-juegos.js.
 
 // --- 20.0 Utilidades compartidas ---------------------------------------
 function shuffleArray(arr) {
@@ -6456,6 +6501,35 @@ function gameLetterWordsByCategory(catId) {
   const filtered = gameWordPoolByCategory(catId).filter(w => !/[áéíóúü]/i.test(w.es) && w.es.indexOf(" ") === -1 && w.es.length >= 3 && w.es.length <= 14);
   return filtered.length >= 8 ? filtered : gameWordsForLetterGames();
 }
+// Banco de frases reales del curso (para "Ordena la Frase"): recorre el mismo vocabulario de
+// todas las lecciones buscando ítems que sean frases completas (varias palabras), en vez de
+// palabras sueltas — a diferencia de buildGameWordPool(), que descarta justamente esos ítems.
+function buildPhrasePool() {
+  const out = [];
+  const seen = new Set();
+  COURSE_LEVELS.forEach(lvl => {
+    (lvl.lessons || []).forEach(lesson => {
+      (lesson.vocabulary || []).forEach(cat => {
+        (cat.items || []).forEach(item => {
+          if (!item || !item.es || !item.pt) return;
+          if (item.es.includes(" – ") || item.es.includes(" - ") || item.es.includes("/")) return;
+          const es = item.es.replace(/\([^)]*\)/g, "").trim();
+          const words = es.split(/\s+/).filter(Boolean);
+          if (words.length < 4 || words.length > 11) return;
+          const key = es.toLowerCase();
+          if (seen.has(key)) return;
+          seen.add(key);
+          out.push({ es, pt: item.pt.replace(/\([^)]*\)/g, "").trim(), words, level: lvl.id });
+        });
+      });
+    });
+  });
+  return out;
+}
+function gamePhrasePool() {
+  if (!state._gamePhrasePool) state._gamePhrasePool = buildPhrasePool();
+  return state._gamePhrasePool;
+}
 
 // --- Configuración persistente de los juegos (sonido, dificultad, etc.) -----------------
 function defaultGamesConfig() {
@@ -6468,6 +6542,7 @@ function defaultGamesConfig() {
     sopaDifficulty: "medio", sopaCategory: "todas",
     carreraTime: 8, carreraLevel: "intermedio",
     anagramaDifficulty: "medio",
+    vfDifficulty: "medio",
     bingoDifficulty: "medio",
     globosDifficulty: "medio",
     fraseDifficulty: "medio",
@@ -6640,6 +6715,12 @@ function renderGamePlay() {
     case "ruleta": return renderGameRuleta();
     case "sopa": return renderGameSopa();
     case "carrera": return renderGameCarrera();
+    case "anagrama": return renderGameAnagrama();
+    case "vf": return renderGameVF();
+    case "bingo": return renderGameBingo();
+    case "globos": return renderGameGlobos();
+    case "frase": return renderGameFrase();
+    case "simon": return renderGameSimon();
     default: state.screen = "games"; return renderGames();
   }
 }
@@ -7521,4 +7602,663 @@ function renderCarreraSetup(g) {
   attachShellEvents(); wireGameHeader();
   wireGameChips((group, value) => { g[group] = group === "time" ? Number(value) : value; render(); });
   document.getElementById("game-setup-start").onclick = carreraStart;
+}
+
+// --- 20.8 Juego 7: 🔤 Anagrama ----------------------------------------------
+function initAnagrama() {
+  const cfg = gamesConfig();
+  state.game = { id: "anagrama", status: "setup", difficulty: cfg.anagramaDifficulty };
+}
+GAME_INIT_FNS.anagrama = initAnagrama;
+
+function anagrama_setupRound(g) {
+  const current = g.items[g.idx];
+  const letters = current.es.toLowerCase().split("");
+  let shuffled = shuffleArray(letters);
+  let tries = 0;
+  while (shuffled.join("") === letters.join("") && tries < 10) { shuffled = shuffleArray(letters); tries++; }
+  g.scrambled = shuffled.map(ch => ({ ch, used: false }));
+  g.answerIdx = [];
+  g.result = null;
+}
+function anagramaStart() {
+  const g = state.game;
+  gamesConfig().anagramaDifficulty = g.difficulty; saveGamesConfig();
+  const diff = ANAGRAMA_DIFF[g.difficulty] || ANAGRAMA_DIFF.medio;
+  const pool = gameWordsForLetterGames().filter(w => w.es.length >= diff.min && w.es.length <= diff.max);
+  const usePool = pool.length >= diff.rounds ? pool : gameWordsForLetterGames();
+  const items = shuffleArray(usePool).slice(0, diff.rounds);
+  Object.assign(g, { items, idx: 0, score: 0, status: "playing" });
+  anagrama_setupRound(g);
+  render();
+}
+function anagramaPick(i) {
+  const g = state.game;
+  if (!g || g.result || g.scrambled[i].used) return;
+  GameSound.click();
+  g.scrambled[i].used = true;
+  g.answerIdx.push(i);
+  if (g.answerIdx.length === g.scrambled.length) {
+    const built = g.answerIdx.map(idx => g.scrambled[idx].ch).join("");
+    const correct = built === g.items[g.idx].es.toLowerCase();
+    g.result = correct ? "correct" : "wrong";
+    if (correct) { g.score++; GameSound.correct(); } else GameSound.wrong();
+  }
+  render();
+}
+function anagramaRemoveLast() {
+  const g = state.game;
+  if (!g || g.result || !g.answerIdx.length) return;
+  const last = g.answerIdx.pop();
+  g.scrambled[last].used = false;
+  render();
+}
+function anagramaNext() {
+  const g = state.game;
+  g.idx++;
+  if (g.idx >= g.items.length) { g.status = "done"; GameSound.win(); render(); return; }
+  anagrama_setupRound(g);
+  render();
+}
+
+function renderGameAnagrama() {
+  if (!state.game || state.game.id !== "anagrama") initAnagrama();
+  const g = state.game;
+  if (g.status === "setup") return renderAnagramaSetup(g);
+  const current = g.items[g.idx];
+  root.innerHTML = wrapShell(`
+      ${gameHeaderHtml("game_anagrama_title")}
+      <div class="game-card game-anagrama">
+        ${g.status === "playing" ? `
+          <div class="muneco-progress">${g.idx + 1} / ${g.items.length} &nbsp;·&nbsp; ${t("games_score")}: ${g.score}</div>
+          <p class="hg-hint">${t("game_anagrama_hint")} <strong>${escapeHtml(current.pt)}</strong>
+            <button class="tts-btn" id="anagrama-tts" title="Escuchar">🔊</button>
+          </p>
+          <div class="anagrama-slots">
+            ${g.answerIdx.map(i => `<span class="anagrama-slot filled">${g.scrambled[i].ch}</span>`).join("")}
+            ${Array.from({ length: g.scrambled.length - g.answerIdx.length }).map(() => `<span class="anagrama-slot"></span>`).join("")}
+          </div>
+          <div class="anagrama-letters">
+            ${g.scrambled.map((s, i) => `<button class="anagrama-letter ${s.used ? "used" : ""}" data-i="${i}" ${s.used || g.result ? "disabled" : ""}>${s.ch}</button>`).join("")}
+          </div>
+          <button class="btn btn-secondary btn-sm" id="anagrama-undo" ${!g.answerIdx.length || g.result ? "disabled" : ""}>↩ ${t("game_anagrama_undo")}</button>
+          ${g.result ? `
+            <p class="game-feedback ${g.result === "correct" ? "ok" : "no"}">${g.result === "correct" ? t("game_muneco_correct") : `${t("game_muneco_wrong")} <strong>${escapeHtml(current.es)}</strong>`}</p>
+            <button class="btn btn-gold" id="anagrama-next">→</button>
+          ` : ""}
+        ` : `
+          <div class="game-result win">${t("games_score")}: ${g.score} / ${g.items.length}</div>
+          <button class="btn btn-gold" id="anagrama-again">${t("games_play_again")}</button>
+        `}
+      </div>
+    `, "games");
+  attachShellEvents(); wireGameHeader();
+  if (g.status === "playing") {
+    const ttsBtn = document.getElementById("anagrama-tts");
+    if (ttsBtn) ttsBtn.onclick = () => speak(current.es, null, ttsBtn);
+    document.querySelectorAll(".anagrama-letter").forEach(btn => { btn.onclick = () => anagramaPick(Number(btn.dataset.i)); });
+    const undoBtn = document.getElementById("anagrama-undo");
+    if (undoBtn) undoBtn.onclick = anagramaRemoveLast;
+    const nextBtn = document.getElementById("anagrama-next");
+    if (nextBtn) nextBtn.onclick = anagramaNext;
+  }
+  const again = document.getElementById("anagrama-again");
+  if (again) again.onclick = () => { gameStopAllTimers(); initAnagrama(); render(); };
+}
+
+function renderAnagramaSetup(g) {
+  root.innerHTML = wrapShell(`
+      ${gameHeaderHtml("game_anagrama_title")}
+      <div class="game-card game-setup">
+        <p class="game-explain">${t("game_anagrama_explain")}</p>
+        <div class="game-setup-group">
+          <span class="settings-label">${t("game_difficulty_label")}</span>
+          ${gameChipRow("difficulty", gameDifficultyOptions(), g.difficulty)}
+        </div>
+        <button class="btn btn-gold" id="game-setup-start">${t("games_start")}</button>
+      </div>
+    `, "games");
+  attachShellEvents(); wireGameHeader();
+  wireGameChips((group, value) => { g[group] = value; render(); });
+  document.getElementById("game-setup-start").onclick = anagramaStart;
+}
+
+// --- 20.9 Juego 8: ✅ Verdadero o Falso --------------------------------------
+let _vfTimerId = null;
+function initVF() {
+  const cfg = gamesConfig();
+  state.game = { id: "vf", status: "setup", difficulty: cfg.vfDifficulty };
+}
+GAME_INIT_FNS.vf = initVF;
+
+function vf_newRound(g) {
+  const pool = gameWordPool();
+  const base = pool[Math.floor(Math.random() * pool.length)];
+  const isTrue = Math.random() < 0.5;
+  let shownPt = base.pt;
+  if (!isTrue) {
+    const decoys = pool.filter(w => w.pt.toLowerCase() !== base.pt.toLowerCase());
+    if (decoys.length) shownPt = decoys[Math.floor(Math.random() * decoys.length)].pt;
+  }
+  g.current = { es: base.es, pt: shownPt, isTrue: shownPt.toLowerCase() === base.pt.toLowerCase() };
+  g.answered = null;
+  g.timeLeft = g.roundTime;
+}
+function vfStartTimer() {
+  if (_vfTimerId) clearInterval(_vfTimerId);
+  _vfTimerId = setInterval(() => {
+    const g = state.game;
+    if (!g || g.id !== "vf" || g.status !== "playing" || g.answered) { if (_vfTimerId) { clearInterval(_vfTimerId); _vfTimerId = null; } return; }
+    g.timeLeft -= 0.2;
+    if (g.timeLeft <= 0) { g.timeLeft = 0; vfAnswer(null); return; }
+    const bar = document.getElementById("vf-timebar");
+    if (bar) bar.style.width = `${(g.timeLeft / g.roundTime) * 100}%`;
+  }, 200);
+}
+function vfStart() {
+  const g = state.game;
+  gamesConfig().vfDifficulty = g.difficulty; saveGamesConfig();
+  const diff = VF_DIFF[g.difficulty] || VF_DIFF.medio;
+  Object.assign(g, { rounds: diff.rounds, roundTime: diff.time, idx: 0, score: 0, streak: 0, status: "playing" });
+  vf_newRound(g);
+  render();
+  vfStartTimer();
+}
+function vfAnswer(choice) {
+  const g = state.game;
+  if (!g || g.answered) return;
+  if (_vfTimerId) { clearInterval(_vfTimerId); _vfTimerId = null; }
+  const correct = choice !== null && choice === g.current.isTrue;
+  g.answered = { choice, correct };
+  if (correct) { g.score += 10; g.streak++; GameSound.correct(); } else { g.streak = 0; GameSound.wrong(); }
+  render();
+  setTimeout(() => {
+    if (!state.game || state.game.id !== "vf") return;
+    g.idx++;
+    if (g.idx >= g.rounds) { g.status = "done"; GameSound.win(); render(); return; }
+    vf_newRound(g);
+    render();
+    vfStartTimer();
+  }, 800);
+}
+
+function renderGameVF() {
+  if (!state.game || state.game.id !== "vf") initVF();
+  const g = state.game;
+  if (g.status === "setup") return renderVFSetup(g);
+  root.innerHTML = wrapShell(`
+      ${gameHeaderHtml("game_vf_title")}
+      <div class="game-card game-vf">
+        ${g.status === "playing" ? `
+          <div class="ruleta-scoreboard">
+            <div class="ruleta-score-box"><span class="ruleta-score-label">${t("games_score")}</span><span class="ruleta-score-value">${g.score}</span></div>
+            <div class="ruleta-score-box"><span class="ruleta-score-label">${t("game_carrera_streak")}</span><span class="ruleta-score-value">${g.streak}🔥</span></div>
+            <div class="ruleta-score-box"><span class="ruleta-score-label">${t("game_ruleta_round")}</span><span class="ruleta-score-value">${g.idx + 1}/${g.rounds}</span></div>
+          </div>
+          <div class="carrera-timebar-track"><div class="carrera-timebar" id="vf-timebar" style="width:${(g.timeLeft / g.roundTime) * 100}%"></div></div>
+          <div class="vf-card">
+            <div class="vf-es">${escapeHtml(g.current.es)}</div>
+            <div class="vf-eq">=</div>
+            <div class="vf-pt">${escapeHtml(g.current.pt)}</div>
+          </div>
+          <div class="vf-buttons">
+            <button class="btn vf-btn vf-true ${g.answered && g.answered.choice === true ? (g.answered.correct ? "correct" : "wrong") : ""}" id="vf-true" ${g.answered ? "disabled" : ""}>✅ ${t("game_vf_true")}</button>
+            <button class="btn vf-btn vf-false ${g.answered && g.answered.choice === false ? (g.answered.correct ? "correct" : "wrong") : ""}" id="vf-false" ${g.answered ? "disabled" : ""}>❌ ${t("game_vf_false")}</button>
+          </div>
+        ` : ""}
+        ${g.status === "done" ? `
+          <div class="game-result win">${t("games_score")}: ${g.score}</div>
+          <button class="btn btn-gold" id="vf-again">${t("games_play_again")}</button>
+        ` : ""}
+      </div>
+    `, "games");
+  attachShellEvents(); wireGameHeader();
+  if (g.status === "playing") {
+    const tBtn = document.getElementById("vf-true"); if (tBtn) tBtn.onclick = () => vfAnswer(true);
+    const fBtn = document.getElementById("vf-false"); if (fBtn) fBtn.onclick = () => vfAnswer(false);
+  }
+  const again = document.getElementById("vf-again");
+  if (again) again.onclick = () => { gameStopAllTimers(); initVF(); render(); };
+}
+
+function renderVFSetup(g) {
+  root.innerHTML = wrapShell(`
+      ${gameHeaderHtml("game_vf_title")}
+      <div class="game-card game-setup">
+        <p class="game-explain">${t("game_vf_explain")}</p>
+        <div class="game-setup-group">
+          <span class="settings-label">${t("game_difficulty_label")}</span>
+          ${gameChipRow("difficulty", gameDifficultyOptions(), g.difficulty)}
+        </div>
+        <button class="btn btn-gold" id="game-setup-start">${t("games_start")}</button>
+      </div>
+    `, "games");
+  attachShellEvents(); wireGameHeader();
+  wireGameChips((group, value) => { g[group] = value; render(); });
+  document.getElementById("game-setup-start").onclick = vfStart;
+}
+
+// --- 20.10 Juego 9: 🎯 Bingo de Vocabulario ----------------------------------
+function initBingo() {
+  const cfg = gamesConfig();
+  state.game = { id: "bingo", status: "setup", difficulty: cfg.bingoDifficulty };
+}
+GAME_INIT_FNS.bingo = initBingo;
+
+function bingoStart() {
+  const g = state.game;
+  gamesConfig().bingoDifficulty = g.difficulty; saveGamesConfig();
+  const diff = BINGO_DIFF[g.difficulty] || BINGO_DIFF.medio;
+  const size = diff.size;
+  const words = shuffleArray(gameWordPool()).slice(0, size * size);
+  const cells = words.map(w => ({ es: w.es, pt: w.pt, marked: false }));
+  const callOrder = shuffleArray(words);
+  Object.assign(g, { size, cells, callOrder, callIdx: 0, status: "playing", _spokenCallIdx: -1 });
+  render();
+}
+function bingoPick(i) {
+  const g = state.game;
+  if (!g || g.status !== "playing") return;
+  const cell = g.cells[i];
+  if (cell.marked) return;
+  const target = g.callOrder[g.callIdx];
+  if (cell.es === target.es) {
+    cell.marked = true; GameSound.correct();
+    g.callIdx++;
+    if (g.cells.every(c => c.marked)) { g.status = "done"; GameSound.win(); }
+  } else {
+    GameSound.wrong();
+  }
+  render();
+}
+
+function renderGameBingo() {
+  if (!state.game || state.game.id !== "bingo") initBingo();
+  const g = state.game;
+  if (g.status === "setup") return renderBingoSetup(g);
+  const current = g.status === "playing" ? g.callOrder[g.callIdx] : null;
+  root.innerHTML = wrapShell(`
+      ${gameHeaderHtml("game_bingo_title")}
+      <div class="game-card game-bingo">
+        ${g.status === "playing" ? `
+          <p class="hg-hint">${t("game_bingo_call")} <strong>${escapeHtml(current.pt)}</strong>
+            <button class="tts-btn" id="bingo-tts" title="Escuchar">🔊</button>
+          </p>
+          <div class="muneco-progress">${g.callIdx} / ${g.cells.length}</div>
+          <div class="bingo-grid" style="grid-template-columns:repeat(${g.size},1fr)">
+            ${g.cells.map((c, i) => `<button class="bingo-cell ${c.marked ? "marked" : ""}" data-i="${i}" ${c.marked ? "disabled" : ""}>${escapeHtml(c.es)}</button>`).join("")}
+          </div>
+        ` : `
+          <div class="game-result win">${t("game_bingo_complete")} 🎉</div>
+          <button class="btn btn-gold" id="bingo-again">${t("games_play_again")}</button>
+        `}
+      </div>
+    `, "games");
+  attachShellEvents(); wireGameHeader();
+  if (g.status === "playing") {
+    const ttsBtn = document.getElementById("bingo-tts");
+    if (ttsBtn) ttsBtn.onclick = () => speak(current.es, null, ttsBtn);
+    document.querySelectorAll(".bingo-cell").forEach(btn => { btn.onclick = () => bingoPick(Number(btn.dataset.i)); });
+    if (g._spokenCallIdx !== g.callIdx) { g._spokenCallIdx = g.callIdx; speak(current.es); }
+  }
+  const again = document.getElementById("bingo-again");
+  if (again) again.onclick = () => { gameStopAllTimers(); initBingo(); render(); };
+}
+
+function renderBingoSetup(g) {
+  root.innerHTML = wrapShell(`
+      ${gameHeaderHtml("game_bingo_title")}
+      <div class="game-card game-setup">
+        <p class="game-explain">${t("game_bingo_explain")}</p>
+        <div class="game-setup-group">
+          <span class="settings-label">${t("game_difficulty_label")}</span>
+          ${gameChipRow("difficulty", gameDifficultyOptions(), g.difficulty)}
+        </div>
+        <button class="btn btn-gold" id="game-setup-start">${t("games_start")}</button>
+      </div>
+    `, "games");
+  attachShellEvents(); wireGameHeader();
+  wireGameChips((group, value) => { g[group] = value; render(); });
+  document.getElementById("game-setup-start").onclick = bingoStart;
+}
+
+// --- 20.11 Juego 10: 🎈 Globos de Palabras -----------------------------------
+function initGlobos() {
+  const cfg = gamesConfig();
+  state.game = { id: "globos", status: "setup", difficulty: cfg.globosDifficulty };
+}
+GAME_INIT_FNS.globos = initGlobos;
+
+function globos_newRound(g) {
+  const pool = gameWordPool();
+  const correct = pool[Math.floor(Math.random() * pool.length)];
+  const distractors = shuffleArray(pool.filter(w => w.es !== correct.es)).slice(0, Math.max(1, g.count - 1));
+  const options = shuffleArray([correct, ...distractors]).map((o, i) => ({
+    ...o,
+    floatDelay: (Math.random() * 1.2).toFixed(2),
+    floatDur: (3 + Math.random() * 2).toFixed(2),
+    left: Math.min(84, 4 + Math.round(i * (90 / Math.max(1, g.count)) + Math.random() * 6)),
+  }));
+  g.current = { correct, options };
+  g.answered = null;
+  g.timeLeft = g.roundTime;
+}
+function globosStartTimer() {
+  if (_globosTimerId) clearInterval(_globosTimerId);
+  _globosTimerId = setInterval(() => {
+    const g = state.game;
+    if (!g || g.id !== "globos" || g.status !== "playing" || g.answered) { if (_globosTimerId) { clearInterval(_globosTimerId); _globosTimerId = null; } return; }
+    g.timeLeft -= 0.2;
+    if (g.timeLeft <= 0) { g.timeLeft = 0; globosAnswer(null); return; }
+    const bar = document.getElementById("globos-timebar");
+    if (bar) bar.style.width = `${(g.timeLeft / g.roundTime) * 100}%`;
+  }, 200);
+}
+function globosStart() {
+  const g = state.game;
+  gamesConfig().globosDifficulty = g.difficulty; saveGamesConfig();
+  const diff = GLOBOS_DIFF[g.difficulty] || GLOBOS_DIFF.medio;
+  Object.assign(g, { count: diff.count, roundTime: diff.time, rounds: diff.rounds, idx: 0, score: 0, status: "playing" });
+  globos_newRound(g);
+  render();
+  globosStartTimer();
+}
+function globosAnswer(es) {
+  const g = state.game;
+  if (!g || g.answered) return;
+  if (_globosTimerId) { clearInterval(_globosTimerId); _globosTimerId = null; }
+  const correct = es !== null && es === g.current.correct.es;
+  g.answered = { es, correct };
+  if (correct) { g.score += 10; GameSound.correct(); GameSound.pop(); } else { GameSound.wrong(); }
+  render();
+  setTimeout(() => {
+    if (!state.game || state.game.id !== "globos") return;
+    g.idx++;
+    if (g.idx >= g.rounds) { g.status = "done"; GameSound.win(); render(); return; }
+    globos_newRound(g);
+    render();
+    globosStartTimer();
+  }, 900);
+}
+
+function renderGameGlobos() {
+  if (!state.game || state.game.id !== "globos") initGlobos();
+  const g = state.game;
+  if (g.status === "setup") return renderGlobosSetup(g);
+  root.innerHTML = wrapShell(`
+      ${gameHeaderHtml("game_globos_title")}
+      <div class="game-card game-globos">
+        ${g.status === "playing" ? `
+          <div class="muneco-progress">${g.idx + 1} / ${g.rounds} &nbsp;·&nbsp; ${t("games_score")}: ${g.score}</div>
+          <p class="hg-hint">${t("game_globos_find")} <strong>${escapeHtml(g.current.correct.pt)}</strong></p>
+          <div class="carrera-timebar-track"><div class="carrera-timebar" id="globos-timebar" style="width:${(g.timeLeft / g.roundTime) * 100}%"></div></div>
+          <div class="globos-sky">
+            ${g.current.options.map((o) => {
+              const isSel = g.answered && g.answered.es === o.es;
+              const showCorrect = g.answered && o.es === g.current.correct.es;
+              return `<button class="globo ${isSel ? (g.answered.correct ? "correct" : "wrong") : ""} ${showCorrect && !isSel ? "correct" : ""}" data-es="${escapeHtml(o.es)}" style="left:${o.left}%;animation-delay:${o.floatDelay}s;animation-duration:${o.floatDur}s" ${g.answered ? "disabled" : ""}>${escapeHtml(o.es)}</button>`;
+            }).join("")}
+          </div>
+        ` : ""}
+        ${g.status === "done" ? `
+          <div class="game-result win">${t("games_score")}: ${g.score}</div>
+          <button class="btn btn-gold" id="globos-again">${t("games_play_again")}</button>
+        ` : ""}
+      </div>
+    `, "games");
+  attachShellEvents(); wireGameHeader();
+  if (g.status === "playing") {
+    document.querySelectorAll(".globo").forEach(btn => { btn.onclick = () => globosAnswer(btn.dataset.es); });
+  }
+  const again = document.getElementById("globos-again");
+  if (again) again.onclick = () => { gameStopAllTimers(); initGlobos(); render(); };
+}
+
+function renderGlobosSetup(g) {
+  root.innerHTML = wrapShell(`
+      ${gameHeaderHtml("game_globos_title")}
+      <div class="game-card game-setup">
+        <p class="game-explain">${t("game_globos_explain")}</p>
+        <div class="game-setup-group">
+          <span class="settings-label">${t("game_difficulty_label")}</span>
+          ${gameChipRow("difficulty", gameDifficultyOptions(), g.difficulty)}
+        </div>
+        <button class="btn btn-gold" id="game-setup-start">${t("games_start")}</button>
+      </div>
+    `, "games");
+  attachShellEvents(); wireGameHeader();
+  wireGameChips((group, value) => { g[group] = value; render(); });
+  document.getElementById("game-setup-start").onclick = globosStart;
+}
+
+// --- 20.12 Juego 11: 🧩 Ordena la Frase --------------------------------------
+function initFrase() {
+  const cfg = gamesConfig();
+  state.game = { id: "frase", status: "setup", difficulty: cfg.fraseDifficulty };
+}
+GAME_INIT_FNS.frase = initFrase;
+
+function frase_setupRound(g) {
+  const current = g.items[g.idx];
+  let shuffled = shuffleArray(current.words.map((w, i) => ({ w, i })));
+  let tries = 0;
+  while (shuffled.every((s, idx) => s.i === idx) && tries < 10) { shuffled = shuffleArray(shuffled); tries++; }
+  g.tiles = shuffled.map(s => ({ word: s.w, origIdx: s.i, used: false }));
+  g.answerIdx = [];
+  g.result = null;
+}
+function fraseStart() {
+  const g = state.game;
+  gamesConfig().fraseDifficulty = g.difficulty; saveGamesConfig();
+  const diff = FRASE_DIFF[g.difficulty] || FRASE_DIFF.medio;
+  const pool = gamePhrasePool().filter(p => p.words.length >= diff.min && p.words.length <= diff.max);
+  const usePool = pool.length >= diff.rounds ? pool : gamePhrasePool();
+  const items = shuffleArray(usePool.length ? usePool : gamePhrasePool()).slice(0, diff.rounds);
+  Object.assign(g, { items, idx: 0, score: 0, status: "playing" });
+  frase_setupRound(g);
+  render();
+}
+function frasePick(i) {
+  const g = state.game;
+  if (!g || g.result || g.tiles[i].used) return;
+  GameSound.click();
+  g.tiles[i].used = true;
+  g.answerIdx.push(i);
+  if (g.answerIdx.length === g.tiles.length) {
+    const built = g.answerIdx.map(idx => g.tiles[idx].word).join(" ");
+    const correct = built.toLowerCase() === g.items[g.idx].es.toLowerCase();
+    g.result = correct ? "correct" : "wrong";
+    if (correct) { g.score++; GameSound.correct(); } else GameSound.wrong();
+  }
+  render();
+}
+function fraseRemoveLast() {
+  const g = state.game;
+  if (!g || g.result || !g.answerIdx.length) return;
+  const last = g.answerIdx.pop();
+  g.tiles[last].used = false;
+  render();
+}
+function fraseNext() {
+  const g = state.game;
+  g.idx++;
+  if (g.idx >= g.items.length) { g.status = "done"; GameSound.win(); render(); return; }
+  frase_setupRound(g);
+  render();
+}
+
+function renderGameFrase() {
+  if (!state.game || state.game.id !== "frase") initFrase();
+  const g = state.game;
+  if (g.status === "setup") return renderFraseSetup(g);
+  const current = g.items[g.idx];
+  root.innerHTML = wrapShell(`
+      ${gameHeaderHtml("game_frase_title")}
+      <div class="game-card game-frase">
+        ${g.status === "playing" ? `
+          <div class="muneco-progress">${g.idx + 1} / ${g.items.length} &nbsp;·&nbsp; ${t("games_score")}: ${g.score}</div>
+          <p class="hg-hint">${t("game_frase_hint")} <strong>${escapeHtml(current.pt)}</strong>
+            <button class="tts-btn" id="frase-tts" title="Escuchar">🔊</button>
+          </p>
+          <div class="frase-slots">
+            ${g.answerIdx.map(i => `<span class="frase-slot filled">${escapeHtml(g.tiles[i].word)}</span>`).join("")}
+            ${Array.from({ length: g.tiles.length - g.answerIdx.length }).map(() => `<span class="frase-slot"></span>`).join("")}
+          </div>
+          <div class="frase-tiles">
+            ${g.tiles.map((s, i) => `<button class="frase-tile ${s.used ? "used" : ""}" data-i="${i}" ${s.used || g.result ? "disabled" : ""}>${escapeHtml(s.word)}</button>`).join("")}
+          </div>
+          <button class="btn btn-secondary btn-sm" id="frase-undo" ${!g.answerIdx.length || g.result ? "disabled" : ""}>↩ ${t("game_anagrama_undo")}</button>
+          ${g.result ? `
+            <p class="game-feedback ${g.result === "correct" ? "ok" : "no"}">${g.result === "correct" ? t("game_muneco_correct") : `${t("game_muneco_wrong")}<br><strong>${escapeHtml(current.es)}</strong>`}</p>
+            <button class="btn btn-gold" id="frase-next">→</button>
+          ` : ""}
+        ` : `
+          <div class="game-result win">${t("games_score")}: ${g.score} / ${g.items.length}</div>
+          <button class="btn btn-gold" id="frase-again">${t("games_play_again")}</button>
+        `}
+      </div>
+    `, "games");
+  attachShellEvents(); wireGameHeader();
+  if (g.status === "playing") {
+    const ttsBtn = document.getElementById("frase-tts");
+    if (ttsBtn) ttsBtn.onclick = () => speak(current.es, null, ttsBtn);
+    document.querySelectorAll(".frase-tile").forEach(btn => { btn.onclick = () => frasePick(Number(btn.dataset.i)); });
+    const undoBtn = document.getElementById("frase-undo");
+    if (undoBtn) undoBtn.onclick = fraseRemoveLast;
+    const nextBtn = document.getElementById("frase-next");
+    if (nextBtn) nextBtn.onclick = fraseNext;
+  }
+  const again = document.getElementById("frase-again");
+  if (again) again.onclick = () => { gameStopAllTimers(); initFrase(); render(); };
+}
+
+function renderFraseSetup(g) {
+  root.innerHTML = wrapShell(`
+      ${gameHeaderHtml("game_frase_title")}
+      <div class="game-card game-setup">
+        <p class="game-explain">${t("game_frase_explain")}</p>
+        <div class="game-setup-group">
+          <span class="settings-label">${t("game_difficulty_label")}</span>
+          ${gameChipRow("difficulty", gameDifficultyOptions(), g.difficulty)}
+        </div>
+        <button class="btn btn-gold" id="game-setup-start">${t("games_start")}</button>
+      </div>
+    `, "games");
+  attachShellEvents(); wireGameHeader();
+  wireGameChips((group, value) => { g[group] = value; render(); });
+  document.getElementById("game-setup-start").onclick = fraseStart;
+}
+
+// --- 20.13 Juego 12: 🎵 Simón Dice --------------------------------------------
+let _simonTimeoutIds = [];
+function initSimon() {
+  const cfg = gamesConfig();
+  state.game = { id: "simon", status: "setup", difficulty: cfg.simonDifficulty };
+}
+GAME_INIT_FNS.simon = initSimon;
+
+function simonClearTimeouts() { _simonTimeoutIds.forEach(id => clearTimeout(id)); _simonTimeoutIds = []; }
+function simonStart() {
+  const g = state.game;
+  gamesConfig().simonDifficulty = g.difficulty; saveGamesConfig();
+  const diff = SIMON_DIFF[g.difficulty] || SIMON_DIFF.medio;
+  Object.assign(g, { pads: diff.pads, speed: diff.speed, sequence: [], userSeq: [], round: 0, status: "showing", best: 0 });
+  simonNextRound();
+}
+function simonNextRound() {
+  const g = state.game;
+  g.sequence.push(Math.floor(Math.random() * g.pads));
+  g.userSeq = [];
+  g.status = "showing";
+  g.round++;
+  render();
+  simonPlaySequence();
+}
+function simonPlaySequence() {
+  const g = state.game;
+  simonClearTimeouts();
+  g.sequence.forEach((padIdx, i) => {
+    const id1 = setTimeout(() => {
+      const el = document.querySelector(`.simon-pad[data-i="${padIdx}"]`);
+      if (el) el.classList.add("lit");
+      GameSound.tone(220 + padIdx * 90, 0.28, "sine", 0.22);
+      speak(SIMON_COLOR_NAMES[padIdx] || "");
+    }, i * g.speed);
+    const id2 = setTimeout(() => {
+      const el = document.querySelector(`.simon-pad[data-i="${padIdx}"]`);
+      if (el) el.classList.remove("lit");
+    }, i * g.speed + g.speed * 0.6);
+    _simonTimeoutIds.push(id1, id2);
+  });
+  const idEnd = setTimeout(() => {
+    if (!state.game || state.game.id !== "simon") return;
+    state.game.status = "playing";
+    render();
+  }, g.sequence.length * g.speed + 200);
+  _simonTimeoutIds.push(idEnd);
+}
+function simonPick(padIdx) {
+  const g = state.game;
+  if (!g || g.status !== "playing") return;
+  GameSound.tone(220 + padIdx * 90, 0.22, "sine", 0.22);
+  g.userSeq.push(padIdx);
+  const i = g.userSeq.length - 1;
+  if (g.userSeq[i] !== g.sequence[i]) {
+    g.status = "done"; g.best = g.sequence.length - 1; GameSound.lose();
+    render();
+    return;
+  }
+  if (g.userSeq.length === g.sequence.length) {
+    GameSound.correct();
+    g.status = "showing";
+    render();
+    setTimeout(() => { if (state.game === g) simonNextRound(); }, 700);
+  } else {
+    render();
+  }
+}
+
+function renderGameSimon() {
+  if (!state.game || state.game.id !== "simon") initSimon();
+  const g = state.game;
+  if (g.status === "setup") return renderSimonSetup(g);
+  const padColors = SIMON_COLORS.slice(0, g.pads || 4);
+  root.innerHTML = wrapShell(`
+      ${gameHeaderHtml("game_simon_title")}
+      <div class="game-card game-simon">
+        ${g.status !== "done" ? `
+          <div class="muneco-progress">${t("game_simon_round")}: ${g.round}</div>
+          <div class="simon-board simon-pads-${padColors.length}">
+            ${padColors.map((c, i) => `<button class="simon-pad" data-i="${i}" style="--pad-color:${c}" ${g.status !== "playing" ? "disabled" : ""}></button>`).join("")}
+          </div>
+          <p style="color:var(--gray-2)">${g.status === "showing" ? t("game_simon_watch") : t("game_simon_repeat")}</p>
+        ` : `
+          <div class="game-result lose">${t("game_simon_over")} · ${t("games_score")}: ${g.best}</div>
+          <button class="btn btn-gold" id="simon-again">${t("games_play_again")}</button>
+        `}
+      </div>
+    `, "games");
+  attachShellEvents(); wireGameHeader();
+  if (g.status === "playing") {
+    document.querySelectorAll(".simon-pad").forEach(btn => { btn.onclick = () => simonPick(Number(btn.dataset.i)); });
+  }
+  const again = document.getElementById("simon-again");
+  if (again) again.onclick = () => { gameStopAllTimers(); initSimon(); render(); };
+}
+
+function renderSimonSetup(g) {
+  root.innerHTML = wrapShell(`
+      ${gameHeaderHtml("game_simon_title")}
+      <div class="game-card game-setup">
+        <p class="game-explain">${t("game_simon_explain")}</p>
+        <div class="game-setup-group">
+          <span class="settings-label">${t("game_difficulty_label")}</span>
+          ${gameChipRow("difficulty", gameDifficultyOptions(), g.difficulty)}
+        </div>
+        <button class="btn btn-gold" id="game-setup-start">${t("games_start")}</button>
+      </div>
+    `, "games");
+  attachShellEvents(); wireGameHeader();
+  wireGameChips((group, value) => { g[group] = value; render(); });
+  document.getElementById("game-setup-start").onclick = simonStart;
 }

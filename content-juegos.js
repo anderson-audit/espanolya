@@ -103,6 +103,7 @@ const SIMON_DIFF = {
   dificil: { pads: 6, speed: 480 },
 };
 const SIMON_COLORS = ["#AA151B", "#1565C0", "#2E7D32", "#F1B434", "#8E24AA", "#00838F"];
+const SIMON_COLOR_NAMES = ["rojo", "azul", "verde", "amarillo", "morado", "turquesa"];
 
 // Banco de palabras de respaldo (siempre se suma al vocabulario real del curso, que se
 // extrae en tiempo real de todas las lecciones vía buildGameWordPool() en app.js). Garantiza
