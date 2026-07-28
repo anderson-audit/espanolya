@@ -312,6 +312,276 @@ const LEVEL_PROFESIONAL = {
         { type: "mc", q: "En la tabla de fórmulas, ¿cuál es la versión telefónica de 'Quisiera solicitar…'?", options: ["Buenos días, habla…", "¿Podría… por favor?", "Gracias por su atención", "Agradecería su confirmación"], correct: 1 },
         { type: "speak", prompt: "Practica cómo confirmar una reunión por teléfono.", target: "Quisiera confirmar la reunión programada para mañana a las 10:00." }
       ]
+    },
+    {
+      id: "p5",
+      order: 5,
+      title: "El Certificado ISO/IEC 27001: Alcance y Ciclo de Certificación",
+      subtitle: "Cómo leer un certificado real",
+      vocabulary: [
+        {
+          category: "Datos del Certificado",
+          items: [
+            { es: "certifica que el sistema de gestión de la organización...", pt: "certifica que o sistema de gestão da organização..." },
+            { es: "ha sido auditado y aprobado con respecto a los requisitos", pt: "foi auditado e aprovado em relação aos requisitos" },
+            { es: "este certificado es aplicable al siguiente alcance", pt: "este certificado é aplicável ao seguinte escopo" },
+            { es: "sede principal / sitio permanente adicional", pt: "sede principal / site permanente adicional" },
+            { es: "versión de la declaración de aplicabilidad", pt: "versão da declaração de aplicabilidade" },
+            { es: "fecha de otorgamiento", pt: "data de outorga (emissão)" },
+            { es: "fecha de inicio del ciclo actual de certificación", pt: "data de início do ciclo atual de certificação" },
+            { es: "fecha de vencimiento del ciclo actual", pt: "data de vencimento do ciclo atual" },
+            { es: "ciclo de certificación (habitualmente 3 años)", pt: "ciclo de certificação (normalmente 3 anos)" },
+            { es: "auditoría de recertificación", pt: "auditoria de recertificação" },
+            { es: "organismo de certificación", pt: "organismo de certificação" },
+            { es: "número de registro / número de certificado", pt: "número de registro / número do certificado" },
+            { es: "esta aprobación está sujeta a que el sistema se mantenga", pt: "esta aprovação está sujeita à manutenção do sistema" },
+            { es: "ha implementado y mantiene un SGSI", pt: "implementou e mantém um SGSI" },
+            { es: "lo cual será verificado por el organismo de certificación", pt: "o que será verificado pelo organismo de certificação" }
+          ]
+        }
+      ],
+      text: "Un certificado ISO/IEC 27001 real, emitido a una empresa aeroportuaria (LIMA AIRPORT PARTNERS S.R.L.) en Perú, dice así: 'Certifica que el Sistema de Gestión de la organización ha sido auditado y aprobado con respecto a los requisitos especificados en ISO/IEC 27001:2022. Este certificado es aplicable al siguiente alcance: seguridad de la información de los sistemas que apoyan la planificación y gestión de vuelos, según la Declaración de Aplicabilidad versión 01.' Observa los datos que siempre aparecen en un certificado real: el alcance exacto (nunca dice solo 'toda la empresa', sino los sistemas específicos cubiertos), la fecha de otorgamiento y la fecha de vencimiento del ciclo actual (normalmente 3 años, con auditorías de seguimiento en el medio), y la advertencia final: 'Esta aprobación está sujeta a que el sistema de gestión se mantenga de acuerdo con los requisitos especificados, lo cual será verificado por el organismo de certificación.' Es común que la organización reciba, además, un segundo certificado equivalente emitido por una red internacional de organismos (como IQNET), confirmando en inglés que la empresa 'has implemented and maintains an Information Security Management System' para el mismo alcance.",
+      textPt: "Um certificado ISO/IEC 27001 real, emitido a uma empresa aeroportuária (LIMA AIRPORT PARTNERS S.R.L.) no Peru, diz assim: 'Certifica que o Sistema de Gestão da organização foi auditado e aprovado em relação aos requisitos especificados na ISO/IEC 27001:2022. Este certificado é aplicável ao seguinte escopo: segurança da informação dos sistemas que apoiam o planejamento e a gestão de voos, conforme a Declaração de Aplicabilidade versão 01.' Observe os dados que sempre aparecem em um certificado real: o escopo exato (nunca diz apenas 'toda a empresa', mas sim os sistemas específicos cobertos), a data de outorga e a data de vencimento do ciclo atual (normalmente 3 anos, com auditorias de acompanhamento no meio do caminho), e o aviso final: 'Esta aprovação está sujeita à manutenção do sistema de gestão de acordo com os requisitos especificados, o que será verificado pelo organismo de certificação.' É comum que a organização receba, além disso, um segundo certificado equivalente emitido por uma rede internacional de organismos (como a IQNET), confirmando em inglês que a empresa 'implementou e mantém um Sistema de Gestão de Segurança da Informação' para o mesmo escopo.",
+      exercises: [
+        { type: "mc", q: "¿Qué indica siempre el 'alcance' de un certificado ISO 27001?", options: ["Que toda la empresa está certificada sin excepción", "Los sistemas o procesos específicos cubiertos por la certificación", "El nombre del auditor líder", "El precio de la auditoría"], correct: 1 },
+        { type: "mc", q: "¿Cuánto dura, habitualmente, un ciclo de certificación ISO 27001?", options: ["1 año", "3 años", "10 años", "6 meses"], correct: 1 },
+        { type: "fill", q: "La empresa recibió el certificado en la fecha de _______ y debe renovarlo antes de la fecha de vencimiento del ciclo.", answer: "otorgamiento" },
+        { type: "fill", q: "El certificado es aplicable al siguiente _______: seguridad de la información de los sistemas críticos.", answer: "alcance" },
+        { type: "translate", from: "pt", text: "data de vencimento do ciclo atual", answer: "fecha de vencimiento del ciclo actual" },
+        { type: "translate", from: "es", text: "Esta aprobación está sujeta a que el sistema de gestión se mantenga de acuerdo con los requisitos especificados.", answer: "Esta aprovação está sujeita à manutenção do sistema de gestão de acordo com os requisitos especificados." },
+        { type: "mc", q: "¿Qué evalúa la 'auditoría de recertificación'?", options: ["Si la empresa cambió de nombre", "Si el sistema de gestión sigue cumpliendo los requisitos al final del ciclo", "El precio de la próxima auditoría", "El número de empleados"], correct: 1 },
+        { type: "mc", q: "Un 'sitio permanente adicional' en un certificado multisitio se refiere a:", options: ["Una sucursal o sede extra cubierta por el mismo certificado", "Un error de impresión", "El nombre del organismo certificador", "Una auditoría cancelada"], correct: 0 },
+        { type: "fill", q: "La declaración de _______ (SoA) indica qué controles del Anexo A se aplican y cuáles no.", answer: "aplicabilidad" },
+        { type: "open", q: "Redacta dos frases, en el estilo formal de un certificado, indicando el alcance y la fecha de vencimiento de una certificación ISO 27001 ficticia.", sample: "Este certificado es aplicable al siguiente alcance: seguridad de la información de los sistemas de facturación electrónica. Fecha de vencimiento del ciclo actual: 2028-06-30." },
+        { type: "speak", prompt: "Practica cómo se lee en voz alta la validez de un certificado.", target: "Esta aprobación está sujeta a que el sistema de gestión se mantenga de acuerdo con los requisitos especificados." },
+        { type: "mc", q: "¿Qué organismo, además del certificador principal, suele emitir un certificado equivalente reconocido internacionalmente?", options: ["IQNET", "La OMS", "El Banco Mundial", "La ONU"], correct: 0 }
+      ]
+    },
+    {
+      id: "p6",
+      order: 6,
+      title: "El Informe de Auditoría: Hallazgos y Recomendación Final",
+      subtitle: "Cómo se comunica el resultado de una auditoría de certificación",
+      vocabulary: [
+        {
+          category: "Tipos y Etapas de Auditoría",
+          items: [
+            { es: "auditoría de otorgamiento", pt: "auditoria de outorga (certificação inicial)" },
+            { es: "auditoría de seguimiento", pt: "auditoria de acompanhamento" },
+            { es: "auditoría de renovación", pt: "auditoria de renovação (recertificação)" },
+            { es: "auditoría extraordinaria / de reactivación", pt: "auditoria extraordinária / de reativação" },
+            { es: "etapa 1 de la auditoría (revisión documental)", pt: "etapa 1 da auditoria (revisão documental)" },
+            { es: "etapa 2 / auditoría en sitio", pt: "etapa 2 / auditoria in loco" },
+            { es: "código IAF", pt: "código IAF (classificação setorial internacional)" },
+            { es: "auditor líder / equipo auditor", pt: "auditor-líder / equipe auditora" },
+            { es: "organización multisitio", pt: "organização multissite" }
+          ]
+        },
+        {
+          category: "Hallazgos y Recomendación",
+          items: [
+            { es: "hallazgos que apoyan la conformidad", pt: "achados que sustentam a conformidade" },
+            { es: "oportunidades de mejora", pt: "oportunidades de melhoria" },
+            { es: "recomendación del equipo auditor", pt: "recomendação da equipe auditora" },
+            { es: "se recomienda otorgar la certificación", pt: "recomenda-se conceder a certificação" },
+            { es: "requisitos no aplicables (justificados)", pt: "requisitos não aplicáveis (justificados)" },
+            { es: "revisión del sistema por la dirección", pt: "análise crítica do sistema pela direção" },
+            { es: "programa de auditoría interna", pt: "programa de auditoria interna" },
+            { es: "toma de muestra de evidencias", pt: "amostragem de evidências" }
+          ]
+        }
+      ],
+      text: "Un informe de auditoría real de certificación ISO/IEC 27001 sigue siempre la misma estructura formal. Primero, describe el tipo de auditoría (por ejemplo, 'Tipo de auditoría: Otorgamiento') y si la organización es multisitio. Luego enumera los 'Hallazgos que apoyan la conformidad del sistema de gestión con los requisitos' — por ejemplo: 'La participación y compromiso de la alta dirección en la implementación del sistema de gestión de seguridad de la información asegura la toma de decisiones dirigidas al mejoramiento continuo.' A continuación, presenta las 'Oportunidades de mejora', como: 'Realizar campañas de capacitación y toma de conciencia segmentadas a cada grupo o rol del sistema de gestión de seguridad de información' o 'Revisar y mejorar la redacción de los riesgos, ya que una redacción precisa permite que todas las partes interesadas comprendan el riesgo sin ambigüedades.' El informe también responde preguntas cerradas del organismo certificador, como '¿Existen requisitos legales para el funcionamiento de la organización?' o '¿Se evidencian cambios significativos en la organización desde la anterior auditoría?'. Finalmente, cierra con la recomendación del equipo auditor: 'Se recomienda Otorgar la Certificación ISO/IEC 27001:2022', firmada por el auditor líder con la fecha correspondiente.",
+      textPt: "Um relatório de auditoria real de certificação ISO/IEC 27001 segue sempre a mesma estrutura formal. Primeiro, descreve o tipo de auditoria (por exemplo, 'Tipo de auditoria: Outorga') e se a organização é multissite. Em seguida, enumera os 'Achados que sustentam a conformidade do sistema de gestão com os requisitos' — por exemplo: 'A participação e o comprometimento da alta direção na implementação do sistema de gestão de segurança da informação asseguram a tomada de decisões voltadas à melhoria contínua.' Na sequência, apresenta as 'Oportunidades de melhoria', como: 'Realizar campanhas de capacitação e conscientização segmentadas para cada grupo ou papel do sistema de gestão de segurança da informação' ou 'Revisar e melhorar a redação dos riscos, já que uma redação precisa permite que todas as partes interessadas compreendam o risco sem ambiguidades.' O relatório também responde a perguntas fechadas do organismo certificador, como '¿Existem requisitos legais para o funcionamento da organização?' ou '¿Evidenciam-se mudanças significativas na organização desde a auditoria anterior?'. Por fim, encerra com a recomendação da equipe auditora: 'Recomenda-se Conceder a Certificação ISO/IEC 27001:2022', assinada pelo auditor-líder com a data correspondente.",
+      exercises: [
+        { type: "mc", q: "¿Qué sección de un informe de auditoría describe los aspectos positivos observados?", options: ["Hallazgos que apoyan la conformidad", "Plan de auditoría", "Declaración jurada", "Alcance de la certificación"], correct: 0 },
+        { type: "mc", q: "¿En qué etapa de la auditoría se revisa la documentación antes de la visita presencial?", options: ["Etapa 2", "Etapa 1", "Auditoría de seguimiento", "Auditoría extraordinaria"], correct: 1 },
+        { type: "fill", q: "El equipo auditor concluye el informe con la _______ de otorgar la certificación.", answer: "recomendación" },
+        { type: "fill", q: "Las 'oportunidades de _______' son sugerencias de mejora que no constituyen una no conformidad.", answer: "mejora" },
+        { type: "translate", from: "pt", text: "achados que sustentam a conformidade", answer: "hallazgos que apoyan la conformidad" },
+        { type: "translate", from: "es", text: "Se recomienda otorgar la certificación ISO/IEC 27001:2022.", answer: "Recomenda-se conceder a certificação ISO/IEC 27001:2022." },
+        { type: "mc", q: "¿Qué tipo de auditoría se realiza cuando el ciclo de 3 años está por vencer?", options: ["Auditoría de otorgamiento", "Auditoría de renovación", "Auditoría extraordinaria", "Etapa 1"], correct: 1 },
+        { type: "mc", q: "¿Qué son los 'requisitos no aplicables' en una auditoría?", options: ["Errores del auditor", "Controles del Anexo A que la organización justifica no aplicar (ej. no desarrolla software)", "No conformidades graves", "Cláusulas ilegales"], correct: 1 },
+        { type: "open", q: "Escribe una oportunidad de mejora (no una no conformidad) para una empresa que capacita a su personal solo una vez al año.", sample: "Se recomienda ampliar la frecuencia de las campañas de capacitación y toma de conciencia sobre seguridad de la información, segmentándolas por rol, para fortalecer la cultura organizacional de seguridad." },
+        { type: "fill", q: "El _______ auditor firma la recomendación final del informe.", answer: "líder" },
+        { type: "speak", prompt: "Practica la frase de cierre de un informe de auditoría de otorgamiento.", target: "Se recomienda otorgar la certificación ISO/IEC 27001:2022." },
+        { type: "mc", q: "¿Quién revisa el sistema de gestión de seguridad de la información al menos una vez al año, según exige la norma?", options: ["Un cliente externo", "La alta dirección", "El auditor externo", "Un proveedor"], correct: 1 }
+      ]
+    },
+    {
+      id: "p7",
+      order: 7,
+      title: "No Conformidad Real: Descripción, Evidencia y Acción Correctiva",
+      subtitle: "El formato real de una Solicitud de Acción Correctiva (SAC)",
+      vocabulary: [
+        {
+          category: "Estructura de una Solicitud de Acción Correctiva (SAC)",
+          items: [
+            { es: "solicitud de acción correctiva (SAC)", pt: "solicitação de ação corretiva (SAC)" },
+            { es: "descripción de la no conformidad", pt: "descrição da não conformidade" },
+            { es: "evidencia objetiva del incumplimiento", pt: "evidência objetiva do descumprimento" },
+            { es: "corrección (acción inmediata)", pt: "correção (ação imediata)" },
+            { es: "descripción de la(s) causa(s)", pt: "descrição da(s) causa(s)" },
+            { es: "evidencia de implementación", pt: "evidência de implementação" },
+            { es: "requisito incumplido (norma y numeral)", pt: "requisito descumprido (norma e item)" },
+            { es: "verificar la eficacia de la acción correctiva", pt: "verificar a eficácia da ação corretiva" },
+            { es: "plazo de cierre", pt: "prazo de encerramento" }
+          ]
+        }
+      ],
+      text: "Cada no conformidad detectada en una auditoría real se documenta en una Solicitud de Acción Correctiva (SAC) con un formato fijo. Primero, la 'Descripción de la no conformidad', redactada de forma objetiva: 'No se gestiona el acceso a sitios web externos para reducir la exposición a contenido malicioso.' Luego, la 'Evidencia': 'En el equipo de un colaborador de Operaciones se pudo acceder a sitios considerados fuentes de contenido malicioso.' Después viene la 'Corrección', la acción inmediata para eliminar el efecto (por ejemplo, 'Bloqueo inmediato de los sitios maliciosos identificados'), diferente de la 'Acción correctiva', que elimina la causa raíz para que no vuelva a ocurrir (por ejemplo, 'Actualizar periódicamente las listas negras y ajustar los parámetros de filtrado web'). La 'Descripción de la(s) causa(s)' se redacta normalmente con la técnica de los 5 porqués: '¿Por qué se pudo acceder a sitios maliciosos a pesar del filtro web? Porque el filtro no estaba configurado correctamente. ¿Por qué no estaba configurado correctamente? Porque no se realizó una revisión periódica de las listas bloqueadas.' Finalmente, cada acción tiene una fecha comprometida y una 'Evidencia de Implementación' (captura de pantalla, informe, correo de difusión), y el ciclo cierra solo cuando el auditor 'verifica la eficacia de la acción correctiva' en la siguiente visita.",
+      textPt: "Cada não conformidade detectada em uma auditoria real é documentada em uma Solicitação de Ação Corretiva (SAC) com um formato fixo. Primeiro, a 'Descrição da não conformidade', redigida de forma objetiva: 'Não se gerencia o acesso a sites externos para reduzir a exposição a conteúdo malicioso.' Depois, a 'Evidência': 'No equipamento de um colaborador de Operações foi possível acessar sites considerados fontes de conteúdo malicioso.' Em seguida vem a 'Correção', a ação imediata para eliminar o efeito (por exemplo, 'Bloqueio imediato dos sites maliciosos identificados'), diferente da 'Ação corretiva', que elimina a causa raiz para que não volte a ocorrer (por exemplo, 'Atualizar periodicamente as listas negras e ajustar os parâmetros de filtragem web'). A 'Descrição da(s) causa(s)' é redigida normalmente com a técnica dos 5 porquês: '¿Por que foi possível acessar sites maliciosos apesar do filtro web? Porque o filtro não estava configurado corretamente. ¿Por que não estava configurado corretamente? Porque não se realizava uma revisão periódica das listas bloqueadas.' Por fim, cada ação tem uma data comprometida e uma 'Evidência de Implementação' (captura de tela, relatório, e-mail de divulgação), e o ciclo só se encerra quando o auditor 'verifica a eficácia da ação corretiva' na visita seguinte.",
+      exercises: [
+        { type: "mc", q: "¿Cuál es la diferencia entre 'corrección' y 'acción correctiva'?", options: ["Son sinónimos exactos", "La corrección elimina el efecto inmediato; la acción correctiva elimina la causa raíz", "La corrección es solo para no conformidades mayores", "La acción correctiva es opcional"], correct: 1 },
+        { type: "mc", q: "¿Qué sección de la SAC explica por qué ocurrió el problema?", options: ["Descripción de la no conformidad", "Descripción de la(s) causa(s)", "Alcance del certificado", "Recomendación final"], correct: 1 },
+        { type: "fill", q: "El auditor debe _______ la eficacia de la acción correctiva en la siguiente visita.", answer: "verificar" },
+        { type: "fill", q: "La _______ es la acción inmediata para eliminar el efecto de la no conformidad detectada.", answer: "corrección" },
+        { type: "translate", from: "pt", text: "evidência objetiva do descumprimento", answer: "evidencia objetiva del incumplimiento" },
+        { type: "translate", from: "es", text: "Bloqueo inmediato de los sitios maliciosos identificados.", answer: "Bloqueio imediato dos sites maliciosos identificados." },
+        { type: "mc", q: "Según el caso real de la lección, ¿por qué el filtro web no bloqueaba los sitios maliciosos?", options: ["No existía ningún filtro instalado", "El filtro no estaba configurado adecuadamente ni se revisaba periódicamente", "Los usuarios tenían permiso oficial", "Era un problema del proveedor de internet"], correct: 1 },
+        { type: "fill", q: "Cada acción correctiva debe tener una fecha y una _______ de implementación.", answer: "evidencia" },
+        { type: "open", q: "Redacta una 'Descripción de la no conformidad' y una 'Corrección' para el caso de un servidor de microservicios sin protección antimalware.", sample: "Descripción de la no conformidad: No se implementa protección contra malware en servidores de microservicios. Corrección: Validar la factibilidad de instalar una solución antimalware y aplicar la protección de inmediato en los servidores afectados." },
+        { type: "mc", q: "¿Cuántas veces, como mínimo, se suele preguntar '¿por qué?' en la técnica de análisis de causa raíz?", options: ["Una vez", "Cinco veces (5 porqués)", "Diez veces", "No tiene límite definido"], correct: 1 },
+        { type: "speak", prompt: "Practica cómo redactar una no conformidad con precisión.", target: "No se gestiona el acceso a sitios web externos para reducir la exposición a contenido malicioso." },
+        { type: "mc", q: "¿Qué evidencia sería adecuada para cerrar una acción correctiva de bloqueo de sitios maliciosos?", options: ["Una opinión verbal del gerente", "Una captura de pantalla que confirme el bloqueo de los sitios", "Ninguna evidencia es necesaria", "Un rumor del área de TI"], correct: 1 }
+      ]
+    },
+    {
+      id: "p8",
+      order: 8,
+      title: "Análisis de Causas: los 5 Porqués y el Diagrama de Ishikawa",
+      subtitle: "La historia del leñador y las herramientas reales para encontrar la causa raíz",
+      vocabulary: [
+        {
+          category: "Herramientas de Análisis de Causas",
+          items: [
+            { es: "leñador", pt: "lenhador" },
+            { es: "afilar el hacha", pt: "afiar o machado" },
+            { es: "rendimiento / desempeño", pt: "rendimento / desempenho" },
+            { es: "trabajo rutinario", pt: "trabalho rotineiro" },
+            { es: "tormenta de ideas (lluvia de ideas)", pt: "tempestade de ideias (brainstorm)" },
+            { es: "diagrama de Ishikawa (espina de pescado)", pt: "diagrama de Ishikawa (espinha de peixe)" },
+            { es: "categorías de causas: materiales, métodos, máquinas, personal, medio", pt: "categorias de causas: materiais, métodos, máquinas, pessoal, meio" },
+            { es: "técnica de los 5 porqués", pt: "técnica dos 5 porquês" },
+            { es: "diagrama de Pareto", pt: "diagrama de Pareto" },
+            { es: "principio de Pareto (80/20)", pt: "princípio de Pareto (80/20)" },
+            { es: "plan de acción (método 5W+1H)", pt: "plano de ação (método 5W+1H)" },
+            { es: "causa básica o raíz", pt: "causa básica ou raiz" }
+          ]
+        }
+      ],
+      text: "Un hombre robusto y entusiasta pide trabajo como leñador en un gran bosque y, después de una entrevista con el supervisor, consigue el empleo. El primer día, con mucho entusiasmo, derriba 15 árboles. Al segundo día, no satisfecho, decide trabajar con más ganas y solo logra 12. Al tercer día se levanta más temprano, dispuesto a superar su marca, pero apenas hacha 8 árboles. Al cuarto día madruga junto al sol, no para, trabaja más horas, y solo puede con 6. Exhausto y desilusionado, ve llegar al supervisor y le cuenta su experiencia. El veterano jefe le pregunta: '¿En estos días, cuánto tiempo has dedicado a afilar tu hacha?' Esta historia resume la esencia del análisis de causas: no basta con trabajar más duro si no nos detenemos a preguntarnos qué está fallando en la raíz del problema. Las herramientas más usadas para ese análisis son la técnica de los 5 porqués (preguntar '¿por qué?' repetidamente hasta llegar a la causa raíz, no solo al síntoma) y el diagrama de Ishikawa o espina de pescado, creado por Kaoru Ishikawa en 1953: se identifica la no conformidad, se hace una tormenta de ideas sobre las causas posibles, se agrupan en categorías (materiales, métodos, máquinas, personal, medio interno/externo) y se valida cuáles son las causas más probables. El diagrama de Pareto, por su parte, ordena las causas de mayor a menor frecuencia o costo para aplicar el principio de Pareto: 'si se eliminan las causas que provocan la mayoría de los problemas, desaparecerá la mayor parte de los defectos.'",
+      textPt: "Um homem robusto e entusiasmado pede emprego como lenhador em uma grande floresta e, depois de uma entrevista com o supervisor, consegue o emprego. No primeiro dia, com muito entusiasmo, derruba 15 árvores. No segundo dia, insatisfeito, decide trabalhar com mais empenho e só consegue 12. No terceiro dia se levanta mais cedo, disposto a superar sua marca, mas mal consegue derrubar 8. No quarto dia madruga junto com o sol, não para, trabalha mais horas, e só consegue 6. Exausto e desiludido, vê chegar o supervisor e conta sua experiência. O veterano chefe lhe pergunta: 'Nestes dias, quanto tempo você dedicou a afiar seu machado?' Essa história resume a essência da análise de causas: não basta trabalhar mais duro se não pararmos para nos perguntar o que está falhando na raiz do problema. As ferramentas mais usadas para essa análise são a técnica dos 5 porquês (perguntar 'por quê?' repetidamente até chegar à causa raiz, não apenas ao sintoma) e o diagrama de Ishikawa ou espinha de peixe, criado por Kaoru Ishikawa em 1953: identifica-se a não conformidade, faz-se uma tempestade de ideias sobre as causas possíveis, agrupam-se em categorias (materiais, métodos, máquinas, pessoal, meio interno/externo) e valida-se quais são as causas mais prováveis. O diagrama de Pareto, por sua vez, ordena as causas da maior para a menor frequência ou custo para aplicar o princípio de Pareto: 'se as causas que provocam a maioria dos problemas forem eliminadas, desaparecerá a maior parte dos defeitos.'",
+      exercises: [
+        { type: "mc", q: "¿Qué le pregunta el supervisor al leñador al final de la historia?", options: ["¿Cuántos árboles derribaste hoy?", "¿Cuánto tiempo has dedicado a afilar tu hacha?", "¿Por qué llegas tarde?", "¿Quieres renunciar al trabajo?"], correct: 1 },
+        { type: "mc", q: "¿Qué representa 'afilar el hacha' en la historia?", options: ["Descansar sin trabajar", "Detenerse a mejorar el método, no solo trabajar más duro", "Comprar una herramienta nueva", "Pedir ayuda a otro leñador"], correct: 1 },
+        { type: "fill", q: "La técnica de los 5 _______ ayuda a llegar a la causa raíz de un problema, no solo al síntoma.", answer: "porqués" },
+        { type: "fill", q: "El diagrama de _______, también llamado espina de pescado, fue creado por Kaoru Ishikawa en 1953.", answer: "Ishikawa" },
+        { type: "translate", from: "pt", text: "tempestade de ideias", answer: "tormenta de ideas" },
+        { type: "translate", from: "es", text: "¿Qué he hecho hoy para mejorar mi trabajo?", answer: "O que eu fiz hoje para melhorar meu trabalho?" },
+        { type: "mc", q: "¿Cuáles son las categorías clásicas del diagrama de Ishikawa?", options: ["Precio, calidad, tiempo, lugar", "Materiales, métodos, máquinas, personal, medio", "Ventas, marketing, finanzas, logística", "Entrada, proceso, salida, control"], correct: 1 },
+        { type: "mc", q: "Según el principio de Pareto aplicado al análisis de causas, ¿qué conviene hacer primero?", options: ["Atacar todas las causas por igual", "Atacar primero las causas que representan la mayor parte de los problemas (regla del 80/20)", "Ignorar las causas y solo corregir efectos", "Esperar a que el problema se resuelva solo"], correct: 1 },
+        { type: "open", q: "Aplica la técnica de los 5 porqués a este problema: 'Un servidor quedó sin protección antivirus.' Escribe al menos 2 preguntas y respuestas encadenadas.", sample: "¿Por qué el servidor quedó sin antivirus? Porque no fue incluido en el alcance del monitoreo. ¿Por qué no fue incluido? Porque la matriz de activos no contemplaba ese tipo de servidor." },
+        { type: "fill", q: "El diagrama de _______ ordena las causas de mayor a menor frecuencia, en forma de barras descendentes.", answer: "Pareto" },
+        { type: "speak", prompt: "Practica la pregunta clave del análisis de causas.", target: "¿Qué he hecho hoy para mejorar mi trabajo?" },
+        { type: "mc", q: "El método '5W+1H' para un plan de acción incluye preguntas como:", options: ["Qué, por qué, dónde, cuándo, quién y cómo", "Solo qué y cuándo", "Cuánto cuesta y quién paga", "Sí o no"], correct: 0 }
+      ]
+    },
+    {
+      id: "p9",
+      order: 9,
+      title: "Lineamientos de TI: Control de Accesos, Seguridad Física y Terceros",
+      subtitle: "El vocabulario real de las políticas internas de seguridad de la información",
+      vocabulary: [
+        {
+          category: "Control de Accesos",
+          items: [
+            { es: "autenticación multifactor (MFA)", pt: "autenticação multifator (MFA)" },
+            { es: "identificador único de usuario", pt: "identificador único de usuário" },
+            { es: "bloqueo de cuenta tras intentos fallidos", pt: "bloqueio de conta após tentativas falhas" },
+            { es: "ciclo de vida de acceso del usuario", pt: "ciclo de vida de acesso do usuário" },
+            { es: "usuario con privilegios elevados", pt: "usuário com privilégios elevados" },
+            { es: "principio de mínimo privilegio", pt: "princípio do menor privilégio" },
+            { es: "revisión periódica de accesos", pt: "revisão periódica de acessos" },
+            { es: "filtrado web / sitios maliciosos", pt: "filtragem web / sites maliciosos" },
+            { es: "directorio activo (Active Directory)", pt: "diretório ativo (Active Directory)" }
+          ]
+        },
+        {
+          category: "Seguridad Física y Ambiental",
+          items: [
+            { es: "perímetro de seguridad física", pt: "perímetro de segurança física" },
+            { es: "cuarto de equipos / centro de datos", pt: "sala de equipamentos / data center" },
+            { es: "tarjeta de proximidad", pt: "cartão de proximidade" },
+            { es: "cámaras de videovigilancia", pt: "câmeras de videovigilância" },
+            { es: "sistema contra incendios", pt: "sistema contra incêndio" },
+            { es: "fuente de energía ininterrumpida (UPS)", pt: "fonte de energia ininterrupta (UPS/nobreak)" },
+            { es: "escritorio y pantalla limpia", pt: "mesa e tela limpas (clean desk / clean screen)" }
+          ]
+        },
+        {
+          category: "Gestión de Terceros y Proveedores",
+          items: [
+            { es: "selección de terceros", pt: "seleção de terceiros" },
+            { es: "contrato / acuerdo de confidencialidad", pt: "contrato / acordo de confidencialidade" },
+            { es: "cadena de suministro (TIC)", pt: "cadeia de suprimentos (TIC)" },
+            { es: "evaluación periódica de proveedores", pt: "avaliação periódica de fornecedores" },
+            { es: "conflicto de intereses", pt: "conflito de interesses" },
+            { es: "devolución de activos al término del contrato", pt: "devolução de ativos ao término do contrato" }
+          ]
+        }
+      ],
+      text: "Los lineamientos internos de una organización certificada en ISO/IEC 27001 son documentos muy concretos, con reglas numéricas exactas. En control de accesos, por ejemplo: 'Las contraseñas deberán tener una longitud de por lo menos diez dígitos alfanuméricos para usuarios, y de quince dígitos para cuentas con privilegios elevados. El sistema obligará a que las claves se renueven cada sesenta días como máximo. Las cuentas serán bloqueadas luego de cuatro intentos erróneos, desbloqueadas luego de treinta minutos.' En seguridad física: 'El acceso a los centros de cómputo solo se dará a personal autorizado, mediante tarjeta de proximidad, con cámaras de videovigilancia en las zonas seguras y un sistema contra incendios y de energía ininterrumpida (UPS) en cada cuarto de equipos.' Y en la gestión de terceros: 'Antes de iniciar un acuerdo con un proveedor, la organización debe realizar la evaluación e investigación necesaria para garantizar que el prospecto no genere un riesgo que afecte la confidencialidad, integridad y disponibilidad de la información. Al término de la relación contractual, el tercero deberá devolver todos los activos e información en su posesión, y se revocarán todos los permisos de acceso otorgados durante la relación comercial.' Dominar este vocabulario es fundamental para auditar controles de acceso, seguridad física y relaciones con terceros con precisión en español.",
+      textPt: "Os lineamentos internos de uma organização certificada na ISO/IEC 27001 são documentos muito concretos, com regras numéricas exatas. No controle de acessos, por exemplo: 'As senhas deverão ter um comprimento de pelo menos dez dígitos alfanuméricos para usuários, e de quinze dígitos para contas com privilégios elevados. O sistema obrigará a renovação das senhas a cada sessenta dias, no máximo. As contas serão bloqueadas após quatro tentativas erradas, sendo desbloqueadas após trinta minutos.' Na segurança física: 'O acesso aos centros de processamento de dados só será concedido a pessoal autorizado, mediante cartão de proximidade, com câmeras de videovigilância nas zonas seguras e um sistema contra incêndio e de energia ininterrupta (UPS/nobreak) em cada sala de equipamentos.' E na gestão de terceiros: 'Antes de iniciar um acordo com um fornecedor, a organização deve realizar a avaliação e investigação necessária para garantir que o prospecto não gere um risco que afete a confidencialidade, integridade e disponibilidade da informação. Ao término da relação contratual, o terceiro deverá devolver todos os ativos e informações em sua posse, e todas as permissões de acesso concedidas durante a relação comercial serão revogadas.' Dominar esse vocabulário é fundamental para auditar controles de acesso, segurança física e relações com terceiros com precisão em espanhol.",
+      exercises: [
+        { type: "mc", q: "Según el lineamiento real citado, ¿cuántos dígitos mínimos debe tener la contraseña de un usuario con privilegios elevados?", options: ["6 dígitos", "10 dígitos", "15 dígitos", "20 dígitos"], correct: 2 },
+        { type: "mc", q: "¿Cada cuántos días como máximo debe renovarse una contraseña, según el lineamiento?", options: ["30 días", "60 días", "90 días", "120 días"], correct: 1 },
+        { type: "fill", q: "Las cuentas se bloquean tras cuatro intentos erróneos y se desbloquean luego de treinta _______.", answer: "minutos" },
+        { type: "fill", q: "El acceso físico al cuarto de equipos requiere una tarjeta de _______.", answer: "proximidad" },
+        { type: "translate", from: "pt", text: "autenticação multifator", answer: "autenticación multifactor" },
+        { type: "translate", from: "es", text: "El tercero deberá devolver todos los activos al término del contrato.", answer: "O terceiro deverá devolver todos os ativos ao término do contrato." },
+        { type: "mc", q: "¿Qué principio establece que un usuario solo debe tener acceso a lo estrictamente necesario para su función?", options: ["Principio de mínimo privilegio", "Principio de máxima disponibilidad", "Principio de Pareto", "Principio de redundancia"], correct: 0 },
+        { type: "mc", q: "¿Qué se debe revocar al finalizar la relación contractual con un tercero?", options: ["Nada, el acceso permanece activo", "Todos los permisos de acceso lógicos y físicos otorgados", "Solo el acceso a internet", "Solo el correo electrónico"], correct: 1 },
+        { type: "fill", q: "El escritorio y pantalla _______ evita dejar información sensible a la vista.", answer: "limpia" },
+        { type: "open", q: "Redacta una frase, en el estilo formal de un lineamiento, sobre la revisión periódica de accesos de usuarios.", sample: "Los derechos de acceso de los usuarios se deben revisar de forma general y periódica, al menos una vez al año, manteniendo un registro de dichas revisiones." },
+        { type: "speak", prompt: "Practica una regla real de control de accesos.", target: "Las contraseñas deberán tener una longitud de por lo menos diez dígitos alfanuméricos." },
+        { type: "mc", q: "¿Qué debe evaluar la organización antes de firmar un contrato con un nuevo proveedor?", options: ["Solo el precio ofrecido", "El riesgo que el proveedor pueda representar para la confidencialidad, integridad y disponibilidad de la información", "El logo de la empresa proveedora", "Nada, la evaluación no es necesaria"], correct: 1 }
+      ]
+    },
+    {
+      id: "p10",
+      order: 10,
+      title: "El Correo de Difusión: Comunicar Actualizaciones de Seguridad",
+      subtitle: "Cómo redactar un correo formal de difusión interna",
+      vocabulary: [
+        {
+          category: "Fórmulas de Difusión Interna",
+          items: [
+            { es: "Por medio del presente, se les comunica que...", pt: "Por meio deste, comunica-se que..." },
+            { es: "como parte de las acciones de mejora derivadas de los hallazgos", pt: "como parte das ações de melhoria decorrentes dos achados" },
+            { es: "con el objetivo de fortalecer los controles y procesos", pt: "com o objetivo de fortalecer os controles e processos" },
+            { es: "las principales actualizaciones incorporadas son las siguientes", pt: "as principais atualizações incorporadas são as seguintes" },
+            { es: "se muestran resaltadas para facilitar su reconocimiento", pt: "são exibidas destacadas para facilitar seu reconhecimento" },
+            { es: "cabe mencionar que pueden revisar los lineamientos en...", pt: "cabe mencionar que podem revisar os lineamentos em..." },
+            { es: "quedamos atentos a cualquier consulta", pt: "ficamos à disposição para qualquer dúvida" }
+          ]
+        }
+      ],
+      text: "Un correo real de difusión, enviado por el área de Seguridad de la Información a todo el equipo de TI, sigue un patrón formal muy claro: 'Estimados: Por medio del presente, se les comunica que ya se encuentran publicadas las nuevas versiones de los lineamientos de seguridad de la información, como parte de las acciones de mejora derivadas de los hallazgos identificados durante la auditoría de certificación ISO 27001, con el objetivo de fortalecer los controles y procesos de Tecnología de la Información. Las principales actualizaciones incorporadas son las siguientes: mejora del control de acceso a sitios maliciosos, incluyendo la revisión periódica de listas negras; mejora del control de mantenimiento de equipos, con la finalidad de asegurar la disponibilidad de evidencias; y mejora del control enfocado a la revisión y evaluación periódica de proveedores. Las actualizaciones realizadas podrán identificarse fácilmente, ya que se muestran resaltadas dentro de cada lineamiento, con la finalidad de facilitar su reconocimiento. Cabe mencionar que pueden revisar los lineamientos dentro del Sistema Documental, en la sección de Gestión de la Tecnología e Información.' Este tipo de correo cierra siempre el círculo de una auditoría: primero se detectan los hallazgos, luego se definen las acciones correctivas, y finalmente se difunden los cambios a todo el personal para que los nuevos controles se cumplan de verdad.",
+      textPt: "Um e-mail real de divulgação, enviado pela área de Segurança da Informação para toda a equipe de TI, segue um padrão formal muito claro: 'Estimados: Por meio deste, comunica-se que já estão publicadas as novas versões dos lineamentos de segurança da informação, como parte das ações de melhoria decorrentes dos achados identificados durante a auditoria de certificação ISO 27001, com o objetivo de fortalecer os controles e processos de Tecnologia da Informação. As principais atualizações incorporadas são as seguintes: melhoria do controle de acesso a sites maliciosos, incluindo a revisão periódica de listas negras; melhoria do controle de manutenção de equipamentos, com a finalidade de assegurar a disponibilidade de evidências; e melhoria do controle voltado à revisão e avaliação periódica de fornecedores. As atualizações realizadas podem ser identificadas facilmente, já que aparecem destacadas dentro de cada lineamento, com a finalidade de facilitar seu reconhecimento. Cabe mencionar que podem revisar os lineamentos dentro do Sistema Documental, na seção de Gestão da Tecnologia e Informação.' Esse tipo de e-mail sempre fecha o círculo de uma auditoria: primeiro se detectam os achados, depois se definem as ações corretivas, e finalmente se divulgam as mudanças para todo o pessoal, para que os novos controles sejam realmente cumpridos.",
+      exercises: [
+        { type: "mc", q: "¿Qué motiva, en el correo real, la actualización de los lineamientos de seguridad?", options: ["Un cambio de gerencia", "Las acciones de mejora derivadas de los hallazgos de la auditoría de certificación", "Una campaña de marketing", "Una fusión con otra empresa"], correct: 1 },
+        { type: "mc", q: "¿Cómo se identifican las partes actualizadas dentro de cada lineamiento?", options: ["Se envían en un archivo aparte", "Se muestran resaltadas dentro del documento", "No se identifican, hay que leer todo de nuevo", "Se anuncian solo de forma verbal"], correct: 1 },
+        { type: "fill", q: "Por medio del presente, se les _______ que ya se encuentran publicadas las nuevas versiones de los lineamientos.", answer: "comunica" },
+        { type: "fill", q: "Las actualizaciones tienen como objetivo _______ los controles y procesos de Tecnología de la Información.", answer: "fortalecer" },
+        { type: "translate", from: "pt", text: "como parte das ações de melhoria decorrentes dos achados", answer: "como parte de las acciones de mejora derivadas de los hallazgos" },
+        { type: "translate", from: "es", text: "Quedamos atentos a cualquier consulta.", answer: "Ficamos à disposição para qualquer dúvida." },
+        { type: "mc", q: "¿Qué tres controles se mencionan como mejorados en el correo real de esta lección?", options: ["Ventas, marketing y logística", "Acceso a sitios maliciosos, mantenimiento de equipos y evaluación de proveedores", "Recursos humanos, finanzas y compras", "Ninguno, el correo no detalla controles"], correct: 1 },
+        { type: "open", q: "Redacta un correo breve de difusión anunciando que se actualizó el lineamiento de control de accesos.", sample: "Estimados: Por medio del presente, se les comunica que ya se encuentra publicada la nueva versión del Lineamiento de Control de Accesos, con el objetivo de fortalecer la gestión de contraseñas y el acceso remoto. Quedamos atentos a cualquier consulta. Saludos cordiales." },
+        { type: "fill", q: "Cabe _______ que pueden revisar los lineamientos dentro del Sistema Documental.", answer: "mencionar" },
+        { type: "speak", prompt: "Practica la frase de apertura de un correo de difusión formal.", target: "Por medio del presente, se les comunica que ya se encuentran publicadas las nuevas versiones de los lineamientos." },
+        { type: "mc", q: "¿Cuál es el propósito final de un correo de difusión después de una auditoría?", options: ["Informar solo a la alta dirección", "Asegurar que todo el personal conozca y cumpla los nuevos controles", "Cerrar la empresa", "Cancelar la certificación"], correct: 1 }
+      ]
     }
   ]
 };
