@@ -58,7 +58,7 @@ const functions = (typeof firebase.functions === "function") ? firebase.function
 // Versión del sistema, visible en Mi Cuenta / Configuración y en el pie de la barra lateral.
 // Se debe actualizar manualmente cada vez que se sube una nueva versión al repositorio
 // (formato AAAA.MM.DD.N — N = número de subida ese día, empieza en 1).
-const APP_VERSION = "2026.07.28.5";
+const APP_VERSION = "2026.07.28.6";
 
 // Valores por defecto de la mensualidad/anualidad — el admin puede cambiarlos en
 // Configuración → Planes y precios (guardados en config/settings, campos priceMonthly/priceAnnual).
@@ -2975,8 +2975,8 @@ function renderLessonView() {
   if (lesson.grammar && lesson.grammar.length) {
     html += `<div class="card"><h3>📐 Gramática</h3>` + lesson.grammar.map(g => `
       <h4 style="margin-bottom:6px">${escapeHtml(g.title)}</h4>
-      <table class="grammar-table"><thead><tr>${g.headers.map(h => `<th>${escapeHtml(h)}</th>`).join("")}</tr></thead>
-      <tbody>${g.rows.map(r => `<tr>${r.map(c => `<td>${escapeHtml(c)}</td>`).join("")}</tr>`).join("")}</tbody></table>
+      <div class="table-scroll"><table class="grammar-table"><thead><tr>${g.headers.map(h => `<th>${escapeHtml(h)}</th>`).join("")}</tr></thead>
+      <tbody>${g.rows.map(r => `<tr>${r.map(c => `<td>${escapeHtml(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>
       <br>`).join("") + `</div>`;
   }
   if (lesson.notes && lesson.notes.length) {
@@ -3820,12 +3820,12 @@ function renderNotas() {
         </div>
       </div>
       <div class="card">
-        <table class="notas-table">
+        <div class="table-scroll"><table class="notas-table">
           <thead><tr>
             <th>${t("notas_level_col")}</th><th>${t("notas_lessons_col")}</th><th>${t("notas_avg_col")}</th><th>${t("notas_exam_col")}</th><th>${t("notas_status_col")}</th><th>Revisión</th>
           </tr></thead>
           <tbody>${rows}</tbody>
-        </table>
+        </table></div>
       </div>
       <div class="bottom-space"></div>
     `, "notas");
@@ -5137,7 +5137,7 @@ function renderAdminAccessLog() {
       <div class="card">
         <p style="color:var(--gray-2);font-size:.85rem;margin-top:0">${t("access_log_admin_hint")}</p>
         ${log.length === 0 ? `<p style="color:var(--gray-2)">${t("access_log_empty")}</p>` : `
-        <table class="notas-table">
+        <div class="table-scroll"><table class="notas-table">
           <thead><tr><th>${t("access_log_col_user")}</th><th>${t("access_log_col_date")}</th><th>${t("access_log_col_device")}</th><th>${t("access_log_col_version")}</th></tr></thead>
           <tbody>
             ${log.map(a => `
@@ -5148,7 +5148,7 @@ function renderAdminAccessLog() {
                 <td>${escapeHtml(a.appVersion || "—")}</td>
               </tr>`).join("")}
           </tbody>
-        </table>`}
+        </table></div>`}
       </div>
       <div class="bottom-space"></div>
     `, "adminAccessLog");
@@ -5554,12 +5554,12 @@ function renderAccountAccessTab() {
     <h3>🕓 ${t("account_tab_access")}</h3>
     <p style="color:var(--gray-2);font-size:.85rem;margin-top:0">${t("access_log_own_hint")}</p>
     ${log.length === 0 ? `<p style="color:var(--gray-2)">${t("access_log_empty")}</p>` : `
-    <table class="notas-table">
+    <div class="table-scroll"><table class="notas-table">
       <thead><tr><th>${t("access_log_col_date")}</th><th>${t("access_log_col_device")}</th></tr></thead>
       <tbody>
         ${log.map(a => `<tr><td>${formatAccessAt(a.at)}</td><td>${friendlyDeviceFromUA(a.userAgent)}</td></tr>`).join("")}
       </tbody>
-    </table>`}`;
+    </table></div>`}`;
 }
 
 function renderAccountAppearanceTab() {
@@ -5758,7 +5758,7 @@ function renderScheduleEdit() {
       <div class="card">
         <p style="color:var(--gray-1);margin-top:0">${t("schedule_edit_intro")}</p>
         ${state.scheduleEditMsg ? `<div class="success-msg">${escapeHtml(state.scheduleEditMsg)}</div>` : ""}
-        <table class="notas-table schedule-edit-table">
+        <div class="table-scroll"><table class="notas-table schedule-edit-table">
           <thead><tr><th>${t("schedule_edit_col_content")}</th><th style="width:160px">${t("schedule_edit_col_month")}</th></tr></thead>
           <tbody>
             ${units.map(u => {
@@ -5775,7 +5775,7 @@ function renderScheduleEdit() {
               </tr>`;
             }).join("")}
           </tbody>
-        </table>
+        </table></div>
         <div style="display:flex;gap:10px;justify-content:flex-end;margin-top:16px">
           <button class="btn btn-secondary btn-sm" id="reset-schedule-assignments">${t("schedule_edit_reset")}</button>
           <button class="btn btn-primary btn-sm" id="save-schedule-assignments">${t("schedule_edit_save")}</button>

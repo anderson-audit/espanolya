@@ -693,6 +693,12 @@ table.grammar-table th { background: var(--gray-bg); }
 }
 .level-card.locked, .lesson-row.locked, .ex-option:disabled, .order-item.chosen { cursor: not-allowed; }
 
+/* ---------- Tablas responsivas (Mis Notas, Gramática, Accesos, Cronograma) ---------- */
+/* En vez de comprimir las columnas hasta hacerlas ilegibles en el celular, el contenedor
+   permite scroll horizontal solo dentro de la tabla — el resto de la página no se mueve. */
+.table-scroll { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+.table-scroll table { min-width: 420px; }
+
 /* ---------- Mis Notas: tabla ---------- */
 .notas-table { width: 100%; border-collapse: collapse; font-size: .9rem; }
 .notas-table th { text-align: left; padding: 10px 12px; border-bottom: 2px solid #ece9e3; color: var(--gray-2); font-size: .76rem; text-transform: uppercase; letter-spacing: .03em; }
@@ -771,6 +777,12 @@ table.grammar-table th { background: var(--gray-bg); }
 
 @media (max-width: 640px) {
   .main-content { padding: 14px; }
+  .topbar, .topbar-slim { padding: 10px 14px; flex-wrap: wrap; row-gap: 8px; }
+  .brand { font-size: 1.05rem; gap: 6px; }
+  .brand .flag { width: 22px; height: 16px; }
+  .xp-pill { padding: 5px 10px; font-size: .78rem; }
+  .avatar-btn { width: 34px; height: 34px; }
+  .table-scroll table { min-width: 360px; }
   .auth-card { padding: 28px 22px; }
   .panel-summary { flex-direction: column; text-align: center; padding: 20px; }
   .panel-status-box { width: 100%; }
