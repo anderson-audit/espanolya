@@ -58,7 +58,7 @@ const functions = (typeof firebase.functions === "function") ? firebase.function
 // Versión del sistema, visible en Mi Cuenta / Configuración y en el pie de la barra lateral.
 // Se debe actualizar manualmente cada vez que se sube una nueva versión al repositorio
 // (formato AAAA.MM.DD.N — N = número de subida ese día, empieza en 1).
-const APP_VERSION = "2026.07.28.3";
+const APP_VERSION = "2026.07.28.4";
 
 // Valores por defecto de la mensualidad/anualidad — el admin puede cambiarlos en
 // Configuración → Planes y precios (guardados en config/settings, campos priceMonthly/priceAnnual).
@@ -247,7 +247,7 @@ const I18N = {
     schedule_edit_save: "Guardar asignación", schedule_edit_reset: "Restaurar automático", schedule_edit_saved: "¡Cronograma personalizado guardado!",
 
     sidebar_levels: "Mis Niveles", sidebar_syllabus: "Temario Completo", sidebar_notas: "Mis Notas", sidebar_notebook: "Cuaderno",
-    sidebar_games: "🎮 Juegos",
+    sidebar_games: "Juegos",
     games_title: "Juegos de Español", games_intro: "Practica jugando: 6 juegos gráficos e interactivos para reforzar vocabulario de todo el curso, en cualquier momento y sin nota.",
     games_back: "← Volver a Juegos", games_play_again: "🔁 Jugar de nuevo", games_score: "Puntos", games_you_win: "¡Ganaste!", games_you_lose: "¡Casi! Inténtalo de nuevo.",
     game_ahorcado_sub: "Adivina la palabra letra por letra", game_muneco_sub: "Escucha y elige la traducción correcta",
@@ -260,6 +260,20 @@ const I18N = {
     game_ruleta_title: "🎡 Ruleta de Vocabulario", game_ruleta_spin: "🎡 Girar la ruleta", game_ruleta_spinning: "Girando...",
     game_sopa_title: "🔍 Sopa de Letras", game_sopa_found: "Palabras encontradas", game_sopa_complete: "¡Encontraste todas las palabras!",
     game_carrera_title: "⚡ Carrera contra el Reloj", game_carrera_start: "▶ Empezar", game_carrera_streak: "Racha", game_carrera_final: "Puntuación final",
+    games_start: "▶ Empezar", games_finish: "🏁 Terminar", games_max: "máx",
+    game_difficulty_label: "Dificultad", game_category_label: "Categoría de vocabulario",
+    game_mode_label: "Modo de juego", game_mode_puntos: "🏆 Puntos", game_mode_tiempo: "⏱️ Contrarreloj",
+    game_diff_facil: "🟢 Fácil", game_diff_medio: "🟡 Medio", game_diff_dificil: "🔴 Difícil",
+    game_cat_todas: "Todas", game_cat_basico: "Básico", game_cat_intermedio: "Intermedio", game_cat_avanzado: "Avanzado",
+    game_ahorcado_explain: "Adivina la palabra en español letra por letra antes de quedarte sin intentos. Elige la dificultad (largo de la palabra) y si quieres jugar contra el reloj o sin límite de tiempo.",
+    game_ahorcado_timeup: "¡Se acabó el tiempo!",
+    game_muneco_explain: "El muñeco va a decir una palabra en español: escúchala y elige qué significa en portugués. En el nivel difícil tienes tiempo limitado para responder — ¡ese es el desafío!",
+    game_memoria_explain: "Da vuelta las cartas de a dos y encuentra las parejas español-portugués. Cuantas más parejas, mayor la dificultad — memoriza bien las posiciones.",
+    game_ruleta_explain: "Gira la ruleta, mira los puntos del gajo donde cae y responde la pregunta de vocabulario. En el modo Puntos juegas 8 rondas; en el modo Contrarreloj, suma la mayor cantidad de puntos posible antes de que se acabe el tiempo.",
+    game_ruleta_round: "Ronda", game_ruleta_done: "¡Juego terminado!",
+    game_sopa_explain: "Encuentra las palabras escondidas en la sopa de letras arrastrando el dedo o el mouse. Elige el tamaño del tablero y la categoría de vocabulario que quieres practicar.",
+    game_carrera_explain: "Responde tantas traducciones como puedas antes de que se acabe el tiempo de cada pregunta. Elige el tiempo por pregunta y el nivel de vocabulario — cuanto más avanzado, más difíciles las palabras.",
+    game_carrera_time_label: "Tiempo por pregunta",
     syllabus_title: "Temario Completo del Curso", syllabus_intro: "Todos los niveles y todas las lecciones de un vistazo, con su tema principal — para consultar el material de estudio sin tener que entrar nivel por nivel.",
     syllabus_search_placeholder: "🔍 Busca un tema (ej.: subjuntivo, auditoría, comida)...", syllabus_search_empty: "No se encontró ningún tema con ese término.", syllabus_search_locked_in: "Disponible en {level} — nivel bloqueado todavía",
     sidebar_analytics: "Mi Actividad", sidebar_schedule: "Cronograma", sidebar_tutorial: "Tutorial",
@@ -456,7 +470,7 @@ const I18N = {
     schedule_edit_save: "Salvar atribuição", schedule_edit_reset: "Restaurar automático", schedule_edit_saved: "Cronograma personalizado salvo!",
 
     sidebar_levels: "Meus Níveis", sidebar_syllabus: "Programa Completo", sidebar_notas: "Minhas Notas", sidebar_notebook: "Caderno",
-    sidebar_games: "🎮 Jogos",
+    sidebar_games: "Jogos",
     games_title: "Jogos de Espanhol", games_intro: "Pratique jogando: 6 jogos gráficos e interativos para reforçar o vocabulário de todo o curso, a qualquer momento e sem nota.",
     games_back: "← Voltar aos Jogos", games_play_again: "🔁 Jogar de novo", games_score: "Pontos", games_you_win: "Você ganhou!", games_you_lose: "Quase! Tente de novo.",
     game_ahorcado_sub: "Adivinhe a palavra letra por letra", game_muneco_sub: "Escute e escolha a tradução correta",
@@ -469,6 +483,20 @@ const I18N = {
     game_ruleta_title: "🎡 Roleta de Vocabulário", game_ruleta_spin: "🎡 Girar a roleta", game_ruleta_spinning: "Girando...",
     game_sopa_title: "🔍 Caça-Palavras", game_sopa_found: "Palavras encontradas", game_sopa_complete: "Você encontrou todas as palavras!",
     game_carrera_title: "⚡ Corrida contra o Relógio", game_carrera_start: "▶ Começar", game_carrera_streak: "Sequência", game_carrera_final: "Pontuação final",
+    games_start: "▶ Começar", games_finish: "🏁 Terminar", games_max: "máx",
+    game_difficulty_label: "Dificuldade", game_category_label: "Categoria de vocabulário",
+    game_mode_label: "Modo de jogo", game_mode_puntos: "🏆 Pontos", game_mode_tiempo: "⏱️ Contrarrelógio",
+    game_diff_facil: "🟢 Fácil", game_diff_medio: "🟡 Médio", game_diff_dificil: "🔴 Difícil",
+    game_cat_todas: "Todas", game_cat_basico: "Básico", game_cat_intermedio: "Intermediário", game_cat_avanzado: "Avançado",
+    game_ahorcado_explain: "Adivinhe a palavra em espanhol letra por letra antes de ficar sem tentativas. Escolha a dificuldade (tamanho da palavra) e se quer jogar contra o relógio ou sem limite de tempo.",
+    game_ahorcado_timeup: "O tempo acabou!",
+    game_muneco_explain: "O boneco vai dizer uma palavra em espanhol: escute e escolha o que ela significa em português. No nível difícil você tem tempo limitado para responder — esse é o desafio!",
+    game_memoria_explain: "Vire as cartas de duas em duas e encontre os pares espanhol-português. Quanto mais pares, maior a dificuldade — memorize bem as posições.",
+    game_ruleta_explain: "Gire a roleta, veja os pontos da fatia onde ela para e responda a pergunta de vocabulário. No modo Pontos você joga 8 rodadas; no modo Contrarrelógio, some o máximo de pontos possível antes que o tempo acabe.",
+    game_ruleta_round: "Rodada", game_ruleta_done: "Jogo terminado!",
+    game_sopa_explain: "Encontre as palavras escondidas na caça-palavras arrastando o dedo ou o mouse. Escolha o tamanho do tabuleiro e a categoria de vocabulário que quer praticar.",
+    game_carrera_explain: "Responda o máximo de traduções que puder antes que o tempo de cada pergunta acabe. Escolha o tempo por pergunta e o nível de vocabulário — quanto mais avançado, mais difíceis as palavras.",
+    game_carrera_time_label: "Tempo por pergunta",
     syllabus_title: "Programa Completo do Curso", syllabus_intro: "Todos os níveis e todas as lições em um só lugar, com o tema principal de cada uma — para consultar o material de estudo sem precisar entrar nível por nível.",
     syllabus_search_placeholder: "🔍 Busque um assunto (ex.: subjuntivo, auditoria, comida)...", syllabus_search_empty: "Nenhum assunto encontrado com esse termo.", syllabus_search_locked_in: "Disponível em {level} — nível ainda bloqueado",
     sidebar_analytics: "Minha Atividade", sidebar_schedule: "Cronograma", sidebar_tutorial: "Tutorial",
@@ -665,7 +693,7 @@ const I18N = {
     schedule_edit_save: "Save assignment", schedule_edit_reset: "Reset to automatic", schedule_edit_saved: "Custom schedule saved!",
 
     sidebar_levels: "My Levels", sidebar_syllabus: "Full Syllabus", sidebar_notas: "My Grades", sidebar_notebook: "Notebook",
-    sidebar_games: "🎮 Games",
+    sidebar_games: "Games",
     games_title: "Spanish Games", games_intro: "Practice by playing: 6 graphic, interactive games to reinforce vocabulary from the whole course, anytime, ungraded.",
     games_back: "← Back to Games", games_play_again: "🔁 Play again", games_score: "Score", games_you_win: "You won!", games_you_lose: "So close! Try again.",
     game_ahorcado_sub: "Guess the word letter by letter", game_muneco_sub: "Listen and choose the correct translation",
@@ -678,6 +706,20 @@ const I18N = {
     game_ruleta_title: "🎡 Vocabulary Wheel", game_ruleta_spin: "🎡 Spin the wheel", game_ruleta_spinning: "Spinning...",
     game_sopa_title: "🔍 Word Search", game_sopa_found: "Words found", game_sopa_complete: "You found all the words!",
     game_carrera_title: "⚡ Race Against the Clock", game_carrera_start: "▶ Start", game_carrera_streak: "Streak", game_carrera_final: "Final score",
+    games_start: "▶ Start", games_finish: "🏁 Finish", games_max: "max",
+    game_difficulty_label: "Difficulty", game_category_label: "Vocabulary category",
+    game_mode_label: "Game mode", game_mode_puntos: "🏆 Points", game_mode_tiempo: "⏱️ Time attack",
+    game_diff_facil: "🟢 Easy", game_diff_medio: "🟡 Medium", game_diff_dificil: "🔴 Hard",
+    game_cat_todas: "All", game_cat_basico: "Basic", game_cat_intermedio: "Intermediate", game_cat_avanzado: "Advanced",
+    game_ahorcado_explain: "Guess the Spanish word letter by letter before you run out of tries. Choose the difficulty (word length) and whether to play against the clock or with no time limit.",
+    game_ahorcado_timeup: "Time's up!",
+    game_muneco_explain: "The doll will say a word in Spanish: listen and choose what it means in Portuguese. On hard difficulty you have limited time to answer — that's the challenge!",
+    game_memoria_explain: "Flip the cards two at a time and find the Spanish-Portuguese pairs. More pairs means higher difficulty — memorize the positions well.",
+    game_ruleta_explain: "Spin the wheel, check the points on the slice it lands on, and answer the vocabulary question. In Points mode you play 8 rounds; in Time Attack mode, score as many points as possible before time runs out.",
+    game_ruleta_round: "Round", game_ruleta_done: "Game over!",
+    game_sopa_explain: "Find the hidden words in the word search by dragging your finger or mouse. Choose the board size and the vocabulary category you want to practice.",
+    game_carrera_explain: "Answer as many translations as you can before each question's time runs out. Choose the time per question and the vocabulary level — the more advanced, the harder the words.",
+    game_carrera_time_label: "Time per question",
     syllabus_title: "Full Course Syllabus", syllabus_intro: "Every level and every lesson at a glance, with its main topic — so you can check the study material without opening each level one by one.",
     syllabus_search_placeholder: "🔍 Search a topic (e.g.: subjunctive, audit, food)...", syllabus_search_empty: "No topic found for that term.", syllabus_search_locked_in: "Available in {level} — level still locked",
     sidebar_analytics: "My Activity", sidebar_schedule: "Schedule", sidebar_tutorial: "Tutorial",
@@ -6358,6 +6400,8 @@ function shuffleArray(arr) {
 
 // Arma el banco de palabras de los juegos reaprovechando TODO el vocabulario ya cargado
 // del curso (COURSE_LEVELS), sin necesidad de digitar listas aparte. Se cachea en el state.
+// Cada entrada guarda también el "level" de origen, para poder filtrar por categoría
+// (básico/intermedio/avanzado) en juegos como Sopa de Letras y Carrera.
 function buildGameWordPool() {
   const pool = [];
   const seen = new Set();
@@ -6373,14 +6417,14 @@ function buildGameWordPool() {
           const pt = item.pt.split("/")[0].split(",")[0].replace(/\([^)]*\)/g, "").trim();
           if (!pt) return;
           seen.add(key);
-          pool.push({ es, pt });
+          pool.push({ es, pt, level: lvl.id });
         });
       });
     });
   });
   (GAME_FALLBACK_WORDS || []).forEach(w => {
     const key = w.es.toLowerCase();
-    if (!seen.has(key)) { seen.add(key); pool.push(w); }
+    if (!seen.has(key)) { seen.add(key); pool.push(Object.assign({ level: "fundamentos" }, w)); }
   });
   return pool;
 }
@@ -6397,13 +6441,156 @@ function gameWordPoolSimple() {
 function gameWordsForLetterGames() {
   return gameWordPoolSimple().filter(w => w.es.indexOf(" ") === -1 && w.es.length >= 3 && w.es.length <= 14);
 }
+// Filtra el banco por categoría de nivel (ver GAME_CATEGORIES en content-juegos.js), con
+// resguardo automático: si la categoría queda con muy pocas palabras, usa el banco completo.
+function gameWordPoolByCategory(catId) {
+  const cat = (GAME_CATEGORIES || []).find(c => c.id === catId);
+  const full = gameWordPool();
+  if (!cat || !cat.levels) return full;
+  const filtered = full.filter(w => cat.levels.includes(w.level));
+  return filtered.length >= 10 ? filtered : full;
+}
+// Igual que gameWordsForLetterGames() pero respetando además una categoría de vocabulario
+// (usado por Sopa de Letras y Carrera, que permiten elegir el "conjunto" de palabras).
+function gameLetterWordsByCategory(catId) {
+  const filtered = gameWordPoolByCategory(catId).filter(w => !/[áéíóúü]/i.test(w.es) && w.es.indexOf(" ") === -1 && w.es.length >= 3 && w.es.length <= 14);
+  return filtered.length >= 8 ? filtered : gameWordsForLetterGames();
+}
+
+// --- Configuración persistente de los juegos (sonido, dificultad, etc.) -----------------
+function defaultGamesConfig() {
+  return {
+    sound: true,
+    ahorcadoDifficulty: "medio", ahorcadoMode: "puntos",
+    munecoDifficulty: "medio",
+    memoriaDifficulty: "medio",
+    ruletaMode: "puntos",
+    sopaDifficulty: "medio", sopaCategory: "todas",
+    carreraTime: 8, carreraLevel: "intermedio",
+    anagramaDifficulty: "medio",
+    bingoDifficulty: "medio",
+    globosDifficulty: "medio",
+    fraseDifficulty: "medio",
+    simonDifficulty: "medio",
+  };
+}
+function loadGamesConfig() {
+  try {
+    const raw = localStorage.getItem("ey_games_config");
+    return Object.assign(defaultGamesConfig(), raw ? JSON.parse(raw) : {});
+  } catch (e) { return defaultGamesConfig(); }
+}
+function gamesConfig() {
+  if (!state.gamesConfig) state.gamesConfig = loadGamesConfig();
+  return state.gamesConfig;
+}
+function saveGamesConfig() {
+  try { localStorage.setItem("ey_games_config", JSON.stringify(gamesConfig())); } catch (e) {}
+}
+
+// --- Sonido de los juegos (sintetizado con Web Audio API, sin depender de archivos de audio
+// externos ni de licencias) — botón 🔊/🔇 global, persistente entre sesiones. ------------------
+const GameSound = {
+  ctx: null,
+  ensureCtx() {
+    if (!this.ctx) {
+      const AC = window.AudioContext || window.webkitAudioContext;
+      if (AC) { try { this.ctx = new AC(); } catch (e) { this.ctx = null; } }
+    }
+    if (this.ctx && this.ctx.state === "suspended") { try { this.ctx.resume(); } catch (e) {} }
+    return this.ctx;
+  },
+  tone(freq, dur, type, vol) {
+    if (!gamesConfig().sound) return;
+    const ctx = this.ensureCtx();
+    if (!ctx) return;
+    try {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.type = type || "sine";
+      osc.frequency.value = freq;
+      gain.gain.value = vol || 0.15;
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + dur);
+      osc.connect(gain); gain.connect(ctx.destination);
+      osc.start(); osc.stop(ctx.currentTime + dur);
+    } catch (e) {}
+  },
+  correct() { this.tone(880, .15, "sine"); setTimeout(() => this.tone(1175, .18, "sine"), 90); },
+  wrong() { this.tone(160, .28, "sawtooth", .12); },
+  click() { this.tone(500, .05, "square", .08); },
+  win() { [660, 880, 1100, 1320].forEach((f, i) => setTimeout(() => this.tone(f, .22, "sine"), i * 110)); },
+  lose() { [400, 300, 200].forEach((f, i) => setTimeout(() => this.tone(f, .25, "sawtooth", .1), i * 140)); },
+  tick() { this.tone(1000, .04, "square", .05); },
+  spin() { this.tone(300, .05, "square", .06); },
+  pop() { this.tone(700, .1, "triangle", .12); },
+};
+
+// --- Componentes visuales compartidos por las 12 pantallas de juego ----------------------
+function gameSoundToggleHtml() {
+  const on = gamesConfig().sound;
+  return `<button class="game-sound-toggle ${on ? "" : "is-off"}" id="game-sound-toggle" title="${on ? "🔊" : "🔇"}">${on ? "🔊" : "🔇"}</button>`;
+}
+function wireGameSoundToggle() {
+  const btn = document.getElementById("game-sound-toggle");
+  if (btn) btn.onclick = () => {
+    const cfg = gamesConfig();
+    cfg.sound = !cfg.sound;
+    saveGamesConfig();
+    if (cfg.sound) GameSound.click();
+    render();
+  };
+}
+function gameHeaderHtml(titleKey) {
+  return `
+    <div class="game-top-row">
+      <button class="back-link" id="games-back">${t("games_back")}</button>
+      ${gameSoundToggleHtml()}
+    </div>
+    <div class="section-title">${t(titleKey)}</div>`;
+}
+function wireGameHeader() {
+  const backBtn = document.getElementById("games-back");
+  if (backBtn) backBtn.onclick = exitGame;
+  wireGameSoundToggle();
+}
+// Fila de "chips" seleccionables (dificultad, modo, categoría...). onValue(group, value) decide
+// qué hacer con el clic; el llamador es responsable de volver a renderizar.
+function gameChipRow(groupId, options, current) {
+  return `<div class="game-chip-row">
+    ${options.map(o => `<button type="button" class="game-chip ${current === o.value ? "active" : ""}" data-group="${groupId}" data-value="${o.value}">${o.label}</button>`).join("")}
+  </div>`;
+}
+function wireGameChips(onValue) {
+  document.querySelectorAll(".game-chip").forEach(btn => {
+    btn.onclick = () => { GameSound.click(); onValue(btn.dataset.group, btn.dataset.value); };
+  });
+}
+function gameDifficultyOptions() {
+  return [
+    { value: "facil", label: t("game_diff_facil") },
+    { value: "medio", label: t("game_diff_medio") },
+    { value: "dificil", label: t("game_diff_dificil") },
+  ];
+}
+function gameCategoryOptions() {
+  return (GAME_CATEGORIES || []).map(c => ({ value: c.id, label: t(c.labelKey) }));
+}
 
 let _memoriaTimerInterval = null;
 let _carreraTimerId = null;
+let _ahorcadoTimerId = null;
+let _ruletaTimerId = null;
+let _globosTimerId = null;
 function gameStopAllTimers() {
   if ("speechSynthesis" in window) speechSynthesis.cancel();
   if (_memoriaTimerInterval) { clearInterval(_memoriaTimerInterval); _memoriaTimerInterval = null; }
   if (_carreraTimerId) { clearInterval(_carreraTimerId); _carreraTimerId = null; }
+  if (_ahorcadoTimerId) { clearInterval(_ahorcadoTimerId); _ahorcadoTimerId = null; }
+  if (_ruletaTimerId) { clearInterval(_ruletaTimerId); _ruletaTimerId = null; }
+  if (_globosTimerId) { clearInterval(_globosTimerId); _globosTimerId = null; }
+  if (typeof _munecoTimerId !== "undefined" && _munecoTimerId) { clearInterval(_munecoTimerId); _munecoTimerId = null; }
+  if (typeof _vfTimerId !== "undefined" && _vfTimerId) { clearInterval(_vfTimerId); _vfTimerId = null; }
+  if (typeof _simonTimeoutIds !== "undefined" && _simonTimeoutIds) { _simonTimeoutIds.forEach(id => clearTimeout(id)); _simonTimeoutIds = []; }
 }
 
 // --- 20.1 Hub "🎮 Juegos" -------------------------------------------------
@@ -6459,11 +6646,40 @@ function renderGamePlay() {
 
 // --- 20.2 Juego 1: 🪢 Ahorcado -------------------------------------------
 function initAhorcado() {
-  const pool = gameWordsForLetterGames();
-  const word = pool[Math.floor(Math.random() * pool.length)] || { es: "hola", pt: "olá" };
-  state.game = { id: "ahorcado", word, guessed: [], wrong: [], maxWrong: 6, status: "playing" };
+  const cfg = gamesConfig();
+  state.game = { id: "ahorcado", status: "setup", difficulty: cfg.ahorcadoDifficulty, mode: cfg.ahorcadoMode };
 }
 GAME_INIT_FNS.ahorcado = initAhorcado;
+
+function ahorcadoStart() {
+  const g = state.game;
+  const cfg = gamesConfig();
+  cfg.ahorcadoDifficulty = g.difficulty; cfg.ahorcadoMode = g.mode; saveGamesConfig();
+  const diff = AHORCADO_DIFF[g.difficulty] || AHORCADO_DIFF.medio;
+  const pool = gameWordsForLetterGames().filter(w => w.es.length >= diff.min && w.es.length <= diff.max);
+  const fallback = gameWordsForLetterGames();
+  const usePool = pool.length ? pool : fallback;
+  g.word = usePool[Math.floor(Math.random() * usePool.length)] || { es: "hola", pt: "olá" };
+  g.guessed = []; g.wrong = []; g.maxWrong = diff.maxWrong; g.status = "playing"; g.timeLeft = AHORCADO_TIME_LIMIT;
+  render();
+  if (g.mode === "tiempo") ahorcadoStartTimer();
+}
+function ahorcadoStartTimer() {
+  if (_ahorcadoTimerId) clearInterval(_ahorcadoTimerId);
+  _ahorcadoTimerId = setInterval(() => {
+    const g = state.game;
+    if (!g || g.id !== "ahorcado" || g.status !== "playing") { if (_ahorcadoTimerId) { clearInterval(_ahorcadoTimerId); _ahorcadoTimerId = null; } return; }
+    g.timeLeft -= 0.2;
+    if (g.timeLeft <= 0) {
+      g.timeLeft = 0; g.status = "lost"; GameSound.lose();
+      if (_ahorcadoTimerId) { clearInterval(_ahorcadoTimerId); _ahorcadoTimerId = null; }
+      render();
+      return;
+    }
+    const bar = document.getElementById("ahorcado-timebar");
+    if (bar) bar.style.width = `${(g.timeLeft / AHORCADO_TIME_LIMIT) * 100}%`;
+  }, 200);
+}
 
 function hangmanSvg(wrongCount) {
   const parts = [
@@ -6487,6 +6703,7 @@ function hangmanSvg(wrongCount) {
 function renderGameAhorcado() {
   if (!state.game || state.game.id !== "ahorcado") initAhorcado();
   const g = state.game;
+  if (g.status === "setup") return renderAhorcadoSetup(g);
   const letters = g.word.es.toUpperCase().split("");
   const lowerLetters = letters.map(x => x.toLowerCase());
   const displayWord = letters.map(ch => {
@@ -6495,10 +6712,11 @@ function renderGameAhorcado() {
     return `<span class="hg-letter ${shown ? "revealed" : ""}">${shown ? ch : "_"}</span>`;
   }).join("");
   const alphabet = "abcdefghijklmnñopqrstuvwxyz".split("");
+  const score = g.status === "won" ? (g.mode === "tiempo" ? Math.round(g.timeLeft) * 5 : (g.maxWrong - g.wrong.length) * 15) : 0;
   root.innerHTML = wrapShell(`
-      <button class="back-link" id="games-back">${t("games_back")}</button>
-      <div class="section-title">${t("game_ahorcado_title")}</div>
+      ${gameHeaderHtml("game_ahorcado_title")}
       <div class="game-card game-ahorcado">
+        ${g.mode === "tiempo" && g.status === "playing" ? `<div class="carrera-timebar-track"><div class="carrera-timebar" id="ahorcado-timebar" style="width:${(g.timeLeft / AHORCADO_TIME_LIMIT) * 100}%"></div></div>` : ""}
         ${hangmanSvg(g.wrong.length)}
         <div class="hg-word">${displayWord}</div>
         <p class="hg-hint">${t("game_ahorcado_hint")} <strong>${escapeHtml(g.word.pt)}</strong>
@@ -6513,14 +6731,13 @@ function renderGameAhorcado() {
         </div>
         ${g.status !== "playing" ? `
           <div class="game-result ${g.status === "won" ? "win" : "lose"}">
-            ${g.status === "won" ? t("game_ahorcado_win") : `${t("game_ahorcado_lose")} <strong>${escapeHtml(g.word.es)}</strong>`}
+            ${g.status === "won" ? `${t("game_ahorcado_win")} · ${t("games_score")}: ${score}` : (g.timeLeft === 0 && g.mode === "tiempo" ? t("game_ahorcado_timeup") : `${t("game_ahorcado_lose")} <strong>${escapeHtml(g.word.es)}</strong>`)}
           </div>
           <button class="btn btn-gold" id="ahorcado-again">${t("games_play_again")}</button>
         ` : `<p class="hg-tries">${g.maxWrong - g.wrong.length} / ${g.maxWrong}</p>`}
       </div>
     `, "games");
-  attachShellEvents();
-  document.getElementById("games-back").onclick = exitGame;
+  attachShellEvents(); wireGameHeader();
   const ttsBtn = document.getElementById("ahorcado-tts");
   if (ttsBtn) ttsBtn.onclick = () => speak(g.word.es, null, ttsBtn);
   document.querySelectorAll(".hg-key").forEach(btn => {
@@ -6530,32 +6747,80 @@ function renderGameAhorcado() {
       g.guessed.push(l);
       if (!lowerLetters.includes(l)) {
         g.wrong.push(l);
-        if (g.wrong.length >= g.maxWrong) g.status = "lost";
+        GameSound.wrong();
+        if (g.wrong.length >= g.maxWrong) { g.status = "lost"; GameSound.lose(); if (_ahorcadoTimerId) { clearInterval(_ahorcadoTimerId); _ahorcadoTimerId = null; } }
       } else {
+        GameSound.correct();
         const allRevealed = letters.every(ch => ch === " " || ch === "-" || g.guessed.includes(ch.toLowerCase()));
-        if (allRevealed) g.status = "won";
+        if (allRevealed) { g.status = "won"; GameSound.win(); if (_ahorcadoTimerId) { clearInterval(_ahorcadoTimerId); _ahorcadoTimerId = null; } }
       }
       render();
     };
   });
   const again = document.getElementById("ahorcado-again");
-  if (again) again.onclick = () => { initAhorcado(); render(); };
+  if (again) again.onclick = () => { gameStopAllTimers(); initAhorcado(); render(); };
+}
+
+function renderAhorcadoSetup(g) {
+  root.innerHTML = wrapShell(`
+      ${gameHeaderHtml("game_ahorcado_title")}
+      <div class="game-card game-setup">
+        <p class="game-explain">${t("game_ahorcado_explain")}</p>
+        <div class="game-setup-group">
+          <span class="settings-label">${t("game_difficulty_label")}</span>
+          ${gameChipRow("difficulty", gameDifficultyOptions(), g.difficulty)}
+        </div>
+        <div class="game-setup-group">
+          <span class="settings-label">${t("game_mode_label")}</span>
+          ${gameChipRow("mode", [{ value: "puntos", label: t("game_mode_puntos") }, { value: "tiempo", label: t("game_mode_tiempo") }], g.mode)}
+        </div>
+        <button class="btn btn-gold" id="game-setup-start">${t("games_start")}</button>
+      </div>
+    `, "games");
+  attachShellEvents(); wireGameHeader();
+  wireGameChips((group, value) => { g[group] = value; render(); });
+  document.getElementById("game-setup-start").onclick = ahorcadoStart;
 }
 
 // --- 20.3 Juego 2: 🗣️ Muñeco Parlanchín ----------------------------------
 function initMuneco() {
-  const items = shuffleArray(gameWordPool()).slice(0, 8);
-  state.game = { id: "muneco", items, idx: 0, score: 0, status: "playing", selected: null, talking: false, options: null, optionsForIdx: -1, _spokenIdx: -1 };
+  const cfg = gamesConfig();
+  state.game = { id: "muneco", status: "setup", difficulty: cfg.munecoDifficulty };
 }
 GAME_INIT_FNS.muneco = initMuneco;
 
+let _munecoTimerId = null;
+function munecoStart() {
+  const g = state.game;
+  gamesConfig().munecoDifficulty = g.difficulty; saveGamesConfig();
+  const diff = MUNECO_DIFF[g.difficulty] || MUNECO_DIFF.medio;
+  const items = shuffleArray(gameWordPool()).slice(0, diff.rounds);
+  Object.assign(g, {
+    items, idx: 0, score: 0, status: "playing", selected: null, talking: false,
+    options: null, optionsForIdx: -1, _spokenIdx: -1, optCount: diff.options, roundTime: diff.time, timeLeft: diff.time,
+  });
+  render();
+  if (g.roundTime) munecoStartTimer();
+}
+function munecoStartTimer() {
+  if (_munecoTimerId) clearInterval(_munecoTimerId);
+  _munecoTimerId = setInterval(() => {
+    const g = state.game;
+    if (!g || g.id !== "muneco" || g.status !== "playing" || g.selected) { if (_munecoTimerId) { clearInterval(_munecoTimerId); _munecoTimerId = null; } return; }
+    g.timeLeft -= 0.2;
+    if (g.timeLeft <= 0) { g.timeLeft = 0; munecoChoose(null); return; }
+    const bar = document.getElementById("muneco-timebar");
+    if (bar) bar.style.width = `${(g.timeLeft / g.roundTime) * 100}%`;
+  }, 200);
+}
 function muneco_ensureOptions(g) {
   if (!g.options || g.optionsForIdx !== g.idx) {
     const correct = g.items[g.idx];
-    const distractors = shuffleArray(gameWordPool().filter(w => w.pt.toLowerCase() !== correct.pt.toLowerCase())).slice(0, 3);
+    const distractors = shuffleArray(gameWordPool().filter(w => w.pt.toLowerCase() !== correct.pt.toLowerCase())).slice(0, Math.max(1, (g.optCount || 4) - 1));
     g.options = shuffleArray([correct, ...distractors]);
     g.optionsForIdx = g.idx;
     g.selected = null;
+    g.timeLeft = g.roundTime;
   }
 }
 function munecoSpeak(text) {
@@ -6569,18 +6834,28 @@ function munecoSpeak(text) {
     if (el) el.classList.remove("is-talking");
   });
 }
+function munecoChoose(ptValue) {
+  const g = state.game;
+  if (!g || g.selected) return;
+  if (_munecoTimerId) { clearInterval(_munecoTimerId); _munecoTimerId = null; }
+  const current = g.items[g.idx];
+  const correct = ptValue !== null && ptValue === current.pt;
+  g.selected = { pt: ptValue, correct };
+  if (correct) { g.score++; GameSound.correct(); } else { GameSound.wrong(); }
+  render();
+}
 
 function renderGameMuneco() {
   if (!state.game || state.game.id !== "muneco") initMuneco();
   const g = state.game;
+  if (g.status === "setup") return renderMunecoSetup(g);
   if (g.status === "playing") muneco_ensureOptions(g);
   const current = g.items[g.idx];
   root.innerHTML = wrapShell(`
-      <button class="back-link" id="games-back">${t("games_back")}</button>
-      <div class="section-title">${t("game_muneco_title")}</div>
-      <p style="color:var(--gray-2);margin-top:-8px">${t("game_muneco_intro")}</p>
+      ${gameHeaderHtml("game_muneco_title")}
       <div class="game-card game-muneco">
         ${g.status === "playing" ? `
+          ${g.roundTime ? `<div class="carrera-timebar-track"><div class="carrera-timebar" id="muneco-timebar" style="width:${(g.timeLeft / g.roundTime) * 100}%"></div></div>` : ""}
           <div class="muneco-stage">
             <div class="muneco-doll ${g.talking ? "is-talking" : ""} ${g.selected ? (g.selected.correct ? "mood-happy" : "mood-sad") : ""}" id="muneco-doll">
               <div class="muneco-head">
@@ -6609,24 +6884,19 @@ function renderGameMuneco() {
         `}
       </div>
     `, "games");
-  attachShellEvents();
-  document.getElementById("games-back").onclick = exitGame;
+  attachShellEvents(); wireGameHeader();
   if (g.status === "playing") {
     const listenBtn = document.getElementById("muneco-listen");
     if (listenBtn) listenBtn.onclick = () => munecoSpeak(current.es);
     document.querySelectorAll(".game-opt-btn").forEach(btn => {
-      btn.onclick = () => {
-        if (g.selected) return;
-        const correct = btn.dataset.pt === current.pt;
-        g.selected = { pt: btn.dataset.pt, correct };
-        if (correct) g.score++;
-        render();
-      };
+      btn.onclick = () => munecoChoose(btn.dataset.pt);
     });
     const nextBtn = document.getElementById("muneco-next");
     if (nextBtn) nextBtn.onclick = () => {
-      if (g.idx + 1 >= g.items.length) { g.status = "done"; } else { g.idx++; }
+      if (g.idx + 1 >= g.items.length) { g.status = "done"; GameSound.win(); render(); return; }
+      g.idx++;
       render();
+      if (g.roundTime) munecoStartTimer();
     };
     if (g._spokenIdx !== g.idx) {
       g._spokenIdx = g.idx;
@@ -6637,18 +6907,45 @@ function renderGameMuneco() {
   if (again) again.onclick = () => { gameStopAllTimers(); initMuneco(); render(); };
 }
 
+function renderMunecoSetup(g) {
+  root.innerHTML = wrapShell(`
+      ${gameHeaderHtml("game_muneco_title")}
+      <div class="game-card game-setup">
+        <p class="game-explain">${t("game_muneco_explain")}</p>
+        <div class="game-setup-group">
+          <span class="settings-label">${t("game_difficulty_label")}</span>
+          ${gameChipRow("difficulty", gameDifficultyOptions(), g.difficulty)}
+        </div>
+        <button class="btn btn-gold" id="game-setup-start">${t("games_start")}</button>
+      </div>
+    `, "games");
+  attachShellEvents(); wireGameHeader();
+  wireGameChips((group, value) => { g[group] = value; render(); });
+  document.getElementById("game-setup-start").onclick = munecoStart;
+}
+
 // --- 20.4 Juego 3: 🧠 Memoria ---------------------------------------------
 function initMemoria() {
-  const words = shuffleArray(gameWordPool()).slice(0, 8);
+  const cfg = gamesConfig();
+  state.game = { id: "memoria", status: "setup", difficulty: cfg.memoriaDifficulty };
+}
+GAME_INIT_FNS.memoria = initMemoria;
+
+function memoriaStart() {
+  const g = state.game;
+  gamesConfig().memoriaDifficulty = g.difficulty; saveGamesConfig();
+  const pairs = MEMORIA_DIFF[g.difficulty] || MEMORIA_DIFF.medio;
+  const words = shuffleArray(gameWordPool()).slice(0, pairs);
   let cards = [];
   words.forEach((w, i) => {
     cards.push({ id: `${i}-es`, pairId: i, label: w.es, side: "es" });
     cards.push({ id: `${i}-pt`, pairId: i, label: w.pt, side: "pt" });
   });
   cards = shuffleArray(cards);
-  state.game = { id: "memoria", cards, flipped: [], matched: [], moves: 0, startAt: Date.now(), finalTime: 0, status: "playing" };
+  Object.assign(g, { cards, flipped: [], matched: [], moves: 0, startAt: Date.now(), finalTime: 0, status: "playing" });
+  render();
+  startMemoriaTimer();
 }
-GAME_INIT_FNS.memoria = initMemoria;
 
 function startMemoriaTimer() {
   if (_memoriaTimerInterval) return;
@@ -6666,16 +6963,18 @@ function startMemoriaTimer() {
 function renderGameMemoria() {
   if (!state.game || state.game.id !== "memoria") initMemoria();
   const g = state.game;
+  if (g.status === "setup") return renderMemoriaSetup(g);
   const elapsed = g.status === "playing" ? Math.floor((Date.now() - g.startAt) / 1000) : g.finalTime;
+  const sizeClass = `memoria-size-${g.difficulty || "medio"}`;
   root.innerHTML = wrapShell(`
-      <button class="back-link" id="games-back">${t("games_back")}</button>
-      <div class="section-title">${t("game_memoria_title")}</div>
+      ${gameHeaderHtml("game_memoria_title")}
       <div class="game-card game-memoria">
+        <p class="game-explain">${t("game_memoria_explain")}</p>
         <div class="memoria-stats">
           <span>${t("game_memoria_moves")}: ${g.moves}</span>
           <span id="memoria-timer">${t("game_memoria_time")}: ${elapsed}s</span>
         </div>
-        <div class="memoria-grid">
+        <div class="memoria-grid ${sizeClass}">
           ${g.cards.map(c => {
             const isMatched = g.matched.includes(c.pairId);
             const isFlipped = g.flipped.includes(c.id) || isMatched;
@@ -6688,19 +6987,18 @@ function renderGameMemoria() {
           }).join("")}
         </div>
         ${g.status === "done" ? `
-          <div class="game-result win">${t("game_memoria_complete")} 🎉</div>
+          <div class="game-result win">${t("game_memoria_complete")} 🎉 · ${t("game_memoria_moves")}: ${g.moves} · ${t("game_memoria_time")}: ${g.finalTime}s</div>
           <button class="btn btn-gold" id="memoria-again">${t("games_play_again")}</button>
         ` : ""}
       </div>
     `, "games");
-  attachShellEvents();
-  document.getElementById("games-back").onclick = exitGame;
+  attachShellEvents(); wireGameHeader();
   if (g.status === "playing") {
-    startMemoriaTimer();
     document.querySelectorAll(".memoria-card:not(.flipped)").forEach(btn => {
       btn.onclick = () => {
         const id = btn.dataset.id;
         if (g.flipped.includes(id) || g.flipped.length >= 2) return;
+        GameSound.click();
         g.flipped.push(id);
         if (g.flipped.length === 2) {
           g.moves++;
@@ -6708,13 +7006,16 @@ function renderGameMemoria() {
           if (c1.pairId === c2.pairId) {
             g.matched.push(c1.pairId);
             g.flipped = [];
+            GameSound.correct();
             if (g.matched.length === g.cards.length / 2) {
               g.status = "done";
               g.finalTime = Math.floor((Date.now() - g.startAt) / 1000);
+              GameSound.win();
               if (_memoriaTimerInterval) { clearInterval(_memoriaTimerInterval); _memoriaTimerInterval = null; }
             }
             render();
           } else {
+            GameSound.wrong();
             render();
             setTimeout(() => { if (state.game === g) { g.flipped = []; render(); } }, 900);
           }
@@ -6728,12 +7029,57 @@ function renderGameMemoria() {
   if (again) again.onclick = () => { gameStopAllTimers(); initMemoria(); render(); };
 }
 
+function renderMemoriaSetup(g) {
+  root.innerHTML = wrapShell(`
+      ${gameHeaderHtml("game_memoria_title")}
+      <div class="game-card game-setup">
+        <p class="game-explain">${t("game_memoria_explain")}</p>
+        <div class="game-setup-group">
+          <span class="settings-label">${t("game_difficulty_label")}</span>
+          ${gameChipRow("difficulty", gameDifficultyOptions(), g.difficulty)}
+        </div>
+        <button class="btn btn-gold" id="game-setup-start">${t("games_start")}</button>
+      </div>
+    `, "games");
+  attachShellEvents(); wireGameHeader();
+  wireGameChips((group, value) => { g[group] = value; render(); });
+  document.getElementById("game-setup-start").onclick = memoriaStart;
+}
+
 // --- 20.5 Juego 4: 🎡 Ruleta de Vocabulario -------------------------------
+const RULETA_PUNTOS_ROUNDS = 8;
 function initRuleta() {
-  state.game = { id: "ruleta", totalScore: 0, rotation: 0, spinning: false, segment: null, status: "idle", question: null, answered: null };
+  const cfg = gamesConfig();
+  state.game = { id: "ruleta", status: "setup", mode: cfg.ruletaMode };
 }
 GAME_INIT_FNS.ruleta = initRuleta;
 
+function ruletaStart() {
+  const g = state.game;
+  gamesConfig().ruletaMode = g.mode; saveGamesConfig();
+  Object.assign(g, {
+    totalScore: 0, rotation: 0, spinning: false, segment: null, status: "idle",
+    question: null, answered: null, round: 0, timeLeft: RULETA_TIME_LIMIT,
+  });
+  render();
+  if (g.mode === "tiempo") ruletaStartTimer();
+}
+function ruletaStartTimer() {
+  if (_ruletaTimerId) clearInterval(_ruletaTimerId);
+  _ruletaTimerId = setInterval(() => {
+    const g = state.game;
+    if (!g || g.id !== "ruleta" || g.status === "done" || g.status === "setup") { if (_ruletaTimerId) { clearInterval(_ruletaTimerId); _ruletaTimerId = null; } return; }
+    g.timeLeft -= 0.2;
+    if (g.timeLeft <= 0) {
+      g.timeLeft = 0; g.status = "done"; GameSound.win();
+      if (_ruletaTimerId) { clearInterval(_ruletaTimerId); _ruletaTimerId = null; }
+      render();
+      return;
+    }
+    const bar = document.getElementById("ruleta-timebar");
+    if (bar) bar.style.width = `${(g.timeLeft / RULETA_TIME_LIMIT) * 100}%`;
+  }, 200);
+}
 function ruletaWheelBackground() {
   const n = RULETA_SEGMENTS.length;
   const step = 360 / n;
@@ -6749,7 +7095,8 @@ function ruleta_newQuestion(g) {
 }
 function ruletaSpin() {
   const g = state.game;
-  if (!g || g.spinning) return;
+  if (!g || g.spinning || g.status === "done") return;
+  GameSound.spin();
   const step = 360 / RULETA_SEGMENTS.length;
   const targetIndex = Math.floor(Math.random() * RULETA_SEGMENTS.length);
   const targetCenter = targetIndex * step + step / 2;
@@ -6781,12 +7128,17 @@ function ruletaSpin() {
 function renderGameRuleta() {
   if (!state.game || state.game.id !== "ruleta") initRuleta();
   const g = state.game;
+  if (g.status === "setup") return renderRuletaSetup(g);
   const segLabel = g.segment !== null ? `${RULETA_SEGMENTS[g.segment].points} pts` : "";
   root.innerHTML = wrapShell(`
-      <button class="back-link" id="games-back">${t("games_back")}</button>
-      <div class="section-title">${t("game_ruleta_title")}</div>
+      ${gameHeaderHtml("game_ruleta_title")}
       <div class="game-card game-ruleta">
-        <div class="ruleta-score">${t("games_score")}: <strong>${g.totalScore}</strong></div>
+        <div class="ruleta-scoreboard">
+          <div class="ruleta-score-box"><span class="ruleta-score-label">${t("games_score")}</span><span class="ruleta-score-value">${g.totalScore}</span></div>
+          ${g.mode === "puntos" ? `<div class="ruleta-score-box"><span class="ruleta-score-label">${t("game_ruleta_round")}</span><span class="ruleta-score-value">${g.round}/${RULETA_PUNTOS_ROUNDS}</span></div>` : ""}
+        </div>
+        ${g.mode === "tiempo" && g.status !== "done" ? `<div class="carrera-timebar-track"><div class="carrera-timebar" id="ruleta-timebar" style="width:${(g.timeLeft / RULETA_TIME_LIMIT) * 100}%"></div></div>` : ""}
+        ${g.status !== "done" ? `
         <div class="ruleta-wheel-wrap">
           <div class="ruleta-pointer">▼</div>
           <div class="ruleta-wheel" id="ruleta-wheel" style="background:${ruletaWheelBackground()};transform:rotate(${g.rotation}deg)">
@@ -6810,13 +7162,16 @@ function renderGameRuleta() {
                 return `<button class="game-opt-btn ${isSel ? (g.answered.correct ? "correct" : "wrong") : ""} ${showCorrect && !isSel ? "correct" : ""}" data-es="${escapeHtml(o.es)}" ${g.answered ? "disabled" : ""}>${escapeHtml(o.es)}</button>`;
               }).join("")}
             </div>
-            ${g.answered ? `<button class="btn btn-gold" id="ruleta-continue">${t("game_ruleta_spin")}</button>` : ""}
+            ${g.answered ? `<button class="btn btn-gold" id="ruleta-continue">${g.mode === "puntos" && g.round >= RULETA_PUNTOS_ROUNDS ? t("games_finish") : t("game_ruleta_spin")}</button>` : ""}
           </div>
         ` : ""}
+        ` : `
+          <div class="game-result win">${t("game_ruleta_done")} · ${t("games_score")}: ${g.totalScore}</div>
+          <button class="btn btn-gold" id="ruleta-again">${t("games_play_again")}</button>
+        `}
       </div>
     `, "games");
-  attachShellEvents();
-  document.getElementById("games-back").onclick = exitGame;
+  attachShellEvents(); wireGameHeader();
   const spinBtn = document.getElementById("ruleta-spin-btn");
   if (spinBtn) spinBtn.onclick = ruletaSpin;
   document.querySelectorAll(".ruleta-question .game-opt-btn").forEach(btn => {
@@ -6824,31 +7179,70 @@ function renderGameRuleta() {
       if (g.answered) return;
       const correct = btn.dataset.es === g.question.correct.es;
       g.answered = { es: btn.dataset.es, correct };
-      if (correct) g.totalScore += RULETA_SEGMENTS[g.segment].points;
+      if (correct) { g.totalScore += RULETA_SEGMENTS[g.segment].points; GameSound.correct(); } else { GameSound.wrong(); }
+      if (g.mode === "puntos") g.round++;
       render();
     };
   });
   const contBtn = document.getElementById("ruleta-continue");
-  if (contBtn) contBtn.onclick = () => { g.status = "idle"; g.question = null; g.answered = null; render(); };
+  if (contBtn) contBtn.onclick = () => {
+    if (g.mode === "puntos" && g.round >= RULETA_PUNTOS_ROUNDS) {
+      g.status = "done"; GameSound.win();
+      if (_ruletaTimerId) { clearInterval(_ruletaTimerId); _ruletaTimerId = null; }
+      render();
+      return;
+    }
+    g.status = "idle"; g.question = null; g.answered = null; render();
+  };
+  const again = document.getElementById("ruleta-again");
+  if (again) again.onclick = () => { gameStopAllTimers(); initRuleta(); render(); };
+}
+
+function renderRuletaSetup(g) {
+  root.innerHTML = wrapShell(`
+      ${gameHeaderHtml("game_ruleta_title")}
+      <div class="game-card game-setup">
+        <p class="game-explain">${t("game_ruleta_explain")}</p>
+        <div class="game-setup-group">
+          <span class="settings-label">${t("game_mode_label")}</span>
+          ${gameChipRow("mode", [{ value: "puntos", label: t("game_mode_puntos") }, { value: "tiempo", label: t("game_mode_tiempo") }], g.mode)}
+        </div>
+        <button class="btn btn-gold" id="game-setup-start">${t("games_start")}</button>
+      </div>
+    `, "games");
+  attachShellEvents(); wireGameHeader();
+  wireGameChips((group, value) => { g[group] = value; render(); });
+  document.getElementById("game-setup-start").onclick = ruletaStart;
 }
 
 // --- 20.6 Juego 5: 🔍 Sopa de Letras ---------------------------------------
 function initSopa() {
-  const candidates = gameWordsForLetterGames().filter(w => w.es.length <= SOPA_SIZE);
-  const words = shuffleArray(candidates).slice(0, 6).map(w => w.es.toUpperCase());
-  const grid = Array.from({ length: SOPA_SIZE }, () => Array(SOPA_SIZE).fill(null));
+  const cfg = gamesConfig();
+  state.game = { id: "sopa", status: "setup", difficulty: cfg.sopaDifficulty, category: cfg.sopaCategory };
+}
+GAME_INIT_FNS.sopa = initSopa;
+
+function sopaStart() {
+  const g = state.game;
+  const cfg = gamesConfig();
+  cfg.sopaDifficulty = g.difficulty; cfg.sopaCategory = g.category; saveGamesConfig();
+  const size = SOPA_SIZES[g.difficulty] || SOPA_SIZES.medio;
+  const candidates = gameLetterWordsByCategory(g.category).filter(w => w.es.length <= size);
+  const wordCount = g.difficulty === "dificil" ? 8 : (g.difficulty === "facil" ? 5 : 6);
+  const words = shuffleArray(candidates.length >= wordCount ? candidates : gameWordsForLetterGames().filter(w => w.es.length <= size)).slice(0, wordCount).map(w => w.es.toUpperCase());
+  const grid = Array.from({ length: size }, () => Array(size).fill(null));
   const placed = [];
   words.forEach(word => {
     let ok = false;
     for (let attempt = 0; attempt < 60 && !ok; attempt++) {
       const dir = SOPA_DIRS[Math.floor(Math.random() * SOPA_DIRS.length)];
-      const row = Math.floor(Math.random() * SOPA_SIZE);
-      const col = Math.floor(Math.random() * SOPA_SIZE);
+      const row = Math.floor(Math.random() * size);
+      const col = Math.floor(Math.random() * size);
       let fits = true;
       const cells = [];
       for (let i = 0; i < word.length; i++) {
         const r = row + dir.dr * i, c = col + dir.dc * i;
-        if (r < 0 || r >= SOPA_SIZE || c < 0 || c >= SOPA_SIZE) { fits = false; break; }
+        if (r < 0 || r >= size || c < 0 || c >= size) { fits = false; break; }
         const existing = grid[r][c];
         if (existing && existing !== word[i]) { fits = false; break; }
         cells.push({ r, c });
@@ -6861,12 +7255,12 @@ function initSopa() {
     }
   });
   const ALPHA = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZ";
-  for (let r = 0; r < SOPA_SIZE; r++) for (let c = 0; c < SOPA_SIZE; c++) {
+  for (let r = 0; r < size; r++) for (let c = 0; c < size; c++) {
     if (!grid[r][c]) grid[r][c] = ALPHA[Math.floor(Math.random() * ALPHA.length)];
   }
-  state.game = { id: "sopa", grid, placed, found: [], status: "playing" };
+  Object.assign(g, { size, grid, placed, found: [], status: "playing" });
+  render();
 }
-GAME_INIT_FNS.sopa = initSopa;
 
 function sopaCellsBetween(start, end) {
   const dr = Math.sign(end.r - start.r), dc = Math.sign(end.c - start.c);
@@ -6891,13 +7285,13 @@ function sopaWordAt(g, cells) {
 function renderGameSopa() {
   if (!state.game || state.game.id !== "sopa") initSopa();
   const g = state.game;
-  if (g.placed.length > 0 && g.found.length === g.placed.length) g.status = "done";
+  if (g.status === "setup") return renderSopaSetup(g);
+  if (g.placed.length > 0 && g.found.length === g.placed.length && g.status !== "done") { g.status = "done"; GameSound.win(); }
   root.innerHTML = wrapShell(`
-      <button class="back-link" id="games-back">${t("games_back")}</button>
-      <div class="section-title">${t("game_sopa_title")}</div>
+      ${gameHeaderHtml("game_sopa_title")}
       <div class="game-card game-sopa">
         <div class="sopa-layout">
-          <div class="sopa-grid" id="sopa-grid" style="grid-template-columns:repeat(${SOPA_SIZE},1fr)">
+          <div class="sopa-grid sopa-size-${g.difficulty || "medio"}" id="sopa-grid" style="grid-template-columns:repeat(${g.size},1fr)">
             ${g.grid.map((row, r) => row.map((ch, c) => {
               const isFoundCell = g.placed.some(p => g.found.includes(p.word) && p.cells.some(cc => cc.r === r && cc.c === c));
               return `<span class="sopa-cell ${isFoundCell ? "found" : ""}" data-r="${r}" data-c="${c}">${ch}</span>`;
@@ -6916,11 +7310,31 @@ function renderGameSopa() {
         ` : ""}
       </div>
     `, "games");
-  attachShellEvents();
-  document.getElementById("games-back").onclick = exitGame;
+  attachShellEvents(); wireGameHeader();
   const again = document.getElementById("sopa-again");
-  if (again) again.onclick = () => { initSopa(); render(); };
+  if (again) again.onclick = () => { gameStopAllTimers(); initSopa(); render(); };
   if (g.status !== "done") wireSopaSelection(g);
+}
+
+function renderSopaSetup(g) {
+  root.innerHTML = wrapShell(`
+      ${gameHeaderHtml("game_sopa_title")}
+      <div class="game-card game-setup">
+        <p class="game-explain">${t("game_sopa_explain")}</p>
+        <div class="game-setup-group">
+          <span class="settings-label">${t("game_difficulty_label")}</span>
+          ${gameChipRow("difficulty", gameDifficultyOptions(), g.difficulty)}
+        </div>
+        <div class="game-setup-group">
+          <span class="settings-label">${t("game_category_label")}</span>
+          ${gameChipRow("category", gameCategoryOptions(), g.category)}
+        </div>
+        <button class="btn btn-gold" id="game-setup-start">${t("games_start")}</button>
+      </div>
+    `, "games");
+  attachShellEvents(); wireGameHeader();
+  wireGameChips((group, value) => { g[group] = value; render(); });
+  document.getElementById("game-setup-start").onclick = sopaStart;
 }
 
 function wireSopaSelection(g) {
@@ -6953,7 +7367,7 @@ function wireSopaSelection(g) {
     const cells = sopaCellsBetween(start, { r, c });
     clearHighlight();
     const match = sopaWordAt(g, cells);
-    if (match) g.found.push(match.word);
+    if (match) { g.found.push(match.word); GameSound.correct(); } else if (cells && cells.length > 1) { GameSound.click(); }
     selecting = false; start = null;
     render();
   };
@@ -6982,19 +7396,20 @@ function wireSopaSelection(g) {
 
 // --- 20.7 Juego 6: ⚡ Carrera contra el Reloj ------------------------------
 function initCarrera() {
-  state.game = { id: "carrera", round: 0, total: CARRERA_TOTAL, score: 0, streak: 0, status: "ready", question: null, timeLeft: CARRERA_TIME, answered: null };
+  const cfg = gamesConfig();
+  state.game = { id: "carrera", status: "setup", time: cfg.carreraTime, level: cfg.carreraLevel };
 }
 GAME_INIT_FNS.carrera = initCarrera;
 
 function carrera_newQuestion(g) {
-  const pool = gameWordPool();
+  const pool = gameWordPoolByCategory(g.level);
   const correct = pool[Math.floor(Math.random() * pool.length)];
   const dir = Math.random() < 0.5 ? "es2pt" : "pt2es";
   const distractors = shuffleArray(pool.filter(w => w.es !== correct.es)).slice(0, 3);
   const options = shuffleArray([correct, ...distractors]);
   g.question = { correct, dir, options };
   g.answered = null;
-  g.timeLeft = CARRERA_TIME;
+  g.timeLeft = g.time;
 }
 function carreraStartTimer() {
   if (_carreraTimerId) clearInterval(_carreraTimerId);
@@ -7007,13 +7422,15 @@ function carreraStartTimer() {
     g.timeLeft -= 0.2;
     if (g.timeLeft <= 0) { g.timeLeft = 0; carreraAnswer(null); return; }
     const bar = document.getElementById("carrera-timebar");
-    if (bar) bar.style.width = `${(g.timeLeft / CARRERA_TIME) * 100}%`;
+    if (bar) bar.style.width = `${(g.timeLeft / g.time) * 100}%`;
   }, 200);
 }
 function carreraStart() {
   const g = state.game;
+  const cfg = gamesConfig();
+  cfg.carreraTime = g.time; cfg.carreraLevel = g.level; saveGamesConfig();
   g.status = "playing";
-  g.round = 0; g.score = 0; g.streak = 0;
+  g.round = 0; g.total = CARRERA_TOTAL; g.score = 0; g.streak = 0; g.best = 0;
   carrera_newQuestion(g);
   render();
   carreraStartTimer();
@@ -7024,14 +7441,15 @@ function carreraAnswer(chosenEs) {
   if (_carreraTimerId) { clearInterval(_carreraTimerId); _carreraTimerId = null; }
   const correct = chosenEs !== null && chosenEs === g.question.correct.es;
   g.answered = { chosenEs, correct };
-  if (correct) { g.streak++; g.score += 10 + Math.min(g.streak - 1, 5) * 2; }
-  else { g.streak = 0; }
+  if (correct) { g.streak++; g.score += 10 + Math.min(g.streak - 1, 5) * 2; g.best = Math.max(g.best, g.streak); GameSound.correct(); }
+  else { g.streak = 0; GameSound.wrong(); }
   render();
   setTimeout(() => {
     if (!state.game || state.game.id !== "carrera") return;
     g.round++;
     if (g.round >= g.total) {
       g.status = "done";
+      GameSound.win();
       render();
     } else {
       carrera_newQuestion(g);
@@ -7044,26 +7462,22 @@ function carreraAnswer(chosenEs) {
 function renderGameCarrera() {
   if (!state.game || state.game.id !== "carrera") initCarrera();
   const g = state.game;
+  if (g.status === "setup") return renderCarreraSetup(g);
   const runnerPct = Math.min(100, Math.round((g.round / g.total) * 100));
   root.innerHTML = wrapShell(`
-      <button class="back-link" id="games-back">${t("games_back")}</button>
-      <div class="section-title">${t("game_carrera_title")}</div>
+      ${gameHeaderHtml("game_carrera_title")}
       <div class="game-card game-carrera">
-        ${g.status === "ready" ? `
-          <p style="color:var(--gray-2)">${t("game_carrera_intro")}</p>
-          <button class="btn btn-gold" id="carrera-start-btn">${t("game_carrera_start")}</button>
-        ` : ""}
         ${g.status === "playing" && g.question ? `
+          <div class="carrera-scoreboard">
+            <div class="carrera-score-box"><span class="carrera-score-label">${t("games_score")}</span><span class="carrera-score-value">${g.score}</span></div>
+            <div class="carrera-score-box"><span class="carrera-score-label">${t("game_carrera_streak")}</span><span class="carrera-score-value">${g.streak}🔥</span></div>
+            <div class="carrera-score-box"><span class="carrera-score-label">${t("game_ruleta_round")}</span><span class="carrera-score-value">${g.round + 1}/${g.total}</span></div>
+          </div>
           <div class="carrera-track">
             <div class="carrera-runner" style="left:${runnerPct}%">🏃</div>
             <div class="carrera-flag">🏁</div>
           </div>
-          <div class="carrera-hud">
-            <span>${t("games_score")}: ${g.score}</span>
-            <span>${t("game_carrera_streak")}: ${g.streak}🔥</span>
-            <span>${g.round + 1}/${g.total}</span>
-          </div>
-          <div class="carrera-timebar-track"><div class="carrera-timebar" id="carrera-timebar" style="width:${(g.timeLeft / CARRERA_TIME) * 100}%"></div></div>
+          <div class="carrera-timebar-track"><div class="carrera-timebar" id="carrera-timebar" style="width:${(g.timeLeft / g.time) * 100}%"></div></div>
           <div class="carrera-question"><strong>${g.question.dir === "es2pt" ? escapeHtml(g.question.correct.es) : escapeHtml(g.question.correct.pt)}</strong></div>
           <div class="game-opt-grid">
             ${g.question.options.map(o => {
@@ -7075,18 +7489,36 @@ function renderGameCarrera() {
           </div>
         ` : ""}
         ${g.status === "done" ? `
-          <div class="game-result win">${t("game_carrera_final")}: ${g.score}</div>
+          <div class="game-result win">${t("game_carrera_final")}: ${g.score} · ${t("game_carrera_streak")} ${t("games_max") || "máx"}: ${g.best}🔥</div>
           <button class="btn btn-gold" id="carrera-again">${t("games_play_again")}</button>
         ` : ""}
       </div>
     `, "games");
-  attachShellEvents();
-  document.getElementById("games-back").onclick = exitGame;
-  const startBtn = document.getElementById("carrera-start-btn");
-  if (startBtn) startBtn.onclick = carreraStart;
+  attachShellEvents(); wireGameHeader();
   document.querySelectorAll(".game-carrera .game-opt-btn").forEach(btn => {
     btn.onclick = () => carreraAnswer(btn.dataset.es);
   });
   const again = document.getElementById("carrera-again");
   if (again) again.onclick = () => { gameStopAllTimers(); initCarrera(); render(); };
+}
+
+function renderCarreraSetup(g) {
+  root.innerHTML = wrapShell(`
+      ${gameHeaderHtml("game_carrera_title")}
+      <div class="game-card game-setup">
+        <p class="game-explain">${t("game_carrera_explain")}</p>
+        <div class="game-setup-group">
+          <span class="settings-label">${t("game_carrera_time_label")}</span>
+          ${gameChipRow("time", CARRERA_TIME_OPTIONS.map(s => ({ value: String(s), label: `${s}s` })), String(g.time))}
+        </div>
+        <div class="game-setup-group">
+          <span class="settings-label">${t("game_category_label")}</span>
+          ${gameChipRow("level", gameCategoryOptions(), g.level)}
+        </div>
+        <button class="btn btn-gold" id="game-setup-start">${t("games_start")}</button>
+      </div>
+    `, "games");
+  attachShellEvents(); wireGameHeader();
+  wireGameChips((group, value) => { g[group] = group === "time" ? Number(value) : value; render(); });
+  document.getElementById("game-setup-start").onclick = carreraStart;
 }
