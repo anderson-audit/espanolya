@@ -58,7 +58,7 @@ const functions = (typeof firebase.functions === "function") ? firebase.function
 // Versión del sistema, visible en Mi Cuenta / Configuración y en el pie de la barra lateral.
 // Se debe actualizar manualmente cada vez que se sube una nueva versión al repositorio
 // (formato AAAA.MM.DD.N — N = número de subida ese día, empieza en 1).
-const APP_VERSION = "2026.08.02.1";
+const APP_VERSION = "2026.08.02.2";
 
 // Valores por defecto de la mensualidad/anualidad — el admin puede cambiarlos en
 // Configuración → Planes y precios (guardados en config/settings, campos priceMonthly/priceAnnual).
@@ -895,6 +895,28 @@ document.addEventListener("click", (ev) => {
   const label = nowVisible ? t("pass_hide") : t("pass_show");
   btn.setAttribute("aria-label", label);
   btn.setAttribute("title", label);
+});
+
+// Tecla Enter avanza el ejercicio (agiliza la operación en todo el sistema): un solo
+// listener delegado en document (mismo patrón del botón de mostrar/ocultar contraseña
+// de arriba), funciona en cualquier tipo de ejercicio/prueba sin necesidad de reconectar
+// el evento en cada render(). El botón #ex-next ya sabe qué hacer (mismo onclick que se
+// conecta en wireExerciseInteractions): si todavía no se comprobó la respuesta, el primer
+// Enter comprueba (igual que el botón "Comprobar"); si ya se comprobó, avanza de inmediato
+// (cancela la espera del auto-avance de 5s) — no hace falta esperar ni hacer doble clic.
+document.addEventListener("keydown", (ev) => {
+  if (ev.key !== "Enter") return;
+  const nextBtn = document.getElementById("ex-next");
+  if (!nextBtn || nextBtn.disabled) return;
+  const tag = ev.target.tagName;
+  // Textarea del ejercicio "open" (respuesta libre): el Enter simple sigue siendo salto de
+  // línea normal para no romper la escritura de textos largos; solo Ctrl/Cmd+Enter avanza.
+  if (tag === "TEXTAREA" && !(ev.ctrlKey || ev.metaKey)) return;
+  // Si el foco ya está en un <button>/<a> (p.ej. una opción de mc, el botón Comprobar),
+  // dejamos que el Enter dispare su propio clic nativo en vez de interferir.
+  if (tag === "BUTTON" || tag === "A") return;
+  ev.preventDefault();
+  nextBtn.click();
 });
 
 const root = document.getElementById("app");
