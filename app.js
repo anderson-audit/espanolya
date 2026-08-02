@@ -58,7 +58,7 @@ const functions = (typeof firebase.functions === "function") ? firebase.function
 // Versión del sistema, visible en Mi Cuenta / Configuración y en el pie de la barra lateral.
 // Se debe actualizar manualmente cada vez que se sube una nueva versión al repositorio
 // (formato AAAA.MM.DD.N — N = número de subida ese día, empieza en 1).
-const APP_VERSION = "2026.08.02.2";
+const APP_VERSION = "2026.08.02.3";
 
 // Valores por defecto de la mensualidad/anualidad — el admin puede cambiarlos en
 // Configuración → Planes y precios (guardados en config/settings, campos priceMonthly/priceAnnual).
@@ -6309,8 +6309,8 @@ const LESSON_IMAGES = {
   "b7":  { file: "Working_at_office_(Unsplash).jpg", alt: "Persona trabajando en la oficina", caption: "El vocabulario de la oficina y los materiales de trabajo." },
   "b8":  { file: "Living_Room.jpg", alt: "Sala de estar", caption: "La casa y sus espacios." },
   "b9":  { file: "Honeycomb_ice_cream_and_hot_toffee_sauce_(5725734559).jpg", alt: "Postre de helado", caption: "Hablar de preferencias y gustos." },
-  "b10": { file: "Adult_male_diagram_template.svg", alt: "Diagrama del cuerpo humano", caption: "Las partes del cuerpo y la salud." },
-  "b11": { file: "Crossroads_sign_-_geograph.org.uk_-_466404.jpg", alt: "Señal de cruce de caminos", caption: "Cómo pedir y dar direcciones." },
+  "b10": { file: "Doctor_uses_a_stethoscope_to_examine_a_young_patient.JPEG", alt: "Médico examinando a un paciente con estetoscopio", caption: "Las partes del cuerpo y la salud." },
+  "b11": { file: "Quaint_City_Streets_(Unsplash).jpg", alt: "Calle pintoresca de una ciudad", caption: "Cómo pedir y dar direcciones." },
   "b12": { file: "Marbella_Beach,_Costa_Del_Sol,_Spain_-_Sept_2008.jpg", alt: "Playa de Marbella, España", caption: "El viaje de vacaciones soñado." },
   "b13": { file: "Woman_reading_a_book_on_lap_(Unsplash).jpg", alt: "Persona leyendo", caption: "¿Qué estás haciendo ahora mismo?" },
   "b14": { file: "Storm_clouds.jpg", alt: "Nubes de tormenta", caption: "El clima y sus expresiones." },
@@ -6320,11 +6320,11 @@ const LESSON_IMAGES = {
   "i1":  { file: "Supermarket_shelves.jpg", alt: "Estantes de supermercado", caption: "De compras por frutas y verduras." },
   "i2":  { file: "Packing_for_a_business_trip_(Unsplash).jpg", alt: "Maleta lista para un viaje de negocios", caption: "Un viaje de negocios y el pretérito perfecto compuesto." },
   "i3":  { file: "Three_Way_Conversation_(8391270573).jpg", alt: "Personas conversando", caption: "¿Con quién hablabas? El pretérito imperfecto." },
-  "i4":  { file: "Maryse_cuisine.JPG", alt: "Cocina doméstica", caption: "Los objetos de la casa y el pasado continuo." },
+  "i4":  { file: "Living_room_(Unsplash).jpg", alt: "Sala de estar acogedora", caption: "Los objetos de la casa y el pasado continuo." },
   "i5":  { file: "Sunrise_at_ocean.JPG", alt: "Amanecer sobre el mar", caption: "Hablar del futuro: mañana será otro día." },
   "i6":  { file: "Color_Concert.jpg", alt: "Concierto con luces de colores", caption: "De gira: el condicional y los consejos." },
   "i7":  { file: "School_children_doing_exams_inside_a_classroom_(15727213731).jpg", alt: "Estudiantes haciendo un examen", caption: "Preparación para el examen DELE." },
-  "i8":  { file: "WAITING.jpg", alt: "Persona esperando", caption: "Buscando empleo: comparativos y superlativos." },
+  "i8":  { file: "Working_on_a_laptop_outdoors_(Unsplash).jpg", alt: "Persona buscando empleo en la computadora", caption: "Buscando empleo: comparativos y superlativos." },
   "i9":  { file: "Chef's_Station_(Unsplash).jpg", alt: "Ingredientes y utensilios listos para cocinar", caption: "Cómo escribir una receta paso a paso." },
   "i10": { file: "Clothes_hangers_on_railing_(Unsplash).jpg", alt: "Perchas con ropa en una tienda de moda", caption: "Gustos, lugares de la ciudad y ropa." },
   "i11": { file: "Miami_traffic_jam,_I-95_North_rush_hour.jpg", alt: "Atasco de tráfico", caption: "El tránsito y los transportes." },
@@ -6336,13 +6336,13 @@ const LESSON_IMAGES = {
   "a1":  { file: "Kitchen_utensils-01.jpg", alt: "Utensilios de cocina colgados en la pared", caption: "Utensilios y verbos culinarios." },
   "a2":  { file: "Pike_Place_Market_-_Sosio's_Produce_01.jpg", alt: "Mercado al aire libre", caption: "El comercio: comprar y vender." },
   "a3":  { file: "Old_American_Stock_Exchange_Building_2009.JPG", alt: "Edificio de la bolsa de valores", caption: "La economía, el banco y el mercado laboral." },
-  "a4":  { file: "Charles_Baldwin_House.jpg", alt: "Casa residencial", caption: "Comprar, vender y alquilar un inmueble." },
+  "a4":  { file: "Cozy_white_house_(Unsplash).jpg", alt: "Casa acogedora en venta", caption: "Comprar, vender y alquilar un inmueble." },
   "a5":  { file: "Writing_a_letter.jpg", alt: "Escribiendo una carta", caption: "La correspondencia formal en español." },
   "a6":  { file: "International_Students.jpg", alt: "Estudiantes internacionales", caption: "La vida académica en el intercambio." },
   "a7":  { file: "Working_in_open_office_space_(Unsplash).jpg", alt: "Espacio de trabajo abierto", caption: "Cómo montar un currículo atractivo." },
   "a8":  { file: "Young_Woman_in_an_Interview.jpg", alt: "Entrevista de trabajo", caption: "La entrevista de trabajo en español." },
   "a9":  { file: "Beautiful_green_forest.jpg", alt: "Bosque verde", caption: "La naturaleza y el medio ambiente." },
-  "a10": { file: "Pasant_Theatre_from_seats.JPG", alt: "Sala de teatro", caption: "El entretenimiento y el ocio." },
+  "a10": { file: "Colorful_jazz_concert_(Unsplash).jpg", alt: "Concierto de jazz lleno de color", caption: "El entretenimiento y el ocio." },
   "a11": { file: "Hotel_Room_-_Embassy_Suites_by_Hilton_St._Paul_Downtown_(31347597404).jpg", alt: "Habitación de hotel", caption: "El check-in y los objetos del cuarto." },
   "a12": { file: "SoFi_Stadium_soccer_game.jpg", alt: "Estadio de fútbol", caption: "Los deportes y los numerales especiales." },
   "a13": { file: "Close-up_Acoustic_Guitar.jpg", alt: "Guitarra acústica", caption: "La música y sus ritmos." },
@@ -6362,13 +6362,13 @@ const LESSON_IMAGES = {
   "p4": { file: "Workspace_Looking_Out.jpg", alt: "Espacio de trabajo profesional", caption: "Comunicación formal: correos y llamadas de negocios." },
   "p5": { file: "ASTM_Certificate.jpg", alt: "Certificado oficial de una norma técnica", caption: "El certificado: alcance y ciclo de certificación." },
   "p6": { file: "Reading_Glasses_(Unsplash).jpg", alt: "Gafas sobre un informe de auditoría", caption: "El informe de auditoría: hallazgos y recomendación." },
-  "p7": { file: "Questionnaire-checklist-completed.png", alt: "Lista de verificación completada", caption: "No conformidad: descripción, evidencia y acción correctiva." },
+  "p7": { file: "Taking_notes_with_a_pencil_(Unsplash).jpg", alt: "Persona tomando notas a mano", caption: "No conformidad: descripción, evidencia y acción correctiva." },
   "p8": { file: "Ishikawa_Fishbone_Diagram.svg", alt: "Diagrama de Ishikawa o espina de pescado", caption: "Análisis de causas: los 5 porqués y el diagrama de Ishikawa." },
   "p9": { file: "139_Server_Room_01.jpg", alt: "Sala de servidores", caption: "Lineamientos de TI: accesos, seguridad física y terceros." },
   "p10": { file: "Man_at_a_laptop_in_an_office_(Unsplash).jpg", alt: "Persona escribiendo un correo en la computadora", caption: "El correo de difusión: comunicar actualizaciones de seguridad." },
   // Español de las Normas (módulo bônus especial — gramática a partir de las normas ISO)
-  "n1": { file: "Audit_Cycle.jpg", alt: "Ciclo de auditoría de calidad", caption: "El verbo que manda: deber + infinitivo (ISO 9001)." },
-  "n2": { file: "Reduce_Reuse_Recycle.jpg", alt: "Símbolo de reducir, reusar y reciclar", caption: "Concordancia en cadena y el se impersonal (ISO 14001)." },
+  "n1": { file: "Stylish_meeting_room_(Unsplash).jpg", alt: "Sala de reunión elegante para auditoría", caption: "El verbo que manda: deber + infinitivo (ISO 9001)." },
+  "n2": { file: "Colorful_Recycling_Containers_for_Trash.jpg", alt: "Contenedores de reciclaje de colores", caption: "Concordancia en cadena y el se impersonal (ISO 14001)." },
   "n3": { file: "Occupational_Safety_Equipment.jpg", alt: "Equipo de protección personal", caption: "El subjuntivo del riesgo (ISO 45001)." },
   "n4": { file: "Cybersecurity.png", alt: "Ilustración de ciberseguridad", caption: "La voz pasiva de la seguridad (ISO/IEC 27001)." },
   "n5": { file: "Team_work.jpg", alt: "Equipo trabajando en conjunto", caption: "Repaso integrador: la auditoría de las cuatro normas." },
@@ -6386,14 +6386,14 @@ const LESSON_IMAGES = {
   "pr7":  { file: "Audit.jpg", alt: "Auditoría financiera y de procesos", caption: "La auditoría: verificar, constatar, cerrar hallazgos." },
   "pr8":  { file: "Whiteboard_in_seminar_room.jpg", alt: "Pizarra blanca en sala de reuniones", caption: "La consultoría: diagnóstico y plan de acción." },
   "pr9":  { file: "Business_man_and_woman_handshake_in_work_office.jpg", alt: "Apretón de manos en una oficina", caption: "Negocios y reuniones: cerrando acuerdos." },
-  "pr10": { file: "Kate_Edger_Information_Commons_PC_and_desk.JPG", alt: "Escritorio con ordenador de trabajo", caption: "El día a día laboral: rutina y reuniones." },
+  "pr10": { file: "Man_sitting_with_laptop_(Unsplash).jpg", alt: "Persona sentada trabajando con su laptop", caption: "El día a día laboral: rutina y reuniones." },
   "pr11": { file: "Solar_Panels.jpg", alt: "Paneles solares", caption: "Medio ambiente y energías renovables." },
   "pr12": { file: "Construction_Workers.jpg", alt: "Trabajadores de la construcción con casco de seguridad", caption: "Seguridad y salud ocupacional: prevenir riesgos." },
   "pr13": { file: "Hyundai_car_assembly_line.jpg", alt: "Línea de producción industrial", caption: "Calidad de procesos y procedimientos." },
   "pr14": { file: "Staff_meeting_(3).jpg", alt: "Reunión de dirección de una empresa", caption: "Gobernanza, dirección y organigrama." },
   "pr15": { file: "Marketing_dashboard.png", alt: "Panel de indicadores y métricas", caption: "Indicadores y sostenibilidad: midiendo el progreso." },
   "pr16": { file: "Data_security_privacy_lock_password_(41237924492).jpg", alt: "Candado sobre datos digitales", caption: "Seguridad de la información y privacidad de datos." },
-  "pr17": { file: "Laptop_computer.jpg", alt: "Ordenador portátil", caption: "Tecnología e innovación digital." },
+  "pr17": { file: "Man_with_smartphone_and_laptop_(Unsplash).jpg", alt: "Persona con smartphone y laptop", caption: "Tecnología e innovación digital." },
 };
 
 function lessonHeroImageHtml(lessonId) {
