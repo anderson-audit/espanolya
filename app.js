@@ -58,7 +58,7 @@ const functions = (typeof firebase.functions === "function") ? firebase.function
 // Versión del sistema, visible en Mi Cuenta / Configuración y en el pie de la barra lateral.
 // Se debe actualizar manualmente cada vez que se sube una nueva versión al repositorio
 // (formato AAAA.MM.DD.N — N = número de subida ese día, empieza en 1).
-const APP_VERSION = "2026.08.02.3";
+const APP_VERSION = "2026.08.02.4";
 
 // Valores por defecto de la mensualidad/anualidad — el admin puede cambiarlos en
 // Configuración → Planes y precios (guardados en config/settings, campos priceMonthly/priceAnnual).
@@ -3437,6 +3437,16 @@ function showFeedback(correct, correctText) {
 }
 
 function wireExerciseInteractions(ex) {
+  // Foco automático en el campo de respuesta (agiliza la operación, igual que el Enter para
+  // avanzar): en cuanto carga un ejercicio que se responde escribiendo (fill/translate/listen/
+  // songListen/open), el cursor ya queda listo dentro del campo — el alumno no necesita hacer
+  // clic antes de escribir. Un pequeño setTimeout(0) evita que el foco se pierda si el navegador
+  // todavía está terminando de pintar el innerHTML recién insertado.
+  setTimeout(() => {
+    const answerField = document.getElementById("ex-answer");
+    if (answerField) answerField.focus();
+  }, 0);
+
   const nextBtn = document.getElementById("ex-next");
   // answered: controla el comportamiento del botón "Siguiente" para los tipos que tienen
   // un "Comprobar" separado — el primer clic en "Siguiente" (antes de comprobar) EJECUTA
