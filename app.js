@@ -58,7 +58,7 @@ const functions = (typeof firebase.functions === "function") ? firebase.function
 // Versión del sistema, visible en Mi Cuenta / Configuración y en el pie de la barra lateral.
 // Se debe actualizar manualmente cada vez que se sube una nueva versión al repositorio
 // (formato AAAA.MM.DD.N — N = número de subida ese día, empieza en 1).
-const APP_VERSION = "2026.07.28.6";
+const APP_VERSION = "2026.08.02.1";
 
 // Valores por defecto de la mensualidad/anualidad — el admin puede cambiarlos en
 // Configuración → Planes y precios (guardados en config/settings, campos priceMonthly/priceAnnual).
@@ -6296,7 +6296,7 @@ const LESSON_IMAGES = {
   "b16": { file: "Calendar_Year_(Unsplash).jpg", alt: "Calendario mostrando una fecha", caption: "Números, años, fechas y horas." },
   // Intermedio
   "i1":  { file: "Supermarket_shelves.jpg", alt: "Estantes de supermercado", caption: "De compras por frutas y verduras." },
-  "i2":  { file: "Briefcase-photo.jpg", alt: "Maletín de negocios", caption: "Un viaje de negocios y el pretérito perfecto compuesto." },
+  "i2":  { file: "Packing_for_a_business_trip_(Unsplash).jpg", alt: "Maleta lista para un viaje de negocios", caption: "Un viaje de negocios y el pretérito perfecto compuesto." },
   "i3":  { file: "Three_Way_Conversation_(8391270573).jpg", alt: "Personas conversando", caption: "¿Con quién hablabas? El pretérito imperfecto." },
   "i4":  { file: "Maryse_cuisine.JPG", alt: "Cocina doméstica", caption: "Los objetos de la casa y el pasado continuo." },
   "i5":  { file: "Sunrise_at_ocean.JPG", alt: "Amanecer sobre el mar", caption: "Hablar del futuro: mañana será otro día." },
@@ -6311,7 +6311,7 @@ const LESSON_IMAGES = {
   "i14": { file: "Albuquerque_International_Sunport_terminal_from_tarmac_02.jpg", alt: "Terminal de aeropuerto", caption: "Frases esenciales para el aeropuerto." },
   "i15": { file: "Creative_Commons_Birthday_Cake_and_Candles_(4825652728).jpg", alt: "Pastel de cumpleaños con velas", caption: "Celebrando un cumpleaños en español." },
   // Avanzado
-  "a1":  { file: "Frying_pan.jpeg", alt: "Sartén de cocina", caption: "Utensilios y verbos culinarios." },
+  "a1":  { file: "Kitchen_utensils-01.jpg", alt: "Utensilios de cocina colgados en la pared", caption: "Utensilios y verbos culinarios." },
   "a2":  { file: "Pike_Place_Market_-_Sosio's_Produce_01.jpg", alt: "Mercado al aire libre", caption: "El comercio: comprar y vender." },
   "a3":  { file: "Old_American_Stock_Exchange_Building_2009.JPG", alt: "Edificio de la bolsa de valores", caption: "La economía, el banco y el mercado laboral." },
   "a4":  { file: "Charles_Baldwin_House.jpg", alt: "Casa residencial", caption: "Comprar, vender y alquilar un inmueble." },
@@ -6339,11 +6339,11 @@ const LESSON_IMAGES = {
   "p3": { file: "Conference_room_table_(Unsplash).jpg", alt: "Mesa de sala de conferencias", caption: "Cómo redactar el informe y el plan de auditoría." },
   "p4": { file: "Workspace_Looking_Out.jpg", alt: "Espacio de trabajo profesional", caption: "Comunicación formal: correos y llamadas de negocios." },
   "p5": { file: "ASTM_Certificate.jpg", alt: "Certificado oficial de una norma técnica", caption: "El certificado: alcance y ciclo de certificación." },
-  "p6": { file: "Audit.jpg", alt: "Documentos de una auditoría", caption: "El informe de auditoría: hallazgos y recomendación." },
+  "p6": { file: "Reading_Glasses_(Unsplash).jpg", alt: "Gafas sobre un informe de auditoría", caption: "El informe de auditoría: hallazgos y recomendación." },
   "p7": { file: "Questionnaire-checklist-completed.png", alt: "Lista de verificación completada", caption: "No conformidad: descripción, evidencia y acción correctiva." },
   "p8": { file: "Ishikawa_Fishbone_Diagram.svg", alt: "Diagrama de Ishikawa o espina de pescado", caption: "Análisis de causas: los 5 porqués y el diagrama de Ishikawa." },
   "p9": { file: "139_Server_Room_01.jpg", alt: "Sala de servidores", caption: "Lineamientos de TI: accesos, seguridad física y terceros." },
-  "p10": { file: "Working_at_office_(Unsplash).jpg", alt: "Persona trabajando en la oficina", caption: "El correo de difusión: comunicar actualizaciones de seguridad." },
+  "p10": { file: "Man_at_a_laptop_in_an_office_(Unsplash).jpg", alt: "Persona escribiendo un correo en la computadora", caption: "El correo de difusión: comunicar actualizaciones de seguridad." },
   // Español de las Normas (módulo bônus especial — gramática a partir de las normas ISO)
   "n1": { file: "Audit_Cycle.jpg", alt: "Ciclo de auditoría de calidad", caption: "El verbo que manda: deber + infinitivo (ISO 9001)." },
   "n2": { file: "Reduce_Reuse_Recycle.jpg", alt: "Símbolo de reducir, reusar y reciclar", caption: "Concordancia en cadena y el se impersonal (ISO 14001)." },
