@@ -1,0 +1,80 @@
+<svg viewBox="0 0 786 964" xmlns="http://www.w3.org/2000/svg" font-family="Poppins, Segoe UI, Arial, sans-serif">
+<rect x="0" y="0" width="786" height="964" fill="#f5f4f1"/>
+<rect x="0" y="0" width="786" height="150" fill="#AA151B"/>
+<rect x="0" y="140" width="786" height="10" fill="#F1BF00"/>
+<text x="393.0" y="72" text-anchor="middle" font-size="42" font-weight="700" fill="#ffffff">La Auditoría</text>
+<text x="393.0" y="110" text-anchor="middle" font-size="20" fill="#fce8b3">Vocabulario de la oficina y el trabajo de auditoría</text>
+<g>
+<rect x="30" y="180" width="230" height="160" rx="16" fill="#ffffff" stroke="#eadfc2" stroke-width="2"/>
+<rect x="30" y="180" width="230" height="6" rx="3" fill="#AA151B"/>
+<text x="145.0" y="252" text-anchor="middle" font-size="46">💼</text>
+<text x="145.0" y="300" text-anchor="middle" font-size="18" font-weight="600" fill="#1c1c1e">el auditor</text>
+</g>
+<g>
+<rect x="278" y="180" width="230" height="160" rx="16" fill="#ffffff" stroke="#eadfc2" stroke-width="2"/>
+<rect x="278" y="180" width="230" height="6" rx="3" fill="#AA151B"/>
+<text x="393.0" y="252" text-anchor="middle" font-size="46">📋</text>
+<text x="393.0" y="300" text-anchor="middle" font-size="18" font-weight="600" fill="#1c1c1e">el informe</text>
+</g>
+<g>
+<rect x="526" y="180" width="230" height="160" rx="16" fill="#ffffff" stroke="#eadfc2" stroke-width="2"/>
+<rect x="526" y="180" width="230" height="6" rx="3" fill="#AA151B"/>
+<text x="641.0" y="252" text-anchor="middle" font-size="46">🗂️</text>
+<text x="641.0" y="300" text-anchor="middle" font-size="18" font-weight="600" fill="#1c1c1e">la carpeta</text>
+</g>
+<g>
+<rect x="30" y="358" width="230" height="160" rx="16" fill="#ffffff" stroke="#eadfc2" stroke-width="2"/>
+<rect x="30" y="358" width="230" height="6" rx="3" fill="#AA151B"/>
+<text x="145.0" y="430" text-anchor="middle" font-size="46">💻</text>
+<text x="145.0" y="478" text-anchor="middle" font-size="18" font-weight="600" fill="#1c1c1e">el ordenador</text>
+</g>
+<g>
+<rect x="278" y="358" width="230" height="160" rx="16" fill="#ffffff" stroke="#eadfc2" stroke-width="2"/>
+<rect x="278" y="358" width="230" height="6" rx="3" fill="#AA151B"/>
+<text x="393.0" y="430" text-anchor="middle" font-size="46">🧮</text>
+<text x="393.0" y="478" text-anchor="middle" font-size="18" font-weight="600" fill="#1c1c1e">la calculadora</text>
+</g>
+<g>
+<rect x="526" y="358" width="230" height="160" rx="16" fill="#ffffff" stroke="#eadfc2" stroke-width="2"/>
+<rect x="526" y="358" width="230" height="6" rx="3" fill="#AA151B"/>
+<text x="641.0" y="430" text-anchor="middle" font-size="46">✅</text>
+<text x="641.0" y="478" text-anchor="middle" font-size="18" font-weight="600" fill="#1c1c1e">la lista de verificación</text>
+</g>
+<g>
+<rect x="30" y="536" width="230" height="160" rx="16" fill="#ffffff" stroke="#eadfc2" stroke-width="2"/>
+<rect x="30" y="536" width="230" height="6" rx="3" fill="#AA151B"/>
+<text x="145.0" y="608" text-anchor="middle" font-size="46">✍️</text>
+<text x="145.0" y="656" text-anchor="middle" font-size="18" font-weight="600" fill="#1c1c1e">la firma</text>
+</g>
+<g>
+<rect x="278" y="536" width="230" height="160" rx="16" fill="#ffffff" stroke="#eadfc2" stroke-width="2"/>
+<rect x="278" y="536" width="230" height="6" rx="3" fill="#AA151B"/>
+<text x="393.0" y="608" text-anchor="middle" font-size="46">📑</text>
+<text x="393.0" y="656" text-anchor="middle" font-size="18" font-weight="600" fill="#1c1c1e">el documento</text>
+</g>
+<g>
+<rect x="526" y="536" width="230" height="160" rx="16" fill="#ffffff" stroke="#eadfc2" stroke-width="2"/>
+<rect x="526" y="536" width="230" height="6" rx="3" fill="#AA151B"/>
+<text x="641.0" y="608" text-anchor="middle" font-size="46">🗓️</text>
+<text x="641.0" y="656" text-anchor="middle" font-size="18" font-weight="600" fill="#1c1c1e">el cronograma</text>
+</g>
+<g>
+<rect x="30" y="714" width="230" height="160" rx="16" fill="#ffffff" stroke="#eadfc2" stroke-width="2"/>
+<rect x="30" y="714" width="230" height="6" rx="3" fill="#AA151B"/>
+<text x="145.0" y="786" text-anchor="middle" font-size="46">📊</text>
+<text x="145.0" y="834" text-anchor="middle" font-size="18" font-weight="600" fill="#1c1c1e">el gráfico</text>
+</g>
+<g>
+<rect x="278" y="714" width="230" height="160" rx="16" fill="#ffffff" stroke="#eadfc2" stroke-width="2"/>
+<rect x="278" y="714" width="230" height="6" rx="3" fill="#AA151B"/>
+<text x="393.0" y="786" text-anchor="middle" font-size="46">🏢</text>
+<text x="393.0" y="834" text-anchor="middle" font-size="18" font-weight="600" fill="#1c1c1e">la empresa</text>
+</g>
+<g>
+<rect x="526" y="714" width="230" height="160" rx="16" fill="#ffffff" stroke="#eadfc2" stroke-width="2"/>
+<rect x="526" y="714" width="230" height="6" rx="3" fill="#AA151B"/>
+<text x="641.0" y="786" text-anchor="middle" font-size="46">🤝</text>
+<text x="641.0" y="834" text-anchor="middle" font-size="18" font-weight="600" fill="#1c1c1e">la reunión</text>
+</g>
+<text x="393.0" y="942" text-anchor="middle" font-size="16" fill="#8a8a8e">EspañolYa! · Estudio Rápido</text>
+</svg>

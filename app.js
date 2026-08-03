@@ -27,14 +27,16 @@ const COURSE_LEVELS = [
   LEVEL_NORMAS,
   LEVEL_TIEMPOS,
   LEVEL_PRONUNCIACION,
+  LEVEL_VERBOS,
+  LEVEL_ESTUDIORAPIDO,
   LEVEL_CANCIONES,
 ].filter(Boolean);
 
 // Ordem de progressão "principal" (o que precisa ser feito em sequência).
-// Secretos, Profesional, Normas, Tiempos, Pronunciación y Canciones son bônus: sempre
-// desbloqueados, sem pré-requisito.
+// Secretos, Profesional, Normas, Tiempos, Pronunciación, Verbos, Estudio Rápido y
+// Canciones son bônus: sempre desbloqueados, sem pré-requisito.
 const MAIN_SEQUENCE = ["fundamentos", "basico", "intermedio", "avanzado"];
-const BONUS_LEVELS = ["secretos", "profesional", "normas", "tiempos", "pronunciacion", "canciones"];
+const BONUS_LEVELS = ["secretos", "profesional", "normas", "tiempos", "pronunciacion", "verbos", "estudiorapido", "canciones"];
 
 function getLevel(id) { return COURSE_LEVELS.find(l => l.id === id); }
 function getLesson(levelId, lessonId) {
@@ -2447,10 +2449,10 @@ const LEVEL_COVER_OVERRIDE = {
 };
 function levelHeroImageUrl(levelId) {
   const override = LEVEL_COVER_OVERRIDE[levelId];
-  if (override) return wikimediaImg(override.file);
+  if (override) return resolveImgSrc(override);
   const lessonId = LEVEL_HERO_FIRST_LESSON[levelId];
   const img = lessonId && LESSON_IMAGES[lessonId];
-  return img ? wikimediaImg(img.file) : "";
+  return img ? resolveImgSrc(img) : "";
 }
 
 function levelCardHtml(levelId, isBonus) {
@@ -3016,9 +3018,10 @@ function renderLessonView() {
           <button class="btn btn-secondary btn-sm" id="restart-exercises">${t("ex_restart_btn")}</button>
         </div>
       </div>` : ""}
+      ${lesson.exercises.length ? `
       <div style="text-align:center;margin: 24px 0 40px">
         <button class="btn btn-primary" id="start-exercises" style="padding:16px 34px">${ip ? t("ex_restart_btn") : (lesson.youtubeId ? t("ex_discover_lyrics_btn") : t("start_exercises", { n: lesson.exercises.length }))}${ip || lesson.youtubeId ? ` (${lesson.exercises.length}) →` : ""}</button>
-      </div>
+      </div>` : ""}
       <div class="bottom-space"></div>`;
   root.innerHTML = wrapShell(html, "lesson");
   attachShellEvents();
@@ -3056,7 +3059,8 @@ function renderLessonView() {
     };
   });
 
-  document.getElementById("start-exercises").onclick = () => { speechSynthesis.cancel(); startLessonExercises(lesson); };
+  const startBtn = document.getElementById("start-exercises");
+  if (startBtn) startBtn.onclick = () => { speechSynthesis.cancel(); startLessonExercises(lesson); };
 }
 
 /* ---------------------------------------------------------------------- */
@@ -6289,6 +6293,16 @@ function wikimediaImg(filename) {
   return "https://commons.wikimedia.org/wiki/Special:FilePath/" + filename;
 }
 
+// Imágenes propias del curso (infografías EspañolYa!), guardadas localmente en la carpeta
+// img/ del proyecto — a diferencia de LESSON_IMAGES normal, que apunta a Wikimedia Commons.
+// Se usan marcando el objeto de imagen con "local: true".
+function localImg(filename) {
+  return "img/" + filename;
+}
+function resolveImgSrc(img) {
+  return img.local ? localImg(img.file) : wikimediaImg(img.file);
+}
+
 // Evita que una foto "alta" (retrato, cuadrada, etc.) quede cortada por la mitad dentro del
 // marco panorámico de la lección: si su proporción no encaja, la mostramos completa (contain)
 // sobre un fondo desenfocado hecho con la misma imagen, en vez de recortarla fea.
@@ -6404,6 +6418,16 @@ const LESSON_IMAGES = {
   "pr15": { file: "Marketing_dashboard.png", alt: "Panel de indicadores y métricas", caption: "Indicadores y sostenibilidad: midiendo el progreso." },
   "pr16": { file: "Data_security_privacy_lock_password_(41237924492).jpg", alt: "Candado sobre datos digitales", caption: "Seguridad de la información y privacidad de datos." },
   "pr17": { file: "Man_with_smartphone_and_laptop_(Unsplash).jpg", alt: "Persona con smartphone y laptop", caption: "Tecnología e innovación digital." },
+
+  // Módulo bônus "🖼️ Estudio Rápido": infografías propias (carpeta img/ local, no Wikimedia).
+  "er-hora": { file: "estudio-rapido-que-hora-es.jpg", alt: "¿Qué hora es? — reloj con los minutos en español", caption: "Cómo decir la hora en español.", local: true },
+  "er-habitacion": { file: "estudio-rapido-la-habitacion.jpg", alt: "La habitación — vocabulario del dormitorio", caption: "Vocabulario del dormitorio.", local: true },
+  "er-cocina": { file: "estudio-rapido-la-cocina.jpg", alt: "La cocina — vocabulario de la cocina", caption: "Vocabulario de la cocina.", local: true },
+  "er-bano": { file: "estudio-rapido-el-bano.jpg", alt: "El baño — vocabulario del baño", caption: "Vocabulario del baño.", local: true },
+  "er-cafeteria": { file: "estudio-rapido-la-cafeteria.jpg", alt: "La cafetería — vocabulario de la cafetería", caption: "Vocabulario de la cafetería.", local: true },
+  "er-panaderia": { file: "estudio-rapido-la-panaderia.jpg", alt: "La panadería — vocabulario de la panadería", caption: "Vocabulario de la panadería.", local: true },
+  "er-auditoria": { file: "estudio-rapido-la-auditoria.svg", alt: "La auditoría — vocabulario profesional", caption: "Vocabulario profesional de auditoría.", local: true },
+  "er-aeropuerto": { file: "estudio-rapido-el-aeropuerto.svg", alt: "El aeropuerto — vocabulario de viaje", caption: "Vocabulario para viajar por España.", local: true },
 };
 
 function lessonHeroImageHtml(lessonId) {
@@ -6411,7 +6435,7 @@ function lessonHeroImageHtml(lessonId) {
   if (!img) return "";
   return `
     <div class="lesson-hero">
-      <img src="${wikimediaImg(img.file)}" alt="${escapeHtml(img.alt)}" loading="lazy"
+      <img src="${resolveImgSrc(img)}" alt="${escapeHtml(img.alt)}" loading="lazy"
            onload="heroFitCheck(this)"
            onerror="this.closest('.lesson-hero').style.display='none'">
       <div class="lesson-hero-caption">${escapeHtml(img.caption)}</div>
@@ -6451,7 +6475,7 @@ function exerciseImageHtml(lessonId, exerciseIdx) {
   const img = pool[exerciseIdx % pool.length];
   return `
     <div class="lesson-hero ex-hero">
-      <img src="${wikimediaImg(img.file)}" alt="${escapeHtml(img.alt)}" loading="lazy"
+      <img src="${resolveImgSrc(img)}" alt="${escapeHtml(img.alt)}" loading="lazy"
            onload="heroFitCheck(this)"
            onerror="this.closest('.ex-hero').style.display='none'">
     </div>`;

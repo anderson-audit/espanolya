@@ -1,0 +1,80 @@
+<svg viewBox="0 0 786 964" xmlns="http://www.w3.org/2000/svg" font-family="Poppins, Segoe UI, Arial, sans-serif">
+<rect x="0" y="0" width="786" height="964" fill="#f5f4f1"/>
+<rect x="0" y="0" width="786" height="150" fill="#7a0f14"/>
+<rect x="0" y="140" width="786" height="10" fill="#F1BF00"/>
+<text x="393.0" y="72" text-anchor="middle" font-size="42" font-weight="700" fill="#ffffff">El Aeropuerto</text>
+<text x="393.0" y="110" text-anchor="middle" font-size="20" fill="#fce8b3">Vocabulario para viajar por España</text>
+<g>
+<rect x="30" y="180" width="230" height="160" rx="16" fill="#ffffff" stroke="#eadfc2" stroke-width="2"/>
+<rect x="30" y="180" width="230" height="6" rx="3" fill="#7a0f14"/>
+<text x="145.0" y="252" text-anchor="middle" font-size="46">✈️</text>
+<text x="145.0" y="300" text-anchor="middle" font-size="18" font-weight="600" fill="#1c1c1e">el avión</text>
+</g>
+<g>
+<rect x="278" y="180" width="230" height="160" rx="16" fill="#ffffff" stroke="#eadfc2" stroke-width="2"/>
+<rect x="278" y="180" width="230" height="6" rx="3" fill="#7a0f14"/>
+<text x="393.0" y="252" text-anchor="middle" font-size="46">🧳</text>
+<text x="393.0" y="300" text-anchor="middle" font-size="18" font-weight="600" fill="#1c1c1e">la maleta</text>
+</g>
+<g>
+<rect x="526" y="180" width="230" height="160" rx="16" fill="#ffffff" stroke="#eadfc2" stroke-width="2"/>
+<rect x="526" y="180" width="230" height="6" rx="3" fill="#7a0f14"/>
+<text x="641.0" y="252" text-anchor="middle" font-size="46">🛂</text>
+<text x="641.0" y="300" text-anchor="middle" font-size="18" font-weight="600" fill="#1c1c1e">el pasaporte</text>
+</g>
+<g>
+<rect x="30" y="358" width="230" height="160" rx="16" fill="#ffffff" stroke="#eadfc2" stroke-width="2"/>
+<rect x="30" y="358" width="230" height="6" rx="3" fill="#7a0f14"/>
+<text x="145.0" y="430" text-anchor="middle" font-size="46">🎫</text>
+<text x="145.0" y="478" text-anchor="middle" font-size="18" font-weight="600" fill="#1c1c1e">la tarjeta de embarque</text>
+</g>
+<g>
+<rect x="278" y="358" width="230" height="160" rx="16" fill="#ffffff" stroke="#eadfc2" stroke-width="2"/>
+<rect x="278" y="358" width="230" height="6" rx="3" fill="#7a0f14"/>
+<text x="393.0" y="430" text-anchor="middle" font-size="46">🚪</text>
+<text x="393.0" y="478" text-anchor="middle" font-size="18" font-weight="600" fill="#1c1c1e">la puerta de embarque</text>
+</g>
+<g>
+<rect x="526" y="358" width="230" height="160" rx="16" fill="#ffffff" stroke="#eadfc2" stroke-width="2"/>
+<rect x="526" y="358" width="230" height="6" rx="3" fill="#7a0f14"/>
+<text x="641.0" y="430" text-anchor="middle" font-size="46">🖥️</text>
+<text x="641.0" y="478" text-anchor="middle" font-size="18" font-weight="600" fill="#1c1c1e">la pantalla de salidas</text>
+</g>
+<g>
+<rect x="30" y="536" width="230" height="160" rx="16" fill="#ffffff" stroke="#eadfc2" stroke-width="2"/>
+<rect x="30" y="536" width="230" height="6" rx="3" fill="#7a0f14"/>
+<text x="145.0" y="608" text-anchor="middle" font-size="46">🛄</text>
+<text x="145.0" y="656" text-anchor="middle" font-size="18" font-weight="600" fill="#1c1c1e">la cinta transportadora</text>
+</g>
+<g>
+<rect x="278" y="536" width="230" height="160" rx="16" fill="#ffffff" stroke="#eadfc2" stroke-width="2"/>
+<rect x="278" y="536" width="230" height="6" rx="3" fill="#7a0f14"/>
+<text x="393.0" y="608" text-anchor="middle" font-size="46">🔒</text>
+<text x="393.0" y="656" text-anchor="middle" font-size="18" font-weight="600" fill="#1c1c1e">el control de seguridad</text>
+</g>
+<g>
+<rect x="526" y="536" width="230" height="160" rx="16" fill="#ffffff" stroke="#eadfc2" stroke-width="2"/>
+<rect x="526" y="536" width="230" height="6" rx="3" fill="#7a0f14"/>
+<text x="641.0" y="608" text-anchor="middle" font-size="46">🛃</text>
+<text x="641.0" y="656" text-anchor="middle" font-size="18" font-weight="600" fill="#1c1c1e">la aduana</text>
+</g>
+<g>
+<rect x="30" y="714" width="230" height="160" rx="16" fill="#ffffff" stroke="#eadfc2" stroke-width="2"/>
+<rect x="30" y="714" width="230" height="6" rx="3" fill="#7a0f14"/>
+<text x="145.0" y="786" text-anchor="middle" font-size="46">🗼</text>
+<text x="145.0" y="834" text-anchor="middle" font-size="18" font-weight="600" fill="#1c1c1e">la torre de control</text>
+</g>
+<g>
+<rect x="278" y="714" width="230" height="160" rx="16" fill="#ffffff" stroke="#eadfc2" stroke-width="2"/>
+<rect x="278" y="714" width="230" height="6" rx="3" fill="#7a0f14"/>
+<text x="393.0" y="786" text-anchor="middle" font-size="46">🛬</text>
+<text x="393.0" y="834" text-anchor="middle" font-size="18" font-weight="600" fill="#1c1c1e">la pista de aterrizaje</text>
+</g>
+<g>
+<rect x="526" y="714" width="230" height="160" rx="16" fill="#ffffff" stroke="#eadfc2" stroke-width="2"/>
+<rect x="526" y="714" width="230" height="6" rx="3" fill="#7a0f14"/>
+<text x="641.0" y="786" text-anchor="middle" font-size="46">🕐</text>
+<text x="641.0" y="834" text-anchor="middle" font-size="18" font-weight="600" fill="#1c1c1e">la sala de espera</text>
+</g>
+<text x="393.0" y="942" text-anchor="middle" font-size="16" fill="#8a8a8e">EspañolYa! · Estudio Rápido</text>
+</svg>
