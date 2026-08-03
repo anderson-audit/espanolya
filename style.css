@@ -436,6 +436,70 @@ table.grammar-table th { background: var(--gray-bg); }
 .order-item { padding: 12px 14px; border-radius: 10px; background: var(--gray-bg); margin-bottom:8px; cursor: grab; border: 1.5px solid transparent; transition: border-color .15s; }
 .order-item.chosen { border-color: var(--rojo); background: #fdecea; }
 
+/* ---------- Módulo Bônus "Estudio Rápido": hero mucho más grande + tarjeta de ejercicio
+   rediseñada. El usuario vio la primera versión en producción y pidió agrandar mucho las
+   imágenes ("aumentar bem, mas bem mesmo, redesenha tal tela se for preciso, pois é um módulo
+   extra") e innovar los ejercicios ("não gostei da forma que vez os exercícios. Inova para
+   esse módulo."). Todo lo de acá vive detrás de clases nuevas (.hero-mega / .exercise-card--er
+   / .er-*) que solo se activan en las lecciones "er-*" — el resto de las ~90 lecciones del
+   curso y el motor de ejercicios compartido no cambian en nada. ---------- */
+.lesson-hero.hero-mega { cursor: zoom-in; }
+.lesson-hero.hero-mega img { max-height: 640px; }
+@media (max-width: 640px) { .lesson-hero.hero-mega img { max-height: 420px; } }
+.hero-zoom-hint {
+  position:absolute; right:12px; bottom:44px; z-index:3; background:rgba(0,0,0,.6); color:#fff;
+  font-size:.72rem; font-weight:700; padding:6px 12px; border-radius:999px; pointer-events:none;
+}
+
+/* Lightbox a pantalla completa (creado/destruido en JS por openImgLightbox) */
+.img-lightbox {
+  position: fixed; inset: 0; z-index: 9999; background: rgba(10,10,10,.92);
+  display:flex; align-items:center; justify-content:center; padding: 24px; cursor: zoom-out;
+  animation: lightboxFade .15s ease-out;
+}
+@keyframes lightboxFade { from{opacity:0;} to{opacity:1;} }
+.img-lightbox img { max-width: 100%; max-height: 100%; border-radius: 10px; box-shadow: 0 10px 40px rgba(0,0,0,.5); cursor: default; }
+.img-lightbox-close {
+  position:absolute; top:18px; right:22px; width:40px; height:40px; border-radius:50%; border:none;
+  background: rgba(255,255,255,.15); color:#fff; font-size:1.3rem; display:flex; align-items:center;
+  justify-content:center; cursor:pointer; transition: background .12s;
+}
+.img-lightbox-close:hover { background: rgba(255,255,255,.28); }
+
+/* Tarjeta de ejercicio exclusiva de este módulo (verde→azul, colores del propio módulo) */
+.exercise-card--er::before { background: linear-gradient(90deg, #2E7D32, #1565C0, #2E7D32); }
+.exercise-card--er .ex-hero.lesson-hero img { max-height: 440px; }
+@media (max-width: 640px) { .exercise-card--er .ex-hero.lesson-hero img { max-height: 260px; } }
+.exercise-card--er .ex-type-badge { background: #e3f2ec; color:#1b5e20; }
+.exercise-card--er .ex-scoreboard { background: linear-gradient(135deg,#e3f2ec,#dcedc8); color:#1565C0; }
+
+.er-flashcard { text-align:center; }
+.er-target-pill {
+  display:inline-flex; align-items:center; gap:10px; background: linear-gradient(135deg,#2E7D32,#1565C0);
+  color:#fff; padding: 12px 22px; border-radius: 999px; box-shadow: 0 4px 14px rgba(21,101,192,.3);
+  margin: 4px 0 18px;
+}
+.er-target-word { font-size:1.25rem; font-weight:800; letter-spacing:.01em; }
+.er-tts-chip {
+  border:none; background: rgba(255,255,255,.22); color:#fff; width:34px; height:34px; border-radius:50%;
+  display:flex; align-items:center; justify-content:center; font-size:.95rem; flex-shrink:0;
+  transition: background .12s, transform .12s;
+}
+.er-tts-chip:hover { background: rgba(255,255,255,.36); transform: scale(1.07); }
+.er-prompt { justify-content:center; text-align:center; }
+.er-mic-stage { position:relative; display:flex; align-items:center; justify-content:center; margin: 18px 0 8px; height: 150px; }
+.er-mic-btn { width: 110px; height:110px; font-size:2.3rem; position:relative; z-index:2; margin:0; }
+.er-mic-btn.listening { animation: none; }
+.er-mic-rings { position:absolute; inset:0; display:flex; align-items:center; justify-content:center; pointer-events:none; z-index:1; }
+.er-mic-btn.listening ~ .er-mic-rings::before,
+.er-mic-btn.listening ~ .er-mic-rings::after {
+  content:""; position:absolute; width:110px; height:110px; border-radius:50%;
+  border: 3px solid var(--danger); animation: erRing 1.4s ease-out infinite;
+}
+.er-mic-btn.listening ~ .er-mic-rings::after { animation-delay: .5s; }
+@keyframes erRing { 0%{ transform:scale(1); opacity:.7; } 100%{ transform:scale(1.9); opacity:0; } }
+.er-flashcard .speak-transcript { font-size:.95rem; min-height:26px; }
+
 /* ---------- Result screen ---------- */
 .result-wrap { text-align:center; padding: 44px 24px 36px; position: relative; overflow: hidden; }
 .result-wrap::before {

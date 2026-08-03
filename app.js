@@ -60,7 +60,7 @@ const functions = (typeof firebase.functions === "function") ? firebase.function
 // Versión del sistema, visible en Mi Cuenta / Configuración y en el pie de la barra lateral.
 // Se debe actualizar manualmente cada vez que se sube una nueva versión al repositorio
 // (formato AAAA.MM.DD.N — N = número de subida ese día, empieza en 1).
-const APP_VERSION = "2026.08.02.4";
+const APP_VERSION = "2026.08.03.1";
 
 // Valores por defecto de la mensualidad/anualidad — el admin puede cambiarlos en
 // Configuración → Planes y precios (guardados en config/settings, campos priceMonthly/priceAnnual).
@@ -3193,6 +3193,13 @@ function renderExercise() {
   const ex = currentExercise();
   const total = state.exerciseQueue.length;
   const idx = state.exerciseIndex;
+  // Módulo bônus "Estudio Rápido": el usuario vio la pantalla de ejercicios en producción y
+  // pidió innovar el diseño específicamente acá ("não gostei da forma que vez os exercícios.
+  // Inova para esse módulo."). Se branquea SOLO la presentación (marcado por esta bandera),
+  // reutilizando los mismos IDs (#ex-mic, #ex-transcript, #ex-speak-tts, #ex-skip, #ex-next,
+  // #ex-feedback) para que wireExerciseInteractions() siga funcionando sin ningún cambio —
+  // así no se toca el motor de ejercicios usado por los demás ~15 niveles del curso.
+  const isQuickStudy = state.currentLevelId === "estudiorapido";
   let body = "";
   // Botón 🔊 opcional junto al enunciado: lee en voz alta (Web Speech API) el texto en
   // español de la pregunta, cuando lo hay. En "translate" pt→es no hay texto en español
@@ -3248,6 +3255,26 @@ function renderExercise() {
           <div id="ex-feedback"></div>
         </div>
       </div>`;
+  } else if (ex.type === "speak" && isQuickStudy) {
+    // Tarjeta "flashcard" exclusiva del módulo Estudio Rápido: la palabra/frase objetivo se
+    // muestra como una píldora grande con el botón de escuchar integrado, y el micrófono es
+    // mucho más grande con anillos animados mientras escucha — mismos IDs que la versión
+    // estándar de abajo, así wireExerciseInteractions(ex) no necesita ningún cambio.
+    body = `
+      <div class="er-flashcard">
+        <div class="ex-question er-prompt">🎙️ ${escapeHtml(ex.prompt)}</div>
+        <div class="er-target-pill">
+          <span class="er-target-word">${escapeHtml(ex.target)}</span>
+          <button class="er-tts-chip" id="ex-speak-tts" type="button" title="Escuchar">🔊</button>
+        </div>
+        <div class="er-mic-stage">
+          <button class="mic-btn er-mic-btn" id="ex-mic">🎤</button>
+          <div class="er-mic-rings"></div>
+        </div>
+        <div class="speak-transcript" id="ex-transcript"></div>
+        <div id="ex-feedback"></div>
+        <div class="ex-actions"><button class="btn btn-secondary btn-sm" id="ex-skip">${t("ex_skip")}</button><button class="btn btn-primary" id="ex-next" disabled>${t("ex_next")}</button></div>
+      </div>`;
   } else if (ex.type === "speak") {
     body = `
       <div class="ex-question">🎙️ ${escapeHtml(ex.prompt)}</div>
@@ -3283,7 +3310,7 @@ function renderExercise() {
 
   root.innerHTML = wrapShell(`
       <button class="back-link" id="back-exit">✕ Salir</button>
-      <div class="card exercise-card">
+      <div class="card exercise-card${isQuickStudy ? " exercise-card--er" : ""}">
         <div class="ex-topline">
           <div class="ex-progress">${state.isRetry ? t("ex_progress_review") : state.isExam ? t("ex_progress_exam") : t("ex_progress_exercise")} ${idx + 1} / ${total} <span class="ex-type-badge">${exTypeBadge(ex.type)}</span></div>
           <div class="ex-scoreboard" id="ex-scoreboard">✅ ${correctSoFar}/${answeredSoFar} ${streak >= 2 ? `· 🔥 racha ${streak}` : ""}</div>
@@ -6316,6 +6343,26 @@ function heroFitCheck(imgEl) {
   }
 }
 
+// Lightbox simple (pantalla completa) para las infografías del módulo bônus "Estudio Rápido":
+// son imágenes densas en texto/vocabulario que el usuario pidió ver mucho más grandes
+// ("aumentar bem, mas bem mesmo") después de verlas chicas en producción — además del hero
+// ya agrandado (.hero-mega), se puede tocar la imagen para verla a pantalla completa. Se crea
+// y destruye el overlay dinámicamente, sin depender de ningún estado global ni afectar otras
+// pantallas del curso.
+function openImgLightbox(imgEl) {
+  if (!imgEl) return;
+  const overlay = document.createElement("div");
+  overlay.className = "img-lightbox";
+  overlay.innerHTML = `<button class="img-lightbox-close" type="button" aria-label="Cerrar">✕</button><img src="${imgEl.src}" alt="${escapeHtml(imgEl.alt || "")}">`;
+  const onKey = (e) => { if (e.key === "Escape") close(); };
+  const close = () => { overlay.remove(); document.removeEventListener("keydown", onKey); };
+  overlay.addEventListener("click", (e) => {
+    if (e.target === overlay || e.target.classList.contains("img-lightbox-close")) close();
+  });
+  document.addEventListener("keydown", onKey);
+  document.body.appendChild(overlay);
+}
+
 const LESSON_IMAGES = {
   // Fundamentos
   "fund-0": { file: "Pen-writing-notes-studying.jpg", alt: "Estudiante escribiendo apuntes", caption: "Todo comienzo empieza con la motivación de aprender." },
@@ -6433,12 +6480,18 @@ const LESSON_IMAGES = {
 function lessonHeroImageHtml(lessonId) {
   const img = LESSON_IMAGES[lessonId];
   if (!img) return "";
+  // Módulo bônus "Estudio Rápido" (lecciones "er-*"): infografías densas en texto — el usuario
+  // pidió agrandar mucho el hero ("aumentar bem, mas bem mesmo") y dio libertad para rediseñar
+  // esta pantalla por ser un módulo extra. Se agranda el marco (.hero-mega) y se agrega zoom a
+  // pantalla completa solo para estas lecciones; las otras ~90 lecciones del curso no cambian.
+  const isQuickStudy = lessonId.startsWith("er-");
   return `
-    <div class="lesson-hero">
+    <div class="lesson-hero${isQuickStudy ? " hero-mega" : ""}"${isQuickStudy ? ` onclick="openImgLightbox(this.querySelector('img'))"` : ""}>
       <img src="${resolveImgSrc(img)}" alt="${escapeHtml(img.alt)}" loading="lazy"
            onload="heroFitCheck(this)"
            onerror="this.closest('.lesson-hero').style.display='none'">
       <div class="lesson-hero-caption">${escapeHtml(img.caption)}</div>
+      ${isQuickStudy ? `<div class="hero-zoom-hint">🔍 Toca para ampliar</div>` : ""}
     </div>`;
 }
 
