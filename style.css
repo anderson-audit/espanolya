@@ -451,6 +451,17 @@ table.grammar-table th { background: var(--gray-bg); }
   font-size:.72rem; font-weight:700; padding:6px 12px; border-radius:999px; pointer-events:none;
 }
 
+/* Galería de miniaturas (solo aparece cuando la lección tiene más de 1 imagen en su pool) */
+.hero-gallery { display:flex; gap:10px; margin: -8px 0 20px; overflow-x:auto; padding-bottom:2px; }
+.hero-gallery-thumb {
+  flex-shrink:0; width:84px; height:84px; border-radius:12px; overflow:hidden; border:3px solid transparent;
+  padding:0; cursor:pointer; opacity:.6; transition: opacity .15s, border-color .15s, transform .1s;
+  background: var(--gray-bg);
+}
+.hero-gallery-thumb img { width:100%; height:100%; object-fit:cover; display:block; }
+.hero-gallery-thumb:hover { opacity:.85; transform: translateY(-1px); }
+.hero-gallery-thumb.active { opacity:1; border-color: var(--rojo); }
+
 /* Lightbox a pantalla completa (creado/destruido en JS por openImgLightbox) */
 .img-lightbox {
   position: fixed; inset: 0; z-index: 9999; background: rgba(10,10,10,.92);

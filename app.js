@@ -60,7 +60,7 @@ const functions = (typeof firebase.functions === "function") ? firebase.function
 // Versión del sistema, visible en Mi Cuenta / Configuración y en el pie de la barra lateral.
 // Se debe actualizar manualmente cada vez que se sube una nueva versión al repositorio
 // (formato AAAA.MM.DD.N — N = número de subida ese día, empieza en 1).
-const APP_VERSION = "2026.08.03.1";
+const APP_VERSION = "2026.08.03.2";
 
 // Valores por defecto de la mensualidad/anualidad — el admin puede cambiarlos en
 // Configuración → Planes y precios (guardados en config/settings, campos priceMonthly/priceAnnual).
@@ -3630,7 +3630,15 @@ function wireExerciseInteractions(ex) {
         // similarity() ya se usaba solo para decidir correcto/incorrecto (umbral 0.55) — ahora
         // también se muestra como porcentaje, así el alumno ve CUÁNTO se acercó a la
         // pronunciación objetivo, no solo un sí/no.
-        const pct = Math.round(similarity(transcript, ex.target) * 100);
+        // Desde la reformulación de "Estudio Rápido" en preguntas reales (el usuario pidió
+        // preguntas de verdad, no solo repetir una palabra), una misma pregunta puede tener más
+        // de una respuesta válida en español (ej.: "la cama" y "Duermo en la cama." deberían
+        // valer). ex.altAnswers (opcional, mismo patrón que fill/translate) se compara también,
+        // usando el MEJOR puntaje entre el target y cada alternativa — no rompe ningún ejercicio
+        // "speak" existente de los demás niveles, que simplemente no define altAnswers.
+        const targetPct = Math.round(similarity(transcript, ex.target) * 100);
+        const altPct = (ex.altAnswers || []).reduce((best, alt) => Math.max(best, Math.round(similarity(transcript, alt) * 100)), 0);
+        const pct = Math.max(targetPct, altPct);
         const correct = pct > 55;
         showFeedback(correct, ex.target);
         const fb = document.getElementById("ex-feedback");
@@ -6473,8 +6481,8 @@ const LESSON_IMAGES = {
   "er-bano": { file: "estudio-rapido-el-bano.jpg", alt: "El baño — vocabulario del baño", caption: "Vocabulario del baño.", local: true },
   "er-cafeteria": { file: "estudio-rapido-la-cafeteria.jpg", alt: "La cafetería — vocabulario de la cafetería", caption: "Vocabulario de la cafetería.", local: true },
   "er-panaderia": { file: "estudio-rapido-la-panaderia.jpg", alt: "La panadería — vocabulario de la panadería", caption: "Vocabulario de la panadería.", local: true },
-  "er-auditoria": { file: "estudio-rapido-la-auditoria.svg", alt: "La auditoría — vocabulario profesional", caption: "Vocabulario profesional de auditoría.", local: true },
-  "er-aeropuerto": { file: "estudio-rapido-el-aeropuerto.svg", alt: "El aeropuerto — vocabulario de viaje", caption: "Vocabulario para viajar por España.", local: true },
+  "er-auditoria": { file: "estudio-rapido-la-auditoria.svg", alt: "La auditoría — vocabulario general", caption: "Vocabulario general de la oficina y el trabajo de auditoría.", local: true },
+  "er-aeropuerto": { file: "estudio-rapido-el-aeropuerto.svg", alt: "El aeropuerto — vocabulario general", caption: "Vocabulario general del aeropuerto.", local: true },
 };
 
 function lessonHeroImageHtml(lessonId) {
@@ -6487,12 +6495,48 @@ function lessonHeroImageHtml(lessonId) {
   const isQuickStudy = lessonId.startsWith("er-");
   return `
     <div class="lesson-hero${isQuickStudy ? " hero-mega" : ""}"${isQuickStudy ? ` onclick="openImgLightbox(this.querySelector('img'))"` : ""}>
-      <img src="${resolveImgSrc(img)}" alt="${escapeHtml(img.alt)}" loading="lazy"
+      <img id="lesson-hero-img" src="${resolveImgSrc(img)}" alt="${escapeHtml(img.alt)}" loading="lazy"
            onload="heroFitCheck(this)"
            onerror="this.closest('.lesson-hero').style.display='none'">
-      <div class="lesson-hero-caption">${escapeHtml(img.caption)}</div>
+      <div class="lesson-hero-caption" id="lesson-hero-caption">${escapeHtml(img.caption)}</div>
       ${isQuickStudy ? `<div class="hero-zoom-hint">🔍 Toca para ampliar</div>` : ""}
+    </div>
+    ${lessonGalleryHtml(lessonId)}`;
+}
+
+// Galería de miniaturas debajo del hero: aparece solo cuando la lección tiene MÁS de una imagen
+// en su pool (LESSON_IMAGES + LESSON_IMAGES_EXTRA) — antes esas imágenes extra solo se veían
+// rotando dentro de los ejercicios, nunca en la vista de la lección. El usuario pidió más
+// imágenes para el módulo "Estudio Rápido" ("está pobre... deveria ter mais imagens"), así que
+// ahora también se pueden hojear directamente acá, con clic para ampliar en el hero principal.
+function lessonGalleryHtml(lessonId) {
+  const pool = getLessonImagePool(lessonId);
+  if (pool.length <= 1) return "";
+  return `
+    <div class="hero-gallery">
+      ${pool.map((img, i) => `
+        <button type="button" class="hero-gallery-thumb${i === 0 ? " active" : ""}"
+          onclick="event.stopPropagation(); switchLessonHeroImage('${lessonId}', ${i}, this)" title="${escapeHtml(img.alt)}">
+          <img src="${resolveImgSrc(img)}" alt="${escapeHtml(img.alt)}" loading="lazy">
+        </button>`).join("")}
     </div>`;
+}
+
+function switchLessonHeroImage(lessonId, idx, thumbBtn) {
+  const pool = getLessonImagePool(lessonId);
+  const img = pool[idx];
+  if (!img) return;
+  const heroImg = document.getElementById("lesson-hero-img");
+  const heroCaption = document.getElementById("lesson-hero-caption");
+  if (heroImg) {
+    const heroEl = heroImg.closest(".lesson-hero");
+    if (heroEl) heroEl.classList.remove("hero-contain");
+    heroImg.src = resolveImgSrc(img);
+    heroImg.alt = img.alt;
+  }
+  if (heroCaption) heroCaption.textContent = img.caption;
+  document.querySelectorAll(".hero-gallery-thumb").forEach(b => b.classList.remove("active"));
+  if (thumbBtn) thumbBtn.classList.add("active");
 }
 
 // Pool de imágenes extra por lección (además de la imagen única en LESSON_IMAGES), para que
@@ -6509,6 +6553,18 @@ const LESSON_IMAGES_EXTRA = {
   "b6": [{ file: "Tapas_para_2.jpg", alt: "Tapas españolas variadas", caption: "Pedir tapas para compartir en el restaurante." }],
   "b7": [{ file: "Work_Meeting.jpg", alt: "Reunión de trabajo", caption: "El vocabulario de las reuniones de oficina." }],
   "b9": [{ file: "Ice_Cream_Dessert_(Unsplash).jpg", alt: "Postre de helado", caption: "¿Qué postre prefieres?" }],
+  // Estudio Rápido — Auditoría y Aeropuerto: el usuario pidió más imágenes ("está pobre...
+  // deveria ter mais imagens"), así que estas 2 lecciones ganaron 2 infografías extra cada una
+  // (más categorías de vocabulario nuevas en content-estudiorapido.js), visibles en la galería
+  // de miniaturas debajo del hero (lessonGalleryHtml) y también rotando en los ejercicios.
+  "er-auditoria": [
+    { file: "estudio-rapido-la-auditoria-proceso.svg", alt: "Auditoría — proceso y hallazgos", caption: "Del plan al hallazgo: el proceso de auditoría.", local: true },
+    { file: "estudio-rapido-la-auditoria-personas.svg", alt: "Auditoría — personas y reunión", caption: "Quién participa y cómo se conduce la auditoría.", local: true },
+  ],
+  "er-aeropuerto": [
+    { file: "estudio-rapido-el-aeropuerto-checkin.svg", alt: "Aeropuerto — check-in", caption: "Documentos y trámites antes de volar.", local: true },
+    { file: "estudio-rapido-el-aeropuerto-vuelo.svg", alt: "Aeropuerto — en el vuelo", caption: "A bordo y en la llegada.", local: true },
+  ],
   "b12": [{ file: "El_Campello,_Costa_Blanca,_Spain.jpg", alt: "Costa Blanca, España", caption: "Otro rincón de la costa española para soñar con las vacaciones." }],
 };
 
