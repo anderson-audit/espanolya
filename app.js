@@ -60,7 +60,7 @@ const functions = (typeof firebase.functions === "function") ? firebase.function
 // Versión del sistema, visible en Mi Cuenta / Configuración y en el pie de la barra lateral.
 // Se debe actualizar manualmente cada vez que se sube una nueva versión al repositorio
 // (formato AAAA.MM.DD.N — N = número de subida ese día, empieza en 1).
-const APP_VERSION = "2026.08.03.2";
+const APP_VERSION = "2026.08.03.3";
 
 // Valores por defecto de la mensualidad/anualidad — el admin puede cambiarlos en
 // Configuración → Planes y precios (guardados en config/settings, campos priceMonthly/priceAnnual).
@@ -2446,6 +2446,12 @@ const LEVEL_HERO_FIRST_LESSON = {
 const LEVEL_COVER_OVERRIDE = {
   avanzado: { file: "Plaza_Mayor_de_Madrid_06.jpg", alt: "Plaza Mayor de Madrid" },
   canciones: { file: "Flamenco_granada-1.jpg", alt: "Guitarra flamenca" },
+  // "verbos"/"estudiorapido" (módulos bônus criados em 2026-08-03) nunca tinham entrada aqui
+  // nem em LEVEL_HERO_FIRST_LESSON — por isso o card ficava sem foto de fundo, só o gradiente
+  // cinza padrão (`.level-card-photo { background-color: var(--gray-bg) }`), o que o usuário
+  // notou ao vivo ("Faltou uma linda imagem") comparando com os cards vizinhos, que têm foto.
+  verbos: { file: "Fountain_pen_writing_(literacy).jpg", alt: "Pluma escribiendo — conjugación de verbos" },
+  estudiorapido: { file: "estudio-rapido-la-cafeteria.jpg", alt: "Estudio Rápido — vocabulario visual", local: true },
 };
 function levelHeroImageUrl(levelId) {
   const override = LEVEL_COVER_OVERRIDE[levelId];
