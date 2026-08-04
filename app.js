@@ -60,7 +60,7 @@ const functions = (typeof firebase.functions === "function") ? firebase.function
 // Versión del sistema, visible en Mi Cuenta / Configuración y en el pie de la barra lateral.
 // Se debe actualizar manualmente cada vez que se sube una nueva versión al repositorio
 // (formato AAAA.MM.DD.N — N = número de subida ese día, empieza en 1).
-const APP_VERSION = "2026.08.03.3";
+const APP_VERSION = "2026.08.04.1";
 
 // Valores por defecto de la mensualidad/anualidad — el admin puede cambiarlos en
 // Configuración → Planes y precios (guardados en config/settings, campos priceMonthly/priceAnnual).
@@ -128,6 +128,8 @@ const I18N = {
     ex_progress_review: "🔁 Repaso", ex_progress_exam: "Prueba", ex_progress_exercise: "Ejercicio",
     ex_badge_mc: "🔠 Opción múltiple", ex_badge_fill: "✏️ Completar", ex_badge_translate: "🔁 Traducción", ex_badge_listen: "🎧 Escucha",
     ex_badge_songlisten: "🎧 Dictado musical", ex_badge_speak: "🎙️ Pronunciación", ex_badge_order: "🔀 Ordenar", ex_badge_open: "✍️ Respuesta libre",
+    ex_badge_chat: "💬 Conversación",
+    ex_chat_online: "en línea", ex_chat_your_turn: "🎙️ Tu turno — habla en español",
     ex_speak_listen_model: "Escuchar pronunciación", ex_speak_heard: "Escuchamos", ex_speak_score: "🎯 Pronunciación: {pct}% de similitud",
     ex_speak_no_support: "Tu navegador no soporta reconocimiento de voz. Usa Google Chrome en computadora o Android, o haz clic en 'No puedo grabar ahora'.",
     ex_speak_listening: "Escuchando...", ex_speak_error: "No se pudo escuchar. Intenta de nuevo o usa 'No puedo grabar ahora'.",
@@ -366,6 +368,8 @@ const I18N = {
     ex_progress_review: "🔁 Revisão", ex_progress_exam: "Prova", ex_progress_exercise: "Exercício",
     ex_badge_mc: "🔠 Múltipla escolha", ex_badge_fill: "✏️ Completar", ex_badge_translate: "🔁 Tradução", ex_badge_listen: "🎧 Escuta",
     ex_badge_songlisten: "🎧 Ditado musical", ex_badge_speak: "🎙️ Pronúncia", ex_badge_order: "🔀 Ordenar", ex_badge_open: "✍️ Resposta livre",
+    ex_badge_chat: "💬 Conversa",
+    ex_chat_online: "online", ex_chat_your_turn: "🎙️ Sua vez — fale em espanhol",
     ex_speak_listen_model: "Ouvir pronúncia", ex_speak_heard: "Ouvimos", ex_speak_score: "🎯 Pronúncia: {pct}% de similaridade",
     ex_speak_no_support: "Seu navegador não suporta reconhecimento de voz. Use o Google Chrome no computador ou Android, ou clique em 'Não posso gravar agora'.",
     ex_speak_listening: "Ouvindo...", ex_speak_error: "Não foi possível ouvir. Tente de novo ou clique em 'Não posso gravar agora'.",
@@ -604,6 +608,8 @@ const I18N = {
     ex_progress_review: "🔁 Review", ex_progress_exam: "Exam", ex_progress_exercise: "Exercise",
     ex_badge_mc: "🔠 Multiple choice", ex_badge_fill: "✏️ Fill in", ex_badge_translate: "🔁 Translation", ex_badge_listen: "🎧 Listening",
     ex_badge_songlisten: "🎧 Song dictation", ex_badge_speak: "🎙️ Pronunciation", ex_badge_order: "🔀 Order", ex_badge_open: "✍️ Free response",
+    ex_badge_chat: "💬 Conversation",
+    ex_chat_online: "online", ex_chat_your_turn: "🎙️ Your turn — speak in Spanish",
     ex_speak_listen_model: "Listen to pronunciation", ex_speak_heard: "We heard", ex_speak_score: "🎯 Pronunciation: {pct}% match",
     ex_speak_no_support: "Your browser doesn't support speech recognition. Use Google Chrome on computer or Android, or click 'I can't record now'.",
     ex_speak_listening: "Listening...", ex_speak_error: "Couldn't hear you. Try again or click 'I can't record now'.",
@@ -1976,11 +1982,12 @@ function correctAnswerText(ex) {
   if (ex.type === "speak") return ex.target;
   if (ex.type === "order") return (ex.correctOrder || []).map(i => ex.items[i]).join(" → ");
   if (ex.type === "open") return ex.sample || "";
+  if (ex.type === "chat") return (ex.turns || []).filter(tn => tn.user).map(tn => tn.user.target).join(" / ");
   return "";
 }
 
 function questionTextOf(ex) {
-  return (ex.q || ex.text || ex.prompt || "") + "";
+  return (ex.q || ex.text || ex.prompt || ex.scenario || "") + "";
 }
 
 function loadVoices() {
@@ -3190,6 +3197,7 @@ function songFragmentHtml(frameId, youtubeId, startSec, endSec) {
 const EX_TYPE_BADGE_KEYS = {
   mc: "ex_badge_mc", fill: "ex_badge_fill", translate: "ex_badge_translate", listen: "ex_badge_listen",
   songListen: "ex_badge_songlisten", speak: "ex_badge_speak", order: "ex_badge_order", open: "ex_badge_open",
+  chat: "ex_badge_chat",
 };
 function exTypeBadge(type) { const key = EX_TYPE_BADGE_KEYS[type]; return key ? t(key) : ""; }
 
@@ -3306,6 +3314,38 @@ function renderExercise() {
         ? `<div class="ex-feedback ok">${t("ex_sample_answer_label")} <em>${escapeHtml(ex.sample || "")}</em></div>`
         : `<div class="ex-feedback neutral">${t("ex_compare_later")}</div>`}
       <div class="ex-actions"><button class="btn btn-primary" id="ex-next">${t("ex_next")}</button></div>`;
+  } else if (ex.type === "chat") {
+    // Ejercicio "bate-papo simulado": a pedido del usuario ("Ainda não gostei dos exercícios
+    // do módulo de estudio rápido... deveria ser algo como um bate-papo, uma conversa"), este
+    // tipo reemplaza la pregunta única por una mini-conversación de varios turnos con un
+    // personaje (ex.npcName/ex.npcAvatar/ex.scenario), en formato de burbujas de chat real.
+    // Los turnos vienen en ex.turns: {npc:"..."} para las líneas del personaje (aparecen solas,
+    // con indicador "escribiendo...") y {user:{prompt, target, altAnswers}} para los turnos del
+    // alumno (habla por el micrófono; altAnswers puede ser texto simple o {text, reply} para que
+    // el personaje responda distinto según lo que el alumno haya dicho — ramificación simple).
+    // Todo el motor vive en wireChatExercise() (ver más abajo), reutilizando similarity(),
+    // getSpeechRecognition() y speak() ya existentes — al terminar la conversación se llama
+    // markAnswered()/logAttempt() UNA sola vez con el promedio de aciertos, igual que los demás
+    // tipos de ejercicio (una conversación = un ítem en exerciseQueue).
+    body = `
+      <div class="er-chat">
+        <div class="er-chat-header">
+          <span class="er-chat-avatar">${escapeHtml(ex.npcAvatar || "🧑‍💼")}</span>
+          <div>
+            <div class="er-chat-name">${escapeHtml(ex.npcName || "María")}</div>
+            <div class="er-chat-status">🟢 ${t("ex_chat_online")}</div>
+          </div>
+        </div>
+        ${ex.scenario ? `<div class="er-chat-scenario">🎬 ${escapeHtml(ex.scenario)}</div>` : ""}
+        <div class="er-chat-messages" id="chat-messages"></div>
+        <div class="er-chat-inputbar">
+          <button class="er-chat-tts" id="ex-speak-tts" type="button" title="Escuchar modelo" style="display:none">🔊</button>
+          <button class="mic-btn er-chat-mic" id="ex-mic" disabled>🎤</button>
+          <div class="speak-transcript" id="ex-transcript"></div>
+        </div>
+        <div id="ex-feedback"></div>
+        <div class="ex-actions"><button class="btn btn-secondary btn-sm" id="ex-skip" disabled>${t("ex_skip")}</button><button class="btn btn-primary" id="ex-next" disabled>${t("ex_next")}</button></div>
+      </div>`;
   }
 
   const correctSoFar = state.exerciseAnswers.filter(Boolean).length;
@@ -3494,6 +3534,10 @@ function wireExerciseInteractions(ex) {
     if (answered) { clearAutoAdvance(); goToNextExercise(); }
   };
 
+  // El "chat" tiene su propio motor de turnos (no usa el patrón "Comprobar"/"Siguiente" de un
+  // solo intento) — se resuelve todo en wireChatExercise() y se sale de esta función acá.
+  if (ex.type === "chat") { wireChatExercise(ex); return; }
+
   // Preguntas abiertas/dissertativas: no se auto-corrigen, pero SÍ deben quedar registradas
   // (el alumno tiene que poder consultar después lo que escribió — antes no se guardaba nada).
   if (ex.type === "open") {
@@ -3661,6 +3705,137 @@ function wireExerciseInteractions(ex) {
       rec.onend = () => micBtn.classList.remove("listening");
     }
   }
+}
+
+// Motor del ejercicio "chat" (bate-papo simulado) — ver el comentario en renderExercise() para
+// el porqué. Recorre ex.turns en orden: las líneas del personaje (turn.npc) se muestran solas,
+// con un indicador "escribiendo..." antes (para que se sienta como un chat de verdad, no una
+// lista estática); al llegar a un turno del alumno (turn.user) se detiene, habilita el
+// micrófono/el botón de "No puedo grabar ahora" y espera. altAnswers puede traer una respuesta
+// alternativa como string simple (igual que en "speak") o como {text, reply} — en ese segundo
+// caso, si el alumno dice ESA variante específica, el personaje contesta con "reply" en vez de
+// seguir directo al próximo turno guionado: es la ramificación simple de la conversación.
+// Al final se llama markAnswered()/logAttempt() una única vez (todo el chat cuenta como un solo
+// ítem del exerciseQueue), con el promedio de aciertos de los turnos hablados.
+function wireChatExercise(ex) {
+  const msgBox = document.getElementById("chat-messages");
+  const micBtn = document.getElementById("ex-mic");
+  const transcriptEl = document.getElementById("ex-transcript");
+  const ttsBtn = document.getElementById("ex-speak-tts");
+  const skipBtn = document.getElementById("ex-skip");
+  const nextBtn = document.getElementById("ex-next");
+  const rec = getSpeechRecognition();
+  const turns = ex.turns || [];
+  const userTotal = turns.filter(tn => tn.user).length;
+  let ti = 0;
+  let userCorrect = 0;
+
+  function scrollDown() { msgBox.scrollTop = msgBox.scrollHeight; }
+
+  function appendBubble(who, html, extraClass) {
+    const div = document.createElement("div");
+    div.className = `chat-bubble chat-bubble-${who}${extraClass ? " " + extraClass : ""}`;
+    div.innerHTML = html;
+    msgBox.appendChild(div);
+    scrollDown();
+    return div;
+  }
+
+  function npcSay(text, cb) {
+    const typing = appendBubble("npc", `<span class="chat-typing"><span></span><span></span><span></span></span>`, "chat-typing-bubble");
+    const delay = Math.min(1600, Math.max(650, text.length * 28));
+    setTimeout(() => {
+      typing.remove();
+      const bubble = appendBubble("npc", `<span>${escapeHtml(text)}</span> <button class="chat-tts-mini" type="button" title="Escuchar">🔊</button>`);
+      const miniBtn = bubble.querySelector(".chat-tts-mini");
+      if (miniBtn) miniBtn.onclick = () => speak(text, null, miniBtn);
+      cb();
+    }, delay);
+  }
+
+  function resolveAnswer(u, transcript) {
+    let bestPct = Math.round(similarity(transcript, u.target) * 100);
+    let bestReply = null;
+    (u.altAnswers || []).forEach(a => {
+      const text = typeof a === "string" ? a : a.text;
+      const reply = typeof a === "string" ? null : (a.reply || null);
+      const pct = Math.round(similarity(transcript, text) * 100);
+      if (pct > bestPct) { bestPct = pct; bestReply = reply; }
+    });
+    return { pct: bestPct, reply: bestReply };
+  }
+
+  function finishChat() {
+    const overallCorrect = userTotal === 0 || (userCorrect / userTotal) >= 0.5;
+    micBtn.disabled = true;
+    skipBtn.disabled = true;
+    if (ttsBtn) ttsBtn.style.display = "none";
+    transcriptEl.textContent = "";
+    markAnswered(overallCorrect);
+    logAttempt(ex, overallCorrect, `${userCorrect}/${userTotal}`);
+    nextBtn.disabled = false;
+    nextBtn.onclick = () => { clearAutoAdvance(); goToNextExercise(); };
+  }
+
+  function nextTurn() {
+    if (ti >= turns.length) { finishChat(); return; }
+    const turn = turns[ti];
+    if (turn.npc) {
+      ti++;
+      npcSay(turn.npc, nextTurn);
+    } else if (turn.user) {
+      setupUserTurn(turn.user);
+    } else {
+      ti++;
+      nextTurn();
+    }
+  }
+
+  function setupUserTurn(u) {
+    if (u.prompt) appendBubble("hint", `💬 ${escapeHtml(u.prompt)}`);
+    if (ttsBtn) { ttsBtn.style.display = ""; ttsBtn.onclick = () => speak(u.target, null, ttsBtn); }
+    if (!rec) {
+      micBtn.disabled = true;
+      transcriptEl.textContent = t("ex_speak_no_support");
+    } else {
+      micBtn.disabled = false;
+      transcriptEl.textContent = t("ex_chat_your_turn");
+    }
+    skipBtn.disabled = false;
+
+    const handleAnswer = (transcript, wasSkipped) => {
+      micBtn.disabled = true;
+      skipBtn.disabled = true;
+      const { pct, reply } = wasSkipped ? { pct: 100, reply: null } : resolveAnswer(u, transcript);
+      const correct = wasSkipped || pct > 55;
+      if (correct) userCorrect++;
+      appendBubble("user", escapeHtml(wasSkipped ? u.target : transcript), correct ? "" : "chat-bubble-weak");
+      if (!wasSkipped && !correct && isGabaritoImmediate()) {
+        appendBubble("hint", `✏️ ${escapeHtml(u.target)}`);
+      }
+      ti++;
+      if (!wasSkipped && reply) npcSay(reply, nextTurn);
+      else nextTurn();
+    };
+
+    if (rec) {
+      micBtn.onclick = () => {
+        micBtn.classList.add("listening");
+        transcriptEl.textContent = t("ex_speak_listening");
+        rec.start();
+      };
+      rec.onresult = (event) => {
+        const transcript = event.results[0][0].transcript;
+        micBtn.classList.remove("listening");
+        handleAnswer(transcript, false);
+      };
+      rec.onerror = () => { micBtn.classList.remove("listening"); transcriptEl.textContent = t("ex_speak_error"); };
+      rec.onend = () => micBtn.classList.remove("listening");
+    }
+    skipBtn.onclick = () => handleAnswer("", true);
+  }
+
+  nextTurn();
 }
 
 // Auto-avance: después de responder (por "Comprobar" o directamente por "Siguiente"),

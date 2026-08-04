@@ -387,7 +387,48 @@ const LEVEL_ESTUDIORAPIDO = {
         {type: "mc", q: "'A pasta de documentos', em espanhol, é...", options: ["la carpeta", "el informe", "la firma", "el hallazgo"], correct: 0},
         {type: "mc", q: "Cuando un requisito de la norma NO se cumple, se llama...", options: ["conformidad", "hallazgo positivo", "no conformidad", "certificación"], correct: 2},
         {type: "fill", q: "'O computador' em espanhol se escreve: el ___", answer: "ordenador"},
-        {type: "fill", q: "'A reunião ao final da auditoria, onde se apresentam os resultados' se escreve: la reunión de ___", answer: "cierre"}
+        {type: "fill", q: "'A reunião ao final da auditoria, onde se apresentam os resultados' se escreve: la reunión de ___", answer: "cierre"},
+        {
+          // Ejercicio "chat": a pedido del usuario, este módulo pasó a tener una conversación
+          // simulada de verdad al final de cada lección (no solo preguntas aisladas) — acá se
+          // usa el vocabulario de auditoría ya practicado arriba, en una mini-reunión de
+          // apertura con una auditora líder. Ver wireChatExercise() en app.js.
+          type: "chat",
+          npcName: "María (auditora líder)",
+          npcAvatar: "👩‍💼",
+          scenario: "Estás en la reunión de apertura de una auditoría en la empresa de tu cliente. María, la auditora líder, empieza a hablar contigo.",
+          turns: [
+            { npc: "¡Buenos días! Soy María, la auditora líder de hoy. ¿Ya tienes lista la carpeta con todos los documentos?" },
+            { user: {
+                prompt: "Responde que sí, que la carpeta ya está lista.",
+                target: "Sí, la carpeta ya está lista.",
+                altAnswers: ["Sí, ya está lista", "La carpeta está lista", "Sí, la carpeta está lista"]
+            }},
+            { npc: "Perfecto. Vamos a revisar la lista de verificación punto por punto. ¿Puedes traerme el informe del año pasado?" },
+            { user: {
+                prompt: "Responde que sí, aquí tienes el informe.",
+                target: "Sí, aquí tienes el informe.",
+                altAnswers: ["Aquí está el informe", "Sí, aquí está el informe", "el informe"]
+            }},
+            { npc: "Gracias. Durante la entrevista con tu equipo encontramos un hallazgo importante: un riesgo en el proceso de almacenamiento." },
+            { user: {
+                prompt: "Pregunta qué acción correctiva se debe implementar.",
+                target: "¿Qué acción correctiva debemos implementar?",
+                altAnswers: [
+                  {text: "¿Qué hacemos ahora?", reply: "Vamos a definir una acción correctiva juntos, no te preocupes."},
+                  "acción correctiva",
+                  "¿Qué debemos hacer?"
+                ]
+            }},
+            { npc: "Vamos a definir una acción correctiva y revisarla en la reunión de cierre. ¿Todo claro?" },
+            { user: {
+                prompt: "Responde que sí, todo claro, y agradece.",
+                target: "Sí, todo claro. Gracias por la explicación.",
+                altAnswers: ["Sí, todo claro", "de acuerdo", "Sí, gracias"]
+            }},
+            { npc: "¡Excelente! Nos vemos en la reunión de cierre. ¡Buen trabajo hoy!" }
+          ]
+        }
       ]
     },
     {
