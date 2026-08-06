@@ -78,20 +78,6 @@ const LEVEL_ESTUDIORAPIDO = {
         "Exemplos do infográfico: 3:15 → 'Son las tres y cuarto.' · 6:30 → 'Son las seis y media.' · 8:45 → 'Son las nueve menos cuarto.' · 10:55 → 'Son las once menos cinco.'"
       ],
       exercises: [
-        {type: "speak", prompt: "¿Qué hora es cuando el reloj marca las 3:15?", target: "Son las tres y cuarto.", altAnswers: ["Son las tres y cuarto", "Las tres y cuarto"]},
-        {type: "speak", prompt: "¿Qué hora es cuando el reloj marca las 6:30?", target: "Son las seis y media.", altAnswers: ["Son las seis y media", "Las seis y media"]},
-        {type: "speak", prompt: "Son las 8:45. ¿Cómo se dice esa hora en español, usando 'menos'?", target: "Son las nueve menos cuarto.", altAnswers: ["Son las nueve menos cuarto", "Las nueve menos cuarto"]},
-        {type: "speak", prompt: "¿Qué hora es cuando el reloj marca las 10:55?", target: "Son las once menos cinco.", altAnswers: ["Son las once menos cinco", "Las once menos cinco"]},
-        {type: "speak", prompt: "Es la 1:00 en punto. ¿Cómo se dice? (¡cuidado, es singular!)", target: "Es la una en punto.", altAnswers: ["Es la una en punto", "La una en punto"]},
-        {type: "speak", prompt: "¿Qué hora es cuando el reloj marca las 2:00 en punto?", target: "Son las dos en punto.", altAnswers: ["Son las dos en punto", "Las dos en punto"]},
-        {type: "speak", prompt: "¿Qué hora es cuando el reloj marca las 4:05?", target: "Son las cuatro y cinco.", altAnswers: ["Son las cuatro y cinco", "Las cuatro y cinco"]},
-        {type: "speak", prompt: "¿Qué hora es cuando el reloj marca las 7:20?", target: "Son las siete y veinte.", altAnswers: ["Son las siete y veinte", "Las siete y veinte"]},
-        {type: "speak", prompt: "Son las 9:40. ¿Cómo se dice esa hora usando 'menos'?", target: "Son las diez menos veinte.", altAnswers: ["Son las diez menos veinte", "Las diez menos veinte"]},
-        {type: "speak", prompt: "Son las 12:50 (casi la 1). ¿Cómo se dice esa hora?", target: "Es la una menos diez.", altAnswers: ["Es la una menos diez", "La una menos diez"]},
-        {type: "speak", prompt: "¿Qué palabra se usa para contar los minutos ANTES de la media hora, como en las 3:15?", target: "Se usa 'y'.", altAnswers: ["y", "Y", "Se usa y"]},
-        {type: "speak", prompt: "¿Qué palabra se usa para contar los minutos DESPUÉS de la media hora, mirando hacia la hora siguiente?", target: "Se usa 'menos'.", altAnswers: ["menos", "Menos", "Se usa menos"]},
-        {type: "mc", q: "8:45 se dice, en español...", options: ["Las ocho y cuarenta y cinco", "Las nueve menos cuarto", "Las ocho menos cuarto", "Las nueve y cuarto"], correct: 1},
-        {type: "fill", q: "Complete: 'Es la ___' (usa-se para a 1 hora, no singular).", answer: "una", altAnswers: ["Una"]},
         {
           type: "caso", icon: "🗓️", stamp: "✅ REUNIÓN CONFIRMADA",
           scenario: "Trabajas en Quallisi y necesitas reprogramar una reunión con un cliente porque tienes otro compromiso a esa hora.",
@@ -107,10 +93,9 @@ const LEVEL_ESTUDIORAPIDO = {
           altAnswers: ["Trabajo desde las nueve hasta las seis de la tarde.", "Mi jornada empieza a las nueve y termina a las seis."]
         },
         {
-          // Ejercicio "chat": mismo patrón de La auditoría, aplicado ahora en todas las lecciones
-          // por igual. El alumno responde por micrófono CUANDO ESTÉ LISTO — no hay ningún límite
-          // de tiempo ni cuenta regresiva (ver wireChatExercise() en app.js: micBtn.onclick solo
-          // llama rec.start() al hacer clic, y el reconocimiento espera lo que haga falta).
+          // Ejercicio "chat": movido al inicio de la lección (junto con los "caso") a pedido del
+          // usuario, para que el alumno vea la parte más dinámica/nueva enseguida, sin tener que
+          // pasar por todos los ejercicios "speak" de vocabulario primero.
           type: "chat",
           npcName: "Carlos (compañero de trabajo)",
           npcAvatar: "🧑‍💼",
@@ -140,7 +125,21 @@ const LEVEL_ESTUDIORAPIDO = {
             }},
             { npc: "¡Hasta mañana!" }
           ]
-        }
+        },
+        {type: "speak", prompt: "¿Qué hora es cuando el reloj marca las 3:15?", target: "Son las tres y cuarto.", altAnswers: ["Son las tres y cuarto", "Las tres y cuarto"]},
+        {type: "speak", prompt: "¿Qué hora es cuando el reloj marca las 6:30?", target: "Son las seis y media.", altAnswers: ["Son las seis y media", "Las seis y media"]},
+        {type: "speak", prompt: "Son las 8:45. ¿Cómo se dice esa hora en español, usando 'menos'?", target: "Son las nueve menos cuarto.", altAnswers: ["Son las nueve menos cuarto", "Las nueve menos cuarto"]},
+        {type: "speak", prompt: "¿Qué hora es cuando el reloj marca las 10:55?", target: "Son las once menos cinco.", altAnswers: ["Son las once menos cinco", "Las once menos cinco"]},
+        {type: "speak", prompt: "Es la 1:00 en punto. ¿Cómo se dice? (¡cuidado, es singular!)", target: "Es la una en punto.", altAnswers: ["Es la una en punto", "La una en punto"]},
+        {type: "speak", prompt: "¿Qué hora es cuando el reloj marca las 2:00 en punto?", target: "Son las dos en punto.", altAnswers: ["Son las dos en punto", "Las dos en punto"]},
+        {type: "speak", prompt: "¿Qué hora es cuando el reloj marca las 4:05?", target: "Son las cuatro y cinco.", altAnswers: ["Son las cuatro y cinco", "Las cuatro y cinco"]},
+        {type: "speak", prompt: "¿Qué hora es cuando el reloj marca las 7:20?", target: "Son las siete y veinte.", altAnswers: ["Son las siete y veinte", "Las siete y veinte"]},
+        {type: "speak", prompt: "Son las 9:40. ¿Cómo se dice esa hora usando 'menos'?", target: "Son las diez menos veinte.", altAnswers: ["Son las diez menos veinte", "Las diez menos veinte"]},
+        {type: "speak", prompt: "Son las 12:50 (casi la 1). ¿Cómo se dice esa hora?", target: "Es la una menos diez.", altAnswers: ["Es la una menos diez", "La una menos diez"]},
+        {type: "speak", prompt: "¿Qué palabra se usa para contar los minutos ANTES de la media hora, como en las 3:15?", target: "Se usa 'y'.", altAnswers: ["y", "Y", "Se usa y"]},
+        {type: "speak", prompt: "¿Qué palabra se usa para contar los minutos DESPUÉS de la media hora, mirando hacia la hora siguiente?", target: "Se usa 'menos'.", altAnswers: ["menos", "Menos", "Se usa menos"]},
+        {type: "mc", q: "8:45 se dice, en español...", options: ["Las ocho y cuarenta y cinco", "Las nueve menos cuarto", "Las ocho menos cuarto", "Las nueve y cuarto"], correct: 1},
+        {type: "fill", q: "Complete: 'Es la ___' (usa-se para a 1 hora, no singular).", answer: "una", altAnswers: ["Una"]}
       ]
     },
     {
@@ -175,20 +174,6 @@ const LEVEL_ESTUDIORAPIDO = {
         "Repare no artigo de cada palavra (el/la) — em espanhol o gênero das palavras da casa muitas vezes muda em relação ao português."
       ],
       exercises: [
-        {type: "speak", prompt: "¿Dónde duermes por la noche?", target: "Duermo en la cama.", altAnswers: ["la cama", "En la cama"]},
-        {type: "speak", prompt: "¿Qué usas para apoyar la cabeza cuando duermes?", target: "Uso la almohada.", altAnswers: ["la almohada", "La almohada"]},
-        {type: "speak", prompt: "¿Dónde guardas la ropa colgada, dentro de un mueble alto?", target: "En el armario.", altAnswers: ["el armario", "El armario"]},
-        {type: "speak", prompt: "¿Qué enciendes por la noche para leer un libro?", target: "Enciendo la lámpara.", altAnswers: ["la lámpara", "La lámpara"]},
-        {type: "speak", prompt: "¿Dónde te miras para peinarte?", target: "En el espejo.", altAnswers: ["el espejo", "El espejo"]},
-        {type: "speak", prompt: "¿Qué abres para que entre luz natural en la habitación?", target: "Abro la ventana.", altAnswers: ["la ventana", "La ventana"]},
-        {type: "speak", prompt: "¿Qué cubre la ventana para bloquear la luz por la noche?", target: "La cortina.", altAnswers: ["la cortina"]},
-        {type: "speak", prompt: "¿Dónde guardas tus libros en la habitación?", target: "En la estantería.", altAnswers: ["la estantería", "La estantería"]},
-        {type: "speak", prompt: "¿Dónde estudias o escribes en tu habitación?", target: "En el escritorio.", altAnswers: ["el escritorio", "El escritorio"]},
-        {type: "speak", prompt: "¿Qué hay en el suelo, suave, cerca de la cama?", target: "La alfombra.", altAnswers: ["la alfombra"]},
-        {type: "speak", prompt: "¿Por dónde entras y sales de la habitación?", target: "Por la puerta.", altAnswers: ["la puerta", "Por la puerta"]},
-        {type: "speak", prompt: "¿Dónde pones la ropa sucia antes de lavarla?", target: "En la cesta de la ropa.", altAnswers: ["la cesta de la ropa"]},
-        {type: "mc", q: "'O cobertor' em espanhol é...", options: ["la almohada", "la manta", "la colcha", "el cojín"], correct: 1},
-        {type: "fill", q: "'A cômoda' em espanhol se escreve: la ___", answer: "cómoda", altAnswers: ["comoda"]},
         {
           type: "caso", icon: "🛏️", stamp: "✅ SOLICITUD ENVIADA",
           scenario: "Estás en un hotel en España y notas que faltan cosas en tu habitación.",
@@ -233,7 +218,21 @@ const LEVEL_ESTUDIORAPIDO = {
             }},
             { npc: "Perfecto, ya me estoy instalando. ¡Gracias por todo!" }
           ]
-        }
+        },
+        {type: "speak", prompt: "¿Dónde duermes por la noche?", target: "Duermo en la cama.", altAnswers: ["la cama", "En la cama"]},
+        {type: "speak", prompt: "¿Qué usas para apoyar la cabeza cuando duermes?", target: "Uso la almohada.", altAnswers: ["la almohada", "La almohada"]},
+        {type: "speak", prompt: "¿Dónde guardas la ropa colgada, dentro de un mueble alto?", target: "En el armario.", altAnswers: ["el armario", "El armario"]},
+        {type: "speak", prompt: "¿Qué enciendes por la noche para leer un libro?", target: "Enciendo la lámpara.", altAnswers: ["la lámpara", "La lámpara"]},
+        {type: "speak", prompt: "¿Dónde te miras para peinarte?", target: "En el espejo.", altAnswers: ["el espejo", "El espejo"]},
+        {type: "speak", prompt: "¿Qué abres para que entre luz natural en la habitación?", target: "Abro la ventana.", altAnswers: ["la ventana", "La ventana"]},
+        {type: "speak", prompt: "¿Qué cubre la ventana para bloquear la luz por la noche?", target: "La cortina.", altAnswers: ["la cortina"]},
+        {type: "speak", prompt: "¿Dónde guardas tus libros en la habitación?", target: "En la estantería.", altAnswers: ["la estantería", "La estantería"]},
+        {type: "speak", prompt: "¿Dónde estudias o escribes en tu habitación?", target: "En el escritorio.", altAnswers: ["el escritorio", "El escritorio"]},
+        {type: "speak", prompt: "¿Qué hay en el suelo, suave, cerca de la cama?", target: "La alfombra.", altAnswers: ["la alfombra"]},
+        {type: "speak", prompt: "¿Por dónde entras y sales de la habitación?", target: "Por la puerta.", altAnswers: ["la puerta", "Por la puerta"]},
+        {type: "speak", prompt: "¿Dónde pones la ropa sucia antes de lavarla?", target: "En la cesta de la ropa.", altAnswers: ["la cesta de la ropa"]},
+        {type: "mc", q: "'O cobertor' em espanhol é...", options: ["la almohada", "la manta", "la colcha", "el cojín"], correct: 1},
+        {type: "fill", q: "'A cômoda' em espanhol se escreve: la ___", answer: "cómoda", altAnswers: ["comoda"]}
       ]
     },
     {
@@ -270,21 +269,6 @@ const LEVEL_ESTUDIORAPIDO = {
         "'Nevera' é mais usado na Espanha; 'frigorífico' também é entendido e usado. Os dois estão corretos."
       ],
       exercises: [
-        {type: "speak", prompt: "¿Dónde guardas la comida fría, como la leche y las verduras?", target: "En la nevera.", altAnswers: ["la nevera", "En la nevera", "el frigorífico"]},
-        {type: "speak", prompt: "¿Dónde lavas los platos a mano?", target: "En el fregadero.", altAnswers: ["el fregadero", "En el fregadero"]},
-        {type: "speak", prompt: "¿Qué abres para que salga el agua en la cocina?", target: "El grifo.", altAnswers: ["el grifo", "Abro el grifo"]},
-        {type: "speak", prompt: "¿Dónde horneas un pastel?", target: "En el horno.", altAnswers: ["el horno", "En el horno"]},
-        {type: "speak", prompt: "¿Qué usas para calentar la comida muy rápido?", target: "El microondas.", altAnswers: ["el microondas"]},
-        {type: "speak", prompt: "¿Dónde cocinas el arroz o la sopa?", target: "En la olla.", altAnswers: ["la olla", "En la olla"]},
-        {type: "speak", prompt: "¿Qué usas para freír un huevo?", target: "La sartén.", altAnswers: ["la sartén"]},
-        {type: "speak", prompt: "¿Qué usas para cortar el pan o la carne?", target: "El cuchillo.", altAnswers: ["el cuchillo"]},
-        {type: "speak", prompt: "¿Qué máquina lava los platos por ti?", target: "El lavavajillas.", altAnswers: ["el lavavajillas"]},
-        {type: "speak", prompt: "¿Dónde comes, sentado con tu familia?", target: "En la mesa.", altAnswers: ["la mesa", "En la mesa"]},
-        {type: "speak", prompt: "¿En qué bebes el café por la mañana?", target: "En la taza.", altAnswers: ["la taza", "En la taza"]},
-        {type: "speak", prompt: "¿En qué bebes el agua?", target: "En el vaso.", altAnswers: ["el vaso", "En el vaso"]},
-        {type: "speak", prompt: "¿Dónde guardas los alimentos secos, como el arroz y la pasta?", target: "En la despensa.", altAnswers: ["la despensa", "En la despensa"]},
-        {type: "mc", q: "'A bancada' da cozinha, em espanhol, é...", options: ["la encimera", "la despensa", "el armario", "la vitrocerámica"], correct: 0},
-        {type: "fill", q: "'A cafeteira' em espanhol se escreve: la ___", answer: "cafetera"},
         {
           type: "caso", icon: "🍳", stamp: "✅ RECETA EN MARCHA",
           scenario: "Estás cocinando con un amigo español y necesitas un utensilio que no encuentras.",
@@ -329,7 +313,22 @@ const LEVEL_ESTUDIORAPIDO = {
             }},
             { npc: "¡Excelente trabajo! La tortilla va a quedar deliciosa." }
           ]
-        }
+        },
+        {type: "speak", prompt: "¿Dónde guardas la comida fría, como la leche y las verduras?", target: "En la nevera.", altAnswers: ["la nevera", "En la nevera", "el frigorífico"]},
+        {type: "speak", prompt: "¿Dónde lavas los platos a mano?", target: "En el fregadero.", altAnswers: ["el fregadero", "En el fregadero"]},
+        {type: "speak", prompt: "¿Qué abres para que salga el agua en la cocina?", target: "El grifo.", altAnswers: ["el grifo", "Abro el grifo"]},
+        {type: "speak", prompt: "¿Dónde horneas un pastel?", target: "En el horno.", altAnswers: ["el horno", "En el horno"]},
+        {type: "speak", prompt: "¿Qué usas para calentar la comida muy rápido?", target: "El microondas.", altAnswers: ["el microondas"]},
+        {type: "speak", prompt: "¿Dónde cocinas el arroz o la sopa?", target: "En la olla.", altAnswers: ["la olla", "En la olla"]},
+        {type: "speak", prompt: "¿Qué usas para freír un huevo?", target: "La sartén.", altAnswers: ["la sartén"]},
+        {type: "speak", prompt: "¿Qué usas para cortar el pan o la carne?", target: "El cuchillo.", altAnswers: ["el cuchillo"]},
+        {type: "speak", prompt: "¿Qué máquina lava los platos por ti?", target: "El lavavajillas.", altAnswers: ["el lavavajillas"]},
+        {type: "speak", prompt: "¿Dónde comes, sentado con tu familia?", target: "En la mesa.", altAnswers: ["la mesa", "En la mesa"]},
+        {type: "speak", prompt: "¿En qué bebes el café por la mañana?", target: "En la taza.", altAnswers: ["la taza", "En la taza"]},
+        {type: "speak", prompt: "¿En qué bebes el agua?", target: "En el vaso.", altAnswers: ["el vaso", "En el vaso"]},
+        {type: "speak", prompt: "¿Dónde guardas los alimentos secos, como el arroz y la pasta?", target: "En la despensa.", altAnswers: ["la despensa", "En la despensa"]},
+        {type: "mc", q: "'A bancada' da cozinha, em espanhol, é...", options: ["la encimera", "la despensa", "el armario", "la vitrocerámica"], correct: 0},
+        {type: "fill", q: "'A cafeteira' em espanhol se escreve: la ___", answer: "cafetera"}
       ]
     },
     {
@@ -362,19 +361,6 @@ const LEVEL_ESTUDIORAPIDO = {
         "'El bidé' é bem comum nos banheiros da Espanha — vale aprender a palavra mesmo sem esse costume no Brasil."
       ],
       exercises: [
-        {type: "speak", prompt: "¿Dónde te lavas las manos y la cara?", target: "En el lavabo.", altAnswers: ["el lavabo", "En el lavabo"]},
-        {type: "speak", prompt: "¿Dónde te bañas de pie, con el agua cayendo desde arriba?", target: "En la ducha.", altAnswers: ["la ducha", "En la ducha"]},
-        {type: "speak", prompt: "¿Dónde te bañas sentado, en una bañera llena de agua?", target: "En la bañera.", altAnswers: ["la bañera", "En la bañera"]},
-        {type: "speak", prompt: "¿Dónde te sientas para hacer tus necesidades?", target: "En el inodoro.", altAnswers: ["el inodoro", "En el inodoro"]},
-        {type: "speak", prompt: "¿Qué papel usas después de ir al baño?", target: "El papel higiénico.", altAnswers: ["el papel higiénico"]},
-        {type: "speak", prompt: "¿Qué usas para lavarte el pelo?", target: "El champú.", altAnswers: ["el champú"]},
-        {type: "speak", prompt: "¿Qué usas para cepillarte los dientes?", target: "El cepillo de dientes.", altAnswers: ["el cepillo de dientes"]},
-        {type: "speak", prompt: "¿Con qué te secas después de la ducha?", target: "Me seco con la toalla.", altAnswers: ["la toalla", "Con la toalla"]},
-        {type: "speak", prompt: "¿Dónde te miras para peinarte o afeitarte?", target: "En el espejo.", altAnswers: ["el espejo", "En el espejo"]},
-        {type: "speak", prompt: "¿Qué usas para saber tu peso?", target: "La báscula.", altAnswers: ["la báscula"]},
-        {type: "speak", prompt: "¿Qué separa la ducha del resto del baño, hecho de vidrio?", target: "La mampara.", altAnswers: ["la mampara"]},
-        {type: "mc", q: "'O box de vidro' do chuveiro, em espanhol, é...", options: ["la mampara", "la bañera", "el bidé", "la alfombrilla"], correct: 0},
-        {type: "fill", q: "'A esponja' em espanhol se escreve: la ___", answer: "esponja"},
         {
           type: "caso", icon: "🧻", stamp: "✅ SERVICIO SOLICITADO",
           scenario: "Estás en un hotel y el papel higiénico del baño se ha acabado.",
@@ -419,7 +405,20 @@ const LEVEL_ESTUDIORAPIDO = {
             }},
             { npc: "Perfecto, gracias por todo. ¡Que tengas un buen día!" }
           ]
-        }
+        },
+        {type: "speak", prompt: "¿Dónde te lavas las manos y la cara?", target: "En el lavabo.", altAnswers: ["el lavabo", "En el lavabo"]},
+        {type: "speak", prompt: "¿Dónde te bañas de pie, con el agua cayendo desde arriba?", target: "En la ducha.", altAnswers: ["la ducha", "En la ducha"]},
+        {type: "speak", prompt: "¿Dónde te bañas sentado, en una bañera llena de agua?", target: "En la bañera.", altAnswers: ["la bañera", "En la bañera"]},
+        {type: "speak", prompt: "¿Dónde te sientas para hacer tus necesidades?", target: "En el inodoro.", altAnswers: ["el inodoro", "En el inodoro"]},
+        {type: "speak", prompt: "¿Qué papel usas después de ir al baño?", target: "El papel higiénico.", altAnswers: ["el papel higiénico"]},
+        {type: "speak", prompt: "¿Qué usas para lavarte el pelo?", target: "El champú.", altAnswers: ["el champú"]},
+        {type: "speak", prompt: "¿Qué usas para cepillarte los dientes?", target: "El cepillo de dientes.", altAnswers: ["el cepillo de dientes"]},
+        {type: "speak", prompt: "¿Con qué te secas después de la ducha?", target: "Me seco con la toalla.", altAnswers: ["la toalla", "Con la toalla"]},
+        {type: "speak", prompt: "¿Dónde te miras para peinarte o afeitarte?", target: "En el espejo.", altAnswers: ["el espejo", "En el espejo"]},
+        {type: "speak", prompt: "¿Qué usas para saber tu peso?", target: "La báscula.", altAnswers: ["la báscula"]},
+        {type: "speak", prompt: "¿Qué separa la ducha del resto del baño, hecho de vidrio?", target: "La mampara.", altAnswers: ["la mampara"]},
+        {type: "mc", q: "'O box de vidro' do chuveiro, em espanhol, é...", options: ["la mampara", "la bañera", "el bidé", "la alfombrilla"], correct: 0},
+        {type: "fill", q: "'A esponja' em espanhol se escreve: la ___", answer: "esponja"}
       ]
     },
     {
@@ -457,19 +456,6 @@ const LEVEL_ESTUDIORAPIDO = {
         "'Bocadillo' é o sanduíche feito com pão tipo baguete, muito comum na Espanha — diferente do 'sándwich' feito com pão de forma."
       ],
       exercises: [
-        {type: "speak", prompt: "Entras en la cafetería y quieres ver qué hay para pedir. ¿Qué le pides al camarero?", target: "El menú, por favor.", altAnswers: ["el menú", "El menú"]},
-        {type: "speak", prompt: "¿Quién te atiende y te trae la comida en la cafetería?", target: "El camarero.", altAnswers: ["el camarero", "la camarera"]},
-        {type: "speak", prompt: "Tienes mucho sueño por la mañana. ¿Qué bebida caliente pides?", target: "Un café con leche, por favor.", altAnswers: ["café con leche", "el café con leche"]},
-        {type: "speak", prompt: "Quieres una bebida fría y natural, hecha de naranja. ¿Qué pides?", target: "Un zumo de naranja, por favor.", altAnswers: ["zumo de naranja", "el zumo de naranja"]},
-        {type: "speak", prompt: "Quieres pan tostado para desayunar. ¿Qué pides?", target: "Una tostada, por favor.", altAnswers: ["tostada", "la tostada"]},
-        {type: "speak", prompt: "Quieres un sándwich hecho con pan tipo baguete. ¿Qué pides?", target: "Un bocadillo, por favor.", altAnswers: ["bocadillo", "el bocadillo"]},
-        {type: "speak", prompt: "¿Dónde te sientas si prefieres tomar el café afuera, al aire libre?", target: "En la terraza.", altAnswers: ["la terraza", "En la terraza"]},
-        {type: "speak", prompt: "¿Dónde pagas la cuenta al final?", target: "En la caja registradora.", altAnswers: ["la caja registradora"]},
-        {type: "speak", prompt: "¿En qué te sirven el café, normalmente?", target: "En la taza.", altAnswers: ["la taza", "En la taza"]},
-        {type: "speak", prompt: "¿Qué le pones al café si te gusta dulce?", target: "Azúcar.", altAnswers: ["el azúcar", "Le pongo azúcar"]},
-        {type: "speak", prompt: "¿Con qué remueves el azúcar dentro del café?", target: "Con la cucharilla.", altAnswers: ["la cucharilla", "Con la cucharilla"]},
-        {type: "mc", q: "O sanduíche de pão tipo baguete, na Espanha, se chama...", options: ["el sándwich", "el bocadillo", "la tostada", "el croissant"], correct: 1},
-        {type: "fill", q: "'A colherzinha' de café, em espanhol, se escreve: la ___", answer: "cucharilla"},
         {
           type: "caso", icon: "☕", stamp: "✅ PEDIDO TOMADO",
           scenario: "Llegas a una cafetería en Madrid con hambre y quieres pedir algo específico.",
@@ -514,7 +500,20 @@ const LEVEL_ESTUDIORAPIDO = {
             }},
             { npc: "Claro, aquí tiene. ¡Que aproveche!" }
           ]
-        }
+        },
+        {type: "speak", prompt: "Entras en la cafetería y quieres ver qué hay para pedir. ¿Qué le pides al camarero?", target: "El menú, por favor.", altAnswers: ["el menú", "El menú"]},
+        {type: "speak", prompt: "¿Quién te atiende y te trae la comida en la cafetería?", target: "El camarero.", altAnswers: ["el camarero", "la camarera"]},
+        {type: "speak", prompt: "Tienes mucho sueño por la mañana. ¿Qué bebida caliente pides?", target: "Un café con leche, por favor.", altAnswers: ["café con leche", "el café con leche"]},
+        {type: "speak", prompt: "Quieres una bebida fría y natural, hecha de naranja. ¿Qué pides?", target: "Un zumo de naranja, por favor.", altAnswers: ["zumo de naranja", "el zumo de naranja"]},
+        {type: "speak", prompt: "Quieres pan tostado para desayunar. ¿Qué pides?", target: "Una tostada, por favor.", altAnswers: ["tostada", "la tostada"]},
+        {type: "speak", prompt: "Quieres un sándwich hecho con pan tipo baguete. ¿Qué pides?", target: "Un bocadillo, por favor.", altAnswers: ["bocadillo", "el bocadillo"]},
+        {type: "speak", prompt: "¿Dónde te sientas si prefieres tomar el café afuera, al aire libre?", target: "En la terraza.", altAnswers: ["la terraza", "En la terraza"]},
+        {type: "speak", prompt: "¿Dónde pagas la cuenta al final?", target: "En la caja registradora.", altAnswers: ["la caja registradora"]},
+        {type: "speak", prompt: "¿En qué te sirven el café, normalmente?", target: "En la taza.", altAnswers: ["la taza", "En la taza"]},
+        {type: "speak", prompt: "¿Qué le pones al café si te gusta dulce?", target: "Azúcar.", altAnswers: ["el azúcar", "Le pongo azúcar"]},
+        {type: "speak", prompt: "¿Con qué remueves el azúcar dentro del café?", target: "Con la cucharilla.", altAnswers: ["la cucharilla", "Con la cucharilla"]},
+        {type: "mc", q: "O sanduíche de pão tipo baguete, na Espanha, se chama...", options: ["el sándwich", "el bocadillo", "la tostada", "el croissant"], correct: 1},
+        {type: "fill", q: "'A colherzinha' de café, em espanhol, se escreve: la ___", answer: "cucharilla"}
       ]
     },
     {
@@ -539,17 +538,6 @@ const LEVEL_ESTUDIORAPIDO = {
       grammar: [],
       notes: [],
       exercises: [
-        {type: "speak", prompt: "¿Quién hace y vende el pan en la panadería?", target: "El panadero.", altAnswers: ["el panadero", "la panadera"]},
-        {type: "speak", prompt: "¿Qué compras todos los días para hacer un sándwich?", target: "Pan.", altAnswers: ["el pan", "Compro pan"]},
-        {type: "speak", prompt: "¿Con qué se hace el pan?", target: "Con harina.", altAnswers: ["la harina", "Se hace con harina"]},
-        {type: "speak", prompt: "Quieres algo dulce para el café, con forma redonda. ¿Qué pides?", target: "Un pastel, por favor.", altAnswers: ["pastel", "el pastel"]},
-        {type: "speak", prompt: "Quieres un bizcochito pequeño y esponjoso. ¿Qué pides?", target: "Una magdalena, por favor.", altAnswers: ["magdalena", "la magdalena"]},
-        {type: "speak", prompt: "Quieres algo crujiente y dulce para acompañar el té. ¿Qué pides?", target: "Una galleta, por favor.", altAnswers: ["galleta", "la galleta"]},
-        {type: "speak", prompt: "¿Dónde pesa el panadero el pan antes de venderlo?", target: "En la balanza.", altAnswers: ["la balanza", "En la balanza"]},
-        {type: "speak", prompt: "¿En qué te da el panadero el pan para llevarlo a casa?", target: "En la bolsa.", altAnswers: ["la bolsa", "En la bolsa"]},
-        {type: "speak", prompt: "¿Dónde pagas en la panadería?", target: "En la caja registradora.", altAnswers: ["la caja registradora"]},
-        {type: "mc", q: "'O bolinho/queque' pequeno, em espanhol, se chama...", options: ["la magdalena", "la galleta", "la napolitana", "la palmerita"], correct: 0},
-        {type: "fill", q: "'O pão doce' em espanhol se escreve: el pan ___", answer: "dulce"},
         {
           type: "caso", icon: "🥖", stamp: "✅ ENCARGO CONFIRMADO",
           scenario: "Vas a organizar una reunión de trabajo y necesitas encargar pan y dulces para los invitados.",
@@ -594,7 +582,18 @@ const LEVEL_ESTUDIORAPIDO = {
             }},
             { npc: "Perfecto, aquí lo tendrá mañana a primera hora." }
           ]
-        }
+        },
+        {type: "speak", prompt: "¿Quién hace y vende el pan en la panadería?", target: "El panadero.", altAnswers: ["el panadero", "la panadera"]},
+        {type: "speak", prompt: "¿Qué compras todos los días para hacer un sándwich?", target: "Pan.", altAnswers: ["el pan", "Compro pan"]},
+        {type: "speak", prompt: "¿Con qué se hace el pan?", target: "Con harina.", altAnswers: ["la harina", "Se hace con harina"]},
+        {type: "speak", prompt: "Quieres algo dulce para el café, con forma redonda. ¿Qué pides?", target: "Un pastel, por favor.", altAnswers: ["pastel", "el pastel"]},
+        {type: "speak", prompt: "Quieres un bizcochito pequeño y esponjoso. ¿Qué pides?", target: "Una magdalena, por favor.", altAnswers: ["magdalena", "la magdalena"]},
+        {type: "speak", prompt: "Quieres algo crujiente y dulce para acompañar el té. ¿Qué pides?", target: "Una galleta, por favor.", altAnswers: ["galleta", "la galleta"]},
+        {type: "speak", prompt: "¿Dónde pesa el panadero el pan antes de venderlo?", target: "En la balanza.", altAnswers: ["la balanza", "En la balanza"]},
+        {type: "speak", prompt: "¿En qué te da el panadero el pan para llevarlo a casa?", target: "En la bolsa.", altAnswers: ["la bolsa", "En la bolsa"]},
+        {type: "speak", prompt: "¿Dónde pagas en la panadería?", target: "En la caja registradora.", altAnswers: ["la caja registradora"]},
+        {type: "mc", q: "'O bolinho/queque' pequeno, em espanhol, se chama...", options: ["la magdalena", "la galleta", "la napolitana", "la palmerita"], correct: 0},
+        {type: "fill", q: "'O pão doce' em espanhol se escreve: el pan ___", answer: "dulce"}
       ]
     },
     {
@@ -649,23 +648,6 @@ const LEVEL_ESTUDIORAPIDO = {
         "As categorias 'Proceso y hallazgos' e 'Personas y reunión' foram ampliadas para dar mais profundidade a este módulo, já que é o tema mais ligado ao seu trabalho na Quallisi."
       ],
       exercises: [
-        {type: "speak", prompt: "¿Quién revisa los procesos y documentos de una empresa para verificar que todo esté correcto?", target: "El auditor.", altAnswers: ["el auditor", "la auditora"]},
-        {type: "speak", prompt: "Al terminar la auditoría, ¿qué documento entregas con los resultados?", target: "El informe.", altAnswers: ["el informe"]},
-        {type: "speak", prompt: "¿Dónde guardas los documentos de la auditoría, organizados?", target: "En la carpeta.", altAnswers: ["la carpeta", "En la carpeta"]},
-        {type: "speak", prompt: "¿Qué usas para verificar, punto por punto, si cada requisito se cumple?", target: "La lista de verificación.", altAnswers: ["la lista de verificación", "el checklist"]},
-        {type: "speak", prompt: "¿Cómo se llama un problema real que encuentras durante la auditoría?", target: "El hallazgo.", altAnswers: ["el hallazgo"]},
-        {type: "speak", prompt: "Cuando algo NO cumple con la norma, decimos que hay...", target: "No conformidad.", altAnswers: ["la no conformidad", "una no conformidad"]},
-        {type: "speak", prompt: "Después de encontrar un problema, ¿qué se implementa para corregirlo?", target: "La acción correctiva.", altAnswers: ["la acción correctiva"]},
-        {type: "speak", prompt: "¿Cómo se llama el documento oficial que certifica que una empresa cumple una norma?", target: "La certificación.", altAnswers: ["la certificación"]},
-        {type: "speak", prompt: "¿Cómo se llama el auditor que dirige y coordina todo el equipo?", target: "El auditor líder.", altAnswers: ["el auditor líder", "auditor líder"]},
-        {type: "speak", prompt: "¿Cómo se llama la empresa o el área que está siendo auditada?", target: "El auditado.", altAnswers: ["el auditado"]},
-        {type: "speak", prompt: "¿Cómo se llama la reunión al INICIO de la auditoría, donde se explica el plan?", target: "La reunión de apertura.", altAnswers: ["la reunión de apertura"]},
-        {type: "speak", prompt: "¿Cómo se llama la reunión al FINAL, donde se presentan los resultados?", target: "La reunión de cierre.", altAnswers: ["la reunión de cierre"]},
-        {type: "speak", prompt: "¿Cómo se llama el documento que describe, paso a paso, cómo se hace una tarea?", target: "El procedimiento.", altAnswers: ["el procedimiento"]},
-        {type: "mc", q: "'A pasta de documentos', em espanhol, é...", options: ["la carpeta", "el informe", "la firma", "el hallazgo"], correct: 0},
-        {type: "mc", q: "Cuando un requisito de la norma NO se cumple, se llama...", options: ["conformidad", "hallazgo positivo", "no conformidad", "certificación"], correct: 2},
-        {type: "fill", q: "'O computador' em espanhol se escreve: el ___", answer: "ordenador"},
-        {type: "fill", q: "'A reunião ao final da auditoria, onde se apresentam os resultados' se escreve: la reunión de ___", answer: "cierre"},
         {
           type: "caso", icon: "📋", stamp: "✅ HALLAZGO REGISTRADO",
           scenario: "Terminaste la auditoría y encontraste una no conformidad importante en la empresa de tu cliente. Necesitas explicarla a la alta dirección.",
@@ -720,7 +702,24 @@ const LEVEL_ESTUDIORAPIDO = {
             }},
             { npc: "¡Excelente! Nos vemos en la reunión de cierre. ¡Buen trabajo hoy!" }
           ]
-        }
+        },
+        {type: "speak", prompt: "¿Quién revisa los procesos y documentos de una empresa para verificar que todo esté correcto?", target: "El auditor.", altAnswers: ["el auditor", "la auditora"]},
+        {type: "speak", prompt: "Al terminar la auditoría, ¿qué documento entregas con los resultados?", target: "El informe.", altAnswers: ["el informe"]},
+        {type: "speak", prompt: "¿Dónde guardas los documentos de la auditoría, organizados?", target: "En la carpeta.", altAnswers: ["la carpeta", "En la carpeta"]},
+        {type: "speak", prompt: "¿Qué usas para verificar, punto por punto, si cada requisito se cumple?", target: "La lista de verificación.", altAnswers: ["la lista de verificación", "el checklist"]},
+        {type: "speak", prompt: "¿Cómo se llama un problema real que encuentras durante la auditoría?", target: "El hallazgo.", altAnswers: ["el hallazgo"]},
+        {type: "speak", prompt: "Cuando algo NO cumple con la norma, decimos que hay...", target: "No conformidad.", altAnswers: ["la no conformidad", "una no conformidad"]},
+        {type: "speak", prompt: "Después de encontrar un problema, ¿qué se implementa para corregirlo?", target: "La acción correctiva.", altAnswers: ["la acción correctiva"]},
+        {type: "speak", prompt: "¿Cómo se llama el documento oficial que certifica que una empresa cumple una norma?", target: "La certificación.", altAnswers: ["la certificación"]},
+        {type: "speak", prompt: "¿Cómo se llama el auditor que dirige y coordina todo el equipo?", target: "El auditor líder.", altAnswers: ["el auditor líder", "auditor líder"]},
+        {type: "speak", prompt: "¿Cómo se llama la empresa o el área que está siendo auditada?", target: "El auditado.", altAnswers: ["el auditado"]},
+        {type: "speak", prompt: "¿Cómo se llama la reunión al INICIO de la auditoría, donde se explica el plan?", target: "La reunión de apertura.", altAnswers: ["la reunión de apertura"]},
+        {type: "speak", prompt: "¿Cómo se llama la reunión al FINAL, donde se presentan los resultados?", target: "La reunión de cierre.", altAnswers: ["la reunión de cierre"]},
+        {type: "speak", prompt: "¿Cómo se llama el documento que describe, paso a paso, cómo se hace una tarea?", target: "El procedimiento.", altAnswers: ["el procedimiento"]},
+        {type: "mc", q: "'A pasta de documentos', em espanhol, é...", options: ["la carpeta", "el informe", "la firma", "el hallazgo"], correct: 0},
+        {type: "mc", q: "Cuando un requisito de la norma NO se cumple, se llama...", options: ["conformidad", "hallazgo positivo", "no conformidad", "certificación"], correct: 2},
+        {type: "fill", q: "'O computador' em espanhol se escreve: el ___", answer: "ordenador"},
+        {type: "fill", q: "'A reunião ao final da auditoria, onde se apresentam os resultados' se escreve: la reunión de ___", answer: "cierre"}
       ]
     },
     {
@@ -774,23 +773,6 @@ const LEVEL_ESTUDIORAPIDO = {
         "As categorias 'Documentos y check-in' e 'En el vuelo y la llegada' foram adicionadas para cobrir toda a jornada do viajante, do check-in até a chegada."
       ],
       exercises: [
-        {type: "speak", prompt: "¿En qué medio de transporte viajas por el aire?", target: "En el avión.", altAnswers: ["el avión", "En el avión"]},
-        {type: "speak", prompt: "¿Dónde pones tu ropa cuando viajas?", target: "En la maleta.", altAnswers: ["la maleta", "En la maleta"]},
-        {type: "speak", prompt: "¿Qué documento necesitas para viajar a otro país?", target: "El pasaporte.", altAnswers: ["el pasaporte"]},
-        {type: "speak", prompt: "¿Qué necesitas para poder subir al avión?", target: "La tarjeta de embarque.", altAnswers: ["la tarjeta de embarque"]},
-        {type: "speak", prompt: "¿Dónde revisan que no llevas objetos prohibidos?", target: "En el control de seguridad.", altAnswers: ["el control de seguridad"]},
-        {type: "speak", prompt: "¿Dónde revisan tu pasaporte al entrar a otro país?", target: "En la aduana.", altAnswers: ["la aduana"]},
-        {type: "speak", prompt: "¿Cómo se llama la bolsa pequeña que llevas contigo dentro del avión?", target: "El equipaje de mano.", altAnswers: ["el equipaje de mano"]},
-        {type: "speak", prompt: "¿Cómo se llama la empresa que opera el vuelo, como Iberia o Vueling?", target: "La aerolínea.", altAnswers: ["la aerolínea"]},
-        {type: "speak", prompt: "Si tu maleta pesa más de lo permitido, tienes que pagar por el...", target: "Exceso de equipaje.", altAnswers: ["el exceso de equipaje"]},
-        {type: "speak", prompt: "Si tu vuelo no sale a la hora prevista, ¿qué tiene el vuelo?", target: "Tiene un retraso.", altAnswers: ["el retraso", "un retraso"]},
-        {type: "speak", prompt: "¿Qué te pones antes de despegar, por seguridad?", target: "El cinturón de seguridad.", altAnswers: ["el cinturón de seguridad"]},
-        {type: "speak", prompt: "¿Cómo se llama el momento en que el avión sube y deja el suelo?", target: "El despegue.", altAnswers: ["el despegue"]},
-        {type: "speak", prompt: "¿Cómo se llama el momento en que el avión toca el suelo al final del vuelo?", target: "El aterrizaje.", altAnswers: ["el aterrizaje"]},
-        {type: "mc", q: "'O painel de partidas', em espanhol, é...", options: ["la pantalla de salidas", "la torre de control", "la pista de aterrizaje", "la aduana"], correct: 0},
-        {type: "mc", q: "El grupo de personas que trabaja dentro del avión (piloto, auxiliares...) se llama...", options: ["la aerolínea", "la tripulación", "el mostrador", "la aduana"], correct: 1},
-        {type: "fill", q: "'A bagagem de mão' em espanhol se escreve: el equipaje de ___", answer: "mano"},
-        {type: "fill", q: "'O momento em que o avião sobe e deixa o solo' se escreve: el ___", answer: "despegue"},
         {
           type: "caso", icon: "🛫", stamp: "✅ INFORMACIÓN CONFIRMADA",
           scenario: "Llegas al aeropuerto y descubres que tu vuelo tiene un retraso importante.",
@@ -835,7 +817,24 @@ const LEVEL_ESTUDIORAPIDO = {
             }},
             { npc: "Sí, a la derecha hay una sala de espera. ¡Buen viaje!" }
           ]
-        }
+        },
+        {type: "speak", prompt: "¿En qué medio de transporte viajas por el aire?", target: "En el avión.", altAnswers: ["el avión", "En el avión"]},
+        {type: "speak", prompt: "¿Dónde pones tu ropa cuando viajas?", target: "En la maleta.", altAnswers: ["la maleta", "En la maleta"]},
+        {type: "speak", prompt: "¿Qué documento necesitas para viajar a otro país?", target: "El pasaporte.", altAnswers: ["el pasaporte"]},
+        {type: "speak", prompt: "¿Qué necesitas para poder subir al avión?", target: "La tarjeta de embarque.", altAnswers: ["la tarjeta de embarque"]},
+        {type: "speak", prompt: "¿Dónde revisan que no llevas objetos prohibidos?", target: "En el control de seguridad.", altAnswers: ["el control de seguridad"]},
+        {type: "speak", prompt: "¿Dónde revisan tu pasaporte al entrar a otro país?", target: "En la aduana.", altAnswers: ["la aduana"]},
+        {type: "speak", prompt: "¿Cómo se llama la bolsa pequeña que llevas contigo dentro del avión?", target: "El equipaje de mano.", altAnswers: ["el equipaje de mano"]},
+        {type: "speak", prompt: "¿Cómo se llama la empresa que opera el vuelo, como Iberia o Vueling?", target: "La aerolínea.", altAnswers: ["la aerolínea"]},
+        {type: "speak", prompt: "Si tu maleta pesa más de lo permitido, tienes que pagar por el...", target: "Exceso de equipaje.", altAnswers: ["el exceso de equipaje"]},
+        {type: "speak", prompt: "Si tu vuelo no sale a la hora prevista, ¿qué tiene el vuelo?", target: "Tiene un retraso.", altAnswers: ["el retraso", "un retraso"]},
+        {type: "speak", prompt: "¿Qué te pones antes de despegar, por seguridad?", target: "El cinturón de seguridad.", altAnswers: ["el cinturón de seguridad"]},
+        {type: "speak", prompt: "¿Cómo se llama el momento en que el avión sube y deja el suelo?", target: "El despegue.", altAnswers: ["el despegue"]},
+        {type: "speak", prompt: "¿Cómo se llama el momento en que el avión toca el suelo al final del vuelo?", target: "El aterrizaje.", altAnswers: ["el aterrizaje"]},
+        {type: "mc", q: "'O painel de partidas', em espanhol, é...", options: ["la pantalla de salidas", "la torre de control", "la pista de aterrizaje", "la aduana"], correct: 0},
+        {type: "mc", q: "El grupo de personas que trabaja dentro del avión (piloto, auxiliares...) se llama...", options: ["la aerolínea", "la tripulación", "el mostrador", "la aduana"], correct: 1},
+        {type: "fill", q: "'A bagagem de mão' em espanhol se escreve: el equipaje de ___", answer: "mano"},
+        {type: "fill", q: "'O momento em que o avião sobe e deixa o solo' se escreve: el ___", answer: "despegue"}
       ]
     }
   ]
