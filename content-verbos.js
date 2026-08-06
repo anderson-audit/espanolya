@@ -16,11 +16,11 @@
 
 const LEVEL_VERBOS = {
   id: "verbos",
-  name: "Verbos PT↔ES",
+  name: "Verbos e Conectores",
   icon: "📖",
   colorFrom: "#1565C0",
   colorTo: "#0d47a1",
-  description: "Módulo bônus de consulta rápida: mais de 200 verbos com conjugação completa (Presente, Pretérito Perfeito, Pretérito Imperfeito, Futuro e Presente do Subjuntivo) em português e espanhol, lado a lado. Sem exercícios nem prova — é o seu dicionário de conjugação dentro do curso.",
+  description: "Módulo bônus de consulta rápida: mais de 200 verbos com conjugação completa (Presente, Pretérito Perfeito, Pretérito Imperfeito, Futuro e Presente do Subjuntivo) em português e espanhol, lado a lado, mais uma lição dedicada aos conectores del discurso (adición, secuencia, contraste, causa, consecuencia, ejemplificación e conclusión) com explicação e exercícios de empregabilidade.",
   lessons: [
     {
       id: "verb-irreg", order: 1, title: "Verbos Irregulares", subtitle: "19 verbos — os mais usados e mais irregulares",
@@ -1558,6 +1558,137 @@ const LEVEL_VERBOS = {
         "Este módulo é só de consulta rápida — não tem exercícios nem prova. Use-o como dicionário de conjugação sempre que precisar, durante qualquer nível do curso."
       ],
       exercises: []
+    },
+    {
+      id: "verb-conectores", order: 6, title: "Conectores del Discurso", subtitle: "35 conectores en 7 categorías — la cohesión que conecta tus verbos en frases y textos",
+      vocabulary: [
+        {category:"➕ Conectores de adición", items:[
+          {es:"además", pt:"além disso"},{es:"también", pt:"também"},{es:"asimismo", pt:"assim também / da mesma forma (formal)"},
+          {es:"incluso", pt:"inclusive / até mesmo"},{es:"de igual manera", pt:"da mesma maneira"}
+        ]},
+        {category:"⏩ Conectores de secuencia o tiempo", items:[
+          {es:"luego", pt:"logo, em seguida"},{es:"después", pt:"depois"},{es:"mientras", pt:"enquanto"},
+          {es:"al mismo tiempo", pt:"ao mesmo tempo"},{es:"finalmente", pt:"finalmente"}
+        ]},
+        {category:"⚖️ Conectores de contraste u oposición", items:[
+          {es:"pero", pt:"mas, porém"},{es:"sin embargo", pt:"no entanto, contudo"},{es:"aunque", pt:"embora, ainda que"},
+          {es:"no obstante", pt:"não obstante, contudo (muy formal)"},{es:"en cambio", pt:"em contrapartida, por outro lado"}
+        ]},
+        {category:"📌 Conectores de causa", items:[
+          {es:"porque", pt:"porque"},{es:"ya que", pt:"já que"},{es:"dado que", pt:"dado que"},
+          {es:"puesto que", pt:"posto que, uma vez que"},{es:"debido a", pt:"devido a (+ sustantivo)"}
+        ]},
+        {category:"🎯 Conectores de consecuencia", items:[
+          {es:"por lo tanto", pt:"portanto"},{es:"así que", pt:"então, de modo que"},{es:"en consecuencia", pt:"em consequência, consequentemente"},
+          {es:"de modo que", pt:"de modo que"},{es:"entonces", pt:"então"}
+        ]},
+        {category:"📊 Conectores de ejemplificación", items:[
+          {es:"por ejemplo", pt:"por exemplo"},{es:"en particular", pt:"em particular"},
+          {es:"como muestra", pt:"como mostra"},{es:"tal como", pt:"tal como, assim como"}
+        ]},
+        {category:"📝 Conectores de conclusión", items:[
+          {es:"en resumen", pt:"em resumo"},{es:"en definitiva", pt:"em definitivo, enfim"},{es:"en conclusión", pt:"em conclusão"},
+          {es:"para terminar", pt:"para terminar, finalizando"},{es:"en síntesis", pt:"em síntese"}
+        ]}
+      ],
+      grammar: [
+      {title:"➕ Adición — cuándo usar cada uno", headers:["Conector","Ejemplo en español","Uso (nota en português)"], rows:[
+        ["además", "El curso es muy completo; además, tiene certificado.", "Reforça uma ideia já dita, soma informação nova — o mais neutro."],
+        ["también", "Ella habla inglés y también habla francés.", "Soma uma ação/característica igual à anterior — o mais comum e informal."],
+        ["asimismo", "El informe fue aprobado; asimismo, se liberó el presupuesto.", "Mais formal que 'también' — comum em relatórios e textos técnicos."],
+        ["incluso", "Estudió mucho, incluso los fines de semana.", "Destaca um caso extremo dentro da soma — 'até mesmo'."],
+        ["de igual manera", "El profesor explicó la teoría; de igual manera, mostró ejemplos.", "Soma uma ação equivalente/paralela à anterior."]
+      ]},
+      {title:"⏩ Secuencia o tiempo — cuándo usar cada uno", headers:["Conector","Ejemplo en español","Uso (nota en português)"], rows:[
+        ["luego", "Primero desayuno, luego salgo a trabajar.", "Indica a próxima etapa da sequência."],
+        ["después", "Terminé el informe y después lo envié.", "Ação posterior — sinônimo próximo de 'luego'."],
+        ["mientras", "Ella cocina mientras él pone la mesa.", "Duas ações simultâneas, cada uma com seu sujeito."],
+        ["al mismo tiempo", "Estudia español y, al mismo tiempo, trabaja en auditoría.", "Simultaneidade explícita, mais enfática que 'mientras'."],
+        ["finalmente", "Revisamos todo y finalmente firmamos el contrato.", "Última etapa/conclusão da sequência de ações."]
+      ]},
+      {title:"⚖️ Contraste u oposición — cuándo usar cada uno", headers:["Conector","Ejemplo en español","Uso (nota en português)"], rows:[
+        ["pero", "Quiero viajar, pero no tengo tiempo.", "Contraste simples e neutro — o mais usado no dia a dia."],
+        ["sin embargo", "El proyecto es caro; sin embargo, vale la pena.", "Contraste formal, geralmente após punto y coma o punto."],
+        ["aunque", "Aunque llueva, iremos a la reunión.", "Concessão — geralmente no início da frase."],
+        ["no obstante", "Los resultados fueron bajos; no obstante, el equipo mejoró.", "Muito formal — típico de auditoría, normas e informes."],
+        ["en cambio", "Juan llegó temprano; en cambio, María llegó tarde.", "Contraste entre dois elementos/pessoas distintas."]
+      ]},
+      {title:"📌 Causa — cuándo usar cada uno", headers:["Conector","Ejemplo en español","Uso (nota en português)"], rows:[
+        ["porque", "No fui a la reunión porque estaba enfermo.", "Causa direta e informal — a mais usada."],
+        ["ya que", "Ya que estás aquí, revisemos el informe.", "Causa já conhecida/óbvia para quem escuta."],
+        ["dado que", "Dado que el plazo venció, se aplicará una multa.", "Formal — comum em auditoría e normas técnicas."],
+        ["puesto que", "Puesto que los datos son correctos, aprobamos el informe.", "Formal, semelhante a 'dado que'."],
+        ["debido a", "El vuelo se canceló debido a la tormenta.", "Seguido de substantivo, não de verbo conjugado."]
+      ]},
+      {title:"🎯 Consecuencia — cuándo usar cada uno", headers:["Conector","Ejemplo en español","Uso (nota en português)"], rows:[
+        ["por lo tanto", "No cumplió los requisitos; por lo tanto, fue rechazado.", "Consequência lógica e formal."],
+        ["así que", "Llovía mucho, así que cancelamos el paseo.", "Mais informal que 'por lo tanto'."],
+        ["en consecuencia", "El sistema falló; en consecuencia, se perdieron los datos.", "Formal — comum em relatórios e auditoría."],
+        ["de modo que", "Organizamos todo con tiempo, de modo que no hubo problemas.", "Resultado planejado ou natural do que foi feito antes."],
+        ["entonces", "Estudiaste mucho, entonces vas a aprobar.", "Consequência simples e coloquial."]
+      ]},
+      {title:"📊 Ejemplificación — cuándo usar cada uno", headers:["Conector","Ejemplo en español","Uso (nota en português)"], rows:[
+        ["por ejemplo", "Hay varios documentos obligatorios, por ejemplo, el contrato.", "O mais comum para introduzir um exemplo."],
+        ["en particular", "Todos los informes son importantes, en particular el de auditoría.", "Destaca um exemplo específico dentro de um grupo."],
+        ["como muestra", "El gráfico, como muestra el informe, indica un crecimiento.", "Remete a uma evidência/exemplo já apresentado."],
+        ["tal como", "El proceso se hizo tal como indica la norma ISO.", "Exemplo que segue exatamente um modelo/regra."]
+      ]},
+      {title:"📝 Conclusión — cuándo usar cada uno", headers:["Conector","Ejemplo en español","Uso (nota en português)"], rows:[
+        ["en resumen", "En resumen, el proyecto fue un éxito.", "Resume o que foi dito antes."],
+        ["en definitiva", "En definitiva, la empresa necesita más control interno.", "Conclusão firme e decisiva."],
+        ["en conclusión", "En conclusión, se recomienda actualizar el sistema.", "Típico de textos formais e relatórios."],
+        ["para terminar", "Para terminar, quiero agradecer a todo el equipo.", "Usado ao encerrar uma fala/apresentação."],
+        ["en síntesis", "En síntesis, los tres pilares son calidad, plazo y costo.", "Resume de forma condensada os pontos principais."]
+      ]}
+      ],
+      notes: [
+        "Los conectores no cambian el verbo — organizan las ideas ENTRE frases y párrafos. Practica siempre leyendo la frase completa antes de elegir.",
+        "Cuanto más formal el contexto (auditoría, informes, normas), más se usan: asimismo, no obstante, dado que/puesto que, en consecuencia, en conclusión.",
+        "En el habla cotidiana se prefieren: también, pero, porque, así que, entonces.",
+        "'debido a' va siempre seguido de un sustantivo (debido a la lluvia), mientras que 'porque'/'ya que'/'dado que'/'puesto que' van seguidos de una oración completa con verbo conjugado."
+      ],
+      exercises: [
+        {type:"mc", q:"El curso es muy completo; _______, incluye certificado internacional.", options:["además","pero","porque"], correct:0},
+        {type:"fill", q:"Ella habla portugués y _______ habla español fluido. (mismo nivel de importancia)", answer:"también"},
+        {type:"mc", q:"El informe fue aprobado; _______, se liberó el presupuesto del proyecto. (formal, informes)", options:["asimismo","aunque","por lo tanto"], correct:0},
+        {type:"fill", q:"Estudió toda la semana, _______ los domingos. (destaca un caso extremo)", answer:"incluso"},
+        {type:"translate", from:"pt", text:"O professor explicou a teoria; da mesma maneira, mostrou exemplos práticos.", answer:"El profesor explicó la teoría; de igual manera, mostró ejemplos prácticos."},
+        {type:"mc", q:"Primero reviso los documentos, _______ firmo el contrato.", options:["luego","sin embargo","debido a"], correct:0},
+        {type:"fill", q:"Terminé el informe y _______ lo envié al cliente.", answer:"después"},
+        {type:"mc", q:"Ella cocina _______ él pone la mesa. (dos acciones simultáneas)", options:["mientras","finalmente","ya que"], correct:0},
+        {type:"fill", q:"Estudia español y, _______, trabaja en auditoría. (simultaneidad explícita)", answer:"al mismo tiempo"},
+        {type:"translate", from:"pt", text:"Revisamos tudo e finalmente assinamos o contrato.", answer:"Revisamos todo y finalmente firmamos el contrato."},
+        {type:"mc", q:"Quiero viajar, _______ no tengo tiempo.", options:["pero","además","por ejemplo"], correct:0},
+        {type:"fill", q:"El proyecto es caro; _______, vale la pena. (formal)", answer:"sin embargo"},
+        {type:"mc", q:"_______ llueva, iremos a la reunión. (concesión)", options:["Aunque","Porque","Entonces"], correct:0},
+        {type:"fill", q:"Los resultados fueron bajos; _______, el equipo mejoró mucho. (muy formal, típico de auditoría)", answer:"no obstante"},
+        {type:"mc", q:"Juan llegó temprano; _______, María llegó tarde.", options:["en cambio","dado que","en resumen"], correct:0},
+        {type:"mc", q:"No fui a la reunión _______ estaba enfermo.", options:["porque","por lo tanto","sin embargo"], correct:0},
+        {type:"fill", q:"_______ estás aquí, revisemos el informe. (causa ya conocida por el oyente)", answer:"Ya que"},
+        {type:"mc", q:"_______ el plazo venció, se aplicará una multa. (formal, típico de normas)", options:["Dado que","Aunque","Luego"], correct:0},
+        {type:"fill", q:"_______ los datos son correctos, aprobamos el informe. (formal)", answer:"Puesto que"},
+        {type:"translate", from:"pt", text:"O voo foi cancelado devido à tormenta.", answer:"El vuelo se canceló debido a la tormenta."},
+        {type:"mc", q:"No cumplió los requisitos; _______, fue rechazado.", options:["por lo tanto","mientras","incluso"], correct:0},
+        {type:"fill", q:"Llovía mucho, _______ cancelamos el paseo. (más informal)", answer:"así que"},
+        {type:"mc", q:"El sistema falló; _______, se perdieron los datos. (formal, informes)", options:["en consecuencia","en particular","aunque"], correct:0},
+        {type:"fill", q:"Organizamos todo con tiempo, _______ no hubo problemas.", answer:"de modo que"},
+        {type:"mc", q:"Estudiaste mucho, _______ vas a aprobar. (coloquial)", options:["entonces","no obstante","en síntesis"], correct:0},
+        {type:"mc", q:"Hay varios documentos obligatorios, _______, el contrato y la factura.", options:["por ejemplo","sin embargo","de modo que"], correct:0},
+        {type:"fill", q:"Todos los informes son importantes, _______ el de auditoría. (destaca un ejemplo específico)", answer:"en particular"},
+        {type:"mc", q:"El gráfico, _______ indica el informe, muestra un crecimiento.", options:["como muestra","por lo tanto","además"], correct:0},
+        {type:"fill", q:"El proceso se hizo _______ indica la norma ISO. (sigue exactamente un modelo)", answer:"tal como"},
+        {type:"mc", q:"_______, el proyecto fue un éxito.", options:["En resumen","Mientras","Debido a"], correct:0},
+        {type:"fill", q:"_______, la empresa necesita más control interno. (conclusión firme y decisiva)", answer:"En definitiva"},
+        {type:"mc", q:"_______, se recomienda actualizar el sistema. (típico de informes formales)", options:["En conclusión","Asimismo","Aunque"], correct:0},
+        {type:"fill", q:"_______, quiero agradecer a todo el equipo. (al finalizar una presentación)", answer:"Para terminar"},
+        {type:"translate", from:"pt", text:"Em síntese, os três pilares são qualidade, prazo e custo.", answer:"En síntesis, los tres pilares son calidad, plazo y costo."},
+        {type:"order", items:[
+          "Sin embargo, el cliente corrigió las irregularidades a tiempo.",
+          "Primero, revisamos el contrato de auditoría.",
+          "Por lo tanto, aprobamos el informe final.",
+          "Luego, identificamos dos irregularidades en los pagos."
+        ], correctOrder:[1,3,0,2]}
+      ]
     }
   ]
 };
