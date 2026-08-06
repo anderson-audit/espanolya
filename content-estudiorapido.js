@@ -105,6 +105,41 @@ const LEVEL_ESTUDIORAPIDO = {
           q: "Responde con una frase completa diciendo que empiezas a las 9 en punto y terminas a las 18:00.",
           target: "Empiezo a trabajar a las nueve en punto y termino a las seis de la tarde.",
           altAnswers: ["Trabajo desde las nueve hasta las seis de la tarde.", "Mi jornada empieza a las nueve y termina a las seis."]
+        },
+        {
+          // Ejercicio "chat": mismo patrón de La auditoría, aplicado ahora en todas las lecciones
+          // por igual. El alumno responde por micrófono CUANDO ESTÉ LISTO — no hay ningún límite
+          // de tiempo ni cuenta regresiva (ver wireChatExercise() en app.js: micBtn.onclick solo
+          // llama rec.start() al hacer clic, y el reconocimiento espera lo que haga falta).
+          type: "chat",
+          npcName: "Carlos (compañero de trabajo)",
+          npcAvatar: "🧑‍💼",
+          scenario: "Estás en la oficina y Carlos quiere coordinar contigo la hora de la reunión de mañana.",
+          turns: [
+            { npc: "¡Hola! ¿Tienes un momento para hablar sobre la reunión de mañana?" },
+            { user: {
+                prompt: "Responde que sí, y pregunta a qué hora es la reunión.",
+                target: "Sí, claro. ¿A qué hora es la reunión?",
+                altAnswers: ["¿A qué hora es la reunión?", "Sí, ¿a qué hora es?"]
+            }},
+            { npc: "Estaba pensando en las diez y media de la mañana. ¿Te va bien esa hora?" },
+            { user: {
+                prompt: "Responde que a esa hora no puedes, y propone las tres de la tarde.",
+                target: "A las diez y media no puedo. ¿Podemos a las tres de la tarde?",
+                altAnswers: [
+                  {text: "No puedo a esa hora.", reply: "Vale, ¿qué hora te viene mejor?"},
+                  "¿Podemos a las tres de la tarde?",
+                  "A las diez y media no puedo."
+                ]
+            }},
+            { npc: "Perfecto, entonces a las tres de la tarde. Nos vemos mañana." },
+            { user: {
+                prompt: "Confirma que de acuerdo, y agradece.",
+                target: "De acuerdo, nos vemos a las tres. Gracias.",
+                altAnswers: ["De acuerdo, gracias", "Nos vemos a las tres, gracias"]
+            }},
+            { npc: "¡Hasta mañana!" }
+          ]
         }
       ]
     },
@@ -167,6 +202,37 @@ const LEVEL_ESTUDIORAPIDO = {
           q: "Escribe una frase completa pidiéndole, con educación, que ordene el armario y haga la cama.",
           target: "¿Puedes ordenar el armario y hacer la cama cuando vuelvas, por favor?",
           altAnswers: ["Por favor, ordena el armario y haz la cama.", "¿Podrías hacer la cama y ordenar el armario, por favor?"]
+        },
+        {
+          type: "chat",
+          npcName: "Lucía (tu compañera de piso)",
+          npcAvatar: "👩",
+          scenario: "Lucía acaba de mudarse a tu piso y está instalando sus cosas en la habitación.",
+          turns: [
+            { npc: "¡Hola! Soy Lucía, tu nueva compañera de piso. ¿Dónde pongo mis maletas?" },
+            { user: {
+                prompt: "Dile que puede poner las maletas en el armario, que hay espacio.",
+                target: "Puedes poner las maletas en el armario, hay espacio.",
+                altAnswers: ["En el armario, hay espacio", "Pon las maletas en el armario"]
+            }},
+            { npc: "Genial, gracias. Mi lámpara se rompió durante la mudanza. ¿Tienes una lámpara extra?" },
+            { user: {
+                prompt: "Responde que sí, y ofrece prestarle una.",
+                target: "Sí, tengo una lámpara extra. Te la puedo prestar.",
+                altAnswers: [
+                  {text: "Sí, tengo una.", reply: "¡Qué bien, muchas gracias!"},
+                  "Te la puedo prestar",
+                  "Sí, te presto una lámpara"
+                ]
+            }},
+            { npc: "¡Muchas gracias! Eres muy amable. ¿Dónde está el espejo grande?" },
+            { user: {
+                prompt: "Dile que el espejo grande está detrás de la puerta.",
+                target: "El espejo grande está detrás de la puerta.",
+                altAnswers: ["Detrás de la puerta", "Está detrás de la puerta"]
+            }},
+            { npc: "Perfecto, ya me estoy instalando. ¡Gracias por todo!" }
+          ]
         }
       ]
     },
@@ -232,6 +298,37 @@ const LEVEL_ESTUDIORAPIDO = {
           q: "Escribe una frase completa explicando que primero hierves el agua y después la pones en la cafetera.",
           target: "Primero hiervo el agua y después la pongo en la cafetera.",
           altAnswers: ["Primero se hierve el agua y luego se pone en la cafetera.", "Hiervo el agua primero y luego la echo en la cafetera."]
+        },
+        {
+          type: "chat",
+          npcName: "Ana (profesora de cocina)",
+          npcAvatar: "👩‍🍳",
+          scenario: "Estás en una clase de cocina y la profesora Ana te va guiando paso a paso para preparar una tortilla española.",
+          turns: [
+            { npc: "¡Bienvenido a la clase! Hoy vamos a preparar una tortilla española. ¿Sabes dónde está la sartén?" },
+            { user: {
+                prompt: "Responde que sí, que la sartén está en el armario de abajo.",
+                target: "Sí, la sartén está en el armario de abajo.",
+                altAnswers: ["Está en el armario de abajo", "Sí, en el armario de abajo"]
+            }},
+            { npc: "Perfecto. Ahora necesitamos calentar el aceite. ¿Puedes encender la vitrocerámica?" },
+            { user: {
+                prompt: "Responde que sí, que la vas a encender ahora.",
+                target: "Sí, voy a encender la vitrocerámica ahora.",
+                altAnswers: ["Sí, la enciendo ahora", "Voy a encenderla ahora"]
+            }},
+            { npc: "Muy bien. Mientras se calienta, ¿puedes cortar las patatas con el cuchillo?" },
+            { user: {
+                prompt: "Responde que sí, claro.",
+                target: "Sí, claro, voy a cortar las patatas con el cuchillo.",
+                altAnswers: [
+                  {text: "Sí, claro.", reply: "Perfecto, córtalas en trozos pequeños."},
+                  "Voy a cortar las patatas",
+                  "Sí, ya las corto"
+                ]
+            }},
+            { npc: "¡Excelente trabajo! La tortilla va a quedar deliciosa." }
+          ]
         }
       ]
     },
@@ -291,6 +388,37 @@ const LEVEL_ESTUDIORAPIDO = {
           q: "Escribe una frase completa explicando que el espejo del baño está roto y pidiendo que lo arreglen.",
           target: "El espejo del baño está roto, ¿pueden arreglarlo, por favor?",
           altAnswers: ["El espejo está roto, necesito que lo reparen.", "Hay un problema: el espejo del baño está roto."]
+        },
+        {
+          type: "chat",
+          npcName: "Miguel (tu compañero de piso)",
+          npcAvatar: "🧑",
+          scenario: "Es por la mañana y Miguel tiene prisa para usar el baño.",
+          turns: [
+            { npc: "¿Vas a tardar mucho en el baño? Tengo prisa esta mañana." },
+            { user: {
+                prompt: "Responde que solo cinco minutos más, que ya casi terminas.",
+                target: "No, solo cinco minutos más. Ya casi termino.",
+                altAnswers: ["Cinco minutos más", "Ya casi termino, cinco minutos"]
+            }},
+            { npc: "Vale, gracias. Por cierto, ¿me pasas una toalla limpia?" },
+            { user: {
+                prompt: "Responde que sí, y dile que aquí tiene una toalla limpia.",
+                target: "Sí, toma, aquí tienes una toalla limpia.",
+                altAnswers: ["Sí, aquí tienes una toalla", "Toma, una toalla limpia"]
+            }},
+            { npc: "Gracias. ¿Sabes si queda champú?" },
+            { user: {
+                prompt: "Responde que sí, que hay un bote nuevo debajo del lavabo.",
+                target: "Sí, hay un bote nuevo debajo del lavabo.",
+                altAnswers: [
+                  {text: "Sí, hay uno nuevo.", reply: "Perfecto, gracias por avisar."},
+                  "Debajo del lavabo hay uno nuevo",
+                  "Sí, debajo del lavabo"
+                ]
+            }},
+            { npc: "Perfecto, gracias por todo. ¡Que tengas un buen día!" }
+          ]
         }
       ]
     },
@@ -355,6 +483,37 @@ const LEVEL_ESTUDIORAPIDO = {
           q: "Pide la cuenta con una frase completa y pregunta si aceptan tarjeta.",
           target: "La cuenta, por favor. ¿Aceptan tarjeta?",
           altAnswers: ["¿Me trae la cuenta, por favor? ¿Puedo pagar con tarjeta?", "La cuenta, por favor, ¿se puede pagar con tarjeta?"]
+        },
+        {
+          type: "chat",
+          npcName: "El camarero",
+          npcAvatar: "🤵",
+          scenario: "Acabas de sentarte en una cafetería de Madrid y el camarero viene a tomar tu pedido.",
+          turns: [
+            { npc: "¡Buenos días! ¿Qué le pongo?" },
+            { user: {
+                prompt: "Pide un café con leche y una tostada.",
+                target: "Un café con leche y una tostada, por favor.",
+                altAnswers: ["Café con leche y una tostada, por favor", "Quiero un café con leche y una tostada"]
+            }},
+            { npc: "¿La tostada la quiere con mantequilla o con tomate?" },
+            { user: {
+                prompt: "Responde que con tomate, por favor.",
+                target: "Con tomate, por favor.",
+                altAnswers: [
+                  {text: "Con mantequilla, por favor.", reply: "Marchando, con mantequilla entonces."},
+                  "Con tomate",
+                  "Tomate, por favor"
+                ]
+            }},
+            { npc: "Marchando. ¿Algo más?" },
+            { user: {
+                prompt: "Pregunta la contraseña del wifi.",
+                target: "¿Me puede dar la contraseña del wifi, por favor?",
+                altAnswers: ["¿Cuál es la contraseña del wifi?", "La contraseña del wifi, por favor"]
+            }},
+            { npc: "Claro, aquí tiene. ¡Que aproveche!" }
+          ]
         }
       ]
     },
@@ -404,6 +563,37 @@ const LEVEL_ESTUDIORAPIDO = {
           q: "Pregunta, en una frase completa, si tienen pan sin gluten.",
           target: "¿Tienen pan sin gluten, por favor?",
           altAnswers: ["¿Hay alguna opción sin gluten?", "¿Tiene pan que no tenga gluten?"]
+        },
+        {
+          type: "chat",
+          npcName: "El panadero",
+          npcAvatar: "👨‍🍳",
+          scenario: "Vas a encargar pan y dulces para una fiesta de veinte personas.",
+          turns: [
+            { npc: "¡Buenos días! ¿Qué necesita hoy?" },
+            { user: {
+                prompt: "Dile que necesitas pan para una fiesta de veinte personas.",
+                target: "Necesito pan para una fiesta de veinte personas.",
+                altAnswers: ["Pan para una fiesta de veinte personas", "Es para una fiesta de veinte personas"]
+            }},
+            { npc: "Perfecto, le recomiendo diez barras y unas magdalenas. ¿Le parece bien?" },
+            { user: {
+                prompt: "Responde que sí, y pregunta si tienen alguna opción sin gluten.",
+                target: "Sí, me parece bien. ¿Tienen también alguna opción sin gluten?",
+                altAnswers: [
+                  {text: "Sí, me parece bien.", reply: "Perfecto, ahora se lo preparo."},
+                  "¿Tienen algo sin gluten?",
+                  "Sí, ¿hay opción sin gluten?"
+                ]
+            }},
+            { npc: "Sí, tenemos pan sin gluten, pero hay que pedirlo con un día de antelación." },
+            { user: {
+                prompt: "Responde que vale, que lo pides para mañana.",
+                target: "Vale, entonces lo pido para mañana.",
+                altAnswers: ["Vale, para mañana entonces", "De acuerdo, lo pido para mañana"]
+            }},
+            { npc: "Perfecto, aquí lo tendrá mañana a primera hora." }
+          ]
         }
       ]
     },
@@ -614,6 +804,37 @@ const LEVEL_ESTUDIORAPIDO = {
           q: "Pregunta, en una frase completa, cuánto tienes que pagar por el exceso de equipaje.",
           target: "Mi maleta pesa más de lo permitido, ¿cuánto tengo que pagar por el exceso de equipaje?",
           altAnswers: ["¿Cuánto cuesta el exceso de equipaje?", "Tengo exceso de equipaje, ¿cuánto debo pagar?"]
+        },
+        {
+          type: "chat",
+          npcName: "La agente de la aerolínea",
+          npcAvatar: "🧑‍✈️",
+          scenario: "Estás en el mostrador de facturación y acabas de enterarte de que tu vuelo tiene retraso.",
+          turns: [
+            { npc: "Buenos días, ¿me muestra su pasaporte y su reserva, por favor?" },
+            { user: {
+                prompt: "Responde que sí, aquí tiene el pasaporte y el código de reserva.",
+                target: "Sí, aquí tiene mi pasaporte y el código de reserva.",
+                altAnswers: ["Aquí tiene mi pasaporte", "Sí, aquí está todo"]
+            }},
+            { npc: "Gracias. Veo que su vuelo tiene un retraso de dos horas." },
+            { user: {
+                prompt: "Pregunta en qué puerta de embarque tienes que esperar ahora.",
+                target: "¿En qué puerta de embarque tengo que esperar ahora?",
+                altAnswers: [
+                  {text: "¿Qué hago ahora?", reply: "Espere en la sala y mire la pantalla de salidas."},
+                  "¿Cuál es la puerta de embarque?",
+                  "¿A qué puerta tengo que ir?"
+                ]
+            }},
+            { npc: "Va a ser la puerta doce, pero se lo confirmaremos en la pantalla de salidas." },
+            { user: {
+                prompt: "Agradece, y pregunta si hay alguna sala de espera cómoda cerca.",
+                target: "Vale, gracias. ¿Hay alguna sala de espera cómoda cerca?",
+                altAnswers: ["Gracias, ¿hay una sala de espera cerca?", "¿Dónde puedo esperar cómodamente?"]
+            }},
+            { npc: "Sí, a la derecha hay una sala de espera. ¡Buen viaje!" }
+          ]
         }
       ]
     }
