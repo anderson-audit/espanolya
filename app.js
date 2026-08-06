@@ -60,7 +60,7 @@ const functions = (typeof firebase.functions === "function") ? firebase.function
 // Versión del sistema, visible en Mi Cuenta / Configuración y en el pie de la barra lateral.
 // Se debe actualizar manualmente cada vez que se sube una nueva versión al repositorio
 // (formato AAAA.MM.DD.N — N = número de subida ese día, empieza en 1).
-const APP_VERSION = "2026.08.04.1";
+const APP_VERSION = "2026.08.06.1";
 
 // Valores por defecto de la mensualidad/anualidad — el admin puede cambiarlos en
 // Configuración → Planes y precios (guardados en config/settings, campos priceMonthly/priceAnnual).
@@ -128,7 +128,8 @@ const I18N = {
     ex_progress_review: "🔁 Repaso", ex_progress_exam: "Prueba", ex_progress_exercise: "Ejercicio",
     ex_badge_mc: "🔠 Opción múltiple", ex_badge_fill: "✏️ Completar", ex_badge_translate: "🔁 Traducción", ex_badge_listen: "🎧 Escucha",
     ex_badge_songlisten: "🎧 Dictado musical", ex_badge_speak: "🎙️ Pronunciación", ex_badge_order: "🔀 Ordenar", ex_badge_open: "✍️ Respuesta libre",
-    ex_badge_chat: "💬 Conversación",
+    ex_badge_chat: "💬 Conversación", ex_badge_caso: "📋 Caso práctico",
+    ex_caso_placeholder: "Escribe tu respuesta completa en español...", ex_caso_hint: "Responde con una frase completa, no solo una palabra.", ex_caso_stamp_ok: "✅ ¡BIEN RESUELTO!",
     ex_chat_online: "en línea", ex_chat_your_turn: "🎙️ Tu turno — habla en español",
     ex_speak_listen_model: "Escuchar pronunciación", ex_speak_heard: "Escuchamos", ex_speak_score: "🎯 Pronunciación: {pct}% de similitud",
     ex_speak_no_support: "Tu navegador no soporta reconocimiento de voz. Usa Google Chrome en computadora o Android, o haz clic en 'No puedo grabar ahora'.",
@@ -368,7 +369,8 @@ const I18N = {
     ex_progress_review: "🔁 Revisão", ex_progress_exam: "Prova", ex_progress_exercise: "Exercício",
     ex_badge_mc: "🔠 Múltipla escolha", ex_badge_fill: "✏️ Completar", ex_badge_translate: "🔁 Tradução", ex_badge_listen: "🎧 Escuta",
     ex_badge_songlisten: "🎧 Ditado musical", ex_badge_speak: "🎙️ Pronúncia", ex_badge_order: "🔀 Ordenar", ex_badge_open: "✍️ Resposta livre",
-    ex_badge_chat: "💬 Conversa",
+    ex_badge_chat: "💬 Conversa", ex_badge_caso: "📋 Caso prático",
+    ex_caso_placeholder: "Escreva sua resposta completa em espanhol...", ex_caso_hint: "Responda com uma frase completa, não apenas uma palavra.", ex_caso_stamp_ok: "✅ BEM RESOLVIDO!",
     ex_chat_online: "online", ex_chat_your_turn: "🎙️ Sua vez — fale em espanhol",
     ex_speak_listen_model: "Ouvir pronúncia", ex_speak_heard: "Ouvimos", ex_speak_score: "🎯 Pronúncia: {pct}% de similaridade",
     ex_speak_no_support: "Seu navegador não suporta reconhecimento de voz. Use o Google Chrome no computador ou Android, ou clique em 'Não posso gravar agora'.",
@@ -608,7 +610,8 @@ const I18N = {
     ex_progress_review: "🔁 Review", ex_progress_exam: "Exam", ex_progress_exercise: "Exercise",
     ex_badge_mc: "🔠 Multiple choice", ex_badge_fill: "✏️ Fill in", ex_badge_translate: "🔁 Translation", ex_badge_listen: "🎧 Listening",
     ex_badge_songlisten: "🎧 Song dictation", ex_badge_speak: "🎙️ Pronunciation", ex_badge_order: "🔀 Order", ex_badge_open: "✍️ Free response",
-    ex_badge_chat: "💬 Conversation",
+    ex_badge_chat: "💬 Conversation", ex_badge_caso: "📋 Case study",
+    ex_caso_placeholder: "Write your full answer in Spanish...", ex_caso_hint: "Answer with a complete sentence, not just one word.", ex_caso_stamp_ok: "✅ WELL SOLVED!",
     ex_chat_online: "online", ex_chat_your_turn: "🎙️ Your turn — speak in Spanish",
     ex_speak_listen_model: "Listen to pronunciation", ex_speak_heard: "We heard", ex_speak_score: "🎯 Pronunciation: {pct}% match",
     ex_speak_no_support: "Your browser doesn't support speech recognition. Use Google Chrome on computer or Android, or click 'I can't record now'.",
@@ -1983,6 +1986,7 @@ function correctAnswerText(ex) {
   if (ex.type === "order") return (ex.correctOrder || []).map(i => ex.items[i]).join(" → ");
   if (ex.type === "open") return ex.sample || "";
   if (ex.type === "chat") return (ex.turns || []).filter(tn => tn.user).map(tn => tn.user.target).join(" / ");
+  if (ex.type === "caso") return ex.target;
   return "";
 }
 
@@ -3197,7 +3201,7 @@ function songFragmentHtml(frameId, youtubeId, startSec, endSec) {
 const EX_TYPE_BADGE_KEYS = {
   mc: "ex_badge_mc", fill: "ex_badge_fill", translate: "ex_badge_translate", listen: "ex_badge_listen",
   songListen: "ex_badge_songlisten", speak: "ex_badge_speak", order: "ex_badge_order", open: "ex_badge_open",
-  chat: "ex_badge_chat",
+  chat: "ex_badge_chat", caso: "ex_badge_caso",
 };
 function exTypeBadge(type) { const key = EX_TYPE_BADGE_KEYS[type]; return key ? t(key) : ""; }
 
@@ -3220,6 +3224,7 @@ function renderExercise() {
   // todavía (el alumno lo tiene que escribir), así que ahí no se ofrece.
   const ttsSource = ex.type === "mc" ? ex.q
     : ex.type === "fill" ? ex.q
+    : ex.type === "caso" ? (ex.scenario ? `${ex.scenario} ${ex.q}` : ex.q)
     : (ex.type === "translate" && ex.from !== "pt") ? ex.text
     : ex.type === "order" ? (ex.correctOrder || []).map(i => ex.items[i]).join(". ") : "";
   const ttsBtnHtml = ttsSource ? `<button class="tts-btn" id="ex-tts" type="button" title="Escuchar">🔊</button>` : "";
@@ -3345,6 +3350,29 @@ function renderExercise() {
         </div>
         <div id="ex-feedback"></div>
         <div class="ex-actions"><button class="btn btn-secondary btn-sm" id="ex-skip" disabled>${t("ex_skip")}</button><button class="btn btn-primary" id="ex-next" disabled>${t("ex_next")}</button></div>
+      </div>`;
+  } else if (ex.type === "caso") {
+    // Ejercicio "caso práctico": a pedido del usuario ("não gostei dos exercícios do módulo
+    // bônus... você fez mais exercícios para a opção A auditoria... quero perguntas do tema,
+    // perguntas que o aluno tenha que responder de forma mais complexa, frases" + "muda o jeito
+    // dos exercícios, inova, cria algo diferente dos demais"), este tipo es NUEVO (distinto de
+    // "speak"/"chat") y se aplicó EN LAS 8 LECCIONES POR IGUAL (sin favoritismo a un tema): una
+    // tarjeta de "expediente/documento" presenta una situación real del tema de la lección, y el
+    // alumno tiene que ESCRIBIR una frase completa en español respondiendo — no una palabra
+    // suelta. Al acertar (corrección tolerante vía similarity(), ver wireExerciseInteractions),
+    // se revela un "sello" (ex.stamp) como si fuera un documento oficial aprobado.
+    body = `
+      <div class="er-caso">
+        <div class="er-caso-card">
+          <div class="er-caso-icon">${escapeHtml(ex.icon || "📋")}</div>
+          <div class="er-caso-scenario">${escapeHtml(ex.scenario || "")}</div>
+        </div>
+        <div class="ex-question er-caso-question">${escapeHtml(ex.q)} ${ttsBtnHtml}</div>
+        <textarea class="ex-input er-caso-input" id="ex-answer" rows="3" placeholder="${t("ex_caso_placeholder")}"></textarea>
+        <p class="ex-hint er-caso-hint">💡 ${t("ex_caso_hint")}</p>
+        <div class="ex-actions"><button class="btn btn-secondary btn-sm" id="ex-check">${t("ex_check")}</button><button class="btn btn-primary" id="ex-next">${t("ex_next")}</button></div>
+        <div id="ex-feedback"></div>
+        <div class="er-caso-stamp" id="er-caso-stamp">${escapeHtml(ex.stamp || t("ex_caso_stamp_ok"))}</div>
       </div>`;
   }
 
@@ -3585,6 +3613,31 @@ function wireExerciseInteractions(ex) {
       logAttempt(ex, correct, val);
       document.getElementById("ex-answer").disabled = true;
       document.getElementById("ex-check").disabled = true;
+      answered = true;
+      scheduleAutoAdvance(5000);
+    };
+    document.getElementById("ex-check").onclick = doCheck;
+    if (nextBtn) nextBtn.onclick = () => { if (answered) { clearAutoAdvance(); goToNextExercise(); } else { doCheck(); } };
+  }
+
+  if (ex.type === "caso") {
+    // Corrección tolerante: la respuesta es una frase completa y libre (no una sola palabra),
+    // así que se compara con similarity() contra el target Y contra cada altAnswers, quedándose
+    // con la mejor coincidencia — igual patrón que "listen"/"songListen", pero con umbral más
+    // bajo porque las frases son más largas y hay más formas válidas de decir lo mismo.
+    const doCheck = () => {
+      const val = document.getElementById("ex-answer").value;
+      const alts = ex.altAnswers || [];
+      let best = similarity(val, ex.target);
+      alts.forEach(a => { const s = similarity(val, a); if (s > best) best = s; });
+      const correct = best > 0.42;
+      showFeedback(correct, ex.target);
+      markAnswered(correct);
+      logAttempt(ex, correct, val);
+      document.getElementById("ex-answer").disabled = true;
+      document.getElementById("ex-check").disabled = true;
+      const stamp = document.getElementById("er-caso-stamp");
+      if (correct && stamp) stamp.classList.add("er-caso-stamp-show");
       answered = true;
       scheduleAutoAdvance(5000);
     };

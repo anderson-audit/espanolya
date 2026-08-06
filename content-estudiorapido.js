@@ -18,6 +18,24 @@
    alternativas igualmente válidas). Reformulado nesta mesma sessão a pedido
    do usuário: "não quero apenas palavras nos exercícios e sim perguntas
    para que o usuário dê a resposta em espanhol".
+
+   Sessão de 2026-08-06: usuário reclamou que os exercícios "speak" eram
+   repetitivos (uma palavra só) e que a lição de auditoría tinha muito mais
+   exercícios que as demais — pediu perguntas do tema que exijam resposta
+   mais complexa, em frase, e algo "diferente do que está lá". Resposta:
+   (1) novo tipo de exercício "caso" (ver wireExerciseInteractions/renderExercise
+   em app.js) — cartão de situação real + pergunta que se responde ESCREVENDO
+   uma frase completa em espanhol, corrigido com tolerância e revelando um
+   "selo" de aprovação ao acertar; aplicado em EXATAMENTE 2 exercícios por
+   lição, nas 8 lições por igual, sem favoritismo a nenhum tema; (2) as
+   listas de "speak" de auditoría e aeropuerto (que tinham ~27 itens cada,
+   bem mais que as outras 6 lições, que tinham ~12-14) foram reduzidas para
+   ~13, alinhadas ao padrão das demais — o vocabulário extra continua
+   documentado em "vocabulary", só não é mais repetido em exercício isolado.
+   A lição de auditoría manteve seu "chat" (bate-papo/reunião de auditoria)
+   como exercício-assinatura, mas sem mais volume desproporcional de itens
+   simples ao redor dele.
+
    Não há prova neste módulo (é prática livre, como Secretos/Tiempos).
    Segue o mesmo schema dos demais content-*.js.
    ========================================================================== */
@@ -28,7 +46,7 @@ const LEVEL_ESTUDIORAPIDO = {
   icon: "🖼️",
   colorFrom: "#2E7D32",
   colorTo: "#1565C0",
-  description: "Módulo bônus 100% visual: olhe a imagem, escute uma pergunta real sobre o assunto e responda falando em espanhol — o app escuta e corrige sua resposta e pronúncia na hora. Vocabulário de casa, cafeteria, padaria, auditoria e aeroporto.",
+  description: "Módulo bônus 100% visual: olhe a imagem, escute uma pergunta real sobre o assunto e responda falando em espanhol — o app escuta e corrige sua resposta e pronúncia na hora. Cada lição termina com 'Casos prácticos': situações reais em que você escreve uma frase completa em espanhol, não só uma palavra. Vocabulário de casa, cafeteria, padaria, auditoria e aeroporto.",
   lessons: [
     {
       id: "er-hora", order: 1, title: "¿Qué hora es?", subtitle: "Como dizer as horas em espanhol",
@@ -73,7 +91,21 @@ const LEVEL_ESTUDIORAPIDO = {
         {type: "speak", prompt: "¿Qué palabra se usa para contar los minutos ANTES de la media hora, como en las 3:15?", target: "Se usa 'y'.", altAnswers: ["y", "Y", "Se usa y"]},
         {type: "speak", prompt: "¿Qué palabra se usa para contar los minutos DESPUÉS de la media hora, mirando hacia la hora siguiente?", target: "Se usa 'menos'.", altAnswers: ["menos", "Menos", "Se usa menos"]},
         {type: "mc", q: "8:45 se dice, en español...", options: ["Las ocho y cuarenta y cinco", "Las nueve menos cuarto", "Las ocho menos cuarto", "Las nueve y cuarto"], correct: 1},
-        {type: "fill", q: "Complete: 'Es la ___' (usa-se para a 1 hora, no singular).", answer: "una", altAnswers: ["Una"]}
+        {type: "fill", q: "Complete: 'Es la ___' (usa-se para a 1 hora, no singular).", answer: "una", altAnswers: ["Una"]},
+        {
+          type: "caso", icon: "🗓️", stamp: "✅ REUNIÓN CONFIRMADA",
+          scenario: "Trabajas en Quallisi y necesitas reprogramar una reunión con un cliente porque tienes otro compromiso a esa hora.",
+          q: "Escribe una frase completa para proponer un nuevo horario a las 15:30.",
+          target: "¿Podemos reunirnos a las tres y media de la tarde en vez de a esa hora?",
+          altAnswers: ["¿Podemos vernos a las tres y media?", "¿Le parece bien a las tres y media de la tarde?", "Propongo cambiar la reunión a las tres y media."]
+        },
+        {
+          type: "caso", icon: "⏰", stamp: "✅ HORARIO REGISTRADO",
+          scenario: "Un colega nuevo te pregunta a qué hora empieza tu jornada de trabajo normalmente.",
+          q: "Responde con una frase completa diciendo que empiezas a las 9 en punto y terminas a las 18:00.",
+          target: "Empiezo a trabajar a las nueve en punto y termino a las seis de la tarde.",
+          altAnswers: ["Trabajo desde las nueve hasta las seis de la tarde.", "Mi jornada empieza a las nueve y termina a las seis."]
+        }
       ]
     },
     {
@@ -121,7 +153,21 @@ const LEVEL_ESTUDIORAPIDO = {
         {type: "speak", prompt: "¿Por dónde entras y sales de la habitación?", target: "Por la puerta.", altAnswers: ["la puerta", "Por la puerta"]},
         {type: "speak", prompt: "¿Dónde pones la ropa sucia antes de lavarla?", target: "En la cesta de la ropa.", altAnswers: ["la cesta de la ropa"]},
         {type: "mc", q: "'O cobertor' em espanhol é...", options: ["la almohada", "la manta", "la colcha", "el cojín"], correct: 1},
-        {type: "fill", q: "'A cômoda' em espanhol se escreve: la ___", answer: "cómoda", altAnswers: ["comoda"]}
+        {type: "fill", q: "'A cômoda' em espanhol se escreve: la ___", answer: "cómoda", altAnswers: ["comoda"]},
+        {
+          type: "caso", icon: "🛏️", stamp: "✅ SOLICITUD ENVIADA",
+          scenario: "Estás en un hotel en España y notas que faltan cosas en tu habitación.",
+          q: "Llama a recepción y pide, en una frase completa, una almohada extra y una manta.",
+          target: "¿Podría traerme una almohada extra y una manta, por favor?",
+          altAnswers: ["Necesito una almohada extra y una manta, por favor.", "¿Me puede traer una manta y una almohada más?"]
+        },
+        {
+          type: "caso", icon: "🧹", stamp: "✅ MENSAJE ENVIADO",
+          scenario: "Tu compañero de piso dejó la habitación desordenada antes de salir a trabajar.",
+          q: "Escribe una frase completa pidiéndole, con educación, que ordene el armario y haga la cama.",
+          target: "¿Puedes ordenar el armario y hacer la cama cuando vuelvas, por favor?",
+          altAnswers: ["Por favor, ordena el armario y haz la cama.", "¿Podrías hacer la cama y ordenar el armario, por favor?"]
+        }
       ]
     },
     {
@@ -172,7 +218,21 @@ const LEVEL_ESTUDIORAPIDO = {
         {type: "speak", prompt: "¿En qué bebes el agua?", target: "En el vaso.", altAnswers: ["el vaso", "En el vaso"]},
         {type: "speak", prompt: "¿Dónde guardas los alimentos secos, como el arroz y la pasta?", target: "En la despensa.", altAnswers: ["la despensa", "En la despensa"]},
         {type: "mc", q: "'A bancada' da cozinha, em espanhol, é...", options: ["la encimera", "la despensa", "el armario", "la vitrocerámica"], correct: 0},
-        {type: "fill", q: "'A cafeteira' em espanhol se escreve: la ___", answer: "cafetera"}
+        {type: "fill", q: "'A cafeteira' em espanhol se escreve: la ___", answer: "cafetera"},
+        {
+          type: "caso", icon: "🍳", stamp: "✅ RECETA EN MARCHA",
+          scenario: "Estás cocinando con un amigo español y necesitas un utensilio que no encuentras.",
+          q: "Pregúntale, en una frase completa, dónde está la sartén para freír un huevo.",
+          target: "¿Dónde está la sartén? Necesito freír un huevo.",
+          altAnswers: ["¿Sabes dónde está la sartén?", "¿Me puedes decir dónde está la sartén, por favor?"]
+        },
+        {
+          type: "caso", icon: "☕", stamp: "✅ CAFÉ LISTO",
+          scenario: "Vas a preparar café para tus invitados y quieres explicar el paso a paso.",
+          q: "Escribe una frase completa explicando que primero hierves el agua y después la pones en la cafetera.",
+          target: "Primero hiervo el agua y después la pongo en la cafetera.",
+          altAnswers: ["Primero se hierve el agua y luego se pone en la cafetera.", "Hiervo el agua primero y luego la echo en la cafetera."]
+        }
       ]
     },
     {
@@ -217,7 +277,21 @@ const LEVEL_ESTUDIORAPIDO = {
         {type: "speak", prompt: "¿Qué usas para saber tu peso?", target: "La báscula.", altAnswers: ["la báscula"]},
         {type: "speak", prompt: "¿Qué separa la ducha del resto del baño, hecho de vidrio?", target: "La mampara.", altAnswers: ["la mampara"]},
         {type: "mc", q: "'O box de vidro' do chuveiro, em espanhol, é...", options: ["la mampara", "la bañera", "el bidé", "la alfombrilla"], correct: 0},
-        {type: "fill", q: "'A esponja' em espanhol se escreve: la ___", answer: "esponja"}
+        {type: "fill", q: "'A esponja' em espanhol se escreve: la ___", answer: "esponja"},
+        {
+          type: "caso", icon: "🧻", stamp: "✅ SERVICIO SOLICITADO",
+          scenario: "Estás en un hotel y el papel higiénico del baño se ha acabado.",
+          q: "Llama a recepción y pide, en una frase completa, más papel higiénico y una toalla limpia.",
+          target: "¿Podría traerme más papel higiénico y una toalla limpia, por favor?",
+          altAnswers: ["Necesito más papel higiénico y una toalla limpia.", "¿Me puede subir papel higiénico y una toalla, por favor?"]
+        },
+        {
+          type: "caso", icon: "🪞", stamp: "✅ AVISO REGISTRADO",
+          scenario: "Notas que el espejo del baño está roto y quieres avisar al servicio técnico del hotel.",
+          q: "Escribe una frase completa explicando que el espejo del baño está roto y pidiendo que lo arreglen.",
+          target: "El espejo del baño está roto, ¿pueden arreglarlo, por favor?",
+          altAnswers: ["El espejo está roto, necesito que lo reparen.", "Hay un problema: el espejo del baño está roto."]
+        }
       ]
     },
     {
@@ -267,7 +341,21 @@ const LEVEL_ESTUDIORAPIDO = {
         {type: "speak", prompt: "¿Qué le pones al café si te gusta dulce?", target: "Azúcar.", altAnswers: ["el azúcar", "Le pongo azúcar"]},
         {type: "speak", prompt: "¿Con qué remueves el azúcar dentro del café?", target: "Con la cucharilla.", altAnswers: ["la cucharilla", "Con la cucharilla"]},
         {type: "mc", q: "O sanduíche de pão tipo baguete, na Espanha, se chama...", options: ["el sándwich", "el bocadillo", "la tostada", "el croissant"], correct: 1},
-        {type: "fill", q: "'A colherzinha' de café, em espanhol, se escreve: la ___", answer: "cucharilla"}
+        {type: "fill", q: "'A colherzinha' de café, em espanhol, se escreve: la ___", answer: "cucharilla"},
+        {
+          type: "caso", icon: "☕", stamp: "✅ PEDIDO TOMADO",
+          scenario: "Llegas a una cafetería en Madrid con hambre y quieres pedir algo específico.",
+          q: "Pide, en una frase completa, un café con leche y una tostada con mantequilla.",
+          target: "Quiero un café con leche y una tostada con mantequilla, por favor.",
+          altAnswers: ["Me trae un café con leche y una tostada con mantequilla, por favor.", "Para mí, un café con leche y una tostada con mantequilla."]
+        },
+        {
+          type: "caso", icon: "🧾", stamp: "✅ CUENTA CERRADA",
+          scenario: "Terminaste de desayunar y quieres pagar antes de salir.",
+          q: "Pide la cuenta con una frase completa y pregunta si aceptan tarjeta.",
+          target: "La cuenta, por favor. ¿Aceptan tarjeta?",
+          altAnswers: ["¿Me trae la cuenta, por favor? ¿Puedo pagar con tarjeta?", "La cuenta, por favor, ¿se puede pagar con tarjeta?"]
+        }
       ]
     },
     {
@@ -302,7 +390,21 @@ const LEVEL_ESTUDIORAPIDO = {
         {type: "speak", prompt: "¿En qué te da el panadero el pan para llevarlo a casa?", target: "En la bolsa.", altAnswers: ["la bolsa", "En la bolsa"]},
         {type: "speak", prompt: "¿Dónde pagas en la panadería?", target: "En la caja registradora.", altAnswers: ["la caja registradora"]},
         {type: "mc", q: "'O bolinho/queque' pequeno, em espanhol, se chama...", options: ["la magdalena", "la galleta", "la napolitana", "la palmerita"], correct: 0},
-        {type: "fill", q: "'O pão doce' em espanhol se escreve: el pan ___", answer: "dulce"}
+        {type: "fill", q: "'O pão doce' em espanhol se escreve: el pan ___", answer: "dulce"},
+        {
+          type: "caso", icon: "🥖", stamp: "✅ ENCARGO CONFIRMADO",
+          scenario: "Vas a organizar una reunión de trabajo y necesitas encargar pan y dulces para los invitados.",
+          q: "Pide, en una frase completa, seis bocadillos y una docena de magdalenas.",
+          target: "Quiero seis bocadillos y una docena de magdalenas, por favor.",
+          altAnswers: ["Me da seis bocadillos y una docena de magdalenas, por favor.", "Necesito seis bocadillos y doce magdalenas para hoy."]
+        },
+        {
+          type: "caso", icon: "🌾", stamp: "✅ CONSULTA RESUELTA",
+          scenario: "Uno de tus invitados tiene alergia al gluten y quieres preguntar si hay opciones para él.",
+          q: "Pregunta, en una frase completa, si tienen pan sin gluten.",
+          target: "¿Tienen pan sin gluten, por favor?",
+          altAnswers: ["¿Hay alguna opción sin gluten?", "¿Tiene pan que no tenga gluten?"]
+        }
       ]
     },
     {
@@ -361,33 +463,33 @@ const LEVEL_ESTUDIORAPIDO = {
         {type: "speak", prompt: "Al terminar la auditoría, ¿qué documento entregas con los resultados?", target: "El informe.", altAnswers: ["el informe"]},
         {type: "speak", prompt: "¿Dónde guardas los documentos de la auditoría, organizados?", target: "En la carpeta.", altAnswers: ["la carpeta", "En la carpeta"]},
         {type: "speak", prompt: "¿Qué usas para verificar, punto por punto, si cada requisito se cumple?", target: "La lista de verificación.", altAnswers: ["la lista de verificación", "el checklist"]},
-        {type: "speak", prompt: "¿Qué pones al final de un documento para validarlo oficialmente?", target: "La firma.", altAnswers: ["la firma"]},
-        {type: "speak", prompt: "¿Qué documento planifica las fechas y actividades de la auditoría?", target: "El cronograma.", altAnswers: ["el cronograma"]},
-        {type: "speak", prompt: "¿Qué usas para mostrar datos numéricos de forma visual?", target: "El gráfico.", altAnswers: ["el gráfico"]},
-        {type: "speak", prompt: "¿Cómo se llama la organización que estás auditando?", target: "La empresa.", altAnswers: ["la empresa"]},
-        {type: "speak", prompt: "¿Cómo se llama un requisito oficial que la empresa debe cumplir, como una norma ISO?", target: "La norma.", altAnswers: ["la norma"]},
-        {type: "speak", prompt: "¿Cómo se llama la posibilidad de que algo salga mal en un proceso?", target: "El riesgo.", altAnswers: ["el riesgo"]},
         {type: "speak", prompt: "¿Cómo se llama un problema real que encuentras durante la auditoría?", target: "El hallazgo.", altAnswers: ["el hallazgo"]},
-        {type: "speak", prompt: "¿Cómo se llama el documento oficial que certifica que una empresa cumple una norma?", target: "La certificación.", altAnswers: ["la certificación"]},
-        {type: "speak", prompt: "Antes de empezar, ¿qué documento define qué se va a auditar y cuándo?", target: "El plan de auditoría.", altAnswers: ["el plan de auditoría"]},
-        {type: "speak", prompt: "¿Cómo se llama lo que está incluido dentro de la auditoría?", target: "El alcance.", altAnswers: ["el alcance"]},
-        {type: "speak", prompt: "Cuando todo cumple con la norma, decimos que hay...", target: "Conformidad.", altAnswers: ["la conformidad"]},
         {type: "speak", prompt: "Cuando algo NO cumple con la norma, decimos que hay...", target: "No conformidad.", altAnswers: ["la no conformidad", "una no conformidad"]},
         {type: "speak", prompt: "Después de encontrar un problema, ¿qué se implementa para corregirlo?", target: "La acción correctiva.", altAnswers: ["la acción correctiva"]},
-        {type: "speak", prompt: "En vez de revisar el 100% de los documentos, el auditor revisa solo una parte. ¿Cómo se llama eso?", target: "El muestreo.", altAnswers: ["el muestreo"]},
-        {type: "speak", prompt: "¿Cómo se llama el proceso de mejorar poco a poco, siempre?", target: "La mejora continua.", altAnswers: ["la mejora continua"]},
+        {type: "speak", prompt: "¿Cómo se llama el documento oficial que certifica que una empresa cumple una norma?", target: "La certificación.", altAnswers: ["la certificación"]},
         {type: "speak", prompt: "¿Cómo se llama el auditor que dirige y coordina todo el equipo?", target: "El auditor líder.", altAnswers: ["el auditor líder", "auditor líder"]},
         {type: "speak", prompt: "¿Cómo se llama la empresa o el área que está siendo auditada?", target: "El auditado.", altAnswers: ["el auditado"]},
-        {type: "speak", prompt: "Cuando varios auditores trabajan juntos, ¿cómo se llama el grupo?", target: "El equipo auditor.", altAnswers: ["el equipo auditor"]},
         {type: "speak", prompt: "¿Cómo se llama la reunión al INICIO de la auditoría, donde se explica el plan?", target: "La reunión de apertura.", altAnswers: ["la reunión de apertura"]},
         {type: "speak", prompt: "¿Cómo se llama la reunión al FINAL, donde se presentan los resultados?", target: "La reunión de cierre.", altAnswers: ["la reunión de cierre"]},
-        {type: "speak", prompt: "¿Cómo se llama la conversación donde el auditor hace preguntas a un empleado?", target: "La entrevista.", altAnswers: ["la entrevista"]},
-        {type: "speak", prompt: "Además de preguntar, el auditor mira cómo se hace el trabajo en la práctica. ¿Cómo se llama eso?", target: "La observación.", altAnswers: ["la observación"]},
         {type: "speak", prompt: "¿Cómo se llama el documento que describe, paso a paso, cómo se hace una tarea?", target: "El procedimiento.", altAnswers: ["el procedimiento"]},
         {type: "mc", q: "'A pasta de documentos', em espanhol, é...", options: ["la carpeta", "el informe", "la firma", "el hallazgo"], correct: 0},
         {type: "mc", q: "Cuando un requisito de la norma NO se cumple, se llama...", options: ["conformidad", "hallazgo positivo", "no conformidad", "certificación"], correct: 2},
         {type: "fill", q: "'O computador' em espanhol se escreve: el ___", answer: "ordenador"},
         {type: "fill", q: "'A reunião ao final da auditoria, onde se apresentam os resultados' se escreve: la reunión de ___", answer: "cierre"},
+        {
+          type: "caso", icon: "📋", stamp: "✅ HALLAZGO REGISTRADO",
+          scenario: "Terminaste la auditoría y encontraste una no conformidad importante en la empresa de tu cliente. Necesitas explicarla a la alta dirección.",
+          q: "Escribe una frase completa explicando que encontraron una no conformidad en el proceso de almacenamiento y que se necesita una acción correctiva.",
+          target: "Encontramos una no conformidad en el proceso de almacenamiento y se necesita una acción correctiva.",
+          altAnswers: ["Hay una no conformidad en el almacenamiento y hace falta una acción correctiva.", "Detectamos una no conformidad en el proceso de almacenamiento; es necesaria una acción correctiva."]
+        },
+        {
+          type: "caso", icon: "🔍", stamp: "✅ DICTAMEN EN CAMINO",
+          scenario: "El gerente de calidad te pregunta si puede confiar en la trazabilidad de los documentos que revisaste.",
+          q: "Responde con una frase completa confirmando que la trazabilidad está garantizada y que el dictamen final estará listo la próxima semana.",
+          target: "La trazabilidad está garantizada y el dictamen final estará listo la próxima semana.",
+          altAnswers: ["Sí, la trazabilidad es completa y el dictamen estará listo la semana que viene.", "Puede confiar en la trazabilidad; el dictamen final llegará la próxima semana."]
+        },
         {
           // Ejercicio "chat": a pedido del usuario, este módulo pasó a tener una conversación
           // simulada de verdad al final de cada lección (no solo preguntas aisladas) — acá se
@@ -486,33 +588,33 @@ const LEVEL_ESTUDIORAPIDO = {
         {type: "speak", prompt: "¿Dónde pones tu ropa cuando viajas?", target: "En la maleta.", altAnswers: ["la maleta", "En la maleta"]},
         {type: "speak", prompt: "¿Qué documento necesitas para viajar a otro país?", target: "El pasaporte.", altAnswers: ["el pasaporte"]},
         {type: "speak", prompt: "¿Qué necesitas para poder subir al avión?", target: "La tarjeta de embarque.", altAnswers: ["la tarjeta de embarque"]},
-        {type: "speak", prompt: "¿Por dónde entras al avión, según el número indicado en tu tarjeta?", target: "Por la puerta de embarque.", altAnswers: ["la puerta de embarque", "Por la puerta de embarque"]},
-        {type: "speak", prompt: "¿Dónde miras para saber si tu vuelo está a tiempo o retrasado?", target: "En la pantalla de salidas.", altAnswers: ["la pantalla de salidas"]},
-        {type: "speak", prompt: "Después de aterrizar, ¿dónde recoges tu maleta?", target: "En la cinta transportadora.", altAnswers: ["la cinta transportadora"]},
         {type: "speak", prompt: "¿Dónde revisan que no llevas objetos prohibidos?", target: "En el control de seguridad.", altAnswers: ["el control de seguridad"]},
         {type: "speak", prompt: "¿Dónde revisan tu pasaporte al entrar a otro país?", target: "En la aduana.", altAnswers: ["la aduana"]},
-        {type: "speak", prompt: "¿Dónde esperas antes de que llamen a tu vuelo?", target: "En la sala de espera.", altAnswers: ["la sala de espera"]},
         {type: "speak", prompt: "¿Cómo se llama la bolsa pequeña que llevas contigo dentro del avión?", target: "El equipaje de mano.", altAnswers: ["el equipaje de mano"]},
-        {type: "speak", prompt: "Hoy en día, ¿cómo se llama el billete que llevas en el móvil, sin papel?", target: "El billete electrónico.", altAnswers: ["el billete electrónico"]},
-        {type: "speak", prompt: "¿Qué código usas para identificar tu reserva del vuelo?", target: "El código de reserva.", altAnswers: ["el código de reserva"]},
         {type: "speak", prompt: "¿Cómo se llama la empresa que opera el vuelo, como Iberia o Vueling?", target: "La aerolínea.", altAnswers: ["la aerolínea"]},
-        {type: "speak", prompt: "Cuando entregas tu maleta grande antes de volar, se llama equipaje...", target: "Facturado.", altAnswers: ["el equipaje facturado", "equipaje facturado"]},
         {type: "speak", prompt: "Si tu maleta pesa más de lo permitido, tienes que pagar por el...", target: "Exceso de equipaje.", altAnswers: ["el exceso de equipaje"]},
-        {type: "speak", prompt: "Cuando hay mucha gente esperando en orden para el control de seguridad, se forma una...", target: "Fila.", altAnswers: ["la fila"]},
-        {type: "speak", prompt: "¿Dónde entregas tu maleta y recibes la tarjeta de embarque?", target: "En el mostrador.", altAnswers: ["el mostrador"]},
         {type: "speak", prompt: "Si tu vuelo no sale a la hora prevista, ¿qué tiene el vuelo?", target: "Tiene un retraso.", altAnswers: ["el retraso", "un retraso"]},
-        {type: "speak", prompt: "¿Dónde te sientas dentro del avión?", target: "En el asiento.", altAnswers: ["el asiento", "En el asiento"]},
         {type: "speak", prompt: "¿Qué te pones antes de despegar, por seguridad?", target: "El cinturón de seguridad.", altAnswers: ["el cinturón de seguridad"]},
-        {type: "speak", prompt: "¿Cómo se llama el grupo de personas que trabaja dentro del avión?", target: "La tripulación.", altAnswers: ["la tripulación"]},
-        {type: "speak", prompt: "¿Quién conduce el avión?", target: "El piloto.", altAnswers: ["el piloto"]},
         {type: "speak", prompt: "¿Cómo se llama el momento en que el avión sube y deja el suelo?", target: "El despegue.", altAnswers: ["el despegue"]},
         {type: "speak", prompt: "¿Cómo se llama el momento en que el avión toca el suelo al final del vuelo?", target: "El aterrizaje.", altAnswers: ["el aterrizaje"]},
-        {type: "speak", prompt: "Después de aterrizar, ¿qué haces con tu maleta grande, en la cinta transportadora?", target: "La recogida de equipaje.", altAnswers: ["recojo el equipaje", "la recogida de equipaje"]},
-        {type: "speak", prompt: "Al salir del aeropuerto, ¿qué transporte tomas para llegar rápido a la ciudad?", target: "El taxi.", altAnswers: ["el taxi", "un taxi"]},
         {type: "mc", q: "'O painel de partidas', em espanhol, é...", options: ["la pantalla de salidas", "la torre de control", "la pista de aterrizaje", "la aduana"], correct: 0},
         {type: "mc", q: "El grupo de personas que trabaja dentro del avión (piloto, auxiliares...) se llama...", options: ["la aerolínea", "la tripulación", "el mostrador", "la aduana"], correct: 1},
         {type: "fill", q: "'A bagagem de mão' em espanhol se escreve: el equipaje de ___", answer: "mano"},
-        {type: "fill", q: "'O momento em que o avião sobe e deixa o solo' se escreve: el ___", answer: "despegue"}
+        {type: "fill", q: "'O momento em que o avião sobe e deixa o solo' se escreve: el ___", answer: "despegue"},
+        {
+          type: "caso", icon: "🛫", stamp: "✅ INFORMACIÓN CONFIRMADA",
+          scenario: "Llegas al aeropuerto y descubres que tu vuelo tiene un retraso importante.",
+          q: "Pregúntale al empleado de la aerolínea, en una frase completa, a qué hora sale ahora el vuelo.",
+          target: "Mi vuelo tiene un retraso, ¿a qué hora sale ahora?",
+          altAnswers: ["¿Me puede decir la nueva hora de salida de mi vuelo?", "¿A qué hora sale el vuelo ahora que hay retraso?"]
+        },
+        {
+          type: "caso", icon: "🧳", stamp: "✅ TRÁMITE RESUELTO",
+          scenario: "Tu maleta pesa más de lo permitido en el mostrador de facturación.",
+          q: "Pregunta, en una frase completa, cuánto tienes que pagar por el exceso de equipaje.",
+          target: "Mi maleta pesa más de lo permitido, ¿cuánto tengo que pagar por el exceso de equipaje?",
+          altAnswers: ["¿Cuánto cuesta el exceso de equipaje?", "Tengo exceso de equipaje, ¿cuánto debo pagar?"]
+        }
       ]
     }
   ]
