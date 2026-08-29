@@ -60,7 +60,7 @@ const functions = (typeof firebase.functions === "function") ? firebase.function
 // Versión del sistema, visible en Mi Cuenta / Configuración y en el pie de la barra lateral.
 // Se debe actualizar manualmente cada vez que se sube una nueva versión al repositorio
 // (formato AAAA.MM.DD.N — N = número de subida ese día, empieza en 1).
-const APP_VERSION = "2026.08.06.4";
+const APP_VERSION = "2026.08.29.1";
 
 // Valores por defecto de la mensualidad/anualidad — el admin puede cambiarlos en
 // Configuración → Planes y precios (guardados en config/settings, campos priceMonthly/priceAnnual).
@@ -126,7 +126,7 @@ const I18N = {
     ex_write_what_hear_placeholder: "Escribe lo que escuchas...", ex_write_answer_placeholder: "Escribe tu respuesta...",
     ex_song_listen_default_q: "Escucha la canción y escribe lo que oyes en este fragmento.",
     song_listen_fragment: "🔊 Escuchar el fragmento", song_activate_sound: "🔊 Activar sonido",
-    song_listen_more: "▶️ Escuchar un poco más",
+    song_listen_more: "▶️ Seguir escuchando",
     ex_order_instruction: "Ordena el diálogo (haz clic en orden):",
     ex_sample_answer_label: "Respuesta modelo:", ex_compare_later: "📝 Vas a poder comparar tu respuesta con la respuesta modelo en la Revisión, al terminar.",
     ex_progress_review: "🔁 Repaso", ex_progress_exam: "Prueba", ex_progress_exercise: "Ejercicio",
@@ -163,7 +163,7 @@ const I18N = {
     admin_songs_calculating: "Calculando duración del video...",
     admin_songs_time_error: "No se pudo calcular la duración del video. Intenta de nuevo o marca los tiempos a mano con [mm:ss].",
     admin_songs_field_words: "Cantidad de palabras a practicar",
-    admin_songs_field_words_hint: "El sistema calcula solo el tamaño del trecho de video (duración real de la canción ÷ esta cantidad). Menos palabras = trechos más largos; más palabras = trechos más cortos. Recomendado: entre 10 y 20, y cerca de la cantidad real de huecos {{...}} que marcaste abajo — un número mucho más alto que los huecos reales hace los trechos innecesariamente cortos.",
+    admin_songs_field_words_hint: "Define dos cosas: (1) cuántas palabras se marcan como hueco {{...}} al tocar “Marcar palabras automáticamente” — la misma palabra nunca se repite dos veces en toda la canción; (2) el tamaño de cada trecho de video (duración real de la canción ÷ esta cantidad). Si marcas los huecos a mano en vez de usar el botón automático, esta cantidad solo afecta el tamaño del trecho.",
     admin_songs_words_preview: "≈ fragmentos de {sec}s cada uno, con la duración actual del video.",
     admin_songs_words_preview_nodur: "Toca en “⏱️ Marcar tiempos automáticamente” (o guarda) para ver cuántos segundos tendrá cada fragmento.",
     admin_songs_list_title: "Canciones agregadas ({n})", admin_songs_empty: "Todavía no agregaste ninguna canción.",
@@ -381,7 +381,7 @@ const I18N = {
     ex_write_what_hear_placeholder: "Escreva o que você ouve...", ex_write_answer_placeholder: "Escreva sua resposta...",
     ex_song_listen_default_q: "Ouça a música e escreva o que você ouve neste trecho.",
     song_listen_fragment: "🔊 Ouvir o trecho", song_activate_sound: "🔊 Ativar som",
-    song_listen_more: "▶️ Ouvir um pouco mais",
+    song_listen_more: "▶️ Continuar ouvindo",
     ex_order_instruction: "Ordene o diálogo (clique na ordem):",
     ex_sample_answer_label: "Resposta modelo:", ex_compare_later: "📝 Você vai poder comparar sua resposta com a resposta modelo na Revisão, ao terminar.",
     ex_progress_review: "🔁 Revisão", ex_progress_exam: "Prova", ex_progress_exercise: "Exercício",
@@ -418,7 +418,7 @@ const I18N = {
     admin_songs_calculating: "Calculando duração do vídeo...",
     admin_songs_time_error: "Não foi possível calcular a duração do vídeo. Tente de novo ou marque os tempos manualmente com [mm:ss].",
     admin_songs_field_words: "Quantidade de palavras a praticar",
-    admin_songs_field_words_hint: "O sistema calcula sozinho o tamanho do trecho de vídeo (duração real da música ÷ essa quantidade). Menos palavras = trechos mais longos; mais palavras = trechos mais curtos. Recomendado: entre 10 e 20, e próximo da quantidade real de lacunas {{...}} marcadas abaixo — um número bem maior que as lacunas reais deixa os trechos curtos demais sem necessidade.",
+    admin_songs_field_words_hint: "Define duas coisas: (1) quantas palavras são marcadas como lacuna {{...}} ao tocar “Marcar palavras automaticamente” — a mesma palavra nunca se repete duas vezes na música toda; (2) o tamanho de cada trecho de vídeo (duração real da música ÷ essa quantidade). Se você marcar as lacunas manualmente em vez de usar o botão automático, essa quantidade só afeta o tamanho do trecho.",
     admin_songs_words_preview: "≈ trechos de {sec}s cada, com a duração atual do vídeo.",
     admin_songs_words_preview_nodur: "Toque em “⏱️ Marcar tempos automaticamente” (ou salve) para ver quantos segundos cada trecho vai ter.",
     admin_songs_list_title: "Canções adicionadas ({n})", admin_songs_empty: "Você ainda não adicionou nenhuma canção.",
@@ -636,7 +636,7 @@ const I18N = {
     ex_write_what_hear_placeholder: "Write what you hear...", ex_write_answer_placeholder: "Write your answer...",
     ex_song_listen_default_q: "Listen to the song and write what you hear in this fragment.",
     song_listen_fragment: "🔊 Listen to the fragment", song_activate_sound: "🔊 Turn on sound",
-    song_listen_more: "▶️ Listen a bit more",
+    song_listen_more: "▶️ Keep listening",
     ex_order_instruction: "Order the dialogue (click in order):",
     ex_sample_answer_label: "Model answer:", ex_compare_later: "📝 You'll be able to compare your answer with the model answer in the Review, once you finish.",
     ex_progress_review: "🔁 Review", ex_progress_exam: "Exam", ex_progress_exercise: "Exercise",
@@ -673,7 +673,7 @@ const I18N = {
     admin_songs_calculating: "Calculating video duration...",
     admin_songs_time_error: "Couldn't calculate the video's duration. Try again or mark the times by hand with [mm:ss].",
     admin_songs_field_words: "Number of words to practice",
-    admin_songs_field_words_hint: "The system only uses this to size the video snippet (the song's real duration ÷ this number). Fewer words = longer snippets; more words = shorter snippets. Recommended: between 10 and 20, and close to the real number of {{...}} blanks marked below — a number much higher than the real blanks makes snippets needlessly short.",
+    admin_songs_field_words_hint: "Controls two things: (1) how many words get auto-marked as blanks {{...}} when you tap “Auto-mark blank words” — the same word is never repeated twice in the whole song; (2) the size of each video snippet (the song's real duration ÷ this number). If you mark blanks by hand instead of using the auto button, this number only affects the snippet size.",
     admin_songs_words_preview: "≈ {sec}s snippets each, based on the video's current duration.",
     admin_songs_words_preview_nodur: "Tap “⏱️ Auto-mark times” (or save) to see how many seconds each snippet will be.",
     admin_songs_list_title: "Songs added ({n})", admin_songs_empty: "You haven't added any songs yet.",
@@ -3401,9 +3401,19 @@ function songEmbedSrc(youtubeId, startSec, endSec, cacheBust) {
   // en silencio SIEMPRE se permite, así el video ya abre visualmente en el trecho correcto.
   // El sonido se activa con unMute() dentro del clic de "Repetir el fragmento" (gesto real
   // del usuario → Chrome sí permite audio ahí).
+  //
+  // REDISEÑO (2026-08-29): "end" YA NO se manda en la URL. Cuando YouTube recibe end= en la
+  // URL misma, el reproductor lo graba como límite INTERNO del embed — y lo vuelve a aplicar
+  // cada vez que se llama playVideo(), sin importar que nuestro JS pida seguir. Por eso el
+  // botón "Escuchar un poco más" parecía "no hacer nada" (Anderson lo reportó como BUG, con
+  // razón: la extensión nunca llegaba a sonar, YouTube volvía a cortar en el mismo punto).
+  // Ahora el corte al final del trecho lo hace SOLO nuestro JS (initSongPlayer, un intento
+  // único y liviano por ejercicio) — nunca la URL — así "seguir escuchando" realmente sigue,
+  // sin límite, y el alumno puede además usar la barra nativa de YouTube para moverse libre
+  // antes o después del trecho, como pidió Anderson ("o mesmo poderia ir antes do trecho,
+  // como depois").
   const params = ["autoplay=1", "mute=1", "playsinline=1", "enablejsapi=1", `origin=${encodeURIComponent(location.origin)}`];
   if (startSec != null) params.push(`start=${Math.max(0, Math.floor(startSec))}`);
-  if (endSec != null) params.push(`end=${Math.max(0, Math.floor(endSec))}`);
   if (cacheBust) params.push(`_r=${cacheBust}`);
   return `https://www.youtube.com/embed/${encodeURIComponent(youtubeId)}?${params.join("&")}`;
 }
@@ -3414,8 +3424,8 @@ function songEmbedSrc(youtubeId, startSec, endSec, cacheBust) {
 // confiable que recargar el iframe entero (que en algunos navegadores no reinicia la
 // posición real, o el usuario ve el video saltar al inicio de la canción en vez del trecho).
 let _exSongPlayers = {};
-// Función de extensión por frameId (ver initSongPlayer) — llamada por el botón "Escuchar un
-// poco más" cuando el corte automático resultó demasiado ajustado para la palabra a adivinar.
+// Función "seguir escuchando" por frameId (ver initSongPlayer) — llamada por el botón que
+// aparece cuando el sistema hizo su único intento de pausa suave en el trecho estimado.
 let _exSongExtend = {};
 function destroySongPlayers() {
   Object.keys(_exSongPlayers).forEach((k) => {
@@ -3424,17 +3434,19 @@ function destroySongPlayers() {
   _exSongPlayers = {};
   _exSongExtend = {};
 }
+// REDISEÑO (2026-08-29): Anderson reportó que "Escuchar un poco más" no funcionaba, y pidió
+// repensar todo el mecanismo — no un temporizador rígido por ejercicio, sino: el video abre
+// en el trecho y suena LIBREMENTE (el alumno puede rebobinar/adelantar con la barra nativa
+// de YouTube, ir antes o después del trecho) hasta que el alumno responde; el único
+// "diferencial" del sistema es intentar, UNA sola vez, pausar justo donde debería estar la
+// palabra a adivinar — una sugerencia, no un corte forzado. Por eso ya no hay tope de
+// extensión (antes: +7s por clic hasta +28s) ni "end=" en la URL del embed (ver
+// songEmbedSrc): el video, una vez reanudado, sigue sonando sin límite.
 function initSongPlayer(frameId, startSec, endSec) {
   loadYouTubeIframeAPI().then(() => {
     const el = document.getElementById(frameId);
     if (!el) return; // el alumno ya pasó a otro ejercicio antes de que la API terminara de cargar
-    // "effectiveEnd" es mutable (a diferencia de endSec, que es el trecho calculado por el
-    // algoritmo): cada clic en "Escuchar un poco más" lo empuja +7s, hasta un tope de +28s
-    // sobre el corte original — red de seguridad para cuando la estimación de tiempo quedó
-    // corta y el alumno todavía no alcanzó a escuchar la palabra completa (pedido explícito
-    // de Anderson: "possibilitar exercícios... avaliar e ouvir tranquilamente").
-    let effectiveEnd = endSec;
-    const maxEnd = endSec != null ? endSec + 28 : null;
+    let watchInterval = null;
     const player = new YT.Player(frameId, {
       events: {
         onReady: (ev) => {
@@ -3442,21 +3454,29 @@ function initSongPlayer(frameId, startSec, endSec) {
           ev.target.playVideo();
         },
         onStateChange: (ev) => {
-          // Corta la reproducción al llegar a effectiveEnd, sin depender de que el parámetro
-          // "end" de la URL se vuelva a aplicar después de un seekTo() manual.
-          if (effectiveEnd == null || ev.data !== YT.PlayerState.PLAYING) return;
+          if (ev.data !== YT.PlayerState.PLAYING) {
+            if (watchInterval) { clearInterval(watchInterval); watchInterval = null; }
+            return;
+          }
+          if (endSec == null) return;
+          let cur = 0;
+          try { cur = ev.target.getCurrentTime(); } catch (e) { return; }
+          // Si ya estamos en o después del trecho (el alumno tocó "seguir escuchando", usó
+          // la barra nativa para adelantar, o repitió el fragmento pasado ese punto), no se
+          // intenta pausar de nuevo — de ahí en más el alumno tiene control total y libre.
+          if (cur >= endSec - 0.15) return;
           const extendBtn = document.getElementById(`${frameId}-extend`);
-          if (extendBtn) extendBtn.style.display = "none"; // se reanudó: se oculta hasta el próximo corte
-          const check = setInterval(() => {
-            if (_exSongPlayers[frameId] !== player) { clearInterval(check); return; }
+          if (extendBtn) extendBtn.style.display = "none";
+          watchInterval = setInterval(() => {
+            if (_exSongPlayers[frameId] !== player) { clearInterval(watchInterval); watchInterval = null; return; }
             let t = 0;
-            try { t = ev.target.getCurrentTime(); } catch (e) { clearInterval(check); return; }
-            if (t >= effectiveEnd - 0.15) {
+            try { t = ev.target.getCurrentTime(); } catch (e) { clearInterval(watchInterval); watchInterval = null; return; }
+            if (t >= endSec - 0.15) {
+              clearInterval(watchInterval);
+              watchInterval = null;
               try { ev.target.pauseVideo(); } catch (e) {}
-              clearInterval(check);
               const btn = document.getElementById(`${frameId}-extend`);
-              // Solo se ofrece "escuchar más" mientras no se llegó al tope de extensión.
-              if (btn && effectiveEnd < maxEnd) btn.style.display = "";
+              if (btn) btn.style.display = "";
             }
           }, 250);
         },
@@ -3464,9 +3484,8 @@ function initSongPlayer(frameId, startSec, endSec) {
     });
     _exSongPlayers[frameId] = player;
     _exSongExtend[frameId] = () => {
-      effectiveEnd = Math.min(maxEnd, (effectiveEnd || 0) + 7);
       try { player.unMute(); } catch (e) { /* noop */ }
-      player.playVideo();
+      player.playVideo(); // sin "end" en la URL, esto sigue sonando libremente (ver arriba)
     };
   });
 }
@@ -3482,9 +3501,9 @@ function songFragmentHtml(frameId, youtubeId, startSec, endSec) {
   // no es solo "repetir" — es también la forma de activar el sonido la primera vez, ya que
   // el clic es un gesto real del usuario y el navegador sí permite audio ahí dentro.
   const label = startSec != null ? t("song_listen_fragment") : t("song_activate_sound");
-  // Botón "Escuchar un poco más": queda oculto hasta que el video se pausa solo al llegar al
-  // final del trecho estimado (ver initSongPlayer) — es la red de seguridad para cuando la
-  // estimación de tiempo quedó corta y la palabra a adivinar todavía no terminó de sonar.
+  // Botón "Seguir escuchando": aparece solo si el sistema pausó una vez, sola, al llegar al
+  // punto estimado de la palabra a adivinar (ver initSongPlayer) — es una sugerencia, no un
+  // corte definitivo: al tocarlo el video sigue sonando libremente, sin ningún límite nuevo.
   const extendBtn = endSec != null ? `<button class="btn btn-link btn-sm song-extend-btn" type="button" id="${frameId}-extend" style="display:none">${t("song_listen_more")}</button>` : "";
   return `
     <div class="song-video-wrap">
@@ -3732,8 +3751,9 @@ function renderExercise() {
         if (fr) fr.src = songEmbedSrc(ex.youtubeId, ex.startSec, ex.endSec, Date.now());
       }
     };
-    // "Escuchar un poco más": red de seguridad que aparece solo cuando el video se pausó
-    // solo al llegar al final del trecho — ver initSongPlayer/_exSongExtend.
+    // "Seguir escuchando": aparece cuando el sistema hizo su único intento de pausa suave en
+    // el trecho estimado (ver initSongPlayer/_exSongExtend) — al tocarlo, el video sigue
+    // sonando libremente, sin ningún límite nuevo.
     const extendBtn = document.getElementById(`${frameId}-extend`);
     if (extendBtn) extendBtn.onclick = () => {
       extendBtn.style.display = "none";
@@ -4746,20 +4766,37 @@ const SONG_STOPWORDS = new Set([
 function autoMarkBlanks(raw, maxBlanks) {
   const limit = maxBlanks || 15;
   let count = 0;
+  // BUGFIX (2026-08-29): dedup GLOBAL en toda la letra, no solo dentro de la misma línea —
+  // antes la misma palabra de contenido podía quedar marcada como hueco en varias líneas
+  // distintas (ej. "amor" en la 1ª estrofa Y en el estribillo), y el alumno terminaba
+  // "descubriendo" la misma palabra dos o tres veces. Anderson lo reportó en vivo: "parece
+  // repetir a descoberta de palavras, isso não era o que eu esperava". Ahora cada palabra de
+  // contenido solo puede convertirse en hueco UNA vez en toda la canción.
+  const usedWords = new Set();
   const lines = (raw || "").split("\n");
   const outLines = lines.map(line => {
     if (count >= limit || !line.trim()) return line;
-    if (SONG_BLANK_RE.test(line)) { SONG_BLANK_RE.lastIndex = 0; return line; } // ya tiene hueco manual
+    if (SONG_BLANK_RE.test(line)) {
+      SONG_BLANK_RE.lastIndex = 0;
+      // Línea con hueco(s) manual(es) ({{...}} que el admin ya escribió): sus palabras
+      // también entran al dedup global, así el marcador automático no elige la misma
+      // palabra otra vez en otra línea.
+      let m;
+      while ((m = SONG_BLANK_RE.exec(line))) usedWords.add(normalize(m[1]));
+      SONG_BLANK_RE.lastIndex = 0;
+      return line;
+    }
     const tokens = line.split(/(\s+)/); // conserva los espacios originales al recomponer
     const candidates = [];
     tokens.forEach((tok, i) => {
       const clean = tok.replace(/[.,;:!?¡¿"'()]/g, "");
-      if (/^[A-Za-zÁÉÍÓÚÑÜáéíóúñü]{4,}$/.test(clean) && !SONG_STOPWORDS.has(clean.toLowerCase())) {
+      if (/^[A-Za-zÁÉÍÓÚÑÜáéíóúñü]{4,}$/.test(clean) && !SONG_STOPWORDS.has(clean.toLowerCase()) && !usedWords.has(normalize(clean))) {
         candidates.push(i);
       }
     });
     if (!candidates.length) return line;
     const pick = candidates[Math.floor(Math.random() * candidates.length)];
+    usedWords.add(normalize(tokens[pick].replace(/[.,;:!?¡¿"'()]/g, "")));
     tokens[pick] = tokens[pick].replace(/^([^A-Za-zÁÉÍÓÚÑÜáéíóúñü]*)([A-Za-zÁÉÍÓÚÑÜáéíóúñü]{4,})([^A-Za-zÁÉÍÓÚÑÜáéíóúñü]*)$/, "$1{{$2}}$3");
     count++;
     return tokens.join("");
@@ -4886,8 +4923,7 @@ function extractLineTimestamp(line) {
 }
 
 // Texto limpio de una línea (sin marca de tiempo, huecos resueltos a la palabra real) — usado
-// para mostrar la letra completa en la pantalla de "escuchar y leer" y para el ejercicio de
-// ordenar versos.
+// para mostrar la letra completa en la pantalla de "escuchar y leer" y en el dictado (songListen).
 function songLineClean(line) {
   return extractLineTimestamp(line).text.replace(SONG_BLANK_RE, (_, word) => word);
 }
@@ -4911,8 +4947,8 @@ function computeSongFragmentSec(durationSec, targetWordCount) {
 
 // A partir de las líneas ya separadas (parseSongLyrics), arma la fila de ejercicios:
 // un "fill" por cada hueco marcado (reutiliza el motor de ejercicios ya existente, con
-// gabarito inmediato/al final según la configuración del admin) + un "order" final con
-// un tramo de la canción (hasta 8 líneas) para practicar el orden de los versos.
+// gabarito inmediato/al final según la configuración del admin) + hasta 3 "songListen"
+// (dictado con la canción real) repartidos a lo largo del video.
 // fragmentSec (calculado por computeSongFragmentSec, según lo que el admin configuró para
 // ESTA canción) define ventanas fijas de tiempo (0-30s, 30-60s...) — todas las líneas cuyo
 // timestamp cae en la misma ventana comparten el mismo fragmento de video. Dentro de cada
@@ -5042,16 +5078,10 @@ function buildSongExercises(lines, youtubeId, fragmentSec) {
     }
   }
 
-  const orderSlice = lines.slice(0, Math.min(8, lines.length)).map(songLineClean);
-  if (orderSlice.length >= 3) {
-    const order = orderSlice.map((_, i) => i);
-    // Baraja simple (Fisher-Yates) — determinística no hace falta, es solo para variar el orden inicial.
-    for (let i = order.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [order[i], order[j]] = [order[j], order[i]];
-    }
-    exercises.push({ type: "order", items: order.map(i => orderSlice[i]), correctOrder: order.map((_, pos) => order.indexOf(pos)) });
-  }
+  // REMOVIDO (2026-08-29): el ejercicio final de "ordenar los versos" fue quitado a pedido
+  // de Anderson — "não precisa... o objetivo não é o usuário decorar a música e sim escolher
+  // as palavras". El objetivo del módulo de Canciones es practicar vocabulario (los huecos
+  // "fill" + el dictado "songListen"), no memorizar el orden exacto de las frases.
   return exercises;
 }
 
@@ -5678,7 +5708,12 @@ function renderAdminSongs() {
   const autoBtn = document.getElementById("song-auto-blank-btn");
   if (autoBtn) autoBtn.onclick = () => {
     if (!lyricsTa) return;
-    lyricsTa.value = autoMarkBlanks(lyricsTa.value, 15);
+    // BUGFIX (2026-08-29): antes marcaba SIEMPRE 15 huecos sin importar lo que el admin
+    // puso en "Cantidad de palabras a practicar" — de ahí la confusión de Anderson (una
+    // canción con "20" configurado terminaba con 38 ejercicios). Ahora usa el mismo número
+    // que muestra el campo de arriba.
+    const n = Math.max(1, parseInt((wordsInput && wordsInput.value) || "20", 10) || 20);
+    lyricsTa.value = autoMarkBlanks(lyricsTa.value, n);
     updateCount();
   };
   const autoTimeBtn = document.getElementById("song-auto-time-btn");

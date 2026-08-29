@@ -9,7 +9,7 @@
 <link rel="apple-touch-icon" href="icon.svg">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Nunito:wght@400;500;600;700;800&family=Lora:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="style.css?v=2026.08.29.1">
 </head>
 <body>
 <div id="app" class="notranslate" translate="no">
@@ -29,19 +29,25 @@
 <!-- Configuração (edite firebase-config.js com suas próprias chaves) -->
 <script src="firebase-config.js"></script>
 
+<!-- CACHE-BUST (2026-08-29): os arquivos locais abaixo (style.css, content-*.js, app.js)
+     levam "?v=2026.08.29.1" na URL — sem isso, o navegador/CDN podia continuar servindo uma
+     cópia antiga em cache mesmo depois de um novo deploy ("a atualização de versão não
+     está funcionando", reportado por Anderson). Trocar a URL força buscar de novo. IMPORTANTE:
+     atualize esse número (igual ao APP_VERSION em app.js) toda vez que subir uma versão nova.
+     -->
 <!-- Conteúdo do curso -->
-<script src="content-fundamentos.js"></script>
-<script src="content-basico.js"></script>
-<script src="content-intermedio.js"></script>
-<script src="content-avanzado.js"></script>
-<script src="content-secretos.js"></script>
-<script src="content-profesional.js"></script>
-<script src="content-normas.js"></script>
-<script src="content-tiempos.js"></script>
-<script src="content-pronunciacion.js"></script>
-<script src="content-verbos.js"></script>
-<script src="content-estudiorapido.js"></script>
-<script src="content-juegos.js"></script>
+<script src="content-fundamentos.js?v=2026.08.29.1"></script>
+<script src="content-basico.js?v=2026.08.29.1"></script>
+<script src="content-intermedio.js?v=2026.08.29.1"></script>
+<script src="content-avanzado.js?v=2026.08.29.1"></script>
+<script src="content-secretos.js?v=2026.08.29.1"></script>
+<script src="content-profesional.js?v=2026.08.29.1"></script>
+<script src="content-normas.js?v=2026.08.29.1"></script>
+<script src="content-tiempos.js?v=2026.08.29.1"></script>
+<script src="content-pronunciacion.js?v=2026.08.29.1"></script>
+<script src="content-verbos.js?v=2026.08.29.1"></script>
+<script src="content-estudiorapido.js?v=2026.08.29.1"></script>
+<script src="content-juegos.js?v=2026.08.29.1"></script>
 
 <!-- jsPDF (geração dos certificados em PDF, sem build step) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
@@ -58,6 +64,6 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.5.0/chart.umd.min.js"></script>
 
 <!-- Motor do app -->
-<script src="app.js"></script>
+<script src="app.js?v=2026.08.29.1"></script>
 </body>
 </html>
