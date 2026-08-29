@@ -109,10 +109,13 @@ const LEVEL_TIEMPOS = {
         }
       ],
       notes: [
-        "El presente también sirve para el futuro cercano en el habla cotidiana de España: \"El lunes empiezo el nuevo proyecto\" es tan natural como decirlo en futuro.",
-        "Presente histórico: se usa para narrar hechos pasados con más viveza, muy común en libros de historia y en la prensa española.",
-        "Los verbos con diptongación (e→ie, o→ue, e→i) NO diptongan en nosotros/vosotros: pensamos/pensáis (nunca \"piensamos\"), podemos/podéis (nunca \"puedemos\").",
-        "Haber en presente (he/has/ha/hemos/habéis/han) casi nunca se usa solo — es el auxiliar del pretérito perfecto compuesto, que ves en la próxima lección."
+        "Regla de oro para decidir cuándo usar el presente: si la acción es HABITUAL, GENERAL o ya DECIDIDA para el futuro cercano, usa presente. Contraste: \"Trabajo en Madrid\" (rutina) frente a \"El lunes empiezo el nuevo proyecto\" (futuro ya decidido) — las dos frases están en presente, aunque una hable del futuro.",
+        "Cuidado con el 'falso amigo' del portugués: 'tener' y 'hacer' cambian SOLO en la primera persona (tengo, hago), no en las demás. Memorízalos como excepción, porque el resto de personas (tú tienes, él tiene...) sí sigue el patrón normal de diptongación o es regular.",
+        "Los verbos con diptongación (e→ie: querer→quiero; o→ue: poder→puedo; e→i: pedir→pido) SOLO diptongan en las personas donde el acento cae en la raíz — es decir, todas menos 'nosotros' y 'vosotros'. Truco para recordarlo: nosotros/vosotros son las únicas formas donde el acento cae en la terminación, por eso 'suenan' distintas: pensamos/pensáis, nunca \"piensamos\".",
+        "El presente histórico es un recurso de estilo, no una obligación: los periódicos y libros de historia lo usan para dar viveza (\"Colón llega a América en 1492\"), pero en una conversación normal seguirías usando el pasado (\"Colón llegó\"). Reconocerlo te ayuda a entender titulares y textos narrativos, aunque no lo uses tú mismo todos los días.",
+        "'Haber' en presente (he/has/ha/hemos/habéis/han) casi nunca aparece solo: casi siempre acompaña a un participio para formar el pretérito perfecto compuesto (he terminado, ha llegado), que ves en la próxima lección. Si ves 'ha' o 'han' sueltos en un texto, revisa con calma: seguramente falta o sigue un participio cerca.",
+        "Ser, estar, ir y haber son los cuatro verbos MÁS irregulares del presente — no siguen ningún patrón lógico, así que conviene memorizarlos como un bloque aparte, casi como una canción: soy-eres-es-somos-sois-son.",
+        "Consejo práctico: si dudas entre presente simple y presente continuo (estoy + gerundio) para hablar de AHORA MISMO, en España el presente simple ya es perfectamente natural y hasta más común en el habla informal — \"Leo tu correo\" es tan válido como \"Estoy leyendo tu correo\"."
       ],
       exercises: [
         { type: "mc", q: "¿Cuál es la forma correcta de 'Nosotros' para el verbo 'Pedir'?", options: ["Pidemos", "Pedimos", "Piden"], correct: 1 },
@@ -222,10 +225,13 @@ const LEVEL_TIEMPOS = {
         }
       ],
       notes: [
-        "Regla práctica de España: periodo ABIERTO (hoy, esta semana) → perfecto compuesto. Periodo CERRADO (ayer, en 2020) → perfecto simple.",
-        "El imperfecto describe el fondo, la costumbre o el estado; el indefinido cuenta la acción puntual que interrumpe ese fondo: \"Llovía (imperfecto) cuando el auditor llegó (indefinido) a la fábrica.\"",
-        "Solo tres verbos son irregulares en el imperfecto: ser (era), ir (iba) y ver (veía) — todos los demás son 100% regulares.",
-        "En Latinoamérica y en algunas zonas del sur de España se prefiere el indefinido incluso para \"hoy\" — no es un error, es otra variedad del español; este curso enseña el uso mayoritario en el centro y norte de España."
+        "El truco más práctico para España: pregúntate '¿el periodo de tiempo que menciono ya se cerró o todavía está abierto?'. Si dices 'hoy', 'esta semana', 'este año' → el periodo sigue abierto → compuesto (he terminado). Si dices 'ayer', 'el año pasado', 'en 2020' → el periodo ya cerró → simple (terminé).",
+        "El imperfecto NUNCA cuenta una acción puntual con principio y fin claros — solo describe el FONDO: el clima, la hora, la edad, un estado de ánimo, una costumbre repetida sin número exacto de veces. Por eso 'llovía' (fondo) convive con 'llegó' (acción puntual) en la misma frase: \"Llovía cuando el auditor llegó a la fábrica.\"",
+        "Solo tres verbos son irregulares en el imperfecto — ser (era), ir (iba) y ver (veía) — así que si dudas de cualquier otro verbo, el imperfecto SIEMPRE es regular: raíz + aba/abas/aba... (verbos -AR) o raíz + ía/ías/ía... (verbos -ER/-IR). Es, con diferencia, el tiempo más fácil de conjugar de todo el español.",
+        "Los participios irregulares (hecho, dicho, visto, puesto, escrito, roto, vuelto, abierto, cubierto, muerto, resuelto, frito) conviene memorizarlos como una lista cerrada — son solo doce, y aparecen constantemente en el pretérito perfecto compuesto (he hecho, ha dicho) y también en la voz pasiva (fue escrito).",
+        "Diferencia clave con el portugués: en Brasil, 'eu fiz' cubre tanto 'hice ayer' como 'he hecho hoy'. En español de España hay que decidir: si fue hoy, 'he hecho'; si fue ayer o antes, 'hice'. Confundir los dos es, con diferencia, el error más común de brasileños hablando español peninsular.",
+        "Muchos verbos irregulares del indefinido comparten un patrón: cambian la raíz Y pierden el acento en las terminaciones de 'yo' y 'él' (tuve/tuvo, estuve/estuvo, pude/pudo, quise/quiso) — al contrario de los verbos regulares, donde 'yo' y 'él' SIEMPRE llevan tilde (hablé/habló).",
+        "En Latinoamérica y en el sur de España (Canarias, Galicia, Asturias) se usa el indefinido incluso para 'hoy' — no es un error, es otra norma regional igual de válida. Este curso enseña el uso del centro y norte de España porque es el que más se escucha en los medios y en Madrid, pero conviene reconocer ambos cuando los oigas."
       ],
       exercises: [
         { type: "mc", q: "'Esta mañana ___ el informe.' (terminar) — hoy sigue siendo hoy:", options: ["terminé", "he terminado", "terminaba"], correct: 1 },
@@ -336,10 +342,13 @@ const LEVEL_TIEMPOS = {
         }
       ],
       notes: [
-        "En el habla cotidiana de España, 'ir a + infinitivo' es mucho más frecuente que el futuro simple — este último se reserva para lo formal, lo escrito, las promesas y las predicciones a largo plazo.",
-        "El futuro simple también expresa PROBABILIDAD en el presente: '¿Dónde está Marta?' 'Estará en una reunión' (= probablemente está en una reunión), sin ninguna idea de futuro real.",
-        "Las 12 raíces irregulares del futuro simple son las mismas para el condicional (hablarías→ tendría, podría...) — aprenderlas aquí te sirve doble.",
-        "Nunca se dice 'iré a llamar' con el mismo sentido de plan inmediato que 'voy a llamar' — mezclar las dos formas en una misma frase suena forzado para un nativo."
+        "Regla práctica para elegir entre 'ir a + infinitivo' y futuro simple: si el plan ya está decidido y es más o menos cercano, usa 'ir a' (\"Voy a llamar al cliente esta tarde\"). Si quieres sonar formal, hacer una promesa fuerte o escribir un documento oficial, usa el futuro simple (\"El informe se enviará el viernes\").",
+        "El futuro simple para expresar PROBABILIDAD es uno de los usos que más sorprende a los brasileños, porque no existe exactamente igual en portugués: '¿Dónde está Marta?' 'Estará en una reunión' no habla del futuro — significa 'probablemente está en una reunión', ahora mismo. El mismo uso existe con el futuro perfecto para especular sobre el pasado: 'Ya habrá llegado' = 'seguramente ya llegó'.",
+        "Las 12 raíces irregulares del futuro (dir-, har-, podr-, pondr-, querr-, sabr-, saldr-, tendr-, valdr-, vendr-, habr-, cabr-) son EXACTAMENTE las mismas que usa el condicional (diría, haría, podría...) — aprenderlas de memoria ahora te ahorra estudiarlas otra vez cuando llegues al condicional.",
+        "Fíjate en el patrón de las raíces irregulares: casi todas insertan una 'd' antes de la terminación (poner→pondr-, tener→tendr-, salir→saldr-, valer→valdr-, venir→vendr-) — reconocer este patrón te ayuda a adivinar raíces nuevas en lugar de memorizarlas una por una.",
+        "El futuro simple SIEMPRE lleva las terminaciones regulares (-é, -ás, -á, -emos, -éis, -án) sobre el infinitivo completo o la raíz irregular, nunca sobre una raíz cortada como en otros tiempos. Por eso 'hablaré' mantiene el infinitivo entero, y hasta los irregulares como 'tendré' llevan las mismas terminaciones finales.",
+        "En el habla cotidiana de España, decir 'iré a llamar' con el sentido de plan inmediato suena forzado — un nativo diría simplemente 'voy a llamar'. Reserva el futuro simple puro para frases sin 'ir a': nunca mezcles las dos construcciones en la misma idea.",
+        "El futuro perfecto (habré/habrás/habrá + participio) casi no se usa en la conversación diaria para un futuro real 'terminado antes de otro futuro' — su uso más frecuente, con diferencia, es la suposición sobre el pasado reciente: \"El cliente ya habrá recibido el correo\" (= seguramente ya lo recibió)."
       ],
       exercises: [
         { type: "mc", q: "'La próxima semana ___ la nueva auditoría.' (empezar) — plan ya decidido:", options: ["empezaré", "voy a empezar", "empezaba"], correct: 1 },

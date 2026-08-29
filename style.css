@@ -901,13 +901,6 @@ table.grammar-table th { background: var(--gray-bg); }
 .song-ex-video { flex: 0 0 340px; max-width: 340px; position: sticky; top: 18px; }
 .song-ex-video .song-video-wrap { margin-bottom: 10px; }
 .song-ex-video .song-replay-btn { width: 100%; }
-/* Botón "Escuchar un poco más" (red de seguridad del trecho de canción) — discreto, en texto,
-   para no competir visualmente con el botón principal "Escuchar el fragmento". */
-.song-extend-btn.btn-link {
-  width: 100%; margin-top: 6px; background: none; border: none; box-shadow: none;
-  color: var(--rojo); font-weight: 700; text-decoration: underline; padding: 4px 6px;
-}
-.song-extend-btn.btn-link:hover { opacity: .8; }
 .song-ex-content { flex: 1; min-width: 0; }
 .song-ex-content .ex-question { margin-top: 0; }
 @media (max-width: 760px) {

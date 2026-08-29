@@ -17,7 +17,7 @@ const LEVEL_NORMAS = {
   icon: "📜",
   colorFrom: "#0F4C3A",
   colorTo: "#0D2137",
-  description: "Módulo especial y creativo: usamos el lenguaje real de las normas ISO de calidad, medio ambiente, seguridad laboral y seguridad de la información como excusa para dominar la gramática más útil del español profesional — concordancia verbal, el modal de obligación, el 'se' impersonal y el subjuntivo de riesgo.",
+  description: "Módulo especial y creativo: usamos el lenguaje real de las normas ISO de calidad, medio ambiente, seguridad laboral y seguridad de la información como excusa para dominar la gramática más útil del español profesional — concordancia verbal, el modal de obligación, el 'se' impersonal y el subjuntivo de riesgo. Termina con una lección práctica sobre el proceso de auditoría (ISO 19011): qué decir en la reunión de apertura, qué decir en la reunión de cierre, y qué información debe contener el informe de auditoría.",
   lessons: [
     {
       id: "n1",
@@ -303,6 +303,94 @@ const LEVEL_NORMAS = {
         { type: "translate", from: "pt", text: "A organização deve cumprir os quatro sistemas de gestão ao mesmo tempo.", answer: "La organización debe cumplir los cuatro sistemas de gestión al mismo tiempo." },
         { type: "speak", prompt: "Practica esta frase de cierre de auditoría integral.", target: "Su organización demuestra un dominio real de las cuatro normas." },
         { type: "open", q: "Redacta un breve párrafo de informe de auditoría integral (3 a 5 frases) usando al menos tres de los cuatro patrones gramaticales de este módulo: deber + infinitivo, se impersonal, subjuntivo de riesgo y voz pasiva.", sample: "La organización debe mantener actualizada su política de calidad. Es necesario que los riesgos ambientales se identifiquen cada año. Los activos de información son protegidos mediante controles de acceso, y es importante que todos los trabajadores participen en la evaluación de riesgos laborales." }
+      ]
+    },
+    {
+      id: "n6",
+      order: 6,
+      title: "La Reunión de Auditoría: Apertura, Cierre y el Informe",
+      subtitle: "Fórmulas de cortesía profesional y verbos de hallazgo (se constató que…, se recomienda que + subjuntivo) · Tema: El proceso de auditoría (ISO 19011)",
+      text: "La norma ISO 19011 no certifica ningún sistema de gestión: es una guía internacional que orienta CÓMO se debe planificar y ejecutar una auditoría, ya sea de calidad, de medio ambiente, de seguridad y salud en el trabajo o de seguridad de la información. Según esta guía, toda auditoría in situ gira alrededor de tres momentos formales que el auditor conduce con un lenguaje profesional muy característico: la reunión de apertura, la ejecución de la auditoría y la reunión de cierre — y termina siempre con un documento escrito, el informe de auditoría. La reunión de apertura tiene un objetivo simple pero decisivo: dejar absolutamente claras las reglas del juego antes de empezar. En ella, el auditor se presenta a sí mismo y al equipo auditor, confirma el alcance y los objetivos de la auditoría, repasa el plan o cronograma acordado, explica la metodología que va a seguir (entrevistas, revisión de documentos, verificación in situ de los procesos), confirma los criterios de auditoría — es decir, contra qué norma o requisito se está evaluando —, aclara cómo se van a clasificar y comunicar los hallazgos, y garantiza la confidencialidad de la información. Es también el momento de confirmar los recursos y las personas de contacto disponibles durante la jornada, y de abrir un espacio breve para preguntas antes de comenzar. La reunión de cierre, al final de la jornada, cumple la función opuesta: presentar lo que se encontró. El auditor agradece la colaboración recibida, resume brevemente el proceso seguido, y presenta los hallazgos con su evidencia objetiva — clasificados normalmente en no conformidades mayores, no conformidades menores, observaciones y oportunidades de mejora —, explica los próximos pasos (plazos para el plan de acción correctivo, si corresponde) y deja espacio para que el auditado exprese su opinión o presente una discrepancia formal, si la tiene. El informe de auditoría, entregado después, formaliza todo por escrito: datos generales (fecha, organización, alcance, objetivos y criterios de auditoría, equipo auditor y participantes), la metodología empleada, un resumen ejecutivo, el detalle de cada hallazgo con su evidencia objetiva, la conclusión general sobre la conformidad del sistema, y las recomendaciones y plazos de seguimiento. Tanto en la reunión de apertura como en la de cierre, el español profesional recurre a fórmulas de cortesía muy estables — 'quisiera', 'nos gustaría', 'permítanme', 'antes de comenzar' — y, sobre todo en el informe, a verbos de constatación en 'se' impersonal ('se constató que…', 'se evidenció que…', 'se observó que…') seguidos de una recomendación en subjuntivo ('se recomienda que la organización revise…'), el mismo subjuntivo de necesidad que ya practicaste en la lección sobre seguridad y salud en el trabajo.",
+      textPt: "A norma ISO 19011 não certifica nenhum sistema de gestão: é um guia internacional que orienta COMO se deve planejar e executar uma auditoria, seja de qualidade, de meio ambiente, de segurança e saúde no trabalho ou de segurança da informação. Segundo esse guia, toda auditoria in loco gira em torno de três momentos formais que o auditor conduz com uma linguagem profissional bem característica: a reunião de abertura, a execução da auditoria e a reunião de encerramento — e termina sempre com um documento escrito, o relatório de auditoria. A reunião de abertura tem um objetivo simples, porém decisivo: deixar absolutamente claras as regras do jogo antes de começar. Nela, o auditor se apresenta a si mesmo e à equipe auditora, confirma o escopo e os objetivos da auditoria, revisa o plano ou cronograma acordado, explica a metodologia que vai seguir (entrevistas, revisão de documentos, verificação in loco dos processos), confirma os critérios de auditoria — ou seja, contra qual norma ou requisito está sendo avaliado —, esclarece como os achados serão classificados e comunicados, e garante a confidencialidade das informações. É também o momento de confirmar os recursos e as pessoas de contato disponíveis durante o dia, e de abrir um espaço breve para perguntas antes de começar. A reunião de encerramento, ao final do dia, cumpre a função oposta: apresentar o que foi encontrado. O auditor agradece a colaboração recebida, resume brevemente o processo seguido, e apresenta os achados com sua evidência objetiva — normalmente classificados em não conformidades maiores, não conformidades menores, observações e oportunidades de melhoria —, explica os próximos passos (prazos para o plano de ação corretiva, se for o caso) e deixa espaço para que o auditado expresse sua opinião ou apresente uma discordância formal, se tiver. O relatório de auditoria, entregue depois, formaliza tudo por escrito: dados gerais (data, organização, escopo, objetivos e critérios de auditoria, equipe auditora e participantes), a metodologia empregada, um resumo executivo, o detalhamento de cada achado com sua evidência objetiva, a conclusão geral sobre a conformidade do sistema, e as recomendações e prazos de acompanhamento. Tanto na reunião de abertura quanto na de encerramento, o espanhol profissional recorre a fórmulas de cortesia muito estáveis — 'quisiera', 'nos gustaría', 'permítanme', 'antes de comenzar' — e, sobretudo no relatório, a verbos de constatação em 'se' impessoal ('se constató que…', 'se evidenció que…', 'se observó que…') seguidos de uma recomendação no subjuntivo ('se recomienda que la organización revise…'), o mesmo subjuntivo de necessidade que você já praticou na lição sobre segurança e saúde no trabalho.",
+      dialogue: [
+        { who: "Auditor Líder", es: "Buenos días a todos. Antes de comenzar, quisiera presentarme: soy el auditor líder de esta auditoría integral.", pt: "Bom dia a todos. Antes de começar, gostaria de me apresentar: sou o auditor líder desta auditoria integrada." },
+        { who: "Directora General", es: "Bienvenido. Aquí está el equipo que lo va a acompañar durante toda la jornada.", pt: "Seja bem-vindo. Aqui está a equipe que vai acompanhá-lo durante todo o dia." },
+        { who: "Auditor Líder", es: "Gracias. Nos gustaría confirmar el alcance: la auditoría cubre los procesos de producción y el sistema de gestión de calidad.", pt: "Obrigado. Gostaríamos de confirmar o escopo: a auditoria cobre os processos de produção e o sistema de gestão da qualidade." },
+        { who: "Directora General", es: "Correcto, ese es el alcance acordado.", pt: "Correto, esse é o escopo acordado." },
+        { who: "Auditor Líder", es: "Perfecto. Vamos a trabajar con entrevistas y revisión documental, y cualquier hallazgo se va a clasificar como no conformidad, observación u oportunidad de mejora.", pt: "Perfeito. Vamos trabalhar com entrevistas e revisão documental, e qualquer achado será classificado como não conformidade, observação ou oportunidade de melhoria." },
+        { who: "Directora General", es: "Entendido. Toda la información va a ser tratada de forma confidencial, ¿verdad?", pt: "Entendido. Todas as informações serão tratadas de forma confidencial, certo?" },
+        { who: "Auditor Líder", es: "Así es. Ahora, ya al final del día: se constató que el procedimiento de calibración no estaba actualizado.", pt: "Exatamente. Agora, já ao final do dia: constatou-se que o procedimento de calibração não estava atualizado." },
+        { who: "Directora General", es: "Entiendo. ¿Eso se clasifica como no conformidad mayor o menor?", pt: "Entendo. Isso se classifica como não conformidade maior ou menor?" },
+        { who: "Auditor Líder", es: "Se evidenció que el impacto es limitado, así que es una no conformidad menor. Se recomienda que la organización actualice el procedimiento en un plazo de 30 días.", pt: "Evidenciou-se que o impacto é limitado, então é uma não conformidade menor. Recomenda-se que a organização atualize o procedimento em um prazo de 30 dias." },
+        { who: "Directora General", es: "Perfecto, vamos a preparar el plan de acción correctivo.", pt: "Perfeito, vamos preparar o plano de ação corretiva." },
+        { who: "Auditor Líder", es: "Excelente. El informe de auditoría con todos los hallazgos y la conclusión final va a estar listo en cinco días hábiles.", pt: "Excelente. O relatório de auditoria com todos os achados e a conclusão final vai estar pronto em cinco dias úteis." }
+      ],
+      vocabulary: [
+        {
+          category: "Reunión de apertura — qué se debe decir",
+          items: [
+            { es: "alcance de la auditoría", pt: "escopo da auditoria" },
+            { es: "objetivos de la auditoría", pt: "objetivos da auditoria" },
+            { es: "criterios de auditoría", pt: "critérios de auditoria" },
+            { es: "equipo auditor", pt: "equipe auditora" },
+            { es: "plan de auditoría", pt: "plano de auditoria" },
+            { es: "persona de contacto", pt: "pessoa de contato" },
+            { es: "confidencialidad", pt: "confidencialidade" },
+            { es: "metodología de auditoría", pt: "metodologia de auditoria" }
+          ]
+        },
+        {
+          category: "Reunión de cierre — qué se debe decir",
+          items: [
+            { es: "hallazgo", pt: "achado" },
+            { es: "evidencia objetiva", pt: "evidência objetiva" },
+            { es: "no conformidad mayor", pt: "não conformidade maior" },
+            { es: "no conformidad menor", pt: "não conformidade menor" },
+            { es: "observación", pt: "observação" },
+            { es: "oportunidad de mejora", pt: "oportunidade de melhoria" },
+            { es: "plan de acción correctivo", pt: "plano de ação corretiva" },
+            { es: "derecho de apelación", pt: "direito de recurso" }
+          ]
+        },
+        {
+          category: "Informe de auditoría — qué debe contener",
+          items: [
+            { es: "resumen ejecutivo", pt: "resumo executivo" },
+            { es: "alcance y objetivos", pt: "escopo e objetivos" },
+            { es: "equipo auditor y participantes", pt: "equipe auditora e participantes" },
+            { es: "metodología empleada", pt: "metodologia empregada" },
+            { es: "conclusión de conformidad", pt: "conclusão de conformidade" },
+            { es: "plazo de seguimiento", pt: "prazo de acompanhamento" },
+            { es: "lista de distribución", pt: "lista de distribuição" },
+            { es: "firma del auditor líder", pt: "assinatura do auditor líder" }
+          ]
+        }
+      ],
+      grammar: [
+        {
+          title: "Fórmulas de cortesía + verbos de hallazgo (se constató / se recomienda que + subjuntivo)",
+          headers: ["Momento", "Fórmula", "Ejemplo"],
+          rows: [
+            ["Apertura — presentarse", "Quisiera / Permítanme presentarme", "Quisiera presentarme: soy el auditor líder de esta auditoría."],
+            ["Apertura — confirmar alcance", "Nos gustaría confirmar que…", "Nos gustaría confirmar que el alcance incluye los tres turnos de producción."],
+            ["Cierre — presentar un hallazgo (hecho)", "Se constató que… / Se evidenció que…", "Se constató que el procedimiento no estaba actualizado."],
+            ["Informe — recomendación (subjuntivo)", "Se recomienda que + subjuntivo", "Se recomienda que la organización revise el procedimiento en un plazo de 30 días."]
+          ]
+        }
+      ],
+      exercises: [
+        { type: "mc", q: "¿Cuál de estas frases es apropiada para ABRIR una reunión de apertura de auditoría?", options: ["Quisiera presentarme: soy el auditor líder de esta auditoría.", "Se constató que el procedimiento no estaba actualizado.", "El informe va a estar listo en cinco días.", "Gracias por su colaboración, hemos terminado."], correct: 0 },
+        { type: "mc", q: "¿En qué momento de la auditoría se presentan los hallazgos con su evidencia objetiva?", options: ["En la reunión de apertura", "En la reunión de cierre", "Antes de firmar el contrato", "Nunca se presentan oralmente"], correct: 1 },
+        { type: "fill", q: "Se _______ (constatar) que el procedimiento de calibración no estaba actualizado.", answer: "constató" },
+        { type: "fill", q: "Se recomienda que la organización _______ (actualizar) el procedimiento en 30 días.", answer: "actualice" },
+        { type: "fill", q: "Nos gustaría _______ (confirmar) el alcance de la auditoría antes de comenzar.", answer: "confirmar" },
+        { type: "translate", from: "pt", text: "Gostaríamos de confirmar o escopo e os objetivos da auditoria.", answer: "Nos gustaría confirmar el alcance y los objetivos de la auditoría." },
+        { type: "translate", from: "es", text: "Se recomienda que la organización revise el procedimiento en un plazo de 30 días.", answer: "Recomenda-se que a organização revise o procedimento em um prazo de 30 dias." },
+        { type: "order", items: ["se", "recomienda", "que", "la organización", "revise el procedimiento"], correctOrder: [0, 1, 2, 3, 4] },
+        { type: "speak", prompt: "Practica esta frase de apertura de auditoría.", target: "Quisiera presentarme: soy el auditor líder de esta auditoría." },
+        { type: "mc", q: "¿Cuál de estas partes NO suele formar parte de un informe de auditoría?", options: ["Resumen ejecutivo", "Metodología empleada", "El salario de los empleados", "Conclusión de conformidad"], correct: 2 },
+        { type: "mc", q: "Según el texto, ¿qué norma internacional ofrece la guía para PLANIFICAR y EJECUTAR una auditoría?", options: ["ISO 9001", "ISO 19011", "ISO 14001", "ISO/IEC 27001"], correct: 1 },
+        { type: "open", q: "Escribe un breve párrafo (3 a 4 frases) como si fueras el auditor líder cerrando una reunión de cierre: agradece la colaboración, presenta un hallazgo con 'se constató que' y da una recomendación con 'se recomienda que' + subjuntivo.", sample: "Gracias a todos por la colaboración durante esta auditoría. Se constató que la documentación del proceso de producción está completa y actualizada. Sin embargo, se evidenció que faltan registros de capacitación del último trimestre. Se recomienda que el área de Recursos Humanos complete estos registros en un plazo de 15 días." }
       ]
     }
   ],

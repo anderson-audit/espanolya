@@ -126,7 +126,6 @@ const I18N = {
     ex_write_what_hear_placeholder: "Escribe lo que escuchas...", ex_write_answer_placeholder: "Escribe tu respuesta...",
     ex_song_listen_default_q: "Escucha la canción y escribe lo que oyes en este fragmento.",
     song_listen_fragment: "🔊 Escuchar el fragmento", song_activate_sound: "🔊 Activar sonido",
-    song_listen_more: "▶️ Seguir escuchando",
     ex_order_instruction: "Ordena el diálogo (haz clic en orden):",
     ex_sample_answer_label: "Respuesta modelo:", ex_compare_later: "📝 Vas a poder comparar tu respuesta con la respuesta modelo en la Revisión, al terminar.",
     ex_progress_review: "🔁 Repaso", ex_progress_exam: "Prueba", ex_progress_exercise: "Ejercicio",
@@ -381,7 +380,6 @@ const I18N = {
     ex_write_what_hear_placeholder: "Escreva o que você ouve...", ex_write_answer_placeholder: "Escreva sua resposta...",
     ex_song_listen_default_q: "Ouça a música e escreva o que você ouve neste trecho.",
     song_listen_fragment: "🔊 Ouvir o trecho", song_activate_sound: "🔊 Ativar som",
-    song_listen_more: "▶️ Continuar ouvindo",
     ex_order_instruction: "Ordene o diálogo (clique na ordem):",
     ex_sample_answer_label: "Resposta modelo:", ex_compare_later: "📝 Você vai poder comparar sua resposta com a resposta modelo na Revisão, ao terminar.",
     ex_progress_review: "🔁 Revisão", ex_progress_exam: "Prova", ex_progress_exercise: "Exercício",
@@ -636,7 +634,6 @@ const I18N = {
     ex_write_what_hear_placeholder: "Write what you hear...", ex_write_answer_placeholder: "Write your answer...",
     ex_song_listen_default_q: "Listen to the song and write what you hear in this fragment.",
     song_listen_fragment: "🔊 Listen to the fragment", song_activate_sound: "🔊 Turn on sound",
-    song_listen_more: "▶️ Keep listening",
     ex_order_instruction: "Order the dialogue (click in order):",
     ex_sample_answer_label: "Model answer:", ex_compare_later: "📝 You'll be able to compare your answer with the model answer in the Review, once you finish.",
     ex_progress_review: "🔁 Review", ex_progress_exam: "Exam", ex_progress_exercise: "Exercise",
@@ -3424,69 +3421,31 @@ function songEmbedSrc(youtubeId, startSec, endSec, cacheBust) {
 // confiable que recargar el iframe entero (que en algunos navegadores no reinicia la
 // posición real, o el usuario ve el video saltar al inicio de la canción en vez del trecho).
 let _exSongPlayers = {};
-// Función "seguir escuchando" por frameId (ver initSongPlayer) — llamada por el botón que
-// aparece cuando el sistema hizo su único intento de pausa suave en el trecho estimado.
-let _exSongExtend = {};
 function destroySongPlayers() {
   Object.keys(_exSongPlayers).forEach((k) => {
     try { _exSongPlayers[k].destroy(); } catch (e) { /* noop */ }
   });
   _exSongPlayers = {};
-  _exSongExtend = {};
 }
-// REDISEÑO (2026-08-29): Anderson reportó que "Escuchar un poco más" no funcionaba, y pidió
-// repensar todo el mecanismo — no un temporizador rígido por ejercicio, sino: el video abre
-// en el trecho y suena LIBREMENTE (el alumno puede rebobinar/adelantar con la barra nativa
-// de YouTube, ir antes o después del trecho) hasta que el alumno responde; el único
-// "diferencial" del sistema es intentar, UNA sola vez, pausar justo donde debería estar la
-// palabra a adivinar — una sugerencia, no un corte forzado. Por eso ya no hay tope de
-// extensión (antes: +7s por clic hasta +28s) ni "end=" en la URL del embed (ver
-// songEmbedSrc): el video, una vez reanudado, sigue sonando sin límite.
-function initSongPlayer(frameId, startSec, endSec) {
+// REDISEÑO (2026-08-29, segunda vuelta): Anderson pidió quitar también la pausa suave — no
+// quiere NINGÚN corte, ni siquiera uno sugerido/opcional. El pedido final: el video arranca
+// un poco ANTES del trecho de la palabra a adivinar (el margen "lead" que ya calcula
+// windowOf, en buildSongExercises, hace justamente eso) y sigue sonando derecho, sin pausar
+// nunca solo. El alumno tiene control total con la barra nativa de YouTube (rebobinar,
+// adelantar, ir antes o después del trecho) y decide cuándo responder.
+function initSongPlayer(frameId, startSec) {
   loadYouTubeIframeAPI().then(() => {
     const el = document.getElementById(frameId);
     if (!el) return; // el alumno ya pasó a otro ejercicio antes de que la API terminara de cargar
-    let watchInterval = null;
     const player = new YT.Player(frameId, {
       events: {
         onReady: (ev) => {
           if (startSec != null) ev.target.seekTo(startSec, true);
           ev.target.playVideo();
         },
-        onStateChange: (ev) => {
-          if (ev.data !== YT.PlayerState.PLAYING) {
-            if (watchInterval) { clearInterval(watchInterval); watchInterval = null; }
-            return;
-          }
-          if (endSec == null) return;
-          let cur = 0;
-          try { cur = ev.target.getCurrentTime(); } catch (e) { return; }
-          // Si ya estamos en o después del trecho (el alumno tocó "seguir escuchando", usó
-          // la barra nativa para adelantar, o repitió el fragmento pasado ese punto), no se
-          // intenta pausar de nuevo — de ahí en más el alumno tiene control total y libre.
-          if (cur >= endSec - 0.15) return;
-          const extendBtn = document.getElementById(`${frameId}-extend`);
-          if (extendBtn) extendBtn.style.display = "none";
-          watchInterval = setInterval(() => {
-            if (_exSongPlayers[frameId] !== player) { clearInterval(watchInterval); watchInterval = null; return; }
-            let t = 0;
-            try { t = ev.target.getCurrentTime(); } catch (e) { clearInterval(watchInterval); watchInterval = null; return; }
-            if (t >= endSec - 0.15) {
-              clearInterval(watchInterval);
-              watchInterval = null;
-              try { ev.target.pauseVideo(); } catch (e) {}
-              const btn = document.getElementById(`${frameId}-extend`);
-              if (btn) btn.style.display = "";
-            }
-          }, 250);
-        },
       },
     });
     _exSongPlayers[frameId] = player;
-    _exSongExtend[frameId] = () => {
-      try { player.unMute(); } catch (e) { /* noop */ }
-      player.playVideo(); // sin "end" en la URL, esto sigue sonando libremente (ver arriba)
-    };
   });
 }
 
@@ -3501,17 +3460,12 @@ function songFragmentHtml(frameId, youtubeId, startSec, endSec) {
   // no es solo "repetir" — es también la forma de activar el sonido la primera vez, ya que
   // el clic es un gesto real del usuario y el navegador sí permite audio ahí dentro.
   const label = startSec != null ? t("song_listen_fragment") : t("song_activate_sound");
-  // Botón "Seguir escuchando": aparece solo si el sistema pausó una vez, sola, al llegar al
-  // punto estimado de la palabra a adivinar (ver initSongPlayer) — es una sugerencia, no un
-  // corte definitivo: al tocarlo el video sigue sonando libremente, sin ningún límite nuevo.
-  const extendBtn = endSec != null ? `<button class="btn btn-link btn-sm song-extend-btn" type="button" id="${frameId}-extend" style="display:none">${t("song_listen_more")}</button>` : "";
   return `
     <div class="song-video-wrap">
       <iframe id="${frameId}" src="${songEmbedSrc(youtubeId, startSec, endSec)}" frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
-    <button class="btn btn-secondary btn-sm song-replay-btn" type="button" id="${frameId}-replay">${label}</button>
-    ${extendBtn}`;
+    <button class="btn btn-secondary btn-sm song-replay-btn" type="button" id="${frameId}-replay">${label}</button>`;
 }
 
 const EX_TYPE_BADGE_KEYS = {
@@ -3737,7 +3691,7 @@ function renderExercise() {
   ["song-fill-frame", "song-listen-frame"].forEach((frameId) => {
     const frame = document.getElementById(frameId);
     if (!frame) return;
-    initSongPlayer(frameId, ex.startSec, ex.endSec);
+    initSongPlayer(frameId, ex.startSec);
     const replayBtn = document.getElementById(`${frameId}-replay`);
     if (replayBtn) replayBtn.onclick = () => {
       const player = _exSongPlayers[frameId];
@@ -3750,15 +3704,6 @@ function renderExercise() {
         const fr = document.getElementById(frameId);
         if (fr) fr.src = songEmbedSrc(ex.youtubeId, ex.startSec, ex.endSec, Date.now());
       }
-    };
-    // "Seguir escuchando": aparece cuando el sistema hizo su único intento de pausa suave en
-    // el trecho estimado (ver initSongPlayer/_exSongExtend) — al tocarlo, el video sigue
-    // sonando libremente, sin ningún límite nuevo.
-    const extendBtn = document.getElementById(`${frameId}-extend`);
-    if (extendBtn) extendBtn.onclick = () => {
-      extendBtn.style.display = "none";
-      const fn = _exSongExtend[frameId];
-      if (fn) fn();
     };
   });
 
@@ -4749,20 +4694,18 @@ async function onDeleteNote(id) {
 // venir siempre de él, nunca ser transcritas por el asistente).
 const SONG_BLANK_RE = /\{\{\s*([^{}]+?)\s*\}\}/g;
 
-// Palabras muy comunes del español que NO tiene sentido convertir en hueco (artículos,
-// preposiciones, conjunciones...) — usada solo por el marcador automático de abajo.
-const SONG_STOPWORDS = new Set([
-  "de","la","el","en","y","a","que","los","las","un","una","se","del","al","con","por",
-  "para","no","es","su","sus","lo","le","les","o","u","mi","tu","tus","mis","este","esta",
-  "esto","ese","esa","eso","muy","pero","si","sí","ya","me","te","nos","os","como","también",
-  "tan","así","cuando","donde","porque","sin","sobre","hay","fue","son","soy","eres","era",
-  "han","he","has","más","qué","yo","tú","él","ella","nosotros","ustedes","ellos","ellas",
-]);
-
 // Marcador automático de huecos: recorre las líneas que el admin pegó (sin tocar las que
-// YA tienen {{...}} manual) y envuelve en {{}} una palabra "de contenido" (4+ letras, no
-// stopword) por línea, hasta un máximo total. Corre enteramente en el navegador del propio
-// admin sobre el texto que él mismo pegó — el asistente nunca procesa ni ve esa letra.
+// YA tienen {{...}} manual) y envuelve en {{}} una palabra por línea, hasta un máximo total.
+// Corre enteramente en el navegador del propio admin sobre el texto que él mismo pegó — el
+// asistente nunca procesa ni ve esa letra.
+// AJUSTE (2026-08-29): antes se excluían los artículos, preposiciones y conjunciones más
+// comunes (SONG_STOPWORDS) para marcar solo "palabras de contenido" — pero eso reducía
+// mucho el conjunto de palabras distintas disponibles, sobre todo en canciones cortas o muy
+// repetitivas, y forzaba a repetir la misma palabra como hueco en varios versos. Anderson
+// pidió explícitamente ampliar el criterio ("pode ser verbo, artigo, não precisa ser
+// necessariamente palavras [de contenido]"): ahora cualquier palabra de 2+ letras es
+// candidata (verbo, artículo, sustantivo, lo que sea), y el dedup global (usedWords, abajo)
+// sigue garantizando que nunca se repita la misma palabra dos veces en toda la canción.
 function autoMarkBlanks(raw, maxBlanks) {
   const limit = maxBlanks || 15;
   let count = 0;
@@ -4790,7 +4733,7 @@ function autoMarkBlanks(raw, maxBlanks) {
     const candidates = [];
     tokens.forEach((tok, i) => {
       const clean = tok.replace(/[.,;:!?¡¿"'()]/g, "");
-      if (/^[A-Za-zÁÉÍÓÚÑÜáéíóúñü]{4,}$/.test(clean) && !SONG_STOPWORDS.has(clean.toLowerCase()) && !usedWords.has(normalize(clean))) {
+      if (/^[A-Za-zÁÉÍÓÚÑÜáéíóúñü]{2,}$/.test(clean) && !usedWords.has(normalize(clean))) {
         candidates.push(i);
       }
     });
