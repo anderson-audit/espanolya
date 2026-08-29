@@ -102,6 +102,9 @@ const I18N = {
     auth_btn_login: "Entrar", auth_btn_register: "Crear cuenta", auth_btn_forgot: "Enviar e-mail de recuperación",
     auth_no_account: "¿No tienes cuenta?", auth_register_link: "Regístrate", auth_forgot_link: "¿Olvidaste tu contraseña?",
     auth_have_account: "¿Ya tienes cuenta?", auth_login_link: "Entra aquí", auth_back_login: "Volver al login",
+    auth_pin_sub: "Entra rápido con tu PIN", auth_pin_use_password: "Usar e-mail y contraseña",
+    auth_pin_not_you: "¿No eres tú? Entrar con otra cuenta", auth_pin_wrong: "PIN incorrecto. Probá de nuevo.",
+    auth_pin_locked: "Demasiados intentos. Entra con tu contraseña.",
     auth_hero_title: "¡Aprende Español de España!", auth_hero_sub: "Un curso interactivo, con pronunciación real, ejercicios de voz y seguimiento de tu progreso.",
     topbar_admin: "Admin", topbar_logout: "Salir",
     dash_greeting: "Hola, {name} 👋 ¿Qué vamos a estudiar hoy?", dash_bonus: "🎁 Módulos bono",
@@ -123,6 +126,7 @@ const I18N = {
     ex_write_what_hear_placeholder: "Escribe lo que escuchas...", ex_write_answer_placeholder: "Escribe tu respuesta...",
     ex_song_listen_default_q: "Escucha la canción y escribe lo que oyes en este fragmento.",
     song_listen_fragment: "🔊 Escuchar el fragmento", song_activate_sound: "🔊 Activar sonido",
+    song_listen_more: "▶️ Escuchar un poco más",
     ex_order_instruction: "Ordena el diálogo (haz clic en orden):",
     ex_sample_answer_label: "Respuesta modelo:", ex_compare_later: "📝 Vas a poder comparar tu respuesta con la respuesta modelo en la Revisión, al terminar.",
     ex_progress_review: "🔁 Repaso", ex_progress_exam: "Prueba", ex_progress_exercise: "Ejercicio",
@@ -160,6 +164,8 @@ const I18N = {
     admin_songs_time_error: "No se pudo calcular la duración del video. Intenta de nuevo o marca los tiempos a mano con [mm:ss].",
     admin_songs_field_words: "Cantidad de palabras a practicar",
     admin_songs_field_words_hint: "El sistema calcula solo el tamaño del trecho de video (duración real de la canción ÷ esta cantidad). Menos palabras = trechos más largos; más palabras = trechos más cortos. Recomendado: entre 10 y 20, y cerca de la cantidad real de huecos {{...}} que marcaste abajo — un número mucho más alto que los huecos reales hace los trechos innecesariamente cortos.",
+    admin_songs_words_preview: "≈ fragmentos de {sec}s cada uno, con la duración actual del video.",
+    admin_songs_words_preview_nodur: "Toca en “⏱️ Marcar tiempos automáticamente” (o guarda) para ver cuántos segundos tendrá cada fragmento.",
     admin_songs_list_title: "Canciones agregadas ({n})", admin_songs_empty: "Todavía no agregaste ninguna canción.",
     admin_songs_lines_unit: "líneas", admin_songs_blanks_unit: "huecos", admin_songs_bad_youtube: "No se pudo identificar el video de YouTube — revisa el link.",
     admin_songs_saved: "¡Canción guardada!", admin_songs_confirm_delete: "¿Eliminar esta canción? El alumno ya no podrá practicarla.",
@@ -217,6 +223,14 @@ const I18N = {
     account_current_pass: "Contraseña actual", account_new_pass: "Nueva contraseña", account_confirm_pass: "Confirmar nueva contraseña",
     account_change_pass_btn: "Cambiar contraseña", account_pass_mismatch: "Las contraseñas nuevas no coinciden.",
     account_pass_changed: "¡Contraseña actualizada con éxito!", account_theme_label: "Color del tema", account_font_label: "Fuente",
+    account_pin_title: "🔢 Login rápido con PIN",
+    account_pin_hint: "Configura un PIN de 4 dígitos para entrar más rápido en este dispositivo, sin escribir tu contraseña completa cada vez. Funciona solo en este navegador/computadora — no se sincroniza con otros dispositivos.",
+    account_pin_active_note: "PIN activo en este dispositivo.", account_pin_pref_label: "Método de login predeterminado en este dispositivo",
+    account_pin_pref_pin: "PIN", account_pin_pref_password: "Contraseña", account_pin_setup_btn: "Configurar PIN",
+    account_pin_change_btn: "Cambiar PIN", account_pin_remove_btn: "Quitar PIN", account_pin_remove_confirm: "¿Quitar el PIN de este dispositivo? Vas a necesitar tu contraseña para entrar la próxima vez.",
+    account_pin_new_label: "Nuevo PIN (4 dígitos)", account_pin_confirm_label: "Confirmar PIN", account_pin_save_btn: "Guardar PIN",
+    account_pin_cancel_btn: "Cancelar", account_pin_invalid: "El PIN debe tener exactamente 4 números.",
+    account_pin_mismatch: "Los PIN no coinciden.", account_pin_saved: "¡PIN configurado con éxito!", account_pin_removed: "PIN eliminado.",
     account_lang_label: "Idioma de la interfaz", account_save_appearance: "Guardar apariencia", account_appearance_saved: "¡Apariencia guardada!", account_save_voice: "Guardar voz",
     account_voice_label: "Voz de las lecciones (texto a voz)", account_voice_preview: "Escuchar ejemplo con esta voz",
     account_voice_none: "Tu navegador no ofrece voces en español todavía. Prueba recargar la página o usar Google Chrome.",
@@ -343,6 +357,9 @@ const I18N = {
     auth_btn_login: "Entrar", auth_btn_register: "Criar conta", auth_btn_forgot: "Enviar e-mail de recuperação",
     auth_no_account: "Não tem conta?", auth_register_link: "Cadastre-se", auth_forgot_link: "Esqueceu sua senha?",
     auth_have_account: "Já tem conta?", auth_login_link: "Entre aqui", auth_back_login: "Voltar ao login",
+    auth_pin_sub: "Entre rápido com seu PIN", auth_pin_use_password: "Usar e-mail e senha",
+    auth_pin_not_you: "Não é você? Entrar com outra conta", auth_pin_wrong: "PIN incorreto. Tente de novo.",
+    auth_pin_locked: "Muitas tentativas. Entre com sua senha.",
     auth_hero_title: "Aprenda Espanhol da Espanha!", auth_hero_sub: "Um curso interativo, com pronúncia real, exercícios de fala e acompanhamento do seu progresso.",
     topbar_admin: "Admin", topbar_logout: "Sair",
     dash_greeting: "Olá, {name} 👋 O que vamos estudar hoje?", dash_bonus: "🎁 Módulos bônus",
@@ -364,6 +381,7 @@ const I18N = {
     ex_write_what_hear_placeholder: "Escreva o que você ouve...", ex_write_answer_placeholder: "Escreva sua resposta...",
     ex_song_listen_default_q: "Ouça a música e escreva o que você ouve neste trecho.",
     song_listen_fragment: "🔊 Ouvir o trecho", song_activate_sound: "🔊 Ativar som",
+    song_listen_more: "▶️ Ouvir um pouco mais",
     ex_order_instruction: "Ordene o diálogo (clique na ordem):",
     ex_sample_answer_label: "Resposta modelo:", ex_compare_later: "📝 Você vai poder comparar sua resposta com a resposta modelo na Revisão, ao terminar.",
     ex_progress_review: "🔁 Revisão", ex_progress_exam: "Prova", ex_progress_exercise: "Exercício",
@@ -401,6 +419,8 @@ const I18N = {
     admin_songs_time_error: "Não foi possível calcular a duração do vídeo. Tente de novo ou marque os tempos manualmente com [mm:ss].",
     admin_songs_field_words: "Quantidade de palavras a praticar",
     admin_songs_field_words_hint: "O sistema calcula sozinho o tamanho do trecho de vídeo (duração real da música ÷ essa quantidade). Menos palavras = trechos mais longos; mais palavras = trechos mais curtos. Recomendado: entre 10 e 20, e próximo da quantidade real de lacunas {{...}} marcadas abaixo — um número bem maior que as lacunas reais deixa os trechos curtos demais sem necessidade.",
+    admin_songs_words_preview: "≈ trechos de {sec}s cada, com a duração atual do vídeo.",
+    admin_songs_words_preview_nodur: "Toque em “⏱️ Marcar tempos automaticamente” (ou salve) para ver quantos segundos cada trecho vai ter.",
     admin_songs_list_title: "Canções adicionadas ({n})", admin_songs_empty: "Você ainda não adicionou nenhuma canção.",
     admin_songs_lines_unit: "linhas", admin_songs_blanks_unit: "lacunas", admin_songs_bad_youtube: "Não consegui identificar o vídeo do YouTube — confira o link.",
     admin_songs_saved: "Canção salva!", admin_songs_confirm_delete: "Excluir esta canção? O aluno não vai poder mais praticá-la.",
@@ -458,6 +478,14 @@ const I18N = {
     account_current_pass: "Senha atual", account_new_pass: "Nova senha", account_confirm_pass: "Confirmar nova senha",
     account_change_pass_btn: "Alterar senha", account_pass_mismatch: "As novas senhas não coincidem.",
     account_pass_changed: "Senha atualizada com sucesso!", account_theme_label: "Cor do tema", account_font_label: "Fonte",
+    account_pin_title: "🔢 Login rápido com PIN",
+    account_pin_hint: "Configure um PIN de 4 dígitos para entrar mais rápido neste dispositivo, sem digitar sua senha completa toda vez. Funciona apenas neste navegador/computador — não sincroniza com outros dispositivos.",
+    account_pin_active_note: "PIN ativo neste dispositivo.", account_pin_pref_label: "Método de login padrão neste dispositivo",
+    account_pin_pref_pin: "PIN", account_pin_pref_password: "Senha", account_pin_setup_btn: "Configurar PIN",
+    account_pin_change_btn: "Alterar PIN", account_pin_remove_btn: "Remover PIN", account_pin_remove_confirm: "Remover o PIN deste dispositivo? Você vai precisar da sua senha para entrar na próxima vez.",
+    account_pin_new_label: "Novo PIN (4 dígitos)", account_pin_confirm_label: "Confirmar PIN", account_pin_save_btn: "Salvar PIN",
+    account_pin_cancel_btn: "Cancelar", account_pin_invalid: "O PIN deve ter exatamente 4 números.",
+    account_pin_mismatch: "Os PINs não coincidem.", account_pin_saved: "PIN configurado com sucesso!", account_pin_removed: "PIN removido.",
     account_lang_label: "Idioma da interface", account_save_appearance: "Salvar aparência", account_appearance_saved: "Aparência salva!", account_save_voice: "Salvar voz",
     account_voice_label: "Voz das lições (texto para voz)", account_voice_preview: "Ouvir exemplo com esta voz",
     account_voice_none: "Seu navegador ainda não oferece vozes em espanhol. Tente recarregar a página ou usar o Google Chrome.",
@@ -584,6 +612,9 @@ const I18N = {
     auth_btn_login: "Sign in", auth_btn_register: "Create account", auth_btn_forgot: "Send reset email",
     auth_no_account: "Don't have an account?", auth_register_link: "Sign up", auth_forgot_link: "Forgot your password?",
     auth_have_account: "Already have an account?", auth_login_link: "Sign in here", auth_back_login: "Back to login",
+    auth_pin_sub: "Sign in quickly with your PIN", auth_pin_use_password: "Use email and password",
+    auth_pin_not_you: "Not you? Sign in with another account", auth_pin_wrong: "Wrong PIN. Try again.",
+    auth_pin_locked: "Too many attempts. Sign in with your password.",
     auth_hero_title: "Learn Spanish from Spain!", auth_hero_sub: "An interactive course with real pronunciation, speaking exercises, and progress tracking.",
     topbar_admin: "Admin", topbar_logout: "Log out",
     dash_greeting: "Hi, {name} 👋 What shall we study today?", dash_bonus: "🎁 Bonus modules",
@@ -605,6 +636,7 @@ const I18N = {
     ex_write_what_hear_placeholder: "Write what you hear...", ex_write_answer_placeholder: "Write your answer...",
     ex_song_listen_default_q: "Listen to the song and write what you hear in this fragment.",
     song_listen_fragment: "🔊 Listen to the fragment", song_activate_sound: "🔊 Turn on sound",
+    song_listen_more: "▶️ Listen a bit more",
     ex_order_instruction: "Order the dialogue (click in order):",
     ex_sample_answer_label: "Model answer:", ex_compare_later: "📝 You'll be able to compare your answer with the model answer in the Review, once you finish.",
     ex_progress_review: "🔁 Review", ex_progress_exam: "Exam", ex_progress_exercise: "Exercise",
@@ -642,6 +674,8 @@ const I18N = {
     admin_songs_time_error: "Couldn't calculate the video's duration. Try again or mark the times by hand with [mm:ss].",
     admin_songs_field_words: "Number of words to practice",
     admin_songs_field_words_hint: "The system only uses this to size the video snippet (the song's real duration ÷ this number). Fewer words = longer snippets; more words = shorter snippets. Recommended: between 10 and 20, and close to the real number of {{...}} blanks marked below — a number much higher than the real blanks makes snippets needlessly short.",
+    admin_songs_words_preview: "≈ {sec}s snippets each, based on the video's current duration.",
+    admin_songs_words_preview_nodur: "Tap “⏱️ Auto-mark times” (or save) to see how many seconds each snippet will be.",
     admin_songs_list_title: "Songs added ({n})", admin_songs_empty: "You haven't added any songs yet.",
     admin_songs_lines_unit: "lines", admin_songs_blanks_unit: "blanks", admin_songs_bad_youtube: "Couldn't identify the YouTube video — check the link.",
     admin_songs_saved: "Song saved!", admin_songs_confirm_delete: "Delete this song? The student won't be able to practice it anymore.",
@@ -699,6 +733,14 @@ const I18N = {
     account_current_pass: "Current password", account_new_pass: "New password", account_confirm_pass: "Confirm new password",
     account_change_pass_btn: "Change password", account_pass_mismatch: "New passwords don't match.",
     account_pass_changed: "Password updated successfully!", account_theme_label: "Theme color", account_font_label: "Font",
+    account_pin_title: "🔢 Quick PIN login",
+    account_pin_hint: "Set up a 4-digit PIN to sign in faster on this device, without typing your full password every time. It only works on this browser/computer — it doesn't sync to other devices.",
+    account_pin_active_note: "PIN active on this device.", account_pin_pref_label: "Default sign-in method on this device",
+    account_pin_pref_pin: "PIN", account_pin_pref_password: "Password", account_pin_setup_btn: "Set up PIN",
+    account_pin_change_btn: "Change PIN", account_pin_remove_btn: "Remove PIN", account_pin_remove_confirm: "Remove the PIN from this device? You'll need your password to sign in next time.",
+    account_pin_new_label: "New PIN (4 digits)", account_pin_confirm_label: "Confirm PIN", account_pin_save_btn: "Save PIN",
+    account_pin_cancel_btn: "Cancel", account_pin_invalid: "The PIN must be exactly 4 digits.",
+    account_pin_mismatch: "The PINs don't match.", account_pin_saved: "PIN set up successfully!", account_pin_removed: "PIN removed.",
     account_lang_label: "Interface language", account_save_appearance: "Save appearance", account_appearance_saved: "Appearance saved!", account_save_voice: "Save voice",
     account_voice_label: "Lesson voice (text-to-speech)", account_voice_preview: "Listen to a sample with this voice",
     account_voice_none: "Your browser doesn't offer Spanish voices yet. Try reloading the page or using Google Chrome.",
@@ -848,6 +890,10 @@ const state = {
   screen: "loading",       // loading | auth | dashboard | levels | lessonList | lesson | exercises | exam | result
                            // | notas | notebook | analytics | admin | adminStudents | adminAnalytics | adminCerts | adminConfig | account | review
   authMode: "login",       // login | register | forgot
+  authForcePassword: false, // true = el usuario pidió explícitamente el formulario de e-mail/contraseña
+                             // en vez del PIN pad (aunque tenga PIN configurado en este dispositivo)
+  pinFailCount: 0,          // intentos de PIN incorrectos seguidos (ver onPinSubmit) — a los 5 se
+                             // fuerza el formulario de contraseña completo, por seguridad
   user: null,              // { uid, email, name, role }
   progress: null,          // documento de progresso do Firestore
   config: { passScores: { ...DEFAULT_PASS_SCORES }, gabaritoMode: DEFAULT_GABARITO_MODE },
@@ -1279,6 +1325,14 @@ function renderLoading() {
 /* ---------------------------------------------------------------------- */
 function renderAuth() {
   const mode = state.authMode;
+  // Login rápido con PIN: si este dispositivo ya tiene un PIN configurado para la última
+  // cuenta que entró aquí, y esa cuenta eligió "PIN" como método preferido (Mi Cuenta →
+  // Seguridad), se muestra el PIN pad en vez del formulario completo — a menos que el
+  // usuario haya pedido explícitamente "usar e-mail y contraseña" (authForcePassword).
+  const lastEmail = getLastLoginEmail();
+  const pinBlob = mode === "login" ? getPinBlobForEmail(lastEmail) : null;
+  const showPinPad = mode === "login" && pinBlob && getPinPref(lastEmail) === "pin" && !state.authForcePassword;
+  if (showPinPad) return renderAuthPinPad(lastEmail);
   root.innerHTML = `
     <div class="auth-wrap">
       <div class="auth-lang-switch">
@@ -1335,7 +1389,7 @@ function renderAuth() {
   const goLogin = document.getElementById("go-login");
   if (goRegister) goRegister.onclick = () => { state.authMode = "register"; state.errorMsg = ""; render(); };
   if (goForgot) goForgot.onclick = () => { state.authMode = "forgot"; state.errorMsg = ""; render(); };
-  if (goLogin) goLogin.onclick = () => { state.authMode = "login"; state.errorMsg = ""; render(); };
+  if (goLogin) goLogin.onclick = () => { state.authMode = "login"; state.errorMsg = ""; state.authForcePassword = false; render(); };
   document.querySelectorAll(".lang-chip").forEach(btn => {
     btn.onclick = () => {
       state.prefs.lang = btn.dataset.lang;
@@ -1343,6 +1397,90 @@ function renderAuth() {
       render();
     };
   });
+}
+
+// Pantalla de login rápido con PIN — misma "cara" (auth-wrap/auth-grid/auth-card) que el
+// formulario completo, pero con 4 casillas de PIN en vez de e-mail+contraseña.
+function renderAuthPinPad(email) {
+  root.innerHTML = `
+    <div class="auth-wrap">
+      <div class="auth-lang-switch">
+        ${Object.keys(UI_LANGS).map(l => `<button class="lang-chip ${state.prefs.lang === l ? "active" : ""}" data-lang="${l}">${l.toUpperCase()}</button>`).join("")}
+      </div>
+      <div class="auth-grid">
+        <div class="auth-hero">
+          <div class="auth-hero-flag"><div></div><div></div><div></div></div>
+          <div class="auth-hero-emblem">🇪🇸</div>
+          <h1>${t("auth_hero_title")}</h1>
+          <p>${t("auth_hero_sub")}</p>
+          <div class="auth-hero-tags"><span>🎧 TTS</span><span>🎤 ${state.prefs.lang === "pt" ? "Fala" : state.prefs.lang === "en" ? "Speech" : "Habla"}</span><span>📊 Progreso</span></div>
+        </div>
+        <div class="auth-card">
+          <div class="flag-strip"><div></div><div></div><div></div></div>
+          <h1>¡Español Ya!</h1>
+          <div class="auth-sub">${t("auth_pin_sub")}</div>
+          <div class="auth-pin-account">👤 ${escapeHtml(email)}</div>
+          ${state.errorMsg ? `<div class="error-msg">${escapeHtml(state.errorMsg)}</div>` : ""}
+          <div style="display:flex;justify-content:center">${pinBoxesHtml("login-pin")}</div>
+          <div class="auth-switch">
+            <button id="pin-use-password">${t("auth_pin_use_password")}</button><br><br>
+            <button id="pin-not-you">${t("auth_pin_not_you")}</button>
+          </div>
+          <div class="auth-version">v${APP_VERSION}</div>
+        </div>
+      </div>
+    </div>`;
+
+  clearPinBoxes("login-pin");
+  wirePinBoxesAutoAdvance("login-pin", () => onPinSubmit(email, readPinBoxes("login-pin")));
+  const goPassword = () => { state.authForcePassword = true; state.errorMsg = ""; render(); };
+  const usePassBtn = document.getElementById("pin-use-password");
+  if (usePassBtn) usePassBtn.onclick = goPassword;
+  const notYouBtn = document.getElementById("pin-not-you");
+  if (notYouBtn) notYouBtn.onclick = goPassword; // el formulario completo permite entrar con otra cuenta
+  document.querySelectorAll(".lang-chip").forEach(btn => {
+    btn.onclick = () => { state.prefs.lang = btn.dataset.lang; localStorage.setItem("ey_ui_lang", btn.dataset.lang); render(); };
+  });
+}
+
+// Descifra las credenciales guardadas con el PIN ingresado e intenta el login real con
+// Firebase — el PIN nunca "loguea" por sí mismo, solo desbloquea la contraseña guardada.
+async function onPinSubmit(email, pin) {
+  state.errorMsg = "";
+  const blob = getPinBlobForEmail(email);
+  if (!blob) { state.authForcePassword = true; render(); return; }
+  let creds;
+  try {
+    creds = await pinDecryptCredentials(pin, blob);
+  } catch (err) {
+    // PIN incorrecto: AES-GCM rechaza la verificación de integridad y decrypt() falla.
+    state.pinFailCount = (state.pinFailCount || 0) + 1;
+    if (state.pinFailCount >= 5) {
+      state.pinFailCount = 0;
+      state.authForcePassword = true;
+      state.errorMsg = t("auth_pin_locked");
+    } else {
+      state.errorMsg = t("auth_pin_wrong");
+    }
+    render();
+    return;
+  }
+  try {
+    await auth.signInWithEmailAndPassword(creds.email, creds.password);
+    state.pinFailCount = 0;
+    setLastLoginEmail(creds.email);
+    // onAuthStateChanged se encarga de navegar a la pantalla correcta desde acá.
+  } catch (err) {
+    // El PIN estaba bien (se descifró), pero el login real falló — casi siempre porque la
+    // contraseña cambió después de configurar el PIN. El PIN guardado ya no sirve: se borra
+    // para no dejar al alumno atascado intentando un PIN que nunca más va a funcionar.
+    if (["auth/wrong-password", "auth/user-not-found", "auth/invalid-credential"].includes(err.code)) {
+      removePinBlobForEmail(email);
+    }
+    state.authForcePassword = true;
+    state.errorMsg = translateFirebaseError(err);
+    render();
+  }
 }
 
 async function onAuthSubmit(e) {
@@ -1354,6 +1492,7 @@ async function onAuthSubmit(e) {
     if (mode === "login") {
       const pass = document.getElementById("f-pass").value;
       await auth.signInWithEmailAndPassword(email, pass);
+      setLastLoginEmail(email);
     } else if (mode === "register") {
       // Consentimiento LGPD: se exige ANTES de crear la cuenta (no solo antes de guardar
       // el documento en Firestore), para que un registro nunca llegue a "efectivarse" sin
@@ -1403,6 +1542,130 @@ function translateFirebaseError(err) {
     "auth/too-many-requests": "Demasiados intentos. Espera un momento e intenta de nuevo.",
   };
   return map[err.code] || ("Error: " + err.message);
+}
+
+/* ---------------------------------------------------------------------- */
+/* 5a. LOGIN RÁPIDO COM PIN (4 dígitos) — ver renderAuthPinPad / renderAccountSecurityTab */
+/* ---------------------------------------------------------------------- */
+// Guardado POR DISPOSITIVO/NAVEGADOR (nunca sincronizado con el servidor): Firebase Auth
+// exige e-mail+contraseña real (no existe "PIN" como método nativo), así que lo que se
+// guarda es la CONTRASEÑA REAL cifrada con una clave derivada del PIN (PBKDF2 + AES-GCM,
+// Web Crypto API, 100% en el navegador) — el PIN nunca sale del dispositivo ni se guarda en
+// texto plano, y sin el PIN correcto el contenido cifrado es inútil. Por eso el PIN SOLO
+// funciona en el dispositivo/navegador donde fue configurado. Pedido explícito de Anderson:
+// la elección de PIN o contraseña vive en Mi Cuenta → Seguridad, y solo puede configurarse
+// DESPUÉS del primer login con contraseña (hace falta la contraseña real para cifrarla).
+const PIN_ITERATIONS = 150000;
+
+function pinB64FromBytes(bytes) {
+  let bin = "";
+  bytes.forEach(b => { bin += String.fromCharCode(b); });
+  return btoa(bin);
+}
+function pinBytesFromB64(b64) {
+  const bin = atob(b64);
+  const bytes = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+  return bytes;
+}
+async function pinDeriveKey(pin, saltBytes) {
+  const enc = new TextEncoder();
+  const keyMaterial = await crypto.subtle.importKey("raw", enc.encode(pin), "PBKDF2", false, ["deriveKey"]);
+  return crypto.subtle.deriveKey(
+    { name: "PBKDF2", salt: saltBytes, iterations: PIN_ITERATIONS, hash: "SHA-256" },
+    keyMaterial, { name: "AES-GCM", length: 256 }, false, ["encrypt", "decrypt"]
+  );
+}
+async function pinEncryptCredentials(pin, email, password) {
+  const salt = crypto.getRandomValues(new Uint8Array(16));
+  const iv = crypto.getRandomValues(new Uint8Array(12));
+  const key = await pinDeriveKey(pin, salt);
+  const data = new TextEncoder().encode(JSON.stringify({ email, password }));
+  const cipherBuf = await crypto.subtle.encrypt({ name: "AES-GCM", iv }, key, data);
+  return { salt: pinB64FromBytes(salt), iv: pinB64FromBytes(iv), data: pinB64FromBytes(new Uint8Array(cipherBuf)) };
+}
+// Puede rechazar (throw) si el PIN es incorrecto — AES-GCM trae verificación de integridad
+// incorporada, así que un PIN equivocado no produce texto corrupto: directamente falla.
+async function pinDecryptCredentials(pin, blob) {
+  const salt = pinBytesFromB64(blob.salt);
+  const iv = pinBytesFromB64(blob.iv);
+  const key = await pinDeriveKey(pin, salt);
+  const cipherBytes = pinBytesFromB64(blob.data);
+  const plainBuf = await crypto.subtle.decrypt({ name: "AES-GCM", iv }, key, cipherBytes);
+  return JSON.parse(new TextDecoder().decode(plainBuf));
+}
+
+function getPinStore() {
+  try { return JSON.parse(localStorage.getItem("ey_pin_creds") || "{}"); } catch (e) { return {}; }
+}
+function savePinStore(store) {
+  try { localStorage.setItem("ey_pin_creds", JSON.stringify(store)); } catch (e) { /* noop */ }
+}
+function getPinBlobForEmail(email) {
+  return getPinStore()[(email || "").toLowerCase()] || null;
+}
+function setPinBlobForEmail(email, blob) {
+  const store = getPinStore();
+  store[(email || "").toLowerCase()] = blob;
+  savePinStore(store);
+}
+function removePinBlobForEmail(email) {
+  const store = getPinStore();
+  delete store[(email || "").toLowerCase()];
+  savePinStore(store);
+  try { localStorage.removeItem("ey_pin_pref_" + (email || "").toLowerCase()); } catch (e) { /* noop */ }
+}
+function getPinPref(email) {
+  return localStorage.getItem("ey_pin_pref_" + (email || "").toLowerCase()) || "password";
+}
+function setPinPref(email, pref) {
+  try { localStorage.setItem("ey_pin_pref_" + (email || "").toLowerCase(), pref); } catch (e) { /* noop */ }
+}
+function getLastLoginEmail() { return localStorage.getItem("ey_last_login_email") || ""; }
+function setLastLoginEmail(email) {
+  try { localStorage.setItem("ey_last_login_email", (email || "").toLowerCase()); } catch (e) { /* noop */ }
+}
+
+// 4 casillas de un dígito reutilizadas tanto en el PIN pad del login como en el formulario
+// de configuración del PIN (Mi Cuenta → Seguridad) — avanzan solas al escribir, retroceden
+// con Backspace en una casilla vacía, y aceptan pegar un código de 4 dígitos de una vez.
+function pinBoxesHtml(idPrefix) {
+  return `<div class="pin-pad-boxes" data-pin-group="${idPrefix}">${[0, 1, 2, 3].map(i =>
+    `<input type="password" inputmode="numeric" pattern="[0-9]*" autocomplete="off" maxlength="1" class="pin-box" id="${idPrefix}-${i}" data-i="${i}">`
+  ).join("")}</div>`;
+}
+function readPinBoxes(idPrefix) {
+  return [0, 1, 2, 3].map(i => {
+    const el = document.getElementById(`${idPrefix}-${i}`);
+    return (el && el.value) || "";
+  }).join("");
+}
+function clearPinBoxes(idPrefix) {
+  [0, 1, 2, 3].forEach(i => { const el = document.getElementById(`${idPrefix}-${i}`); if (el) el.value = ""; });
+  const first = document.getElementById(`${idPrefix}-0`);
+  if (first) first.focus();
+}
+function wirePinBoxesAutoAdvance(idPrefix, onComplete) {
+  const boxes = [0, 1, 2, 3].map(i => document.getElementById(`${idPrefix}-${i}`)).filter(Boolean);
+  if (!boxes.length) return;
+  boxes.forEach((box, i) => {
+    box.addEventListener("input", () => {
+      box.value = box.value.replace(/\D/g, "").slice(0, 1);
+      if (box.value && i < boxes.length - 1) boxes[i + 1].focus();
+      if (onComplete && boxes.every(b => b.value)) onComplete();
+    });
+    box.addEventListener("keydown", (ev) => {
+      if (ev.key === "Backspace" && !box.value && i > 0) boxes[i - 1].focus();
+    });
+    box.addEventListener("paste", (ev) => {
+      const text = (ev.clipboardData || window.clipboardData).getData("text").replace(/\D/g, "").slice(0, 4);
+      if (!text) return;
+      ev.preventDefault();
+      text.split("").forEach((d, k) => { if (boxes[k]) boxes[k].value = d; });
+      (boxes[Math.min(text.length, boxes.length) - 1] || boxes[boxes.length - 1]).focus();
+      if (onComplete && boxes.every(b => b.value)) onComplete();
+    });
+  });
 }
 
 // Pantalla mostrada a un alumno cuyo registro todavía no fue aprobado (o fue
@@ -1823,6 +2086,11 @@ auth.onAuthStateChanged(async (fbUser) => {
   if (!fbUser) {
     state.user = null;
     state.screen = "auth";
+    // Cada vez que se cae al login (logout explícito, sesión vencida, etc.) se recalcula
+    // desde cero si corresponde mostrar el PIN pad — sin esto, un "usar contraseña" elegido
+    // en una sesión anterior podía quedar pegado sin motivo en la próxima.
+    state.authForcePassword = false;
+    state.pinFailCount = 0;
     render();
     return;
   }
@@ -3146,16 +3414,27 @@ function songEmbedSrc(youtubeId, startSec, endSec, cacheBust) {
 // confiable que recargar el iframe entero (que en algunos navegadores no reinicia la
 // posición real, o el usuario ve el video saltar al inicio de la canción en vez del trecho).
 let _exSongPlayers = {};
+// Función de extensión por frameId (ver initSongPlayer) — llamada por el botón "Escuchar un
+// poco más" cuando el corte automático resultó demasiado ajustado para la palabra a adivinar.
+let _exSongExtend = {};
 function destroySongPlayers() {
   Object.keys(_exSongPlayers).forEach((k) => {
     try { _exSongPlayers[k].destroy(); } catch (e) { /* noop */ }
   });
   _exSongPlayers = {};
+  _exSongExtend = {};
 }
 function initSongPlayer(frameId, startSec, endSec) {
   loadYouTubeIframeAPI().then(() => {
     const el = document.getElementById(frameId);
     if (!el) return; // el alumno ya pasó a otro ejercicio antes de que la API terminara de cargar
+    // "effectiveEnd" es mutable (a diferencia de endSec, que es el trecho calculado por el
+    // algoritmo): cada clic en "Escuchar un poco más" lo empuja +7s, hasta un tope de +28s
+    // sobre el corte original — red de seguridad para cuando la estimación de tiempo quedó
+    // corta y el alumno todavía no alcanzó a escuchar la palabra completa (pedido explícito
+    // de Anderson: "possibilitar exercícios... avaliar e ouvir tranquilamente").
+    let effectiveEnd = endSec;
+    const maxEnd = endSec != null ? endSec + 28 : null;
     const player = new YT.Player(frameId, {
       events: {
         onReady: (ev) => {
@@ -3163,19 +3442,32 @@ function initSongPlayer(frameId, startSec, endSec) {
           ev.target.playVideo();
         },
         onStateChange: (ev) => {
-          // Corta la reproducción al llegar a endSec, sin depender de que el parámetro
+          // Corta la reproducción al llegar a effectiveEnd, sin depender de que el parámetro
           // "end" de la URL se vuelva a aplicar después de un seekTo() manual.
-          if (endSec == null || ev.data !== YT.PlayerState.PLAYING) return;
+          if (effectiveEnd == null || ev.data !== YT.PlayerState.PLAYING) return;
+          const extendBtn = document.getElementById(`${frameId}-extend`);
+          if (extendBtn) extendBtn.style.display = "none"; // se reanudó: se oculta hasta el próximo corte
           const check = setInterval(() => {
             if (_exSongPlayers[frameId] !== player) { clearInterval(check); return; }
             let t = 0;
             try { t = ev.target.getCurrentTime(); } catch (e) { clearInterval(check); return; }
-            if (t >= endSec - 0.15) { try { ev.target.pauseVideo(); } catch (e) {} clearInterval(check); }
+            if (t >= effectiveEnd - 0.15) {
+              try { ev.target.pauseVideo(); } catch (e) {}
+              clearInterval(check);
+              const btn = document.getElementById(`${frameId}-extend`);
+              // Solo se ofrece "escuchar más" mientras no se llegó al tope de extensión.
+              if (btn && effectiveEnd < maxEnd) btn.style.display = "";
+            }
           }, 250);
         },
       },
     });
     _exSongPlayers[frameId] = player;
+    _exSongExtend[frameId] = () => {
+      effectiveEnd = Math.min(maxEnd, (effectiveEnd || 0) + 7);
+      try { player.unMute(); } catch (e) { /* noop */ }
+      player.playVideo();
+    };
   });
 }
 
@@ -3190,12 +3482,17 @@ function songFragmentHtml(frameId, youtubeId, startSec, endSec) {
   // no es solo "repetir" — es también la forma de activar el sonido la primera vez, ya que
   // el clic es un gesto real del usuario y el navegador sí permite audio ahí dentro.
   const label = startSec != null ? t("song_listen_fragment") : t("song_activate_sound");
+  // Botón "Escuchar un poco más": queda oculto hasta que el video se pausa solo al llegar al
+  // final del trecho estimado (ver initSongPlayer) — es la red de seguridad para cuando la
+  // estimación de tiempo quedó corta y la palabra a adivinar todavía no terminó de sonar.
+  const extendBtn = endSec != null ? `<button class="btn btn-link btn-sm song-extend-btn" type="button" id="${frameId}-extend" style="display:none">${t("song_listen_more")}</button>` : "";
   return `
     <div class="song-video-wrap">
       <iframe id="${frameId}" src="${songEmbedSrc(youtubeId, startSec, endSec)}" frameborder="0"
         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
-    <button class="btn btn-secondary btn-sm song-replay-btn" type="button" id="${frameId}-replay">${label}</button>`;
+    <button class="btn btn-secondary btn-sm song-replay-btn" type="button" id="${frameId}-replay">${label}</button>
+    ${extendBtn}`;
 }
 
 const EX_TYPE_BADGE_KEYS = {
@@ -3434,6 +3731,14 @@ function renderExercise() {
         const fr = document.getElementById(frameId);
         if (fr) fr.src = songEmbedSrc(ex.youtubeId, ex.startSec, ex.endSec, Date.now());
       }
+    };
+    // "Escuchar un poco más": red de seguridad que aparece solo cuando el video se pausó
+    // solo al llegar al final del trecho — ver initSongPlayer/_exSongExtend.
+    const extendBtn = document.getElementById(`${frameId}-extend`);
+    if (extendBtn) extendBtn.onclick = () => {
+      extendBtn.style.display = "none";
+      const fn = _exSongExtend[frameId];
+      if (fn) fn();
     };
   });
 
@@ -4595,11 +4900,13 @@ function songLineBlankCount(line) {
 // Calcula el tamaño del "trecho" (en segundos) para una canción: duración real ÷ cantidad
 // de palabras que el admin quiere practicar. Menos palabras = trechos más largos y generosos;
 // más palabras = trechos más cortos y exigentes, ya que hay que repartir el mismo video entre
-// más huecos. Con un piso de 6s (trechos más cortos que eso quedan casi imposibles de escuchar)
-// y sin datos (canción sin duración guardada o sin cantidad definida) cae en 30s por defecto.
+// más huecos. Con un piso de 10s (bajado de 6s el 2026-08-29: Anderson reportó que el corte
+// llegaba antes de terminar de escuchar la palabra a adivinar — un trecho de 6-8s deja
+// prácticamente cero margen para el error normal de la estimación de tiempos) y sin datos
+// (canción sin duración guardada o sin cantidad definida) cae en 30s por defecto.
 function computeSongFragmentSec(durationSec, targetWordCount) {
   if (!durationSec || !targetWordCount || targetWordCount <= 0) return 30;
-  return Math.max(6, Math.round(durationSec / targetWordCount));
+  return Math.max(10, Math.round(durationSec / targetWordCount));
 }
 
 // A partir de las líneas ya separadas (parseSongLyrics), arma la fila de ejercicios:
@@ -4659,19 +4966,28 @@ function buildSongExercises(lines, youtubeId, fragmentSec) {
   };
   const windowOf = (sec, lineText) => {
     if (sec == null) return null;
-    const lead = Math.min(3, frag * 0.25);
+    // BUGFIX (2026-08-29): márgenes ampliados de nuevo — Anderson reportó (con captura de
+    // pantalla) que el trecho seguía cortando antes de que la palabra terminara de sonar.
+    // El "lead" (cuánto antes del timestamp estimado arranca el video) sube de 3s a hasta 6s,
+    // y el corte final YA NO se detiene 0.3s ANTES de la próxima marca — como las marcas son
+    // una ESTIMACIÓN (no un análisis real del audio), cortar justo antes de la próxima marca
+    // es la forma más fácil de cortar antes de tiempo si la estimación se adelantó un poco.
+    // Ahora se extiende 1.5s más allá de la próxima marca: en el peor caso se escucha un
+    // poquito del inicio del verso siguiente, lo cual es un precio pequeño comparado con
+    // dejar al alumno sin poder escuchar la palabra que tiene que adivinar.
+    const lead = Math.min(6, Math.max(2.5, frag * 0.35));
     const start = Math.max(0, Math.round(sec - lead));
     const minEnd = start + frag;
     const next = nextTimestampAfter(sec);
     let end;
     if (next != null) {
-      end = Math.max(minEnd, Math.round(next - 0.3));
+      end = Math.max(minEnd, Math.round(next + 1.5));
     } else {
       // Sin próxima marca (última línea marcada): estimar cuánto tarda ESTA línea en cantarse
-      // según el ritmo real de la canción, con un 40% de margen de seguridad, en vez de cortar
-      // apenas "frag" segundos después del inicio.
+      // según el ritmo real de la canción, con un 60% de margen de seguridad (antes 40%) más
+      // 2s fijos extra, en vez de cortar apenas "frag" segundos después del inicio.
       const chars = Math.max(1, (lineText || "").replace(SONG_BLANK_RE, (_m, w) => w).trim().length);
-      const estDur = Math.round(chars * secondsPerChar() * 1.4);
+      const estDur = Math.round(chars * secondsPerChar() * 1.6) + 2;
       end = Math.max(minEnd, start + estDur);
     }
     return { start, end };
@@ -5276,10 +5592,13 @@ function renderAdminSongs() {
             <input type="text" id="song-artist" required value="${escapeHtml((editingSong && editingSong.artist) || "")}" placeholder="${t("admin_songs_field_artist_ph")}"></div>
           <div class="field"><label>${t("admin_songs_field_youtube")}</label>
             <input type="text" id="song-youtube" required value="${escapeHtml((editingSong && editingSong.youtubeId) || "")}" placeholder="https://www.youtube.com/watch?v=..."></div>
-          <div class="field" style="max-width:260px">
+          <div class="field">
             <label>${t("admin_songs_field_words")}</label>
-            <p style="color:var(--gray-2);font-size:.78rem;margin:0 0 6px">${t("admin_songs_field_words_hint")}</p>
-            <input type="number" min="1" max="200" id="song-target-words" value="${(editingSong && editingSong.targetWordCount) || 20}">
+            <p style="color:var(--gray-2);font-size:.78rem;margin:0 0 6px;max-width:640px">${t("admin_songs_field_words_hint")}</p>
+            <div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+              <input type="number" min="1" max="200" id="song-target-words" style="max-width:110px" value="${(editingSong && editingSong.targetWordCount) || 20}">
+              <span id="song-words-preview" style="color:var(--gray-2);font-size:.82rem;font-weight:600"></span>
+            </div>
           </div>
           <div class="field">
             <label>${t("admin_songs_field_lyrics")}</label>
@@ -5332,9 +5651,21 @@ function renderAdminSongs() {
   });
 
   const newBtn = document.getElementById("song-new-btn");
-  if (newBtn) newBtn.onclick = () => { state.songFormEditingId = "new"; state.songFormMsg = ""; render(); };
+  if (newBtn) newBtn.onclick = () => { state.songFormEditingId = "new"; state.songFormMsg = ""; state.songFormDurationSec = null; render(); };
   const cancelBtn = document.getElementById("song-cancel");
   if (cancelBtn) cancelBtn.onclick = () => { state.songFormEditingId = null; render(); };
+  const wordsInput = document.getElementById("song-target-words");
+  const wordsPreview = document.getElementById("song-words-preview");
+  const updateWordsPreview = () => {
+    if (!wordsInput || !wordsPreview) return;
+    const n = Math.max(1, parseInt(wordsInput.value || "20", 10) || 20);
+    const dur = state.songFormDurationSec || null;
+    wordsPreview.textContent = dur
+      ? t("admin_songs_words_preview", { sec: computeSongFragmentSec(dur, n) })
+      : t("admin_songs_words_preview_nodur");
+  };
+  if (wordsInput) { wordsInput.addEventListener("input", updateWordsPreview); updateWordsPreview(); }
+
   const lyricsTa = document.getElementById("song-lyrics");
   const countEl = document.getElementById("song-lyrics-count");
   const updateCount = () => {
@@ -5363,6 +5694,8 @@ function renderAdminSongs() {
       const duration = await getYouTubeDuration(youtubeId);
       lyricsTa.value = estimateSongTimestamps(lyricsTa.value, duration);
       updateCount();
+      state.songFormDurationSec = duration;
+      updateWordsPreview();
     } catch (e) {
       console.warn(e);
       alert(t("admin_songs_time_error"));
@@ -5373,7 +5706,13 @@ function renderAdminSongs() {
 
   const form = document.getElementById("song-form");
   if (form) form.onsubmit = onSaveSong;
-  document.querySelectorAll(".song-edit-btn").forEach(b => b.onclick = () => { state.songFormEditingId = b.dataset.id; state.songFormMsg = ""; render(); });
+  document.querySelectorAll(".song-edit-btn").forEach(b => b.onclick = () => {
+    state.songFormEditingId = b.dataset.id;
+    state.songFormMsg = "";
+    const editSong = state.songs.find(x => x.id === b.dataset.id);
+    state.songFormDurationSec = (editSong && editSong.durationSec) || null;
+    render();
+  });
   document.querySelectorAll(".song-del-btn").forEach(b => b.onclick = () => onDeleteSong(b.dataset.id));
 }
 
@@ -5761,6 +6100,26 @@ function renderAccount() {
   } else if (tab === "security") {
     const form = document.getElementById("pass-form");
     if (form) form.addEventListener("submit", onChangePasswordSubmit);
+    const openPinForm = () => {
+      const wrap = document.getElementById("pin-setup-form-wrap");
+      if (!wrap) return;
+      wrap.innerHTML = pinSetupFormHtml();
+      wirePinBoxesAutoAdvance("pin-new");
+      wirePinBoxesAutoAdvance("pin-confirm");
+      const cancelBtn = document.getElementById("pin-setup-cancel");
+      if (cancelBtn) cancelBtn.onclick = () => { wrap.innerHTML = ""; };
+      const pinForm = document.getElementById("pin-setup-form");
+      if (pinForm) pinForm.addEventListener("submit", onSavePinSubmit);
+    };
+    const setupBtn = document.getElementById("pin-setup-btn");
+    if (setupBtn) setupBtn.onclick = openPinForm;
+    const changeBtn = document.getElementById("pin-change-btn");
+    if (changeBtn) changeBtn.onclick = openPinForm;
+    const removeBtn = document.getElementById("pin-remove-btn");
+    if (removeBtn) removeBtn.onclick = () => { if (confirm(t("account_pin_remove_confirm"))) onRemovePin(); };
+    document.querySelectorAll("[data-pin-pref]").forEach(el => {
+      el.onclick = () => { setPinPref(state.user.email, el.dataset.pinPref); render(); };
+    });
   } else if (tab === "appearance") {
     document.querySelectorAll(".theme-swatch").forEach(sw => {
       sw.onclick = () => { state.prefs.theme = sw.dataset.theme; applyTheme(state.prefs.theme); render(); };
@@ -5843,6 +6202,9 @@ async function onSaveProfileSubmit(e) {
 }
 
 function renderAccountSecurityTab() {
+  const email = (state.user && state.user.email) || "";
+  const hasPin = !!getPinBlobForEmail(email);
+  const pref = getPinPref(email);
   return `
     <h3>${t("account_tab_security")}</h3>
     <form id="pass-form">
@@ -5850,7 +6212,74 @@ function renderAccountSecurityTab() {
       <div class="field"><label>${t("account_new_pass")}</label><div class="pass-wrap"><input type="password" id="new-pass" required minlength="6"><button type="button" class="pass-eye" data-target="new-pass" aria-label="${t("pass_show")}" title="${t("pass_show")}">👁️</button></div></div>
       <div class="field"><label>${t("account_confirm_pass")}</label><div class="pass-wrap"><input type="password" id="new-pass2" required minlength="6"><button type="button" class="pass-eye" data-target="new-pass2" aria-label="${t("pass_show")}" title="${t("pass_show")}">👁️</button></div></div>
       <button type="submit" class="btn btn-primary">${t("account_change_pass_btn")}</button>
+    </form>
+    <div class="account-pin-section" style="margin-top:28px;border-top:1px solid var(--border);padding-top:20px">
+      <h4 style="margin:0 0 6px">${t("account_pin_title")}</h4>
+      <p style="color:var(--gray-2);font-size:.85rem;margin:0 0 14px;max-width:520px">${t("account_pin_hint")}</p>
+      ${hasPin ? `
+        <p style="color:var(--verde,#2e7d32);font-weight:700;font-size:.86rem;margin:0 0 14px">✓ ${t("account_pin_active_note")}</p>
+        <div class="field" style="max-width:320px">
+          <span class="settings-label">${t("account_pin_pref_label")}</span>
+          <div class="lang-options">
+            <div class="lang-option ${pref === "pin" ? "active" : ""}" data-pin-pref="pin">${t("account_pin_pref_pin")}</div>
+            <div class="lang-option ${pref !== "pin" ? "active" : ""}" data-pin-pref="password">${t("account_pin_pref_password")}</div>
+          </div>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:14px;flex-wrap:wrap">
+          <button type="button" class="btn btn-secondary btn-sm" id="pin-change-btn">${t("account_pin_change_btn")}</button>
+          <button type="button" class="btn btn-secondary btn-sm" id="pin-remove-btn">${t("account_pin_remove_btn")}</button>
+        </div>
+      ` : `
+        <button type="button" class="btn btn-primary btn-sm" id="pin-setup-btn">${t("account_pin_setup_btn")}</button>
+      `}
+      <div id="pin-setup-form-wrap"></div>
+    </div>`;
+}
+
+// Formulario (inserido dentro de #pin-setup-form-wrap) para configurar o alterar el PIN —
+// exige la contraseña actual (se usa tanto para confirmar identidad como para poder cifrarla).
+function pinSetupFormHtml() {
+  return `
+    <form id="pin-setup-form" style="margin-top:16px;max-width:340px">
+      <div class="field"><label>${t("account_current_pass")}</label>
+        <div class="pass-wrap"><input type="password" id="pin-cur-pass" required><button type="button" class="pass-eye" data-target="pin-cur-pass" aria-label="${t("pass_show")}" title="${t("pass_show")}">👁️</button></div>
+      </div>
+      <div class="field"><label>${t("account_pin_new_label")}</label>${pinBoxesHtml("pin-new")}</div>
+      <div class="field"><label>${t("account_pin_confirm_label")}</label>${pinBoxesHtml("pin-confirm")}</div>
+      <div style="display:flex;gap:10px">
+        <button type="button" class="btn btn-secondary btn-sm" id="pin-setup-cancel">${t("account_pin_cancel_btn")}</button>
+        <button type="submit" class="btn btn-primary btn-sm">${t("account_pin_save_btn")}</button>
+      </div>
     </form>`;
+}
+
+async function onSavePinSubmit(e) {
+  e.preventDefault();
+  const curPass = document.getElementById("pin-cur-pass").value;
+  const pin1 = readPinBoxes("pin-new");
+  const pin2 = readPinBoxes("pin-confirm");
+  if (!/^\d{4}$/.test(pin1)) { state.accountMsg = { ok: false, text: t("account_pin_invalid") }; render(); return; }
+  if (pin1 !== pin2) { state.accountMsg = { ok: false, text: t("account_pin_mismatch") }; render(); return; }
+  try {
+    const fbUser = auth.currentUser;
+    const cred = firebase.auth.EmailAuthProvider.credential(fbUser.email, curPass);
+    await fbUser.reauthenticateWithCredential(cred); // confirma que la contraseña actual es correcta
+    const blob = await pinEncryptCredentials(pin1, fbUser.email, curPass);
+    setPinBlobForEmail(fbUser.email, blob);
+    setPinPref(fbUser.email, "pin"); // configurar el PIN lo vuelve el método por defecto en este dispositivo
+    setLastLoginEmail(fbUser.email);
+    state.accountMsg = { ok: true, text: t("account_pin_saved") };
+  } catch (err) {
+    state.accountMsg = { ok: false, text: translateFirebaseError(err) };
+  }
+  render();
+}
+
+function onRemovePin() {
+  if (!state.user) return;
+  removePinBlobForEmail(state.user.email);
+  state.accountMsg = { ok: true, text: t("account_pin_removed") };
+  render();
 }
 
 function renderAccountAccessTab() {
@@ -6304,8 +6733,8 @@ function drawSeal(doc, cx, cy, style, primary, secondary) {
     doc.setLineWidth(0.9);
     doc.rect(cx - 9, cy - 12, 18, 16, "FD");
     doc.triangle(cx - 9, cy + 4, cx + 9, cy + 4, cx, cy + 14, "FD");
-    doc.setFont("times", "bold"); doc.setFontSize(9); doc.setTextColor(primary[0], primary[1], primary[2]);
-    doc.text("B1", cx, cy - 2, { align: "center" });
+    doc.setFont("helvetica", "bold"); doc.setFontSize(6.4); doc.setTextColor(primary[0], primary[1], primary[2]);
+    doc.text("INTERMEDIO", cx, cy - 2, { align: "center" });
   } else if (style === "ribbon") {
     doc.setFillColor(primary[0], primary[1], primary[2]);
     doc.rect(cx - 22, cy - 6, 44, 12, "F");
@@ -6717,6 +7146,18 @@ const LESSON_IMAGES = {
   "er-panaderia": { file: "estudio-rapido-la-panaderia.jpg", alt: "La panadería — vocabulario de la panadería", caption: "Vocabulario de la panadería.", local: true },
   "er-auditoria": { file: "estudio-rapido-la-auditoria.svg", alt: "La auditoría — vocabulario general", caption: "Vocabulario general de la oficina y el trabajo de auditoría.", local: true },
   "er-aeropuerto": { file: "estudio-rapido-el-aeropuerto.svg", alt: "El aeropuerto — vocabulario general", caption: "Vocabulario general del aeropuerto.", local: true },
+
+  // Módulo bônus "Estudio Rápido" — 9 lecciones nuevas (2026-08-29), a partir de 9 infografías
+  // de vocabulario PT→ES que Anderson envió directamente en el chat (no de la carpeta local).
+  "er-construccion": { file: "estudio-rapido-construccion.jpg", alt: "Materiales de construcción — vocabulario de obra", caption: "Vocabulario de materiales, herramientas e instalaciones de obra.", local: true },
+  "er-oficina": { file: "estudio-rapido-oficina.jpg", alt: "Materiales de oficina — papelería y tecnología", caption: "Vocabulario de papelería, archivo y tecnología de oficina.", local: true },
+  "er-seguridad-casa": { file: "estudio-rapido-seguridad-residencial.jpg", alt: "Seguridad residencial — vocabulario de seguridad en casa", caption: "Vocabulario de seguridad residencial y emergencias.", local: true },
+  "er-comida-rapida": { file: "estudio-rapido-comida-rapida.jpg", alt: "Comida rápida — hamburguesas, pizzas y bebidas", caption: "Vocabulario de comida rápida: hamburguesas, pizzas, bebidas y postres.", local: true },
+  "er-avion": { file: "estudio-rapido-avion-tripulacion.jpg", alt: "A bordo del avión — instrucciones de los auxiliares de vuelo", caption: "Instrucciones de seguridad de la tripulación durante el vuelo.", local: true },
+  "er-inmigracion": { file: "estudio-rapido-inmigracion.jpg", alt: "Pasando por inmigración — documentos y preguntas del oficial", caption: "Documentos y preguntas típicas del control de inmigración.", local: true },
+  "er-galicia": { file: "estudio-rapido-galicia.jpg", alt: "Galicia — lugares, cultura y comida típica", caption: "Lugares, cultura y comida típica de Galicia.", local: true },
+  "er-lavanderia": { file: "estudio-rapido-lavanderia.jpg", alt: "En la lavandería — lavar, secar y planchar", caption: "Vocabulario de la lavandería: lavar, secar y planchar la ropa.", local: true },
+  "er-probador": { file: "estudio-rapido-probador.jpg", alt: "Cambiando de ropa y zapatos — probador de una tienda", caption: "Probarse ropa y zapatos en una tienda.", local: true },
 };
 
 function lessonHeroImageHtml(lessonId) {

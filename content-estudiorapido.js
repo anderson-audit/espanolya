@@ -46,7 +46,7 @@ const LEVEL_ESTUDIORAPIDO = {
   icon: "🖼️",
   colorFrom: "#2E7D32",
   colorTo: "#1565C0",
-  description: "Módulo bônus 100% visual: olhe a imagem, escute uma pergunta real sobre o assunto e responda falando em espanhol — o app escuta e corrige sua resposta e pronúncia na hora. Cada lição termina com 'Casos prácticos': situações reais em que você escreve uma frase completa em espanhol, não só uma palavra. Vocabulário de casa, cafeteria, padaria, auditoria e aeroporto.",
+  description: "Módulo bônus 100% visual: olhe a imagem, escute uma pergunta real sobre o assunto e responda falando em espanhol — o app escuta e corrige sua resposta e pronúncia na hora. Cada lição tem 'Casos prácticos': situações reais em que você escreve uma frase completa em espanhol, não só uma palavra. Vocabulário de casa, cafeteria, padaria, auditoria, aeroporto, construção, escritório, segurança residencial, comida rápida, bordo do avião, imigração, Galícia, lavanderia e troca de roupas/sapatos.",
   lessons: [
     {
       id: "er-hora", order: 1, title: "¿Qué hora es?", subtitle: "Como dizer as horas em espanhol",
@@ -836,6 +836,639 @@ const LEVEL_ESTUDIORAPIDO = {
         {type: "fill", q: "'A bagagem de mão' em espanhol se escreve: el equipaje de ___", answer: "mano"},
         {type: "fill", q: "'O momento em que o avião sobe e deixa o solo' se escreve: el ___", answer: "despegue"}
       ]
+    },
+    {
+      id: "er-construccion", order: 9, title: "Materiales de construcción", subtitle: "Vocabulario de obra y reforma",
+      vocabulary: [
+        {category: "Materiales básicos", items: [
+          {es: "el cemento", pt: "cimento"}, {es: "la arena", pt: "areia"}, {es: "la grava", pt: "brita"},
+          {es: "el ladrillo", pt: "tijolo"}, {es: "el bloque de concreto", pt: "bloco de concreto"},
+          {es: "el mortero", pt: "argamassa"}, {es: "el hormigón", pt: "concreto"}, {es: "la cal", pt: "cal"},
+          {es: "el yeso", pt: "gesso"}, {es: "la piedra", pt: "pedra"}, {es: "la cerámica", pt: "cerâmica"}
+        ]},
+        {category: "Estructura y acabado", items: [
+          {es: "el acero", pt: "aço"}, {es: "la madera", pt: "madeira"}, {es: "la teja", pt: "telha"},
+          {es: "la puerta", pt: "porta"}, {es: "la ventana", pt: "janela"}, {es: "el vidrio", pt: "vidro"},
+          {es: "la herraje", pt: "ferragem"}, {es: "la pintura", pt: "tinta"}, {es: "el pincel", pt: "pincel"},
+          {es: "el rodillo", pt: "rolo de pintura"}, {es: "el revestimiento", pt: "revestimento"}
+        ]},
+        {category: "Herramientas", items: [
+          {es: "el martillo", pt: "martelo"}, {es: "el destornillador", pt: "chave de fenda"},
+          {es: "el alicate", pt: "alicate"}, {es: "la sierra", pt: "serra"}, {es: "la cinta métrica", pt: "trena"},
+          {es: "el nivel", pt: "nível"}, {es: "la cuchara de albañil", pt: "colher de pedreiro"},
+          {es: "la llana", pt: "desempenadeira"}, {es: "la azada", pt: "enxada"},
+          {es: "la carretilla", pt: "carrinho de mão"}, {es: "el taladro", pt: "furadeira"}
+        ]},
+        {category: "Instalaciones", items: [
+          {es: "el tubo", pt: "tubo/cano"}, {es: "el cable eléctrico", pt: "fio elétrico"},
+          {es: "el interruptor", pt: "interruptor"}, {es: "el enchufe", pt: "tomada"},
+          {es: "la bombilla", pt: "lâmpada"}, {es: "el interruptor automático", pt: "disjuntor"},
+          {es: "la válvula", pt: "registro/válvula"}, {es: "la caja de luz", pt: "caixa de luz"},
+          {es: "el desagüe", pt: "ralo"}
+        ]},
+        {category: "Acciones de obra", items: [
+          {es: "construir", pt: "construir"}, {es: "reformar", pt: "reformar"}, {es: "asentar", pt: "assentar"},
+          {es: "mezclar", pt: "misturar"}, {es: "cortar", pt: "cortar"}, {es: "perforar", pt: "furar"},
+          {es: "pintar", pt: "pintar"}, {es: "medir", pt: "medir"}, {es: "nivelar", pt: "nivelar"},
+          {es: "fijar", pt: "fixar"}, {es: "impermeabilizar", pt: "impermeabilizar"}
+        ]},
+        {category: "Frases de la obra", items: [
+          {es: "¿Cuánto cuesta este material?", pt: "Quanto custa este material?"},
+          {es: "Necesito cemento.", pt: "Preciso de cimento."},
+          {es: "Vamos a empezar la obra.", pt: "Vamos começar a obra."},
+          {es: "La obra está atrasada.", pt: "A obra está atrasada."},
+          {es: "Necesitamos más ladrillos.", pt: "Precisamos de mais tijolos."},
+          {es: "Mezcle bien el concreto.", pt: "Misture bem o concreto."},
+          {es: "Use el nivel para nivelar.", pt: "Use o nível para nivelar."},
+          {es: "La pintura ya se secó.", pt: "A pintura já secou."}
+        ]}
+      ],
+      notes: [
+        "'Hormigón' (España) y 'concreto' (América Latina) son sinónimos — las dos formas se entienden en todo el mundo hispanohablante, igual que 'hormigón armado' = concreto armado.",
+        "'El nivel' sirve tanto para la herramienta (nivel de burbuja) como para la idea de 'altura' — 'nivelar' es dejar algo a la misma altura/horizontal."
+      ],
+      exercises: [
+        {
+          type: "caso", icon: "🏗️", stamp: "✅ PRESUPUESTO SOLICITADO",
+          scenario: "Estás en una tienda de materiales de construcción y necesitas cemento y ladrillos para una reforma pequeña.",
+          q: "Escribe una frase completa para pedir el precio del cemento y decir cuántos ladrillos necesitas.",
+          target: "¿Cuánto cuesta el cemento? Necesito también cien ladrillos, por favor.",
+          altAnswers: ["¿Cuánto cuesta el cemento y los ladrillos?", "Necesito cemento y cien ladrillos, ¿cuánto cuesta todo?"]
+        },
+        {
+          type: "caso", icon: "🧱", stamp: "✅ INSTRUCCIÓN DADA",
+          scenario: "Eres el encargado de la obra y el ayudante todavía no sabe usar bien el nivel al asentar los ladrillos.",
+          q: "Escribe una frase completa dándole una instrucción sobre cómo nivelar bien la pared.",
+          target: "Usa el nivel en cada hilada de ladrillos para que la pared quede bien nivelada.",
+          altAnswers: ["Tienes que nivelar cada hilada con el nivel.", "Revisa el nivel antes de seguir asentando."]
+        },
+        {type: "speak", prompt: "¿Qué material se usa para pegar ladrillos, mezclado con arena y cemento?", target: "El mortero.", altAnswers: ["el mortero"]},
+        {type: "speak", prompt: "¿Qué herramienta usas para clavar un clavo?", target: "El martillo.", altAnswers: ["el martillo"]},
+        {type: "speak", prompt: "¿Qué herramienta usas para hacer agujeros en la pared?", target: "El taladro.", altAnswers: ["el taladro"]},
+        {type: "speak", prompt: "¿Qué usas para medir distancias largas en la obra?", target: "La cinta métrica.", altAnswers: ["la cinta métrica"]},
+        {type: "speak", prompt: "¿Cómo se llama el material transparente de las ventanas?", target: "El vidrio.", altAnswers: ["el vidrio"]},
+        {type: "speak", prompt: "¿Qué usas para transportar arena o escombros dentro de la obra?", target: "La carretilla.", altAnswers: ["la carretilla"]},
+        {type: "speak", prompt: "¿Cómo se llama el material que cubre el techo, hecho de barro?", target: "La teja.", altAnswers: ["la teja"]},
+        {type: "speak", prompt: "¿Qué haces con la pared antes de que quede lisa y pareja, con la llana?", target: "La reboco / la aliso.", altAnswers: ["alisar la pared", "reboco"]},
+        {type: "speak", prompt: "¿Qué se hace para evitar que el agua entre en la casa por el techo o la pared?", target: "Se impermeabiliza.", altAnswers: ["impermeabilizar"]},
+        {type: "speak", prompt: "Si mezclas cemento, arena y agua, ¿qué obtienes?", target: "Obtengo mortero.", altAnswers: ["mortero", "el mortero"]},
+        {type: "speak", prompt: "¿Qué revisas con el nivel antes de terminar una pared o un piso?", target: "Reviso que esté nivelado.", altAnswers: ["que esté nivelado", "el nivel"]},
+        {type: "mc", q: "'A furadeira', em espanhol, é...", options: ["el destornillador", "el taladro", "la sierra", "el martillo"], correct: 1},
+        {type: "mc", q: "'A carretilla' se usa para...", options: ["medir", "pintar", "transportar materiales", "cortar madera"], correct: 2},
+        {type: "fill", q: "'A tinta', em espanhol, se escribe: la ___", answer: "pintura"},
+        {type: "fill", q: "'O tijolo', em espanhol, se escribe: el ___", answer: "ladrillo"}
+      ]
+    },
+    {
+      id: "er-oficina", order: 10, title: "Materiales de oficina", subtitle: "Papelería, tecnología y organización",
+      vocabulary: [
+        {category: "Escritura y corrección", items: [
+          {es: "el bolígrafo / la pluma", pt: "caneta"}, {es: "el lápiz", pt: "lápis"},
+          {es: "el portaminas", pt: "lapiseira"}, {es: "la goma de borrar", pt: "borracha"},
+          {es: "el sacapuntas", pt: "apontador"}, {es: "el resaltador", pt: "marca-texto"},
+          {es: "el corrector", pt: "corretivo"}, {es: "el pegamento", pt: "cola"},
+          {es: "la regla", pt: "régua"}, {es: "las tijeras", pt: "tesoura"}
+        ]},
+        {category: "Papeles y cuadernos", items: [
+          {es: "el papel", pt: "papel"}, {es: "el bloc de notas", pt: "bloco de notas"},
+          {es: "el cuaderno", pt: "caderno"}, {es: "la agenda", pt: "agenda"}, {es: "el diario", pt: "diário"},
+          {es: "la nota adhesiva", pt: "post-it"}, {es: "el sobre", pt: "envelope"},
+          {es: "la carpeta", pt: "pasta"}, {es: "los clips", pt: "clips"}, {es: "la grapadora", pt: "grampeador"},
+          {es: "la perforadora", pt: "furador de papel"}, {es: "las etiquetas", pt: "etiquetas"}
+        ]},
+        {category: "Organización y archivo", items: [
+          {es: "el archivo", pt: "arquivo"}, {es: "el cajón", pt: "gaveta"},
+          {es: "la caja organizadora", pt: "caixa organizadora"}, {es: "el archivador", pt: "fichário"},
+          {es: "el portalápices", pt: "porta-lápis"}, {es: "el cúter", pt: "estilete"},
+          {es: "la calculadora", pt: "calculadora"}, {es: "el sello", pt: "carimbo"},
+          {es: "la pizarra blanca", pt: "quadro branco"}
+        ]},
+        {category: "Tecnología y accesorios", items: [
+          {es: "la computadora", pt: "computador"}, {es: "la impresora", pt: "impressora"},
+          {es: "el escáner", pt: "scanner"}, {es: "el ratón / mouse", pt: "mouse"}, {es: "el teclado", pt: "teclado"},
+          {es: "la memoria USB", pt: "pendrive"}, {es: "el cable", pt: "cabo"},
+          {es: "los auriculares", pt: "fone de ouvido"}, {es: "la cámara web", pt: "webcam"},
+          {es: "el cargador", pt: "carregador"}
+        ]},
+        {category: "Frases útiles de oficina", items: [
+          {es: "¿Dónde está...?", pt: "Onde está...?"}, {es: "Necesito...", pt: "Eu preciso de..."},
+          {es: "¿Me prestas...?", pt: "Pode me emprestar...?"}, {es: "¿Es tuyo?", pt: "Isso é seu?"},
+          {es: "Está faltando...", pt: "Está faltando..."}, {es: "¡Muchas gracias!", pt: "Muito obrigado(a)!"}
+        ]}
+      ],
+      notes: [
+        "'Bolígrafo' es la palabra más usada en España; en América Latina también se dice 'lapicera' o 'pluma' — las tres formas se entienden.",
+        "'Ratón' (España) y 'mouse' (América Latina, muy común) son intercambiables para el periférico de la computadora."
+      ],
+      exercises: [
+        {
+          type: "caso", icon: "🖇️", stamp: "✅ MATERIAL SOLICITADO",
+          scenario: "Trabajas en Quallisi y necesitas pedirle al área de compras nuevos materiales de oficina para el equipo.",
+          q: "Escribe una frase completa pidiendo bolígrafos, carpetas y una grapadora nueva.",
+          target: "Necesito bolígrafos, carpetas y una grapadora nueva para el equipo.",
+          altAnswers: ["¿Puede pedir bolígrafos, carpetas y una grapadora nueva?", "Faltan bolígrafos, carpetas y una grapadora."]
+        },
+        {
+          type: "caso", icon: "🖨️", stamp: "✅ AYUDA SOLICITADA",
+          scenario: "La impresora de la oficina no funciona y tienes una reunión en diez minutos.",
+          q: "Escribe una frase completa pidiendo ayuda a un colega porque la impresora no funciona.",
+          target: "¿Me puedes ayudar? La impresora no funciona y tengo una reunión en diez minutos.",
+          altAnswers: ["La impresora no funciona, ¿me ayudas?", "Necesito ayuda con la impresora, por favor."]
+        },
+        {type: "speak", prompt: "¿Qué usas para escribir con tinta?", target: "El bolígrafo.", altAnswers: ["el bolígrafo", "la pluma"]},
+        {type: "speak", prompt: "¿Qué usas para borrar lo que escribiste a lápiz?", target: "La goma de borrar.", altAnswers: ["la goma de borrar"]},
+        {type: "speak", prompt: "¿Qué usas para juntar varias hojas de papel con un solo clic?", target: "La grapadora.", altAnswers: ["la grapadora"]},
+        {type: "speak", prompt: "¿Dónde guardas documentos organizados por tema?", target: "En la carpeta.", altAnswers: ["la carpeta"]},
+        {type: "speak", prompt: "¿Qué aparato imprime documentos en papel?", target: "La impresora.", altAnswers: ["la impresora"]},
+        {type: "speak", prompt: "¿Qué usas para escribir un correo o un informe en la computadora?", target: "El teclado.", altAnswers: ["el teclado"]},
+        {type: "speak", prompt: "¿Cómo se llama el pequeño dispositivo para guardar archivos y llevarlos a otra computadora?", target: "La memoria USB.", altAnswers: ["la memoria USB", "el pendrive"]},
+        {type: "speak", prompt: "¿Qué usas para marcar un texto importante de un color fuerte?", target: "El resaltador.", altAnswers: ["el resaltador"]},
+        {type: "speak", prompt: "¿Dónde guardas bolígrafos y lápices, de pie, sobre el escritorio?", target: "En el portalápices.", altAnswers: ["el portalápices"]},
+        {type: "speak", prompt: "¿Qué usas en una reunión para escribir ideas y que todos las vean?", target: "La pizarra blanca.", altAnswers: ["la pizarra blanca"]},
+        {type: "speak", prompt: "¿Qué le pides a un colega cuando algo no es tuyo pero lo necesitas por un momento?", target: "¿Me prestas eso?", altAnswers: ["me lo prestas", "¿me prestas?"]},
+        {type: "mc", q: "'O grampeador', em espanhol, é...", options: ["la grapadora", "el clip", "la perforadora", "el sello"], correct: 0},
+        {type: "mc", q: "'A pasta', em espanhol (para guardar documentos), é...", options: ["el archivo", "la carpeta", "el cajón", "el sobre"], correct: 1},
+        {type: "fill", q: "'O apontador', em espanhol, se escribe: el ___", answer: "sacapuntas"},
+        {type: "fill", q: "'A tesoura', em espanhol, se escribe: las ___", answer: "tijeras"}
+      ]
+    },
+    {
+      id: "er-seguridad-casa", order: 11, title: "Seguridad residencial", subtitle: "Vocabulario de seguridad en casa",
+      vocabulary: [
+        {category: "Elementos de seguridad", items: [
+          {es: "la cerradura", pt: "fechadura"}, {es: "la llave", pt: "chave"}, {es: "el candado", pt: "cadeado"},
+          {es: "la alarma", pt: "alarme"}, {es: "la cámara de seguridad", pt: "câmera de segurança"},
+          {es: "el intercomunicador", pt: "interfone"}, {es: "el timbre con cámara", pt: "campainha com câmera"},
+          {es: "la cerca eléctrica", pt: "cerca elétrica"}, {es: "el sensor de movimiento", pt: "sensor de movimento"},
+          {es: "el portón electrónico", pt: "portão eletrônico"}, {es: "el extintor de incendios", pt: "extintor de incêndio"},
+          {es: "el detector de humo", pt: "detector de fumaça"}, {es: "la caja fuerte", pt: "cofre"}
+        ]},
+        {category: "Acciones y cuidados", items: [
+          {es: "cerrar con llave", pt: "trancar"}, {es: "abrir", pt: "destrancar"}, {es: "verificar", pt: "verificar"},
+          {es: "comprobar", pt: "conferir"}, {es: "instalar", pt: "instalar"}, {es: "mantener", pt: "manter"},
+          {es: "encender la alarma", pt: "ligar o alarme"}, {es: "apagar la alarma", pt: "desligar o alarme"},
+          {es: "activar la sirena", pt: "acionar a sirene"}, {es: "pedir ayuda", pt: "chamar ajuda"},
+          {es: "estar atento", pt: "ficar atento"}, {es: "alejarse", pt: "afastar-se"}
+        ]},
+        {category: "Consejos de seguridad", items: [
+          {es: "Siempre cierre con llave puertas y ventanas.", pt: "Sempre tranque portas e janelas."},
+          {es: "Mantenga la iluminación exterior encendida.", pt: "Mantenha a iluminação externa acesa."},
+          {es: "Instale cámaras de seguridad.", pt: "Instale câmeras de segurança."},
+          {es: "Conozca a sus vecinos.", pt: "Conheça seus vizinhos."},
+          {es: "No deje llaves escondidas.", pt: "Não deixe chaves escondidas."},
+          {es: "Evite rutinas predecibles.", pt: "Evite rotinas previsíveis."},
+          {es: "¡La seguridad empieza contigo!", pt: "A segurança começa com você!"}
+        ]},
+        {category: "Frases de emergencia", items: [
+          {es: "¡Socorro!", pt: "Socorro!"}, {es: "¡Llame a la policía!", pt: "Ligue para a polícia!"},
+          {es: "¡Me han robado!", pt: "Fui roubado!"}, {es: "¡Hay un intruso en la casa!", pt: "Há um invasor na casa!"},
+          {es: "¡Necesito ayuda!", pt: "Preciso de ajuda!"}, {es: "¿Dónde está la salida?", pt: "Onde está a saída?"},
+          {es: "¡Llame a los bomberos!", pt: "Chame os bombeiros!"}, {es: "¡Estoy en peligro!", pt: "Estou em perigo!"}
+        ]}
+      ],
+      notes: [
+        "En una emergencia real, las frases cortas e imperativas ('¡Llame a la policía!', '¡Socorro!') son las más importantes de memorizar: no hay tiempo para frases largas.",
+        "'Cerrar con llave' es más específico que 'cerrar' — usa esa expresión completa cuando quieras dejar claro que trancaste la puerta, no solo que la empujaste."
+      ],
+      exercises: [
+        {
+          type: "caso", icon: "🚨", stamp: "✅ ALERTA REPORTADA",
+          scenario: "Estás en casa de noche y escuchas un ruido extraño en la ventana. Crees que alguien intenta entrar.",
+          q: "Escribe una frase completa para llamar a la policía y explicar la situación.",
+          target: "¡Llame a la policía, por favor! Hay un intruso intentando entrar por la ventana.",
+          altAnswers: ["Necesito ayuda, hay un intruso en la ventana.", "¡Llame a la policía! Alguien intenta entrar en mi casa."]
+        },
+        {
+          type: "caso", icon: "🔐", stamp: "✅ CONSEJO DADO",
+          scenario: "Un vecino nuevo te pregunta qué puede hacer para que su casa sea más segura.",
+          q: "Escribe una frase completa dándole un consejo de seguridad.",
+          target: "Siempre cierre con llave puertas y ventanas, e instale una cámara de seguridad.",
+          altAnswers: ["Le recomiendo instalar una alarma y conocer a los vecinos.", "Mantenga la iluminación exterior encendida por la noche."]
+        },
+        {type: "speak", prompt: "¿Qué usas para abrir la puerta de tu casa?", target: "La llave.", altAnswers: ["la llave"]},
+        {type: "speak", prompt: "¿Qué se activa cuando alguien entra sin permiso?", target: "La alarma.", altAnswers: ["la alarma"]},
+        {type: "speak", prompt: "¿Qué usas para ver quién está en la puerta antes de abrir?", target: "La cámara de seguridad.", altAnswers: ["la cámara de seguridad", "el intercomunicador"]},
+        {type: "speak", prompt: "¿Qué detecta el humo y avisa en caso de incendio?", target: "El detector de humo.", altAnswers: ["el detector de humo"]},
+        {type: "speak", prompt: "¿Qué usas para apagar un incendio pequeño?", target: "El extintor de incendios.", altAnswers: ["el extintor de incendios"]},
+        {type: "speak", prompt: "¿Dónde guardas objetos de valor de forma muy segura?", target: "En la caja fuerte.", altAnswers: ["la caja fuerte"]},
+        {type: "speak", prompt: "¿Qué debes hacer siempre al salir de casa, con la puerta?", target: "Cerrarla con llave.", altAnswers: ["cerrar con llave"]},
+        {type: "speak", prompt: "Si ves algo sospechoso en tu calle, ¿qué debes hacer?", target: "Estar atento y avisar.", altAnswers: ["estar atento", "avisar"]},
+        {type: "speak", prompt: "Si alguien entra a la fuerza en tu casa, ¿qué gritas?", target: "¡Socorro!", altAnswers: ["socorro", "¡ayuda!"]},
+        {type: "speak", prompt: "¿A quién llamas si hay un incendio?", target: "A los bomberos.", altAnswers: ["los bomberos", "llamo a los bomberos"]},
+        {type: "mc", q: "'O cadeado', em espanhol, é...", options: ["la cerradura", "el candado", "la llave", "la alarma"], correct: 1},
+        {type: "mc", q: "'Trancar a porta', em espanhol, se dice...", options: ["abrir la puerta", "cerrar con llave la puerta", "romper la puerta", "pintar la puerta"], correct: 1},
+        {type: "fill", q: "'Chame os bombeiros!', em espanhol, se escribe: ¡Llame a los ___!", answer: "bomberos"},
+        {type: "fill", q: "'Fui roubado!', em espanhol, se escribe: ¡Me han ___!", answer: "robado"}
+      ]
     }
+,
+    {
+      id: "er-comida-rapida", order: 12, title: "Comida rápida", subtitle: "Pedir en una hamburguesería o pizzería",
+      vocabulary: [
+        {category: "Sándwiches y hamburguesas", items: [
+          {es: "la hamburguesa", pt: "hambúrguer"}, {es: "la hamburguesa con queso", pt: "cheeseburguer"},
+          {es: "el perro caliente", pt: "cachorro-quente"}, {es: "el sándwich", pt: "sanduíche"},
+          {es: "el sándwich mixto", pt: "misto-quente"}, {es: "la tostada", pt: "torrada"}
+        ]},
+        {category: "Acompañamientos", items: [
+          {es: "las papas fritas", pt: "batata frita"}, {es: "los nuggets", pt: "nuggets"},
+          {es: "los aros de cebolla", pt: "onion rings"}, {es: "la ensalada", pt: "salada"},
+          {es: "el maíz", pt: "milho"}, {es: "la salsa", pt: "molho"}, {es: "el kétchup", pt: "ketchup"},
+          {es: "la mostaza", pt: "mostarda"}, {es: "la mayonesa", pt: "maionese"}, {es: "los pepinillos", pt: "picles"}
+        ]},
+        {category: "Pizzas", items: [
+          {es: "la pizza de queso", pt: "pizza de queijo"}, {es: "la pizza de jamón", pt: "pizza de presunto"},
+          {es: "la pizza de pollo", pt: "pizza de frango"}, {es: "la pizza vegetariana", pt: "pizza vegetariana"},
+          {es: "el borde relleno", pt: "borda recheada"}, {es: "la porción de pizza", pt: "fatia de pizza"}
+        ]},
+        {category: "Bebidas y postres", items: [
+          {es: "el refresco", pt: "refrigerante"}, {es: "el jugo", pt: "suco"}, {es: "el agua con gas", pt: "água com gás"},
+          {es: "el batido / la malteada", pt: "milkshake"}, {es: "el helado", pt: "sorvete"},
+          {es: "la tarta / el pastel", pt: "bolo/torta"}, {es: "el flan / pudín", pt: "pudim"}
+        ]},
+        {category: "Frases para pedir", items: [
+          {es: "Quiero...", pt: "Quero..."}, {es: "Me gustaría...", pt: "Gostaria de..."},
+          {es: "¿Cuánto cuesta?", pt: "Quanto custa?"}, {es: "¿Es para aquí o para llevar?", pt: "É para aqui ou para levar?"},
+          {es: "Para aquí, por favor.", pt: "Para aqui, por favor."}, {es: "Para llevar, por favor.", pt: "Para levar, por favor."},
+          {es: "La cuenta, por favor.", pt: "A conta, por favor."}, {es: "¿Tiene opción vegetariana?", pt: "Tem opção vegetariana?"},
+          {es: "¿Qué recomienda?", pt: "O que você recomenda?"}
+        ]}
+      ],
+      notes: [
+        "'¿Para aquí o para llevar?' es LA pregunta clásica en cualquier lugar de comida rápida hispanohablante — memorízala junto con tu respuesta.",
+        "'Me gustaría...' es más educado que 'Quiero...' para pedir — muy útil en cualquier situación de atención al cliente."
+      ],
+      exercises: [
+        {
+          type: "caso", icon: "🍔", stamp: "✅ PEDIDO REALIZADO",
+          scenario: "Estás en el mostrador de una hamburguesería y quieres pedir una hamburguesa con queso y papas fritas para llevar.",
+          q: "Escribe una frase completa haciendo tu pedido.",
+          target: "Me gustaría una hamburguesa con queso y papas fritas, para llevar, por favor.",
+          altAnswers: ["Quiero una hamburguesa con queso y papas fritas para llevar.", "Una hamburguesa con queso y papas fritas para llevar, por favor."]
+        },
+        {
+          type: "caso", icon: "🍕", stamp: "✅ CONSULTA RESPONDIDA",
+          scenario: "Un amigo vegetariano te pregunta si la pizzería tiene alguna opción para él.",
+          q: "Escribe una frase completa preguntando al mesero si hay opción vegetariana.",
+          target: "¿Tiene alguna opción vegetariana en la pizza?",
+          altAnswers: ["¿Hay pizza vegetariana?", "¿Tienen opción vegetariana?"]
+        },
+        {type: "speak", prompt: "¿Qué pides si quieres papas fritas y una hamburguesa?", target: "Quiero una hamburguesa con papas fritas.", altAnswers: ["una hamburguesa con papas fritas"]},
+        {type: "speak", prompt: "¿Qué salsa roja es la más común para las papas fritas?", target: "El kétchup.", altAnswers: ["el kétchup"]},
+        {type: "speak", prompt: "¿Qué bebida fría y espesa se hace con helado?", target: "El batido.", altAnswers: ["el batido", "la malteada"]},
+        {type: "speak", prompt: "¿Cómo se llama un pedazo de pizza?", target: "Una porción de pizza.", altAnswers: ["la porción de pizza"]},
+        {type: "speak", prompt: "¿Qué preguntas si no sabes si comer ahí o llevar la comida a casa?", target: "¿Para aquí o para llevar?", altAnswers: ["para aquí o para llevar"]},
+        {type: "speak", prompt: "¿Qué pides al final, cuando ya terminaste de comer y quieres pagar?", target: "La cuenta, por favor.", altAnswers: ["la cuenta"]},
+        {type: "speak", prompt: "¿Qué le preguntas al mesero si no sabes qué pedir?", target: "¿Qué recomienda?", altAnswers: ["qué recomienda"]},
+        {type: "speak", prompt: "¿Cómo pides algo de forma educada, en vez de decir sólo 'quiero'?", target: "Me gustaría...", altAnswers: ["me gustaría"]},
+        {type: "speak", prompt: "¿Qué postre frío y dulce se sirve en bolas?", target: "El helado.", altAnswers: ["el helado"]},
+        {type: "speak", prompt: "¿Qué dices si la comida está muy sabrosa?", target: "¡Está delicioso!", altAnswers: ["está delicioso", "muy sabroso"]},
+        {type: "mc", q: "'A batata frita', em espanhol, se dice...", options: ["las papas fritas", "los nuggets", "el maíz", "la ensalada"], correct: 0},
+        {type: "mc", q: "'A conta, por favor', em espanhol, se dice...", options: ["¿Cuánto cuesta?", "La cuenta, por favor.", "Para llevar, por favor.", "¿Qué recomienda?"], correct: 1},
+        {type: "fill", q: "'Quero uma pizza de queijo', em espanhol, se escribe: Quiero una pizza de ___", answer: "queso"},
+        {type: "fill", q: "'Para levar, por favor', em espanhol, se escribe: Para ___, por favor.", answer: "llevar"}
+      ]
+    },
+    {
+      id: "er-avion", order: 13, title: "A bordo del avión", subtitle: "Instrucciones de los auxiliares de vuelo",
+      vocabulary: [
+        {category: "Bienvenida e información", items: [
+          {es: "¡Bienvenidos a bordo!", pt: "Bem-vindos a bordo!"}, {es: "Nuestro destino es...", pt: "Nosso destino é..."},
+          {es: "La duración del vuelo es de...", pt: "A duração do voo é de..."},
+          {es: "Presten atención a las instrucciones de seguridad.", pt: "Atentem para as instruções de segurança."},
+          {es: "Estamos a su disposición.", pt: "Estamos à disposição."}
+        ]},
+        {category: "Cinturón y dispositivos", items: [
+          {es: "Abrochen el cinturón de seguridad.", pt: "Ajustem o cinto de segurança."},
+          {es: "Mantengan el cinturón abrochado.", pt: "Mantenham o cinto ajustado."},
+          {es: "Pongan los celulares en modo avión.", pt: "Coloquem os celulares no modo avião."},
+          {es: "Apaguen sus dispositivos electrónicos.", pt: "Desliguem seus aparelhos eletrônicos."},
+          {es: "El Bluetooth debe permanecer apagado.", pt: "O Bluetooth deve permanecer desligado."}
+        ]},
+        {category: "Posición del asiento", items: [
+          {es: "Pongan el asiento en posición vertical.", pt: "Coloquem a poltrona na posição vertical."},
+          {es: "Guarden la mesita.", pt: "Recolham a mesinha."},
+          {es: "Abran la persiana de la ventana.", pt: "Abram o protetor solar da janela."},
+          {es: "Guarden los artículos en el compartimento superior.", pt: "Guardem os itens no compartimento superior."}
+        ]},
+        {category: "Emergencias", items: [
+          {es: "Las máscaras de oxígeno caerán automáticamente.", pt: "As máscaras de oxigênio cairão automaticamente."},
+          {es: "Cúbrase la nariz y la boca.", pt: "Cubram o nariz e a boca."},
+          {es: "El chaleco salvavidas está debajo de su asiento.", pt: "O colete salva-vidas está embaixo do assento."},
+          {es: "Localicen la puerta de emergencia más cercana.", pt: "Localizem a porta de emergência mais próxima."},
+          {es: "Mantengan la calma.", pt: "Mantenham a calma."}
+        ]},
+        {category: "Durante el vuelo", items: [
+          {es: "Tenemos turbulencia por delante.", pt: "Temos turbulência pela frente."},
+          {es: "Serviremos las comidas en breve.", pt: "Serviremos as refeições em breve."},
+          {es: "Bebidas y snacks están disponibles.", pt: "Bebidas e lanches estão disponíveis."},
+          {es: "¡Gracias por volar con nosotros!", pt: "Obrigado por voar conosco!"}
+        ]}
+      ],
+      notes: [
+        "Los anuncios de a bordo casi siempre usan el imperativo de 'ustedes' (abrochen, pongan, guarden) — es la forma cortés y estándar de dar instrucciones a un grupo grande.",
+        "'La tripulación' es el equipo completo (piloto + auxiliares de vuelo) — muy útil para entender los anuncios oficiales."
+      ],
+      exercises: [
+        {
+          type: "caso", icon: "✈️", stamp: "✅ INSTRUCCIÓN COMPRENDIDA",
+          scenario: "Eres auxiliar de vuelo y el avión está por despegar. Un pasajero todavía tiene el celular encendido.",
+          q: "Escribe una frase completa pidiéndole que apague el celular o lo ponga en modo avión.",
+          target: "Por favor, apague su celular o póngalo en modo avión antes del despegue.",
+          altAnswers: ["Ponga el celular en modo avión, por favor.", "Necesita apagar el celular para el despegue."]
+        },
+        {
+          type: "caso", icon: "🦺", stamp: "✅ PROCEDIMIENTO EXPLICADO",
+          scenario: "Un pasajero nervioso te pregunta qué debe hacer si las máscaras de oxígeno caen.",
+          q: "Escribe una frase completa explicándole el procedimiento con la máscara.",
+          target: "Cúbrase la nariz y la boca con la máscara, y respire normalmente.",
+          altAnswers: ["Póngase la máscara y respire normalmente.", "Primero póngase su máscara, después ayude a los demás."]
+        },
+        {type: "speak", prompt: "¿Qué deben abrocharse los pasajeros antes de despegar?", target: "El cinturón de seguridad.", altAnswers: ["el cinturón de seguridad"]},
+        {type: "speak", prompt: "¿En qué modo deben poner el celular durante el vuelo?", target: "En modo avión.", altAnswers: ["modo avión"]},
+        {type: "speak", prompt: "¿Qué deben guardar antes del despegue, que está delante del asiento?", target: "La mesita.", altAnswers: ["la mesita"]},
+        {type: "speak", prompt: "¿Dónde está el chaleco salvavidas?", target: "Debajo del asiento.", altAnswers: ["debajo del asiento", "el chaleco salvavidas"]},
+        {type: "speak", prompt: "¿Qué cae automáticamente en caso de despresurización?", target: "Las máscaras de oxígeno.", altAnswers: ["las máscaras de oxígeno"]},
+        {type: "speak", prompt: "¿Qué deben localizar los pasajeros al subir al avión, por seguridad?", target: "La puerta de emergencia más cercana.", altAnswers: ["la puerta de emergencia"]},
+        {type: "speak", prompt: "¿Qué anuncia la tripulación cuando el vuelo se mueve mucho?", target: "Que hay turbulencia.", altAnswers: ["turbulencia", "hay turbulencia"]},
+        {type: "speak", prompt: "¿Qué deben mantener los pasajeros durante toda una emergencia?", target: "La calma.", altAnswers: ["la calma"]},
+        {type: "speak", prompt: "¿Cómo se llama el equipo de personas que trabaja dentro del avión?", target: "La tripulación.", altAnswers: ["la tripulación"]},
+        {type: "speak", prompt: "¿Qué deben hacer los pasajeros con el respaldo del asiento antes de aterrizar?", target: "Ponerlo en posición vertical.", altAnswers: ["posición vertical"]},
+        {type: "mc", q: "'Abram a persiana da janela', em espanhol, se dice...", options: ["Cierren la ventana.", "Abran la persiana de la ventana.", "Guarden la ventana.", "Enciendan la luz."], correct: 1},
+        {type: "mc", q: "'Mantenham a calma', em espanhol, se dice...", options: ["Tengan cuidado.", "No se muevan.", "Mantengan la calma.", "Estén atentos."], correct: 2},
+        {type: "fill", q: "'Bem-vindos a bordo!', em espanhol, se escribe: ¡___ a bordo!", answer: "Bienvenidos"},
+        {type: "fill", q: "'O cinto de segurança', em espanhol, se escribe: el ___ de seguridad.", answer: "cinturón"}
+      ]
+    },
+    {
+      id: "er-inmigracion", order: 14, title: "Pasando por inmigración", subtitle: "Preguntas del oficial y respuestas útiles",
+      vocabulary: [
+        {category: "Documentos", items: [
+          {es: "el pasaporte", pt: "passaporte"}, {es: "la visa", pt: "visto"},
+          {es: "el documento de identidad", pt: "documento de identidade"}, {es: "la tarjeta de embarque", pt: "cartão de embarque"},
+          {es: "el comprobante de domicilio", pt: "comprovante de residência"}, {es: "el comprobante de vacuna", pt: "comprovante de vacina"},
+          {es: "el seguro de viaje", pt: "seguro viagem"}, {es: "la declaración aduanera", pt: "declaração alfandegária"}
+        ]},
+        {category: "Preguntas del oficial", items: [
+          {es: "¿Cuál es el motivo de su viaje?", pt: "Qual é o motivo da sua viagem?"},
+          {es: "¿Cuánto tiempo va a quedarse?", pt: "Quanto tempo vai ficar?"},
+          {es: "¿Dónde se va a hospedar?", pt: "Onde você vai se hospedar?"},
+          {es: "¿Tiene pasaje de regreso?", pt: "Você tem passagem de volta?"},
+          {es: "¿Es su primera vez aquí?", pt: "É sua primeira vez aqui?"},
+          {es: "¿Tiene algo que declarar?", pt: "Você tem algo a declarar?"},
+          {es: "¿Con quién viaja?", pt: "Com quem você está viajando?"},
+          {es: "¿Cuál es su profesión?", pt: "Qual é a sua profissão?"}
+        ]},
+        {category: "Respuestas útiles", items: [
+          {es: "Turismo.", pt: "Turismo."}, {es: "Negocios.", pt: "Negócios."},
+          {es: "Estoy de vacaciones.", pt: "Estou de férias."}, {es: "Voy a quedarme... días.", pt: "Vou ficar... dias."},
+          {es: "Es mi primera vez.", pt: "É minha primeira vez."}, {es: "Viajo solo(a).", pt: "Viajo sozinho(a)."},
+          {es: "Soy... (profesión).", pt: "Sou... (profissão)."}, {es: "Vivo en...", pt: "Moro em..."}
+        ]},
+        {category: "En la fila y expresiones", items: [
+          {es: "Por favor, espere.", pt: "Por favor, espere."}, {es: "Puede avanzar.", pt: "Pode seguir."},
+          {es: "Complete este formulario.", pt: "Preencha este formulário."}, {es: "Firme aquí, por favor.", pt: "Assine aqui, por favor."},
+          {es: "No hablo español.", pt: "Eu não falo espanhol."}, {es: "¿Puede hablar más despacio?", pt: "Pode falar mais devagar?"},
+          {es: "No entendí.", pt: "Não entendi."}, {es: "¿Puede repetir, por favor?", pt: "Pode repetir, por favor?"}
+        ]}
+      ],
+      notes: [
+        "Las respuestas cortas ('Turismo.', 'Negocios.') son perfectamente normales frente al oficial de inmigración — no hace falta una frase larga.",
+        "'No hablo español' + '¿Puede hablar más despacio?' son las dos frases más útiles si te bloqueas frente al oficial: siempre puedes usarlas sin pena."
+      ],
+      exercises: [
+        {
+          type: "caso", icon: "🛂", stamp: "✅ ENTREVISTA APROBADA",
+          scenario: "Estás en el control de inmigración de España y el oficial te pregunta el motivo de tu viaje.",
+          q: "Escribe una frase completa respondiendo que viajas por turismo y te vas a quedar diez días.",
+          target: "Viajo por turismo y voy a quedarme diez días.",
+          altAnswers: ["Es turismo, voy a quedarme diez días.", "Vengo de turismo, me quedo diez días."]
+        },
+        {
+          type: "caso", icon: "🧳", stamp: "✅ DECLARACIÓN COMPLETADA",
+          scenario: "El oficial de aduana te pregunta si traes algo que declarar.",
+          q: "Escribe una frase completa respondiendo que no tienes nada que declarar.",
+          target: "No, no tengo nada que declarar.",
+          altAnswers: ["No tengo nada que declarar.", "No, nada que declarar."]
+        },
+        {type: "speak", prompt: "¿Qué documento necesitas siempre para pasar por inmigración?", target: "El pasaporte.", altAnswers: ["el pasaporte"]},
+        {type: "speak", prompt: "Si vienes a conocer el país sin trabajar, ¿cuál es el motivo de tu viaje?", target: "Turismo.", altAnswers: ["turismo"]},
+        {type: "speak", prompt: "Si vienes por trabajo, ¿cuál es el motivo de tu viaje?", target: "Negocios.", altAnswers: ["negocios"]},
+        {type: "speak", prompt: "¿Qué te pregunta el oficial sobre cuántos días te vas a quedar?", target: "¿Cuánto tiempo va a quedarse?", altAnswers: ["cuánto tiempo va a quedarse"]},
+        {type: "speak", prompt: "¿Qué documento demuestra que ya tienes cómo volver a tu país?", target: "El pasaje de regreso.", altAnswers: ["el pasaje de regreso"]},
+        {type: "speak", prompt: "Si no entiendes lo que dice el oficial, ¿qué le pides?", target: "¿Puede repetir, por favor?", altAnswers: ["puede repetir"]},
+        {type: "speak", prompt: "¿Qué dices si el oficial habla muy rápido?", target: "¿Puede hablar más despacio?", altAnswers: ["hablar más despacio"]},
+        {type: "speak", prompt: "¿Qué firmas cuando el oficial te pide 'firme aquí'?", target: "El formulario.", altAnswers: ["firmo el formulario", "el formulario"]},
+        {type: "speak", prompt: "¿Qué dices para pedir permiso para pasar en la fila?", target: "Con permiso.", altAnswers: ["con permiso"]},
+        {type: "speak", prompt: "¿Cómo terminas la conversación con el oficial, agradeciendo?", target: "Muchas gracias.", altAnswers: ["gracias", "muchas gracias"]},
+        {type: "mc", q: "'Quanto tempo vai ficar?', em espanhol, se dice...", options: ["¿Dónde vive?", "¿Cuánto tiempo va a quedarse?", "¿Con quién viaja?", "¿Cuál es su profesión?"], correct: 1},
+        {type: "mc", q: "'Não tenho nada a declarar', em espanhol, se dice...", options: ["No tengo pasaporte.", "No hablo español.", "No tengo nada que declarar.", "No es mi primera vez."], correct: 2},
+        {type: "fill", q: "'Estou de férias', em espanhol, se escribe: Estoy de ___", answer: "vacaciones"},
+        {type: "fill", q: "'Viajo sozinho', em espanhol, se escribe: Viajo ___", answer: "solo"}
+      ]
+    }
+,
+    {
+      id: "er-galicia", order: 15, title: "Galicia", subtitle: "Lugares, cultura y comida típica gallega",
+      vocabulary: [
+        {category: "Lugares", items: [
+          {es: "la ciudad", pt: "cidade"}, {es: "el centro histórico", pt: "centro histórico"},
+          {es: "la plaza", pt: "praça"}, {es: "la catedral", pt: "catedral"}, {es: "el monasterio", pt: "mosteiro"},
+          {es: "el castillo", pt: "castelo"}, {es: "el mirador", pt: "mirante"}, {es: "el puerto", pt: "porto"},
+          {es: "la playa", pt: "praia"}, {es: "la montaña", pt: "montanha"}, {es: "el río", pt: "rio"},
+          {es: "el faro", pt: "farol"}
+        ]},
+        {category: "Naturaleza", items: [
+          {es: "el mar", pt: "mar"}, {es: "el océano Atlántico", pt: "oceano Atlântico"},
+          {es: "la costa", pt: "costa"}, {es: "el acantilado", pt: "penhasco/falésia"},
+          {es: "el bosque", pt: "floresta"}, {es: "el valle", pt: "vale"}, {es: "el cielo", pt: "céu"}
+        ]},
+        {category: "Cultura y tradiciones", items: [
+          {es: "la gaita gallega", pt: "gaita de foles"}, {es: "la romería", pt: "romaria"},
+          {es: "el traje típico", pt: "traje típico"}, {es: "el baile tradicional", pt: "dança tradicional"},
+          {es: "la gente", pt: "povo/xente"}, {es: "la hospitalidad", pt: "hospitalidade"},
+          {es: "la leyenda", pt: "lenda"}, {es: "el Camino de Santiago", pt: "Caminho de Santiago"},
+          {es: "la vieira (concha)", pt: "vieira (concha)"}, {es: "el hórreo", pt: "hórreo"}
+        ]},
+        {category: "Comidas típicas", items: [
+          {es: "el pulpo a la gallega", pt: "polvo à feira"}, {es: "la empanada gallega", pt: "empanada galega"},
+          {es: "el lacón con grelos", pt: "lacón com grelos"}, {es: "el marisco", pt: "marisco"},
+          {es: "los mejillones", pt: "mexilhões"}, {es: "las vieiras", pt: "vieiras"},
+          {es: "el pescado", pt: "peixe"}, {es: "la tarta de Santiago", pt: "torta de Santiago"},
+          {es: "el vino Albariño", pt: "vinho Albariño"}
+        ]},
+        {category: "Expresiones y adjetivos", items: [
+          {es: "¿Dónde queda...?", pt: "Onde fica...?"}, {es: "¡Me encanta Galicia!", pt: "Adoro a Galícia!"},
+          {es: "bonito/linda", pt: "bonito/linda"}, {es: "tranquilo/tranquila", pt: "tranquilo/tranquila"},
+          {es: "increíble", pt: "incrível"}, {es: "acogedor/acogedora", pt: "acolhedor/acolhedora"}
+        ]}
+      ],
+      notes: [
+        "Galicia queda en el noroeste de España, tiene su propia lengua (el gallego) y es el destino final del famoso Camino de Santiago.",
+        "'Bo camiño!' es una expresión gallega que significa '¡Buen camino!' — se usa para desear buena suerte a los peregrinos."
+      ],
+      exercises: [
+        {
+          type: "caso", icon: "🗺️", stamp: "✅ RECOMENDACIÓN DADA",
+          scenario: "Un amigo va a viajar a Galicia por primera vez y te pregunta qué comida típica debe probar.",
+          q: "Escribe una frase completa recomendándole el pulpo a la gallega y la empanada gallega.",
+          target: "Tienes que probar el pulpo a la gallega y la empanada gallega, ¡son deliciosos!",
+          altAnswers: ["Te recomiendo el pulpo a la gallega y la empanada gallega.", "Prueba el pulpo a la gallega, es típico de Galicia."]
+        },
+        {
+          type: "caso", icon: "⛪", stamp: "✅ DIRECCIÓN PEDIDA",
+          scenario: "Estás en Santiago de Compostela y quieres llegar a la catedral, pero no sabes el camino.",
+          q: "Escribe una frase completa preguntando dónde queda la catedral.",
+          target: "Disculpe, ¿dónde queda la catedral?",
+          altAnswers: ["¿Dónde está la catedral, por favor?", "¿Puede decirme dónde queda la catedral?"]
+        },
+        {type: "speak", prompt: "¿Cómo se llama el instrumento musical típico de Galicia?", target: "La gaita gallega.", altAnswers: ["la gaita gallega", "la gaita"]},
+        {type: "speak", prompt: "¿Cómo se llama el famoso camino que termina en Santiago de Compostela?", target: "El Camino de Santiago.", altAnswers: ["el Camino de Santiago"]},
+        {type: "speak", prompt: "¿Qué plato típico gallego se hace con pulpo?", target: "El pulpo a la gallega.", altAnswers: ["el pulpo a la gallega"]},
+        {type: "speak", prompt: "¿Qué símbolo del Camino de Santiago es una concha de mar?", target: "La vieira.", altAnswers: ["la vieira", "la concha"]},
+        {type: "speak", prompt: "¿Qué océano baña la costa de Galicia?", target: "El océano Atlántico.", altAnswers: ["el océano Atlántico"]},
+        {type: "speak", prompt: "¿Cómo se llama un edificio antiguo y muy importante, con torres, donde vivían religiosos?", target: "El monasterio.", altAnswers: ["el monasterio"]},
+        {type: "speak", prompt: "¿Qué fiesta popular con música y baile se celebra en los pueblos gallegos?", target: "La romería.", altAnswers: ["la romería"]},
+        {type: "speak", prompt: "¿Qué vino blanco es típico de Galicia?", target: "El vino Albariño.", altAnswers: ["el vino Albariño", "el Albariño"]},
+        {type: "speak", prompt: "¿Qué postre dulce lleva el nombre de la ciudad de Santiago?", target: "La tarta de Santiago.", altAnswers: ["la tarta de Santiago"]},
+        {type: "speak", prompt: "¿Cómo se dice cuando te encanta mucho un lugar?", target: "¡Me encanta!", altAnswers: ["me encanta"]},
+        {type: "mc", q: "'A gente' (o povo), em espanhol gallego, se dice...", options: ["el pueblo", "la xente / la gente", "los vecinos", "la familia"], correct: 1},
+        {type: "mc", q: "'Bo camiño!' significa...", options: ["¡Buenas noches!", "¡Buen camino!", "¡Buen provecho!", "¡Hasta luego!"], correct: 1},
+        {type: "fill", q: "'O farol', em espanhol, se escribe: el ___", answer: "faro"},
+        {type: "fill", q: "'A praia', em espanhol, se escribe: la ___", answer: "playa"}
+      ]
+    },
+    {
+      id: "er-lavanderia", order: 16, title: "En la lavandería", subtitle: "Lavar, secar y planchar la ropa",
+      vocabulary: [
+        {category: "La lavandería", items: [
+          {es: "la lavandería", pt: "lavanderia"}, {es: "la ropa", pt: "roupa"}, {es: "el cesto de ropa", pt: "cesto de roupa"},
+          {es: "la lavadora", pt: "máquina de lavar"}, {es: "la secadora", pt: "secadora"}, {es: "el tendedero", pt: "varal"},
+          {es: "la tabla de planchar", pt: "tábua de passar"}, {es: "la plancha", pt: "ferro de passar"},
+          {es: "la pinza de ropa", pt: "pregador"}
+        ]},
+        {category: "Acciones", items: [
+          {es: "lavar", pt: "lavar"}, {es: "enjuagar", pt: "enxaguar"}, {es: "centrifugar", pt: "centrifugar"},
+          {es: "secar", pt: "secar"}, {es: "tender", pt: "estender"}, {es: "planchar", pt: "passar"},
+          {es: "doblar", pt: "dobrar"}, {es: "separar", pt: "separar"}, {es: "quitar manchas", pt: "remover manchas"}
+        ]},
+        {category: "Ropa y productos", items: [
+          {es: "la camiseta", pt: "camiseta"}, {es: "la ropa interior", pt: "roupa íntima"}, {es: "la toalla", pt: "toalha"},
+          {es: "la sábana", pt: "lençol"}, {es: "el detergente en polvo", pt: "sabão em pó"},
+          {es: "el suavizante", pt: "amaciante"}, {es: "la lejía", pt: "água sanitária"},
+          {es: "el quitamanchas", pt: "tira-manchas"}
+        ]},
+        {category: "Frases útiles", items: [
+          {es: "¿Dónde está el jabón?", pt: "Onde está o sabão?"}, {es: "¿Cuánto jabón debo usar?", pt: "Quanto sabão devo usar?"},
+          {es: "¿Esta ropa puede encoger?", pt: "Essa roupa pode encolher?"}, {es: "Está manchada.", pt: "Está manchada."},
+          {es: "Ropa delicada.", pt: "Roupa delicada."}, {es: "Deja en remojo.", pt: "Deixe de molho."},
+          {es: "Ya está casi seca.", pt: "Está quase seca."}, {es: "Se puede planchar.", pt: "Pode passar."}
+        ]},
+        {category: "Problemas comunes", items: [
+          {es: "La máquina no enciende.", pt: "A máquina não liga."}, {es: "No está centrifugando.", pt: "Não está centrifugando."},
+          {es: "Fuga de agua.", pt: "Vazamento de água."}, {es: "Mal olor.", pt: "Cheiro ruim."},
+          {es: "La plancha no calienta.", pt: "O ferro não esquenta."}
+        ]}
+      ],
+      notes: [
+        "'Poner en remojo' (dejar en remojo) es dejar la ropa manchada en agua un tiempo antes de lavarla — muy útil para manchas difíciles.",
+        "'Ropa delicada' se lava con un ciclo suave y agua fría — vale la pena aprender esta expresión antes de leer la etiqueta de una lavadora en español."
+      ],
+      exercises: [
+        {
+          type: "caso", icon: "🧺", stamp: "✅ INSTRUCCIÓN DADA",
+          scenario: "Estás usando una lavandería compartida y necesitas explicarle a otra persona cómo funciona la máquina.",
+          q: "Escribe una frase completa explicando que hay que separar la ropa de color antes de lavar.",
+          target: "Primero hay que separar la ropa de color de la ropa blanca antes de lavar.",
+          altAnswers: ["Separa la ropa clara de la oscura antes de lavar.", "Hay que separar la ropa antes de ponerla en la lavadora."]
+        },
+        {
+          type: "caso", icon: "🔧", stamp: "✅ PROBLEMA REPORTADO",
+          scenario: "La lavadora del edificio no enciende y necesitas avisar al conserje.",
+          q: "Escribe una frase completa explicando el problema.",
+          target: "La lavadora no enciende, ¿puede revisarla, por favor?",
+          altAnswers: ["La máquina no enciende, necesito ayuda.", "Hay un problema: la lavadora no enciende."]
+        },
+        {type: "speak", prompt: "¿Dónde pones la ropa sucia antes de lavarla?", target: "En el cesto de ropa.", altAnswers: ["el cesto de ropa"]},
+        {type: "speak", prompt: "¿Qué máquina lava la ropa?", target: "La lavadora.", altAnswers: ["la lavadora"]},
+        {type: "speak", prompt: "¿Dónde cuelgas la ropa mojada para que se seque al aire?", target: "En el tendedero.", altAnswers: ["el tendedero"]},
+        {type: "speak", prompt: "¿Qué usas para quitar las arrugas de la ropa?", target: "La plancha.", altAnswers: ["la plancha"]},
+        {type: "speak", prompt: "¿Qué producto usas para que la ropa quede suave y con buen olor?", target: "El suavizante.", altAnswers: ["el suavizante"]},
+        {type: "speak", prompt: "¿Qué producto usas para lavar la ropa, en polvo?", target: "El detergente en polvo.", altAnswers: ["el detergente en polvo"]},
+        {type: "speak", prompt: "Si una mancha no sale fácil, ¿qué haces antes de lavar?", target: "La dejo en remojo.", altAnswers: ["dejar en remojo", "en remojo"]},
+        {type: "speak", prompt: "¿Qué producto usas para blanquear la ropa blanca?", target: "La lejía.", altAnswers: ["la lejía"]},
+        {type: "speak", prompt: "Después de secar la ropa, ¿qué haces antes de guardarla?", target: "La doblo.", altAnswers: ["doblar", "la doblo"]},
+        {type: "speak", prompt: "¿Qué tipo de ropa necesita un lavado especial y suave?", target: "Ropa delicada.", altAnswers: ["ropa delicada"]},
+        {type: "speak", prompt: "¿Qué dices cuando toda la ropa ya está limpia, seca y guardada?", target: "¡Todo listo!", altAnswers: ["todo listo"]},
+        {type: "mc", q: "'O ferro de passar', em espanhol, é...", options: ["la lavadora", "la secadora", "la plancha", "el tendedero"], correct: 2},
+        {type: "mc", q: "'Deixe de molho', em espanhol, se dice...", options: ["Deja en remojo.", "Cuelga a secar.", "Lava a mano.", "Plancha bien."], correct: 0},
+        {type: "fill", q: "'O amaciante', em espanhol, se escribe: el ___", answer: "suavizante"},
+        {type: "fill", q: "'O sabão em pó', em espanhol, se escribe: el detergente en ___", answer: "polvo"}
+      ]
+    },
+    {
+      id: "er-probador", order: 17, title: "Cambiando de ropa y zapatos", subtitle: "Probarse ropa en una tienda",
+      vocabulary: [
+        {category: "Ropa", items: [
+          {es: "la camiseta", pt: "camiseta"}, {es: "el pantalón", pt: "calça"}, {es: "la falda", pt: "saia"},
+          {es: "el vestido", pt: "vestido"}, {es: "la blusa", pt: "blusa"}, {es: "el suéter", pt: "suéter"},
+          {es: "la chaqueta", pt: "casaco/jaqueta"}, {es: "la sudadera", pt: "moletom"},
+          {es: "la bufanda", pt: "cachecol"}, {es: "el sombrero", pt: "chapéu"}, {es: "el cinturón", pt: "cinto"}
+        ]},
+        {category: "Zapatos", items: [
+          {es: "las zapatillas / los tenis", pt: "tênis"}, {es: "los zapatos", pt: "sapato"},
+          {es: "la sandalia", pt: "sandália"}, {es: "las chanclas", pt: "chinelo"}, {es: "la bota", pt: "bota"},
+          {es: "los tacones altos", pt: "salto alto"}, {es: "el mocasín", pt: "mocassim"}
+        ]},
+        {category: "Probándose ropa", items: [
+          {es: "¿Puedo probarme esto?", pt: "Posso experimentar isto?"}, {es: "¿Dónde está el probador?", pt: "Onde fica o provador?"},
+          {es: "¿Este tamaño está bien?", pt: "Este tamanho está bom?"}, {es: "Está muy apretado.", pt: "Está muito apertado."},
+          {es: "Está muy suelto.", pt: "Está muito largo."}, {es: "¡Quedó perfecto!", pt: "Ficou perfeito!"},
+          {es: "Me lo llevo.", pt: "Vou levar este."}, {es: "No me gustó.", pt: "Não gostei."},
+          {es: "¿Tiene de otro color?", pt: "Tem de outra cor?"}, {es: "¿Tiene de otro tamaño?", pt: "Tem de outro tamanho?"},
+          {es: "Quiero cambiar.", pt: "Quero trocar."}, {es: "Quiero devolver.", pt: "Quero devolver."}
+        ]},
+        {category: "Comprando", items: [
+          {es: "¿Está en promoción?", pt: "Está na promoção?"}, {es: "¿Cuánto cuesta?", pt: "Quanto custa?"},
+          {es: "Está caro/barato.", pt: "Está caro/barato."}, {es: "¡Vale la pena!", pt: "Vale a pena!"},
+          {es: "Es de buena calidad.", pt: "É de boa qualidade."}, {es: "Es cómodo.", pt: "É confortável."}
+        ]}
+      ],
+      notes: [
+        "'Me lo llevo' (para algo masculino) y 'me la llevo' (para algo femenino) es la forma natural de decir 'lo compro' cuando decides quedarte con la prenda.",
+        "'Apretado' (muy ajustado) y 'suelto' (muy holgado) son los dos adjetivos clave para hablar de cómo te queda la ropa en el probador."
+      ],
+      exercises: [
+        {
+          type: "caso", icon: "👗", stamp: "✅ CAMBIO SOLICITADO",
+          scenario: "Compraste una camisa pero al llegar a casa notaste que te queda muy apretada.",
+          q: "Escribe una frase completa explicando en la tienda que quieres cambiarla por otro tamaño.",
+          target: "Esta camisa me quedó muy apretada, quiero cambiarla por otro tamaño.",
+          altAnswers: ["Quiero cambiar esta camisa, me queda apretada.", "¿Tiene esta camisa en otro tamaño? Me queda apretada."]
+        },
+        {
+          type: "caso", icon: "👟", stamp: "✅ PROBADOR ENCONTRADO",
+          scenario: "Estás en una tienda de zapatos y quieres probarte un par de zapatillas antes de comprarlas.",
+          q: "Escribe una frase completa pidiendo el probador o preguntando si puedes probártelas.",
+          target: "¿Puedo probarme estas zapatillas? ¿Dónde está el probador?",
+          altAnswers: ["¿Dónde está el probador, por favor?", "Quiero probarme estas zapatillas."]
+        },
+        {type: "speak", prompt: "¿Dónde te pruebas la ropa antes de comprarla?", target: "En el probador.", altAnswers: ["el probador"]},
+        {type: "speak", prompt: "Si la ropa te queda muy ajustada, ¿cómo se dice?", target: "Está muy apretada.", altAnswers: ["está apretada", "apretado"]},
+        {type: "speak", prompt: "Si la ropa te queda muy grande, ¿cómo se dice?", target: "Está muy suelta.", altAnswers: ["está suelta", "suelto"]},
+        {type: "speak", prompt: "Si te encantó cómo te queda la ropa, ¿qué dices?", target: "¡Quedó perfecto!", altAnswers: ["quedó perfecto"]},
+        {type: "speak", prompt: "Si decides comprar la prenda, ¿qué le dices al vendedor?", target: "Me lo llevo.", altAnswers: ["me lo llevo", "me la llevo"]},
+        {type: "speak", prompt: "¿Qué calzado usas para hacer ejercicio o caminar?", target: "Las zapatillas / los tenis.", altAnswers: ["las zapatillas", "los tenis"]},
+        {type: "speak", prompt: "¿Qué calzado de verano se usa en la playa, muy simple?", target: "Las chanclas.", altAnswers: ["las chanclas"]},
+        {type: "speak", prompt: "¿Qué prenda te pones alrededor del cuello cuando hace frío?", target: "La bufanda.", altAnswers: ["la bufanda"]},
+        {type: "speak", prompt: "Si no te gustó la prenda que compraste, ¿qué le pides a la tienda?", target: "Quiero devolverla.", altAnswers: ["quiero devolver", "devolver"]},
+        {type: "speak", prompt: "¿Qué preguntas si quieres saber el precio antes de decidir?", target: "¿Cuánto cuesta?", altAnswers: ["cuánto cuesta"]},
+        {type: "mc", q: "'Tem de outra cor?', em espanhol, se dice...", options: ["¿Tiene de otro color?", "¿Está en promoción?", "¿Cuánto cuesta?", "¿Dónde está el probador?"], correct: 0},
+        {type: "mc", q: "'Ficou perfeito!', em espanhol, se dice...", options: ["¡Está caro!", "¡Quedó perfecto!", "¡No me gustó!", "¡Vale la pena!"], correct: 1},
+        {type: "fill", q: "'A bota', em espanhol, se escribe: la ___", answer: "bota"},
+        {type: "fill", q: "'Quero trocar', em espanhol, se escribe: Quiero ___", answer: "cambiar"}
+      ]
+    }
+
   ]
 };
