@@ -46,7 +46,7 @@ const LEVEL_ESTUDIORAPIDO = {
   icon: "🖼️",
   colorFrom: "#2E7D32",
   colorTo: "#1565C0",
-  description: "Módulo bônus 100% visual: olhe a imagem, escute uma pergunta real sobre o assunto e responda falando em espanhol — o app escuta e corrige sua resposta e pronúncia na hora. Cada lição tem 'Casos prácticos': situações reais em que você escreve uma frase completa em espanhol, não só uma palavra. Vocabulário de casa, cafeteria, padaria, auditoria, aeroporto, construção, escritório, segurança residencial, comida rápida, bordo do avião, imigração, Galícia, lavanderia e troca de roupas/sapatos.",
+  description: "Módulo bônus 100% visual: olhe a imagem, escute uma pergunta real sobre o assunto e responda falando em espanhol — o app escuta e corrige sua resposta e pronúncia na hora. Cada lição tem 'Casos prácticos': situações reais em que você escreve uma frase completa em espanhol, não só uma palavra. Vocabulário de casa, cafeteria, padaria, auditoria, aeroporto, construção, escritório, segurança residencial, comida rápida, bordo do avião, imigração, Galícia, lavanderia, troca de roupas/sapatos, saudações, pesos e medidas, inverno/esportes de neve, direções/transporte, culinária, banco/finanças, falsos cognatos, supermercado, salão de beleza e barbearia.",
   lessons: [
     {
       id: "er-hora", order: 1, title: "¿Qué hora es?", subtitle: "Como dizer as horas em espanhol",
@@ -781,6 +781,22 @@ const LEVEL_ESTUDIORAPIDO = {
           {es: "el despegue", pt: "a decolagem"},
           {es: "la recogida de equipaje", pt: "a retirada de bagagem"},
           {es: "el taxi", pt: "o táxi"}
+        ]},
+        {category: "Aduana y reclamo de equipaje", items: [
+          {es: "la terminal", pt: "o terminal"},
+          {es: "el vuelo directo / el vuelo con escala", pt: "o voo direto / o voo com escala"},
+          {es: "el billete de ida y vuelta", pt: "a passagem de ida e volta"},
+          {es: "la clase económica / ejecutiva / primera clase", pt: "a classe econômica / executiva / primeira classe"},
+          {es: "el control de pasaporte", pt: "o controle de passaporte"},
+          {es: "declarar bienes / nada que declarar", pt: "declarar bens / nada a declarar"},
+          {es: "los productos prohibidos", pt: "os produtos proibidos"},
+          {es: "el sello en el pasaporte", pt: "o carimbo no passaporte"},
+          {es: "el carrito de equipaje", pt: "o carrinho de bagagem"},
+          {es: "la etiqueta de equipaje", pt: "a etiqueta de bagagem"},
+          {es: "el peso permitido", pt: "o peso permitido"},
+          {es: "la maleta extraviada", pt: "a mala extraviada"},
+          {es: "el equipaje dañado", pt: "a bagagem danificada"},
+          {es: "¿Dónde puedo retirar mi maleta?", pt: "Onde posso retirar minha mala?"}
         ]}
       ],
       grammar: [],
@@ -847,6 +863,11 @@ const LEVEL_ESTUDIORAPIDO = {
         {type: "speak", prompt: "¿Qué te pones antes de despegar, por seguridad?", target: "El cinturón de seguridad.", altAnswers: ["el cinturón de seguridad"]},
         {type: "speak", prompt: "¿Cómo se llama el momento en que el avión sube y deja el suelo?", target: "El despegue.", altAnswers: ["el despegue"]},
         {type: "speak", prompt: "¿Cómo se llama el momento en que el avión toca el suelo al final del vuelo?", target: "El aterrizaje.", altAnswers: ["el aterrizaje"]},
+        {type: "speak", prompt: "¿Qué usas para llevar varias maletas pesadas sin cargarlas en los brazos?", target: "El carrito de equipaje.", altAnswers: ["el carrito de equipaje", "el carrito"]},
+        {type: "speak", prompt: "Si no tienes nada que declarar en la aduana, ¿qué dices?", target: "Nada que declarar.", altAnswers: ["nada que declarar"]},
+        {type: "speak", prompt: "¿Qué pequeño papel llevan las maletas con tu nombre y datos de vuelo?", target: "La etiqueta de equipaje.", altAnswers: ["la etiqueta de equipaje", "la etiqueta"]},
+        {type: "speak", prompt: "Si tu maleta no llegó y no la encuentras, ¿cómo se dice?", target: "Mi maleta está extraviada.", altAnswers: ["maleta extraviada", "se perdió mi maleta"]},
+        {type: "speak", prompt: "¿Cómo preguntas dónde recoger tu equipaje al llegar?", target: "¿Dónde puedo retirar mi maleta?", altAnswers: ["dónde puedo retirar mi maleta", "dónde recojo mi maleta"]},
         {type: "mc", q: "'O painel de partidas', em espanhol, é...", options: ["la pantalla de salidas", "la torre de control", "la pista de aterrizaje", "la aduana"], correct: 0},
         {type: "mc", q: "El grupo de personas que trabaja dentro del avión (piloto, auxiliares...) se llama...", options: ["la aerolínea", "la tripulación", "el mostrador", "la aduana"], correct: 1},
         {type: "fill", q: "'A bagagem de mão' em espanhol se escreve: el equipaje de ___", answer: "mano"},
@@ -1501,6 +1522,677 @@ const LEVEL_ESTUDIORAPIDO = {
         {type: "mc", q: "'Ficou perfeito!', em espanhol, se dice...", options: ["¡Está caro!", "¡Quedó perfecto!", "¡No me gustó!", "¡Vale la pena!"], correct: 1},
         {type: "fill", q: "'A bota', em espanhol, se escribe: la ___", answer: "bota"},
         {type: "fill", q: "'Quero trocar', em espanhol, se escribe: Quiero ___", answer: "cambiar"}
+      ]
+    },
+    {
+      id: "er-saludos", order: 18, title: "Saludos y cortesía", subtitle: "Cómo saludar, presentarse y despedirse en español",
+      text: "Anderson llega a una reunión en Madrid y saluda formalmente al nuevo cliente: ‘¡Buenos días! ¿Cómo está usted?’ El cliente responde: ‘Muy bien, gracias. ¿Y usted?’ Después de la reunión, se presentan: ‘Mucho gusto, me llamo Anderson, soy de Brasil.’ ‘El gusto es mío, encantado de conocerlo.’ Por la tarde, se encuentra con un amigo español en la calle y el tono cambia: ‘¡Hola! ¿Qué tal? ¿Todo bien?’ ‘Todo bien, ¿y tú? ¿Qué haces por aquí?’ Antes de irse, agradece con cortesía: ‘Muchas gracias por tu ayuda.’ ‘De nada, con mucho gusto.’ Al despedirse del cliente, usa la forma formal: ‘¡Que tenga un buen día! Hasta la próxima.’ Y al despedirse del amigo, usa la forma informal: ‘¡Cuídate! Nos vemos pronto.’ Anderson aprende que, en español, saber cuándo usar ‘usted’ o ‘tú’ hace toda la diferencia para causar una buena impresión.",
+      textPt: "Anderson chega a uma reunião em Madri e cumprimenta formalmente o novo cliente: ‘Bom dia! Como o senhor está?’ O cliente responde: ‘Muito bem, obrigado. E o senhor?’ Depois da reunião, se apresentam: ‘Muito prazer, me chamo Anderson, sou do Brasil.’ ‘O prazer é meu, encantado em conhecê-lo.’ À tarde, encontra um amigo espanhol na rua e o tom muda: ‘Oi! Que tal? Tudo bem?’ ‘Tudo bem, e você? O que você está fazendo por aqui?’ Antes de ir embora, agradece com cortesia: ‘Muito obrigado pela sua ajuda.’ ‘De nada, com muito prazer.’ Ao se despedir do cliente, usa a forma formal: ‘Que tenha um bom dia! Até a próxima.’ E ao se despedir do amigo, usa a forma informal: ‘Se cuida! Nos vemos em breve.’ Anderson aprende que, em espanhol, saber quando usar ‘usted’ ou ‘tú’ faz toda a diferença para causar uma boa impressão.",
+      vocabulary: [
+        {category: "Saludos según el momento", items: [
+          {es: "Buenos días", pt: "Bom dia"}, {es: "Buenas tardes", pt: "Boa tarde"}, {es: "Buenas noches", pt: "Boa noite"},
+          {es: "Hola", pt: "Olá"}, {es: "¿Qué tal?", pt: "Que tal?"},
+          {es: "¿Cómo estás? (tú)", pt: "Como você está?"}, {es: "¿Cómo está usted? (formal)", pt: "Como o senhor/a senhora está?"}
+        ]},
+        {category: "Cómo responder", items: [
+          {es: "Muy bien, gracias", pt: "Muito bem, obrigado(a)"}, {es: "Bien, gracias", pt: "Bem, obrigado(a)"},
+          {es: "Más o menos", pt: "Mais ou menos"}, {es: "No estoy muy bien", pt: "Não estou muito bem"},
+          {es: "Estoy cansado(a)", pt: "Estou cansado(a)"}
+        ]},
+        {category: "Presentaciones", items: [
+          {es: "Me llamo...", pt: "Me chamo..."}, {es: "Soy de...", pt: "Sou de..."}, {es: "Vivo en...", pt: "Moro em..."},
+          {es: "Mucho gusto", pt: "Muito prazer"}, {es: "El gusto es mío", pt: "O prazer é meu"},
+          {es: "Encantado(a) de conocerlo(a)", pt: "Encantado(a) em conhecê-lo(a)"}
+        ]},
+        {category: "Despedidas", items: [
+          {es: "Adiós", pt: "Adeus"}, {es: "Hasta luego", pt: "Até logo"}, {es: "Hasta mañana", pt: "Até amanhã"},
+          {es: "Hasta pronto", pt: "Até breve"}, {es: "Nos vemos", pt: "Nos vemos"}, {es: "Cuídate", pt: "Cuide-se"},
+          {es: "Que tenga un buen día", pt: "Que tenha um bom dia"}
+        ]},
+        {category: "Cortesía", items: [
+          {es: "Por favor", pt: "Por favor"}, {es: "Muchas gracias", pt: "Muito obrigado(a)"}, {es: "De nada", pt: "De nada"},
+          {es: "Con permiso", pt: "Com licença"}, {es: "Perdón", pt: "Desculpe"}, {es: "Lo siento mucho", pt: "Sinto muito"}
+        ]},
+        {category: "Tú o usted: formal e informal", items: [
+          {es: "¿Cómo estás? (amigos)", pt: "Como vai? (amigos)"}, {es: "¿Cómo está usted? (formal)", pt: "Como está o senhor/a senhora?"},
+          {es: "Cuídate (informal)", pt: "Se cuida (informal)"}, {es: "Que esté bien (formal)", pt: "Que fique bem (formal)"}
+        ]}
+      ],
+      notes: [
+        "'Tú' se usa con amigos, familia y personas de tu edad; 'usted' se usa con desconocidos, clientes, personas mayores o en situaciones formales — igual que 'você' vs. 'o senhor/a senhora' en portugués, pero en España 'tú' es aún más común que en gran parte de Latinoamérica.",
+        "En España es común dar dos besos en la mejilla al saludar a amigos y familiares (empezando por la derecha); en México y buena parte de Latinoamérica, un apretón de manos o un abrazo es más habitual."
+      ],
+      exercises: [
+        {
+          type: "caso", icon: "🤝", stamp: "✅ PRESENTACIÓN HECHA",
+          scenario: "Conoces a un cliente nuevo en una reunión formal de auditoría en Madrid.",
+          q: "Escribe una frase completa para saludarlo formalmente y presentarte.",
+          target: "Buenos días, mucho gusto, me llamo Anderson, soy de Brasil.",
+          altAnswers: ["Buenos días, ¿cómo está usted? Me llamo Anderson.", "Mucho gusto, soy Anderson, de Brasil."]
+        },
+        {
+          type: "caso", icon: "👋", stamp: "✅ DESPEDIDA CORDIAL",
+          scenario: "Terminaste de tomar un café con un amigo español y necesitas despedirte de manera informal.",
+          q: "Escribe una frase completa despidiéndote de tu amigo de forma informal.",
+          target: "¡Cuídate! Nos vemos pronto.",
+          altAnswers: ["Hasta luego, cuídate mucho.", "Nos vemos, que tengas un buen día."]
+        },
+        {type: "speak", prompt: "¿Cómo saludas formalmente por la mañana?", target: "Buenos días.", altAnswers: ["buenos días"]},
+        {type: "speak", prompt: "¿Cómo saludas de forma informal a un amigo?", target: "¡Hola! ¿Qué tal?", altAnswers: ["hola", "qué tal"]},
+        {type: "speak", prompt: "Si alguien te pregunta '¿Cómo estás?' y te sientes muy bien, ¿qué respondes?", target: "Muy bien, gracias.", altAnswers: ["muy bien gracias", "estoy muy bien"]},
+        {type: "speak", prompt: "¿Cómo te presentas dando tu nombre?", target: "Me llamo Anderson.", altAnswers: ["me llamo", "soy Anderson"]},
+        {type: "speak", prompt: "Cuando alguien se presenta y te da gusto conocerlo, ¿qué dices?", target: "Mucho gusto.", altAnswers: ["mucho gusto", "el gusto es mío", "encantado"]},
+        {type: "speak", prompt: "¿Cómo te despides de manera formal, deseando un buen día?", target: "Que tenga un buen día.", altAnswers: ["que tenga un buen día"]},
+        {type: "speak", prompt: "¿Cómo te despides de un amigo de manera informal?", target: "¡Cuídate! Nos vemos.", altAnswers: ["cuídate", "nos vemos", "hasta luego"]},
+        {type: "speak", prompt: "Si alguien te ayuda, ¿cómo le agradeces?", target: "Muchas gracias.", altAnswers: ["muchas gracias", "gracias"]},
+        {type: "speak", prompt: "Si alguien te da las gracias, ¿qué respondes?", target: "De nada.", altAnswers: ["de nada"]},
+        {type: "speak", prompt: "¿Qué dices para pasar por un lugar estrecho sin molestar a alguien?", target: "Con permiso.", altAnswers: ["con permiso"]},
+        {type: "speak", prompt: "Si pisas a alguien sin querer, ¿qué le dices?", target: "Perdón, lo siento mucho.", altAnswers: ["perdón", "lo siento"]},
+        {type: "mc", q: "'Muito prazer', em espanhol, se dice...", options: ["Mucho gusto", "De nada", "Con permiso", "Lo siento"], correct: 0},
+        {type: "mc", q: "Para hablar formalmente con un cliente (usted), '¿Cómo estás?' se convierte en...", options: ["¿Qué tal?", "¿Cómo está usted?", "¡Hola!", "Cuídate"], correct: 1},
+        {type: "fill", q: "'Até logo', em espanhol, se escribe: Hasta ___", answer: "luego"},
+        {type: "fill", q: "'Com licença', em espanhol, se escribe: Con ___", answer: "permiso"}
+      ]
+    },
+    {
+      id: "er-pesos-medidas", order: 19, title: "Pesos, medidas y unidades", subtitle: "Cómo pesar, medir y comparar cantidades en español",
+      text: "En el mercado, Anderson quiere comprar fruta para la semana. Le pregunta al vendedor: ‘¿Cuánto pesa esta bolsa de manzanas?’ El vendedor pone la fruta en la balanza y responde: ‘Pesa un kilogramo y medio.’ Anderson pide: ‘Necesito medio kilo de queso también, por favor.’ Después va a la ferretería para comprar una tabla de madera y pregunta: ‘¿Cuánto mide esta tabla?’ ‘Mide dos metros de largo por treinta centímetros de ancho.’ En la farmacia, compra un jarabe y lee la etiqueta: cien mililitros, tomar una cucharada cada ocho horas. De vuelta a casa, prepara una receta que pide dos tazas de harina y una cucharadita de sal. Al final del día, revisa su lista: compró exactamente lo que necesitaba, ni un gramo de más ni de menos — ¡todo bien medido!",
+      textPt: "No mercado, Anderson quer comprar frutas para a semana. Ele pergunta ao vendedor: ‘Quanto pesa esta sacola de maçãs?’ O vendedor coloca a fruta na balança e responde: ‘Pesa um quilo e meio.’ Anderson pede: ‘Preciso de meio quilo de queijo também, por favor.’ Depois vai à loja de ferragens comprar uma tábua de madeira e pergunta: ‘Quanto mede esta tábua?’ ‘Mede dois metros de comprimento por trinta centímetros de largura.’ Na farmácia, compra um xarope e lê o rótulo: cem mililitros, tomar uma colher a cada oito horas. De volta em casa, prepara uma receita que pede duas xícaras de farinha e uma colher de chá de sal. No final do dia, revisa sua lista: comprou exatamente o que precisava, nem um grama a mais nem a menos — tudo bem medido!",
+      vocabulary: [
+        {category: "Pesos", items: [
+          {es: "el gramo", pt: "a grama"}, {es: "el kilogramo", pt: "o quilograma"}, {es: "la tonelada", pt: "a tonelada"},
+          {es: "la onza", pt: "a onça"}, {es: "la libra", pt: "a libra"}, {es: "el miligramo", pt: "o miligrama"}
+        ]},
+        {category: "Medidas de longitud", items: [
+          {es: "el milímetro", pt: "o milímetro"}, {es: "el centímetro", pt: "o centímetro"}, {es: "el metro", pt: "o metro"},
+          {es: "el kilómetro", pt: "o quilômetro"}, {es: "la pulgada", pt: "a polegada"}
+        ]},
+        {category: "Medidas de capacidad", items: [
+          {es: "el mililitro", pt: "o mililitro"}, {es: "el litro", pt: "o litro"}, {es: "la taza", pt: "a xícara"},
+          {es: "la cuchara (sopera)", pt: "a colher de sopa"}, {es: "la cucharadita", pt: "a colher de chá"},
+          {es: "el vaso", pt: "o copo"}, {es: "la botella", pt: "a garrafa"}
+        ]},
+        {category: "Cantidad y tiempo", items: [
+          {es: "la docena", pt: "a dúzia"}, {es: "el par", pt: "o par"}, {es: "el porcentaje", pt: "a porcentagem"},
+          {es: "el segundo", pt: "o segundo"}, {es: "el minuto", pt: "o minuto"}
+        ]},
+        {category: "Expresiones útiles", items: [
+          {es: "¿Cuánto pesa?", pt: "Quanto pesa?"}, {es: "¿Cuánto mide?", pt: "Quanto mede?"},
+          {es: "Pesa dos kilos", pt: "Pesa dois quilos"}, {es: "Necesito medio kilo", pt: "Preciso de meio quilo"},
+          {es: "Es muy pesado / ligero", pt: "É muito pesado / leve"}, {es: "Aproximadamente", pt: "Aproximadamente"}
+        ]}
+      ],
+      notes: [
+        "España y toda Latinoamérica usan el sistema métrico decimal, igual que Brasil — kilos, metros y litros son exactamente los mismos números, solo cambia el nombre de la unidad en algunos casos (como 'libra' u 'onza', más comunes en el habla informal de algunos países).",
+        "'Medio kilo' (0,5 kg) y 'kilo y medio' (1,5 kg) usan 'medio' de formas distintas — antes del sustantivo para la mitad, después para 'y media unidad más'."
+      ],
+      exercises: [
+        {
+          type: "caso", icon: "⚖️", stamp: "✅ PESO CONFIRMADO",
+          scenario: "Estás en la frutería y quieres comprar exactamente medio kilo de tomates.",
+          q: "Escribe una frase completa pidiéndole al vendedor medio kilo de tomates.",
+          target: "Necesito medio kilo de tomates, por favor.",
+          altAnswers: ["¿Me da medio kilo de tomates?", "Quiero medio kilo de tomates."]
+        },
+        {
+          type: "caso", icon: "📏", stamp: "✅ MEDIDA TOMADA",
+          scenario: "En la ferretería necesitas saber cuánto mide una tabla de madera antes de comprarla.",
+          q: "Escribe una frase completa preguntando cuánto mide la tabla.",
+          target: "¿Cuánto mide esta tabla de madera?",
+          altAnswers: ["¿Cuáles son las medidas de esta tabla?", "¿Qué largo tiene esta tabla?"]
+        },
+        {type: "speak", prompt: "¿Qué usas para saber cuánto pesa algo?", target: "La balanza.", altAnswers: ["la balanza"]},
+        {type: "speak", prompt: "Si algo pesa 1000 gramos, ¿cuántos kilogramos son?", target: "Un kilogramo.", altAnswers: ["un kilo", "un kilogramo"]},
+        {type: "speak", prompt: "¿Cómo preguntas el peso de algo?", target: "¿Cuánto pesa?", altAnswers: ["cuánto pesa"]},
+        {type: "speak", prompt: "¿Cómo preguntas la longitud de algo?", target: "¿Cuánto mide?", altAnswers: ["cuánto mide"]},
+        {type: "speak", prompt: "¿Qué unidad usas para medir la distancia entre ciudades?", target: "El kilómetro.", altAnswers: ["el kilómetro", "kilómetros"]},
+        {type: "speak", prompt: "¿En qué bebes el agua, en una medida pequeña de vidrio?", target: "En el vaso.", altAnswers: ["el vaso", "en el vaso"]},
+        {type: "speak", prompt: "¿Cuántas unidades tiene una docena?", target: "Doce.", altAnswers: ["doce", "12"]},
+        {type: "speak", prompt: "Si algo es difícil de cargar, ¿cómo se dice?", target: "Es muy pesado.", altAnswers: ["es pesado", "muy pesado"]},
+        {type: "speak", prompt: "Si algo es fácil de cargar, ¿cómo se dice?", target: "Es muy ligero.", altAnswers: ["es ligero", "muy ligero"]},
+        {type: "speak", prompt: "¿Qué unidad usas para medir un líquido, como el agua de una botella?", target: "El litro.", altAnswers: ["el litro"]},
+        {type: "speak", prompt: "Si quieres comprar la mitad de un kilo, ¿qué pides?", target: "Medio kilo.", altAnswers: ["medio kilo"]},
+        {type: "mc", q: "'Quilograma', em espanhol, se dice...", options: ["el gramo", "el kilogramo", "la tonelada", "la libra"], correct: 1},
+        {type: "mc", q: "'Colher de sopa', em espanhol, se dice...", options: ["la cucharadita", "el vaso", "la cuchara", "la taza"], correct: 2},
+        {type: "fill", q: "'Meio quilo', em espanhol, se escribe: ___ kilo", answer: "medio"},
+        {type: "fill", q: "'Quanto mede?', em espanhol, se escribe: ¿Cuánto ___?", answer: "mide"}
+      ]
+    },
+    {
+      id: "er-invierno", order: 20, title: "Invierno, deportes y nieve", subtitle: "Vocabulario de la temporada fría y los deportes de nieve",
+      text: "Anderson decide pasar sus vacaciones de invierno en la montaña. Antes de salir, revisa el pronóstico: ‘¡Qué frío! Va a nevar toda la semana.’ Prepara su maleta con ropa de abrigo: un gorro, una bufanda, guantes y botas para la nieve. Al llegar a la estación de esquí, alquila unos esquís y pregunta: ‘¿Cuál es la pista para principiantes?’ Un instructor le explica: ‘Empieza por la pista verde, es la más fácil.’ Anderson intenta esquiar, se cae un par de veces, pero se levanta riendo: ‘¡Me encanta la nieve!’ Por la tarde, prueba el snowboard con un amigo y después suben en el teleférico para ver la vista panorámica desde la cima de la montaña. Al final del día, cansado pero feliz, entra en una cabaña acogedora y pide un chocolate caliente: ‘¡Qué paisaje tan hermoso! Vale la pena el frío.’",
+      textPt: "Anderson decide passar suas férias de inverno na montanha. Antes de sair, confere a previsão: ‘Que frio! Vai nevar a semana toda.’ Prepara sua mala com roupas de frio: um gorro, um cachecol, luvas e botas para a neve. Ao chegar na estância de esqui, aluga uns esquis e pergunta: ‘Qual é a pista para iniciantes?’ Um instrutor explica: ‘Comece pela pista verde, é a mais fácil.’ Anderson tenta esquiar, cai algumas vezes, mas se levanta rindo: ‘Eu adoro a neve!’ À tarde, experimenta o snowboard com um amigo e depois sobem no teleférico para ver a vista panorâmica do topo da montanha. No final do dia, cansado mas feliz, entra em uma cabana aconchegante e pede um chocolate quente: ‘Que paisagem tão linda! Vale a pena o frio.’",
+      vocabulary: [
+        {category: "El invierno", items: [
+          {es: "el invierno", pt: "o inverno"}, {es: "el frío", pt: "o frio"}, {es: "la nieve", pt: "a neve"},
+          {es: "el hielo", pt: "o gelo"}, {es: "el viento frío", pt: "o vento frio"}, {es: "la temperatura", pt: "a temperatura"},
+          {es: "un día nublado", pt: "um dia nublado"}
+        ]},
+        {category: "Ropa de invierno", items: [
+          {es: "el abrigo", pt: "o agasalho"}, {es: "la bufanda", pt: "o cachecol"}, {es: "el guante", pt: "a luva"},
+          {es: "el gorro", pt: "o gorro"}, {es: "las botas", pt: "as botas"}
+        ]},
+        {category: "Deportes de invierno", items: [
+          {es: "el esquí", pt: "o esqui"}, {es: "el snowboard", pt: "o snowboard"},
+          {es: "el patinaje sobre hielo", pt: "a patinação no gelo"}, {es: "el trineo", pt: "o trenó"}
+        ]},
+        {category: "En la montaña", items: [
+          {es: "la montaña", pt: "a montanha"}, {es: "la estación de esquí", pt: "a estância de esqui"},
+          {es: "la pista", pt: "a pista"}, {es: "el teleférico", pt: "o teleférico"}, {es: "la cabaña", pt: "a cabana"},
+          {es: "el chocolate caliente", pt: "o chocolate quente"}
+        ]},
+        {category: "Expresiones útiles", items: [
+          {es: "¡Qué frío!", pt: "Que frio!"}, {es: "Está nevando", pt: "Está nevando"},
+          {es: "¿Vamos a esquiar?", pt: "Vamos esquiar?"}, {es: "Me encanta la nieve", pt: "Eu adoro a neve"},
+          {es: "¡Qué paisaje tan hermoso!", pt: "Que paisagem tão linda!"}, {es: "Cuidado, no resbales", pt: "Cuidado para não escorregar"}
+        ]}
+      ],
+      notes: [
+        "Cuidado con la trampa clásica: en español se dice 'hace frío' (el clima) y 'tengo frío' (yo siento frío) — nunca 'estoy frío', como a veces se traduce directamente del portugués 'estou com frio'.",
+        "Las pistas de esquí usan colores internacionales según la dificultad: verde (muy fácil), azul (fácil), roja (intermedia) y negra (difícil) — los mismos colores se usan en España y en Latinoamérica."
+      ],
+      exercises: [
+        {
+          type: "caso", icon: "🎿", stamp: "✅ PISTA ELEGIDA",
+          scenario: "Es tu primer día esquiando y el instructor te pregunta qué pista quieres probar.",
+          q: "Escribe una frase completa pidiendo la pista más fácil para principiantes.",
+          target: "Quiero probar la pista más fácil, para principiantes.",
+          altAnswers: ["¿Cuál es la pista para principiantes?", "Prefiero la pista verde, soy principiante."]
+        },
+        {
+          type: "caso", icon: "🧣", stamp: "✅ ABRIGO LISTO",
+          scenario: "Vas a viajar a la montaña y el pronóstico dice que hará mucho frío.",
+          q: "Escribe una frase completa diciendo qué ropa de invierno vas a llevar.",
+          target: "Voy a llevar un abrigo, una bufanda, guantes y un gorro.",
+          altAnswers: ["Necesito llevar ropa de abrigo porque hace mucho frío.", "Voy a empacar botas, guantes y una bufanda."]
+        },
+        {type: "speak", prompt: "¿Cómo se dice cuando el termómetro marca una temperatura muy baja?", target: "¡Qué frío!", altAnswers: ["qué frío", "hace mucho frío"]},
+        {type: "speak", prompt: "¿Qué cae del cielo en invierno, blanca y fría?", target: "La nieve.", altAnswers: ["la nieve"]},
+        {type: "speak", prompt: "¿Qué te pones en la cabeza cuando hace frío?", target: "El gorro.", altAnswers: ["el gorro"]},
+        {type: "speak", prompt: "¿Qué te pones en las manos cuando hace frío?", target: "Los guantes.", altAnswers: ["los guantes", "el guante"]},
+        {type: "speak", prompt: "¿Qué te pones alrededor del cuello cuando hace frío?", target: "La bufanda.", altAnswers: ["la bufanda"]},
+        {type: "speak", prompt: "¿Qué deporte practicas deslizándote sobre esquís en la nieve?", target: "El esquí.", altAnswers: ["el esquí", "esquiar"]},
+        {type: "speak", prompt: "¿Qué usas para subir a la cima de la montaña sin caminar?", target: "El teleférico.", altAnswers: ["el teleférico"]},
+        {type: "speak", prompt: "¿Qué bebida caliente tomas después de un día en la nieve?", target: "Un chocolate caliente.", altAnswers: ["chocolate caliente"]},
+        {type: "speak", prompt: "¿Dónde practicas esquí, con pistas de diferentes niveles?", target: "En la estación de esquí.", altAnswers: ["la estación de esquí"]},
+        {type: "speak", prompt: "Si te encanta la nieve, ¿qué dices?", target: "¡Me encanta la nieve!", altAnswers: ["me encanta la nieve"]},
+        {type: "speak", prompt: "¿Qué pequeña casa de madera encuentras en la montaña para calentarte?", target: "La cabaña.", altAnswers: ["la cabaña"]},
+        {type: "mc", q: "'Luva', em espanhol, se dice...", options: ["la bufanda", "el guante", "el gorro", "la bota"], correct: 1},
+        {type: "mc", q: "'Está nevando', em português, significa...", options: ["Está fazendo sol", "Está chovendo", "Está nevando", "Está ventando"], correct: 2},
+        {type: "fill", q: "'Cachecol', em espanhol, se escribe: la ___", answer: "bufanda"},
+        {type: "fill", q: "'Que frio!', em espanhol, se escribe: ¡Qué ___!", answer: "frío"}
+      ]
+    },
+    {
+      id: "er-direcciones", order: 21, title: "Ubicación, direcciones y transporte", subtitle: "Cómo moverte y orientarte en la ciudad",
+      text: "Anderson llega a una ciudad que no conoce y necesita llegar al hotel. Le pregunta a una persona en la calle: ‘¿Dónde queda la avenida principal?’ ‘Está allí, al lado del banco, cerca de la plaza.’ Como el hotel queda lejos, decide no ir a pie: toma el metro hasta el centro y después un taxi. Por el camino, ve una rotonda enorme y un letrero de retorno para volver a la carretera principal. Al llegar, el recepcionista le pregunta cómo fue el viaje: ‘Vine en metro y después en taxi, fue rápido.’ Al día siguiente, para ir a una reunión, prefiere caminar: ‘¿Cuánto tiempo lleva a pie hasta la oficina?’ ‘Unos quince minutos, siga todo recto y gire en la segunda calle.’ Anderson agradece y sale, pensando que, entre tantas opciones — a pie, en bus, en tren o en taxi — lo importante es no perderse: ‘Menos mal que pregunté, si no, ahora estaría perdido.’",
+      textPt: "Anderson chega a uma cidade que não conhece e precisa chegar ao hotel. Pergunta a uma pessoa na rua: ‘Onde fica a avenida principal?’ ‘Fica ali, ao lado do banco, perto da praça.’ Como o hotel fica longe, decide não ir a pé: pega o metrô até o centro e depois um táxi. Pelo caminho, vê uma rotatória enorme e uma placa de retorno para voltar à estrada principal. Ao chegar, o recepcionista pergunta como foi a viagem: ‘Vim de metrô e depois de táxi, foi rápido.’ No dia seguinte, para ir a uma reunião, prefere caminhar: ‘Quanto tempo leva a pé até o escritório?’ ‘Uns quinze minutos, siga em frente e vire na segunda rua.’ Anderson agradece e sai, pensando que, entre tantas opções — a pé, de ônibus, de trem ou de táxi — o importante é não se perder: ‘Ainda bem que perguntei, senão agora estaria perdido.’",
+      vocabulary: [
+        {category: "Ubicación", items: [
+          {es: "aquí / allí", pt: "aqui / ali"}, {es: "cerca / lejos", pt: "perto / longe"}, {es: "dentro / fuera", pt: "dentro / fora"},
+          {es: "encima / debajo", pt: "em cima / embaixo"}, {es: "delante de / detrás de", pt: "na frente de / atrás de"},
+          {es: "alrededor", pt: "ao redor"}
+        ]},
+        {category: "En el camino", items: [
+          {es: "la rotonda", pt: "a rotatória"}, {es: "el retorno", pt: "o retorno"}, {es: "la salida", pt: "a saída"},
+          {es: "atravesar", pt: "atravessar"}, {es: "siga adelante", pt: "siga em frente"}
+        ]},
+        {category: "Medios de transporte", items: [
+          {es: "a pie", pt: "a pé"}, {es: "en coche", pt: "de carro"}, {es: "en moto", pt: "de moto"},
+          {es: "en bicicleta", pt: "de bicicleta"}, {es: "en autobús", pt: "de ônibus"}, {es: "en tren", pt: "de trem"},
+          {es: "en metro", pt: "de metrô"}, {es: "en taxi", pt: "de táxi"}, {es: "en avión", pt: "de avião"}, {es: "en barco", pt: "de barco"}
+        ]},
+        {category: "Verbos de movimiento", items: [
+          {es: "ir", pt: "ir"}, {es: "venir", pt: "vir"}, {es: "llegar", pt: "chegar"}, {es: "salir", pt: "sair"},
+          {es: "entrar", pt: "entrar"}, {es: "subir", pt: "subir"}, {es: "bajar", pt: "descer"}
+        ]},
+        {category: "Preguntas y expresiones útiles", items: [
+          {es: "¿Dónde queda...?", pt: "Onde fica...?"}, {es: "¿Cómo llego a...?", pt: "Como chego a...?"},
+          {es: "¿Está lejos?", pt: "Está longe?"}, {es: "¿Cuánto tiempo lleva?", pt: "Quanto tempo leva?"},
+          {es: "Estoy perdido(a)", pt: "Estou perdido(a)"}, {es: "¿Puede ayudarme?", pt: "Pode me ajudar?"}
+        ]}
+      ],
+      notes: [
+        "Esta lección complementa la de 'Pedir/dar direcciones' del nivel Básico — aquí el repaso es más rápido y el foco está en los medios de transporte y las expresiones de ubicación que todavía no viste.",
+        "'A pie' es la única excepción entre los medios de transporte: todos los demás usan 'en' (en coche, en tren, en avión), pero para caminar se dice 'a pie', nunca 'en pie'."
+      ],
+      exercises: [
+        {
+          type: "caso", icon: "🚕", stamp: "✅ RUTA ENCONTRADA",
+          scenario: "Estás perdido en una ciudad nueva y necesitas llegar a tu hotel.",
+          q: "Escribe una frase completa pidiendo ayuda para llegar al hotel.",
+          target: "Estoy perdido, ¿puede ayudarme a llegar a mi hotel?",
+          altAnswers: ["¿Puede decirme cómo llegar al hotel?", "Necesito ayuda, no sé cómo llegar al hotel."]
+        },
+        {
+          type: "caso", icon: "🚇", stamp: "✅ TRANSPORTE ELEGIDO",
+          scenario: "Tienes una reunión importante y el lugar queda lejos de tu hotel.",
+          q: "Escribe una frase completa diciendo qué medio de transporte vas a usar y por qué.",
+          target: "Voy a tomar el metro porque es más rápido que ir a pie.",
+          altAnswers: ["Prefiero ir en taxi porque queda lejos.", "Voy en autobús, es más barato."]
+        },
+        {type: "speak", prompt: "¿Cómo preguntas dónde queda un lugar?", target: "¿Dónde queda...?", altAnswers: ["dónde queda"]},
+        {type: "speak", prompt: "Si no sabes cómo llegar a un sitio, ¿qué preguntas?", target: "¿Cómo llego a...?", altAnswers: ["cómo llego"]},
+        {type: "speak", prompt: "Si estás sin rumbo en una ciudad desconocida, ¿qué dices?", target: "Estoy perdido.", altAnswers: ["estoy perdido", "estoy perdida"]},
+        {type: "speak", prompt: "¿Qué transporte usas para ir por debajo de la ciudad, muy rápido?", target: "El metro.", altAnswers: ["el metro"]},
+        {type: "speak", prompt: "¿Qué transporte tomas para cruzar el océano o hacer un crucero?", target: "El barco.", altAnswers: ["el barco"]},
+        {type: "speak", prompt: "Si vas caminando, sin ningún vehículo, ¿cómo se dice?", target: "A pie.", altAnswers: ["a pie"]},
+        {type: "speak", prompt: "¿Qué construcción circular usan los coches para cambiar de dirección sin semáforo?", target: "La rotonda.", altAnswers: ["la rotonda"]},
+        {type: "speak", prompt: "¿Cómo preguntas si un lugar está muy distante?", target: "¿Está lejos?", altAnswers: ["está lejos"]},
+        {type: "speak", prompt: "¿Qué verbo usas para decir que vas a poner un pie dentro de un lugar?", target: "Entrar.", altAnswers: ["entrar"]},
+        {type: "speak", prompt: "¿Qué verbo usas para decir que vas a dejar un lugar?", target: "Salir.", altAnswers: ["salir"]},
+        {type: "speak", prompt: "¿Cómo preguntas cuánto tiempo toma llegar a un lugar?", target: "¿Cuánto tiempo lleva?", altAnswers: ["cuánto tiempo lleva"]},
+        {type: "mc", q: "'De ônibus', em espanhol, se dice...", options: ["en tren", "en autobús", "en metro", "en taxi"], correct: 1},
+        {type: "mc", q: "'Estou perdido', em espanhol, se dice...", options: ["Estoy cansado", "Estoy perdido", "Estoy cerca", "Estoy lejos"], correct: 1},
+        {type: "fill", q: "'De bicicleta', em espanhol, se escribe: en ___", answer: "bicicleta"},
+        {type: "fill", q: "'A rotatória', em espanhol, se escribe: la ___", answer: "rotonda"}
+      ]
+    },
+    {
+      id: "er-culinaria", order: 22, title: "Cocina: verbos, ingredientes y platos", subtitle: "Cómo hablar de preparación, ingredientes y sabores",
+      text: "Un amigo le pide a Anderson la receta de su plato favorito por teléfono. ‘Es fácil’, le explica, ‘primero hay que picar la cebolla y el ajo, y sofreírlos en aceite.’ Después añade la carne y la deja cocinar bien. Mientras tanto, hierve el arroz en otra olla y prepara una ensalada con lechuga y tomate. Su amigo pregunta: ‘¿Se puede freír en vez de asar el pollo?’ ‘Claro, las dos formas quedan deliciosas’, responde Anderson. Al final, sazona todo con sal, pimienta y un poco de orégano, y prueba: ‘¡Está delicioso!’ Sirve la comida en la mesa y dice: ‘¡Buen provecho!’ Su amigo, al probar el plato, comenta que necesita un poco más de sal, y Anderson añade una pizca más. Antes de colgar el teléfono, Anderson concluye, satisfecho: ‘Me encanta cocinar, es la mejor forma de terminar el día.’",
+      textPt: "Um amigo pede a Anderson a receita do seu prato favorito por telefone. ‘É fácil’, ele explica, ‘primeiro é preciso picar a cebola e o alho, e refogá-los no óleo.’ Depois acrescenta a carne e deixa cozinhar bem. Enquanto isso, ferve o arroz em outra panela e prepara uma salada com alface e tomate. Seu amigo pergunta: ‘Dá para fritar em vez de assar o frango?’ ‘Claro, das duas formas fica delicioso’, responde Anderson. No final, tempera tudo com sal, pimenta e um pouco de orégano, e prova: ‘Está delicioso!’ Serve a comida na mesa e diz: ‘Bom apetite!’ Seu amigo, ao provar o prato, comenta que precisa de um pouco mais de sal, e Anderson acrescenta uma pitada a mais. Antes de desligar o telefone, Anderson conclui, satisfeito: ‘Eu adoro cozinhar, é a melhor forma de terminar o dia.’",
+      vocabulary: [
+        {category: "Verbos de cocina", items: [
+          {es: "asar / hornear", pt: "assar"}, {es: "cocinar", pt: "cozinhar"}, {es: "hervir", pt: "ferver"},
+          {es: "freír", pt: "fritar"}, {es: "sofreír", pt: "refogar"}, {es: "tostar", pt: "torrar"},
+          {es: "descongelar", pt: "descongelar"}, {es: "mezclar / batir", pt: "misturar / bater"}, {es: "picar / trocear", pt: "picar"}
+        ]},
+        {category: "Ingredientes básicos", items: [
+          {es: "el arroz", pt: "o arroz"}, {es: "el frijol", pt: "o feijão"}, {es: "la carne", pt: "a carne"},
+          {es: "el pollo", pt: "o frango"}, {es: "el pescado", pt: "o peixe"}, {es: "el huevo", pt: "o ovo"},
+          {es: "la leche", pt: "o leite"}, {es: "el queso", pt: "o queijo"}, {es: "la mantequilla", pt: "a manteiga"},
+          {es: "el aceite", pt: "o óleo"}, {es: "la harina", pt: "a farinha"}, {es: "el azúcar", pt: "o açúcar"}
+        ]},
+        {category: "Verduras y condimentos", items: [
+          {es: "la lechuga", pt: "a alface"}, {es: "el tomate", pt: "o tomate"}, {es: "la cebolla", pt: "a cebola"},
+          {es: "el ajo", pt: "o alho"}, {es: "la papa / patata", pt: "a batata"}, {es: "la zanahoria", pt: "a cenoura"},
+          {es: "la sal", pt: "o sal"}, {es: "la pimienta", pt: "a pimenta"}, {es: "el orégano", pt: "o orégano"}, {es: "el perejil", pt: "a salsinha"}
+        ]},
+        {category: "Comidas y bebidas", items: [
+          {es: "la sopa", pt: "a sopa"}, {es: "la ensalada", pt: "a salada"}, {es: "la pasta", pt: "o macarrão"},
+          {es: "el asado", pt: "o churrasco"}, {es: "el flan", pt: "o pudim"}, {es: "el agua", pt: "a água"},
+          {es: "el jugo", pt: "o suco"}, {es: "el café", pt: "o café"}
+        ]},
+        {category: "Expresiones del chef", items: [
+          {es: "¡Está delicioso!", pt: "Está delicioso!"}, {es: "¡Buen provecho!", pt: "Bom apetite!"},
+          {es: "La receta es fácil / difícil", pt: "A receita é fácil / difícil"}, {es: "Necesita más sal", pt: "Precisa de mais sal"},
+          {es: "¡Me encanta cocinar!", pt: "Adoro cozinhar!"}
+        ]}
+      ],
+      notes: [
+        "Esta lección complementa la de 'La cocina' (que cubre los muebles y electrodomésticos, como la nevera y el horno) — aquí el foco son los verbos de preparación, los ingredientes y los platos.",
+        "'Asar' en España suele referirse al horno, mientras que 'asar a la parrilla' se acerca más al sentido de 'churrasco' — en varios países de Latinoamérica también se usa 'asar' para la parrilla directamente."
+      ],
+      exercises: [
+        {
+          type: "caso", icon: "🍳", stamp: "✅ RECETA EXPLICADA",
+          scenario: "Un amigo te pide la receta de tu plato favorito por teléfono.",
+          q: "Escribe una frase completa explicando dos pasos para prepararlo, usando verbos de cocina.",
+          target: "Primero, hay que picar la cebolla y el ajo, y después sofreírlos en aceite.",
+          altAnswers: ["Primero se cocina el arroz y después se fríe el pollo.", "Hay que hervir el agua y después cocinar la pasta."]
+        },
+        {
+          type: "caso", icon: "🍽️", stamp: "✅ PEDIDO HECHO",
+          scenario: "Estás en un restaurante y quieres pedir un plato, pero avisas que no te gusta mucho la pimienta.",
+          q: "Escribe una frase completa pidiendo un plato y avisando sobre la pimienta.",
+          target: "Quiero la sopa, por favor, pero sin mucha pimienta.",
+          altAnswers: ["Me gustaría el pollo asado, sin pimienta, por favor.", "Quiero una ensalada, pero poca pimienta, por favor."]
+        },
+        {type: "speak", prompt: "¿Qué verbo usas para cocinar algo en agua hirviendo?", target: "Hervir.", altAnswers: ["hervir"]},
+        {type: "speak", prompt: "¿Qué verbo usas para cocinar algo en aceite caliente?", target: "Freír.", altAnswers: ["freír"]},
+        {type: "speak", prompt: "¿Qué verbo usas para cocinar en el horno?", target: "Asar u hornear.", altAnswers: ["asar", "hornear"]},
+        {type: "speak", prompt: "¿Qué verbo usas para cortar los ingredientes en pedazos pequeños?", target: "Picar.", altAnswers: ["picar"]},
+        {type: "speak", prompt: "¿Qué grano blanco se cocina y acompaña casi toda comida brasileña?", target: "El arroz.", altAnswers: ["el arroz"]},
+        {type: "speak", prompt: "¿Qué ingrediente amarillo pones en el pan por la mañana, viene de la vaca?", target: "La mantequilla.", altAnswers: ["la mantequilla"]},
+        {type: "speak", prompt: "¿Qué verdura blanca y fuerte se usa para dar sabor a casi todas las comidas?", target: "El ajo.", altAnswers: ["el ajo"]},
+        {type: "speak", prompt: "¿Qué condimento blanco le pones a la comida para que tenga más sabor?", target: "La sal.", altAnswers: ["la sal"]},
+        {type: "speak", prompt: "Si la comida está muy rica, ¿qué dices?", target: "¡Está delicioso!", altAnswers: ["está delicioso", "delicioso"]},
+        {type: "speak", prompt: "Antes de que alguien empiece a comer, ¿qué le deseas?", target: "¡Buen provecho!", altAnswers: ["buen provecho"]},
+        {type: "speak", prompt: "Si te encanta cocinar, ¿qué dices?", target: "¡Me encanta cocinar!", altAnswers: ["me encanta cocinar"]},
+        {type: "mc", q: "'Refogar', em espanhol, se dice...", options: ["hervir", "sofreír", "hornear", "descongelar"], correct: 1},
+        {type: "mc", q: "'Fritar' (el verbo), em espanhol, se dice...", options: ["freír", "hervir", "asar", "picar"], correct: 0},
+        {type: "fill", q: "'Picar/trocear', em espanhol, se escribe: ___", answer: "picar"},
+        {type: "fill", q: "'Bom apetite!', em espanhol, se escribe: ¡Buen ___!", answer: "provecho"}
+      ]
+    },
+    {
+      id: "er-banco", order: 23, title: "Banco, dinero e inversión", subtitle: "Vocabulario financiero básico para el día a día",
+      text: "Anderson entra en el banco para abrir una cuenta corriente. El gerente le pregunta: ‘¿Qué tipo de cuenta necesita?’ ‘Necesito una cuenta corriente y también quiero saber sobre inversiones.’ Después de firmar los documentos, recibe una tarjeta de débito y una contraseña para usar en el cajero. Al final del mes, revisa el extracto de la cuenta y hace un depósito. También pregunta sobre las tasas de interés: ‘¿Cuál es la tasa de interés de un préstamo?’ El gerente explica las opciones de renta fija y renta variable, y comenta: ‘Cuanto mayor es el riesgo, mayor es la posible rentabilidad.’ Anderson decide invertir una parte de sus ahorros y piensa: ‘Gastar menos de lo que gano y ahorrar todos los meses — ese es el primer paso hacia un buen futuro financiero.’",
+      textPt: "Anderson entra no banco para abrir uma conta corrente. O gerente pergunta: ‘Que tipo de conta o senhor precisa?’ ‘Preciso de uma conta corrente e também quero saber sobre investimentos.’ Depois de assinar os documentos, recebe um cartão de débito e uma senha para usar no caixa eletrônico. No final do mês, confere o extrato da conta e faz um depósito. Também pergunta sobre as taxas de juros: ‘Qual é a taxa de juros de um empréstimo?’ O gerente explica as opções de renda fixa e renda variável, e comenta: ‘Quanto maior o risco, maior a possível rentabilidade.’ Anderson decide investir uma parte de suas economias e pensa: ‘Gastar menos do que ganho e poupar todo mês — esse é o primeiro passo para um bom futuro financeiro.’",
+      vocabulary: [
+        {category: "En el banco", items: [
+          {es: "el banco", pt: "o banco"}, {es: "la agencia", pt: "a agência"}, {es: "la cuenta corriente", pt: "a conta corrente"},
+          {es: "la cuenta de ahorro", pt: "a conta poupança"}, {es: "el gerente", pt: "o gerente"}, {es: "el extracto", pt: "o extrato"},
+          {es: "la contraseña", pt: "a senha"}, {es: "el retiro", pt: "o saque"}, {es: "el depósito", pt: "o depósito"}, {es: "la transferencia", pt: "a transferência"}
+        ]},
+        {category: "Dinero", items: [
+          {es: "el dinero", pt: "o dinheiro"}, {es: "la moneda", pt: "a moeda"}, {es: "el billete", pt: "a cédula / nota"},
+          {es: "el dinero en efectivo", pt: "o dinheiro em espécie"}, {es: "el cambio / vuelto", pt: "o troco"}
+        ]},
+        {category: "Tarjetas y servicios", items: [
+          {es: "la tarjeta de débito", pt: "o cartão de débito"}, {es: "la tarjeta de crédito", pt: "o cartão de crédito"},
+          {es: "la factura", pt: "a fatura"}, {es: "el vencimiento", pt: "o vencimento"}, {es: "los intereses", pt: "os juros"},
+          {es: "el préstamo", pt: "o empréstimo"}, {es: "el financiamiento", pt: "o financiamento"}
+        ]},
+        {category: "Inversiones y finanzas", items: [
+          {es: "la inversión", pt: "o investimento"}, {es: "el inversor", pt: "o investidor"}, {es: "la rentabilidad", pt: "a rentabilidade"},
+          {es: "el riesgo", pt: "o risco"}, {es: "el ahorro", pt: "a poupança"}, {es: "el presupuesto", pt: "o orçamento"}
+        ]},
+        {category: "Expresiones útiles", items: [
+          {es: "¿Cuánto cuesta?", pt: "Quanto custa?"}, {es: "¿Puedo pagar con tarjeta?", pt: "Posso pagar com cartão?"},
+          {es: "¿Cuál es la tasa de interés?", pt: "Qual é a taxa de juros?"}, {es: "Quiero invertir", pt: "Quero investir"},
+          {es: "Necesito un préstamo", pt: "Preciso de um empréstimo"}
+        ]}
+      ],
+      notes: [
+        "'Cuenta corriente' es igual en portugués ('conta corrente'), pero cuidado con 'factura': en español significa 'fatura' (la cuenta a pagar), no 'nota fiscal'.",
+        "En finanzas, 'renta fija' (menos riesgo, retorno más previsible) y 'renta variable' (más riesgo, más potencial de retorno) son los mismos términos usados en español que en portugués."
+      ],
+      exercises: [
+        {
+          type: "caso", icon: "🏦", stamp: "✅ CUENTA ABIERTA",
+          scenario: "Quieres abrir una cuenta en un banco español y también preguntar sobre inversiones.",
+          q: "Escribe una frase completa explicando lo que necesitas.",
+          target: "Necesito abrir una cuenta corriente y quiero saber sobre inversiones.",
+          altAnswers: ["Quiero abrir una cuenta y también invertir mis ahorros.", "Necesito una cuenta y información sobre inversión."]
+        },
+        {
+          type: "caso", icon: "💳", stamp: "✅ CONSULTA HECHA",
+          scenario: "Quieres pedir un préstamo pero primero necesitas saber la tasa de interés.",
+          q: "Escribe una frase completa preguntando la tasa de interés del préstamo.",
+          target: "¿Cuál es la tasa de interés de este préstamo?",
+          altAnswers: ["¿Cuánto es el interés del préstamo?", "Antes de pedir el préstamo, ¿cuál es la tasa de interés?"]
+        },
+        {type: "speak", prompt: "¿Dónde guardas tu dinero y haces depósitos y retiros?", target: "En el banco.", altAnswers: ["el banco", "en el banco"]},
+        {type: "speak", prompt: "¿Qué usas en vez de dinero en efectivo, para pagar con un clic?", target: "La tarjeta de débito.", altAnswers: ["la tarjeta de débito", "tarjeta de crédito"]},
+        {type: "speak", prompt: "¿Qué documento muestra todas tus transacciones del mes?", target: "El extracto.", altAnswers: ["el extracto"]},
+        {type: "speak", prompt: "¿Cómo se llama el dinero que le pides prestado a un banco?", target: "El préstamo.", altAnswers: ["el préstamo"]},
+        {type: "speak", prompt: "¿Cómo se llama el dinero que guardas para el futuro?", target: "El ahorro.", altAnswers: ["el ahorro", "los ahorros"]},
+        {type: "speak", prompt: "¿Qué palabra describe la posibilidad de perder dinero al invertir?", target: "El riesgo.", altAnswers: ["el riesgo"]},
+        {type: "speak", prompt: "¿Cómo preguntas el precio de algo?", target: "¿Cuánto cuesta?", altAnswers: ["cuánto cuesta"]},
+        {type: "speak", prompt: "¿Cómo preguntas si puedes pagar con tarjeta?", target: "¿Puedo pagar con tarjeta?", altAnswers: ["puedo pagar con tarjeta"]},
+        {type: "speak", prompt: "¿Qué código secreto usas para entrar en el cajero automático?", target: "La contraseña.", altAnswers: ["la contraseña"]},
+        {type: "speak", prompt: "Si quieres poner tu dinero a producir más dinero, ¿qué haces?", target: "Invertir.", altAnswers: ["invertir", "invierto"]},
+        {type: "mc", q: "'Cartão de crédito', em espanhol, se dice...", options: ["la tarjeta de débito", "la tarjeta de crédito", "la factura", "el efectivo"], correct: 1},
+        {type: "mc", q: "'Poupança' (a conta), em espanhol, se dice...", options: ["la cuenta corriente", "la cuenta de ahorro", "el préstamo", "la inversión"], correct: 1},
+        {type: "fill", q: "'Empréstimo', em espanhol, se escribe: el ___", answer: "préstamo"},
+        {type: "fill", q: "'Quero investir', em espanhol, se escribe: Quiero ___", answer: "invertir"}
+      ]
+    },
+    {
+      id: "er-falsos-cognatos", order: 24, title: "Falsos cognatos español-portugués", subtitle: "Palabras parecidas, ¡significados diferentes!",
+      text: "Anderson, hablando español con un colega, dice sin querer: ‘¡Estoy muy embarazada por el error!’ Su colega se ríe: ‘embarazada’ en español no significa ‘envergonhado’, ¡significa que una mujer va a tener un bebé! Lo correcto es ‘avergonzado’. Otro día, en una tienda, pide: ‘Necesito una goma de borrar’ — porque en español, ‘borracho’ significa que bebiste demasiado alcohol, no tiene nada que ver con el objeto para borrar. En el restaurante, pide ‘ensalada’ en vez de ‘salada’, porque ‘salada’ en español simplemente significa ‘salgada’. Y cuando visita la oficina de un cliente, tiene cuidado: ‘oficina’ en español es donde trabajas, pero ‘escritorio’ es solo el mueble. Anderson aprende que estas palabras parecidas — los ‘falsos cognados’ — son las trampas más comunes entre el portugués y el español, y que prestar atención al significado real evita muchos malentendidos graciosos.",
+      textPt: "Anderson, falando espanhol com um colega, diz sem querer: ‘Estou muito embarazada pelo erro!’ Seu colega ri: ‘embarazada’ em espanhol não significa ‘envergonhado’, significa que uma mulher vai ter um bebê! O certo é ‘avergonzado’. Outro dia, em uma loja, pede: ‘Preciso de uma borracha’ — porque em espanhol, ‘borracho’ significa que você bebeu álcool demais, não tem nada a ver com o objeto de apagar. No restaurante, pede ‘ensalada’ em vez de ‘salada’, porque ‘salada’ em espanhol simplesmente significa ‘salgada’. E quando visita o escritório de um cliente, toma cuidado: ‘oficina’ em espanhol é onde você trabalha, mas ‘escritorio’ é só o móvel. Anderson aprende que essas palavras parecidas — os ‘falsos cognatos’ — são as armadilhas mais comuns entre o português e o espanhol, e que prestar atenção ao significado real evita muitos mal-entendidos engraçados.",
+      vocabulary: [
+        {category: "Personas y sentimientos", items: [
+          {es: "embarazada", pt: "grávida (NÃO é 'envergonhada' — isso é 'avergonzada')"},
+          {es: "avergonzado(a)", pt: "envergonhado(a) (não confundir com 'embarazada')"},
+          {es: "el apellido", pt: "o sobrenome (não é 'apelido', que é 'apodo')"},
+          {es: "asistir (a una reunión)", pt: "comparecer / estar presente (não é 'assistir TV', que é 'ver')"},
+          {es: "el pariente", pt: "o familiar"}
+        ]},
+        {category: "Objetos y comida", items: [
+          {es: "el vaso", pt: "o copo (não é vaso de planta, que é 'jarrón' ou 'maceta')"},
+          {es: "la taza", pt: "a xícara (não é 'taça', que é 'copa')"},
+          {es: "el jamón", pt: "o presunto (o 'presunto' em espanhol significa 'suposto')"},
+          {es: "borracho(a)", pt: "bêbado(a) (não é 'borracha', que é 'goma de borrar')"},
+          {es: "salada (adjetivo)", pt: "salgada (a comida 'salada' é 'ensalada')"},
+          {es: "la escoba", pt: "a vassoura (não é 'escova', que é 'cepillo')"}
+        ]},
+        {category: "Lugares y trabajo", items: [
+          {es: "la oficina", pt: "o escritório (empresa) — não é 'oficina mecânica', que é 'taller'"},
+          {es: "el escritorio", pt: "a mesa de trabalho (o móvel) — não é 'escritório' (empresa)"},
+          {es: "un rato", pt: "um momento (não é 'rato'/camundongo, que é 'ratón')"},
+          {es: "constipado(a)", pt: "resfriado(a) (não é intestino preso, que é 'estreñido')"}
+        ]},
+        {category: "Palabras engañosas", items: [
+          {es: "largo", pt: "comprido / longo (não é 'largo', que em espanhol é 'ancho')"},
+          {es: "el suceso", pt: "o acontecimento (não é 'sucesso', que é 'éxito')"},
+          {es: "el pulpo", pt: "o polvo (o animal) — 'polvo' em espanhol é 'pó'"},
+          {es: "el oso", pt: "o urso (não é 'osso', que é 'hueso')"},
+          {es: "exquisito(a)", pt: "delicioso(a) / refinado(a) (não é 'esquisito', que é 'raro')"},
+          {es: "lograr", pt: "conseguir / alcançar (não confundir com 'logo' — 'já', que em espanhol é 'ya')"}
+        ]}
+      ],
+      notes: [
+        "Los falsos cognados son la trampa más común entre hablantes de portugués y español: palabras casi idénticas, pero con significados totalmente diferentes — siempre vale la pena confirmar el significado real antes de usarlas en una situación formal.",
+        "Otro par clásico fuera de esta lista: 'todavía' (español, = 'ainda') y 'todavia' (portugués, = 'porém/mas') — se escriben casi igual, pero cumplen funciones distintas en cada idioma."
+      ],
+      exercises: [
+        {
+          type: "caso", icon: "⚠️", stamp: "✅ TRAMPA EVITADA",
+          scenario: "Quieres decir que te sientes avergonzado(a) por haber llegado tarde a una reunión, pero recuerdas que 'embarazada' no sirve para eso.",
+          q: "Escribe una frase completa usando la palabra correcta para decir que estás avergonzado(a).",
+          target: "Estoy muy avergonzado por haber llegado tarde.",
+          altAnswers: ["Me siento avergonzado, llegué tarde a la reunión."]
+        },
+        {
+          type: "caso", icon: "🤧", stamp: "✅ PALABRA CORRECTA",
+          scenario: "Estás resfriado y quieres explicarle a un compañero español por qué no fuiste a trabajar.",
+          q: "Escribe una frase completa usando la palabra correcta en español para 'resfriado'.",
+          target: "No fui a trabajar porque estoy constipado.",
+          altAnswers: ["Estoy constipado, por eso no fui a la oficina."]
+        },
+        {type: "speak", prompt: "¿Cómo se dice 'grávida' en español?", target: "Embarazada.", altAnswers: ["embarazada"]},
+        {type: "speak", prompt: "¿Cómo se dice 'envergonhado', ya que 'embarazado' no sirve?", target: "Avergonzado.", altAnswers: ["avergonzado"]},
+        {type: "speak", prompt: "¿Cómo se dice 'borracha' (el objeto para borrar) en español?", target: "La goma de borrar.", altAnswers: ["la goma", "goma de borrar"]},
+        {type: "speak", prompt: "¿Qué significa 'borracho' en español?", target: "Que bebió mucho alcohol.", altAnswers: ["bêbado", "que bebió demasiado"]},
+        {type: "speak", prompt: "¿Cómo se dice 'sobrenome' en español?", target: "El apellido.", altAnswers: ["el apellido"]},
+        {type: "speak", prompt: "¿Cómo se dice 'copo', donde bebes agua, en español?", target: "El vaso.", altAnswers: ["el vaso"]},
+        {type: "speak", prompt: "¿Qué significa 'taza' en español?", target: "Xícara, para tomar café.", altAnswers: ["xícara"]},
+        {type: "speak", prompt: "¿Cómo se dice 'resfriado' en español?", target: "Constipado.", altAnswers: ["constipado", "resfriado"]},
+        {type: "speak", prompt: "¿Cómo se dice 'escritório' (empresa, donde trabajas) en español?", target: "La oficina.", altAnswers: ["la oficina"]},
+        {type: "speak", prompt: "Entonces, ¿qué es 'escritorio' en español?", target: "Es el mueble, la mesa de trabajo.", altAnswers: ["el mueble", "la mesa"]},
+        {type: "mc", q: "'Vaso', em espanhol, significa...", options: ["vaso de planta", "copo", "taça", "garrafa"], correct: 1},
+        {type: "mc", q: "'Salada' (adjetivo), em espanhol, significa...", options: ["a comida salada (prato)", "salgada", "doce", "fria"], correct: 1},
+        {type: "fill", q: "'Sucesso', em espanhol, se escribe: el ___", answer: "éxito"},
+        {type: "fill", q: "'Vassoura', em espanhol, se escribe: la ___", answer: "escoba"}
+      ]
+    },
+    {
+      id: "er-supermercado", order: 25, title: "Supermercado, carnicería y panadería", subtitle: "De compras: productos, secciones y frases del súper",
+      text: "Antes de ir al supermercado, Anderson hace una lista de compras. Al llegar, coge un carrito y recorre los pasillos buscando arroz, aceite y huevos. En la sección de frutas y verduras, elige manzanas, plátanos, zanahorias y una lechuga fresca. Después va a la carnicería y pide: ‘Necesito medio kilo de carne de res, por favor, y también unas pechugas de pollo.’ El carnicero le pregunta: ‘¿Algo más? Tenemos una oferta en el tocino.’ Anderson aprovecha la promoción y añade un paquete a su carrito. En la caja, mientras paga, pregunta: ‘¿Acepta tarjeta de crédito?’ ‘Sí, claro’, responde la cajera, entregándole el recibo. De camino a casa, revisa su lista una última vez: todo comprado, sin olvidar nada — y, además, ¡consiguió varias ofertas!",
+      textPt: "Antes de ir ao supermercado, Anderson faz uma lista de compras. Ao chegar, pega um carrinho e percorre os corredores procurando arroz, óleo e ovos. Na seção de frutas e verduras, escolhe maçãs, bananas, cenouras e uma alface fresca. Depois vai ao açougue e pede: ‘Preciso de meio quilo de carne bovina, por favor, e também uns peitos de frango.’ O açougueiro pergunta: ‘Mais alguma coisa? Temos uma promoção no bacon.’ Anderson aproveita a promoção e acrescenta um pacote ao carrinho. No caixa, enquanto paga, pergunta: ‘Vocês aceitam cartão de crédito?’ ‘Sim, claro’, responde a caixa, entregando o recibo. No caminho de casa, revisa sua lista uma última vez: tudo comprado, sem esquecer nada — e ainda por cima, conseguiu várias ofertas!",
+      vocabulary: [
+        {category: "En el supermercado", items: [
+          {es: "el supermercado", pt: "o supermercado"}, {es: "el carrito de compras", pt: "o carrinho de compras"},
+          {es: "el pasillo", pt: "o corredor"}, {es: "la estantería", pt: "a prateleira"}, {es: "la caja", pt: "o caixa (pagamento)"},
+          {es: "la oferta / promoción", pt: "a oferta / promoção"}, {es: "el recibo", pt: "a nota fiscal"}, {es: "la lista de compras", pt: "a lista de compras"}
+        ]},
+        {category: "En la carnicería", items: [
+          {es: "la carne", pt: "a carne"}, {es: "la carne de res", pt: "a carne bovina"}, {es: "la carne de cerdo", pt: "a carne suína"},
+          {es: "el pollo", pt: "o frango"}, {es: "el pescado", pt: "o peixe"}, {es: "la salchicha", pt: "a linguiça"},
+          {es: "el tocino", pt: "o bacon"}, {es: "el jamón", pt: "o presunto"}, {es: "el filete", pt: "o filé / bife"}
+        ]},
+        {category: "Frutas y verduras", items: [
+          {es: "la manzana", pt: "a maçã"}, {es: "el plátano", pt: "a banana"}, {es: "la naranja", pt: "a laranja"},
+          {es: "la fresa", pt: "o morango"}, {es: "la lechuga", pt: "a alface"}, {es: "la zanahoria", pt: "a cenoura"},
+          {es: "el pimiento", pt: "o pimentão"}, {es: "la cebolla", pt: "a cebola"}
+        ]},
+        {category: "Otros productos", items: [
+          {es: "el arroz", pt: "o arroz"}, {es: "el aceite", pt: "o óleo"}, {es: "el yogur", pt: "o iogurte"},
+          {es: "los huevos", pt: "os ovos"}, {es: "la conserva", pt: "a conserva"}, {es: "el condimento", pt: "o tempero"}
+        ]},
+        {category: "Frases útiles", items: [
+          {es: "¿Dónde está...?", pt: "Onde está...?"}, {es: "¿Cuánto cuesta?", pt: "Quanto custa?"},
+          {es: "¿Acepta tarjeta?", pt: "Aceita cartão?"}, {es: "Necesito ayuda", pt: "Preciso de ajuda"},
+          {es: "¡Está caro / barato!", pt: "Está caro / barato!"}
+        ]}
+      ],
+      notes: [
+        "Esta lección complementa la de 'La panadería' (que cubre al panadero, el pan y los dulces) — aquí el foco es el supermercado en general, la carnicería y las frutas y verduras.",
+        "'El filete' varía según el país: en España se usa mucho para carne o pescado en lonjas finas; en varios países de Latinoamérica también se dice 'el bistec', muy parecido al portugués 'bife'."
+      ],
+      exercises: [
+        {
+          type: "caso", icon: "🛒", stamp: "✅ COMPRA HECHA",
+          scenario: "Estás en la caja del supermercado y quieres saber si aceptan tarjeta de crédito.",
+          q: "Escribe una frase completa preguntando si aceptan tarjeta.",
+          target: "¿Acepta tarjeta de crédito, por favor?",
+          altAnswers: ["¿Puedo pagar con tarjeta?", "¿Aceptan tarjeta aquí?"]
+        },
+        {
+          type: "caso", icon: "🥩", stamp: "✅ PEDIDO EN LA CARNICERÍA",
+          scenario: "En la carnicería quieres pedir medio kilo de carne de res para el asado del fin de semana.",
+          q: "Escribe una frase completa pidiendo la carne.",
+          target: "Necesito medio kilo de carne de res, por favor.",
+          altAnswers: ["¿Me da medio kilo de carne de res?", "Quiero medio kilo de carne para el asado."]
+        },
+        {type: "speak", prompt: "¿Qué usas para llevar los productos mientras compras en el supermercado?", target: "El carrito de compras.", altAnswers: ["el carrito", "carrito de compras"]},
+        {type: "speak", prompt: "¿Dónde pagas al final de las compras?", target: "En la caja.", altAnswers: ["la caja", "en la caja"]},
+        {type: "speak", prompt: "¿Cómo se llama una rebaja de precio en el supermercado?", target: "La oferta.", altAnswers: ["la oferta", "la promoción"]},
+        {type: "speak", prompt: "¿Qué carne viene de la vaca?", target: "La carne de res.", altAnswers: ["la carne de res"]},
+        {type: "speak", prompt: "¿Qué carne viene del cerdo?", target: "La carne de cerdo.", altAnswers: ["la carne de cerdo"]},
+        {type: "speak", prompt: "¿Qué fruta amarilla y alargada es muy popular en Brasil?", target: "El plátano.", altAnswers: ["el plátano", "la banana"]},
+        {type: "speak", prompt: "¿Qué verdura naranja usas en la sopa?", target: "La zanahoria.", altAnswers: ["la zanahoria"]},
+        {type: "speak", prompt: "¿Cómo preguntas el precio de un producto?", target: "¿Cuánto cuesta?", altAnswers: ["cuánto cuesta"]},
+        {type: "speak", prompt: "Si algo tiene un precio muy alto, ¿cómo se dice?", target: "¡Está caro!", altAnswers: ["está caro", "muy caro"]},
+        {type: "speak", prompt: "¿Qué documento te dan después de pagar, con todos los productos comprados?", target: "El recibo.", altAnswers: ["el recibo"]},
+        {type: "mc", q: "'Açougue', em espanhol, se dice...", options: ["la panadería", "la carnicería", "el supermercado", "la frutería"], correct: 1},
+        {type: "mc", q: "'Bacon', em espanhol, se dice...", options: ["el jamón", "el tocino", "la salchicha", "el filete"], correct: 1},
+        {type: "fill", q: "'Carrinho de compras', em espanhol, se escribe: el ___ de compras", answer: "carrito"},
+        {type: "fill", q: "'Promoção', em espanhol, se escribe: la ___", answer: "oferta"}
+      ]
+    }
+,
+    {
+      id: "er-salon-belleza", order: 26, title: "El salón de belleza", subtitle: "Peluquería, uñas y maquillaje",
+      text: "Anderson llama al salón de belleza para agendar una cita para su esposa: ‘Quiero agendar una cita para corte y tinte, ¿tiene disponibilidad para el sábado?’ La recepcionista confirma el horario. El sábado, mientras su esposa se hace las mechas y una manicura, Anderson aprovecha para cortarse el cabello también. La peluquera le pregunta: ‘¿Cómo lo desea?’ ‘Corto a los lados, por favor.’ Al terminar, aplica un poco de gel y le muestra el resultado en el espejo. Mientras tanto, la esteticista atiende a su esposa con una limpieza de piel y le recomienda un buen protector solar para el día a día. Al salir, los dos están felices: ‘¡Quedó perfecto! Me encantó el resultado’, dice la esposa de Anderson, mirándose al espejo una última vez. ‘¿Cuánto cuesta todo?’, pregunta Anderson en la caja, sacando su tarjeta para pagar.",
+      textPt: "Anderson liga para o salão de beleza para agendar um horário para sua esposa: ‘Quero agendar um horário para corte e tintura, tem disponibilidade para o sábado?’ A recepcionista confirma o horário. No sábado, enquanto sua esposa faz as mechas e uma manicure, Anderson aproveita para cortar o cabelo também. A cabeleireira pergunta: ‘Como o senhor deseja?’ ‘Curto nas laterais, por favor.’ Ao terminar, aplica um pouco de gel e mostra o resultado no espelho. Enquanto isso, a esteticista atende sua esposa com uma limpeza de pele e recomenda um bom protetor solar para o dia a dia. Ao sair, os dois estão felizes: ‘Ficou perfeito! Amei o resultado’, diz a esposa de Anderson, se olhando no espelho uma última vez. ‘Quanto custa tudo?’, pergunta Anderson no caixa, tirando o cartão para pagar.",
+      vocabulary: [
+        {category: "Profesionales y cita", items: [
+          {es: "el peluquero / la peluquera", pt: "o cabeleireiro / a cabeleireira"}, {es: "el/la manicurista", pt: "o/a manicure"},
+          {es: "el maquillador / la maquilladora", pt: "o maquiador / a maquiadora"}, {es: "el/la esteticista", pt: "o/a esteticista"},
+          {es: "quiero agendar una cita", pt: "quero agendar um horário"}, {es: "¿tiene disponibilidad?", pt: "tem disponibilidade?"}
+        ]},
+        {category: "Cabello y color", items: [
+          {es: "el corte", pt: "o corte"}, {es: "el peinado", pt: "o penteado"}, {es: "el tinte / la coloración", pt: "a tintura / a coloração"},
+          {es: "las mechas", pt: "as mechas"}, {es: "el alisado", pt: "o alisamento"},
+          {es: "rubio(a) / moreno(a) / castaño(a) / pelirrojo(a) / canoso(a)", pt: "loiro(a) / moreno(a) / castanho(a) / ruivo(a) / grisalho(a)"}
+        ]},
+        {category: "Tratamientos capilares", items: [
+          {es: "el champú", pt: "o shampoo"}, {es: "el acondicionador", pt: "o condicionador"},
+          {es: "la mascarilla capilar", pt: "a máscara capilar"}, {es: "el aceite capilar", pt: "o óleo capilar"},
+          {es: "la caída del cabello", pt: "a queda de cabelo"}
+        ]},
+        {category: "Uñas y maquillaje", items: [
+          {es: "la manicura", pt: "a manicure (serviço)"}, {es: "la pedicura", pt: "a pedicure"}, {es: "el esmalte", pt: "o esmalte"},
+          {es: "la base", pt: "a base"}, {es: "el corrector", pt: "o corretivo"}, {es: "la sombra de ojos", pt: "a sombra"}, {es: "el labial", pt: "o batom"}
+        ]},
+        {category: "Rostro y otros servicios", items: [
+          {es: "la limpieza de piel", pt: "a limpeza de pele"}, {es: "la exfoliación", pt: "a esfoliação"},
+          {es: "el protector solar", pt: "o protetor solar"}, {es: "la depilación", pt: "a depilação"},
+          {es: "las cejas", pt: "as sobrancelhas"}, {es: "el masaje", pt: "a massagem"}
+        ]},
+        {category: "Frases útiles", items: [
+          {es: "¿Cuánto cuesta?", pt: "Quanto custa?"}, {es: "¿Tiene disponibilidad?", pt: "Tem disponibilidade?"},
+          {es: "¡Quedó perfecto!", pt: "Ficou perfeito!"}, {es: "¡Me encantó el resultado!", pt: "Amei o resultado!"}
+        ]}
+      ],
+      notes: [
+        "'Manicura' puede referirse tanto al servicio (hacerse las uñas) como a la profesional que lo hace — en algunos países se prefiere 'manicurista' para la persona, para evitar confusión.",
+        "'¿Cómo lo desea?' es la pregunta clásica del peluquero o barbero antes de empezar — responder con detalles ('corto a los lados', 'solo las puntas') evita sorpresas al final."
+      ],
+      exercises: [
+        {
+          type: "caso", icon: "💇", stamp: "✅ CITA AGENDADA",
+          scenario: "Quieres agendar una cita en el salón de belleza para cortarte el cabello el sábado.",
+          q: "Escribe una frase completa pidiendo la cita.",
+          target: "Quiero agendar una cita para el sábado, para cortarme el cabello.",
+          altAnswers: ["¿Tiene disponibilidad para el sábado? Quiero un corte.", "Necesito agendar un corte de cabello para el sábado."]
+        },
+        {
+          type: "caso", icon: "💅", stamp: "✅ SERVICIO ELEGIDO",
+          scenario: "Estás en el salón y quieres pedir una manicura y también preguntar el precio.",
+          q: "Escribe una frase completa pidiendo la manicura y preguntando el precio.",
+          target: "Quiero una manicura, por favor. ¿Cuánto cuesta?",
+          altAnswers: ["¿Puedo hacerme una manicura? ¿Cuánto cuesta?", "Necesito una manicura, ¿cuál es el precio?"]
+        },
+        {type: "speak", prompt: "¿Quién te corta el cabello en la peluquería?", target: "El peluquero / la peluquera.", altAnswers: ["el peluquero", "la peluquera"]},
+        {type: "speak", prompt: "¿Cómo pides una cita en el salón?", target: "Quiero agendar una cita.", altAnswers: ["quiero agendar una cita", "agendar una cita"]},
+        {type: "speak", prompt: "¿Qué color de cabello tiene alguien con el pelo amarillo claro?", target: "Rubio.", altAnswers: ["rubio", "es rubio"]},
+        {type: "speak", prompt: "¿Qué color de cabello tiene alguien con canas?", target: "Canoso.", altAnswers: ["canoso"]},
+        {type: "speak", prompt: "¿Qué usas para lavar el cabello?", target: "El champú.", altAnswers: ["el champú"]},
+        {type: "speak", prompt: "¿Quién te hace las uñas?", target: "La manicurista.", altAnswers: ["la manicurista"]},
+        {type: "speak", prompt: "¿Qué te pones en los labios como maquillaje?", target: "El labial.", altAnswers: ["el labial"]},
+        {type: "speak", prompt: "¿Qué debes usar todos los días para proteger la piel del sol?", target: "El protector solar.", altAnswers: ["el protector solar"]},
+        {type: "speak", prompt: "Si te encantó el resultado de tu corte, ¿qué dices?", target: "¡Me encantó el resultado!", altAnswers: ["me encantó el resultado", "quedó perfecto"]},
+        {type: "speak", prompt: "¿Cómo preguntas si hay horario disponible?", target: "¿Tiene disponibilidad?", altAnswers: ["tiene disponibilidad"]},
+        {type: "speak", prompt: "¿Qué te hacen en la cara para quitar las células muertas?", target: "La exfoliación.", altAnswers: ["la exfoliación", "exfoliación"]},
+        {type: "mc", q: "'Sobrancelha', em espanhol, se dice...", options: ["las pestañas", "las cejas", "el cabello", "la barba"], correct: 1},
+        {type: "mc", q: "'Esmalte' (de unhas), em espanhol, se dice...", options: ["el esmalte", "la base", "el corrector", "el rubor"], correct: 0},
+        {type: "fill", q: "'Corte de cabelo', em espanhol, se escribe: el ___ de cabello", answer: "corte"},
+        {type: "fill", q: "'Quero agendar um horário', em espanhol, se escribe: Quiero ___ una cita", answer: "agendar"}
+      ]
+    },
+    {
+      id: "er-barberia", order: 27, title: "En la barbería", subtitle: "Corte, barba y afeitado",
+      text: "Anderson entra en la barbería para cortarse el cabello antes de un viaje de trabajo. El barbero le pregunta: ‘¿Cómo lo desea?’ ‘Corto a los lados y un poco más largo arriba, por favor. Y recorte la barba también.’ El barbero pone la capa, toma las tijeras y empieza a cortar con cuidado los laterales y la nuca. Después usa la máquina de cortar para hacer un degradado suave. Antes de afeitar la barba, aplica espuma y usa la navaja con calma. Al final, seca el cabello, lo peina y pregunta: ‘¿Le gustó el corte?’ Anderson se mira al espejo, sonríe y responde: ‘¡Quedó perfecto! Justo lo que necesitaba.’ El barbero termina con un poco de gel y una loción after-shave. Antes de irse, Anderson agradece: ‘Muchas gracias, quedé muy contento con el resultado.’",
+      textPt: "Anderson entra na barbearia para cortar o cabelo antes de uma viagem de trabalho. O barbeiro pergunta: ‘Como o senhor deseja?’ ‘Curto nas laterais e um pouco mais comprido em cima, por favor. E apare a barba também.’ O barbeiro coloca a capa, pega a tesoura e começa a cortar com cuidado as laterais e a nuca. Depois usa a máquina de cortar para fazer um degradê suave. Antes de fazer a barba, aplica espuma e usa a navalha com calma. No final, seca o cabelo, penteia e pergunta: ‘Gostou do corte?’ Anderson se olha no espelho, sorri e responde: ‘Ficou perfeito! Exatamente o que eu precisava.’ O barbeiro termina com um pouco de gel e uma loção pós-barba. Antes de sair, Anderson agradece: ‘Muito obrigado, fiquei muito satisfeito com o resultado.’",
+      vocabulary: [
+        {category: "En la barbería", items: [
+          {es: "el barbero", pt: "o barbeiro"}, {es: "el cliente", pt: "o cliente"}, {es: "la barbería", pt: "a barbearia"},
+          {es: "la silla", pt: "a cadeira"}, {es: "el espejo", pt: "o espelho"}, {es: "la capa", pt: "a capa"}
+        ]},
+        {category: "Herramientas y productos", items: [
+          {es: "las tijeras", pt: "a tesoura"}, {es: "la máquina de cortar", pt: "a máquina de cortar"}, {es: "el peine", pt: "o pente"},
+          {es: "la navaja", pt: "a navalha"}, {es: "el gel", pt: "o gel"}, {es: "la espuma de afeitar", pt: "a espuma de barbear"},
+          {es: "la loción after-shave", pt: "a loção pós-barba"}
+        ]},
+        {category: "Cortes de cabello", items: [
+          {es: "el corte corto / medio / largo", pt: "o corte curto / médio / longo"}, {es: "el degradado (fade)", pt: "o degradê"},
+          {es: "el copete", pt: "o topete"}, {es: "el corte al ras", pt: "o corte buzz cut"}, {es: "la raya lateral", pt: "o risco lateral"}
+        ]},
+        {category: "Barba y bigote", items: [
+          {es: "la barba", pt: "a barba"}, {es: "el bigote", pt: "o bigode"}, {es: "recortar la barba", pt: "aparar a barba"},
+          {es: "afeitar", pt: "fazer a barba / barbear"},
+          {es: "la barba completa / corta / larga", pt: "a barba cheia / curta / longa"}
+        ]},
+        {category: "Acciones del barbero", items: [
+          {es: "cortar el cabello", pt: "cortar o cabelo"}, {es: "recortar", pt: "aparar"}, {es: "lavar el cabello", pt: "lavar o cabelo"},
+          {es: "secar", pt: "secar"}, {es: "peinar", pt: "pentear"}, {es: "finalizar", pt: "finalizar"}
+        ]},
+        {category: "Expresiones útiles", items: [
+          {es: "¿Cómo lo desea?", pt: "Como o senhor deseja?"}, {es: "Solo las puntas", pt: "Só as pontas"},
+          {es: "Más corto, por favor", pt: "Mais curto, por favor"}, {es: "Déjelo igual", pt: "Deixar do jeito"},
+          {es: "¿Le gustó el corte?", pt: "Ficou bom?"}
+        ]}
+      ],
+      notes: [
+        "'Degradado' es el término más usado en España para lo que en portugués se llama 'degradê' o en inglés 'fade' — un corte con transición suave entre lo corto y lo largo.",
+        "'Afeitar' se usa tanto para la barba como para el cuerpo en general; 'recortar la barba' es más específico para arreglar sin quitarla del todo."
+      ],
+      exercises: [
+        {
+          type: "caso", icon: "💈", stamp: "✅ CORTE PEDIDO",
+          scenario: "Llegas a la barbería y el barbero te pregunta cómo quieres el corte.",
+          q: "Escribe una frase completa explicando cómo quieres el corte de cabello.",
+          target: "Quiero el corte corto a los lados y un poco más largo arriba.",
+          altAnswers: ["Corto a los lados, por favor, y deje un poco más largo arriba.", "Quiero un degradado, corto en los laterales."]
+        },
+        {
+          type: "caso", icon: "🪒", stamp: "✅ BARBA RECORTADA",
+          scenario: "Además del corte de cabello, también quieres que te recorten la barba.",
+          q: "Escribe una frase completa pidiendo que te recorten la barba también.",
+          target: "¿Puede recortar la barba también, por favor?",
+          altAnswers: ["Quiero recortar la barba también.", "Después del corte, ¿puede afeitar un poco la barba?"]
+        },
+        {type: "speak", prompt: "¿Quién te corta el cabello en la barbería?", target: "El barbero.", altAnswers: ["el barbero"]},
+        {type: "speak", prompt: "¿Qué usas para cortar el cabello con precisión, con dos hojas?", target: "Las tijeras.", altAnswers: ["las tijeras"]},
+        {type: "speak", prompt: "¿Qué máquina usa el barbero para hacer un degradado?", target: "La máquina de cortar.", altAnswers: ["la máquina de cortar", "la máquina"]},
+        {type: "speak", prompt: "¿Qué usas para afeitar la barba con mucho cuidado?", target: "La navaja.", altAnswers: ["la navaja"]},
+        {type: "speak", prompt: "¿Cómo se llama un corte con transición suave de corto a largo?", target: "El degradado.", altAnswers: ["el degradado", "el fade"]},
+        {type: "speak", prompt: "¿Qué le preguntas al barbero antes de empezar?", target: "¿Cómo lo desea?", altAnswers: ["cómo lo desea"]},
+        {type: "speak", prompt: "Si solo quieres cortar las puntas, ¿qué pides?", target: "Solo las puntas, por favor.", altAnswers: ["solo las puntas"]},
+        {type: "speak", prompt: "Si quieres el pelo más corto, ¿qué dices?", target: "Más corto, por favor.", altAnswers: ["más corto"]},
+        {type: "speak", prompt: "Si no quieres cambiar nada, ¿qué dices?", target: "Déjelo igual.", altAnswers: ["déjelo igual"]},
+        {type: "speak", prompt: "Si te encantó el corte, ¿qué respondes cuando te preguntan?", target: "¡Quedó perfecto!", altAnswers: ["quedó perfecto"]},
+        {type: "speak", prompt: "¿Qué producto usa el barbero en la piel después de afeitar?", target: "La loción after-shave.", altAnswers: ["la loción", "after-shave"]},
+        {type: "mc", q: "'Barba cheia', em espanhol, se dice...", options: ["barba rala", "barba completa", "barba media", "sin barba"], correct: 1},
+        {type: "mc", q: "'Máquina de cortar' (el cabello), em português, é...", options: ["tesoura", "navalha", "máquina de cortar", "pente"], correct: 2},
+        {type: "fill", q: "'Corte curto', em espanhol, se escribe: el corte ___", answer: "corto"},
+        {type: "fill", q: "'Aparar a barba', em espanhol, se escribe: ___ la barba", answer: "recortar"}
       ]
     }
 

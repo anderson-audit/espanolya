@@ -455,9 +455,10 @@ table.grammar-table th { background: var(--gray-bg); }
    esse módulo."). Todo lo de acá vive detrás de clases nuevas (.hero-mega / .exercise-card--er
    / .er-*) que solo se activan en las lecciones "er-*" — el resto de las ~90 lecciones del
    curso y el motor de ejercicios compartido no cambian en nada. ---------- */
-.lesson-hero.hero-mega { cursor: zoom-in; }
-.lesson-hero.hero-mega img { max-height: 640px; }
-@media (max-width: 640px) { .lesson-hero.hero-mega img { max-height: 420px; } }
+.lesson-hero.hero-mega { cursor: zoom-in; margin-left: -24px; margin-right: -24px; width: calc(100% + 48px); }
+@media (max-width: 860px) { .lesson-hero.hero-mega { margin-left: -14px; margin-right: -14px; width: calc(100% + 28px); } }
+.lesson-hero.hero-mega img { max-height: 1500px; height: auto; }
+@media (max-width: 640px) { .lesson-hero.hero-mega img { max-height: 900px; } }
 .hero-zoom-hint {
   position:absolute; right:12px; bottom:44px; z-index:3; background:rgba(0,0,0,.6); color:#fff;
   font-size:.72rem; font-weight:700; padding:6px 12px; border-radius:999px; pointer-events:none;
@@ -491,8 +492,8 @@ table.grammar-table th { background: var(--gray-bg); }
 
 /* Tarjeta de ejercicio exclusiva de este módulo (verde→azul, colores del propio módulo) */
 .exercise-card--er::before { background: linear-gradient(90deg, #2E7D32, #1565C0, #2E7D32); }
-.exercise-card--er .ex-hero.lesson-hero img { max-height: 440px; }
-@media (max-width: 640px) { .exercise-card--er .ex-hero.lesson-hero img { max-height: 260px; } }
+.exercise-card--er .ex-hero.lesson-hero img { max-height: 1200px; }
+@media (max-width: 640px) { .exercise-card--er .ex-hero.lesson-hero img { max-height: 800px; } }
 .exercise-card--er .ex-type-badge { background: #e3f2ec; color:#1b5e20; }
 .exercise-card--er .ex-scoreboard { background: linear-gradient(135deg,#e3f2ec,#dcedc8); color:#1565C0; }
 

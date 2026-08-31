@@ -60,7 +60,7 @@ const functions = (typeof firebase.functions === "function") ? firebase.function
 // Versión del sistema, visible en Mi Cuenta / Configuración y en el pie de la barra lateral.
 // Se debe actualizar manualmente cada vez que se sube una nueva versión al repositorio
 // (formato AAAA.MM.DD.N — N = número de subida ese día, empieza en 1).
-const APP_VERSION = "2026.08.29.1";
+const APP_VERSION = "2026.08.31.1";
 
 // Valores por defecto de la mensualidad/anualidad — el admin puede cambiarlos en
 // Configuración → Planes y precios (guardados en config/settings, campos priceMonthly/priceAnnual).
@@ -7136,6 +7136,19 @@ const LESSON_IMAGES = {
   "er-galicia": { file: "estudio-rapido-galicia.jpg", alt: "Galicia — lugares, cultura y comida típica", caption: "Lugares, cultura y comida típica de Galicia.", local: true },
   "er-lavanderia": { file: "estudio-rapido-lavanderia.jpg", alt: "En la lavandería — lavar, secar y planchar", caption: "Vocabulario de la lavandería: lavar, secar y planchar la ropa.", local: true },
   "er-probador": { file: "estudio-rapido-probador.jpg", alt: "Cambiando de ropa y zapatos — probador de una tienda", caption: "Probarse ropa y zapatos en una tienda.", local: true },
+
+  // Módulo bônus "Estudio Rápido" — 8 lecciones nuevas (2026-08-31), a partir de infografías
+  // de vocabulario PT→ES que Anderson envió directamente en el chat (segunda tanda).
+  "er-saludos": { file: "estudio-rapido-saludos.jpg", alt: "Saludos y cortesía — cómo saludar y despedirse", caption: "Cómo saludar, presentarse y despedirse en español.", local: true },
+  "er-pesos-medidas": { file: "estudio-rapido-pesos-medidas.jpg", alt: "Pesos, medidas y unidades", caption: "Cómo pesar, medir y comparar cantidades.", local: true },
+  "er-invierno": { file: "estudio-rapido-invierno.jpg", alt: "Invierno, deportes y nieve", caption: "Vocabulario de la temporada fría y los deportes de nieve.", local: true },
+  "er-direcciones": { file: "estudio-rapido-direcciones.jpg", alt: "Ubicación, direcciones y transporte", caption: "Cómo moverte y orientarte en la ciudad.", local: true },
+  "er-culinaria": { file: "estudio-rapido-culinaria.jpg", alt: "Cocina: verbos, ingredientes y platos", caption: "Verbos de cocina, ingredientes y platos.", local: true },
+  "er-banco": { file: "estudio-rapido-banco.jpg", alt: "Banco, dinero e inversión", caption: "Vocabulario financiero básico para el día a día.", local: true },
+  "er-falsos-cognatos": { file: "estudio-rapido-falsos-cognatos.jpg", alt: "Falsos cognatos español-portugués", caption: "Palabras parecidas, ¡significados diferentes!", local: true },
+  "er-supermercado": { file: "estudio-rapido-supermercado.jpg", alt: "Supermercado, carnicería y panadería", caption: "De compras: productos, secciones y frases del súper.", local: true },
+  "er-salon-belleza": { file: "estudio-rapido-salon-belleza.jpg", alt: "El salón de belleza — peluquería, uñas y maquillaje", caption: "Peluquería, uñas y maquillaje.", local: true },
+  "er-barberia": { file: "estudio-rapido-barberia.jpg", alt: "En la barbería — corte, barba y afeitado", caption: "Corte, barba y afeitado.", local: true },
 };
 
 function lessonHeroImageHtml(lessonId) {
@@ -7217,6 +7230,7 @@ const LESSON_IMAGES_EXTRA = {
   "er-aeropuerto": [
     { file: "estudio-rapido-el-aeropuerto-checkin.svg", alt: "Aeropuerto — check-in", caption: "Documentos y trámites antes de volar.", local: true },
     { file: "estudio-rapido-el-aeropuerto-vuelo.svg", alt: "Aeropuerto — en el vuelo", caption: "A bordo y en la llegada.", local: true },
+    { file: "estudio-rapido-aeropuerto-equipaje-extra.jpg", alt: "Aeropuerto — aduana y reclamo de equipaje", caption: "Aduana y reclamo de equipaje.", local: true },
   ],
   "b12": [{ file: "El_Campello,_Costa_Blanca,_Spain.jpg", alt: "Costa Blanca, España", caption: "Otro rincón de la costa española para soñar con las vacaciones." }],
 };
